@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const defaultColors = require("tailwindcss/colors");
 
 export default {
   content: [
