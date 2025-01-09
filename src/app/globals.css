@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #F8F6F5;
+    --background: #FFFFFF;
     --foreground: #ededed;
   }
 }
@@ -35,6 +35,12 @@ body {
 @font-face {
   font-family: 'Freight Neo Pro Bold';
   src: url('/fonts/Freight Neo Pro Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Freight Neo Pro Light';
+  src: url('/fonts/Freight Neo Pro Light') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

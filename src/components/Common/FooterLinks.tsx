@@ -1,15 +1,15 @@
 import Link from "next/link";
 import classNames from "classnames";
 
-interface NavLinkProps {
+interface FooterLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
 }
 
-const NavLink = ({ href, children, className }: NavLinkProps) => {
+const FooterLink = ({ href, children, className }: FooterLinkProps) => {
   const combinedClassName = classNames(
-    "lg:gap-[86px] lg:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium",
+    "font-FreightNeoProLight font-light text-base text-footerTextColor",
     className
   );
 
@@ -20,4 +20,4 @@ const NavLink = ({ href, children, className }: NavLinkProps) => {
   );
 };
 
-export default NavLink;
+export default FooterLink;

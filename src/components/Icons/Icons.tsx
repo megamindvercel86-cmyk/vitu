@@ -78,3 +78,76 @@ export function Youtube() {
     </svg>
   );
 }
+
+export function Share() {
+  return (
+    <svg
+      width="15.6"
+      height="15.6"
+      viewBox="0 0 18 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.5 8.66406L16.5333 0.630719"
+        stroke="#EADFD1"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.49791 8.66225C8.49791 8.66225 3.98553 7.373 2.19159 6.86044C1.76372 6.73819 1.46875 6.34716 1.46875 5.90213V5.90187C1.46875 5.45422 1.76237 5.05956 2.19119 4.93094C5.19378 4.03016 16.5312 0.628906 16.5312 0.628906C16.5312 0.628906 13.13 11.9664 12.2292 14.969C12.1006 15.3978 11.7059 15.6914 11.2583 15.6914H11.258C10.813 15.6914 10.422 15.3964 10.2997 14.9686C9.78716 13.1746 8.49791 8.66225 8.49791 8.66225Z"
+        stroke="#EADFD1"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+export function Phone() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.63533 12.3752C1.94818 8.68465 0.0409092 4.62377 1.48225 3.18109L3.50996 1.15149C3.71179 0.949504 4.04099 0.949504 4.24283 1.15149L7.27214 4.18363C7.47398 4.38566 7.47398 4.7152 7.27214 4.91719L5.97735 6.21319C5.57368 6.61724 5.57368 7.27633 5.97735 7.68034L10.3259 12.0329C10.7295 12.437 11.388 12.437 11.7917 12.0329L13.0864 10.7369C13.2882 10.5349 13.6175 10.5349 13.8193 10.7369L16.8486 13.769C17.0505 13.9711 17.0505 14.3006 16.8486 14.5026L14.821 16.5322C13.4162 17.9382 9.32248 16.0658 5.63533 12.3752Z"
+        stroke="#EADFD1"
+        stroke-miterlimit="22.926"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function Mail() {
+  return (
+    <svg
+      width="19"
+      height="14"
+      viewBox="0 0 19 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.5833 0.998203H2.41665C1.63747 0.998203 1 1.63571 1 2.41486V12.0483C1 12.8275 1.63747 13.4648 2.41665 13.4648H16.5834C17.3625 13.4648 18 12.8275 18 12.0483V2.41486C18 1.63571 17.3625 0.998203 16.5833 0.998203Z"
+        stroke="#EADFD1"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M18 2.70126L10.6788 7.5821C10.0304 8.0143 8.96957 8.0143 8.32135 7.5821L1 2.70126"
+        stroke="#EADFD1"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}

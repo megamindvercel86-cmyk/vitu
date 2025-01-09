@@ -15,14 +15,17 @@ export default {
         customBrown: "#4F3737",
         customTextGray: "#04070799",
         customPlaceHolderGray: "#04070799",
-        cusomButtonColor: "#AE8566"
+        cusomButtonColor: "#AE8566",
+        primaryBackgroundColor: "#F8F6F5",
+        footerTextColor:"#EADFD1CC"
       },
       fontFamily: {
         freightNeoMedium: ['Freight Neo Pro Medium', 'sans-serif'],
         freightNeoSemibold: ['Freight Neo Pro Semibold', 'sans-serif'],
         FreightNeoProBold: ['Freight Neo Pro Bold', 'sans-serif'],
         CandideCondensedBold: ['Candide-CondensedBold', 'sans-serif'],
-        CandideCondensedMedium: ['Candide-CondensedMedium', 'sans-serif']
+        CandideCondensedMedium: ['Candide-CondensedMedium', 'sans-serif'],
+        FreightNeoProLight: ['Freight Neo Pro Light', 'sans-serif']
       },      
       screens: {
         sm: "640px",
