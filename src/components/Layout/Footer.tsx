@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-[95px] w-full ">
       <div className="px-[277px]">
-        <div className="  flex flex-col md:flex-row items-start justify-between w-full">
+        <div className="flex flex-col md:flex-row items-start justify-between w-full">
           {/* Logo and Tagline Section */}
           <div className="flex-shrink-0">
             <div className="flex items-center gap-2 mb-4">

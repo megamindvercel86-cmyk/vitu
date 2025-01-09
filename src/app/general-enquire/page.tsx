@@ -2,7 +2,6 @@
 
 import FAQ from "@/components/FAQ/FAQ";
 import FormSection from "@/components/FormSection/FormSection";
-import Footer from "@/components/Layout/Footer";
 import Layout from "@/components/Layout/Layout";
 
 export default function GeneralEnquire() {
@@ -24,7 +23,6 @@ export default function GeneralEnquire() {
         page="General Enquire"
       />
       <FAQ/>
-      <Footer/>
     </Layout>
   );
 }
