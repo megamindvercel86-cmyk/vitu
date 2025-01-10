@@ -125,8 +125,8 @@ const TermsAndService = () => {
             Vitu Realty welcomes your comments and feedback regarding this
             website. All information and materials, including comments, ideas,
             questions, designs, and the like, submitted to Vitu Realty through
-            this website will be considered NON-CONFIDENTIAL and
-            NON-PROPRIETARY. For this reason, we ask you not to send us any
+            this website will be considered <span className="font-bold">NON-CONFIDENTIAL</span>  and
+            <span className="font-bold"> NON-PROPRIETARY. </span>For this reason, we ask you not to send us any
             information or materials that you do not wish to assign to us,
             including any confidential information.
           </SubHeading>
