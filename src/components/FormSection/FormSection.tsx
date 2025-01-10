@@ -75,13 +75,15 @@ const FormSection: React.FC<FormSectionProps> = ({
         <SubHeading className="sm:pt-[13px]  lg:pt-[24px] xl:pt-[40px] text-center lg:text-left">
           {subheading}
         </SubHeading>
-        <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20" />
-        <SubHeading className="pt-8">
-          Alternatively, for your queries contact
-        </SubHeading>
-        <span className="text-customTextGray  font-CandideCondensedBold font-bold">
-          +91 89046 88886
-        </span>
+        <div className="hidden lg:block">
+          <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20" />
+          <SubHeading className="pt-8">
+            Alternatively, for your queries contact
+          </SubHeading>
+          <span className="text-customTextGray font-CandideCondensedBold font-bold">
+            +91 89046 88886
+          </span>
+        </div>
       </div>
       {/* Right Side Form */}
       <div className="flex-1">
@@ -203,7 +205,7 @@ const FormSection: React.FC<FormSectionProps> = ({
             </>
           )}
           {page === "General Enquire" && (
-            <div className="flex items-center justify-between gap-2 pt-[45px]">
+            <div className="flex flex-col items-center gap-4 pt-[45px] lg:flex-row lg:justify-between">
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
@@ -224,11 +226,12 @@ const FormSection: React.FC<FormSectionProps> = ({
                   Receive Updates on WhatsApp
                 </span>
               </label>
-              <Button onClick={handleSubmit} className="text-[26px] pt-1">
+              <Button onClick={handleSubmit} className="text-[26px] sm:w-full lg:w-[146px] pt-1">
                 Submit
               </Button>
             </div>
           )}
+
           {page === "Project Enquire" && (
             <div className="flex items-center justify-between gap-2 pt-[45px] mb-[145px]">
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
@@ -264,6 +267,15 @@ const FormSection: React.FC<FormSectionProps> = ({
             </div>
           )}
         </form>
+        <div className="block lg:hidden text-center mt-6">
+          <hr className="w-full md:w-[392px] mt-[38px] border-black border-opacity-20" />
+          <SubHeading className="pt-4">
+            Alternatively, for your queries contact
+          </SubHeading>
+          <span className="text-customTextGray font-CandideCondensedBold font-bold">
+            +91 89046 88886
+          </span>
+        </div>
       </div>
     </div>
   );
