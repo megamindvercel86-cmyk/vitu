@@ -67,11 +67,14 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
   return (
-    <div className="flex pt-[159px] xl:px-[277px] lg:px-[132px]">
+    <div className="flex flex-col lg:flex-row pt-[66px] px-[27px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
       {/* Left Side Content */}
       <div className="flex-1">
-        <Heading>{heading}</Heading>
-        <SubHeading className="pt-10">{subheading}</SubHeading>
+        <Heading className="text-center lg:text-left">{heading}</Heading>
+
+        <SubHeading className="sm:pt-[13px]  lg:pt-[24px] xl:pt-[40px] text-center lg:text-left">
+          {subheading}
+        </SubHeading>
         <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20" />
         <SubHeading className="pt-8">
           Alternatively, for your queries contact

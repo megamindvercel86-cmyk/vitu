@@ -17,9 +17,9 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-[95px] w-full ">
-      <div className="px-[277px]">
-        <div className="flex flex-col md:flex-row items-start justify-between w-full">
+    <footer className="bg-black text-white pt-[54px] lg:pt-[95px] w-full ">
+      <div>
+      <div className="flex flex-col lg:flex-row px-[27px]  xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
           {/* Logo and Tagline Section */}
           <div className="flex-shrink-0">
             <div className="flex items-center gap-2 mb-4">
@@ -35,7 +35,7 @@ const Footer = () => {
               Building Wholesome <br />
               Living Spaces
             </p>
-            <div className="mt-[90px]">
+            <div className="mt-[90px] sm:hidden lg:block">
               <FooterLink href="">Recognized by</FooterLink>
               <Image
                 src={chieverslog}

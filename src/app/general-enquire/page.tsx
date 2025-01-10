@@ -10,8 +10,8 @@ export default function GeneralEnquire() {
       <FormSection
         heading={
           <>
-            Excited about the <br />
-            possibilities your <br /> next home could <br /> offer?
+            Excited about the 
+            possibilities your  next home could offer?
           </>
         }
         subheading={

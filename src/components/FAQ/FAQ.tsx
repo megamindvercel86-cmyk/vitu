@@ -36,14 +36,14 @@ const FAQ = () => {
 
   return (
     <section className="bg-primaryBackgroundColor mt-[200px]">
-      <div className="flex pt-[170px] px-[277px] xl:pt-[156px] xl:px-[277px] lg:pt-[155px] lg:px-[132px] sm:pt-[364px] sm:px-[27px]">
+       <div className="flex flex-col lg:flex-row pt-[66px] px-[27px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
         {/* Left Section */}
         <div className="flex-1">
-          <Heading className="pb-[25px]">
+        <Heading className="text-center lg:text-left">
             Frequently Asked
             <br /> Questions
           </Heading>
-          <SubHeading>
+          <SubHeading className="sm:pt-[13px]  lg:pt-[24px] xl:pt-[40px] text-center lg:text-left">
             Got questions? We've got answers <br /> no jargon, just clarity.
           </SubHeading>
         </div>
