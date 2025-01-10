@@ -1,0 +1,21 @@
+import React from 'react';
+import classNames from "classnames";
+
+interface HeadingProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+
+const CustomText = ({ children, className }: HeadingProps) => {
+  const combinedClassName = classNames(
+    "text-customTextGray font-medium text-xl font-freightNeoMedium",
+    className
+  );
+
+  return <p className={combinedClassName}>{children}</p>;
+};
+
+export default CustomText;
+
+

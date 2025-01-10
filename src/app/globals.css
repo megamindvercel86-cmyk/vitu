@@ -40,19 +40,19 @@ body {
 }
 @font-face {
   font-family: 'Freight Neo Pro Light';
-  src: url('/fonts/Freight Neo Pro Light') format('opentype');
+  src: url('/fonts/Freight Neo Pro Light.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Candide-CondensedBold';
-  src: url('/fonts/Candide-CondensedBold.ttf') format('opentype');
+  src: url('/fonts/Candide-CondensedBold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Candide-CondensedMedium';
-  src: url('/fonts/Candide-CondensedMedium.ttf') format('opentype');
+  src: url('/fonts/Candide-CondensedMedium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
