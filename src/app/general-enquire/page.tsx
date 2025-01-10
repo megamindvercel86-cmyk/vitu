@@ -10,19 +10,34 @@ export default function GeneralEnquire() {
       <FormSection
         heading={
           <>
-            Excited about the 
-            possibilities your  next home could offer?
+            <span className="hidden xl:inline">
+              Excited about the <br />
+              possibilities your next <br />
+              home could offer?
+            </span>
+            <span className="hidden lg:inline xl:hidden">
+              Excited about the <br />
+              possibilities your <br />
+              next home could <br />
+              offer?
+            </span>
+            <span className="inline lg:hidden">
+              Excited about the <br />
+              possibilities your next <br />
+              home could offer?
+            </span>
           </>
         }
         subheading={
           <>
             Take the first step towards the home of your <br />
-            dreams. Fill in the form and begin your Journey
+            dreams. Fill in the form and begin your Journey.
           </>
         }
         page="General Enquire"
       />
-      <FAQ/>
+
+      <FAQ />
     </Layout>
   );
 }

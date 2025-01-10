@@ -17,101 +17,154 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-[54px] lg:pt-[95px] w-full ">
-      <div>
-      <div className="flex flex-col lg:flex-row px-[27px]  xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
+    <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
+      <div className="px-6 lg:px-20 xl:px-40">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Logo and Tagline Section */}
-          <div className="flex-shrink-0">
-            <div className="flex items-center gap-2 mb-4">
-              <Image
-                src={logo}
-                alt="Logo"
-                width={225}
-                height={72}
-                className="w-[225px] h-[72px] lg:w-[224px] lg:h-[72px] sm:w-[95px] sm:h-[30px]  md:w-[105px] md:h-[60px]"
-              />
-            </div>
-            <p className="text-footerTextColor font-freightNeoMedium text-[32px] mt-[39px]">
+          <div className="flex flex-col items-center lg:items-start">
+            <Image
+              src={logo}
+              alt="Logo"
+              width={225}
+              height={72}
+              className="w-36 md:w-56 lg:w-[224px] h-auto"
+            />
+            <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Building Wholesome <br />
               Living Spaces
             </p>
-            <div className="mt-[90px] sm:hidden lg:block">
+            <div className="mt-8 hidden lg:block">
               <FooterLink href="">Recognized by</FooterLink>
               <Image
                 src={chieverslog}
                 alt="chieverslog"
                 width={148}
                 height={82}
-                className="pt-5"
+                className="mt-4"
               />
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="ml-[216px]">
-            <SubHeading className="text-xl text-footerTextColor font-freightNeoSemibold mb-[15px] whitespace-nowrap">
-              Quick Links
-            </SubHeading>
-            <ul className="space-y-[19px] text-gray-300">
-              <li>
-                <FooterLink href="">About Us</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="">Our Projects</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="">Careers</FooterLink>
-              </li>
-            </ul>
+          {/* Quick Links - Dropdown for mobile */}
+          <div>
+            <details className="lg:hidden border-b border-gray-700 pb-2">
+              <summary className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
+                Quick Links
+                <svg
+                  className="w-5 h-5 text-footerTextColor"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </summary>
+              <ul className="space-y-4 mt-4 text-gray-300">
+                <li>
+                  <FooterLink href="">About Us</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Our Projects</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Careers</FooterLink>
+                </li>
+              </ul>
+            </details>
+
+            <div className="hidden lg:block">
+              <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
+                Quick Links
+              </SubHeading>
+              <ul className="space-y-4 text-gray-300">
+                <li>
+                  <FooterLink href="">About Us</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Our Projects</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Careers</FooterLink>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Resources */}
-          <div className="ml-[181px]">
-            <SubHeading className="text-xl text-footerTextColor font-freightNeoSemibold mb-[15px]">
-              Resources
-            </SubHeading>
-            <ul className="space-y-[19px] text-gray-300">
-              <li>
-                <FooterLink href="">Media</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="">Insights</FooterLink>
-              </li>
-            </ul>
+          {/* Resources - Dropdown for mobile */}
+          <div>
+            {/* Resources */}
+            <details className="lg:hidden pb-2">
+              <summary className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
+                Resources
+                <svg
+                  className="w-5 h-5 text-footerTextColor"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </summary>
+              <ul className="space-y-4 mt-4 text-gray-300">
+                <li>
+                  <FooterLink href="">Media</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Insights</FooterLink>
+                </li>
+              </ul>
+            </details>
+            <div className="hidden lg:block">
+              <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
+                Resources
+              </SubHeading>
+              <ul className="space-y-4 text-gray-300">
+                <li>
+                  <FooterLink href="">Media</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="">Insights</FooterLink>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Section */}
-          <div className="ml-[165px]">
-            <SubHeading className="text-xl text-footerTextColor font-freightNeoSemibold mb-[15px]">
+          <div>
+            <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
               Get in Touch
             </SubHeading>
-            <ul className="space-y-[19px] text-gray-300">
-              <li className="flex">
-                <div className="mt-1">
-                  <Share />
-                </div>
-                <FooterLink href="" className="pl-[17px]">
+            <ul className="space-y-4 text-gray-300">
+              <li className="flex items-start">
+                <Share />
+                <FooterLink href="" className="pl-4">
                   Laxman Commercial Complex Golikatta Bazar, Bunder, Mangalore -
                   575001
                 </FooterLink>
               </li>
-              <li className="flex">
-                <div className="mt-1">
-                  <Phone />
-                </div>
-                <FooterLink href="" className="pl-[17px]">
+              <li className="flex items-center">
+                <Phone />
+                <FooterLink href="" className="pl-4">
                   +91 89046 88886
                 </FooterLink>
               </li>
-              <li className="flex">
-                <div className="mt-1">
-                  <Mail />
-                </div>
-                <FooterLink href="" className="pl-[17px]">
+              <li className="flex items-center">
+                <Mail />
+                <FooterLink href="" className="pl-4">
                   info@viturealty.com
                 </FooterLink>
               </li>
-              <li className="flex gap-2.5">
+              <li className="flex gap-2">
                 <NavLink href="">
                   <Instgram />
                 </NavLink>
@@ -126,13 +179,14 @@ const Footer = () => {
                 </NavLink>
               </li>
             </ul>
+
             {/* Newsletter Signup */}
-            <div className="mt-[164px] mb-[54px]">
+            <div className="mt-8">
               <div className="flex items-center border-b border-gray-700 w-full">
                 <input
                   type="email"
                   placeholder="Sign up for Our Newsletter"
-                  className="bg-transparent flex-grow text-footerTextColor text-xl placeholder:text-footerTextColor placeholder:font-FreightNeoProLight placeholder:font-light focus:outline-none"
+                  className="bg-transparent flex-grow text-footerTextColor text-sm md:text-lg placeholder:text-gray-400 focus:outline-none"
                 />
                 <button className="text-footerTextColor">
                   <svg
@@ -154,21 +208,19 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* Bottom Section */}
-      <div className="mx-[166px] pt-[29px] border-t border-gray-800">
-        <div className="flex flex-col md:flex-row justify-between items-center  px-[14px] pb-8">
-          <p className="font-CandideCondensedMedium text-[rgba(255,255,255,0.4)] text-xs">
-            ©&nbsp;
-            <span className="font-CandideCondensedMedium">2024</span>
-            &nbsp;Vitu Realty | All rights reserved.
-          </p>
 
+      {/* Bottom Section */}
+      <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-xs text-center md:text-left">
+            © 2024 Vitu Realty | All rights reserved.
+          </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="font-CandideCondensedMedium text-[rgba(255,255,255,0.4)] text-xs">
+            <a href="#" className="text-gray-500 text-xs">
               Legal Disclaimer
             </a>
-            <span className="font-CandideCondensedMedium text-[rgba(255,255,255,0.4)] text-xs">|</span>
-            <a href="#" className="font-CandideCondensedMedium text-[rgba(255,255,255,0.4)] text-xs">
+            <span className="text-gray-500 text-xs">|</span>
+            <a href="#" className="text-gray-500 text-xs">
               Terms of Service
             </a>
           </div>
