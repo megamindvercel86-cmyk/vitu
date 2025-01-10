@@ -12,12 +12,22 @@ interface FormSectionProps {
   page: string;
 }
 
+interface FormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  comments: string;
+  whatsapp: boolean;
+  option: string;
+  resume: File | null;
+}
+
 const FormSection: React.FC<FormSectionProps> = ({
   heading,
   subheading,
   page,
 }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -26,6 +36,7 @@ const FormSection: React.FC<FormSectionProps> = ({
     option: "",
     resume: null,
   });
+
   const options = [
     { value: "", label: "Interested In", isDisabled: true },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -34,22 +45,25 @@ const FormSection: React.FC<FormSectionProps> = ({
     { value: "Other", label: "Other" },
   ];
 
+  const selectRef = useRef<HTMLSelectElement | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, option: e.target.value });
   };
 
-  const selectRef = useRef<HTMLSelectElement | null>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     setFormData({ ...formData, resume: file });
   };
+
   const handleIconClick = () => {
     if (selectRef.current) {
-      selectRef.current.focus(); // Trigger focus to open the dropdown
+      selectRef.current.focus();
     }
   };
   return (
@@ -177,8 +191,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                     ) : (
                       <span>Upload Resume</span>
                     )}
-                    <Upload/>{" "}
-                    {/* Custom Upload Icon on the right */}
+                    <Upload /> {/* Custom Upload Icon on the right */}
                   </label>
                   <input
                     id="resume-upload"
