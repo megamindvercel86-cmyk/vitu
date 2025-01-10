@@ -67,9 +67,9 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
   return (
-    <div className="flex pt-[159px] px-[277px]">
+    <div className="flex pt-[159px] xl:px-[277px] lg:px-[132px]">
       {/* Left Side Content */}
-      <div className="flex-1 p-4">
+      <div className="flex-1">
         <Heading>{heading}</Heading>
         <SubHeading className="pt-10">{subheading}</SubHeading>
         <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20" />
@@ -107,24 +107,19 @@ const FormSection: React.FC<FormSectionProps> = ({
             />
           </div>
           {page === "General Enquire" && (
-            <div className="mt-[45px]">
-              <div className="pl-1 flex justify-between items-center mb-1">
-                <span className="text-xl text-customTextGray font-freightNeoMedium">
-                  Your Comments
-                </span>
-                <span className="text-xs text-customTextGray font-CandideCondensedMedium">
-                  {formData.comments.length}/250
-                </span>
-              </div>
+            <div className="relative mt-[45px]">
               <textarea
                 value={formData.comments}
                 onChange={(e) =>
                   setFormData({ ...formData, comments: e.target.value })
                 }
                 maxLength={250}
-                rows={4}
-                className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium"
+                placeholder="Your Comments"
+                className="w-full h-[83px] px-1 pt-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium resize-none"
               />
+              <span className="absolute right-1 top-1 text-xs text-customTextGray font-CandideCondensedMedium">
+                {formData.comments.length}/250
+              </span>
             </div>
           )}
           {page === "Project Enquire" && (

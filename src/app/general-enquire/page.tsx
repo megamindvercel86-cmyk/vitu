@@ -6,7 +6,7 @@ import Layout from "@/components/Layout/Layout";
 
 export default function GeneralEnquire() {
   return (
-    <Layout>
+    <Layout navbarProps={{ showGetInTouch: false }}>
       <FormSection
         heading={
           <>
