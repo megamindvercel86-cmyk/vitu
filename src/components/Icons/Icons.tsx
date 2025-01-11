@@ -194,8 +194,7 @@ export function Upload() {
 export function BackArrow() {
   return (
     <svg
-      width="20"
-      height="35"
+      className="w-[10px] h-[19px] lg:w-[19px] lg:h-[35px]"
       viewBox="0 0 20 35"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

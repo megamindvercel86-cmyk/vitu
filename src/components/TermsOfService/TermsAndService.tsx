@@ -5,18 +5,20 @@ import SubHeading from "../Common/SubHeding";
 
 const TermsAndService = () => {
   return (
-    <div className="px-[210px] pt-[148px]">
-      <div className="flex gap-[21px]">
-        <BackArrow />
+    <div className="xl:pt-[144px] xl:px-[210px] lg:pt-[148px] lg:px-[78px] sm:pt-[63px] sm:px-[27px] pt-[62px] px-[27px]">
+      <div className="flex lg:gap-[21px] gap-[7px]">
+        <div className="pt-1">
+          <BackArrow />
+        </div>
         <Heading>Terms of Service</Heading>
       </div>
-      <div className="pl-[47px] pt-[58px] flex">
+      <div className="lg:pl-[47px] lg:pt-[58px]  sm:pt-[20px] lg:flex sm:flex-col lg:flex-row pt-[20px] ">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px] pb-3 lg:pb-0">
             Terms of Use
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             By visiting our website and accessing the information, resources,
             services, products, and tools we provide for you, either directly or
@@ -31,7 +33,7 @@ const TermsAndService = () => {
           <SubHeading>WHEREIN, YOU UNDERSTAND THAT:</SubHeading>
           <ul
             className="ml-8 list-disc"
-            style={{ listStyleType: "disc", color: "gray", fontSize: "1.3rem" }}
+            style={{ listStyleType: "disc", color: "gray" }}
           >
             <li>
               <SubHeading>
@@ -96,13 +98,13 @@ const TermsAndService = () => {
           </ul>
         </div>
       </div>
-      <div className="pl-[47px] pt-[58px] flex">
+      <div className="lg:pl-[47px] lg:pt-[58px] lg:flex sm:flex-col lg:flex-row pt-[44px] sm:gap-[12px] lg:gap-0">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px] pb-3 lg:pb-0">
             Trademark Notice
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             All of the trademarks, service marks and logos displayed on this
             website (the “Trademark(s)”) are registered and unregistered
@@ -114,32 +116,34 @@ const TermsAndService = () => {
           </SubHeading>
         </div>
       </div>
-      <div className="pl-[47px] pt-[58px] flex">
+      <div className="lg:pl-[47px] lg:pt-[58px] lg:flex sm:flex-col lg:flex-row pt-[44px]">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px] pb-3 lg:pb-0">
             Unsolicited Ideas
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             Vitu Realty welcomes your comments and feedback regarding this
             website. All information and materials, including comments, ideas,
             questions, designs, and the like, submitted to Vitu Realty through
-            this website will be considered <span className="font-bold">NON-CONFIDENTIAL</span>  and
-            <span className="font-bold"> NON-PROPRIETARY. </span>For this reason, we ask you not to send us any
-            information or materials that you do not wish to assign to us,
-            including any confidential information.
+            this website will be considered{" "}
+            <span className="font-bold">NON-CONFIDENTIAL</span> and
+            <span className="font-bold"> NON-PROPRIETARY. </span>For this
+            reason, we ask you not to send us any information or materials that
+            you do not wish to assign to us, including any confidential
+            information.
           </SubHeading>
         </div>
       </div>
 
-      <div className="pl-[47px] pt-[58px] flex">
+      <div className="lg:pl-[47px] lg:pt-[58px] lg:flex sm:flex-col lg:flex-row pt-[44px]">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl lg:w-[157px] w-full pb-3 lg:pb-0">
             Limitations of Liability
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             Your use of this website is at your sole risk. Under no
             circumstances shall Vitu Realty be liable for any direct or indirect
@@ -153,13 +157,13 @@ const TermsAndService = () => {
           </SubHeading>
         </div>
       </div>
-      <div className="pl-[47px] pt-[58px] flex">
+      <div className="lg:pl-[47px] lg:pt-[58px] lg:flex sm:flex-col lg:flex-row pt-[44px]">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px] pb-3 lg:pb-0">
             Privacy
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             Your privacy is very important to us, which is why we’ve created a
             separate Privacy Policy in order to explain in detail how we
@@ -169,13 +173,13 @@ const TermsAndService = () => {
           </SubHeading>
         </div>
       </div>
-      <div className="pl-[47px] pt-[58px] flex pb-[130px]">
+      <div className="lg:pl-[47px] lg:pt-[58px] lg:flex sm:flex-col lg:flex-row pt-[44px] pb-[130px]">
         <div>
-          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px]">
+          <p className="font-FreightNeoProBold font-bold text-customTextGray text-xl w-[157px] pb-3 lg:pb-0">
             Entire Agreement
           </p>
         </div>
-        <div className="pl-[67px]">
+        <div className="lg:pl-[67px]">
           <SubHeading>
             This Agreement constitutes the entire agreement between you and
             Vitu Realty with respect to your access to and/or use of this

@@ -4,7 +4,7 @@ import Layout from "@/components/Layout/Layout";
 
 export default function ProjetEnquire() {
   return (
-    <Layout>
+    <Layout navbarProps={{ showGetInTouch: false }}>
       <FormSection
         heading={
           <>

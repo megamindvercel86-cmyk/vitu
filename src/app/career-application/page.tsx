@@ -6,7 +6,7 @@ import Layout from "@/components/Layout/Layout";
 
 export default function CareerApplication() {
   return (
-    <Layout>
+     <Layout navbarProps={{ showGetInTouch: false }}>
       <FormSection
         heading={
           <>
