@@ -19,7 +19,12 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-
+@font-face {
+  font-family: 'Freight Neo Pro Black';
+  src: url('/fonts/Freight Neo Pro Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: 'Freight Neo Pro Medium';
   src: url('/fonts/Freight Neo Pro Medium.otf') format('opentype');

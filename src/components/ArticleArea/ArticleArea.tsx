@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import ArticleCard from "../ArticleCard/ArticleCard";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import SubHeading from "../Common/SubHeding";
 import Heading from "../Common/Heading";
 
@@ -26,19 +26,30 @@ const articles = [
     image:
       "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
   },
-  {
-    category: "BLOG",
-    title: "Foundations for the Future",
-    subtitle: "Building Sustainability for a Better Tomorrow",
-    image:
-      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
-  },
+  
+  
 ];
 
+const data = articles.map((article) => ({
+  category: article.category,
+  title: article.title,
+  subtitle: article.subtitle, 
+  src: article.image,
+  content: (
+    <div className="text-neutral-700 p-4">
+      <p>{article.subtitle || "Discover more insights in this article."}</p>
+    </div>
+  ),
+}));
+
 const ArticleArea: React.FC = () => {
+  const cards = data.map((card, index) => (
+    <Card key={index} card={card} index={index} layout={true} />
+  ));
+
   return (
     <div className="min-h-screen bg-white xl:mx-[278px] lg:mx-[78px]">
-      <main className="lg:pt-[94px] xl:pt-[117x] pt-[59px]">
+      <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         <div className="text-center xl:mb-[87px] lg:mb-[92px] mb-[43px] xl:mx-[290px] lg:mx-[252px] mx-0">
           <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
@@ -53,25 +64,10 @@ const ArticleArea: React.FC = () => {
           </SubHeading>
         </div>
 
-        {/* Articles Grid */}
+        {/* Carousel Section */}
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {articles.map((article, index) => (
-              <ArticleCard key={index} {...article} />
-            ))}
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="mt-8 flex items-center justify-between">
-            <span className="text-sm font-medium">Explore More</span>
-            <div className="flex gap-2">
-              <button className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-neutral-50 transition-colors">
-                <FaChevronLeft className="w-4 h-4 text-neutral-600" />
-              </button>
-              <button className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-neutral-50 transition-colors">
-                <FaChevronRight className="w-4 h-4 text-neutral-600" />
-              </button>
-            </div>
+          <div className="w-full h-full">
+            <Carousel items={cards} />
           </div>
         </div>
       </main>

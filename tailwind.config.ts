@@ -24,10 +24,11 @@ export default {
         freightNeoMedium: ['Freight Neo Pro Medium', 'sans-serif'],
         freightNeoSemibold: ['Freight Neo Pro Semibold', 'sans-serif'],
         FreightNeoProBold: ['Freight Neo Pro Bold', 'sans-serif'],
+        FreightNeoProBlack: ['Freight Neo Pro Black', 'sans-serif'],
         CandideCondensedBold: ['Candide-CondensedBold', 'sans-serif'],
         CandideCondensedMedium: ['Candide-CondensedMedium', 'sans-serif'],
         FreightNeoProLight: ['Freight Neo Pro Light', 'sans-serif']
-      },      
+      },
       screens: {
         sm: "640px",
         md: "768px",
