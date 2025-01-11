@@ -17,7 +17,8 @@ export default {
         customPlaceHolderGray: "#04070799",
         cusomButtonColor: "#AE8566",
         primaryBackgroundColor: "#F8F6F5",
-        footerTextColor:"#EADFD1CC"
+        footerTextColor:"#EADFD1CC",
+        primaryButtonTextColor: "#6F8AAF",
       },
       fontFamily: {
         freightNeoMedium: ['Freight Neo Pro Medium', 'sans-serif'],
