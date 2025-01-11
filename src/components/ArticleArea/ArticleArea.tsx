@@ -1,0 +1,73 @@
+import React from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import ArticleCard from "../ArticleCard/ArticleCard";
+import SubHeading from "../Common/SubHeding";
+import Heading from "../Common/Heading";
+
+const articles = [
+  {
+    category: "BLOG",
+    title: "Embracing the Art of Coastal Living",
+    subtitle: "Learn about talent and local infrastructure benefits",
+    image:
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    category: "NEWS",
+    title: "Life by the Waves",
+    subtitle: "",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    category: "BLOG",
+    title: "Foundations for the Future",
+    subtitle: "Building Sustainability for a Better Tomorrow",
+    image:
+      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+  },
+];
+
+const ArticleArea: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <main className=" mx-auto px-4 py-12">
+        {/* Header Section */}
+        <div className="text-center mb-12 lg:mx-10">
+          <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs">
+            INSIGHTS
+          </SubHeading>
+          <Heading className="">Your Home Discovery Center</Heading>
+          <SubHeading className="lg:text-2xl">
+            Delve into all things Realty through our insights - uncover
+            articles, tips, and stories inspiring your dream home journey.
+          </SubHeading>
+        </div>
+
+        {/* Articles Grid */}
+        <div className="relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {articles.map((article, index) => (
+              <ArticleCard key={index} {...article} />
+            ))}
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="mt-8 flex items-center justify-between">
+            <span className="text-sm font-medium">Explore More</span>
+            <div className="flex gap-2">
+              <button className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-neutral-50 transition-colors">
+                <FaChevronLeft className="w-4 h-4 text-neutral-600" />
+              </button>
+              <button className="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-neutral-50 transition-colors">
+                <FaChevronRight className="w-4 h-4 text-neutral-600" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default ArticleArea;

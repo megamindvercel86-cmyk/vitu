@@ -1,5 +1,6 @@
 "use client";
 
+import ArticleArea from "@/components/ArticleArea/ArticleArea";
 import HeroBanner from "@/components/HeroBanner/HeroBanner";
 import Layout from "@/components/Layout/Layout";
 
@@ -14,6 +15,7 @@ export default function Resource() {
       }}
     >
       <HeroBanner />
+      <ArticleArea />
     </Layout>
   );
 }
