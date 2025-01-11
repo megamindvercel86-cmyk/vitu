@@ -58,20 +58,44 @@ export default function Navbar({
               isMenuOpen ? "block" : "hidden"
             } md:hidden lg:flex`}
           >
-            <NavLink href="/" className={`${navbar === "primary" ? "text-white" : "text-black"}`}>About</NavLink>
-            <NavLink href="/about" className={`${navbar === "primary" ? "text-white" : "text-black"}`}>Projects</NavLink>
-            <NavLink href="/contact" className={`${navbar === "primary" ? "text-white" : "text-black"}`}>Contact</NavLink>
+            <NavLink
+              href="/"
+              className={`${
+                navbar === "primary" ? "text-white" : "text-black"
+              }`}
+            >
+              About
+            </NavLink>
+            <NavLink
+              href="/about"
+              className={`${
+                navbar === "primary" ? "text-white" : "text-black"
+              }`}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              href="/contact"
+              className={`${
+                navbar === "primary" ? "text-white" : "text-black"
+              }`}
+            >
+              Contact
+            </NavLink>
             {showGetInTouch && (
-             <Button
-             onClick={() => {}}
-             className={`lg:w-[204px] lg:h-[55px] text-[26px] ${
-               navbar === "primary" ? "bg-white" : ""
-             }`}
-             defaultTextColor={navbar === "primary" ? "text-primaryButtonTextColor" : "text-black"}
-           >
-             Get in Touch
-           </Button>
-           
+              <Button
+                onClick={() => {}}
+                className={`lg:w-[204px] lg:h-[55px] text-[26px] ${
+                  navbar === "primary" ? "bg-white" : ""
+                }`}
+                defaultTextColor={
+                  navbar === "primary"
+                    ? "text-primaryButtonTextColor"
+                    : "text-black"
+                }
+              >
+                Get in Touch
+              </Button>
             )}
           </div>
         </nav>

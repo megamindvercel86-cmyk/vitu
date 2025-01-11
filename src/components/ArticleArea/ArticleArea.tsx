@@ -26,18 +26,27 @@ const articles = [
     image:
       "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
   },
+  {
+    category: "BLOG",
+    title: "Foundations for the Future",
+    subtitle: "Building Sustainability for a Better Tomorrow",
+    image:
+      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+  },
 ];
 
 const ArticleArea: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <main className=" mx-auto px-4 py-12">
+    <div className="min-h-screen bg-white xl:mx-[278px] lg:mx-[78px]">
+      <main className="lg:pt-[94px] xl:pt-[117x] pt-[59px]">
         {/* Header Section */}
-        <div className="text-center mb-12 lg:mx-10">
-          <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs">
+        <div className="text-center xl:mb-[87px] lg:mb-[92px] mb-[43px] xl:mx-[290px] lg:mx-[252px] mx-0">
+          <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
             INSIGHTS
           </SubHeading>
-          <Heading className="">Your Home Discovery Center</Heading>
+          <Heading className="xl:pb-[24px] lg:pb-[27px] pb-[20px]">
+            Your Home Discovery Center
+          </Heading>
           <SubHeading className="lg:text-2xl">
             Delve into all things Realty through our insights - uncover
             articles, tips, and stories inspiring your dream home journey.
