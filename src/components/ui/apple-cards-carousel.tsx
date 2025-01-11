@@ -18,6 +18,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -30,6 +31,7 @@ type Card = {
   subtitle?: string;
   category: string;
   content: React.ReactNode;
+  type?: string;
 };
 
 export const CarouselContext = createContext<{
@@ -260,7 +262,7 @@ export const Card = ({
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 "
           >
-          {card.title}
+            {card.title}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.subtitle}` : undefined}
@@ -277,7 +279,7 @@ export const Card = ({
         />
         {/* Plus icon at the bottom right */}
         <div className="absolute bottom-4 right-4 z-50">
-          <IconPlus className="h-8 w-8 text-white bg-black rounded-full p-2" />
+          {card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}
         </div>
       </motion.button>
     </>

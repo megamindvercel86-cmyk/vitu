@@ -9,6 +9,7 @@ const articles = [
     category: "BLOG",
     title: "Embracing the Art of Coastal Living",
     subtitle: "Learn about talent and local infrastructure benefits",
+    type: "primary", 
     image:
       "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
   },
@@ -16,6 +17,7 @@ const articles = [
     category: "NEWS",
     title: "Life by the Waves",
     subtitle: "",
+    type: "secondary",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop",
   },
@@ -23,6 +25,7 @@ const articles = [
     category: "BLOG",
     title: "Foundations for the Future",
     subtitle: "Building Sustainability for a Better Tomorrow",
+    type: "secondary",
     image:
       "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
   },
@@ -35,6 +38,7 @@ const data = articles.map((article) => ({
   title: article.title,
   subtitle: article.subtitle, 
   src: article.image,
+  type: article.type,
   content: (
     <div className="text-neutral-700 p-4">
       <p>{article.subtitle || "Discover more insights in this article."}</p>
