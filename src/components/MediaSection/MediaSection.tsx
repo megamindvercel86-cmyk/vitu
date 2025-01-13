@@ -96,15 +96,15 @@ export default function MediaSection() {
                 } transition-all duration-300`}
               >
                 <div className="bg-white rounded-lg overflow-hidden h-full">
-                <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px]">
-  <Image
-    src={item.image}
-    alt={item.title}
-    width={400} // Default width for large screens (works well for lg, xl)
-    height={310} // Default height for large screens (works well for lg, xl)
-    className="w-[260px] h-[201px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover"
-  />
-</div>
+                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={400} // Default width for large screens (works well for lg, xl)
+                      height={310} // Default height for large screens (works well for lg, xl)
+                      className="w-[260px] h-[201px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover"
+                    />
+                  </div>
 
                   <div className="lg:pt-[31px] xl:pt-[51px] pt-[20px]">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
