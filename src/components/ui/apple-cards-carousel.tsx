@@ -7,18 +7,18 @@ import React, {
   useContext,
   JSX,
 } from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  IconPlus,
-  IconX,
-} from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
+import {
+  IconArrowNarrowLeft,
+  IconArrowNarrowRight,
+  PrimaryViewMoreButton,
+  SecondaryViewMoreButton,
+} from "../Icons/Icons";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -77,9 +77,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const handleCardClose = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
+      const containerWidth = carouselRef.current.clientWidth;
+      const cardWidth = isMobile() ? 230 : 384; // Adjust width for mobile vs desktop
       const gap = isMobile() ? 4 : 8;
-      const scrollPosition = (cardWidth + gap) * (index + 1);
+      const scrollPosition =
+        index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
+
       carouselRef.current.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
@@ -87,6 +90,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       setCurrentIndex(index);
     }
   };
+
+  useEffect(() => {
+    if (carouselRef.current && isMobile()) {
+      handleCardClose(1); // Center the second card on mobile screens
+    }
+  }, []);
 
   const isMobile = () => {
     return window && window.innerWidth < 768;
@@ -108,12 +117,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             )}
           ></div>
 
-          <div
-            className={cn(
-              "flex flex-row justify-start gap-4 ",
-              "max-w-7xl mx-auto"
-            )}
-          >
+          <div className={cn("flex flex-row justify-start gap-4 ", " mx-auto")}>
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -138,21 +142,26 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <div className="flex justify-end gap-2 mr-10">
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
-          >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
-          </button>
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollRight}
-            disabled={!canScrollRight}
-          >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
-          </button>
+        <div className="flex items-center justify-between gap-4 mt-4 px-6">
+          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base  text-customBrown  xl:text-[28px]">
+            Explore More
+          </span>
+          <div className="flex gap-2">
+            <button
+              className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              onClick={scrollLeft}
+              disabled={!canScrollLeft}
+            >
+              <IconArrowNarrowLeft />
+            </button>
+            <button
+              className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              onClick={scrollRight}
+              disabled={!canScrollRight}
+            >
+              <IconArrowNarrowRight />
+            </button>
+          </div>
         </div>
       </div>
     </CarouselContext.Provider>
@@ -279,7 +288,11 @@ export const Card = ({
         />
         {/* Plus icon at the bottom right */}
         <div className="absolute bottom-4 right-4 z-50">
-          {card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}
+          {card.type === "primary" ? (
+            <PrimaryViewMoreButton />
+          ) : (
+            <SecondaryViewMoreButton />
+          )}
         </div>
       </motion.button>
     </>

@@ -28,7 +28,7 @@ const articles = [
     type: "secondary",
     image:
       "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
-  }
+  },
 ];
 
 const data = articles.map((article) => ({
