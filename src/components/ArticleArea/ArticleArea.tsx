@@ -50,7 +50,7 @@ const ArticleArea: React.FC = () => {
   ));
 
   return (
-    <div className="min-h-screen bg-white xl:mx-[278px] lg:mx-[78px]">
+    <div className="min-h-screen xl:mx-[278px] lg:mx-[78px]">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         <div className="text-center xl:mb-[87px] lg:mb-[92px] mb-[43px] xl:mx-[290px] lg:mx-[252px] mx-0">

@@ -95,7 +95,7 @@ export default function MediaSection() {
                   slidesToShow === 2 ? "sm:w-1/2" : "sm:w-1/2 lg:w-1/3"
                 } transition-all duration-300`}
               >
-                <div className="bg-white rounded-lg overflow-hidden h-full">
+                <div className=" rounded-lg overflow-hidden h-full">
                   <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px]">
                     <Image
                       src={item.image}
