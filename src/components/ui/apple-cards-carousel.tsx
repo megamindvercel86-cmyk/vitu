@@ -131,7 +131,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={"card" + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
+                className=" rounded-3xl"
               >
                 {item}
               </motion.div>
@@ -246,7 +246,7 @@ export const Card = ({
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         className="rounded-3xl bg-gray-100 dark:bg-neutral-900 
-    h-[238px] w-[231px] sm:h-[238px] sm:w-[231px] 
+    h-[281px] w-[231px] sm:h-[281px] sm:w-[231px] 
     md:h-[500px] md:w-[400px] lg:h-[500px] lg:w-[400px] 
     xl:h-[540px] xl:w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
