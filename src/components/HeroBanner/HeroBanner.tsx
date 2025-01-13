@@ -33,7 +33,7 @@ const HeroBanner = () => {
                   cons, and key considerations to help you decide.
                 </SubHeading>
               </div>
-              <div>
+              <div className="w-full sm:w-auto">
                 <Button
                   onClick={() => {}}
                   className="rounded-[32px] bg-transparent border-2 w-full lg:w-[251px] lg:h-[72px] sm:text-base lg:text-[32px] border-white"

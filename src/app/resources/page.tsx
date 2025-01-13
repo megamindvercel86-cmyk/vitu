@@ -3,6 +3,7 @@
 import ArticleArea from "@/components/ArticleArea/ArticleArea";
 import HeroBanner from "@/components/HeroBanner/HeroBanner";
 import Layout from "@/components/Layout/Layout";
+import MediaSection from "@/components/MediaSection/MediaSection";
 
 export default function Resource() {
   return (
@@ -16,6 +17,7 @@ export default function Resource() {
     >
       <HeroBanner />
       <ArticleArea />
+      <MediaSection/>
     </Layout>
   );
 }
