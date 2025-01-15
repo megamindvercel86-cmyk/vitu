@@ -4,6 +4,7 @@
 import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
 
 import Layout from "@/components/Layout/Layout";
+import StorySection from "@/components/StorySection/StorySection";
 
 export default function About() {
   return (
@@ -16,7 +17,7 @@ export default function About() {
       }}
     >
       <AboutHeroSection />
-      
+      <StorySection />
     </Layout>
   );
 }
