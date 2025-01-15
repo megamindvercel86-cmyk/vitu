@@ -54,7 +54,7 @@ const App = () => {
   };
 
   return (
-    <div className="app overflow-hidden font-sans">
+    <div className="app overflow-hidden font-sans ">
       <div ref={containerRef} className="h-screen overflow-hidden">
         <div className="sections-wrapper h-full">
           {images.map((img, index) => (
