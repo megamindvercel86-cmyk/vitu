@@ -359,3 +359,32 @@ export function IconArrowNarrowRight() {
     </svg>
   );
 }
+
+export function CTAButtonIcon() {
+  return (
+    <svg
+      width="27"
+      height="27"
+      viewBox="0 0 27 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Circle */}
+      <circle cx="13.5" cy="13.5" r="13.5" fill="#614130" />
+      {/* Arrow */}
+      <path
+        d="M16.5 14.74L13.5 17.74L10.5 14.74"  /* Adjusted coordinates for arrow head */
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.5 17.74V9.5"  /* Adjusted coordinates for arrow stem */
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
