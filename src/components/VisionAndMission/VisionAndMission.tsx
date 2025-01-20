@@ -1,94 +1,152 @@
-"use-client";
-import Image from "next/image";
-import React, { useState } from "react";
-// import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import SubHeading from '../Common/SubHeding';
+import Heading from '../Common/Heading';
+import Typography from '../Typography/Typography';
 
 const images = [
   {
-    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80",
-    title: "Modern Living",
-    description:
-      "Experience luxury and comfort in our thoughtfully designed spaces",
+    url: "/images/visionAndMissionImages/1.png",
+    title: "Innovative Sustainability",
+    description: "Revolutionizing green living by making eco-friendly solutions effortless."
   },
   {
-    url: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?auto=format&fit=crop&q=80",
-    title: "Elegant Design",
-    description: "Where sophistication meets functionality in perfect harmony",
+    url: "/images/visionAndMissionImages/2.png",
+    title: "Affordable Luxury",
+    description: "Revolutionizing green living by making eco-friendly solutions effortless."
   },
   {
-    url: "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&q=80",
-    title: "Natural Beauty",
-    description: "Bringing the outdoors in with sustainable design principles",
+    url: "/images/visionAndMissionImages/3.png",
+    title: "Client Satisfaction",
+    description: "Revolutionizing green living by making eco-friendly solutions effortless."
   },
+  {
+    url: "/images/visionAndMissionImages/4.png",
+    title: "Innovative Sustainability",
+    description: "Revolutionizing green living by making eco-friendly solutions effortless."
+  },
+  {
+    url: "/images/visionAndMissionImages/5.png",
+    title: "Cozy Corners",
+    description: "Perfect spaces to unwind"
+  },
+  {
+    url: "/images/visionAndMissionImages/6.png",
+    title: "Minimalist Dream",
+    description: "Less is more philosophy"
+  },
+  {
+    url: "/images/visionAndMissionImages/7.png",
+    title: "Luxe Living",
+    description: "Premium lifestyle spaces"
+  },
+  {
+    url: "/images/visionAndMissionImages/8.png",
+    title: "Contemporary Charm",
+    description: "Modern day comfort"
+  },
+  {
+    url: "/images/visionAndMissionImages/9.png",
+    title: "Serene Spaces",
+    description: "Tranquil living environments"
+  }
 ];
 
-export default function VisionAndMission() {
+function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const totalSlides = Math.ceil(images.length / 3);
 
-  const prev = () => {
-    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
-  };
+  const transition = useCallback((direction: 'left' | 'right') => {
+    if (isAnimating) return;
 
-  const next = () => {
-    setCurrentIndex((currentIndex + 1) % images.length);
+    setIsAnimating(true);
+    const nextIndex = direction === 'right'
+      ? (currentIndex + 1) % totalSlides
+      : (currentIndex - 1 + totalSlides) % totalSlides;
+
+    setCurrentIndex(nextIndex);
+    setTimeout(() => setIsAnimating(false), 800);
+  }, [currentIndex, totalSlides, isAnimating]);
+
+  const prev = useCallback(() => transition('left'), [transition]);
+  const next = useCallback(() => transition('right'), [transition]);
+
+  useEffect(() => {
+    if (!isPaused) {
+      const timer = setInterval(next, 5000);
+      return () => clearInterval(timer);
+    }
+  }, [isPaused, next]);
+
+  const getVisibleImages = (index: number) => {
+    const startIdx = index * 3;
+    return images.slice(startIdx, startIdx + 3);
   };
 
   return (
-    <div className=" bg-gray-100 flex items-center justify-center ">
-      <div className="relative w-full">
-        <div className="relative h-[600px] overflow-hidden ">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute w-full h-full transition-transform duration-500 ease-out ${
-                index === currentIndex
-                  ? "translate-x-0"
-                  : index < currentIndex
-                  ? "-translate-x-full"
-                  : "translate-x-full"
-              }`}
-            >
-              <Image
-                src={image.url}
-                alt={image.title}
-                width={800}
-                height={600}
-                layout="responsive"
-                className="w-full h-full object-cover"
-              />
+    <div className="items-center justify-center p-[1px]">
+      <div
+        className="relative w-full"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="relative h-[891px] overflow-hidden">
+          <div className="absolute w-full h-full">
+            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+              <div
+                key={slideIndex}
+                className={`absolute w-full h-full flex gap-[2px] transition-transform duration-800 ease-out will-change-transform`}
+                style={{
+                  transform: `translateX(${(slideIndex - currentIndex) * 100}%)`,
+                  opacity: slideIndex === currentIndex ? 1 : 0,
+                  transition: 'transform 800ms ease-out, opacity 800ms ease-out',
+                }}
+              >
+                {getVisibleImages(slideIndex).map((image, imageIndex) => (
+                  <div
+                    key={`${slideIndex}-${imageIndex}`}
+                    className="flex-1 relative group overflow-hidden"
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover transform transition-transform duration-500"
+                    />
+                    {/* Title positioned at the bottom center with animation */}
+                    <div className="absolute bottom-[70px] w-full left-1/2 px-24 transform -translate-x-1/2 text-white z-10 transition-transform duration-500 group-hover:translate-y-[-10px] text-center">
+                      <Typography variant='h2' className="font-freightNeoMedium">{image.title}</Typography>
+                    </div>
 
-              <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 hover:translate-y-0 transition-transform duration-300">
-                  <h2 className="text-3xl font-bold mb-2">{image.title}</h2>
-                  <p className="text-lg">{image.description}</p>
-                </div>
+                    {/* Description appears only on hover and is centered */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-center absolute bottom-0 left-0 right-0 p-6 text-white flex justify-center items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <Typography variant='h3' fontWeight='font-normal' className='font-CandideCondensedMedium'>
+                          {image.description}
+                        </Typography>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300"
-        >
-          {/* <ChevronLeft size={24} /> */}sw
-        </button>
-
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300"
-        >
-          {/* <ChevronRight size={24} /> */}sw
-        </button>
-
         {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {images.map((_, index) => (
+          {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              disabled={isAnimating}
+              onClick={() => {
+                if (index !== currentIndex) {
+                  transition(index > currentIndex ? 'right' : 'left');
+                }
+              }}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? "bg-white w-4" : "bg-white/50"
-              }`}
+                index === currentIndex ? 'bg-white w-4' : 'bg-white/50'
+              } ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div> */}
@@ -96,3 +154,5 @@ export default function VisionAndMission() {
     </div>
   );
 }
+
+export default App;
