@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,7 +6,7 @@ import Heading from "../Common/Heading";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const images: { src: string; year: string; message: string }[] = [
+const images = [
   {
     src: "/images/timelineImages/timelineImage1.png",
     year: "1956",
@@ -35,7 +34,7 @@ const images: { src: string; year: string; message: string }[] = [
   },
   {
     src: "/images/timelineImages/timelineImage6.png",
-    year: "2003-2012",
+    year: "2003",
     message: "Facing Challenges, Emerging Stronger",
   },
   {
@@ -47,26 +46,36 @@ const images: { src: string; year: string; message: string }[] = [
     src: "/images/timelineImages/timelineImage8.png",
     year: "2024",
     message: "Continuing the Legacy",
-  },
+  }
 ];
+
+function YearDisplay({ number }: { number: number }) {
+  return (
+    <span className="inline-block w-[1ch] transition-transform duration-500">
+      {number}
+    </span>
+  );
+}
 
 export default function StorySection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [imagesLoaded, setImagesLoaded] = useState<number>(0);
+  const storySectionRef = useRef<HTMLDivElement>(null); // Ref for Story Section
+  const [currentYear, setCurrentYear] = useState(images[0].year);
+  const [showYearDisplay, setShowYearDisplay] = useState(false); // State to control visibility of year display
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const container = containerRef.current;
     const sections = gsap.utils.toArray<HTMLElement>(".section");
 
-    // Create a wrapper for horizontal scrolling
     gsap.set(container, { height: "100vh" });
     gsap.set(".sections-wrapper", {
-      width: sections.length * 100 + "%",
+      width: sections.length * 100 + "%" ,
       display: "flex",
+      overflow: "hidden", 
     });
     gsap.set(sections, { width: 100 / sections.length + "%" });
 
-    // Set up horizontal scrolling
     gsap.to(".sections-wrapper", {
       x: () => -(container?.scrollWidth ?? 0 - window.innerWidth),
       ease: "none",
@@ -75,17 +84,44 @@ export default function StorySection() {
         pin: true,
         scrub: 1,
         end: () => (container ? container.scrollWidth - window.innerWidth : 0),
-        invalidateOnRefresh: true, // Ensure ScrollTrigger recalculates on refresh
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const totalSections = images.length-1;
+          const currentIndex = Math.min(
+            Math.floor(self.progress * totalSections),
+            totalSections - 1
+          );
+          setCurrentYear(images[currentIndex].year);
+          setProgress(self.progress * 100);
+        },
       },
     });
+    // gsap.to(sections, {
+    //   xPercent: -100 * (sections.length - 1),
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     trigger: container,
+    //     pin: true,
+    //     scrub: 1,
+    //     end: () => `+=${container.offsetWidth}`,
+    //     invalidateOnRefresh: true,
+    //     onUpdate: (self) => {
+    //       const progress = self.progress * 100;
+    //       if (pathRef.current) {
+    //         // Sync SVG path drawing with the scroll progress
+    //         pathRef.current.setAttribute(
+    //           "stroke-dasharray",
+    //           `${progress} ${100 - progress}`
+    //         );
+    //       }
+    //     },
+    //   },
+    // });
 
-    // Force ScrollTrigger refresh after images have fully loaded
-    ScrollTrigger.refresh();
-  }, [imagesLoaded]);
-
-  const handleImageLoad = () => {
-    setImagesLoaded((prev) => prev + 1);
-  };
+    return () => {
+      ScrollTrigger.killAll();
+    };
+  }, []);
 
   return (
     <div className="app overflow-hidden font-sans">
@@ -93,7 +129,7 @@ export default function StorySection() {
       <div className="pt-[128px] pb-[107px] text-center">
         <SubHeading className="pb-6 text-2xl">
           From the welcoming comfort at your doorstep to the serene spaces
-          designed just for you{" "}
+          designed just for you
         </SubHeading>
         <Heading className="">
           At Vitu, Every Design Feels Like Home—Because It Is
@@ -112,18 +148,11 @@ export default function StorySection() {
               <div className="w-full h-full">
                 <img
                   src={image.src}
-                  alt={`Scene ${index + 1}`}
+                  alt={`Scene ${index }`}
                   className="w-full h-full object-cover"
-                  onLoad={handleImageLoad}
                 />
 
-                {/* Overlay for Darker Background */}
-                <div className="absolute inset-0 bg-black/30" />
-
-                {/* Year and Message */}
-                <div className="absolute bottom-8 left-8 text-white">
-                  <p className="text-2xl md:text-3xl font-bold">{image.year}</p>
-                </div>
+                {/* Message */}
                 <div className="absolute bottom-8 right-8 text-white">
                   <p className="text-lg md:text-xl font-medium">
                     {image.message}
@@ -132,6 +161,19 @@ export default function StorySection() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/50 to-transparent">
+          <div className="absolute bottom-4 left-1 right-1">
+            <div className="relative h-[2px] w-full">
+              {/* Background line */}
+              <div className="absolute inset-0 bg-white/20" />
+              {/* Progress line */}
+              <div
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-300 to-purple-300 transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />             
+            </div>
+          </div>
         </div>
       </div>
     </div>

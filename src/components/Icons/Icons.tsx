@@ -373,14 +373,14 @@ export function CTAButtonIcon() {
       <circle cx="13.5" cy="13.5" r="13.5" fill="#614130" />
       {/* Arrow */}
       <path
-        d="M16.5 14.74L13.5 17.74L10.5 14.74"  /* Adjusted coordinates for arrow head */
+        d="M16.5 14.74L13.5 17.74L10.5 14.74" /* Adjusted coordinates for arrow head */
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M13.5 17.74V9.5"  /* Adjusted coordinates for arrow stem */
+        d="M13.5 17.74V9.5" /* Adjusted coordinates for arrow stem */
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -388,3 +388,28 @@ export function CTAButtonIcon() {
     </svg>
   );
 }
+
+export function PlayIcon() {
+  return (
+    <svg
+    width="34"
+    height="33"
+    viewBox="0 0 34 33"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+
+    <ellipse cx="17.007" cy="16.5497" rx="16.6789" ry="15.913" fill="#614130" />
+  
+
+    <polygon
+      points="13,11 13,22 21,16.5"
+      fill="white"
+      transform="translate(2, 0)"
+    />
+  </svg>
+  
+  );
+}
+
+

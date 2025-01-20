@@ -2,6 +2,7 @@
 
 
 import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
+import FounderMessage from "@/components/FounderMessage/FounderMessage";
 
 import Layout from "@/components/Layout/Layout";
 import StorySection from "@/components/StorySection/StorySection";
@@ -17,7 +18,8 @@ export default function About() {
       }}
     >
       <AboutHeroSection />
-      <StorySection />
+      {/* <StorySection /> */}
+      <FounderMessage />
     </Layout>
   );
 }
