@@ -152,7 +152,7 @@ function App() {
           </div>
         </div>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
@@ -168,7 +168,7 @@ function App() {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
