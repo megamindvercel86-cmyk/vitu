@@ -4,6 +4,7 @@ import Layout from "@/components/Layout/Layout";
 import "./globals.css";
 import HomeHeroSection from "@/components/HomeHeroSection/HomeHeroSection";
 import VisionAndMission from "@/components/VisionAndMission/VisionAndMission";
+import VisionForTheFuture from "@/components/VisionForTheFuture/VisionForTheFuture";
 export default function Home() {
   return (
     <Layout
@@ -16,7 +17,7 @@ export default function Home() {
     >
       <HomeHeroSection />
       <VisionAndMission/>
-
+      <VisionForTheFuture/>
     </Layout>
   );
 }

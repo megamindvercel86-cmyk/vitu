@@ -1,7 +1,4 @@
 import React from "react";
-import SubHeading from "../Common/SubHeding";
-import Heading from "../Common/Heading";
-import Button from "../Common/Button";
 import { CTAButtonIcon } from "../Icons/Icons";
 
 const AboutHeroSection = () => {
