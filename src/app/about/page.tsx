@@ -3,6 +3,7 @@
 
 import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
 import FounderMessage from "@/components/FounderMessage/FounderMessage";
+import JoinOurTeamHeroSection from "@/components/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 
 import Layout from "@/components/Layout/Layout";
 import LeadershipTeam from "@/components/LeadershipTeam/LeadershipTeam";
@@ -24,6 +25,7 @@ export default function About() {
       <FounderMessage />
       <VisionAndMission/>
       <LeadershipTeam/>
+      <JoinOurTeamHeroSection/>
     </Layout>
   );
 }
