@@ -85,7 +85,7 @@ const VisionForTheFuture: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <div className="relative bg-[#FDF6F1] text-[#42210B] overflow-hidden">
+    <div className="relative  text-[#42210B] overflow-hidden">
       <div className="mx-[210px] py-12 lg:pt-[157px] lg:pb-[157px] relative">
         {/* Static Title, Subtitle, and Button */}
         <div className="w-[424px]">

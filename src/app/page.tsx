@@ -5,6 +5,7 @@ import "./globals.css";
 import HomeHeroSection from "@/components/HomeHeroSection/HomeHeroSection";
 import VisionAndMission from "@/components/VisionAndMission/VisionAndMission";
 import VisionForTheFuture from "@/components/VisionForTheFuture/VisionForTheFuture";
+import CurrentProject from "@/components/CurrentProject/CurrentProject";
 export default function Home() {
   return (
     <Layout
@@ -18,6 +19,7 @@ export default function Home() {
       <HomeHeroSection />
       <VisionAndMission/>
       <VisionForTheFuture/>
+      <CurrentProject/>
     </Layout>
   );
 }
