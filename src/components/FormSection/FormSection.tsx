@@ -67,7 +67,7 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
   return (
-    <div className="flex flex-col lg:flex-row pt-[66px] px-[27px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
+    <div className="flex flex-col md:flex-row lg:flex-row pt-[66px] px-[17px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
       {/* Left Side Content */}
       <div className="flex-1">
         <Heading className="text-center lg:text-left">{heading}</Heading>
@@ -260,14 +260,14 @@ const FormSection: React.FC<FormSectionProps> = ({
             </div>
           )}
           {page === "Career Application" && (
-            <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] mb-[145px]">
-              <Button onClick={handleSubmit} className="text-[26px] pt-1">
+            <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
+              <Button onClick={handleSubmit} className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]">
                 Submit
               </Button>
             </div>
           )}
         </form>
-        <div className="block lg:hidden text-center mt-6">
+        <div className="block lg:hidden text-center mt-6 mb-[56px]">
           <hr className="w-full md:w-[392px] mt-[38px] border-black border-opacity-20" />
           <SubHeading className="pt-4">
             Alternatively, for your queries contact

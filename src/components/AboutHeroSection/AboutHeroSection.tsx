@@ -4,7 +4,7 @@ import CTAButtonIcon from "../Icons/Icons";
 
 const AboutHeroSection = () => {
   return (
-    <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]">
+    <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] md:h-[800px] h-[568px]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -17,12 +17,12 @@ const AboutHeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative h-full flex items-center justify-center">
+      <div className="relative h-full flex sm:pt-[157px] md:pt-[200px] pt-[157px] lg:pt-[318px] xl:pt-[343px] justify-center">
         <div className="text-center text-white flex flex-col items-center">
-          <h1 className="font-freightNeoSemibold lg:text-[100px] leading-none">
+          <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px] leading-none">
             Building Wholesome
           </h1>
-          <h1 className="font-freightNeoSemibold lg:text-[100px] leading-none pt-[28px]">
+          <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px]  leading-none md:pt-[28px] pt-0">
             Living Spaces
           </h1>
           <button

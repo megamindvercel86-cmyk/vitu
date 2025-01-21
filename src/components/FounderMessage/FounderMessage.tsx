@@ -13,8 +13,8 @@ export default function FounderMessage() {
   };
 
   return (
-    <div className="flex justify-center flex-col items-center lg:pt-[200px] lg:pb-[160px] xl:pt-[160px] xl:pb-[164px] sm:pb-[43px] sm:pt-[34px]">
-      <div className="xl:w-[1355.89px] xl:h-[775.07px] lg:w-[1150.28px] lg:h-[657.54px] rounded-2xl overflow-hidden">
+    <div className="flex justify-center flex-col items-center lg:pt-[200px] lg:pb-[160px] xl:pt-[160px] xl:pb-[164px] sm:pb-[43px] pb-[43px] sm:pt-[34px] pt-[34px]">
+      <div className="xl:w-[1355px] xl:h-[775px] lg:w-[1150px] lg:h-[657px] sm:w-[] sm:h-[324px] h-[324px] w-[259px] md:w-[850px]  md:h-[600px] rounded-2xl overflow-hidden">
         {/* Wrapper with rounded corners and hidden overflow */}
         <YouTube
           videoId="UKag4LVAEdU"
