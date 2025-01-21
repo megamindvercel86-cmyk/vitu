@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../Typography/Typography";
 
-const HomeHeroSection = () => {
+const HomeHeroSection: React.FC = () => {
   return (
     <div>
       <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]">
@@ -31,7 +31,7 @@ const HomeHeroSection = () => {
       <div className="pt-[128px] pb-[111px] px-[386px] text-center">
         <div>
           <Typography
-          variant="h3"
+            variant="h3"
             fontWeight="font-medium"
             className="font-freightNeoMedium font text-[#040707CC] pb-6 text-2xl"
           >
