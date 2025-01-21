@@ -2,12 +2,18 @@
 
 import Layout from "@/components/Layout/Layout";
 import "./globals.css";
+import HomeHeroSection from "@/components/HomeHeroSection/HomeHeroSection";
 export default function Home() {
   return (
-    <Layout>
-      <main>
-        
-      </main>
+    <Layout
+      navbarClassName="absolute top-0 left-0 right-0 z-10 w-full"
+      navbarProps={{
+        navbar: "primary",
+        active: "resources",
+        showGetInTouch: true,
+      }}
+    >
+      <HomeHeroSection />
     </Layout>
-  )
+  );
 }
