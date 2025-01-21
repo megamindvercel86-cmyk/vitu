@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "../Typography/Typography";
 import Image from "next/image";
 
-
 const CurrentProject: React.FC = () => {
   return (
     <div className="xl:mx-[278px] lg:mx-[122px] flex flex-crow">
@@ -12,13 +11,19 @@ const CurrentProject: React.FC = () => {
             Limited Plots Available
           </Typography>
         </div>
-        <div className="mt-8">
-          <Typography className="text-56px font-freightNeoMedium text-customBrown">
+        <div>
+          <Typography
+            variant="custom"
+            className="text-56px font-freightNeoMedium text-customBrown"
+          >
             Vaikuntam City
           </Typography>
         </div>
-        <div className="mt-5">
-          <Typography className="text-[#4F373799] font-freightNeoMedium text-lg">
+        <div>
+          <Typography
+            variant="custom"
+            className="text-[#4F373799] font-freightNeoMedium text-lg"
+          >
             Just 5 minutes away from the serene NITK Surathkal <br />
             beach, our premium plotted development offers <br />
             unparalleled access to coastal beauty.
@@ -30,28 +35,46 @@ const CurrentProject: React.FC = () => {
           </button>
         </div>
         <div className="mt-[188px] ">
-          <div>
-            <Typography className="text-[60px] font-FreightNeoProNormal text-[#503637]">
+          <div className="leading-[1.1]">
+            <Typography
+              variant="custom"
+              className="text-[60px] font-FreightNeoProNormal text-[#503637]"
+            >
               500+
             </Typography>
-            <Typography className="text-[24px] font-FreightNeoProNormal text-[#503637] pt-4">
+            <Typography
+              variant="custom"
+              className="text-[24px] font-FreightNeoProNormal text-[#503637] "
+            >
               Tree Cover
             </Typography>
           </div>
-          <div className="my-16">
-            <Typography className="text-[60px] font-FreightNeoProNormal text-[#503637]">
-            20,000 sq.ft.
+          <div className="my-10 leading-[1.1]">
+            <Typography
+              variant="custom"
+              className="text-[60px] font-FreightNeoProNormal text-[#503637]"
+            >
+              20,000 sq.ft.
             </Typography>
-            <Typography className="text-[24px] font-FreightNeoProNormal text-[#503637] pt-4">
-            Spacious Clubhouse
+            <Typography
+              variant="custom"
+              className="text-[24px] font-FreightNeoProNormal text-[#503637] "
+            >
+              Spacious Clubhouse
             </Typography>
           </div>
-          <div>
-            <Typography className="text-[60px] font-FreightNeoProNormal text-[#503637]">
-            3,400+ sq.m.
+          <div className="leading-[1.1]">
+            <Typography
+              variant="custom"
+              className="text-[60px] font-FreightNeoProNormal text-[#503637]"
+            >
+              3,400+ sq.m.
             </Typography>
-            <Typography className="text-[24px] font-FreightNeoProNormal text-[#503637] pt-4">
-            Parks & Open Spaces
+            <Typography
+              variant="custom"
+              className="text-[24px] font-FreightNeoProNormal text-[#503637]"
+            >
+              Parks & Open Spaces
             </Typography>
           </div>
         </div>

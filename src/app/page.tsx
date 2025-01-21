@@ -6,6 +6,8 @@ import HomeHeroSection from "@/components/HomeHeroSection/HomeHeroSection";
 import VisionAndMission from "@/components/VisionAndMission/VisionAndMission";
 import VisionForTheFuture from "@/components/VisionForTheFuture/VisionForTheFuture";
 import CurrentProject from "@/components/CurrentProject/CurrentProject";
+import Testimonials from "@/components/Testimonial/Testimonial";
+
 export default function Home() {
   return (
     <Layout
@@ -20,6 +22,7 @@ export default function Home() {
       <VisionAndMission/>
       <VisionForTheFuture/>
       <CurrentProject/>
+       <Testimonials/>
     </Layout>
   );
 }
