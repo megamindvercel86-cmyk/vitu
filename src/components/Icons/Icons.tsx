@@ -360,7 +360,17 @@ export function IconArrowNarrowRight() {
   );
 }
 
-export function CTAButtonIcon() {
+interface CTAButtonIconProps {
+  direction?: 'left' | 'right' | 'down'; // Prop for arrow direction
+}
+
+const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({ direction = 'down' }) => {
+  const transformMap: Record<string, string> = {
+    left: 'rotate(90deg)',
+    right: 'rotate(-90deg)',
+    down: 'rotate(0deg)', // Default down
+  };
+
   return (
     <svg
       width="27"
@@ -368,26 +378,33 @@ export function CTAButtonIcon() {
       viewBox="0 0 27 27"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{
+        transform: transformMap[direction], // Apply the transformation based on direction
+        transition: 'transform 0.3s ease', // Smooth transition for direction change
+      }}
     >
       {/* Circle */}
       <circle cx="13.5" cy="13.5" r="13.5" fill="#614130" />
       {/* Arrow */}
       <path
-        d="M16.5 14.74L13.5 17.74L10.5 14.74" /* Adjusted coordinates for arrow head */
+        d="M16.5 14.74L13.5 17.74L10.5 14.74" // Adjusted coordinates for arrow head
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M13.5 17.74V9.5" /* Adjusted coordinates for arrow stem */
+        d="M13.5 17.74V9.5" // Adjusted coordinates for arrow stem
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
     </svg>
   );
-}
+};
+
+export default CTAButtonIcon;
+
 
 export function PlayIcon() {
   return (
