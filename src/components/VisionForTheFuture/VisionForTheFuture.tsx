@@ -51,125 +51,138 @@ const carouselData: CarouselItem[] = [
   },
 ];
 
+
 const VisionForTheFuture: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [direction, setDirection] = useState<"left" | "right">("right");
   const totalSlides = carouselData.length;
 
   const transition = useCallback(
-    (direction: "left" | "right") => {
+    (newDirection: "left" | "right") => {
       if (isAnimating) return;
 
       setIsAnimating(true);
+      setDirection(newDirection);
+
       const nextIndex =
-        direction === "right"
+        newDirection === "right"
           ? (currentIndex + 1) % totalSlides
           : (currentIndex - 1 + totalSlides) % totalSlides;
 
       setCurrentIndex(nextIndex);
-      setTimeout(() => setIsAnimating(false), 800);
+      setTimeout(() => setIsAnimating(false), 500); // Reduced animation time for smoother transitions
     },
     [currentIndex, totalSlides, isAnimating]
   );
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
-  }, [totalSlides]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
-    );
-  }, [totalSlides]);
+  const nextSlide = useCallback(() => transition("right"), [transition]);
+  const prevSlide = useCallback(() => transition("left"), [transition]);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
-    return () => clearInterval(timer); // Cleanup on unmount
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
   }, [nextSlide]);
 
   return (
     <div className="relative bg-[#FDF6F1] text-[#42210B] overflow-hidden">
-      <div className="mx-[210px] py-12 lg:py-24 relative">
-        {/* Carousel Content */}
-        {carouselData.map((item, index) => (
-          <div
-            key={index}
-            className={`transition-opacity duration-700 ease-in-out ${
-              index === currentIndex ? "opacity-100" : "opacity-0 absolute"
-            }`}
+      <div className="mx-[210px] py-12 lg:pt-[157px] lg:pb-[157px] relative">
+        {/* Static Title, Subtitle, and Button */}
+        <div className="w-[424px]">
+          <Typography className="text-2xl lg:text-[56px] font-bold font-freightNeoMedium lg:leading-[72px] xl:leading-[67px]">
+            Embracing new Horizons in Living
+          </Typography>
+          <Typography className="text-2xl font-freightNeoMedium lg:text-[20px] font-light text-[#040707CC] leading-relaxed">
+            Rooted in our vision for bold growth and dedication to evolving our
+            portfolio.
+          </Typography>
+        </div>
+        <div className="mt-8 flex items-center justify-between">
+          <button
+            className="bg-[#AE856633] text-customBrown pr-1 pl-[18px] py-[3px] rounded-full flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+            onClick={() => console.log("Button clicked")}
           >
-            <div className="flex flex-col justify-between">
-              {/* Text Section */}
-              <div className="w-[424px]">
-                <Typography className="text-2xl lg:text-[56px] font-bold font-freightNeoMedium lg:leading-[72px] xl:leading-[67px]">
-                  {item.title}
-                </Typography>
-                <Typography className="text-2xl font-freightNeoMedium lg:text-[20px] font-light text-[#040707CC] leading-relaxed">
-                  {item.subtitle}
-                </Typography>
-              </div>
-              <div className="mt-8 flex items-center justify-between">
-                <button
-                  className="bg-[#AE856633] text-customBrown pr-1 pl-[18px] py-[3px] rounded-full flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
-                  onClick={() => console.log("Button clicked")}
+            See What’s Next
+            <CTAButtonIcon direction="right" />
+          </button>
+          {/* Residential Type Section */}
+          <Typography className="text-base lg:text-4xl font-FreightNeoProNormal text-[#4F373799]">
+            {carouselData[currentIndex].residentialType}
+          </Typography>
+        </div>
+        <div className="h-[510px] pt-6">
+          {/* Carousel Content */}
+          <div className="relative">
+            {carouselData.map((item, index) => {
+              const slideDirection =
+                index === currentIndex
+                  ? "translate-x-0"
+                  : index > currentIndex
+                  ? "translate-x-full"
+                  : "-translate-x-full";
+
+              return (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                    index === currentIndex
+                      ? "opacity-100 translate-x-0"
+                      : direction === "right"
+                      ? index === (currentIndex - 1 + totalSlides) % totalSlides
+                        ? "opacity-0 -translate-x-full"
+                        : "opacity-0 translate-x-full"
+                      : index === (currentIndex + 1) % totalSlides
+                      ? "opacity-0 translate-x-full"
+                      : "opacity-0 -translate-x-full"
+                  }`}
                 >
-                  See What’s Next
-                  <CTAButtonIcon direction="right" />
-                </button>
-                <Typography className="text-base lg:text-4xl font-FreightNeoProNormal text-[#4F373799]">
-                  {item.residentialType}
-                </Typography>
-              </div>
-
-              {/* Image Section */}
-              <div className="lg:w-[100%] w-full h-[500px] flex items-center justify-center">
-                <Image
-                  src={item.image}
-                  alt={item.subtitle}
-                  width={700}
-                  height={400}
-                  className="w-full h-full object-contain"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between mt-[74px]">
-              {/* Description Section */}
-              <div className="lg:w-1/2 w-full">
-                <Typography className="text-base lg:text-xl font-FreightNeoProNormal text-[#4F373799]">
-                  {item.description}
-                </Typography>
-              </div>
-
-              {/* Pagination Dots Section */}
-              <div className="lg:w-1/2 w-full flex justify-end mt-6 lg:mt-0">
-                <div className="flex space-x-3 bg-[#AE856666] rounded-[32px] py-4 px-6">
-                  {carouselData.map((_, dotIndex) => (
-                    <button
-                      key={dotIndex}
-                      disabled={isAnimating}
-                      onClick={() => {
-                        if (dotIndex !== currentIndex) {
-                          transition(
-                            dotIndex > currentIndex ? "right" : "left"
-                          );
-                        }
-                      }}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        dotIndex === currentIndex
-                          ? "bg-white w-8"
-                          : "bg-[#FFFFFF99]"
-                      } ${
-                        isAnimating ? "cursor-not-allowed" : "cursor-pointer"
-                      }`}
-                      aria-label={`Go to slide ${dotIndex + 1}`}
+                  {/* Image Section */}
+                  <div className="lg:w-[100%] w-full h-[500px] flex items-center justify-center">
+                    <Image
+                      src={item.image}
+                      alt={item.subtitle}
+                      width={700}
+                      height={400}
+                      className="w-full h-full object-contain"
+                      quality={100}
                     />
-                  ))}
+                  </div>
                 </div>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+        {/* Description Section (static for currentIndex) */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between mt-[74px]">
+          <div className="lg:w-2/3 w-full">
+            <Typography className="text-base lg:text-xl font-FreightNeoProNormal text-[#4F373799]">
+              {carouselData[currentIndex].description}
+            </Typography>
+          </div>
+
+          {/* Pagination Dots Section */}
+          <div className="lg:w-1/2 w-full flex justify-end mt-6 lg:mt-0">
+            <div className="flex space-x-3 bg-[#AE856666] rounded-[32px] py-4 px-6">
+              {carouselData.map((_, dotIndex) => (
+                <button
+                  key={dotIndex}
+                  disabled={isAnimating}
+                  onClick={() => {
+                    if (dotIndex !== currentIndex) {
+                      transition(dotIndex > currentIndex ? "right" : "left");
+                    }
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    dotIndex === currentIndex
+                      ? "bg-white w-8"
+                      : "bg-[#FFFFFF99]"
+                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  aria-label={`Go to slide ${dotIndex + 1}`}
+                />
+              ))}
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
