@@ -75,3 +75,9 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Freight Neo Pro Normal';
+  src: url('/fonts/Freight Neo Pro Book.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
