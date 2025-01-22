@@ -361,14 +361,16 @@ export function IconArrowNarrowRight() {
 }
 
 interface CTAButtonIconProps {
-  direction?: 'left' | 'right' | 'down'; // Prop for arrow direction
+  direction?: "left" | "right" | "down"; // Prop for arrow direction
 }
 
-const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({ direction = 'down' }) => {
+const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({
+  direction = "down",
+}) => {
   const transformMap: Record<string, string> = {
-    left: 'rotate(90deg)',
-    right: 'rotate(-90deg)',
-    down: 'rotate(0deg)', // Default down
+    left: "rotate(90deg)",
+    right: "rotate(-90deg)",
+    down: "rotate(0deg)", // Default down
   };
 
   return (
@@ -380,7 +382,7 @@ const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({ direction = 'down' }) => 
       xmlns="http://www.w3.org/2000/svg"
       style={{
         transform: transformMap[direction], // Apply the transformation based on direction
-        transition: 'transform 0.3s ease', // Smooth transition for direction change
+        transition: "transform 0.3s ease", // Smooth transition for direction change
       }}
     >
       {/* Circle */}
@@ -405,28 +407,49 @@ const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({ direction = 'down' }) => 
 
 export default CTAButtonIcon;
 
-
 export function PlayIcon() {
   return (
     <svg
-    width="34"
-    height="33"
-    viewBox="0 0 34 33"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+      width="34"
+      height="33"
+      viewBox="0 0 34 33"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <ellipse
+        cx="17.007"
+        cy="16.5497"
+        rx="16.6789"
+        ry="15.913"
+        fill="#614130"
+      />
 
-    <ellipse cx="17.007" cy="16.5497" rx="16.6789" ry="15.913" fill="#614130" />
-  
-
-    <polygon
-      points="13,11 13,22 21,16.5"
-      fill="white"
-      transform="translate(2, 0)"
-    />
-  </svg>
-  
+      <polygon
+        points="13,11 13,22 21,16.5"
+        fill="white"
+        transform="translate(2, 0)"
+      />
+    </svg>
   );
 }
 
-
+export function Download() {
+  return (
+    <svg
+      width="27"
+      height="24"
+      viewBox="0 0 27 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M20.002 9.27353L17.361 9.27353L17.361 1.43912C17.361 0.644273 16.7165 0.000588989 15.9225 0.00058892L11.9959 0.000588576C11.2019 0.000588507 10.5574 0.644216 10.5574 1.43912L10.5574 9.27353L7.91734 9.27353C7.47997 9.27353 7.0868 9.53687 6.91862 9.94104C6.75219 10.3436 6.8448 10.8089 7.15382 11.1179L13.1958 17.1607C13.6178 17.5818 14.3015 17.5818 14.7244 17.1607L20.7654 11.1179C21.0745 10.8089 21.1671 10.3444 20.9997 9.94104C20.8317 9.53766 20.4393 9.27353 20.002 9.27353Z"
+        fill="white"
+      />
+      <path
+        d="M25.6969 11.1406C24.9809 11.1406 24.4002 11.7215 24.4002 12.4382V17.8636C24.4002 19.4888 23.0771 20.811 21.4518 20.811H6.44097C4.81564 20.811 3.49349 19.4888 3.49349 17.8636V12.4382C3.49349 11.7215 2.91182 11.1406 2.19596 11.1406C1.47925 11.1406 0.898438 11.7215 0.898438 12.4382V17.8636C0.898438 20.9197 3.38477 23.4062 6.44097 23.4062H21.4518C24.508 23.4062 26.9944 20.9198 26.9944 17.8636V12.4382C26.9944 11.7215 26.4136 11.1406 25.6969 11.1406Z"
+        fill="white"
+      />
+    </svg>
+  );
+}
