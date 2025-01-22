@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import SubHeading from "../Common/SubHeding";
-import Heading from "../Common/Heading";
 import Typography from "../Typography/Typography";
 
 const images = [
@@ -81,7 +79,7 @@ function App() {
 
   useEffect(() => {
     if (!isPaused) {
-      const timer = setInterval(next, 53000);
+      const timer = setInterval(next, 5000);
       return () => clearInterval(timer);
     }
   }, [isPaused, next]);

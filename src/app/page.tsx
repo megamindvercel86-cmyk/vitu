@@ -8,6 +8,7 @@ import VisionForTheFuture from "@/components/VisionForTheFuture/VisionForTheFutu
 import CurrentProject from "@/components/CurrentProject/CurrentProject";
 import Testimonials from "@/components/Testimonial/Testimonial";
 import SustainabilityInitiatives from "@/components/SustainabilityInitiatives/SustainabilityInitiatives";
+import JoinOurTeamHeroSection from "@/components/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 
 export default function Home() {
   return (
@@ -20,11 +21,12 @@ export default function Home() {
       }}
     >
       <HomeHeroSection />
-      <VisionAndMission/>
-      <VisionForTheFuture/>
-      <CurrentProject/>
-       <Testimonials/>
-       <SustainabilityInitiatives/>
+      <VisionAndMission />
+      <VisionForTheFuture />
+      <CurrentProject />
+      <Testimonials />
+      <SustainabilityInitiatives />
+      <JoinOurTeamHeroSection />
     </Layout>
   );
 }
