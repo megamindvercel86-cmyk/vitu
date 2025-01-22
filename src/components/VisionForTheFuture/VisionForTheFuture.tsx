@@ -86,9 +86,9 @@ const VisionForTheFuture: React.FC = () => {
 
   return (
     <div className="relative  text-[#42210B] overflow-hidden">
-      <div className="mx-[210px] py-12 lg:pt-[157px] lg:pb-[157px] relative">
+      <div className="xl:mx-[210px]  xl:py-[157px] lg:py-[133px] md:py-[55px] sm:py-[44px] py-[44px] lg:pb-[157px] relative">
         {/* Static Title, Subtitle, and Button */}
-        <div className="w-[424px]">
+        <div className="w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0">
           <Typography className="text-2xl lg:text-[56px] font-bold font-freightNeoMedium lg:leading-[72px] xl:leading-[67px]">
             Embracing new Horizons in Living
           </Typography>
@@ -97,9 +97,9 @@ const VisionForTheFuture: React.FC = () => {
             portfolio.
           </Typography>
         </div>
-        <div className="mt-8 flex items-center justify-between">
+        <div className="mt-8 lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 flex items-center justify-between">
           <button
-            className="bg-[#AE856633] text-customBrown pr-1 pl-[18px] py-[3px] rounded-full flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+            className="bg-[#AE856633] sm:hidden hidden  text-customBrown pr-1 pl-[18px] py-[3px] rounded-full md:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
             onClick={() => console.log("Button clicked")}
           >
             See What’s Next
@@ -110,7 +110,7 @@ const VisionForTheFuture: React.FC = () => {
             {carouselData[currentIndex].residentialType}
           </Typography>
         </div>
-        <div className="h-[510px] pt-6">
+        <div className="sm:h-[404px] lg:h-[530px] xl:h-[606px] md:h-[507px]  h-[404px] pt-6">
           {/* Carousel Content */}
           <div className="relative">
             {carouselData.map((item, index) => {
@@ -153,7 +153,7 @@ const VisionForTheFuture: React.FC = () => {
           </div>
         </div>
         {/* Description Section (static for currentIndex) */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between mt-[74px]">
+        <div className="lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between mt-[74px]">
           <div className="lg:w-2/3 w-full">
             <Typography className="text-base lg:text-xl font-FreightNeoProNormal text-[#4F373799]">
               {carouselData[currentIndex].description}
@@ -161,7 +161,14 @@ const VisionForTheFuture: React.FC = () => {
           </div>
 
           {/* Pagination Dots Section */}
-          <div className="lg:w-1/2 w-full flex justify-end mt-6 lg:mt-0">
+          <div className="lg:w-1/2 w-full flex sm:flex-col flex-col md:flex-row sm:items-center items-center md:justify-end mt-6 lg:mt-0 ">
+          <button
+            className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+            onClick={() => console.log("Button clicked")}
+          >
+            See What’s Next
+            <CTAButtonIcon direction="right" />
+          </button>
             <div className="flex space-x-3 bg-[#AE856666] rounded-[32px] py-4 px-6">
               {carouselData.map((_, dotIndex) => (
                 <button

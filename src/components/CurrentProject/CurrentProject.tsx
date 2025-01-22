@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const CurrentProject: React.FC = () => {
   return (
-    <div className="xl:mx-[278px] lg:mx-[122px] flex flex-crow">
-      <div className="w-1/2">
+    <div className="xl:mx-[278px] lg:mx-[122px] md:mx-[60px] mx-[24px] sm:mx-[24px]  flex lg:flex-row sm:flex-col flex-col">
+      <div className="md:w-1/2 w-full">
         <div className="bg-[#AE856614] rounded-md w-[166px] h-[34px] text-center flex items-center justify-center pt-1">
           <Typography className="text-customBrown font-FreightNeoProNormal">
             Limited Plots Available
@@ -79,7 +79,7 @@ const CurrentProject: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="">
+      <div className="md:w-1/2 w-full">
         <Image
           src={"/images/visionAndFutureImages/image5.png"}
           width={708}

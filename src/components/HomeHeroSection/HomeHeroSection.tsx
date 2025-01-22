@@ -10,37 +10,36 @@ const HomeHeroSection: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              'url("/images/backgroundImages/HomePageBackgroundImageDesktop.png")',
+              'url("/images/backgroundImages/homePageBackgroundImageDesktop.png")',
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
 
         {/* Content */}
-        <div className="relative h-full flex xl:top-[343px] justify-center">
+        <div className="relative h-full flex xl:top-[343px] lg:top-[247px] sm:top-[157px] top-[157px] justify-center">
           <div className="text-center text-white flex flex-col items-center">
-            <h1 className="font-freightNeoSemibold lg:text-[100px] leading-none">
-              Building Wholesome
-            </h1>
-            <h1 className="font-freightNeoSemibold lg:text-[100px] leading-none pt-[28px]">
-              Living Spaces
-            </h1>
+          <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px] leading-none">
+            Building Wholesome
+          </h1>
+          <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px]  leading-none md:pt-[28px] pt-0">
+            Living Spaces
+          </h1>
           </div>
         </div>
       </div>
-      <div className="pt-[128px] pb-[111px] px-[386px] text-center">
+      <div className="pt-[64px] leading-[1] sm:pt-[64px] md:pt-[84px] lg:pt-[104px] xl:pt-[128px] pb-[111px] xl:px-[386px]   sm:px-[30px] px-[30px] text-center">
         <div>
           <Typography
-            variant="h3"
-            fontWeight="font-medium"
-            className="font-freightNeoMedium font text-[#040707CC] pb-6 text-2xl"
+            variant="custom"
+            className="font-freightNeoMedium font text-[#040707CC] pb-6  sm:text-[22px] md:text-[18px] text-[22px]"
           >
             We create thoughtfully designed spaces that blend modern aesthetics
             with lasting quality.
           </Typography>
         </div>
         <div>
-          <Typography   variant="custom" className="text-[56px] font-freightNeoMedium text-customBrown">
+          <Typography   variant="custom" className="lg:text-[56px] sm:text-[34px] md:text-[40px] text-[34px] font-freightNeoMedium text-customBrown">
             Where Modern Design Meets Enduring Quality
           </Typography>
         </div>

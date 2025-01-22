@@ -87,9 +87,9 @@ function App() {
     }, [nextSlide]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-[1px]">
+    <div className=" bg-gray-100 p-[1px]">
       {/* Main Carousel with Divisions */}
-      <div className="relative mb-12 group">
+      <div className="relative  group">
         <div className="overflow-hidden rounded-lg shadow-xl aspect-[2/1] relative">
           {/* Image container */}
           <div 
