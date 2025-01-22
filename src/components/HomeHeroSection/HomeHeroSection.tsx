@@ -40,7 +40,7 @@ const HomeHeroSection: React.FC = () => {
           </Typography>
         </div>
         <div>
-          <Typography className="text-[56px] font-freightNeoMedium text-customBrown">
+          <Typography   variant="custom" className="text-[56px] font-freightNeoMedium text-customBrown">
             Where Modern Design Meets Enduring Quality
           </Typography>
         </div>

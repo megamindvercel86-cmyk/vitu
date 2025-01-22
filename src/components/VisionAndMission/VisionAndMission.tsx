@@ -2,171 +2,154 @@ import React, { useState, useEffect, useCallback } from "react";
 import Typography from "../Typography/Typography";
 
 const images = [
-  {
-    url: "/images/visionAndMissionImages/1.png",
-    title: "Innovative Sustainability",
-    description:
-      "Revolutionizing green living by making eco-friendly solutions effortless.",
-  },
-  {
-    url: "/images/visionAndMissionImages/2.png",
-    title: "Affordable Luxury",
-    description: "Revolutionizing green ",
-  },
-  {
-    url: "/images/visionAndMissionImages/3.png",
-    title: "Client Satisfaction",
-    description:
-      "Revolutionizing green living by making eco-friendly solutions effortless.",
-  },
-  {
-    url: "/images/visionAndMissionImages/4.png",
-    title: "Innovative Sustainability",
-    description:
-      "Revolutionizing green living by making eco-friendly solutions effortless.",
-  },
-  {
-    url: "/images/visionAndMissionImages/5.png",
-    title: "Cozy Corners",
-    description: "Perfect spaces to unwind",
-  },
-  {
-    url: "/images/visionAndMissionImages/6.png",
-    title: "Minimalist Dream",
-    description: "Less is more philosophy",
-  },
-  {
-    url: "/images/visionAndMissionImages/7.png",
-    title: "Luxe Living",
-    description: "Premium lifestyle spaces",
-  },
-  {
-    url: "/images/visionAndMissionImages/8.png",
-    title: "Contemporary Charm",
-    description: "Modern day comfort",
-  },
-  {
-    url: "/images/visionAndMissionImages/9.png",
-    title: "Serene Spaces",
-    description: "Tranquil living environments",
-  },
+  "/images/visionAndMissionImages/1.png",
+  "/images/visionAndMissionImages/2.png",
+  "/images/visionAndMissionImages/3.png",
+];
+const contentSets = [
+  // First image content set
+  [
+    {
+      title: 'Innovative Design',
+      description: 'Pushing boundaries with cutting-edge architectural concepts',
+    },
+    {
+      title: 'Modern Living',
+      description: 'Contemporary spaces that inspire and elevate daily life',
+    },
+    {
+      title: 'Smart Solutions',
+      description: 'Integrating technology for enhanced living experiences',
+    }
+  ],
+  // Second image content set
+  [
+    {
+      title: 'Sustainable Future',
+      description: 'Eco-friendly approaches to modern architecture',
+    },
+    {
+      title: 'Natural Harmony',
+      description: 'Blending seamlessly with the surrounding environment',
+    },
+    {
+      title: 'Green Living',
+      description: 'Creating spaces that respect and preserve nature',
+    }
+  ],
+  // Third image content set
+  [
+    {
+      title: 'Luxury Redefined',
+      description: 'Excellence in every detail of modern living',
+    },
+    {
+      title: 'Premium Quality',
+      description: 'Uncompromising standards in design and execution',
+    },
+    {
+      title: 'Timeless Elegance',
+      description: 'Creating lasting impressions through sophisticated design',
+    }
+  ]
 ];
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const totalSlides = Math.ceil(images.length / 3);
-
-  const transition = useCallback(
-    (direction: "left" | "right") => {
-      if (isAnimating) return;
-
-      setIsAnimating(true);
-      const nextIndex =
-        direction === "right"
-          ? (currentIndex + 1) % totalSlides
-          : (currentIndex - 1 + totalSlides) % totalSlides;
-
-      setCurrentIndex(nextIndex);
-      setTimeout(() => setIsAnimating(false), 800);
-    },
-    [currentIndex, totalSlides, isAnimating]
-  );
-
-  const prev = useCallback(() => transition("left"), [transition]);
-  const next = useCallback(() => transition("right"), [transition]);
-
-  useEffect(() => {
-    if (!isPaused) {
-      const timer = setInterval(next, 5000);
+   const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [isAnimating, setIsAnimating] = useState<boolean>(false);
+    const [direction, setDirection] = useState<"left" | "right">("right");
+    const totalSlides = 3;
+  
+    const transition = useCallback(
+      (newDirection: "left" | "right") => {
+        if (isAnimating) return;
+  
+        setIsAnimating(true);
+        setDirection(newDirection);
+  
+        const nextIndex =
+          newDirection === "right"
+            ? (currentIndex + 1) % totalSlides
+            : (currentIndex - 1 + totalSlides) % totalSlides;
+  
+        setCurrentIndex(nextIndex);
+        setTimeout(() => setIsAnimating(false), 500); // Reduced animation time for smoother transitions
+      },
+      [currentIndex, totalSlides, isAnimating]
+    );
+  
+    const nextSlide = useCallback(() => transition("right"), [transition]);
+    const prevSlide = useCallback(() => transition("left"), [transition]);
+  
+    useEffect(() => {
+      const timer = setInterval(nextSlide, 5000);
       return () => clearInterval(timer);
-    }
-  }, [isPaused, next]);
-
-  const getVisibleImages = (index: number) => {
-    const startIdx = index * 3;
-    return images.slice(startIdx, startIdx + 3);
-  };
+    }, [nextSlide]);
 
   return (
-    <div className="items-center justify-center p-[1px]">
-      <div
-        className="relative w-full"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="relative h-[891px] overflow-hidden">
-          <div className="absolute w-full h-full">
-            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-              <div
-                key={slideIndex}
-                className={`absolute w-full h-full flex gap-[2px] transition-transform duration-800 ease-out will-change-transform`}
-                style={{
-                  transform: `translateX(${
-                    (slideIndex - currentIndex) * 100
-                  }%)`,
-                  opacity: slideIndex === currentIndex ? 1 : 0,
-                  transition:
-                    "transform 800ms ease-out, opacity 800ms ease-out",
-                }}
-              >
-                {getVisibleImages(slideIndex).map((image, imageIndex) => (
-                  <div
-                    key={`${slideIndex}-${imageIndex}`}
-                    className="flex-1 relative group overflow-hidden"
-                  >
-                    <img
-                      src={image.url}
-                      alt={image.title}
-                      className="w-full h-full object-cover transform transition-transform duration-500"
-                    />
-                    {/* Title positioned at the bottom center with animation */}
-                    <div className="absolute bottom-[70px] w-full left-1/2 px-24 transform -translate-x-1/2 text-white z-10 transition-transform duration-500 group-hover:translate-y-[-10px] text-center">
-                      <Typography
-                        variant="h2"
-                        className="font-freightNeoMedium mb-[5px]"
-                      >
-                        {image.title}
-                      </Typography>
-                    </div>
+    <div className="min-h-screen bg-gray-100 p-[1px]">
+      {/* Main Carousel with Divisions */}
+      <div className="relative mb-12 group">
+        <div className="overflow-hidden rounded-lg shadow-xl aspect-[2/1] relative">
+          {/* Image container */}
+          <div 
+            className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+              currentIndex === currentIndex
+                ? "opacity-100 translate-x-0"
+                : direction === "right"
+                ? currentIndex === (currentIndex - 1 + totalSlides) % totalSlides
+                  ? "opacity-0 -translate-x-full"
+                  : "opacity-0 translate-x-full"
+                : currentIndex === (currentIndex + 1) % totalSlides
+                ? "opacity-0 translate-x-full"
+                : "opacity-0 -translate-x-full"
+            }`}
+          >
+            <img
+              src={images[currentIndex]}
+              alt={`Slide ${currentIndex + 1}`}
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Next image for smooth transition */}
+            <div className={`absolute top-0 ${direction === 'left' ? 'right-[-100%]' : 'left-[-100%]'} w-full h-full`}>
+              <img
+                src={images[(currentIndex + (direction === 'left' ? 1 : -1) + images.length) % images.length]}
+                alt="Next slide"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          
+          {/* Vertical dividing lines */}
+          <div className="absolute inset-0 flex">
+            <div className="flex-1 border-r border-white/30"></div>
+            <div className="flex-1 border-r border-white/30"></div>
+            <div className="flex-1"></div>
+          </div>
 
-                    {/* Description appears only on hover and is centered */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="text-center absolute bottom-0 left-0 right-0 p-6 text-white flex justify-center items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                        <Typography
-                          variant="h3"
-                          fontWeight="font-normal"
-                          className="font-FreightNeoProNormal mt-[5px]"
-                        >
-                          {image.description}
-                        </Typography>
-                      </div>
-                    </div>
+          {/* Sections with titles and hover descriptions */}
+          <div className="absolute inset-0 flex">
+            {contentSets[currentIndex].map((section, index) => (
+              <div key={index} className="flex-1 group/section relative">
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  {/* Always visible title */}
+                  <h3 className="text-xl font-medium mb-2 text-center transition-all duration-500">
+                    {section.title}
+                  </h3>
+                  {/* Hover description */}
+                  <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
+                    <p className="text-sm text-center opacity-0 group-hover/section:opacity-100 transition-opacity duration-300 delay-150">
+                      {section.description}
+                    </p>
                   </div>
-                ))}
+                </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/40 transition-all duration-300"></div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {Array.from({ length: totalSlides }).map((_, index) => (
-            <button
-              key={index}
-              disabled={isAnimating}
-              onClick={() => {
-                if (index !== currentIndex) {
-                  transition(index > currentIndex ? 'right' : 'left');
-                }
-              }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'bg-white w-4' : 'bg-white/50'
-              } ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div> */}
       </div>
     </div>
   );
