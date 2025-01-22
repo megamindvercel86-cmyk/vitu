@@ -1,46 +1,72 @@
-"use client"
+"use client";
 
-import React from "react"
-import { InfiniteMovingCards } from "../ui/infinite-moving-cards"
-
+import React from "react";
+import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
+import Typography from "../Typography/Typography";
 
 export default function Testimonial() {
   return (
-    <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards items={profiles} direction="right" speed="slow" className="py-20"/>
+    <div className="mt-[166px]">
+      <div className="flex items-center justify-center flex-col mb-[90px]">
+        <Typography className="text-customBrown font-freightNeoMedium">
+          CLIENT TESTIMONIAL
+        </Typography>
+        <Typography
+          variant="custom"
+          className="text-customBrown text-[60px] font-freightNeoMedium"
+        >
+          What our Clients say
+        </Typography>
+      </div>
+      <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
+        <InfiniteMovingCards items={profiles} direction="right" speed="slow" />
+      </div>
+      <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
+        <InfiniteMovingCards items={profiles} direction="left" speed="slow" />
+      </div>
+      <div className="flex items-center justify-center flex-col mt-[66px] mb-[145px]">
+        <Typography variant="custom" className="text-customBrown font-FreightNeoProBold text-[22px]">
+          Read More
+        </Typography>
+      </div>
     </div>
-  )
+  );
 }
 
 const profiles = [
   {
     name: "Alice Johnson",
     place: "New York, USA",
-    comment: "Absolutely love the service! It's been a game-changer for my business.",
-    image: "/placeholder.svg?height=60&width=60"
+    comment:
+      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
+    image: "",
   },
   {
     name: "Bob Smith",
     place: "London, UK",
-    comment: "The team's responsiveness and attention to detail are unparalleled.",
-    image: "/placeholder.svg?height=60&width=60"
+    comment:
+      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
+    image: "",
   },
   {
     name: "Carol Williams",
     place: "Sydney, Australia",
-    comment: "Innovative solutions that have truly transformed our workflow.",
-    image: "/placeholder.svg?height=60&width=60"
+    comment:
+      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
+    image: "",
   },
   {
     name: "David Brown",
     place: "Toronto, Canada",
-    comment: "Exceptional quality and customer service. Highly recommended!",
-    image: "/placeholder.svg?height=60&width=60"
+    comment:
+      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
+    image: "/placeholder.svg?height=60&width=60",
   },
   {
     name: "Eva Martinez",
     place: "Barcelona, Spain",
-    comment: "Their expertise and professionalism are second to none.",
-    image: "/placeholder.svg?height=60&width=60"
+    comment:
+      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
+    image: "/placeholder.svg?height=60&width=60",
   },
-]
+];

@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import React, { useEffect, useState } from "react"
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Typography from "../Typography/Typography";
 
 export const InfiniteMovingCards = ({
   items,
@@ -11,64 +13,71 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    quote: string
-    name: string
-    title: string
-  }[]
-  direction?: "left" | "right"
-  speed?: "fast" | "normal" | "slow"
-  pauseOnHover?: boolean
-  className?: string
+    comment: string;
+    name: string;
+    place: string;
+    image: string;
+  }[];
+  direction?: "left" | "right";
+  speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
+  className?: string;
 }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null)
-  const scrollerRef = React.useRef<HTMLUListElement>(null)
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    addAnimation()
-  }, [])
-  const [start, setStart] = useState(false)
+    addAnimation();
+  }, []);
+  const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children)
+      const scrollerContent = Array.from(scrollerRef.current.children);
 
       scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true)
+        const duplicatedItem = item.cloneNode(true);
         if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem)
+          scrollerRef.current.appendChild(duplicatedItem);
         }
-      })
+      });
 
-      getDirection()
-      getSpeed()
-      setStart(true)
+      getDirection();
+      getSpeed();
+      setStart(true);
     }
   }
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
-        containerRef.current.style.setProperty("--animation-direction", "forwards")
+        containerRef.current.style.setProperty(
+          "--animation-direction",
+          "forwards"
+        );
       } else {
-        containerRef.current.style.setProperty("--animation-direction", "reverse")
+        containerRef.current.style.setProperty(
+          "--animation-direction",
+          "reverse"
+        );
       }
     }
-  }
+  };
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s")
+        containerRef.current.style.setProperty("--animation-duration", "20s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s")
+        containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s")
+        containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
-  }
+  };
   return (
     <div
       ref={containerRef}
       className={cn(
         "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-        className,
+        className
       )}
     >
       <ul
@@ -76,30 +85,57 @@ export const InfiniteMovingCards = ({
         className={cn(
           " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
           <li
-            className="w-[333px] h-[131px] max-w-full relative rounded-2xl border flex-shrink-0 border-slate-700 px-4 py-2"
-            style={{
-              background: "white",
-            }}
+            className="w-[361px]  max-w-full relative  border-[#4F3737] border-[1px] rounded-[14px] pt-[30px] pb-[26px] px-[21px]"
             key={item.name}
           >
             <blockquote>
-              <span className=" relative z-20 text-sm leading-[1.6] text-black font-normal">{item.quote}</span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className=" text-sm leading-[1.6] text-gray-600 font-normal">{item.name}</span>
-                  <span className=" text-sm leading-[1.6] text-gray-600 font-normal">{item.title}</span>
-                </span>
+              <div>
+                <div className="relative z-20 flex flex-row items-center">
+                  <span className="flex flex-row gap-5">
+                    <div>
+                      {item.image ? (
+                        <Image
+                          src={item.image}
+                          width={53}
+                          height={53}
+                          alt={item.name}
+                          className="rounded-full"
+                        />
+                      ) : (
+                        <div className="w-[53px] h-[53px] bg-[#D9D9D9] rounded-full" />
+                      )}
+                    </div>
+                    <div className="flex flex-col leading-8">
+                      <Typography
+                        variant="custom"
+                        className="text-[26px] font-freightNeoMedium text-customBrown"
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography className="text-[#4F373799] font-normal">
+                        {item.place}
+                      </Typography>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div className="mt-5">
+                <Typography
+                  variant="custom"
+                  className="text-base font-freightNeoMedium text-[#4F373799]"
+                >
+                  {item.comment}
+                </Typography>
               </div>
             </blockquote>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
-
+  );
+};
