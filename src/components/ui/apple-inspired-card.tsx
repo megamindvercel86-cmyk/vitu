@@ -1,24 +1,29 @@
-"use client"
-import type React from "react"
-import { useState } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { IconX } from "@tabler/icons-react"
-import { cn } from "@/lib/utils"
-import { SecondaryViewMoreButton } from "../Icons/Icons"
+"use client";
+import type React from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { IconX } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
+import { SecondaryViewMoreButton } from "../Icons/Icons";
 
 interface CardProps {
-  title: string
-  src: string
-  content: React.ReactNode
-  className: string
+  title: string;
+  src: string;
+  content: React.ReactNode;
+  className: string;
 }
 
-export const AppleInspiredCard: React.FC<CardProps> = ({ title, src, content, className }) => {
-  const [isOpen, setIsOpen] = useState(false)
+export const AppleInspiredCard: React.FC<CardProps> = ({
+  title,
+  src,
+  content,
+  className,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => setIsOpen(true)
-  const handleClose = () => setIsOpen(false)
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
 
   return (
     <>
@@ -27,18 +32,23 @@ export const AppleInspiredCard: React.FC<CardProps> = ({ title, src, content, cl
         onClick={handleOpen}
         className={`rounded-[20px] overflow-hidden flex flex-col items-start justify-start relative z-10 ${className}`}
       >
-        <div className="relative z-40 p-8">
-          <motion.p
-            layoutId={`title-${title}`}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
-          >
-            {title}
-          </motion.p>
+        <BlurImage
+          src={src}
+          alt={title}
+          fill
+          className="object-cover absolute z-10 inset-0"
+        />
+        <div className="absolute bottom-6 left-6 right-6 z-50 flex items-center justify-between">
+        <motion.p
+  layoutId={`title-${title}`}
+  className="text-white text-5xl"
+>
+  <span className="font-CandideCondensedNormal">{title.split(' ')[0]}</span>{" "}
+  <span className="font-FreightNeoProNormal">{title.split(' ').slice(1).join(' ')}</span>
+</motion.p>
+
+          <SecondaryViewMoreButton />
         </div>
-        <BlurImage src={src} alt={title} fill className="object-cover absolute z-10 inset-0" />
-         <div className="absolute bottom-6 right-6 z-50">
-                    <SecondaryViewMoreButton />
-                </div>
       </motion.button>
 
       <AnimatePresence>
@@ -75,18 +85,25 @@ export const AppleInspiredCard: React.FC<CardProps> = ({ title, src, content, cl
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-const BlurImage: React.FC<React.ComponentProps<typeof Image>> = ({ className, alt, ...props }) => {
-  const [isLoading, setLoading] = useState(true)
+const BlurImage: React.FC<React.ComponentProps<typeof Image>> = ({
+  className,
+  alt,
+  ...props
+}) => {
+  const [isLoading, setLoading] = useState(true);
   return (
     <Image
-      className={cn("transition duration-300", isLoading ? "blur-sm" : "blur-0", className)}
+      className={cn(
+        "transition duration-300",
+        isLoading ? "blur-sm" : "blur-0",
+        className
+      )}
       onLoad={() => setLoading(false)}
       alt={alt}
       {...props}
     />
-  )
-}
-
+  );
+};

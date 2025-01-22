@@ -88,7 +88,7 @@ const SustainabilityInitiatives = () => {
           <div>
             <div className="mt-[69px]">
               <AppleInspiredCard
-                title="You can do more with AI."
+                title="Beach Cleaning."
                 src="/images/SustainabilityInitiativesImages/1.png"
                 content={<DummyContent />}
                 className="xl:h-[660px] xl:w-[664px]"
@@ -101,7 +101,7 @@ const SustainabilityInitiatives = () => {
         <div>
           <div>
             <AppleInspiredCard
-              title="You can do more with AI."
+              title="500+ Tree Cover"
               src="/images/SustainabilityInitiativesImages/2.png"
               content={<DummyContent2 />}
               className="xl:h-[742px] xl:w-[593px]"
@@ -109,7 +109,7 @@ const SustainabilityInitiatives = () => {
           </div>
           <div className="mb-[166px] mt-[124px]">
             <AppleInspiredCard
-              title="You can do more with AI."
+              title="Emission Control "
               src="/images/SustainabilityInitiativesImages/3.png"
               content={<DummyContent />}
               className="xl:h-[256px] xl:w-[593px]"

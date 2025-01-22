@@ -27,6 +27,7 @@ export default {
         FreightNeoProBlack: ['Freight Neo Pro Black', 'sans-serif'],
         CandideCondensedBold: ['Candide-CondensedBold', 'sans-serif'],
         CandideCondensedMedium: ['Candide-CondensedMedium', 'sans-serif'],
+        CandideCondensedNormal: ['Candide-CondensedNormal', 'sans-serif'],
         FreightNeoProLight: ['Freight Neo Pro Light', 'sans-serif'],
         FreightNeoProNormal: ['Freight Neo Pro Normal', 'sans-serif'],
       },

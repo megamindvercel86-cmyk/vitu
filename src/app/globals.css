@@ -81,3 +81,9 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Candide-CondensedNormal';
+  src: url('/fonts/Candide-CondensedRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
