@@ -7,6 +7,7 @@ import VisionAndMission from "@/components/VisionAndMission/VisionAndMission";
 import VisionForTheFuture from "@/components/VisionForTheFuture/VisionForTheFuture";
 import CurrentProject from "@/components/CurrentProject/CurrentProject";
 import Testimonials from "@/components/Testimonial/Testimonial";
+import SustainabilityInitiatives from "@/components/SustainabilityInitiatives/SustainabilityInitiatives";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <VisionForTheFuture/>
       <CurrentProject/>
        <Testimonials/>
+       <SustainabilityInitiatives/>
     </Layout>
   );
 }
