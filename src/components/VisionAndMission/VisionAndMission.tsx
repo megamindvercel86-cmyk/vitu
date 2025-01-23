@@ -145,7 +145,7 @@ function App() {
                   </div>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/40 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300"></div>
               </div>
             ))}
           </div>
