@@ -86,7 +86,7 @@ const ExploreProjects: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-[2835px]">
+    <div className="h-[2235px]">
       <div ref={sectionRef} className="relative min-h-screen">
         <div className="relative w-full">
           <div>
