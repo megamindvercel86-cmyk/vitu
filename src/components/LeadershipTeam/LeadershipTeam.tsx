@@ -23,7 +23,7 @@ export default function LeadershipTeam() {
   return (
     <div className="lg:pt-[153px] lg:pb-[198px] xl:pt-[160px] xl:pb-[191px]">
       <div className=" mx-auto   xl:mx-[284px] lg:mx-[78px]">
-        <Typography className="text-6xl font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]">
+        <Typography variant="custom" className="sm:text-2xl text-2xl  md:text-6xl xl:text-[52px] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]">
           Our Leadership Team
         </Typography>
         <div className="grid grid-cols-1 lg:gap-[42px] xl:gap-[78px] sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
@@ -36,10 +36,10 @@ export default function LeadershipTeam() {
                   className="w-full h-[500px] object-cover rounded-[20px] shadow-lg"
                 />
               </div>
-              <Typography className="text-4xl text-customTextGray font-freightNeoMedium">
+              <Typography variant="custom" className="text-xl sm:text-xl md:text-4xl text-customTextGray font-freightNeoMedium">
                 {member.name}
               </Typography>
-              <Typography className="text-customTextGray font-FreightNeoProNormal px-0 xl:px-[87px] lg:text-2xl">
+              <Typography variant="custom" className="text-customTextGray font-FreightNeoProNormal px-0 xl:px-[87px] lg:text-2xl">
                 {member.title}
               </Typography>
             </div>
