@@ -3,8 +3,10 @@ import Heading from "../Common/Heading";
 import SubHeading from "../Common/SubHeding";
 import { FaCheck } from "react-icons/fa";
 import Button from "../Common/Button";
-
+import { collection, addDoc } from "firebase/firestore";
+import { db, storage } from "@/firebase/firebaseConfig";
 import { Dropdown, Upload } from "../Icons/Icons";
+import { ref, uploadBytes } from "firebase/storage";
 
 interface FormSectionProps {
   heading: React.ReactNode;
@@ -51,14 +53,78 @@ const FormSection: React.FC<FormSectionProps> = ({
     setFormData({ ...formData, option: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    try {
+      // Upload the resume first if available
+      if (!formData.fullName || !formData.email || !formData.phone) {
+        alert("Please fill out all required fields.");
+        return;
+      }
+      
+      let resumeUrl: string | null = null;
+      if (formData.resume) {
+        const storageRef = ref(storage, `resumes/${formData.resume.name}`);
+        const uploadResult = await uploadBytes(storageRef, formData.resume);
+        resumeUrl = uploadResult.ref.fullPath; // Store the file URL in Firestore
+      }
+
+      // Prepare form data including resume URL if applicable
+      const formToSubmit = {
+        ...formData,
+        resumeUrl,
+      };
+
+      // Determine the collection name based on the page type
+      const collectionName =
+        page === "General Enquire"
+          ? "generalEnquiries"
+          : page === "Project Enquire"
+          ? "projectEnquiries"
+          : "careerApplications";
+
+      // Reference the Firestore collection
+      const collectionRef = collection(db, collectionName);
+
+      // Add the form data to Firestore
+      await addDoc(collectionRef, formToSubmit);
+
+      alert("Form submitted successfully!");
+
+      // Reset form after submission
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        comments: "",
+        whatsapp: false,
+        option: "",
+        resume: null,
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-    setFormData({ ...formData, resume: file });
+
+    if (file) {
+      const storageRef = ref(storage, `resumes/${file.name}`);
+      try {
+        // Upload file to Firebase Storage
+        await uploadBytes(storageRef, file);
+
+        // Update formData with file reference (optional)
+        setFormData({ ...formData, resume: file });
+        alert("File uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        alert("Failed to upload file. Please try again.");
+      }
+    }
   };
 
   const handleIconClick = () => {
@@ -92,6 +158,10 @@ const FormSection: React.FC<FormSectionProps> = ({
             <input
               type="text"
               placeholder="Your Full Name"
+              value={formData.fullName}
+              onChange={(e) =>
+                setFormData({ ...formData, fullName: e.target.value })
+              }
               className="w-full px-1 pb-[7px] text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium"
             />
           </div>
@@ -100,16 +170,25 @@ const FormSection: React.FC<FormSectionProps> = ({
             <input
               type="email"
               placeholder="Your Email"
+              value={formData.email} 
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               className="w-full px-1 pb-[7px] text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium "
             />
           </div>
 
           <div className="mt-[45px]">
-            <input
-              type="tel"
-              placeholder="Your Phone Number"
-              className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium"
-            />
+          <input
+  type="tel"
+  placeholder="Your Phone Number"
+  value={formData.phone}
+  onChange={(e) =>
+    setFormData({ ...formData, phone: e.target.value })
+  }
+  className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium" 
+/>
+
           </div>
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
@@ -226,7 +305,10 @@ const FormSection: React.FC<FormSectionProps> = ({
                   Receive Updates on WhatsApp
                 </span>
               </label>
-              <Button onClick={handleSubmit} className="text-[26px] sm:w-full lg:w-[146px] pt-1">
+              <Button
+                onClick={handleSubmit}
+                className="text-[26px] sm:w-full lg:w-[146px] pt-1"
+              >
                 Submit
               </Button>
             </div>
@@ -261,7 +343,10 @@ const FormSection: React.FC<FormSectionProps> = ({
           )}
           {page === "Career Application" && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
-              <Button onClick={handleSubmit} className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]">
+              <Button
+                onClick={handleSubmit}
+                className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
+              >
                 Submit
               </Button>
             </div>

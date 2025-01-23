@@ -1,18 +1,21 @@
+// src/firebaseConfig.js
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-
-// Your Firebase configuration object
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+// Replace the configuration below with your Firebase project's config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-};
+    apiKey: "AIzaSyCCe_H7JWChegUvjugESwF_l-M6ixq9yOc",
+    authDomain: "vitu-realty--website.firebaseapp.com",
+    projectId: "vitu-realty--website",
+    storageBucket: "vitu-realty--website.firebasestorage.app",
+    messagingSenderId: "507741321339",
+    appId: "1:507741321339:web:79b72ae7f8c78436b20ade",
+    measurementId: "G-64MSFS4QMM"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-export { db, collection, addDoc };
+// Initialize Firestore
+export const storage = getStorage(app);
+export const db = getFirestore(app);
