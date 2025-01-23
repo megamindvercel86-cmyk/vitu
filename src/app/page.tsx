@@ -9,6 +9,10 @@ import CurrentProject from "@/components/CurrentProject/CurrentProject";
 import Testimonials from "@/components/Testimonial/Testimonial";
 import SustainabilityInitiatives from "@/components/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
+import dynamic from 'next/dynamic';
+
+// Dynamically import ExploreProjects, disabling SSR
+const ExploreProjects = dynamic(() => import('@/components/ExploreProjects/ExploreProjects'), { ssr: false });
 
 export default function Home() {
   return (
@@ -23,6 +27,7 @@ export default function Home() {
       <HomeHeroSection />
       <VisionAndMission />
       <VisionForTheFuture />
+      <ExploreProjects/>
       <CurrentProject />
       <Testimonials />
       <SustainabilityInitiatives />
