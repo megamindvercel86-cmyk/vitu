@@ -134,14 +134,10 @@ function App() {
               <div key={index} className="flex-1 group/section relative">
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                   {/* Always visible title */}
-                  <h3 className="text-xl font-medium mb-2 text-center transition-all duration-500">
-                    {section.title}
-                  </h3>
+                  <Typography variant="h2" className="font-freightNeoMedium mb-[5px] text-center" > {section.title} </Typography>
                   {/* Hover description */}
                   <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
-                    <p className="text-sm text-center opacity-0 group-hover/section:opacity-100 transition-opacity duration-300 delay-150">
-                      {section.description}
-                    </p>
+                  <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[5px] text-center" > {section.description} </Typography>
                   </div>
                 </div>
                 {/* Hover overlay */}
