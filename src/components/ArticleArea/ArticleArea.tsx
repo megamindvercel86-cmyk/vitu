@@ -58,10 +58,10 @@ const ArticleArea: React.FC = () => {
           <Typography variant="custom"  className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
             INSIGHTS
           </Typography>
-          <Typography  variant="custom" className="xl:pb-[24px] lg:pb-[27px] pb-[20px]">
+          <Typography  variant="custom" className="text-customTextGray font-freightNeoMedium xl:pb-[24px] lg:pb-[27px] pb-[20px] md:text-[48px] xl:text-[52px]">
             Your Home Discovery Center
           </Typography>
-          <Typography variant="custom" className="lg:text-2xl">
+          <Typography variant="custom" className="text-customTextGray font-freightNeoMedium lg:text-2xl">
             Delve into all things Realty through our insights - uncover
             articles, tips, and stories inspiring your dream home journey.
           </Typography>

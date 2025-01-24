@@ -15,29 +15,48 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    image: "/images/mediaSectionImages/NewsItem1.png",
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 2,
     image: "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 3,
+    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 5,
     image: "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
 ];
+
 export default function MediaSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
@@ -59,22 +78,19 @@ export default function MediaSection() {
   }, []);
 
   const totalSlides = newsItems.length;
-  const maxIndex = totalSlides - slidesToShow;
 
   const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex((prev) => prev + 1);
-    }
+    setCurrentIndex((prev) => (prev + 1) % totalSlides); // Loop back to start
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    }
+    setCurrentIndex((prev) =>
+      prev - 1 < 0 ? totalSlides - 1 : prev - 1 // Loop to end
+    );
   };
 
   return (
-    <div className="xl:mx-[278px] lg:mx-[78px] mx-auto  py-8 sm:py-12">
+    <div className="xl:mx-[278px] lg:mx-[78px] mx-7 py-8 sm:py-12">
       <div className="text-center mb-8 sm:mb-12">
         <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
           NEWS & MEDIA
@@ -87,22 +103,23 @@ export default function MediaSection() {
       <div className="relative">
         <div className="flex gap-4 sm:gap-6 overflow-hidden">
           {newsItems
+            .concat(newsItems) // Duplicate array to enable seamless looping
             .slice(currentIndex, currentIndex + slidesToShow)
-            .map((item) => (
+            .map((item, index) => (
               <div
-                key={item.id}
+                key={`${item.id}-${index}`}
                 className={`flex-none w-full ${
                   slidesToShow === 2 ? "sm:w-1/2" : "sm:w-1/2 lg:w-1/3"
                 } transition-all duration-300`}
               >
-                <div className=" rounded-lg overflow-hidden h-full">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px]">
+                <div className="rounded-lg overflow-hidden h-full">
+                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      width={400} // Default width for large screens (works well for lg, xl)
-                      height={310} // Default height for large screens (works well for lg, xl)
-                      className="w-[260px] h-[201px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover"
+                      width={400} // Default width for large screens
+                      height={310} // Default height for large screens
+                      className="w-full h-full"
                     />
                   </div>
 
@@ -131,24 +148,14 @@ export default function MediaSection() {
           <div className="flex gap-2">
             <button
               onClick={prevSlide}
-              disabled={currentIndex === 0}
-              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center ${
-                currentIndex === 0
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:bg-gray-200"
-              }`}
+              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200`}
               aria-label="Previous slide"
             >
               <IconArrowNarrowLeft />
             </button>
             <button
               onClick={nextSlide}
-              disabled={currentIndex >= maxIndex}
-              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center ${
-                currentIndex >= maxIndex
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:bg-gray-200"
-              }`}
+              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200`}
               aria-label="Next slide"
             >
               <IconArrowNarrowRight />
