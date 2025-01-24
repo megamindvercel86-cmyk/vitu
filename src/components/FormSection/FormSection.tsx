@@ -132,7 +132,7 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
   return (
-    <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-[1.063rem] md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
+    <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
       {/* Left Side Content */}
       <div className="flex-1">
         <Typography
@@ -143,12 +143,12 @@ const FormSection: React.FC<FormSectionProps> = ({
         </Typography>
         <Typography
           variant="body"
-          className="text-center md:text-left pt-3 md:px-0 px-6 lg:pt-6 xl:pt-10 w-full md:w-[24.5rem] "
+          className="text-center md:text-left pt-3 md:px-0 px-6 md:pt-12 lg:pt-10 xl:pt-8 w-full md:w-[24.5rem] "
         >
           {subheading}
         </Typography>
         <div className="hidden md:block">
-          <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20 text-customTextGray font-medium sm:text-[19px] text-[19px] md:text-xl  font-freightNeoMedium " />
+          <hr className="w-full md:w-[392px] mt-[56px] lg:mt-[38px]  border-black border-opacity-20 text-customTextGray font-medium sm:text-[19px] text-[19px] md:text-xl  font-freightNeoMedium " />
           <Typography className="pt-8 text-customTextGray font-freightNeoMedium">
             Alternatively, for your queries contact
           </Typography>
@@ -287,7 +287,13 @@ const FormSection: React.FC<FormSectionProps> = ({
             </>
           )}
           {page === "General Enquire" && (
-            <div className="flex flex-col items-center gap-4 pt-[45px] lg:flex-row lg:justify-between">
+            <div className="flex items-center flex-col lg:flex-row justify-between gap-2 pt-[45px] mb-[54px] md:mb-[145px]">
+              <Button
+                onClick={handleSubmit}
+                className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
+              >
+                Submit
+              </Button>
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
@@ -304,21 +310,26 @@ const FormSection: React.FC<FormSectionProps> = ({
                     )}
                   </div>
                 </div>
-                <span className="text-bae text-gray-600 text-customTextGray font-freightNeoMedium">
+                <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">
                   Receive Updates on WhatsApp
                 </span>
               </label>
               <Button
                 onClick={handleSubmit}
-                className="text-[26px] sm:w-full lg:w-[146px] pt-1"
+                className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
               </Button>
             </div>
           )}
-
           {page === "Project Enquire" && (
-            <div className="flex items-center justify-between gap-2 pt-[45px] mb-[145px]">
+            <div className="flex items-center flex-col lg:flex-row justify-between gap-2 mb-[54px]  pt-[45px] md:mb-[145px]">
+              <Button
+                onClick={handleSubmit}
+                className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
+              >
+                Submit
+              </Button>
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
@@ -335,11 +346,14 @@ const FormSection: React.FC<FormSectionProps> = ({
                     )}
                   </div>
                 </div>
-                <span className="text-bae text-gray-600 text-customTextGray font-freightNeoMedium">
+                <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">
                   Receive Updates on WhatsApp
                 </span>
               </label>
-              <Button onClick={handleSubmit} className="text-[26px] pt-1">
+              <Button
+                onClick={handleSubmit}
+                className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
+              >
                 Submit
               </Button>
             </div>
@@ -355,9 +369,9 @@ const FormSection: React.FC<FormSectionProps> = ({
             </div>
           )}
         </form>
-        <div className="block lg:hidden text-center mt-6 mb-[56px]">
-          <hr className="w-full md:w-[392px] mt-[38px] border-black border-opacity-20" />
-          <Typography className="pt-4 text-customTextGray font-freightNeoMedium">
+        <div className="block md:hidden text-center mt-2 mb-[56px]">
+          <hr className="w-full border-black border-opacity-20" />
+          <Typography className="pt-8 text-customTextGray font-freightNeoMedium">
             Alternatively, for your queries contact
           </Typography>
           <span className="text-customTextGray font-CandideCondensedBold font-bold">
