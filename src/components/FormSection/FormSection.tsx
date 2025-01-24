@@ -54,43 +54,44 @@ const FormSection: React.FC<FormSectionProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
-      // Upload the resume first if available
+      // Validate form fields
       if (!formData.fullName || !formData.email || !formData.phone) {
         alert("Please fill out all required fields.");
         return;
       }
-
+  
       let resumeUrl: string | null = null;
       if (formData.resume) {
+        // Upload the file to Firebase Storage if a file is selected
         const storageRef = ref(storage, `resumes/${formData.resume.name}`);
         const uploadResult = await uploadBytes(storageRef, formData.resume);
         resumeUrl = uploadResult.ref.fullPath; // Store the file URL in Firestore
       }
-
-      // Prepare form data including resume URL if applicable
+  
+      // Prepare form data to submit
       const formToSubmit = {
         ...formData,
         resumeUrl,
       };
-
-      // Determine the collection name based on the page type
+  
+      // Determine collection name based on the page type
       const collectionName =
         page === "General Enquire"
           ? "generalEnquiries"
           : page === "Project Enquire"
           ? "projectEnquiries"
           : "careerApplications";
-
+  
       // Reference the Firestore collection
       const collectionRef = collection(db, collectionName);
-
+  
       // Add the form data to Firestore
       await addDoc(collectionRef, formToSubmit);
-
+  
       alert("Form submitted successfully!");
-
+  
       // Reset form after submission
       setFormData({
         fullName: "",
@@ -106,26 +107,15 @@ const FormSection: React.FC<FormSectionProps> = ({
       alert("Failed to submit form. Please try again.");
     }
   };
+  
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-
     if (file) {
-      const storageRef = ref(storage, `resumes/${file.name}`);
-      try {
-        // Upload file to Firebase Storage
-        await uploadBytes(storageRef, file);
-
-        // Update formData with file reference (optional)
-        setFormData({ ...formData, resume: file });
-        alert("File uploaded successfully!");
-      } catch (error) {
-        console.error("Error uploading file:", error);
-        alert("Failed to upload file. Please try again.");
-      }
+      setFormData({ ...formData, resume: file }); // Update form data without uploading the file yet
     }
   };
-
+  
   const handleIconClick = () => {
     if (selectRef.current) {
       selectRef.current.focus();
@@ -269,9 +259,9 @@ const FormSection: React.FC<FormSectionProps> = ({
                     className="flex items-center cursor-pointer text-customTextGray w-full justify-between" // Adjusted for flex layout with justify-between
                   >
                     {formData.resume ? (
-                      <span>{formData.resume.name}</span> // Show the file name if selected
+                      <span>{formData.resume.name}</span> // Display file name if a file is selected
                     ) : (
-                      <span>Upload Resume</span>
+                      <span>Upload Resume</span> // Default placeholder text
                     )}
                     <Upload /> {/* Custom Upload Icon on the right */}
                   </label>
