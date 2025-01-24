@@ -1,16 +1,15 @@
 import React, { useRef, useState } from "react";
-import Heading from "../Common/Heading";
-import SubHeading from "../Common/SubHeding";
 import { FaCheck } from "react-icons/fa";
 import Button from "../Common/Button";
 import { collection, addDoc } from "firebase/firestore";
 import { db, storage } from "@/firebase/firebaseConfig";
 import { Dropdown, Upload } from "../Icons/Icons";
 import { ref, uploadBytes } from "firebase/storage";
+import Typography from "../Typography/Typography";
 
 interface FormSectionProps {
-  heading: React.ReactNode;
-  subheading: React.ReactNode;
+  heading: string;
+  subheading: string;
   page: string;
 }
 
@@ -62,7 +61,7 @@ const FormSection: React.FC<FormSectionProps> = ({
         alert("Please fill out all required fields.");
         return;
       }
-      
+
       let resumeUrl: string | null = null;
       if (formData.resume) {
         const storageRef = ref(storage, `resumes/${formData.resume.name}`);
@@ -133,22 +132,27 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row pt-[66px] px-[17px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
+    <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-[1.063rem] md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
       {/* Left Side Content */}
       <div className="flex-1">
-        <Heading className="text-center lg:text-left">{heading}</Heading>
-
-        <SubHeading className="sm:pt-[13px]  lg:pt-[24px] xl:pt-[40px] text-center lg:text-left">
+        <Typography
+          variant="h1"
+          className="text-center md:text-left text-customBrown font-semibold leading-[1] w-full md:w-[24.313rem] xl:w-[34.875rem]"
+        >
+          {heading}
+        </Typography>
+        <Typography
+          variant="body"
+          className="text-center md:text-left pt-3 md:px-0 px-6 lg:pt-6 xl:pt-10 w-full md:w-[24.5rem] "
+        >
           {subheading}
-        </SubHeading>
-        <div className="hidden lg:block">
-          <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20" />
-          <SubHeading className="pt-8">
+        </Typography>
+        <div className="hidden md:block">
+          <hr className="w-full md:w-[392px] mt-[38px]  border-black border-opacity-20 text-customTextGray font-medium sm:text-[19px] text-[19px] md:text-xl  font-freightNeoMedium " />
+          <Typography className="pt-8 text-customTextGray font-freightNeoMedium">
             Alternatively, for your queries contact
-          </SubHeading>
-          <span className="text-customTextGray font-CandideCondensedBold font-bold">
-            +91 89046 88886
-          </span>
+          </Typography>
+          <Typography variant="number">+91 89046 88886</Typography>
         </div>
       </div>
       {/* Right Side Form */}
@@ -170,7 +174,7 @@ const FormSection: React.FC<FormSectionProps> = ({
             <input
               type="email"
               placeholder="Your Email"
-              value={formData.email} 
+              value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
@@ -179,16 +183,15 @@ const FormSection: React.FC<FormSectionProps> = ({
           </div>
 
           <div className="mt-[45px]">
-          <input
-  type="tel"
-  placeholder="Your Phone Number"
-  value={formData.phone}
-  onChange={(e) =>
-    setFormData({ ...formData, phone: e.target.value })
-  }
-  className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium" 
-/>
-
+            <input
+              type="tel"
+              placeholder="Your Phone Number"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+              className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium"
+            />
           </div>
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
@@ -242,7 +245,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                   className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium pr-8 appearance-none"
                 >
                   <option value="" disabled>
-                    Interested In
+                    Position Being Applied For
                   </option>
                   {options.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -354,9 +357,9 @@ const FormSection: React.FC<FormSectionProps> = ({
         </form>
         <div className="block lg:hidden text-center mt-6 mb-[56px]">
           <hr className="w-full md:w-[392px] mt-[38px] border-black border-opacity-20" />
-          <SubHeading className="pt-4">
+          <Typography className="pt-4 text-customTextGray font-freightNeoMedium">
             Alternatively, for your queries contact
-          </SubHeading>
+          </Typography>
           <span className="text-customTextGray font-CandideCondensedBold font-bold">
             +91 89046 88886
           </span>

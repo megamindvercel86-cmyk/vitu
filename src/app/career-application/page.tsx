@@ -10,13 +10,13 @@ export default function CareerApplication() {
       <FormSection
         heading={
           <>
-            The career you've been <br />
+            The career you've been 
             waiting for starts here!
           </>
         }
         subheading={
           <>
-            Begin your journey to a rewarding career—fill <br />
+            Begin your journey to a rewarding career—fill 
             out the form & let’s get started
           </>
         }

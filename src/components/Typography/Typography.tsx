@@ -10,7 +10,7 @@ export default function Typography({
   fontWeight,
   ref,
 }: {
-  variant?: "h1" | "h2" | "h3" | "body" | "small" | "nav" | "custom";
+  variant?: "h1" | "h2" | "h3" | "body" | "small" | "nav" | "custom" | "number";
   className?: string;
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -21,9 +21,7 @@ export default function Typography({
     <h1
       ref={ref}
       style={style}
-      className={`text-[2.5rem] lg:text-[4rem] xl:text-[4.375rem] 2xl:text-[6.25rem] ${
-        fontWeight ? fontWeight : "font-semibold"
-      } ${className}`}
+      className={`xl:text-[3.25rem] lg:text-5xl md:text-[3rem] font-freightNeoSemibold  text-3xl ${className}`}
     >
       {children}
     </h1>
@@ -51,9 +49,7 @@ export default function Typography({
     <p
       ref={ref}
       style={style}
-      className={`text-base lg:text-xl ${
-        fontWeight ? fontWeight : "font-normal"
-      } ${className}`}
+      className={`text-lg lg:text-xl md:text-lg  font-freightNeoMedium text-customTextGray font-medium ${className}`}
     >
       {children}
     </p>
@@ -81,7 +77,11 @@ export default function Typography({
     <p ref={ref} style={style} className={className}>
       {children}
     </p>
-  ) : (
+  ) : variant === "number" ? (
+    <p ref={ref} style={style} className={`text-customTextGray font-CandideCondensedBold font-bold ${className}`}>
+      {children}
+    </p>
+  )  : (
     <p
       ref={ref}
       style={style}

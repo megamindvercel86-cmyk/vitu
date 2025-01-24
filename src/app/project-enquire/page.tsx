@@ -8,13 +8,13 @@ export default function ProjetEnquire() {
       <FormSection
         heading={
           <>
-           Your dream home is <br />
+           Your dream home is 
            closer than you think!
           </>
         }
         subheading={
           <>
-            Begin your journey to a new home—fill out the <br />
+            Begin your journey to a new home—fill out the 
             form & let’s get started.
           </>
         }
