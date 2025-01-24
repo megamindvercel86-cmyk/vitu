@@ -70,8 +70,8 @@ const FAQ = () => {
                       transform:
                         openIndex === index ? "rotate(0deg)" : "rotate(180deg)",
                       transition: "transform 0.3s ease",
-                      width: "11px",
-                      height: "19px",
+                      width: "30px",
+                      height: "30px",
                     }}
                     color="#4F3737"
                   />
