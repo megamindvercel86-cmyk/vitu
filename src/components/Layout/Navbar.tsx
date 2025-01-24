@@ -91,7 +91,7 @@ export default function Navbar({
                 defaultTextColor={
                   navbar === "primary"
                     ? "text-primaryButtonTextColor"
-                    : "text-black"
+                    : "text-white"
                 }
               >
                 Get in Touch

@@ -114,7 +114,7 @@ const FormSection: React.FC<FormSectionProps> = ({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
-      setFormData({ ...formData, resume: file }); // Update form data without uploading the file yet
+      setFormData({ ...formData, resume: file });
     }
   };
   

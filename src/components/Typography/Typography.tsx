@@ -57,9 +57,7 @@ export default function Typography({
     <p
       ref={ref}
       style={style}
-      className={`text-sm lg:text-base ${
-        fontWeight ? fontWeight : "font-normal"
-      } ${className}`}
+      className={`text-customTextGray font-medium sm:text-[19px] text-[19px] md:text-xl  font-freightNeoMedium ${className}`}
     >
       {children}
     </p>
