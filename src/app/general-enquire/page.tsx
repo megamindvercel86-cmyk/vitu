@@ -8,19 +8,10 @@ export default function GeneralEnquire() {
   return (
     <Layout navbarProps={{ showGetInTouch: false }}>
       <FormSection
-        heading={
-          <>      
-              Excited about the
-              possibilities your next 
-              home could offer?
-          </>
-        }
-        subheading={
-          <>
+        heading="Excited about the possibilities your next home could offer?"
+        subheading="
             Take the first step towards the home of your
-            dreams. Fill in the form and begin your Journey.
-          </>
-        }
+            dreams. Fill in the form and begin your Journey."
         page="General Enquire"
       />
 
