@@ -1,10 +1,13 @@
+import { FC } from "react";
 import Layout from "@/components/Layout/Layout";
 import TermsAndService from "@/components/TermsOfService/TermsAndService";
 
-export default function TermsOfService() {
+const TermsOfService: FC = () => {
   return (
     <Layout>
-     <TermsAndService/>
+      <TermsAndService />
     </Layout>
   );
-}
+};
+
+export default TermsOfService;

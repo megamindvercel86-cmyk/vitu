@@ -2,10 +2,11 @@ import React from "react";
 import SubHeading from "../Common/SubHeding";
 import Heading from "../Common/Heading";
 import Button from "../Common/Button";
+import Typography from "../Typography/Typography";
 
-const HeroBanner = () => {
+const HeroBanner: React.FC = () => {
   return (
-    <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]">
+    <div className="relative xl:h-[67.5rem] md:h-[64.125rem] sm:h-[35.5rem] h-[35.5rem]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -16,27 +17,36 @@ const HeroBanner = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       </div>
-
       {/* Content */}
       <div className="relative h-full flex items-end pb-24">
         <div className="w-full">
-          <div className="xl:px-[210px] lg:px-[78px] sm:px-[26px]  px-[26px]">
+          <div className="xl:px-[13.125rem] lg:px-[4.875rem] sm:px-[1.625rem]  px-[1.625rem]">
             <div className="text-white  mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
               <div>
-                <SubHeading className="text-white lg:text-2xl sm:text-xs">
+                <Typography
+                  variant="custom"
+                  className="text-white lg:text-2xl sm:text-xs"
+                >
                   BLOG{" "}
-                </SubHeading>
-                <Heading className="text-white">Is it Really worth it?</Heading>
-                <SubHeading className="text-white lg:text-2xl sm:text-xs">
+                </Typography>
+                <Typography
+                  variant="custom"
+                  className="text-white  font-freightNeoMedium md:text-[4rem] sm:text-[2rem] text-[2rem]"
+                >
+                  Is it Really worth it?
+                </Typography>
+                <Typography
+                  variant="custom"
+                  className="text-white md:text-2xl sm:text-sm text-sm font-freightNeoMedium md:w-[38.688rem] w-full"
+                >
                   Is real estate investment worth it? We break down the pros,
-                  <br />
                   cons, and key considerations to help you decide.
-                </SubHeading>
+                </Typography>
               </div>
               <div className="w-full sm:w-auto">
                 <Button
                   onClick={() => {}}
-                  className="rounded-[32px] bg-transparent border-2 w-full lg:w-[251px] lg:h-[72px] sm:text-base lg:text-[32px] border-white"
+                  className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg:text-[2rem] border-white"
                 >
                   Read Now
                 </Button>
