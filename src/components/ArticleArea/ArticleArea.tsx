@@ -3,6 +3,7 @@ import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import SubHeading from "../Common/SubHeding";
 import Heading from "../Common/Heading";
+import Typography from "../Typography/Typography";
 
 const articles = [
   {
@@ -54,16 +55,16 @@ const ArticleArea: React.FC = () => {
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         <div className="text-center xl:mb-[87px] lg:mb-[92px] mb-[43px] xl:mx-[290px] lg:mx-[252px] mx-0">
-          <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
+          <Typography variant="custom"  className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
             INSIGHTS
-          </SubHeading>
-          <Heading className="xl:pb-[24px] lg:pb-[27px] pb-[20px]">
+          </Typography>
+          <Typography  variant="custom" className="xl:pb-[24px] lg:pb-[27px] pb-[20px]">
             Your Home Discovery Center
-          </Heading>
-          <SubHeading className="lg:text-2xl">
+          </Typography>
+          <Typography variant="custom" className="lg:text-2xl">
             Delve into all things Realty through our insights - uncover
             articles, tips, and stories inspiring your dream home journey.
-          </SubHeading>
+          </Typography>
         </div>
 
         {/* Carousel Section */}
