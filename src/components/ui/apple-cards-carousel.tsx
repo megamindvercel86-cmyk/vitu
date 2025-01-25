@@ -107,7 +107,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     >
       <div className="relative w-full">
         <div
-          className="flex  overflow-x-scroll overscroll-x-auto  scroll-smooth [scrollbar-width:none]"
+          className="flex overflow-x-scroll overscroll-x-auto  scroll-smooth [scrollbar-width:none]"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -117,7 +117,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             )}
           ></div>
 
-          <div className={cn("flex flex-row justify-start gap-4 ", " mx-auto")}>
+          <div
+            className={cn(
+              "flex flex-row justify-start xl:gap-4 md:gap-2 lg:gap-3",
+              "mx-auto"
+            )}
+          >
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -135,7 +140,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={"card" + index}
-                className=" rounded-3xl"
+                className="rounded-3xl"
               >
                 {item}
               </motion.div>
@@ -254,10 +259,9 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="lg:rounded-[20px] rounded-[10px] bg-gray-100 dark:bg-neutral-900 
-    h-[281px] w-[231px] sm:h-[281px] sm:w-[231px] 
-    md:h-[500px] md:w-[400px] lg:h-[500px] lg:w-[400px] 
-    xl:h-[540px] xl:w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="md:rounded-[20px] rounded-[10px] bg-gray-100 dark:bg-neutral-900 
+        md:h-[350px] md:w-[300px] lg:h-[500px] lg:w-[400px] 
+        xl:h-[540px] xl:w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -275,7 +279,7 @@ export const Card = ({
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.subtitle}` : undefined}
-            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-3xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 "
+            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 "
           >
             {card.subtitle}
           </motion.p>
