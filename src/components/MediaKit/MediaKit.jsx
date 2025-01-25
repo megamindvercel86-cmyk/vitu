@@ -5,12 +5,12 @@ import Button from "../Common/Button";
 export default function MediaKit() {
   return (
     <div className="bg-white">
-      <div className="xl:mx-[278px] lg:mx-[78px] lg:flex lg:justify-between py-8 sm:py-12 items-center justify-center">
-        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+      <div className="xl:mx-[278px] lg:mx-[78px] lg:flex mx-7 lg:justify-between py-8 sm:py-12 text-center items-center justify-center">
+        <span className="md:font-freightNeoMedium font-freightNeoSemibold lg:text-2xl sm:text-3xl text-3xl sm:text-customBrown text-customBrown md:text-[#040707] xl:text-[28px]">
           Download our Media Kit & Get Started!
         </span>
-        <div className="flex lg:justify-end sm:justify-center ">
-          <Button className="lg:w-[236px] lg:h-[55px] lg:text-[28px]">
+        <div className="flex lg:justify-end sm:justify-center md:w-auto sm:w-full w-full">
+          <Button className="md:w-[236px] lg:h-[55px] lg:text-[28px] text-base w-full">
             Download Now
           </Button>
         </div>

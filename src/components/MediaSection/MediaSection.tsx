@@ -99,7 +99,6 @@ export default function MediaSection() {
           Stay Updated with Our Latest Happenings
         </Heading>
       </div>
-
       <div className="relative">
         <div className="flex gap-4 sm:gap-6 overflow-hidden">
           {newsItems
@@ -113,7 +112,7 @@ export default function MediaSection() {
                 } transition-all duration-300`}
               >
                 <div className="rounded-lg overflow-hidden h-full">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover">
+                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[260px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -141,7 +140,7 @@ export default function MediaSection() {
             ))}
         </div>
 
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px] px-6">
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px] ">
           <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
             Explore More
           </span>
