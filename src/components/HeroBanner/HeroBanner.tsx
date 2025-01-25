@@ -15,10 +15,10 @@ const HeroBanner: React.FC = () => {
       >
       </div>
       {/* Content */}
-      <div className="relative h-full flex items-end pb-24">
+      <div className="relative h-full flex items-end pb-8 md:pb-24">
         <div className="w-full">
           <div className="xl:px-[13.125rem] lg:px-[4.875rem] sm:px-[1.625rem]  px-[1.625rem]">
-            <div className="text-white  mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
+            <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
               <div>
                 <Typography
                   variant="custom"
