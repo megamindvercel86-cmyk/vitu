@@ -62,8 +62,13 @@ const ArticleArea: React.FC = () => {
     title: article.title,
     subtitle: article.subtitle,
     description: article.subtitle || "No description available",
+    content: (
+      <div className="text-neutral-700 p-4">
+        <p>{article.subtitle || "No description available"}</p>
+      </div>
+    ), // Adding the content property here
   }));
-
+  
   return (
     <div className="xl:mx-[278px] md: lg:ml-[78px]">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
