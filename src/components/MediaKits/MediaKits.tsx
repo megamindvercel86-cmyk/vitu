@@ -29,13 +29,14 @@ function MediaKits() {
   ];
 
   return (
-    <div className="bg-[#EFEAE8] pt-[142px] pb-[133px]">
-      <div className="container mx-[282px]">
+    <div
+      className="bg-[#EFEAE8] pt-[142px] pb-[133px] mx-auto flex justify-center">
+      <div className="container  max-w-[1359px] md:mx-20 mx-7">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {downloadCards.map((card, index) => (
             <div
               key={index}
-              className={`rounded-[20px] px-[32px] pt-[36px] xl:w-[429px] xl:h-[265px] ${
+              className={`rounded-[20px] px-[32px] pt-[36px]  ${
                 card.variant === "white"
                   ? "bg-white"
                   : card.variant === "light"
@@ -44,8 +45,8 @@ function MediaKits() {
               }`}
             >
               {card.logo ? (
-                <div className="flex flex-col items-center">
-                  <div className="w-[300px] h-[96px] mx-auto mt-[22px] mb-[36px]">
+                <div className=" flex flex-col items-center">
+                  <div className=" mx-auto mt-[22px] mb-[36px]">
                     <Image
                       src={card.src}
                       width={300}
@@ -56,7 +57,7 @@ function MediaKits() {
                   </div>
                   <div className="flex justify-center">
                     <button
-                      className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border font-freightNeoMedium ${
+                      className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border mb-[50px] font-freightNeoMedium ${
                         card.variant === "dark"
                           ? "border-white text-white"
                           : "border-[#AE8566] text-[#AE8566]"

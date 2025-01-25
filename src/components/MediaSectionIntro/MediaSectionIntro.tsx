@@ -6,7 +6,7 @@ import Image from "next/image";
 function MediaSectionIntro() {
   return (
     <>
-      <div className="hidden md:block relative xl:mx-[210px] xl:mt-[200px] xl:mb-[223px] md:mx-[40px] lg:mx-[133px] md:mt-[137px]">
+      <div className="hidden md:block relative xl:mx-[210px] xl:mt-[200px] xl:mb-[223px] mb-[168px] md:mx-[40px] lg:mx-[133px] md:mt-[137px]">
         {/* Image overlay */}
         <Image
           src={"/images/mediakit.png"}
