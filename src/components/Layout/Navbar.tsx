@@ -10,21 +10,21 @@ import { MenuIcon, MenuIconWhite } from "../Icons/Icons";
 
 interface NavbarProps {
   navbar?: string;
-  active?: string;
+  active?: string; // Pass the active route as a prop
   showGetInTouch?: boolean;
 }
 
 export default function Navbar({
   showGetInTouch = true,
   navbar = "secondary",
-  active = "",
+  active = "", // The currently active route
 }: NavbarProps) {
   // State for toggling the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <>
-      <header className="xl:pt-[98px] xl:px-[210px] lg:pt-[62px] lg:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
+    <div>
+      <header className="max-w-[1497px] xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
         <nav className="flex justify-between items-center">
           {/* Left side: Logo */}
           <div className="flex items-center">
@@ -48,39 +48,56 @@ export default function Navbar({
             className="md:flex lg:hidden flex items-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {" "}
             {navbar === "primary" ? <MenuIconWhite /> : <MenuIcon />}
           </div>
 
           {/* Main Navigation Links */}
           <div
-            className={`flex flex-col md:gap-4 lg:gap-[86px] lg:flex-row items-center mt-4 lg:mt-0 ${
+            className={`flex flex-col md:gap-4 lg:gap-[86px] ml-20 max-w-[712px] lg:flex-row items-center mt-4 lg:mt-0 ${
               isMenuOpen ? "block" : "hidden"
             } md:hidden lg:flex`}
           >
             <NavLink
               href="/"
-              className={`${
-                navbar === "primary" ? "text-white" : "text-black"
+              className={`pt-1 ${
+                active === "/" // Check if this is the active link
+                  ? navbar === "primary"
+                    ? "text-white border-b-2 border-white"
+                    : "text-black border-b-2 border-black"
+                  : navbar === "primary"
+                  ? "text-white"
+                  : "text-black"
               }`}
             >
               About
             </NavLink>
             <NavLink
               href="/about"
-              className={`${
-                navbar === "primary" ? "text-white" : "text-black"
+              className={`pt-1 ${
+                active === "/about" // Check if this is the active link
+                  ? navbar === "primary"
+                    ? "text-white border-b-2 border-white"
+                    : "text-black border-b-2 border-black"
+                  : navbar === "primary"
+                  ? "text-white"
+                  : "text-black"
               }`}
             >
               Projects
             </NavLink>
             <NavLink
-              href="/contact"
-              className={`${
-                navbar === "primary" ? "text-white" : "text-black"
+              href="/resources"
+              className={`pt-1 ${
+                active === "/resources" // Check if this is the active link
+                  ? navbar === "primary"
+                    ? "text-white border-b-2 border-white"
+                    : "text-black border-b-2 border-black"
+                  : navbar === "primary"
+                  ? "text-white"
+                  : "text-black"
               }`}
             >
-              Contact
+              Resources
             </NavLink>
             {showGetInTouch && (
               <Button
@@ -100,6 +117,6 @@ export default function Navbar({
           </div>
         </nav>
       </header>
-    </>
+    </div>
   );
 }

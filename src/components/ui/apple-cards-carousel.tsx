@@ -260,8 +260,8 @@ export const Card = ({
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         className="md:rounded-[20px] rounded-[10px] bg-gray-100 dark:bg-neutral-900 
-        md:h-[350px] md:w-[300px] lg:h-[500px] lg:w-[400px] 
-        xl:h-[540px] xl:w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
+        md:h-[350px] md:max-w-[300px] lg:h-[500px] lg:max-w-[400px] 
+        xl:h-[540px] xl:max-w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">

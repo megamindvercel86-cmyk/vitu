@@ -20,7 +20,7 @@ const Resource: React.FC = () => {
       navbarClassName="absolute top-0 left-0 right-0 z-10 w-full"
       navbarProps={{
         navbar: "primary", // Adjust the value based on actual requirements
-        active: "resources", // Active state for the navbar
+        active: "/resources", // Active state for the navbar
         showGetInTouch: true, // Pass the showGetInTouch flag
       }}
     >

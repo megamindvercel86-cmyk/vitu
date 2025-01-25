@@ -122,7 +122,7 @@ export default function MediaSection() {
                 } transition-all duration-300`}
               >
                 <div className="rounded-lg overflow-hidden h-full">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[260px] sm:w-[260px] sm:h-[201px] lg:w-[400px] lg:h-[310px] xl:w-[400px] xl:h-[310px] object-cover">
+                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[260px]  sm:h-[201px]  lg:h-[310px] xl:h-[310px] object-cover">
                     <Image
                       src={item.image}
                       alt={item.title}

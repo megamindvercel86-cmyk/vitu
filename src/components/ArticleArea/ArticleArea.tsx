@@ -70,7 +70,7 @@ const ArticleArea: React.FC = () => {
   }));
 
   return (
-    <div className="xl:mx-[278px] md: lg:ml-[78px]">
+    <div className="xl:mx-[278px] md: lg:mx-[78px]">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         <div className="md:text-center md:px-0 px-7 xl:mb-[87px] lg:mb-[92px] mb-[43px] xl:mx-[290px] lg:mx-[252px] mx-0">
@@ -107,7 +107,7 @@ const ArticleArea: React.FC = () => {
         </div>
 
         {/* Mobile Carousel Section */}
-        <div className="relative sm:block lg:hidden">
+        <div className="relative sm:block md:hidden">
           <MobileCarousel cards={mobileCards} />
         </div>
       </main>
