@@ -8,11 +8,16 @@ interface ButtonProps {
   defaultTextColor?: string; // Optional prop for default text color
 }
 
-const Button = ({ onClick, children, className, defaultTextColor = "text-white" }: ButtonProps) => {
+const Button = ({
+  onClick,
+  children,
+  className,
+  defaultTextColor = "text-white",
+}: ButtonProps) => {
   const combinedClassName = classNames(
     "w-[146px] h-[55px] font-FreightNeoProBold rounded-[27.5px] bg-cusomButtonColor transition-colors pt-1",
     defaultTextColor,
-    className
+    className,
   );
 
   return (

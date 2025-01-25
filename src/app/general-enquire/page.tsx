@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function GeneralEnquire() {
   return (
     <Layout navbarProps={{ showGetInTouch: false }}>
-        <ToastContainer position="top-right" autoClose={5000} />
+      <ToastContainer position="top-right" autoClose={5000} />
       <FormSection
         heading="Excited about the possibilities your next home could offer?"
         subheading="

@@ -1,6 +1,5 @@
 "use client";
 
-
 import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
 import FounderMessage from "@/components/FounderMessage/FounderMessage";
 import JoinOurTeamHeroSection from "@/components/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
@@ -15,17 +14,17 @@ export default function About() {
     <Layout
       navbarClassName="absolute top-0 left-0 right-0 z-10 w-full"
       navbarProps={{
-        navbar: "primary", 
-        active: "resources", 
+        navbar: "primary",
+        active: "resources",
         showGetInTouch: true,
       }}
     >
       <AboutHeroSection />
       {/* <StorySection /> */}
       <FounderMessage />
-      <VisionAndMission/>
-      <LeadershipTeam/>
-      <JoinOurTeamHeroSection/>
+      <VisionAndMission />
+      <LeadershipTeam />
+      <JoinOurTeamHeroSection />
     </Layout>
   );
 }

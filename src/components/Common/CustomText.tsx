@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import classNames from "classnames";
 
 interface HeadingProps {
@@ -6,16 +6,13 @@ interface HeadingProps {
   className?: string;
 }
 
-
 const CustomText = ({ children, className }: HeadingProps) => {
   const combinedClassName = classNames(
     "text-customTextGray font-medium text-xl font-freightNeoMedium",
-    className
+    className,
   );
 
   return <p className={combinedClassName}>{children}</p>;
 };
 
 export default CustomText;
-
-

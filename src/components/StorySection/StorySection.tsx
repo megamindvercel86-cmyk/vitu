@@ -46,7 +46,7 @@ const images = [
     src: "/images/timelineImages/timelineImage8.png",
     year: "2024",
     message: "Continuing the Legacy",
-  }
+  },
 ];
 
 function YearDisplay({ number }: { number: number }) {
@@ -70,9 +70,9 @@ export default function StorySection() {
 
     gsap.set(container, { height: "100vh" });
     gsap.set(".sections-wrapper", {
-      width: sections.length * 100 + "%" ,
+      width: sections.length * 100 + "%",
       display: "flex",
-      overflow: "hidden", 
+      overflow: "hidden",
     });
     gsap.set(sections, { width: 100 / sections.length + "%" });
 
@@ -86,10 +86,10 @@ export default function StorySection() {
         end: () => (container ? container.scrollWidth - window.innerWidth : 0),
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          const totalSections = images.length-1;
+          const totalSections = images.length - 1;
           const currentIndex = Math.min(
             Math.floor(self.progress * totalSections),
-            totalSections - 1
+            totalSections - 1,
           );
           setCurrentYear(images[currentIndex].year);
           setProgress(self.progress * 100);
@@ -148,7 +148,7 @@ export default function StorySection() {
               <div className="w-full h-full">
                 <img
                   src={image.src}
-                  alt={`Scene ${index }`}
+                  alt={`Scene ${index}`}
                   className="w-full h-full object-cover"
                 />
 
@@ -171,7 +171,7 @@ export default function StorySection() {
               <div
                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-300 to-purple-300 transition-all duration-300"
                 style={{ width: `${progress}%` }}
-              />             
+              />
             </div>
           </div>
         </div>

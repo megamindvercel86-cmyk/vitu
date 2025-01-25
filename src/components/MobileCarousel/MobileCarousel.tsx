@@ -8,7 +8,12 @@ import React, {
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
+import {
+  IconArrowNarrowLeft,
+  IconArrowNarrowRight,
+  PrimaryViewMoreButton,
+  SecondaryViewMoreButton,
+} from "../Icons/Icons";
 
 interface Card {
   id: string;
@@ -135,9 +140,9 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
 
   return (
     <>
-      <div className="relative w-full mx-auto">
+      <div className="relative w-full  mx-auto">
         <div
-          className="relative overflow-hidden py-8"
+          className="relative overflow-hidden h-[350px] py-8"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -153,7 +158,7 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
                     "transition-all duration-500 ease-in-out cursor-pointer ",
                     index === 1
                       ? "md:w-[300px] w-[231px] h-[289px] opacity-100 z-20 scale-100"
-                      : "w-[180px] h-[267px] my-auto   hover:opacity-60"
+                      : "w-[180px] h-[267px] my-auto   hover:opacity-60",
                   )}
                 >
                   <div className="relative bg-white rounded-[20px] shadow-xl overflow-hidden h-full">

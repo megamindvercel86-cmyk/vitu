@@ -9,7 +9,7 @@ interface HeadingProps {
 const Heading = ({ children, className }: HeadingProps) => {
   const combinedClassName = classNames(
     "text-customBrown font-semibold xl:text-[52px] font-freightNeoSemibold lg:text-5xl text-3xl ",
-    className
+    className,
   );
 
   return <h2 className={combinedClassName}>{children}</h2>;

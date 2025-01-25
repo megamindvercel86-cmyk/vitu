@@ -7,7 +7,7 @@ export default function JoinOurTeamHeroSection() {
     <div className="relative xl:h-[1085px] sm:h-[404px] lg:h-[891px] md:h-[660px] h-[404px] ">
       {/* Background Image */}
       <div className="absolute inset-0">
-      <Image
+        <Image
           width={1920}
           height={1080}
           src="/images/backgroundImages/JoinOurTeamHeroSectionBackground.png"

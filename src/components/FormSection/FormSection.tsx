@@ -55,15 +55,15 @@ const FormSection: React.FC<FormSectionProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
       // Validate form fields
       if (!formData.fullName || !formData.email || !formData.phone) {
-        console.log("tapped")
+        console.log("tapped");
         toast.error("Please fill out all required fields."); // Show error toast
         return;
       }
-  
+
       let resumeUrl: string | null = null;
       if (formData.resume) {
         // Upload the file to Firebase Storage if a file is selected
@@ -71,29 +71,29 @@ const FormSection: React.FC<FormSectionProps> = ({
         const uploadResult = await uploadBytes(storageRef, formData.resume);
         resumeUrl = uploadResult.ref.fullPath; // Store the file URL in Firestore
       }
-  
+
       // Prepare form data to submit
       const formToSubmit = {
         ...formData,
         resumeUrl,
       };
-  
+
       // Determine collection name based on the page type
       const collectionName =
         page === "General Enquire"
           ? "generalEnquiries"
           : page === "Project Enquire"
-          ? "projectEnquiries"
-          : "careerApplications";
-  
+            ? "projectEnquiries"
+            : "careerApplications";
+
       // Reference the Firestore collection
       const collectionRef = collection(db, collectionName);
-  
+
       // Add the form data to Firestore
       await addDoc(collectionRef, formToSubmit);
-  
+
       toast.success("Form submitted successfully!");
-  
+
       // Reset form after submission
       setFormData({
         fullName: "",
@@ -109,7 +109,6 @@ const FormSection: React.FC<FormSectionProps> = ({
       toast.error("Failed to submit form. Please try again."); // Show error toast
     }
   };
-  
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
@@ -117,7 +116,7 @@ const FormSection: React.FC<FormSectionProps> = ({
       setFormData({ ...formData, resume: file });
     }
   };
-  
+
   const handleIconClick = () => {
     if (selectRef.current) {
       selectRef.current.focus();

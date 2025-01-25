@@ -36,10 +36,10 @@ const FAQ = () => {
 
   return (
     <section className="bg-white mt-[200px]">
-       <div className="flex flex-col lg:flex-row pt-[66px] px-[27px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
+      <div className="flex flex-col lg:flex-row pt-[66px] px-[27px] md:pt-[66px] lg:pt-[155px] xl:pt-[159px] xl:px-[277px] lg:px-[132px] gap-[30px] md:gap-[45px]">
         {/* Left Section */}
         <div className="flex-1">
-        <Heading className="text-center lg:text-left">
+          <Heading className="text-center lg:text-left">
             Frequently Asked
             <br /> Questions
           </Heading>

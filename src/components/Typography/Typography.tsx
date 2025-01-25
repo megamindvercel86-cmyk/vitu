@@ -76,10 +76,14 @@ export default function Typography({
       {children}
     </p>
   ) : variant === "number" ? (
-    <p ref={ref} style={style} className={`text-customTextGray font-CandideCondensedBold font-bold ${className}`}>
+    <p
+      ref={ref}
+      style={style}
+      className={`text-customTextGray font-CandideCondensedBold font-bold ${className}`}
+    >
       {children}
     </p>
-  )  : (
+  ) : (
     <p
       ref={ref}
       style={style}

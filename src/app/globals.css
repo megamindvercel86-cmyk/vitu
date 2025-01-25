@@ -7,7 +7,6 @@
   --foreground: #171717;
 }
 
-
 @layer utilities {
   .snap-x {
     scroll-snap-type: x mandatory;
@@ -20,10 +19,9 @@
   }
 }
 
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #F8F6F5;
+    --background: #f8f6f5;
     --foreground: #ededed;
   }
 }
@@ -34,56 +32,56 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Black';
-  src: url('/fonts/Freight Neo Pro Black.otf') format('opentype');
+  font-family: "Freight Neo Pro Black";
+  src: url("/fonts/Freight Neo Pro Black.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Medium';
-  src: url('/fonts/Freight Neo Pro Medium.otf') format('opentype');
+  font-family: "Freight Neo Pro Medium";
+  src: url("/fonts/Freight Neo Pro Medium.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Semibold';
-  src: url('/fonts/Freight Neo Pro Semibold.otf') format('opentype');
+  font-family: "Freight Neo Pro Semibold";
+  src: url("/fonts/Freight Neo Pro Semibold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Bold';
-  src: url('/fonts/Freight Neo Pro Bold.otf') format('opentype');
+  font-family: "Freight Neo Pro Bold";
+  src: url("/fonts/Freight Neo Pro Bold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Light';
-  src: url('/fonts/Freight Neo Pro Light.otf') format('opentype');
+  font-family: "Freight Neo Pro Light";
+  src: url("/fonts/Freight Neo Pro Light.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Candide-CondensedBold';
-  src: url('/fonts/Candide-CondensedBold.ttf') format('truetype');
+  font-family: "Candide-CondensedBold";
+  src: url("/fonts/Candide-CondensedBold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Candide-CondensedMedium';
-  src: url('/fonts/Candide-CondensedMedium.ttf') format('truetype');
+  font-family: "Candide-CondensedMedium";
+  src: url("/fonts/Candide-CondensedMedium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Freight Neo Pro Normal';
-  src: url('/fonts/Freight Neo Pro Book.otf') format('truetype');
+  font-family: "Freight Neo Pro Normal";
+  src: url("/fonts/Freight Neo Pro Book.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Candide-CondensedNormal';
-  src: url('/fonts/Candide-CondensedRegular.ttf') format('truetype');
+  font-family: "Candide-CondensedNormal";
+  src: url("/fonts/Candide-CondensedRegular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

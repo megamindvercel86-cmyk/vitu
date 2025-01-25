@@ -51,7 +51,6 @@ const carouselData: CarouselItem[] = [
   },
 ];
 
-
 const VisionForTheFuture: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -73,7 +72,7 @@ const VisionForTheFuture: React.FC = () => {
       setCurrentIndex(nextIndex);
       setTimeout(() => setIsAnimating(false), 500); // Reduced animation time for smoother transitions
     },
-    [currentIndex, totalSlides, isAnimating]
+    [currentIndex, totalSlides, isAnimating],
   );
 
   const nextSlide = useCallback(() => transition("right"), [transition]);
@@ -118,8 +117,8 @@ const VisionForTheFuture: React.FC = () => {
                 index === currentIndex
                   ? "translate-x-0"
                   : index > currentIndex
-                  ? "translate-x-full"
-                  : "-translate-x-full";
+                    ? "translate-x-full"
+                    : "-translate-x-full";
 
               return (
                 <div
@@ -128,12 +127,13 @@ const VisionForTheFuture: React.FC = () => {
                     index === currentIndex
                       ? "opacity-100 translate-x-0"
                       : direction === "right"
-                      ? index === (currentIndex - 1 + totalSlides) % totalSlides
-                        ? "opacity-0 -translate-x-full"
-                        : "opacity-0 translate-x-full"
-                      : index === (currentIndex + 1) % totalSlides
-                      ? "opacity-0 translate-x-full"
-                      : "opacity-0 -translate-x-full"
+                        ? index ===
+                          (currentIndex - 1 + totalSlides) % totalSlides
+                          ? "opacity-0 -translate-x-full"
+                          : "opacity-0 translate-x-full"
+                        : index === (currentIndex + 1) % totalSlides
+                          ? "opacity-0 translate-x-full"
+                          : "opacity-0 -translate-x-full"
                   }`}
                 >
                   {/* Image Section */}
@@ -162,13 +162,13 @@ const VisionForTheFuture: React.FC = () => {
 
           {/* Pagination Dots Section */}
           <div className="lg:w-1/2 w-full flex sm:flex-col flex-col md:flex-row sm:items-center items-center md:justify-end mt-6 lg:mt-0 ">
-          <button
-            className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
-            onClick={() => console.log("Button clicked")}
-          >
-            See What’s Next
-            <CTAButtonIcon direction="right" />
-          </button>
+            <button
+              className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+              onClick={() => console.log("Button clicked")}
+            >
+              See What’s Next
+              <CTAButtonIcon direction="right" />
+            </button>
             <div className="flex space-x-3 bg-[#AE856666] rounded-[32px] py-4 px-6">
               {carouselData.map((_, dotIndex) => (
                 <button

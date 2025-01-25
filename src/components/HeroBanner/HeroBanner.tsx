@@ -12,8 +12,7 @@ const HeroBanner: React.FC = () => {
           backgroundImage:
             'url("/images/backgroundImages/resourcesPageBackground.png")',
         }}
-      >
-      </div>
+      ></div>
       {/* Content */}
       <div className="relative h-full flex items-end pb-8 md:pb-24">
         <div className="w-full">

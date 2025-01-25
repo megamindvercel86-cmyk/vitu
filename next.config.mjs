@@ -7,7 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['images.unsplash.com'], // Allow images from Unsplash
+    domains: ["images.unsplash.com"], // Allow images from Unsplash
   },
 };
 

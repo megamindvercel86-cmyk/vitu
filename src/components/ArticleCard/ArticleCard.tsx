@@ -7,7 +7,12 @@ interface ArticleCardProps {
   image: string;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ category, title, subtitle, image }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({
+  category,
+  title,
+  subtitle,
+  image,
+}) => {
   return (
     <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       {/* Image Section */}

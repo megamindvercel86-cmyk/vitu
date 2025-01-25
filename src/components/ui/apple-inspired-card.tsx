@@ -39,13 +39,14 @@ export const AppleInspiredCard: React.FC<CardProps> = ({
           className="object-cover absolute z-10 inset-0"
         />
         <div className="absolute bottom-6 left-6 right-6 z-50 flex items-center justify-between">
-        <motion.p
-  layoutId={`title-${title}`}
-  className="text-white text-5xl"
->
-  <span className="font-CandideCondensedNormal">{title.split(' ')[0]}</span>{" "}
-  <span className="font-FreightNeoProNormal">{title.split(' ').slice(1).join(' ')}</span>
-</motion.p>
+          <motion.p layoutId={`title-${title}`} className="text-white text-5xl">
+            <span className="font-CandideCondensedNormal">
+              {title.split(" ")[0]}
+            </span>{" "}
+            <span className="font-FreightNeoProNormal">
+              {title.split(" ").slice(1).join(" ")}
+            </span>
+          </motion.p>
 
           <SecondaryViewMoreButton />
         </div>
@@ -99,7 +100,7 @@ const BlurImage: React.FC<React.ComponentProps<typeof Image>> = ({
       className={cn(
         "transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
-        className
+        className,
       )}
       onLoad={() => setLoading(false)}
       alt={alt}

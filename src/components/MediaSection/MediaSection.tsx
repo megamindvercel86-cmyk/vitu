@@ -15,45 +15,55 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 2,
     image: "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 5,
     image: "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
 ];
 
@@ -84,8 +94,8 @@ export default function MediaSection() {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev - 1 < 0 ? totalSlides - 1 : prev - 1 // Loop to end
+    setCurrentIndex(
+      (prev) => (prev - 1 < 0 ? totalSlides - 1 : prev - 1), // Loop to end
     );
   };
 

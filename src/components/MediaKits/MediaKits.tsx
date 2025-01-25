@@ -39,8 +39,8 @@ function MediaKits() {
                 card.variant === "white"
                   ? "bg-white"
                   : card.variant === "light"
-                  ? "bg-white"
-                  : "bg-[#1A1A1A]"
+                    ? "bg-white"
+                    : "bg-[#1A1A1A]"
               }`}
             >
               {card.logo ? (

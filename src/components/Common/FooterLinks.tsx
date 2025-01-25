@@ -10,7 +10,7 @@ interface FooterLinkProps {
 const FooterLink = ({ href, children, className }: FooterLinkProps) => {
   const combinedClassName = classNames(
     "font-FreightNeoProLight font-light text-base text-footerTextColor",
-    className
+    className,
   );
 
   return (

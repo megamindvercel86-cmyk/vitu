@@ -68,7 +68,7 @@ const ArticleArea: React.FC = () => {
       </div>
     ), // Adding the content property here
   }));
-  
+
   return (
     <div className="xl:mx-[278px] md: lg:ml-[78px]">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
@@ -98,9 +98,11 @@ const ArticleArea: React.FC = () => {
         {/* Carousel Section */}
         <div className="relative md:block hidden">
           <div className="w-full h-full">
-            <Carousel items={carouselCards.map((card, index) => (
-              <Card key={index} card={card} index={index} layout={true} />
-            ))} />
+            <Carousel
+              items={carouselCards.map((card, index) => (
+                <Card key={index} card={card} index={index} layout={true} />
+              ))}
+            />
           </div>
         </div>
 

@@ -9,7 +9,12 @@ const TermsAndService: React.FC = () => {
         <div className="pt-1">
           <BackArrow />
         </div>
-        <Typography variant="custom" className="text-customBrown font-semibold xl:text-[52px] font-freightNeoSemibold lg:text-5xl text-3xl ">Terms of Service</Typography>
+        <Typography
+          variant="custom"
+          className="text-customBrown font-semibold xl:text-[52px] font-freightNeoSemibold lg:text-5xl text-3xl "
+        >
+          Terms of Service
+        </Typography>
       </div>
       <div className="lg:pl-[2.938rem] lg:pt-[3.625rem]  sm:pt-[1.25rem] lg:flex sm:flex-col lg:flex-row pt-5">
         <div>
@@ -24,7 +29,9 @@ const TermsAndService: React.FC = () => {
             indirectly (hereafter referred to as ‘Resources’), you agree to use
             these Resources only for the purposes intended as permitted by:
           </Typography>
-          <Typography variant="small">The terms of this User Agreement</Typography>
+          <Typography variant="small">
+            The terms of this User Agreement
+          </Typography>
           <Typography variant="small">
             Applicable laws, regulations and generally accepted online practices
             or guidelines in India.

@@ -25,7 +25,10 @@ export default function Testimonial() {
         <InfiniteMovingCards items={profiles} direction="left" speed="slow" />
       </div>
       <div className="flex items-center justify-center flex-col mt-[66px] mb-[145px]">
-        <Typography variant="custom" className="text-customBrown font-FreightNeoProBold text-[22px]">
+        <Typography
+          variant="custom"
+          className="text-customBrown font-FreightNeoProBold text-[22px]"
+        >
           Read More
         </Typography>
       </div>
