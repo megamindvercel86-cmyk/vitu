@@ -7,7 +7,7 @@ const page = () => {
   return (
     <Layout>
       <MediaSectionIntro />
-      <MediaKits />
+      {/* <MediaKits /> */}
     </Layout>
   );
 };
