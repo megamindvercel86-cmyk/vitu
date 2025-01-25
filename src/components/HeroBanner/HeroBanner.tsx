@@ -13,7 +13,6 @@ const HeroBanner: React.FC = () => {
             'url("/images/backgroundImages/resourcesPageBackground.png")',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       </div>
       {/* Content */}
       <div className="relative h-full flex items-end pb-24">

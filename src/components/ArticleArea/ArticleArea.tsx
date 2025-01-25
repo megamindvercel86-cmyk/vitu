@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
-import SubHeading from "../Common/SubHeding";
-import Heading from "../Common/Heading";
 import Typography from "../Typography/Typography";
 
 const articles = [
