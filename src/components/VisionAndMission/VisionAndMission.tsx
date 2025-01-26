@@ -6,8 +6,12 @@ const images = [
   "/images/visionAndMissionImages/2.png",
   "/images/visionAndMissionImages/3.png",
 ];
+const mobileImages = [
+  "/images/visionAndMissionImages/8.png",
+  "/images/visionAndMissionImages/5.png",
+  "/images/visionAndMissionImages/8.png",
+];
 const contentSets = [
-  // First image content set
   [
     {
       title: "Innovative Design",
@@ -23,7 +27,6 @@ const contentSets = [
       description: "Integrating technology for enhanced living experiences",
     },
   ],
-  // Second image content set
   [
     {
       title: "Sustainable Future",
@@ -38,7 +41,6 @@ const contentSets = [
       description: "Creating spaces that respect and preserve nature",
     },
   ],
-  // Third image content set
   [
     {
       title: "Luxury Redefined",
@@ -54,11 +56,27 @@ const contentSets = [
     },
   ],
 ];
+const mobileContentSets = [
+  {
+    title: "Innovative Design",
+    description: "Pushing boundaries with cutting-edge architectural concepts",
+  },
+  {
+    title: "Modern Living",
+    description: "Contemporary spaces that inspire and elevate daily life",
+  },
+  {
+    title: "Smart Solutions",
+    description: "Integrating technology for enhanced living experiences",
+  },
+];
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [isDescriptionVisible, setIsDescriptionVisible] =
+    useState<boolean>(false);
   const totalSlides = 3;
 
   const transition = useCallback(
@@ -67,6 +85,7 @@ function App() {
 
       setIsAnimating(true);
       setDirection(newDirection);
+      setIsDescriptionVisible(false); // Reset description visibility on slide change
 
       const nextIndex =
         newDirection === "right"
@@ -74,9 +93,9 @@ function App() {
           : (currentIndex - 1 + totalSlides) % totalSlides;
 
       setCurrentIndex(nextIndex);
-      setTimeout(() => setIsAnimating(false), 500); // Reduced animation time for smoother transitions
+      setTimeout(() => setIsAnimating(false), 500);
     },
-    [currentIndex, totalSlides, isAnimating],
+    [currentIndex, totalSlides, isAnimating]
   );
 
   const nextSlide = useCallback(() => transition("right"), [transition]);
@@ -88,23 +107,24 @@ function App() {
   }, [nextSlide]);
 
   return (
-    <div className=" bg-gray-100 p-[1px]">
-      {/* Main Carousel with Divisions */}
-      <div className="relative  group">
-        <div className="overflow-hidden rounded-lg shadow-xl aspect-[2/1] relative">
+    <div className="bg-gray-100 sm:p-0 md:p-[1px]">
+      {/* Main Carousel */}
+      <div className="relative group">
+        {/* Desktop Version */}
+        <div className="overflow-hidden hidden md:block shadow-xl aspect-[2/1] relative">
           {/* Image container */}
           <div
             className={`absolute inset-0 transition-all duration-500 ease-in-out ${
               currentIndex === currentIndex
                 ? "opacity-100 translate-x-0"
                 : direction === "right"
-                  ? currentIndex ===
-                    (currentIndex - 1 + totalSlides) % totalSlides
-                    ? "opacity-0 -translate-x-full"
-                    : "opacity-0 translate-x-full"
-                  : currentIndex === (currentIndex + 1) % totalSlides
-                    ? "opacity-0 translate-x-full"
-                    : "opacity-0 -translate-x-full"
+                ? currentIndex ===
+                  (currentIndex - 1 + totalSlides) % totalSlides
+                  ? "opacity-0 -translate-x-full"
+                  : "opacity-0 translate-x-full"
+                : currentIndex === (currentIndex + 1) % totalSlides
+                ? "opacity-0 translate-x-full"
+                : "opacity-0 -translate-x-full"
             }`}
           >
             <img
@@ -115,7 +135,9 @@ function App() {
 
             {/* Next image for smooth transition */}
             <div
-              className={`absolute top-0 ${direction === "left" ? "right-[-100%]" : "left-[-100%]"} w-full h-full`}
+              className={`absolute top-0 ${
+                direction === "left" ? "right-[-100%]" : "left-[-100%]"
+              } w-full h-full`}
             >
               <img
                 src={
@@ -134,8 +156,8 @@ function App() {
 
           {/* Vertical dividing lines */}
           <div className="absolute inset-0 flex">
-            <div className="flex-1 border-r border-white/30"></div>
-            <div className="flex-1 border-r border-white/30"></div>
+            <div className="flex-1 border-r border-white"></div>
+            <div className="flex-1 border-r border-white"></div>
             <div className="flex-1"></div>
           </div>
 
@@ -168,6 +190,39 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300"></div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Mobile Version */}
+        <div className="block md:hidden relative overflow-hidden shadow-xl">
+          <img
+            src={mobileImages[currentIndex]}
+            alt={`Slide ${currentIndex + 1}`}
+            className="w-full h-full object-cover transition-all duration-500"
+          />
+          <div
+            className="absolute inset-0 flex flex-col justify-end items-center text-center p-6"
+            // onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
+          >
+            <Typography
+              variant="h2"
+              className="font-freightNeoMedium mb-[5px] text-white"
+            >
+              {mobileContentSets[currentIndex].title}
+            </Typography>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+               "h-16" 
+              }`}
+            >
+              <Typography
+                variant="h3"
+                fontWeight="font-normal"
+                className="font-FreightNeoProNormal mt-[5px] text-white"
+              >
+                {mobileContentSets[currentIndex].description}
+              </Typography>
+            </div>
           </div>
         </div>
       </div>

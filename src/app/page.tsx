@@ -29,12 +29,12 @@ export default function Home() {
     >
       <HomeHeroSection />
       <VisionAndMission />
-      <VisionForTheFuture />
+      {/* <VisionForTheFuture />
       <ExploreProjects />
       <CurrentProject />
       <Testimonials />
       <SustainabilityInitiatives />
-      <JoinOurTeamHeroSection />
+      <JoinOurTeamHeroSection /> */}
     </Layout>
   );
 }
