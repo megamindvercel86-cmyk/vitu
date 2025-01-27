@@ -1,78 +1,62 @@
+"use client";
+
 import React, { useState, useEffect, useCallback } from "react";
 import Typography from "../Typography/Typography";
 import Image from "next/image";
 
-const images = [
+const images: string[] = [
   "/images/visionAndMissionImages/1.png",
   "/images/visionAndMissionImages/2.png",
   "/images/visionAndMissionImages/3.png",
 ];
-const mobileImages = [
+const mobileImages: string[] = [
   "/images/visionAndMissionImages/mobile1.png",
   "/images/visionAndMissionImages/mobile2.png",
   "/images/visionAndMissionImages/mobile3.png",
 ];
-const contentSets = [
+
+type ContentItem = {
+  title: string;
+  description: string;
+};
+
+const contentSets: ContentItem[][] = [
   [
-    {
-      title: "Innovative Design",
-      description:
-        "Pushing boundaries with cutting-edge architectural concepts",
-    },
-    {
-      title: "Modern Living",
-      description: "Contemporary spaces that inspire and elevate daily life",
-    },
-    {
-      title: "Smart Solutions",
-      description: "Integrating technology for enhanced living experiences",
-    },
+    { title: "Innovative Design", description: "Pushing boundaries..." },
+    { title: "Modern Living", description: "Contemporary spaces..." },
+    { title: "Smart Solutions", description: "Integrating technology..." },
   ],
   [
-    {
-      title: "Sustainable Future",
-      description: "Eco-friendly approaches to modern architecture",
-    },
-    {
-      title: "Natural Harmony",
-      description: "Blending seamlessly with the surrounding environment",
-    },
-    {
-      title: "Green Living",
-      description: "Creating spaces that respect and preserve nature",
-    },
+    { title: "Sustainable Future", description: "Eco-friendly approaches..." },
+    { title: "Natural Harmony", description: "Blending seamlessly..." },
+    { title: "Green Living", description: "Creating spaces that..." },
   ],
   [
-    {
-      title: "Luxury Redefined",
-      description: "Excellence in every detail of modern living",
-    },
-    {
-      title: "Premium Quality",
-      description: "Uncompromising standards in design and execution",
-    },
+    { title: "Luxury Redefined", description: "Excellence in every detail..." },
+    { title: "Premium Quality", description: "Uncompromising standards..." },
     {
       title: "Timeless Elegance",
-      description: "Creating lasting impressions through sophisticated design",
+      description: "Creating lasting impressions...",
     },
   ],
 ];
-const mobileContentSets = [
+
+const mobileContentSets: ContentItem[] = [
   {
     title: "Innovative Sustainability",
-    description: "Revolutionizing green living by making eco-friendly solutions effortless.",
+    description: "Revolutionizing green living...",
   },
   {
     title: "Affordable Luxury",
-    description: "Redefining affordable lifestyle by making premium living accessible",
+    description: "Redefining affordable lifestyle...",
   },
   {
     title: "Client Satisfaction",
-    description: "Redefining excellence by making client-centric solutions our priority.",
+    description: "Redefining excellence by making...",
   },
 ];
 
-function App() {
+const VisionAndMission: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
@@ -114,16 +98,18 @@ function App() {
               currentIndex === currentIndex
                 ? "opacity-100 translate-x-0"
                 : direction === "right"
-                ? currentIndex ===
-                  (currentIndex - 1 + totalSlides) % totalSlides
-                  ? "opacity-0 -translate-x-full"
-                  : "opacity-0 translate-x-full"
-                : currentIndex === (currentIndex + 1) % totalSlides
-                ? "opacity-0 translate-x-full"
-                : "opacity-0 -translate-x-full"
+                  ? currentIndex ===
+                    (currentIndex - 1 + totalSlides) % totalSlides
+                    ? "opacity-0 -translate-x-full"
+                    : "opacity-0 translate-x-full"
+                  : currentIndex === (currentIndex + 1) % totalSlides
+                    ? "opacity-0 translate-x-full"
+                    : "opacity-0 -translate-x-full"
             }`}
           >
-            <img
+            <Image
+              width={1932}
+              height={1088}
               src={images[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
               className="w-full h-full object-cover"
@@ -135,7 +121,9 @@ function App() {
                 direction === "left" ? "right-[-100%]" : "left-[-100%]"
               } w-full h-full`}
             >
-              <img
+              <Image
+                width={1932}
+                height={1088}
                 src={
                   images[
                     (currentIndex +
@@ -198,9 +186,7 @@ function App() {
             alt={`Slide ${currentIndex + 1}`}
             className="w-full h-[679px] transition-all duration-500"
           />
-          <div
-            className="absolute inset-0 flex flex-col justify-end items-center text-center p-6"
-          >
+          <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
             <Typography
               variant="custom"
               className="font-freightNeoMedium text-white text-2xl"
@@ -208,9 +194,7 @@ function App() {
               {mobileContentSets[currentIndex].title}
             </Typography>
             <div
-              className={`overflow-hidden transition-all duration-300 ${
-               "h-16" 
-              }`}
+              className={`overflow-hidden transition-all duration-300 ${"h-16"}`}
             >
               <Typography
                 variant="h3"
@@ -231,9 +215,7 @@ function App() {
                     }
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    dotIndex === currentIndex
-                      ? "bg-white"
-                      : "bg-[#FFFFFF99]"
+                    dotIndex === currentIndex ? "bg-white" : "bg-[#FFFFFF99]"
                   } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
                 />
@@ -244,6 +226,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default VisionAndMission;

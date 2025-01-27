@@ -60,23 +60,22 @@ const VisionForTheFuture: React.FC = () => {
   const transition = useCallback(
     (newDirection: "left" | "right") => {
       if (isAnimating) return;
-
       setIsAnimating(true);
       setDirection(newDirection);
 
+      // Update currentIndex to loop around
       const nextIndex =
         newDirection === "right"
           ? (currentIndex + 1) % totalSlides
           : (currentIndex - 1 + totalSlides) % totalSlides;
-
       setCurrentIndex(nextIndex);
-      setTimeout(() => setIsAnimating(false), 500); // Reduced animation time for smoother transitions
+
+      setTimeout(() => setIsAnimating(false), 500);
     },
-    [currentIndex, totalSlides, isAnimating],
+    [currentIndex, totalSlides, isAnimating]
   );
 
   const nextSlide = useCallback(() => transition("right"), [transition]);
-  const prevSlide = useCallback(() => transition("left"), [transition]);
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
@@ -87,11 +86,17 @@ const VisionForTheFuture: React.FC = () => {
     <div className="relative  text-[#42210B] overflow-hidden">
       <div className="xl:mx-[210px]  xl:py-[157px] lg:py-[133px] md:py-[55px] sm:py-[44px] py-[44px] lg:pb-[157px] relative">
         {/* Static Title, Subtitle, and Button */}
-        <div className="w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0">
-          <Typography className="text-2xl lg:text-[56px] font-bold font-freightNeoMedium lg:leading-[72px] xl:leading-[67px]">
+        <div className="md:w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 sm:w-[257px] w-[257px]">
+          <Typography
+            variant="custom"
+            className="text-2xl lg:text-[56px] w-[224px] md:w-full font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px]"
+          >
             Embracing new Horizons in Living
           </Typography>
-          <Typography className="text-2xl font-freightNeoMedium lg:text-[20px] font-light text-[#040707CC] leading-relaxed">
+          <Typography
+            variant="custom"
+            className="text-base   font-freightNeoMedium md:text-[20px] pt-1 font-light text-[#040707CC] leading-[19px] md:leading-relaxed"
+          >
             Rooted in our vision for bold growth and dedication to evolving our
             portfolio.
           </Typography>
@@ -105,55 +110,48 @@ const VisionForTheFuture: React.FC = () => {
             <CTAButtonIcon direction="right" />
           </button>
           {/* Residential Type Section */}
-          <Typography className="text-base lg:text-4xl font-FreightNeoProNormal text-[#4F373799]">
+          <Typography className=" sm:hidden hidden md:block text-base lg:text-4xl font-FreightNeoProNormal text-[#4F373799]">
             {carouselData[currentIndex].residentialType}
           </Typography>
         </div>
-        <div className="sm:h-[404px] lg:h-[530px] xl:h-[606px] md:h-[507px]  h-[404px] pt-6">
-          {/* Carousel Content */}
-          <div className="relative">
-            {carouselData.map((item, index) => {
-              const slideDirection =
-                index === currentIndex
-                  ? "translate-x-0"
-                  : index > currentIndex
-                    ? "translate-x-full"
-                    : "-translate-x-full";
-
-              return (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-                    index === currentIndex
-                      ? "opacity-100 translate-x-0"
-                      : direction === "right"
-                        ? index ===
-                          (currentIndex - 1 + totalSlides) % totalSlides
-                          ? "opacity-0 -translate-x-full"
-                          : "opacity-0 translate-x-full"
-                        : index === (currentIndex + 1) % totalSlides
-                          ? "opacity-0 translate-x-full"
-                          : "opacity-0 -translate-x-full"
-                  }`}
-                >
-                  {/* Image Section */}
-                  <div className="lg:w-[100%] w-full h-[500px] flex items-center justify-center">
-                    <Image
-                      src={item.image}
-                      alt={item.subtitle}
-                      width={700}
-                      height={400}
-                      className="w-full h-full object-contain"
-                      quality={100}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+        <div className="pt-6 relative overflow-hidden">
+          <div className="flex transition-transform duration-500 ease-in-out w-full h-[204px]   md:h-[530px] xl:h-[606px]">
+            {carouselData.map((item, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-all duration-500 w-full   h-full ease-in-out ${
+                  index === currentIndex
+                    ? "opacity-100 translate-x-0"
+                    : direction === "right"
+                      ? index === (currentIndex - 1 + totalSlides) % totalSlides
+                        ? "opacity-0 -translate-x-full"
+                        : "opacity-0 translate-x-full"
+                      : index === (currentIndex + 1) % totalSlides
+                        ? "opacity-0 translate-x-full"
+                        : "opacity-0 -translate-x-full"
+                }`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.subtitle}
+                  width={700}
+                  height={400}
+                  className={`w-full h-full object-contain  ${index === 0 ? "scale-x-[1] scale-y-[1.5] md:scale-x-[1] md:scale-y-[1]" : ""} ${index === 1 ? "scale-x-[1.2] scale-y-[1.5] md:scale-x-[.9] md:scale-y-[1]" : ""} ${index === 2 ? "scale-x-[1] scale-y-[1.1] md:scale-x-[0.9] md:scale-y-[1]" : ""} ${index === 3 ? "scale-x-[1.5] scale-y-[1.8] md:scale-x-[1] md:scale-y-[1]" : ""}`}
+                  quality={100}
+                />
+              </div>
+            ))}
           </div>
         </div>
+
         {/* Description Section (static for currentIndex) */}
-        <div className="lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between mt-[74px]">
+        <Typography
+          variant="custom"
+          className="block md:hidden mx-[29px] text-lg font-FreightNeoProBold text-[#04070799] mt-6"
+        >
+          {carouselData[currentIndex].residentialType}
+        </Typography>
+        <div className="lg:mx-[88px] md:mx-[66px] h-auto  sm:mx-[29px] mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between md:mt-[74px]">
           <div className="lg:w-2/3 w-full">
             <Typography className="text-base lg:text-xl font-FreightNeoProNormal text-[#4F373799]">
               {carouselData[currentIndex].description}
@@ -176,7 +174,10 @@ const VisionForTheFuture: React.FC = () => {
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      transition(dotIndex > currentIndex ? "right" : "left");
+                      // Calculate the direction based on the dot index
+                      const direction =
+                        dotIndex > currentIndex ? "right" : "left";
+                      transition(direction);
                     }
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
