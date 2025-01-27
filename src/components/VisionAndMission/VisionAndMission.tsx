@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Typography from "../Typography/Typography";
+import Image from "next/image";
 
 const images = [
   "/images/visionAndMissionImages/1.png",
@@ -7,9 +8,9 @@ const images = [
   "/images/visionAndMissionImages/3.png",
 ];
 const mobileImages = [
-  "/images/visionAndMissionImages/8.png",
-  "/images/visionAndMissionImages/5.png",
-  "/images/visionAndMissionImages/8.png",
+  "/images/visionAndMissionImages/mobile1.png",
+  "/images/visionAndMissionImages/mobile2.png",
+  "/images/visionAndMissionImages/mobile3.png",
 ];
 const contentSets = [
   [
@@ -58,16 +59,16 @@ const contentSets = [
 ];
 const mobileContentSets = [
   {
-    title: "Innovative Design",
-    description: "Pushing boundaries with cutting-edge architectural concepts",
+    title: "Innovative Sustainability",
+    description: "Revolutionizing green living by making eco-friendly solutions effortless.",
   },
   {
-    title: "Modern Living",
-    description: "Contemporary spaces that inspire and elevate daily life",
+    title: "Affordable Luxury",
+    description: "Redefining affordable lifestyle by making premium living accessible",
   },
   {
-    title: "Smart Solutions",
-    description: "Integrating technology for enhanced living experiences",
+    title: "Client Satisfaction",
+    description: "Redefining excellence by making client-centric solutions our priority.",
   },
 ];
 
@@ -75,8 +76,6 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isDescriptionVisible, setIsDescriptionVisible] =
-    useState<boolean>(false);
   const totalSlides = 3;
 
   const transition = useCallback(
@@ -85,7 +84,6 @@ function App() {
 
       setIsAnimating(true);
       setDirection(newDirection);
-      setIsDescriptionVisible(false); // Reset description visibility on slide change
 
       const nextIndex =
         newDirection === "right"
@@ -99,8 +97,6 @@ function App() {
   );
 
   const nextSlide = useCallback(() => transition("right"), [transition]);
-  const prevSlide = useCallback(() => transition("left"), [transition]);
-
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
@@ -195,18 +191,19 @@ function App() {
 
         {/* Mobile Version */}
         <div className="block md:hidden relative overflow-hidden shadow-xl">
-          <img
+          <Image
             src={mobileImages[currentIndex]}
+            width={326}
+            height={568}
             alt={`Slide ${currentIndex + 1}`}
-            className="w-full h-full object-cover transition-all duration-500"
+            className="w-full h-[679px] transition-all duration-500"
           />
           <div
             className="absolute inset-0 flex flex-col justify-end items-center text-center p-6"
-            // onClick={() => setIsDescriptionVisible(!isDescriptionVisible)}
           >
             <Typography
-              variant="h2"
-              className="font-freightNeoMedium mb-[5px] text-white"
+              variant="custom"
+              className="font-freightNeoMedium text-white text-2xl"
             >
               {mobileContentSets[currentIndex].title}
             </Typography>
@@ -222,6 +219,25 @@ function App() {
               >
                 {mobileContentSets[currentIndex].description}
               </Typography>
+            </div>
+            <div className="flex space-x-5  rounded-[32px] py-4 px-6">
+              {mobileContentSets.map((_, dotIndex) => (
+                <button
+                  key={dotIndex}
+                  disabled={isAnimating}
+                  onClick={() => {
+                    if (dotIndex !== currentIndex) {
+                      transition(dotIndex > currentIndex ? "right" : "left");
+                    }
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    dotIndex === currentIndex
+                      ? "bg-white"
+                      : "bg-[#FFFFFF99]"
+                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  aria-label={`Go to slide ${dotIndex + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

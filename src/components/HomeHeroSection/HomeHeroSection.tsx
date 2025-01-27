@@ -19,10 +19,10 @@ const HomeHeroSection: React.FC = () => {
         {/* Content */}
         <div className="relative h-full flex xl:top-[343px] lg:top-[247px] sm:top-[157px] top-[157px] justify-center">
           <div className="text-center text-white flex flex-col items-center">
-            <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px] leading-none">
+            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] md:leading-none">
               Building Wholesome
             </h1>
-            <h1 className="sm:text-[40px] md:text-[80px] text-[40px] font-freightNeoSemibold lg:text-[100px]  leading-none md:pt-[28px] pt-0">
+            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px]  leading-none md:pt-[28px] pt-0">
               Living Spaces
             </h1>
           </div>
