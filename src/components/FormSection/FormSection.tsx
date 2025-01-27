@@ -6,7 +6,7 @@ import { db, storage } from "@/firebase/firebaseConfig";
 import { Dropdown, Upload } from "../Icons/Icons";
 import { ref, uploadBytes } from "firebase/storage";
 import Typography from "../Typography/Typography";
-import { toast } from "react-toastify";
+
 
 interface FormSectionProps {
   heading: string;
@@ -59,8 +59,7 @@ const FormSection: React.FC<FormSectionProps> = ({
     try {
       // Validate form fields
       if (!formData.fullName || !formData.email || !formData.phone) {
-        console.log("tapped");
-        toast.error("Please fill out all required fields."); // Show error toast
+    
         return;
       }
 
@@ -92,7 +91,7 @@ const FormSection: React.FC<FormSectionProps> = ({
       // Add the form data to Firestore
       await addDoc(collectionRef, formToSubmit);
 
-      toast.success("Form submitted successfully!");
+    
 
       // Reset form after submission
       setFormData({
@@ -106,7 +105,6 @@ const FormSection: React.FC<FormSectionProps> = ({
       });
     } catch (error) {
       console.log("Error submitting form:", error);
-      toast.error("Failed to submit form. Please try again."); // Show error toast
     }
   };
 
