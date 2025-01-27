@@ -30,11 +30,11 @@ export default function Home() {
       <HomeHeroSection />
       <VisionAndMission />
       <VisionForTheFuture />
-      {/* <ExploreProjects />
+      <ExploreProjects />
       <CurrentProject />
       <Testimonials />
       <SustainabilityInitiatives />
-      <JoinOurTeamHeroSection /> */}
+      <JoinOurTeamHeroSection />
     </Layout>
   );
 }

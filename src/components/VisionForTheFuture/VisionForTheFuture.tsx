@@ -161,7 +161,7 @@ const VisionForTheFuture: React.FC = () => {
           {/* Pagination Dots Section */}
           <div className="lg:w-1/2 w-full flex sm:flex-col flex-col md:flex-row sm:items-center items-center md:justify-end mt-6 lg:mt-0 ">
             <button
-              className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+              className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] t rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
               onClick={() => console.log("Button clicked")}
             >
               See What’s Next
@@ -182,7 +182,7 @@ const VisionForTheFuture: React.FC = () => {
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     dotIndex === currentIndex
-                      ? "bg-white w-8"
+                      ? "bg-white md:w-8 w-9"
                       : "bg-[#FFFFFF99]"
                   } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}

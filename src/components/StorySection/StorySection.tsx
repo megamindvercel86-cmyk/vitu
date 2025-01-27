@@ -70,11 +70,11 @@ export default function StorySection() {
 
     gsap.set(container, { height: "100vh" });
     gsap.set(".sections-wrapper", {
-      width: sections.length * 100 + "%",
+      width: sections.length  * 100 + "%",
       display: "flex",
       overflow: "hidden",
     });
-    gsap.set(sections, { width: 100 / sections.length + "%" });
+    gsap.set(sections, { width: 100 / sections.length  + "%" });
 
     gsap.to(".sections-wrapper", {
       x: () => -(container?.scrollWidth ?? 0 - window.innerWidth),

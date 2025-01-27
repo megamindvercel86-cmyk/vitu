@@ -20,7 +20,7 @@ export default function About() {
       }}
     >
       <AboutHeroSection />
-      {/* <StorySection /> */}
+      <StorySection />
       <FounderMessage />
       <VisionAndMission />
       <LeadershipTeam />

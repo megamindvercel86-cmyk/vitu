@@ -7,14 +7,14 @@ const CurrentProject: React.FC = () => {
     <div className="xl:mx-[278px] lg:mx-[122px] md:mx-[60px] mx-[24px] sm:mx-[24px]  flex lg:flex-row sm:flex-col flex-col">
       <div className="md:w-1/2 w-full">
         <div className="bg-[#AE856614] rounded-md w-[166px] h-[34px] text-center flex items-center justify-center pt-1">
-          <Typography className="text-customBrown font-FreightNeoProNormal">
+          <Typography variant="custom" className="text-customBrown font-FreightNeoProNormal">
             Limited Plots Available
           </Typography>
         </div>
         <div>
           <Typography
             variant="custom"
-            className="text-56px font-freightNeoMedium text-customBrown"
+            className="md:text-56px text-2xl font-freightNeoMedium text-customBrown pt-3 md:pt-6"
           >
             Vaikuntam City
           </Typography>

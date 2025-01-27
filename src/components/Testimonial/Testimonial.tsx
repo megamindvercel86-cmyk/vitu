@@ -8,12 +8,12 @@ export default function Testimonial() {
   return (
     <div className="mt-[166px]">
       <div className="flex items-center justify-center flex-col mb-[90px]">
-        <Typography className="text-customBrown font-freightNeoMedium">
+        <Typography variant="custom" className="text-customBrown md:text-lg text-xs font-freightNeoMedium">
           CLIENT TESTIMONIAL
         </Typography>
         <Typography
           variant="custom"
-          className="text-customBrown text-[60px] font-freightNeoMedium"
+          className="text-customBrown md:text-[60px] text-2xl font-freightNeoMedium"
         >
           What our Clients say
         </Typography>
