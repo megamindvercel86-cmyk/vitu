@@ -6,6 +6,8 @@ import { db, storage } from "@/firebase/firebaseConfig";
 import { Dropdown, Upload } from "../Icons/Icons";
 import { ref, uploadBytes } from "firebase/storage";
 import Typography from "../Typography/Typography";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 
 interface FormSectionProps {
@@ -108,6 +110,57 @@ const FormSection: React.FC<FormSectionProps> = ({
     }
   };
 
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required("Full Name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    phone: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
+      .required("Phone number is required"),
+    comments: page === "General Enquire" ? Yup.string().max(250, "Max 250 characters") : Yup.string(),
+    option: page !== "General Enquire" ? Yup.string().required("Please select an option") : Yup.string(),
+  });
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      comments: "",
+      whatsapp: false,
+      option: "",
+      resume: null as File | null,
+    },
+    validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        let resumeUrl: string | null = null;
+  
+        if (values.resume) {
+          const storageRef = ref(storage, `resumes/${values.resume.name}`);
+          const uploadResult = await uploadBytes(storageRef, values.resume);
+          resumeUrl = uploadResult.ref.fullPath;
+        }
+  
+        const collectionName =
+          page === "General Enquire"
+            ? "generalEnquiries"
+            : page === "Project Enquire"
+            ? "projectEnquiries"
+            : "careerApplications";
+  
+        const collectionRef = collection(db, collectionName);
+  
+        await addDoc(collectionRef, {
+          ...values,
+          resumeUrl,
+        });
+  
+        resetForm();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
+    },
+  });
+    
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
@@ -148,51 +201,55 @@ const FormSection: React.FC<FormSectionProps> = ({
       <div className="flex-1">
         <form>
           <div>
-            <input
-              type="text"
-              placeholder="Your Full Name"
-              value={formData.fullName}
-              onChange={(e) =>
-                setFormData({ ...formData, fullName: e.target.value })
-              }
-              className="w-full px-1 pb-[7px] text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium"
-            />
+          <input
+  type="text"
+  placeholder="Your Full Name"
+  {...formik.getFieldProps("fullName")}
+  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+/>
+{formik.touched.fullName && formik.errors.fullName && (
+  <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
+)}
+
           </div>
 
           <div className="mt-[45px]">
-            <input
-              type="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="w-full px-1 pb-[7px] text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium "
-            />
+          <input
+  type="email"
+  placeholder="Your Email"
+  {...formik.getFieldProps("email")}
+  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+/>
+{formik.touched.email && formik.errors.email && (
+  <p className="text-red-500 text-sm">{formik.errors.email}</p>
+)}
+
           </div>
 
           <div className="mt-[45px]">
-            <input
-              type="tel"
-              placeholder="Your Phone Number"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium"
-            />
+          <input
+  type="text"
+  placeholder="Your Phone Number"
+  {...formik.getFieldProps("phone")}
+  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+/>
+{formik.touched.phone && formik.errors.phone && (
+  <p className="text-red-500 text-sm">{formik.errors.phone}</p>
+)}
+
           </div>
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
               <textarea
-                value={formData.comments}
-                onChange={(e) =>
-                  setFormData({ ...formData, comments: e.target.value })
-                }
-                maxLength={250}
-                placeholder="Your Comments"
-                className="w-full h-[83px] px-1 pt-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium resize-none"
-              />
+  rows={3}
+  placeholder="Your Comments"
+  {...formik.getFieldProps("comments")}
+  className="w-full px-1 pb-1 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+/>
+{formik.touched.comments && formik.errors.comments && (
+  <p className="text-red-500 text-sm">{formik.errors.comments}</p>
+)}
+
               <span className="absolute right-1 top-1 text-xs text-customTextGray font-CandideCondensedMedium">
                 {formData.comments.length}/250
               </span>
@@ -329,6 +386,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                     }
                     className="sr-only peer"
                   />
+                  
                   <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors">
                     {formData.whatsapp && (
                       <FaCheck className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />

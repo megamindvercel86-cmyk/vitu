@@ -13,6 +13,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "firebase": "^11.2.0",
+    "formik": "^2.4.6",
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
     "next": "15.1.4",
@@ -21,7 +22,8 @@
     "react-icons": "^5.4.0",
     "react-toastify": "^11.0.3",
     "react-youtube": "^10.1.0",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
