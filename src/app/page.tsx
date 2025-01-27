@@ -29,8 +29,8 @@ export default function Home() {
     >
       <HomeHeroSection />
       <VisionAndMission />
-      {/* <VisionForTheFuture />
-      <ExploreProjects />
+      <VisionForTheFuture />
+      {/* <ExploreProjects />
       <CurrentProject />
       <Testimonials />
       <SustainabilityInitiatives />

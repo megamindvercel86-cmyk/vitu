@@ -28,11 +28,11 @@ const HomeHeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[64px] leading-[1] sm:pt-[64px] md:pt-[84px] lg:pt-[104px] xl:pt-[128px] pb-[111px] xl:px-[386px]   sm:px-[30px] px-[30px] text-center">
+      <div className="pt-[64px] leading-[1] sm:pt-[64px] md:pt-[84px] lg:pt-[104px] xl:pt-[128px] pb-[60px] md:pb-[111px] xl:px-[386px]   sm:px-[30px] px-[30px] text-center">
         <div>
           <Typography
             variant="custom"
-            className="font-freightNeoMedium font text-[#040707CC] pb-6  sm:text-[22px] md:text-[18px] text-[22px]"
+            className="font-freightNeoMedium font text-[#040707CC] pb-6  sm:text-[22px] md:text-[18px] text-[16px] px-7 md:px-0"
           >
             We create thoughtfully designed spaces that blend modern aesthetics
             with lasting quality.
@@ -41,7 +41,7 @@ const HomeHeroSection: React.FC = () => {
         <div>
           <Typography
             variant="custom"
-            className="lg:text-[56px] sm:text-[34px] md:text-[40px] text-[34px] font-freightNeoMedium text-customBrown"
+            className="lg:text-[56px] sm:text-[24px] md:text-[40px] text-[24px] font-freightNeoMedium text-customBrown px-7 md:px-0"
           >
             Where Modern Design Meets Enduring Quality
           </Typography>
