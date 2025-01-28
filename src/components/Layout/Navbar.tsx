@@ -7,6 +7,7 @@ import logo from "../../../public/images/logos/logo.svg";
 import logoWhite from "../../../public/images/logos/logoWhite.svg";
 import Button from "../Common/Button";
 import { MenuIcon, MenuIconWhite } from "../Icons/Icons";
+import Link from "next/link";
 
 interface NavbarProps {
   navbar?: string;
@@ -28,6 +29,7 @@ export default function Navbar({
         <nav className="flex justify-between items-center">
           {/* Left side: Logo */}
           <div className="flex items-center">
+            <Link href="/">
             {navbar === "primary" ? (
               <Image
                 src={logoWhite}
@@ -41,6 +43,7 @@ export default function Navbar({
                 className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg:w-[225px] lg:h-[72px] xl:w-[260px] xl:h-[83px]"
               />
             )}
+            </Link>
           </div>
 
           {/* Right side: Hamburger Icon (for mobile) */}
@@ -58,7 +61,7 @@ export default function Navbar({
             } md:hidden lg:flex`}
           >
             <NavLink
-              href="/"
+              href="/about"
               className={`pt-1 ${
                 active === "/" // Check if this is the active link
                   ? navbar === "primary"
@@ -99,9 +102,12 @@ export default function Navbar({
             >
               Resources
             </NavLink>
+            <Link href="/project-enquire">
             {showGetInTouch && (
               <Button
-                onClick={() => {}}
+              onClick={() => {
+               
+              }}
                 className={`lg:w-[204px] lg:h-[55px] text-[26px] ${
                   navbar === "primary" ? "bg-white" : ""
                 }`}
@@ -114,6 +120,7 @@ export default function Navbar({
                 Get in Touch
               </Button>
             )}
+            </Link>
           </div>
         </nav>
       </header>
