@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import AppleStyleCard from "../ui/apple-style-card";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 type Image = {
   id: number;
@@ -56,11 +57,13 @@ const ExploreProjects: React.FC = () => {
   const textWrapperRef = useRef<HTMLDivElement>(null);
   const textRefHome = useRef<HTMLDivElement>(null);
   const textRefLife = useRef<HTMLDivElement>(null);
+  const imagesWapperf = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     // Create ScrollTrigger for pinning the text section
     ScrollTrigger.create({
-      trigger: textWrapperRef.current, // Wrap both text sections in one trigger
+      trigger: textWrapperRef.current,
       start: "top 10%",
       end: "+=1300",
       pin: true,
@@ -75,17 +78,18 @@ const ExploreProjects: React.FC = () => {
         filter: "blur(10px)",
         opacity: 0,
         paddingTop: 100,
+        y: 100,
       },
       {
         scaleY: 1,
         filter: "blur(0px)",
         opacity: 1,
         paddingTop: 0,
+        y: 0,
         duration: 4,
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          markers: true,
           start: "top 90%",
           end: "top 60%",
         },
@@ -112,12 +116,52 @@ const ExploreProjects: React.FC = () => {
           trigger: sectionRef.current,
           start: "top 70%",
           end: "top 30%",
-          markers: true,
+        },
+      }
+    );
+    // Animation for the button
+    gsap.fromTo(
+      buttonRef.current,
+      {
+        scaleY: 5,
+        filter: "blur(10px)",
+        opacity: 0,
+        paddingTop: 50,
+      },
+      {
+        scaleY: 1,
+        filter: "blur(0px)",
+        opacity: 1,
+        paddingTop: 0,
+        duration: 4,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          end: "top 60%",
         },
       }
     );
 
-    // Cleanup
+    // Smooth Scroll to target position
+    ScrollTrigger.create({
+      trigger: textRefLife.current,
+      start: "top 50%", // Start position (when the text comes into view)
+      onEnter: () => {
+        gsap.to(window, {
+          scrollTo: {
+            y: 3600, // Scroll target position
+            autoKill: false, // Prevent jumping to the target before the scroll is complete
+          },
+          duration: 2, // Duration of the scroll animation
+          ease: "power2.out", // Easing for smooth transition
+        });
+      },
+    });
+
+
+
+    // Cleanup ScrollTriggers on component unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -140,20 +184,23 @@ const ExploreProjects: React.FC = () => {
     <div className="h-[2435px] relative z-0 overflow-hidden">
       <div ref={sectionRef} className="relative min-h-screen ">
         <div className="relative w-full">
-          {images.map((image) => (
-            <AppleStyleCard
+          {/* <div ref={imagesWapperf}> */}
+          <div>
+            {images.map((image) => (
+              <AppleStyleCard
               key={image.id}
               id={image.id}
               imageSrc={image.url}
               content={cardContent}
-              className={image.className} // Custom size
-              categoryClassName="text-blue-600 dark:text-blue-300" // Custom category text color
-              titleClassName="text-2xl md:text-4xl text-blue-800 dark:text-blue-100" // Custom title styling
-              expandedClassName="bg-blue-50 dark:bg-blue-950" // Custom expanded card background
-              expandedImageClassName="object-center" // Custom expanded image positioning
-            />
-          ))}
-
+              className={image.className}
+              categoryClassName="text-blue-600 dark:text-blue-300"
+              titleClassName="text-2xl md:text-4xl text-blue-800 dark:text-blue-100"
+              expandedClassName="bg-blue-50 dark:bg-blue-950"
+              expandedImageClassName="object-center"
+              />
+            ))}
+            </div>
+          {/* </div> */}
           {/* Text Wrapper for pinning */}
           <div
             ref={textWrapperRef}
@@ -173,7 +220,10 @@ const ExploreProjects: React.FC = () => {
             >
               A New Way of Life
             </Typography>
-            <button className="items-center w-[287px] h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
+            <button
+              ref={buttonRef}
+              className="items-center w-[287px] h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300"
+            >
               Explore the Project Now
             </button>
           </div>
