@@ -4,23 +4,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import AppleStyleCard from "../ui/apple-style-card";
+import InfiniteCarosel from "../Common/InfiniteCarousel/InfiniteCarousel";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-type Image = {
+type Cards = {
   id: number;
   url: string;
   className: string;
   startPosition: { x?: number; y?: number };
+  isViewMore?: boolean;
+  position?: "left" | "right";
 };
 
-const images: Image[] = [
+const cards: Cards[] = [
   {
     id: 1,
     url: "/images/exploreProjectImages/1.png",
     className:
       "absolute top-[944px] xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
   },
   {
     id: 2,
@@ -28,6 +33,8 @@ const images: Image[] = [
     className:
       "absolute top-[900px] xl:right-[56px] md:right-[-150px]  w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
+    isViewMore: true,
+    position: "left",
   },
   {
     id: 3,
@@ -35,6 +42,8 @@ const images: Image[] = [
     className:
       "absolute top-[1574px] left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
   },
   {
     id: 4,
@@ -42,6 +51,8 @@ const images: Image[] = [
     className:
       "absolute top-[1945px] right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
+    isViewMore: true,
+    position: "left",
   },
   {
     id: 5,
@@ -49,6 +60,8 @@ const images: Image[] = [
     className:
       "absolute top-[2001px] w-[297px] h-[371px] left-[523px] rounded-[20px] z-20",
     startPosition: { y: 100 },
+    isViewMore: true,
+    position: "left",
   },
 ];
 
@@ -159,8 +172,6 @@ const ExploreProjects: React.FC = () => {
       },
     });
 
-
-
     // Cleanup ScrollTriggers on component unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -181,55 +192,60 @@ const ExploreProjects: React.FC = () => {
   );
 
   return (
-    <div className="h-[2435px] relative z-0 overflow-hidden">
-      <div ref={sectionRef} className="relative min-h-screen ">
-        <div className="relative w-full">
-          {/* <div ref={imagesWapperf}> */}
-          <div>
-            {images.map((image) => (
-              <AppleStyleCard
-              key={image.id}
-              id={image.id}
-              imageSrc={image.url}
-              content={cardContent}
-              className={image.className}
-              categoryClassName="text-blue-600 dark:text-blue-300"
-              titleClassName="text-2xl md:text-4xl text-blue-800 dark:text-blue-100"
-              expandedClassName="bg-blue-50 dark:bg-blue-950"
-              expandedImageClassName="object-center"
-              />
-            ))}
+    <>
+      <div className="md:block hidden h-[2435px] relative z-0 overflow-hidden">
+        <div ref={sectionRef} className="relative min-h-screen ">
+          <div className="relative w-full">
+            {/* <div ref={imagesWapperf}> */}
+            <div>
+              {cards.map((card) => (
+                <AppleStyleCard
+                  key={card.id}
+                  id={card.id}
+                  imageSrc={card.url}
+                  content={cardContent}
+                  className={card.className}
+                  categoryClassName="text-blue-600 dark:text-blue-300"
+                  titleClassName="text-2xl md:text-4xl text-blue-800 dark:text-blue-100"
+                  expandedClassName="bg-blue-50 dark:bg-blue-950"
+                  expandedImageClassName="object-center"
+                />
+              ))}
             </div>
-          {/* </div> */}
-          {/* Text Wrapper for pinning */}
-          <div
-            ref={textWrapperRef}
-            className="w-full flex flex-col items-center justify-center z-10 text-center leading-[1] pt-10"
-          >
-            <Typography
-              variant="custom"
-              ref={textRefHome}
-              className="text-[120px] text-customBrown font-freightNeoMedium pb-[10px]"
+            {/* </div> */}
+            {/* Text Wrapper for pinning */}
+            <div
+              ref={textWrapperRef}
+              className="w-full flex flex-col items-center justify-center z-10 text-center leading-[1] pt-10"
             >
-              A New Home,
-            </Typography>
-            <Typography
-              variant="custom"
-              ref={textRefLife}
-              className="text-[120px] text-customBrown font-freightNeoMedium pb-[39px]"
-            >
-              A New Way of Life
-            </Typography>
-            <button
-              ref={buttonRef}
-              className="items-center w-[287px] h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300"
-            >
-              Explore the Project Now
-            </button>
+              <Typography
+                variant="custom"
+                ref={textRefHome}
+                className="text-[120px] text-customBrown font-freightNeoMedium pb-[10px]"
+              >
+                A New Home,
+              </Typography>
+              <Typography
+                variant="custom"
+                ref={textRefLife}
+                className="text-[120px] text-customBrown font-freightNeoMedium pb-[39px]"
+              >
+                A New Way of Life
+              </Typography>
+              <button
+                ref={buttonRef}
+                className="items-center w-[287px] h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300"
+              >
+                Explore the Project Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div className="md:hidden block ">
+        <InfiniteCarosel cards={cards} />
+      </div>
+    </>
   );
 };
 

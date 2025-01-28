@@ -1,0 +1,27 @@
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .swiper-slide {
+    width: 231px;
+    height: 289px;
+    border-radius: 10px;
+    background: none; /* Background removed */
+    overflow: hidden; /* Ensure content doesn't overflow the border-radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for better visibility */
+  }
+  
+  .swiper-slide-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without distorting */
+    border-radius: 10px; /* Same border-radius applied to the image */
+  }
+  
+  .swiper-3d .swiper-slide-shadow-left {
+    background-image: linear-gradient(to left, #00000080, #0000);
+  }
+  

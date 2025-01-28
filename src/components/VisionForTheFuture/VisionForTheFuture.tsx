@@ -153,7 +153,7 @@ const VisionForTheFuture: React.FC = () => {
         </Typography>
         <div className="lg:mx-[88px] md:mx-[66px] h-auto  sm:mx-[29px] mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between md:mt-[74px]">
           <div className="lg:w-2/3 w-full">
-            <Typography className="text-base lg:text-xl font-FreightNeoProNormal text-[#4F373799]">
+            <Typography className="text-base lg:text-xl h-[96px] font-FreightNeoProNormal text-[#4F373799]">
               {carouselData[currentIndex].description}
             </Typography>
           </div>

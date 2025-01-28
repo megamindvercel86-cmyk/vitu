@@ -28,7 +28,7 @@ export default function AppleStyleCard({
   title,
   content,
   imageSrc,
-  className = "",
+  className = "w-full h-full",
   cardClassName = "",
   imageClassName = "",
   categoryClassName = "",
@@ -139,7 +139,7 @@ export default function AppleStyleCard({
         layoutId={`expandable-card-${id}`}
         onClick={() => setIsOpen(true)}
         className={cn(
-          "rounded-3xl bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
+          "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
           className,
           cardClassName
         )}
