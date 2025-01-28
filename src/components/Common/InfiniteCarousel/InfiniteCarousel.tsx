@@ -13,6 +13,8 @@ interface Card {
   url: string;
   className: string;
   startPosition?: { x?: number; y?: number };
+  isViewMore?: boolean;
+  position?: "left" | "right";
 }
 
 interface InfiniteCarouselProps {

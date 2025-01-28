@@ -242,8 +242,27 @@ const ExploreProjects: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="md:hidden block ">
+      <div className="md:hidden block mb-12">
+        <div className="w-full flex flex-col items-center justify-center text-center pt-10">
+          <Typography
+            variant="custom"
+            className="text-2xl text-customBrown font-freightNeoSemibold "
+          >
+            A New Home,
+          </Typography>
+          <Typography
+            variant="custom"
+            className="text-2xl text-customBrown font-freightNeoSemibold "
+          >
+            A New Way of Life
+          </Typography>
+        </div>
         <InfiniteCarosel cards={cards} />
+        <div className="w-full px-7  flex flex-col items-center justify-center text-center leading-[1] pt-10">
+          <button className="items-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
+            Explore the Project Now
+          </button>
+        </div>
       </div>
     </>
   );
