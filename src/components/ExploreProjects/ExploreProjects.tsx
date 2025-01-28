@@ -18,69 +18,101 @@ const images: Image[] = [
     id: 1,
     url: "/images/exploreProjectImages/1.png",
     className:
-      "absolute top-[644px] xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+      "absolute top-[944px] xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
   },
   {
     id: 2,
     url: "/images/exploreProjectImages/2.png",
     className:
-      "absolute top-[600px] xl:right-[56px] md:right-[-150px]  w-[348px] h-[435px] rounded-[20px] z-20",
+      "absolute top-[900px] xl:right-[56px] md:right-[-150px]  w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
   },
   {
     id: 3,
     url: "/images/exploreProjectImages/3.png",
     className:
-      "absolute top-[1474px] left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+      "absolute top-[1574px] left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
   },
   {
     id: 4,
     url: "/images/exploreProjectImages/5.png",
     className:
-      "absolute top-[1645px] right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+      "absolute top-[1945px] right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
   },
   {
     id: 5,
     url: "/images/exploreProjectImages/4.png",
     className:
-      "absolute top-[1701px] w-[297px] h-[371px] left-[523px] rounded-[20px] z-20",
+      "absolute top-[2001px] w-[297px] h-[371px] left-[523px] rounded-[20px] z-20",
     startPosition: { y: 100 },
   },
 ];
 
 const ExploreProjects: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const textWrapperRef = useRef<HTMLDivElement>(null);
+  const textRefHome = useRef<HTMLDivElement>(null);
+  const textRefLife = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Create ScrollTrigger for pinning the text section
     ScrollTrigger.create({
-      trigger: textRef.current,
-      start: "top 20%",
-      end: "+=1100",
+      trigger: textWrapperRef.current, // Wrap both text sections in one trigger
+      start: "top 10%",
+      end: "+=1300",
       pin: true,
       pinSpacing: true,
     });
 
-    // Fade in animation for the text
+    // Animation for "A New Home"
     gsap.fromTo(
-      textRef.current,
+      textRefHome.current,
       {
+        scaleY: 5,
+        filter: "blur(10px)",
         opacity: 0,
-        y: 50,
+        paddingTop: 100,
       },
       {
+        scaleY: 1,
+        filter: "blur(0px)",
         opacity: 1,
-        y: 0,
-        duration: 1,
+        paddingTop: 0,
+        duration: 4,
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
+          trigger: sectionRef.current,
+          markers: true,
+          start: "top 90%",
+          end: "top 60%",
+        },
+      }
+    );
+
+    // Animation for "A New Way of Life"
+    gsap.fromTo(
+      textRefLife.current,
+      {
+        scaleY: 5,
+        filter: "blur(10px)",
+        opacity: 0,
+        paddingTop: 150,
+      },
+      {
+        scaleY: 1,
+        filter: "blur(0px)",
+        opacity: 1,
+        paddingTop: 0,
+        duration: 4,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
           end: "top 30%",
-          scrub: false,
+          markers: true,
         },
       }
     );
@@ -105,7 +137,7 @@ const ExploreProjects: React.FC = () => {
   );
 
   return (
-    <div className="h-[2235px] relative z-0 overflow-hidden">
+    <div className="h-[2435px] relative z-0 overflow-hidden">
       <div ref={sectionRef} className="relative min-h-screen ">
         <div className="relative w-full">
           {images.map((image) => (
@@ -122,16 +154,23 @@ const ExploreProjects: React.FC = () => {
             />
           ))}
 
+          {/* Text Wrapper for pinning */}
           <div
-            ref={textRef}
-            className="w-full flex flex-col items-center justify-center z-10 text-center leading-[1]"
+            ref={textWrapperRef}
+            className="w-full flex flex-col items-center justify-center z-10 text-center leading-[1] pt-10"
           >
             <Typography
               variant="custom"
-              className="text-[120px] text-customBrown font-freightNeoMedium pb-[39px]"
+              ref={textRefHome}
+              className="text-[120px] text-customBrown font-freightNeoMedium pb-[10px]"
             >
               A New Home,
-              <br />
+            </Typography>
+            <Typography
+              variant="custom"
+              ref={textRefLife}
+              className="text-[120px] text-customBrown font-freightNeoMedium pb-[39px]"
+            >
               A New Way of Life
             </Typography>
             <button className="items-center w-[287px] h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
