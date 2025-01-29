@@ -73,110 +73,110 @@ const ExploreProjects: React.FC = () => {
   const imagesWapperf = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    // Create ScrollTrigger for pinning the text section
-    ScrollTrigger.create({
-      trigger: textWrapperRef.current,
-      start: "top 10%",
-      end: "+=1300",
-      pin: true,
-      pinSpacing: true,
-    });
+  // useEffect(() => {
+  //   // Create ScrollTrigger for pinning the text section
+  //   ScrollTrigger.create({
+  //     trigger: textWrapperRef.current,
+  //     start: "top 10%",
+  //     end: "+=1300",
+  //     pin: true,
+  //     pinSpacing: true,
+  //   });
 
-    // Animation for "A New Home"
-    gsap.fromTo(
-      textRefHome.current,
-      {
-        scaleY: 5,
-        filter: "blur(10px)",
-        opacity: 0,
-        paddingTop: 100,
-        y: 100,
-      },
-      {
-        scaleY: 1,
-        filter: "blur(0px)",
-        opacity: 1,
-        paddingTop: 0,
-        y: 0,
-        duration: 4,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 90%",
-          end: "top 60%",
-        },
-      }
-    );
+  //   // Animation for "A New Home"
+  //   gsap.fromTo(
+  //     textRefHome.current,
+  //     {
+  //       scaleY: 5,
+  //       filter: "blur(10px)",
+  //       opacity: 0,
+  //       paddingTop: 100,
+  //       y: 100,
+  //     },
+  //     {
+  //       scaleY: 1,
+  //       filter: "blur(0px)",
+  //       opacity: 1,
+  //       paddingTop: 0,
+  //       y: 0,
+  //       duration: 4,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 90%",
+  //         end: "top 60%",
+  //       },
+  //     }
+  //   );
 
-    // Animation for "A New Way of Life"
-    gsap.fromTo(
-      textRefLife.current,
-      {
-        scaleY: 5,
-        filter: "blur(10px)",
-        opacity: 0,
-        paddingTop: 150,
-      },
-      {
-        scaleY: 1,
-        filter: "blur(0px)",
-        opacity: 1,
-        paddingTop: 0,
-        duration: 4,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          end: "top 30%",
-        },
-      }
-    );
-    // Animation for the button
-    gsap.fromTo(
-      buttonRef.current,
-      {
-        scaleY: 5,
-        filter: "blur(10px)",
-        opacity: 0,
-        paddingTop: 50,
-      },
-      {
-        scaleY: 1,
-        filter: "blur(0px)",
-        opacity: 1,
-        paddingTop: 0,
-        duration: 4,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 50%",
-          end: "top 60%",
-        },
-      }
-    );
+  //   // Animation for "A New Way of Life"
+  //   gsap.fromTo(
+  //     textRefLife.current,
+  //     {
+  //       scaleY: 5,
+  //       filter: "blur(10px)",
+  //       opacity: 0,
+  //       paddingTop: 150,
+  //     },
+  //     {
+  //       scaleY: 1,
+  //       filter: "blur(0px)",
+  //       opacity: 1,
+  //       paddingTop: 0,
+  //       duration: 4,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 70%",
+  //         end: "top 30%",
+  //       },
+  //     }
+  //   );
+  //   // Animation for the button
+  //   gsap.fromTo(
+  //     buttonRef.current,
+  //     {
+  //       scaleY: 5,
+  //       filter: "blur(10px)",
+  //       opacity: 0,
+  //       paddingTop: 50,
+  //     },
+  //     {
+  //       scaleY: 1,
+  //       filter: "blur(0px)",
+  //       opacity: 1,
+  //       paddingTop: 0,
+  //       duration: 4,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 50%",
+  //         end: "top 60%",
+  //       },
+  //     }
+  //   );
 
-    // Smooth Scroll to target position
-    ScrollTrigger.create({
-      trigger: textRefLife.current,
-      start: "top 50%", // Start position (when the text comes into view)
-      onEnter: () => {
-        gsap.to(window, {
-          scrollTo: {
-            y: 3600, // Scroll target position
-            autoKill: false, // Prevent jumping to the target before the scroll is complete
-          },
-          duration: 2, // Duration of the scroll animation
-          ease: "power2.out", // Easing for smooth transition
-        });
-      },
-    });
+  //   // Smooth Scroll to target position
+  //   ScrollTrigger.create({
+  //     trigger: textRefLife.current,
+  //     start: "top 50%", // Start position (when the text comes into view)
+  //     onEnter: () => {
+  //       gsap.to(window, {
+  //         scrollTo: {
+  //           y: 3600, // Scroll target position
+  //           autoKill: false, // Prevent jumping to the target before the scroll is complete
+  //         },
+  //         duration: 2, // Duration of the scroll animation
+  //         ease: "power2.out", // Easing for smooth transition
+  //       });
+  //     },
+  //   });
 
-    // Cleanup ScrollTriggers on component unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  //   // Cleanup ScrollTriggers on component unmount
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //   };
+  // }, []);
 
   const cardContent = (
     <div className="bg-white dark:bg-neutral-800 p-8 rounded-3xl mb-4">
