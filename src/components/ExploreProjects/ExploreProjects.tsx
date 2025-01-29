@@ -5,6 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import AppleStyleCard from "../ui/apple-style-card";
 import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
+import ExpandableCards from "../Common/ExpandableCards/ExpandableCards";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -15,53 +16,68 @@ type Cards = {
   startPosition: { x?: number; y?: number };
   isViewMore?: boolean;
   position?: "left" | "right";
+  width?: string,
+  height?: string
 };
 
 const cards: Cards[] = [
   {
-    id: 1,
-    url: "/images/exploreProjectImages/1.png",
+    id: 5,
+    url: "/images/exploreProjectImages/4.png",
     className:
-      "absolute top-[944px] xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
-    startPosition: { x: -100 },
+      "absolute  w-[297px] h-[371px] left-[323px] rounded-[20px] z-20",
+    startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-  },
-  {
-    id: 2,
-    url: "/images/exploreProjectImages/2.png",
-    className:
-      "absolute top-[900px] xl:right-[56px] md:right-[-150px]  w-[348px] h-[435px] rounded-[20px] z-20",
-    startPosition: { x: 100 },
-    isViewMore: true,
-    position: "left",
-  },
-  {
-    id: 3,
-    url: "/images/exploreProjectImages/3.png",
-    className:
-      "absolute top-[1574px] left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
-    startPosition: { x: -100 },
-    isViewMore: true,
-    position: "left",
+     width:"297px",
+    height:"371px"
   },
   {
     id: 4,
     url: "/images/exploreProjectImages/5.png",
     className:
-      "absolute top-[1945px] right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+      "absolute  right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
+     width:"348px",
+    height:"435px"
   },
+
   {
-    id: 5,
-    url: "/images/exploreProjectImages/4.png",
+    id: 2,
+    url: "/images/exploreProjectImages/2.png",
     className:
-      "absolute top-[2001px] w-[297px] h-[371px] left-[523px] rounded-[20px] z-20",
-    startPosition: { y: 100 },
+      "absolute  xl:right-[56px] md:right-[-150px]  w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
+     width:"348px",
+    height:"435px"
+  },
+  {
+    id: 3,
+    url: "/images/exploreProjectImages/3.png",
+    className:
+      "absolute  left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
+     width:"348px",
+    height:"435px"
+  },
+
+  {
+    id: 1,
+    url: "/images/exploreProjectImages/1.png",
+    className:
+      "absolute  xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
+    width:"348px",
+    height:"435px"
+
   },
 ];
 
@@ -193,10 +209,11 @@ const ExploreProjects: React.FC = () => {
 
   return (
     <>
-      <div className="md:block hidden h-[2435px] relative z-0 overflow-hidden">
+      <div className="md:block hidden  relative z-0 overflow-hidden">
+        {/* 
         <div ref={sectionRef} className="relative min-h-screen ">
           <div className="relative w-full">
-            {/* <div ref={imagesWapperf}> */}
+            <div ref={imagesWapperf}> 
             <div>
               {cards.map((card) => (
                 <AppleStyleCard
@@ -212,8 +229,8 @@ const ExploreProjects: React.FC = () => {
                 />
               ))}
             </div>
-            {/* </div> */}
-            {/* Text Wrapper for pinning */}
+            </div>
+            Text Wrapper for pinning 
             <div
               ref={textWrapperRef}
               className="w-full flex flex-col items-center justify-center z-10 text-center leading-[1] pt-10"
@@ -241,6 +258,8 @@ const ExploreProjects: React.FC = () => {
             </div>
           </div>
         </div>
+          */}
+          <ExpandableCards cards={cards} />
       </div>
       <div className="md:hidden block mb-12">
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">

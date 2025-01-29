@@ -26,6 +26,7 @@ interface CardProps {
   position?: "left" | "right";
   isViewMoreType?: "primary" | "secondary";
   bottomTitle?: string;
+  isExpanded?: boolean;
 }
 
 export default function AppleStyleCard({
@@ -44,7 +45,8 @@ export default function AppleStyleCard({
   isViewMore = true,
   position = "right",
   isViewMoreType = "secondary",
-  bottomTitle = ""
+  bottomTitle = "",
+  isExpanded = true,
 
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -156,7 +158,7 @@ export default function AppleStyleCard({
     <>
       <motion.button
         layoutId={`expandable-card-${id}`}
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsOpen(isExpanded)}
         className={cn(
           "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
           className,
