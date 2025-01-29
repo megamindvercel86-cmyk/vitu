@@ -24,6 +24,7 @@ interface CardProps {
   isViewMore?: boolean;
   position?: "left" | "right";
   isViewMoreType?: "primary" | "secondary";
+  bottomTitle?: string;
 }
 
 export default function AppleStyleCard({
@@ -42,6 +43,7 @@ export default function AppleStyleCard({
   isViewMore = true,
   position = "right",
   isViewMoreType = "secondary",
+
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);

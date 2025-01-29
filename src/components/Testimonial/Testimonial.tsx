@@ -18,7 +18,7 @@ export default function Testimonial() {
           What our Clients say
         </Typography>
       </div>
-      <div className="md:block hidden rounded-md  flex-col antialiased  items-center justify-center relative overflow-hidden">
+      <div className="md:flex hidden rounded-md  flex-col antialiased  items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={profiles} direction="right" speed="slow" />
       </div>
       <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">

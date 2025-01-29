@@ -11,10 +11,11 @@ import AppleStyleCard from '@/components/ui/apple-style-card';
 interface Card {
   id: number;
   url: string;
-  className: string;
+  className?: string;
   startPosition?: { x?: number; y?: number };
   isViewMore?: boolean;
   position?: "left" | "right";
+  bottomTitle?: string
 }
 
 interface InfiniteCarouselProps {
