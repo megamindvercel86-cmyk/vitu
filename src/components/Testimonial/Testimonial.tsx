@@ -13,7 +13,7 @@ export default function Testimonial() {
         </Typography>
         <Typography
           variant="custom"
-          className="text-customBrown md:text-[60px] text-2xl font-freightNeoMedium"
+          className="text-customBrown md:text-[60px] leading-[28px] md:leading-[72px] xl:leading-[67px] text-2xl font-freightNeoMedium"
         >
           What our Clients say
         </Typography>

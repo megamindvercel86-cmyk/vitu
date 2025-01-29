@@ -1,71 +1,8 @@
 import React from "react";
 import Typography from "../Typography/Typography";
-import { AppleInspiredCard } from "../ui/apple-inspired-card";
-import Image from "next/image";
+import AppleStyleCard from "../ui/apple-style-card";
 
-const DummyContent = () => {
-  return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height={500}
-              width={500}
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
-  );
-};
 
-const DummyContent2 = () => {
-  return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height={500}
-              width={500}
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
-  );
-};
 const SustainabilityInitiatives = () => {
   return (
     <div className="flex flex-row xl:mx-[280px]">
@@ -73,7 +10,7 @@ const SustainabilityInitiatives = () => {
         <div className="lg:w-[500px] leading-[1]">
           <Typography
             variant="custom"
-            className="text-customBrown text-[60px] font-freightNeoMedium"
+            className="text-customBrown leading-[28px] md:leading-[72px] xl:leading-[67px] text-[60px] font-freightNeoMedium"
           >
             Our Commitment to Sustainability
           </Typography>
@@ -87,11 +24,12 @@ const SustainabilityInitiatives = () => {
           </Typography>
           <div>
             <div className="mt-[69px]">
-              <AppleInspiredCard
-                title="Beach Cleaning."
-                src="/images/SustainabilityInitiativesImages/1.png"
-                content={<DummyContent />}
-                className="xl:h-[660px] xl:w-[664px]"
+              <AppleStyleCard
+                key={11}
+                id={11}
+                imageSrc={"/images/SustainabilityInitiativesImages/1.png"}
+                className={"xl:h-[660px] xl:w-[664px]"}
+                cardClassName="rounded-[20px]"
               />
             </div>
           </div>
@@ -100,19 +38,21 @@ const SustainabilityInitiatives = () => {
       <div className="w-1/2 flex justify-end">
         <div>
           <div>
-            <AppleInspiredCard
-              title="500+ Tree Cover"
-              src="/images/SustainabilityInitiativesImages/2.png"
-              content={<DummyContent2 />}
+            <AppleStyleCard
+              key={12}
+              id={12}
+              imageSrc="/images/SustainabilityInitiativesImages/2.png"
               className="xl:h-[742px] xl:w-[593px]"
+              cardClassName="rounded-[20px]"
             />
           </div>
           <div className="mb-[166px] mt-[124px]">
-            <AppleInspiredCard
-              title="Emission Control "
-              src="/images/SustainabilityInitiativesImages/3.png"
-              content={<DummyContent />}
+            <AppleStyleCard
+              key={13}
+              id={13}
+              imageSrc="/images/SustainabilityInitiativesImages/3.png"
               className="xl:h-[256px] xl:w-[593px]"
+               cardClassName="rounded-[20px]"
             />
           </div>
         </div>

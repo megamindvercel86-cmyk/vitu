@@ -47,8 +47,8 @@ const InfiniteCarosel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
       {cards.map((card, index) => (
         <SwiperSlide key={index} className="swiper-slide">
           <AppleStyleCard
-            key={card.id}
-            id={card.id}
+            key={card.id + 5}
+            id={card.id + 5}
             imageSrc={card.url}
             expandedImageClassName="object-center"
           />
