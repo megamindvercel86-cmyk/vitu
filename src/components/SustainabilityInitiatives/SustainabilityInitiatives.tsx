@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../Typography/Typography";
 import AppleStyleCard from "../ui/apple-style-card";
-import InfiniteCarosel from "../Common/InfiniteCarousel/InfiniteCarousel";
+import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
 
 type Cards = {
   id: number;
@@ -22,6 +22,21 @@ const cards: Cards[] = [
   },
   {
     id: 16,
+    url: "/images/SustainabilityInitiativesImages/3.png",
+    bottomTitle: "Emission control",
+  },
+  {
+    id: 17,
+    url: "/images/SustainabilityInitiativesImages/1.png",
+    bottomTitle: "Beach cleaning",
+  },
+  {
+    id: 18,
+    url: "/images/SustainabilityInitiativesImages/2.png",
+    bottomTitle: "500+ Tree Cover",
+  },
+  {
+    id: 19,
     url: "/images/SustainabilityInitiativesImages/3.png",
     bottomTitle: "Emission control",
   },
@@ -54,13 +69,14 @@ const SustainabilityInitiatives = () => {
               imageSrc={"/images/SustainabilityInitiativesImages/1.png"}
               className="md:max-w-[528px] xl:max-w-[664px] md:h-[460px] lg:h-[660px] w-full"
               cardClassName="rounded-[20px]"
+              bottomTitle="Beach cleaning"
             />
           </div>
         </div>
       </div>
 
       {/* Right Column */}
-      <div className="md:w-1/2 md:flex hidden md:mt-0 ">
+      <div className="md:w-1/2 md:flex hidden md:mt-0 mb-40">
         <div className="flex w-full flex-col gap-8  lg:gap-12 xl:gap-16 items-end ">
           <AppleStyleCard
             key={12}
@@ -68,6 +84,7 @@ const SustainabilityInitiatives = () => {
             imageSrc="/images/SustainabilityInitiativesImages/2.png"
             className="md:max-w-[593px] md:h-[542px] lg:h-[742px] w-full"
             cardClassName="rounded-[20px]"
+             bottomTitle="500+ Tree Cover"
           />
 
           <AppleStyleCard
@@ -76,11 +93,12 @@ const SustainabilityInitiatives = () => {
             imageSrc="/images/SustainabilityInitiativesImages/3.png"
             className="md:max-w-[593px] md:h-[260px] lg:h-[256px] w-full"
             cardClassName="rounded-[20px]"
+             bottomTitle="Emission control"
           />
         </div>
       </div>
       <div className="md:hidden block mb-12">
-        <InfiniteCarosel cards={cards} />
+        <InfiniteCarousel cards={cards} />
       </div>
     </div>
   );

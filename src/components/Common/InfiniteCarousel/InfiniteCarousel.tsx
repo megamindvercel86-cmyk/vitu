@@ -22,7 +22,7 @@ interface InfiniteCarouselProps {
   cards: Card[];
 }
 
-const InfiniteCarosel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
+const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
   return (
     <Swiper
       effect={'coverflow'}
@@ -39,7 +39,7 @@ const InfiniteCarosel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
         slideShadows: true,
       }}
       autoplay={{
-        delay: 2500,
+        delay: 232500,
         disableOnInteraction: false,
       }}
       modules={[EffectCoverflow, Autoplay]}
@@ -52,6 +52,7 @@ const InfiniteCarosel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
             id={card.id + 5}
             imageSrc={card.url}
             expandedImageClassName="object-center"
+            bottomTitle={card.bottomTitle}
           />
         </SwiperSlide>
       ))}
@@ -59,4 +60,4 @@ const InfiniteCarosel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
   );
 };
 
-export default InfiniteCarosel;
+export default InfiniteCarousel;

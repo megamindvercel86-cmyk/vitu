@@ -7,6 +7,7 @@ import { IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
 import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
+import Typography from "../Typography/Typography";
 
 interface CardProps {
   id: number; // Added id prop for unique layoutId
@@ -43,6 +44,7 @@ export default function AppleStyleCard({
   isViewMore = true,
   position = "right",
   isViewMoreType = "secondary",
+  bottomTitle = ""
 
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -188,7 +190,10 @@ export default function AppleStyleCard({
           className="object-cover absolute z-10 inset-0"
         />
         {/* Plus icon at the bottom right */}
-        <div className="absolute bottom-4 right-4 z-50">
+        <div className="absolute bottom-4 md:left-8 left-4 z-50">
+          <Typography variant="custom" className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl">{bottomTitle}</Typography>
+        </div>
+        <div className="absolute bottom-4 md:right-8 right-4 z-50">
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (
               <PrimaryViewMoreButton />

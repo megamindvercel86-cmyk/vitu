@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import AppleStyleCard from "../ui/apple-style-card";
-import InfiniteCarosel from "../Common/InfiniteCarousel/InfiniteCarousel";
+import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -257,7 +257,7 @@ const ExploreProjects: React.FC = () => {
             A New Way of Life
           </Typography>
         </div>
-        <InfiniteCarosel cards={cards} />
+        <InfiniteCarousel cards={cards} />
         <div className="w-full px-7  flex flex-col items-center justify-center text-center leading-[1] pt-10">
           <button className="items-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
             Explore the Project Now
