@@ -28,8 +28,11 @@ export default function JoinOurTeamHeroSection() {
       {/* Content */}
       <div className="relative ">
         <div className="">
-          <div className="lg:pt-[124px] lg:pl-[74px] md:pt-[94px] md:pl-[54px] xl:pt-[128px] xl:pl-[210px] px-auto">
-            <Typography className="text-4xl md:text-5xl lg:text-[80px] font-freightNeoMedium font-bold text-white mb-6">
+          <div className=" mx-auto sm:mx-[28px]  lg:pt-[124px] lg:pl-[74px] md:pt-[94px] md:pl-[54px] xl:pt-[128px] xl:pl-[210px] pt-[65px] px-auto">
+            <Typography
+              variant="custom"
+              className="text-white text-[32px] md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] text-center   md:text-start font-freightNeoMedium mb-4 md:mb-6"
+            >
               Build Better with
               <br />
               Vitu Realty
@@ -37,6 +40,11 @@ export default function JoinOurTeamHeroSection() {
             <button className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px]">
               Enquire Now
             </button>
+            <div className="mx-6 mt-44">
+            <button className=" md:hidden w-full  block bg-[#AE8566] rounded-[57px] font-FreightNeoProBold text-white text-[22px]  h-[50px]">
+              Download Now
+            </button>
+            </div>
           </div>
         </div>
       </div>
