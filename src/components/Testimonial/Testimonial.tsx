@@ -6,8 +6,8 @@ import Typography from "../Typography/Typography";
 
 export default function Testimonial() {
   return (
-    <div className="mt-[166px]">
-      <div className="flex items-center justify-center flex-col mb-[90px]">
+    <div className="xl:mt-[166px] lg:mt-[206px]   mt-12">
+      <div className="flex items-center justify-center flex-col lg:mb-[90px] mb-9">
         <Typography variant="custom" className="text-customBrown md:text-lg text-xs font-freightNeoMedium">
           CLIENT TESTIMONIAL
         </Typography>
@@ -18,13 +18,13 @@ export default function Testimonial() {
           What our Clients say
         </Typography>
       </div>
-      <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
+      <div className="md:block hidden rounded-md  flex-col antialiased  items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={profiles} direction="right" speed="slow" />
       </div>
       <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={profiles} direction="left" speed="slow" />
       </div>
-      <div className="flex items-center justify-center flex-col mt-[66px] mb-[145px]">
+      <div className="flex items-center justify-center flex-col mt-6 md:mt-[66px] mb-11 md:mb-[145px]">
         <Typography
           variant="custom"
           className="text-customBrown font-FreightNeoProBold text-[22px]"
