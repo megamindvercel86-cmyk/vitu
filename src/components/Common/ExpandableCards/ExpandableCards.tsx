@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
@@ -12,19 +12,19 @@ const images = [
 ];
 
 const expandedPositions = [
-  { top: "64%", left: "25%" },
-  { top: "50%", right: "1%" },
-  { top: "0%", right: "5%" },
-  { top: "50%", left: "1%" },
-  { top: "5%", left: "3%" },
+  { top: "64%", left: "25%", right: "auto" },
+  { top: "50%", right: "1%", left: "auto" },
+  { top: "0%", right: "1%", left: "auto" },
+  { top: "50%", left: "1%", right: "auto" },
+  { top: "5%", left: "3%", right: "auto" },
 ];
 
 const notExpandedPositions = [
-  { top: "31%", left: "37%" },
-  { top: "10%", left: "41.4%" },
-  { top: "0%", left: "45%" },
-  { top: "26%", left: "50%" },
-  { top: "5%", left: "33%" },
+  { top: "31%", left: "37%", right: "auto" },
+  { top: "10%", left: "41.4%", right: "auto" },
+  { top: "0%", left: "45%", right: "auto" },
+  { top: "26%", left: "50%", right: "auto" },
+  { top: "5%", left: "33%", right: "auto" },
 ];
 
 interface Card {
@@ -55,12 +55,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
 
   return (
     <div className="h-auto flex items-center justify-center">
+        
       <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />
       <div
         className="mx-auto w-full relative"
         style={{ height: isExpanded ? "180vh" : "100vh" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Text Content */}
         <motion.div
@@ -104,7 +106,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             </motion.button>
           </div>
         </motion.div>
-
         {/* Images */}
         <AnimatePresence>
           {cards.map((card, index) => {
@@ -132,7 +133,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   duration: 0.8,
                   ease: [0.43, 0.13, 0.23, 0.96],
                 }}
-                onClick={() => setIsExpanded(!isExpanded)}
+                
               >
                 <AppleStyleCard
                   id={card.id}
