@@ -1,19 +1,21 @@
+"use client";
+
+// ============= Component Imports =============
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from 'swiper';
+import AppleStyleCard from "@/components/ui/apple-style-card";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
+
+// ============= Swiper Imports =============
+import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "./InfiniteCarousel.css";
-import AppleStyleCard from "@/components/ui/apple-style-card";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@/components/Icons/Icons";
 
-// Define a type for the card object
+// ============= Types & Interfaces =============
 interface Card {
   id: number;
   url: string;
@@ -32,9 +34,24 @@ interface InfiniteCarouselProps {
   cards: Card[];
 }
 
+/**
+ * InfiniteCarousel Component
+ * A carousel component with infinite loop and coverflow effect
+ * 
+ * Features:
+ * 1. Auto-playing slides
+ * 2. Navigation controls
+ * 3. Coverflow effect
+ * 4. Custom card rendering
+ * 
+ * @param {InfiniteCarouselProps} props - Component props
+ * @returns {React.ReactElement} The InfiniteCarousel component
+ */
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
+  // ============= Refs =============
   const swiperRef = useRef<SwiperType | undefined>(undefined);
 
+  // ============= Handlers =============
   const handlePrev = () => {
     if (swiperRef.current) {
       swiperRef.current.slidePrev();
@@ -46,6 +63,31 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
       swiperRef.current.slideNext();
     }
   };
+
+  // ============= Render Helpers =============
+  const renderNavigationControls = () => (
+    <div className="flex items-center justify-between gap-4 px-7">
+      <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+        Explore More
+      </span>
+      <div className="flex gap-2">
+        <button
+          onClick={handlePrev}
+          className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+          aria-label="Previous slide"
+        >
+          <IconArrowNarrowLeft />
+        </button>
+        <button
+          onClick={handleNext}
+          className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+          aria-label="Next slide"
+        >
+          <IconArrowNarrowRight />
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -62,11 +104,11 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        loop={true} // Infinite loop
-        spaceBetween={20} // Gap between slides
+        loop={true}
+        spaceBetween={20}
         coverflowEffect={{
-          rotate: 0, // No rotation
-          stretch: 0, // No stretching
+          rotate: 0,
+          stretch: 0,
           depth: 100,
           modifier: 1,
           slideShadows: true,
@@ -93,27 +135,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex items-center justify-between gap-4 px-7">
-        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
-          Explore More
-        </span>
-        <div className="flex gap-2">
-          <button
-            onClick={handlePrev}
-            className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
-            aria-label="Previous slide"
-          >
-            <IconArrowNarrowLeft />
-          </button>
-          <button
-            onClick={handleNext}
-            className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
-            aria-label="Next slide"
-          >
-            <IconArrowNarrowRight />
-          </button>
-        </div>
-      </div>
+      {renderNavigationControls()}
     </>
   );
 };

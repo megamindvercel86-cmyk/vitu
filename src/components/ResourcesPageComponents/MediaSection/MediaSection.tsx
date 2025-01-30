@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+// ============= Component Imports =============
+import React, { useRef } from "react";
+import Image from "next/image";
+import type { Swiper as SwiperType } from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react";
 import SubHeading from "@/components/Common/SubHeding";
 import Heading from "@/components/Common/Heading";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
-import Image from "next/image";
+import "./MediaSection.css";
 
+// ============= Swiper Imports =============
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+// ============= Types & Interfaces =============
 interface NewsItem {
   id: number;
   image: string;
@@ -12,15 +24,14 @@ interface NewsItem {
   title: string;
 }
 
-const newsItems: NewsItem[] = [
+// ============= Constants =============
+const NEWS_ITEMS: NewsItem[] = [
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
   },
   {
     id: 2,
@@ -67,104 +78,140 @@ const newsItems: NewsItem[] = [
   },
 ];
 
-export default function MediaSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(3);
+/**
+ * Media Section Component
+ * Displays news items in a responsive carousel layout
+ * 
+ * Features:
+ * 1. Responsive grid layout
+ * 2. Dynamic slides per view
+ * 3. Navigation controls
+ * 4. Infinite loop
+ * 
+ * Breakpoints:
+ * - Mobile: 1 slide
+ * - Tablet: 2 slides
+ * - Desktop: 3 slides
+ * 
+ * @returns {React.ReactElement} The MediaSection component
+ */
+export default function MediaSection(): React.ReactElement {
+  // ============= Refs =============
+  const swiperRef = useRef<SwiperType>();
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setSlidesToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const totalSlides = newsItems.length;
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides); // Loop back to start
+  // ============= Handlers =============
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 < 0 ? totalSlides - 1 : prev - 1), // Loop to end
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
+  // ============= Render Helpers =============
+  const renderNewsCard = (item: NewsItem) => {
+    // Split the date string into parts
+    const [month, day, year] = item.date.split(' ');
+    
+    return (
+      <div className="media-card rounded-lg overflow-hidden">
+        {/* Image Container */}
+        <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={400}
+            height={310}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
+            <SubHeading className="text-customTextGray font-medium">{item.source}</SubHeading>
+            <SubHeading className="text-customTextGray">|</SubHeading>
+            <SubHeading className="text-customTextGray">
+              {month} <span className="font-CandideCondensedNormal">{day}</span> <span className="font-CandideCondensedNormal">{year}</span>
+            </SubHeading>
+          </div>
+          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4">
+            {item.title}
+          </SubHeading>
+          <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80">
+            Read More
+          </button>
+        </div>
+      </div>
     );
   };
 
   return (
-    <div className="xl:mx-[278px] lg:mx-[78px] mx-7 py-8 sm:py-12">
-      <div className="text-center mb-8 sm:mb-12">
-        <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px]">
+    <div className="2xl:mx-[278px] 2xl:w-full xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
+      {/* Header */}
+      <div className="text-left md:text-center mb-8 sm:mb-12">
+        <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">
           NEWS & MEDIA
         </SubHeading>
-        <Heading className="lg:text-5xl text-customBrown xl:text-[52px] text-2xl font-semibold">
+        <Heading className="lg:text-5xl text-customBrown xl:text-[52px] text-2xl font-semibold text-left md:text-center">
           Stay Updated with Our Latest Happenings
         </Heading>
       </div>
-      <div className="relative">
-        <div className="flex gap-4 sm:gap-6 overflow-hidden">
-          {newsItems
-            .concat(newsItems) // Duplicate array to enable seamless looping
-            .slice(currentIndex, currentIndex + slidesToShow)
-            .map((item, index) => (
-              <div
-                key={`${item.id}-${index}`}
-                className={`flex-none w-full ${
-                  slidesToShow === 2 ? "sm:w-1/2" : "sm:w-1/2 lg:w-1/3"
-                } transition-all duration-300`}
-              >
-                <div className="rounded-lg overflow-hidden h-full">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[260px]  sm:h-[201px]  lg:h-[310px] xl:h-[310px] object-cover">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={400} // Default width for large screens
-                      height={310} // Default height for large screens
-                      className="w-full h-full"
-                    />
-                  </div>
 
-                  <div className="lg:pt-[31px] xl:pt-[51px] pt-[20px]">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-                      <SubHeading>{item.source}</SubHeading>
-                      <SubHeading>|</SubHeading>
-                      <SubHeading>{item.date}</SubHeading>
-                    </div>
-                    <SubHeading className="text-customTextGray line-clamp-2">
-                      {item.title}
-                    </SubHeading>
-                    <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl">
-                      Read More
-                    </button>
-                  </div>
-                </div>
-              </div>
+      {/* Main Container */}
+      <div className="flex flex-col">
+        {/* Swiper Container */}
+        <div className="relative">
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 250430,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="media-swiper h-full"
+          >
+            {NEWS_ITEMS.map((item) => (
+              <SwiperSlide key={item.id} className="media-slide h-full">
+                {renderNewsCard(item)}
+              </SwiperSlide>
             ))}
+          </Swiper>
         </div>
 
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px] ">
+        {/* Navigation Controls - Moved inside flex container */}
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
           <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
             Explore More
           </span>
           <div className="flex gap-2">
             <button
-              onClick={prevSlide}
-              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200`}
+              onClick={handlePrev}
+              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Previous slide"
             >
               <IconArrowNarrowLeft />
             </button>
             <button
-              onClick={nextSlide}
-              className={`relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200`}
+              onClick={handleNext}
+              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Next slide"
             >
               <IconArrowNarrowRight />
