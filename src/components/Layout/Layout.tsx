@@ -3,16 +3,24 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-interface LayoutProps {
-  children: React.ReactNode;
-  navbarProps?: {
-    showGetInTouch?: boolean; // Optional prop for Navbar
-    navbar?: string; // Type of navbar (e.g., "primary")
-    active?: string; // Active link in the navbar
-  };
-  navbarClassName?: string; // New prop to pass custom class for navbar
+// ============= Types & Interfaces =============
+type NavbarType = "primary" | "secondary";
+
+interface NavbarProps {
+  showGetInTouch?: boolean;
+  navbar?: NavbarType;
 }
 
+interface LayoutProps {
+  children: React.ReactNode;
+  navbarProps?: NavbarProps;
+  navbarClassName?: string;
+}
+
+/**
+ * Layout component that wraps the entire application
+ * Provides consistent layout structure with Navbar and Footer
+ */
 export default function Layout({
   children,
   navbarProps,
@@ -20,10 +28,15 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <>
+      {/* Navbar Section */}
       <div className={navbarClassName || ""}>
         <Navbar {...navbarProps} />
       </div>
-      {children}
+
+      {/* Main Content */}
+      <main>{children}</main>
+
+      {/* Footer Section */}
       <Footer />
     </>
   );

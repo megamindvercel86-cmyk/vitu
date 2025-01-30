@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 interface ButtonProps {
-  onClick: (e: React.FormEvent) => void;
   children: React.ReactNode;
   className?: string;
-  defaultTextColor?: string; // Optional prop for default text color
+  defaultTextColor?: string;
+  onClick?: () => void;  // Make onClick optional
 }
 
 const Button = ({
