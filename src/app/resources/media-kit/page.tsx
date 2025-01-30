@@ -30,7 +30,7 @@ export default function MediaKitPage({}: MediaKitPageProps) {
       <MediaSectionIntro />
 
       {/* Media Kits Section */}
-      <MediaKits />
+      {/* <MediaKits /> */}
     </Layout>
   );
 }
