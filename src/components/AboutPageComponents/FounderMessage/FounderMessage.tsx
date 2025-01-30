@@ -1,5 +1,5 @@
 import YouTube from "react-youtube";
-import { PlayIcon } from "../Icons/Icons";
+import { PlayIcon } from "@/components/Icons/Icons";
 
 export default function FounderMessage() {
   const opts = {

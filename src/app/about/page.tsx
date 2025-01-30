@@ -2,11 +2,11 @@
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
-import FounderMessage from "@/components/FounderMessage/FounderMessage";
+import AboutHeroSection from "@/components/AboutPageComponents/AboutHeroSection/AboutHeroSection";
+import FounderMessage from "@/components/AboutPageComponents/FounderMessage/FounderMessage";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
-import LeadershipTeam from "@/components/LeadershipTeam/LeadershipTeam";
-import StorySection from "@/components/StorySection/StorySection";
+import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
+import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 
 

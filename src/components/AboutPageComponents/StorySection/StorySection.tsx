@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SubHeading from "../Common/SubHeding";
-import Heading from "../Common/Heading";
+import SubHeading from "@/components/Common/SubHeding";
+import Heading from "@/components/Common/Heading";
+
 
 gsap.registerPlugin(ScrollTrigger);
 

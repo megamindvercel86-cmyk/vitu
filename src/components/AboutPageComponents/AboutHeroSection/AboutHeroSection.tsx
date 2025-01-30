@@ -1,5 +1,6 @@
+import CTAButtonIcon from "@/components/Icons/Icons";
 import React from "react";
-import CTAButtonIcon from "../Icons/Icons";
+
 
 const AboutHeroSection = () => {
   return (
