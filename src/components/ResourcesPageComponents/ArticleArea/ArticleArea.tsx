@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
-import Typography from "../Typography/Typography";
-import MobileCarousel from "../MobileCarousel/MobileCarousel";
+import Typography from "@/components/Typography/Typography";
+import MobileCarousel from "@/components/MobileCarousel/MobileCarousel";
 
 interface Article {
   category: string;

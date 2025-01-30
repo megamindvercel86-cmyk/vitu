@@ -1,7 +1,7 @@
 import React from "react";
-import Typography from "../Typography/Typography";
-import { Download } from "../Icons/Icons";
 import Image from "next/image";
+import Typography from "@/components/Typography/Typography";
+import { Download } from "@/components/Icons/Icons";
 
 type DownloadCard = {
   title: string;

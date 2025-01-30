@@ -2,9 +2,9 @@
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import HeroBanner from "@/components/HeroBanner/HeroBanner";
-import ArticleArea from "@/components/ArticleArea/ArticleArea";
-import MediaSection from "@/components/MediaSection/MediaSection";
+import HeroBanner from "@/components/ResourcesPageComponents/HeroBanner/HeroBanner";
+import ArticleArea from "@/components/ResourcesPageComponents/ArticleArea/ArticleArea";
+import MediaSection from "@/components/ResourcesPageComponents/MediaSection/MediaSection";
 import MediaKit from "@/components/MediaKit/MediaKit";
 
 // ============= Types & Interfaces =============

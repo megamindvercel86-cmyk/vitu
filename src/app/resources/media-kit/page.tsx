@@ -1,7 +1,8 @@
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import MediaKits from "@/components/MediaKits/MediaKits";
+
 import MediaSectionIntro from "@/components/MediaSectionIntro/MediaSectionIntro";
+import MediaKits from "@/components/ResourcesPageComponents/MediaKits/MediaKits";
 
 // ============= Types & Interfaces =============
 interface MediaKitPageProps {}

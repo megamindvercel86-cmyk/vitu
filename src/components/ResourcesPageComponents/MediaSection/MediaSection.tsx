@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SubHeading from "../Common/SubHeding";
-import Heading from "../Common/Heading";
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from "../Icons/Icons";
+import SubHeading from "@/components/Common/SubHeding";
+import Heading from "@/components/Common/Heading";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
 import Image from "next/image";
 
 interface NewsItem {

@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../Common/Button";
-import Typography from "../Typography/Typography";
+import Button from "@/components/Common/Button";
+import Typography from "@/components/Typography/Typography";
 
 const HeroBanner: React.FC = () => {
   return (
