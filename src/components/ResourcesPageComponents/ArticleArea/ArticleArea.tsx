@@ -138,22 +138,22 @@ export default function ArticleArea(): React.ReactElement {
 
   // ============= Render Helpers =============
   const renderHeader = () => (
-    <div className="flex flex-col items-center justify-center mx-auto max-w-[781px] xl:mb-[87px] lg:mb-[92px] mb-[43px] px-7 md:px-0">
+    <div className="flex flex-col items-start md:items-center justify-center mx-auto max-w-[781px] xl:mb-[87px] lg:mb-[92px]  px-7 md:px-0">
       <Typography
         variant="custom"
-        className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-center"
+        className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center"
       >
         {CONTENT.header.badge}
       </Typography>
       <Typography
         variant="custom"
-        className="text-customBrown font-freightNeoSemibold xl:pb-[24px] lg:pb-[27px] pb-[20px] text-3xl md:text-[48px] xl:text-[52px] text-center"
+        className="text-customBrown font-freightNeoSemibold xl:pb-[24px] lg:pb-[27px] pb-[20px] text-3xl md:text-[48px] xl:text-[52px] text-left md:text-center"
       >
         {CONTENT.header.title}
       </Typography>
       <Typography
         variant="custom"
-        className="text-customBrown font-freightNeoMedium text-base lg:text-2xl text-center"
+        className="text-customBrown font-freightNeoMedium text-base lg:text-2xl text-left md:text-center"
       >
         {CONTENT.header.description}
       </Typography>

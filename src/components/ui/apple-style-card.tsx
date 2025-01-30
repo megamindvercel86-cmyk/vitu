@@ -166,7 +166,7 @@ export default function AppleStyleCard({
           cardClassName
         )}
       >
-        <div className="relative z-40 p-4 ">
+        <div className="relative z-40 p-4">
           <motion.p
             layoutId={`card-category-${id}`}
             className={cn(
@@ -179,22 +179,21 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-title-${id}`}
             className={cn(
-              "text-2xl md:text-3xl font-freightNeoSemibold text-white max-w-xs text-left  [text-wrap:balance]  mt-1",
+              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
               titleClassName
             )}
           >
             {title}
           </motion.p>
           <motion.p
-            layoutId={`card-title-${id}`}
+            layoutId={`card-subtitle-${id}`}
             className={cn(
-              "text-base md:text-3xl font-FreightNeoProNormal text-white max-w-xs text-left [text-wrap:balance]  mt-1",
+              "text-base md:text-xl xl:text-2xl font-FreightNeoProNormal text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
               titleClassName
             )}
           >
             {subtitle}
           </motion.p>
-          
         </div>
         <BlurImage
           src={imageSrc || "/placeholder.svg"}
@@ -202,7 +201,6 @@ export default function AppleStyleCard({
           fill
           className="object-cover absolute z-10 inset-0"
         />
-        {/* Plus icon at the bottom right */}
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography variant="custom" className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl">{bottomTitle}</Typography>
         </div>

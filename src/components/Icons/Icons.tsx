@@ -256,7 +256,7 @@ export function MenuIconWhite() {
 export function PrimaryViewMoreButton() {
   return (
     <svg
-      className="lg:w-[44px] lg:h-[44px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
+      className="md:w-[44px] md:h-[44px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +275,7 @@ export function PrimaryViewMoreButton() {
 export function SecondaryViewMoreButton() {
   return (
     <svg
-      className="lg:w-[44px] lg:h-[44px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
+      className="md:w-[44px] md:h-[44px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
