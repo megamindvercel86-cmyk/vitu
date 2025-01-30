@@ -97,7 +97,7 @@ const NEWS_ITEMS: NewsItem[] = [
  */
 export default function MediaSection(): React.ReactElement {
   // ============= Refs =============
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType | undefined>(undefined);
 
   // ============= Handlers =============
   const handlePrev = () => {
