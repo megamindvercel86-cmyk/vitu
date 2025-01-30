@@ -2,8 +2,8 @@
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import FormSection from "@/components/FormSection/FormSection";
-import FAQ from "@/components/FAQ/FAQ";
+import FormSection from "@/components/Common/FormSection/FormSection";
+import FAQ from "@/components/GeneralEnquireComopnents/FAQ/FAQ";
 
 // ============= Types & Interfaces =============
 interface GeneralEnquirePageProps {}

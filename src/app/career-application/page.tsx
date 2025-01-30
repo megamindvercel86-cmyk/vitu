@@ -2,7 +2,7 @@
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import FormSection from "@/components/FormSection/FormSection";
+import FormSection from "@/components/Common/FormSection/FormSection";
 
 // ============= Types & Interfaces =============
 interface CareerApplicationPageProps {}

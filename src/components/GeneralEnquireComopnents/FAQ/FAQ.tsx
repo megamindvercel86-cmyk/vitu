@@ -1,6 +1,7 @@
+import Heading from "@/components/Common/Heading";
+import SubHeading from "@/components/Common/SubHeding";
 import React, { useState } from "react";
-import Heading from "../Common/Heading";
-import SubHeading from "../Common/SubHeding";
+
 import { RiArrowUpSLine } from "react-icons/ri";
 
 interface FAQItem {

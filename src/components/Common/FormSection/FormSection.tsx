@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
-import Button from "../Common/Button";
+import Button from "@/components/Common/Button";
 import { collection, addDoc } from "firebase/firestore";
 import { db, storage } from "@/firebase/firebaseConfig";
-import { Dropdown, Upload } from "../Icons/Icons";
+import { Dropdown, Upload } from "@/components/Icons/Icons";
 import { ref, uploadBytes } from "firebase/storage";
-import Typography from "../Typography/Typography";
+import Typography from "@/components/Typography/Typography";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
