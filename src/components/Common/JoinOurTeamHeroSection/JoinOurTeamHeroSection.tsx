@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Typography from "../Typography/Typography";
+import Typography from "@/components/Typography/Typography";
 
 export default function JoinOurTeamHeroSection() {
   return (

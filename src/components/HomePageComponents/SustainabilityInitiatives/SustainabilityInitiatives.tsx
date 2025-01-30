@@ -1,7 +1,7 @@
 import React from "react";
-import Typography from "../Typography/Typography";
-import AppleStyleCard from "../ui/apple-style-card";
-import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
+import Typography from "@/components/Typography/Typography";
+import AppleStyleCard from "@/components/ui/apple-style-card";
+import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
 
 type Cards = {
   id: number;

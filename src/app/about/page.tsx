@@ -4,10 +4,11 @@
 import Layout from "@/components/Layout/Layout";
 import AboutHeroSection from "@/components/AboutHeroSection/AboutHeroSection";
 import FounderMessage from "@/components/FounderMessage/FounderMessage";
-import JoinOurTeamHeroSection from "@/components/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
+import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import LeadershipTeam from "@/components/LeadershipTeam/LeadershipTeam";
 import StorySection from "@/components/StorySection/StorySection";
-import VisionAndMission from "@/components/VisionAndMission/VisionAndMission";
+import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
+
 
 // ============= Types & Interfaces =============
 interface AboutPageProps {}

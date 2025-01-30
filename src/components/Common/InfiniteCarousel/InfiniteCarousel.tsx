@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -39,7 +41,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
         slideShadows: true,
       }}
       autoplay={{
-        delay: 232500,
+        delay: 2500,
         disableOnInteraction: false,
       }}
       modules={[EffectCoverflow, Autoplay]}

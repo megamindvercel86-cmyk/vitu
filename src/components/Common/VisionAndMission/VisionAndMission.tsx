@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Typography from "../Typography/Typography";
+
 import Image from "next/image";
+import Typography from "@/components/Typography/Typography";
 
 const images: string[] = [
   "/images/visionAndMissionImages/1.png",

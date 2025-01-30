@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "../Typography/Typography";
+import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 
 const CurrentProject: React.FC = () => {

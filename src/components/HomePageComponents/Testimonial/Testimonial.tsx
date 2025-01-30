@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
-import Typography from "../Typography/Typography";
+
+import Typography from "@/components/Typography/Typography";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export default function Testimonial() {
   return (

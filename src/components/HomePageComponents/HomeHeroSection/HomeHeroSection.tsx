@@ -1,5 +1,6 @@
+import Typography from "@/components/Typography/Typography";
 import React from "react";
-import Typography from "../Typography/Typography";
+
 
 const HomeHeroSection: React.FC = () => {
   return (

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Typography from "../Typography/Typography";
-import CTAButtonIcon from "../Icons/Icons";
+import Typography from "@/components/Typography/Typography";
+import CTAButtonIcon from "@/components/Icons/Icons";
 
 interface CarouselItem {
   title: string;
