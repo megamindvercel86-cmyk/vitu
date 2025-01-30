@@ -1,124 +1,66 @@
-import React, { useRef, useState } from "react";
-import { FaCheck } from "react-icons/fa";
-import Button from "@/components/Common/Button";
-import { collection, addDoc } from "firebase/firestore";
-import { db, storage } from "@/firebase/firebaseConfig";
-import { Dropdown, Upload } from "@/components/Icons/Icons";
-import { ref, uploadBytes } from "firebase/storage";
-import Typography from "@/components/Typography/Typography";
+"use client";
+
+// ============= Component Imports =============
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { FaCheck } from "react-icons/fa";
 
+// ============= Internal Imports =============
+import Button from "@/components/Common/Button";
+import { db, storage } from "@/firebase/firebaseConfig";
+import { Dropdown, Upload } from "@/components/Icons/Icons";
+import Typography from "@/components/Typography/Typography";
 
+// ============= Types & Interfaces =============
 interface FormSectionProps {
   heading: string;
   subheading: string;
   page: string;
 }
 
-interface FormData {
-  fullName: string;
-  email: string;
-  phone: string;
-  comments: string;
-  whatsapp: boolean;
-  option: string;
-  resume: File | null;
-}
+// ============= Constants =============
+const JOB_OPTIONS = [
+  { value: "", label: "Interested In", isDisabled: true },
+  { value: "Frontend Developer", label: "Frontend Developer" },
+  { value: "Backend Developer", label: "Backend Developer" },
+  { value: "Full Stack Developer", label: "Full Stack Developer" },
+  { value: "Other", label: "Other" },
+];
 
-const FormSection: React.FC<FormSectionProps> = ({
+const VALIDATION_SCHEMA = Yup.object({
+  fullName: Yup.string().required("Full Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: Yup.string()
+    .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
+    .required("Phone number is required"),
+  comments: Yup.string().max(250, "Max 250 characters"),
+  option: Yup.string(),
+});
+
+/**
+ * Form Section Component
+ * Handles different types of inquiry forms (General, Project, Career)
+ *
+ * Features:
+ * 1. Form validation with Formik
+ * 2. File upload for resumes
+ * 3. WhatsApp updates opt-in
+ * 4. Firebase integration
+ */
+export default function FormSection({
   heading,
   subheading,
   page,
-}) => {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    email: "",
-    phone: "",
-    comments: "",
-    whatsapp: false,
-    option: "",
-    resume: null,
-  });
-
-  const options = [
-    { value: "", label: "Interested In", isDisabled: true },
-    { value: "Frontend Developer", label: "Frontend Developer" },
-    { value: "Backend Developer", label: "Backend Developer" },
-    { value: "Full Stack Developer", label: "Full Stack Developer" },
-    { value: "Other", label: "Other" },
-  ];
-
+}: FormSectionProps) {
+  // ============= Refs =============
   const selectRef = useRef<HTMLSelectElement | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormData({ ...formData, option: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      // Validate form fields
-      if (!formData.fullName || !formData.email || !formData.phone) {
-    
-        return;
-      }
-
-      let resumeUrl: string | null = null;
-      if (formData.resume) {
-        // Upload the file to Firebase Storage if a file is selected
-        const storageRef = ref(storage, `resumes/${formData.resume.name}`);
-        const uploadResult = await uploadBytes(storageRef, formData.resume);
-        resumeUrl = uploadResult.ref.fullPath; // Store the file URL in Firestore
-      }
-
-      // Prepare form data to submit
-      const formToSubmit = {
-        ...formData,
-        resumeUrl,
-      };
-
-      // Determine collection name based on the page type
-      const collectionName =
-        page === "General Enquire"
-          ? "generalEnquiries"
-          : page === "Project Enquire"
-            ? "projectEnquiries"
-            : "careerApplications";
-
-      // Reference the Firestore collection
-      const collectionRef = collection(db, collectionName);
-
-      // Add the form data to Firestore
-      await addDoc(collectionRef, formToSubmit);
-
-    
-
-      // Reset form after submission
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        comments: "",
-        whatsapp: false,
-        option: "",
-        resume: null,
-      });
-    } catch (error) {
-      console.log("Error submitting form:", error);
-    }
-  };
-
-  const validationSchema = Yup.object({
-    fullName: Yup.string().required("Full Name is required"),
-    email: Yup.string().email("Invalid email address").required("Email is required"),
-    phone: Yup.string()
-      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
-      .required("Phone number is required"),
-    comments: page === "General Enquire" ? Yup.string().max(250, "Max 250 characters") : Yup.string(),
-    option: page !== "General Enquire" ? Yup.string().required("Please select an option") : Yup.string(),
-  });
+  // ============= Form Handling =============
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -129,50 +71,43 @@ const FormSection: React.FC<FormSectionProps> = ({
       option: "",
       resume: null as File | null,
     },
-    validationSchema,
+    validationSchema: VALIDATION_SCHEMA,
     onSubmit: async (values, { resetForm }) => {
       try {
-        let resumeUrl: string | null = null;
-  
-        if (values.resume) {
-          const storageRef = ref(storage, `resumes/${values.resume.name}`);
-          const uploadResult = await uploadBytes(storageRef, values.resume);
-          resumeUrl = uploadResult.ref.fullPath;
-        }
-  
-        const collectionName =
-          page === "General Enquire"
-            ? "generalEnquiries"
-            : page === "Project Enquire"
-            ? "projectEnquiries"
-            : "careerApplications";
-  
-        const collectionRef = collection(db, collectionName);
-  
-        await addDoc(collectionRef, {
-          ...values,
-          resumeUrl,
-        });
-  
+        await handleFormSubmission(values);
         resetForm();
       } catch (error) {
         console.error("Error submitting form:", error);
       }
     },
   });
-    
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    if (file) {
-      setFormData({ ...formData, resume: file });
-    }
+
+  // ============= Helper Functions =============
+  const handleIconClick = () => {
+    selectRef.current?.focus();
   };
 
-  const handleIconClick = () => {
-    if (selectRef.current) {
-      selectRef.current.focus();
+  const handleFormSubmission = async (values: typeof formik.values) => {
+    let resumeUrl: string | null = null;
+
+    if (values.resume) {
+      const storageRef = ref(storage, `resumes/${values.resume.name}`);
+      const uploadResult = await uploadBytes(storageRef, values.resume);
+      resumeUrl = uploadResult.ref.fullPath;
     }
+
+    const collectionName =
+      page === "General Enquire"
+        ? "generalEnquiries"
+        : page === "Project Enquire"
+          ? "projectEnquiries"
+          : "careerApplications";
+
+    const collectionRef = collection(db, collectionName);
+    await addDoc(collectionRef, { ...values, resumeUrl });
   };
+
+  // Rest of your component (JSX) remains exactly the same
   return (
     <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
       {/* Left Side Content */}
@@ -201,72 +136,68 @@ const FormSection: React.FC<FormSectionProps> = ({
       <div className="flex-1">
         <form>
           <div>
-          <input
-  type="text"
-  placeholder="Your Full Name"
-  {...formik.getFieldProps("fullName")}
-  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
-/>
-{formik.touched.fullName && formik.errors.fullName && (
-  <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
-)}
-
+            <input
+              type="text"
+              placeholder="Your Full Name"
+              {...formik.getFieldProps("fullName")}
+              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+            />
+            {formik.touched.fullName && formik.errors.fullName && (
+              <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
+            )}
           </div>
 
           <div className="mt-[45px]">
-          <input
-  type="email"
-  placeholder="Your Email"
-  {...formik.getFieldProps("email")}
-  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
-/>
-{formik.touched.email && formik.errors.email && (
-  <p className="text-red-500 text-sm">{formik.errors.email}</p>
-)}
-
+            <input
+              type="email"
+              placeholder="Your Email"
+              {...formik.getFieldProps("email")}
+              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+            />
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-red-500 text-sm">{formik.errors.email}</p>
+            )}
           </div>
 
           <div className="mt-[45px]">
-          <input
-  type="text"
-  placeholder="Your Phone Number"
-  {...formik.getFieldProps("phone")}
-  className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
-/>
-{formik.touched.phone && formik.errors.phone && (
-  <p className="text-red-500 text-sm">{formik.errors.phone}</p>
-)}
-
+            <input
+              type="text"
+              placeholder="Your Phone Number"
+              {...formik.getFieldProps("phone")}
+              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+            />
+            {formik.touched.phone && formik.errors.phone && (
+              <p className="text-red-500 text-sm">{formik.errors.phone}</p>
+            )}
           </div>
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
               <textarea
-  rows={3}
-  placeholder="Your Comments"
-  {...formik.getFieldProps("comments")}
-  className="w-full px-1 pb-1 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
-/>
-{formik.touched.comments && formik.errors.comments && (
-  <p className="text-red-500 text-sm">{formik.errors.comments}</p>
-)}
+                rows={3}
+                placeholder="Your Comments"
+                {...formik.getFieldProps("comments")}
+                className="w-full px-1 pb-1 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+              />
+              {formik.touched.comments && formik.errors.comments && (
+                <p className="text-red-500 text-sm">{formik.errors.comments}</p>
+              )}
 
               <span className="absolute right-1 top-1 text-xs text-customTextGray font-CandideCondensedMedium">
-                {formData.comments.length}/250
+                {formik.values.comments.length}/250
               </span>
             </div>
           )}
           {page === "Project Enquire" && (
             <div className="mt-[45px] relative">
               <select
-                ref={selectRef} // Attach ref to select element
-                value={formData.option}
-                onChange={handleChange}
+                ref={selectRef}
+                {...formik.getFieldProps("option")}
                 className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium pr-8 appearance-none"
               >
                 <option value="" disabled>
                   Interested In
                 </option>
-                {options.map((option) => (
+                {JOB_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -274,9 +205,8 @@ const FormSection: React.FC<FormSectionProps> = ({
               </select>
               <div
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 text-customTextGray cursor-pointer"
-                onClick={handleIconClick} // Trigger dropdown when icon is clicked
+                onClick={handleIconClick}
               >
-                {/* Assuming Dropdown is an imported SVG or React Component */}
                 <Dropdown />
               </div>
             </div>
@@ -285,15 +215,14 @@ const FormSection: React.FC<FormSectionProps> = ({
             <>
               <div className="mt-[45px] relative">
                 <select
-                  ref={selectRef} // Attach ref to select element
-                  value={formData.option}
-                  onChange={handleChange}
+                  ref={selectRef}
+                  {...formik.getFieldProps("option")}
                   className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium pr-8 appearance-none"
                 >
                   <option value="" disabled>
                     Position Being Applied For
                   </option>
-                  {options.map((option) => (
+                  {JOB_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
@@ -301,32 +230,35 @@ const FormSection: React.FC<FormSectionProps> = ({
                 </select>
                 <div
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-customTextGray cursor-pointer"
-                  onClick={handleIconClick} // Trigger dropdown when icon is clicked
+                  onClick={handleIconClick}
                 >
-                  {/* Assuming Dropdown is an imported SVG or React Component */}
                   <Dropdown />
                 </div>
               </div>
               <div className="mt-[45px] relative">
-                {/* Resume Upload Section */}
                 <div className="w-full px-1 pb-2 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium">
                   <label
                     htmlFor="resume-upload"
-                    className="flex items-center cursor-pointer text-customTextGray w-full justify-between" // Adjusted for flex layout with justify-between
+                    className="flex items-center cursor-pointer text-customTextGray w-full justify-between"
                   >
-                    {formData.resume ? (
-                      <span>{formData.resume.name}</span> // Display file name if a file is selected
+                    {formik.values.resume ? (
+                      <span>{formik.values.resume.name}</span>
                     ) : (
-                      <span>Upload Resume</span> // Default placeholder text
+                      <span>Upload Resume</span>
                     )}
-                    <Upload /> {/* Custom Upload Icon on the right */}
+                    <Upload />
                   </label>
                   <input
                     id="resume-upload"
                     type="file"
                     accept=".pdf,.doc,.docx"
-                    onChange={handleFileChange}
-                    className="sr-only" // Hide the default file input
+                    onChange={(event) => {
+                      formik.setFieldValue(
+                        "resume",
+                        event.currentTarget.files?.[0] || null
+                      );
+                    }}
+                    className="sr-only"
                   />
                 </div>
               </div>
@@ -335,7 +267,7 @@ const FormSection: React.FC<FormSectionProps> = ({
           {page === "General Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 pt-[45px] mb-[54px] md:mb-[145px]">
               <Button
-                onClick={handleSubmit}
+                onClick={() => formik.handleSubmit()}
                 className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
@@ -344,14 +276,11 @@ const FormSection: React.FC<FormSectionProps> = ({
                 <div className="relative">
                   <input
                     type="checkbox"
-                    checked={formData.whatsapp}
-                    onChange={(e) =>
-                      setFormData({ ...formData, whatsapp: e.target.checked })
-                    }
+                    {...formik.getFieldProps("whatsapp")}
                     className="sr-only peer"
                   />
                   <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors">
-                    {formData.whatsapp && (
+                    {formik.values.whatsapp && (
                       <FaCheck className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                     )}
                   </div>
@@ -361,7 +290,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                 </span>
               </label>
               <Button
-                onClick={handleSubmit}
+                onClick={() => formik.handleSubmit()}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
@@ -371,7 +300,7 @@ const FormSection: React.FC<FormSectionProps> = ({
           {page === "Project Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 mb-[54px]  pt-[45px] md:mb-[145px]">
               <Button
-                onClick={handleSubmit}
+                onClick={() => formik.handleSubmit()}
                 className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
@@ -380,15 +309,12 @@ const FormSection: React.FC<FormSectionProps> = ({
                 <div className="relative">
                   <input
                     type="checkbox"
-                    checked={formData.whatsapp}
-                    onChange={(e) =>
-                      setFormData({ ...formData, whatsapp: e.target.checked })
-                    }
+                    {...formik.getFieldProps("whatsapp")}
                     className="sr-only peer"
                   />
-                  
+
                   <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors">
-                    {formData.whatsapp && (
+                    {formik.values.whatsapp && (
                       <FaCheck className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                     )}
                   </div>
@@ -398,7 +324,7 @@ const FormSection: React.FC<FormSectionProps> = ({
                 </span>
               </label>
               <Button
-                onClick={handleSubmit}
+                onClick={() => formik.handleSubmit()}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
@@ -408,7 +334,7 @@ const FormSection: React.FC<FormSectionProps> = ({
           {page === "Career Application" && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
               <Button
-                onClick={handleSubmit}
+                onClick={() => formik.handleSubmit()}
                 className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
               >
                 Submit
@@ -428,6 +354,4 @@ const FormSection: React.FC<FormSectionProps> = ({
       </div>
     </div>
   );
-};
-
-export default FormSection;
+}

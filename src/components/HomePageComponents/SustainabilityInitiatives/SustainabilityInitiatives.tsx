@@ -1,15 +1,24 @@
-import React from "react";
+"use client";
+
+// ============= Component Imports =============
 import Typography from "@/components/Typography/Typography";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
 
-type Cards = {
+// ============= Types & Interfaces =============
+interface InitiativeCard {
   id: number;
   url: string;
   bottomTitle: string;
+}
+
+// ============= Constants =============
+const CONTENT = {
+  title: "Our Commitment to Sustainability",
+  description: "Our commitment to sustainability drives us to create eco-friendly, energy-efficient spaces that benefit both our clients and the planet.",
 };
 
-const cards: Cards[] = [
+const INITIATIVE_CARDS: InitiativeCard[] = [
   {
     id: 14,
     url: "/images/SustainabilityInitiativesImages/1.png",
@@ -25,6 +34,7 @@ const cards: Cards[] = [
     url: "/images/SustainabilityInitiativesImages/3.png",
     bottomTitle: "Emission control",
   },
+  // Duplicate cards for infinite scroll
   {
     id: 17,
     url: "/images/SustainabilityInitiativesImages/1.png",
@@ -42,66 +52,87 @@ const cards: Cards[] = [
   },
 ];
 
-const SustainabilityInitiatives = () => {
-  return (
-    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 xl:mx-[278px] lg:mx-[122px] md:mx-[60px]  ">
-      {/* Left Column */}
-      <div className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0">
-        <div className="max-w-[700px] lg:max-w-none mx-auto lg:mx-0">
-          <Typography
-            variant="custom"
-            className="text-customBrown text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
-          >
-            Our Commitment to Sustainability
-          </Typography>
-          <Typography
-            variant="custom"
-            className="md:text-[#4F373799] text-[#04070799] text-base  md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
-          >
-            Our commitment to sustainability drives us to create eco-friendly,
-            energy-efficient spaces that benefit both our clients and the
-            planet.
-          </Typography>
-          <div className="lg:mt-auto md:block hidden">
-            <AppleStyleCard
-              key={11}
-              id={11}
-              imageSrc={"/images/SustainabilityInitiativesImages/1.png"}
-              className="md:max-w-[528px] xl:max-w-[664px] md:h-[460px] lg:h-[660px] w-full"
-              cardClassName="rounded-[20px]"
-              bottomTitle="Beach cleaning"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Right Column */}
-      <div className="md:w-1/2 md:flex hidden md:mt-0 mb-40">
-        <div className="flex w-full flex-col gap-8  lg:gap-12 xl:gap-16 items-end ">
+/**
+ * Sustainability Initiatives Component
+ * Showcases company's environmental and sustainability efforts
+ * 
+ * Features:
+ * 1. Title and description section
+ * 2. Desktop: Grid layout with large images
+ * 3. Mobile: Carousel of initiatives
+ * 
+ * Layout:
+ * - Desktop: Two-column with staggered images
+ * - Mobile: Single column with carousel
+ * 
+ * @returns {React.ReactElement} The SustainabilityInitiatives component
+ */
+export default function SustainabilityInitiatives(): React.ReactElement {
+  // ============= Render Helpers =============
+  const renderLeftColumn = () => (
+    <div className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0">
+      <div className="max-w-[700px] lg:max-w-none mx-auto lg:mx-0">
+        <Typography
+          variant="custom"
+          className="text-customBrown text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
+        >
+          {CONTENT.title}
+        </Typography>
+        <Typography
+          variant="custom"
+          className="md:text-[#4F373799] text-[#04070799] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
+        >
+          {CONTENT.description}
+        </Typography>
+        <div className="lg:mt-auto md:block hidden">
           <AppleStyleCard
-            key={12}
-            id={12}
-            imageSrc="/images/SustainabilityInitiativesImages/2.png"
-            className="md:max-w-[593px] md:h-[542px] lg:h-[742px] w-full"
+            key={11}
+            id={11}
+            imageSrc={INITIATIVE_CARDS[0].url}
+            className="md:max-w-[528px] xl:max-w-[664px] md:h-[460px] lg:h-[660px] w-full"
             cardClassName="rounded-[20px]"
-             bottomTitle="500+ Tree Cover"
-          />
-
-          <AppleStyleCard
-            key={13}
-            id={13}
-            imageSrc="/images/SustainabilityInitiativesImages/3.png"
-            className="md:max-w-[593px] md:h-[260px] lg:h-[256px] w-full"
-            cardClassName="rounded-[20px]"
-             bottomTitle="Emission control"
+            bottomTitle={INITIATIVE_CARDS[0].bottomTitle}
           />
         </div>
-      </div>
-      <div className="md:hidden block mb-12">
-        <InfiniteCarousel cards={cards} />
       </div>
     </div>
   );
-};
 
-export default SustainabilityInitiatives;
+  const renderRightColumn = () => (
+    <div className="md:w-1/2 md:flex hidden md:mt-0 mb-40">
+      <div className="flex w-full flex-col gap-8 lg:gap-12 xl:gap-16 items-end">
+        <AppleStyleCard
+          key={12}
+          id={12}
+          imageSrc={INITIATIVE_CARDS[1].url}
+          className="md:max-w-[593px] md:h-[542px] lg:h-[742px] w-full"
+          cardClassName="rounded-[20px]"
+          bottomTitle={INITIATIVE_CARDS[1].bottomTitle}
+        />
+        <AppleStyleCard
+          key={13}
+          id={13}
+          imageSrc={INITIATIVE_CARDS[2].url}
+          className="md:max-w-[593px] md:h-[260px] lg:h-[256px] w-full"
+          cardClassName="rounded-[20px]"
+          bottomTitle={INITIATIVE_CARDS[2].bottomTitle}
+        />
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 xl:mx-[278px] lg:mx-[122px] md:mx-[60px]">
+      {/* Left Column - Content and First Image */}
+      {renderLeftColumn()}
+
+      {/* Right Column - Staggered Images (Desktop) */}
+      {renderRightColumn()}
+
+      {/* Mobile Carousel */}
+      <div className="md:hidden block mb-12">
+        <InfiniteCarousel cards={INITIATIVE_CARDS} />
+      </div>
+    </div>
+  );
+}

@@ -1,91 +1,127 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-
+// ============= Component Imports =============
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
 
-const images: string[] = [
-  "/images/visionAndMissionImages/1.png",
-  "/images/visionAndMissionImages/2.png",
-  "/images/visionAndMissionImages/3.png",
-];
-const mobileImages: string[] = [
-  "/images/visionAndMissionImages/mobile1.png",
-  "/images/visionAndMissionImages/mobile2.png",
-  "/images/visionAndMissionImages/mobile3.png",
-];
-
+// ============= Types & Interfaces =============
+type Direction = "left" | "right";
 type ContentItem = {
   title: string;
   description: string;
 };
 
-const contentSets: ContentItem[][] = [
-  [
-    { title: "Innovative Design", description: "Pushing boundaries..." },
-    { title: "Modern Living", description: "Contemporary spaces..." },
-    { title: "Smart Solutions", description: "Integrating technology..." },
-  ],
-  [
-    { title: "Sustainable Future", description: "Eco-friendly approaches..." },
-    { title: "Natural Harmony", description: "Blending seamlessly..." },
-    { title: "Green Living", description: "Creating spaces that..." },
-  ],
-  [
-    { title: "Luxury Redefined", description: "Excellence in every detail..." },
-    { title: "Premium Quality", description: "Uncompromising standards..." },
-    {
-      title: "Timeless Elegance",
-      description: "Creating lasting impressions...",
-    },
-  ],
-];
-
-const mobileContentSets: ContentItem[] = [
-  {
-    title: "Innovative Sustainability",
-    description: "Revolutionizing green living...",
+// ============= Constants =============
+const CAROUSEL_CONFIG = {
+  totalSlides: 3,
+  transitionDuration: 500,
+  autoplayInterval: 5000,
+  dimensions: {
+    desktop: { width: 1932, height: 1088 },
+    mobile: { width: 326, height: 568 },
   },
-  {
-    title: "Affordable Luxury",
-    description: "Redefining affordable lifestyle...",
-  },
-  {
-    title: "Client Satisfaction",
-    description: "Redefining excellence by making...",
-  },
-];
+};
 
-const VisionAndMission: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const totalSlides = 3;
+const IMAGES = {
+  desktop: [
+    "/images/visionAndMissionImages/1.png",
+    "/images/visionAndMissionImages/2.png",
+    "/images/visionAndMissionImages/3.png",
+  ],
+  mobile: [
+    "/images/visionAndMissionImages/mobile1.png",
+    "/images/visionAndMissionImages/mobile2.png",
+    "/images/visionAndMissionImages/mobile3.png",
+  ],
+};
 
-  const transition = useCallback(
-    (newDirection: "left" | "right") => {
-      if (isAnimating) return;
+const CONTENT = {
+  desktop: [
+    [
+      { title: "Innovative Design", description: "Pushing boundaries..." },
+      { title: "Modern Living", description: "Contemporary spaces..." },
+      { title: "Smart Solutions", description: "Integrating technology..." },
+    ],
+    [
+      { title: "Sustainable Future", description: "Eco-friendly approaches..." },
+      { title: "Natural Harmony", description: "Blending seamlessly..." },
+      { title: "Green Living", description: "Creating spaces that..." },
+    ],
+    [
+      { title: "Luxury Redefined", description: "Excellence in every detail..." },
+      { title: "Premium Quality", description: "Uncompromising standards..." },
+      { title: "Timeless Elegance", description: "Creating lasting impressions..." },
+    ],
+  ],
+  mobile: [
+    { title: "Innovative Sustainability", description: "Revolutionizing green living..." },
+    { title: "Affordable Luxury", description: "Redefining affordable lifestyle..." },
+    { title: "Client Satisfaction", description: "Redefining excellence by making..." },
+  ],
+};
 
-      setIsAnimating(true);
-      setDirection(newDirection);
+/**
+ * Vision And Mission Component
+ * Displays company vision through an interactive carousel
+ * 
+ * Features:
+ * 1. Auto-rotating carousel with smooth transitions
+ * 2. Responsive design with different layouts for desktop/mobile
+ * 3. Interactive hover states on desktop
+ * 4. Navigation dots on mobile
+ * 
+ * @component
+ */
+export default function VisionAndMission() {
+  // ============= State =============
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<Direction>("right");
 
-      const nextIndex =
-        newDirection === "right"
-          ? (currentIndex + 1) % totalSlides
-          : (currentIndex - 1 + totalSlides) % totalSlides;
+  // ============= Handlers =============
+  const handleTransition = useCallback((newDirection: Direction) => {
+    if (isAnimating) return;
 
-      setCurrentIndex(nextIndex);
-      setTimeout(() => setIsAnimating(false), 500);
-    },
-    [currentIndex, totalSlides, isAnimating]
-  );
+    setIsAnimating(true);
+    setDirection(newDirection);
 
-  const nextSlide = useCallback(() => transition("right"), [transition]);
+    const nextIndex = newDirection === "right"
+      ? (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
+      : (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) % CAROUSEL_CONFIG.totalSlides;
+
+    setCurrentIndex(nextIndex);
+    setTimeout(() => setIsAnimating(false), CAROUSEL_CONFIG.transitionDuration);
+  }, [currentIndex, isAnimating]);
+
+  // ============= Effects =============
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(
+      () => handleTransition("right"), 
+      CAROUSEL_CONFIG.autoplayInterval
+    );
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, [handleTransition]);
+
+  // ============= Render Helpers =============
+  const renderDesktopSection = (section: ContentItem, index: number) => (
+    <div key={index} className="flex-1 group/section relative">
+      {/* Section content */}
+      <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+        <Typography variant="h2" className="font-freightNeoMedium mb-[5px] text-center">
+          {section.title}
+        </Typography>
+        {/* Hover description */}
+        <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
+          <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[5px] text-center">
+            {section.description}
+          </Typography>
+        </div>
+      </div>
+      {/* Hover overlay */}
+      <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300" />
+    </div>
+  );
 
   return (
     <div className="bg-gray-100 sm:p-0 md:p-[1px]">
@@ -100,10 +136,10 @@ const VisionAndMission: React.FC = () => {
                 ? "opacity-100 translate-x-0"
                 : direction === "right"
                   ? currentIndex ===
-                    (currentIndex - 1 + totalSlides) % totalSlides
+                    (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) % CAROUSEL_CONFIG.totalSlides
                     ? "opacity-0 -translate-x-full"
                     : "opacity-0 translate-x-full"
-                  : currentIndex === (currentIndex + 1) % totalSlides
+                  : currentIndex === (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
                     ? "opacity-0 translate-x-full"
                     : "opacity-0 -translate-x-full"
             }`}
@@ -111,7 +147,7 @@ const VisionAndMission: React.FC = () => {
             <Image
               width={1932}
               height={1088}
-              src={images[currentIndex]}
+              src={IMAGES.desktop[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
               className="w-full h-full object-cover"
             />
@@ -126,11 +162,11 @@ const VisionAndMission: React.FC = () => {
                 width={1932}
                 height={1088}
                 src={
-                  images[
+                  IMAGES.desktop[
                     (currentIndex +
                       (direction === "left" ? 1 : -1) +
-                      images.length) %
-                      images.length
+                      IMAGES.desktop.length) %
+                      IMAGES.desktop.length
                   ]
                 }
                 alt="Next slide"
@@ -148,32 +184,8 @@ const VisionAndMission: React.FC = () => {
 
           {/* Sections with titles and hover descriptions */}
           <div className="absolute inset-0 flex">
-            {contentSets[currentIndex].map((section, index) => (
-              <div key={index} className="flex-1 group/section relative">
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  {/* Always visible title */}
-                  <Typography
-                    variant="h2"
-                    className="font-freightNeoMedium mb-[5px] text-center"
-                  >
-                    {" "}
-                    {section.title}{" "}
-                  </Typography>
-                  {/* Hover description */}
-                  <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
-                    <Typography
-                      variant="h3"
-                      fontWeight="font-normal"
-                      className="font-FreightNeoProNormal mt-[5px] text-center"
-                    >
-                      {" "}
-                      {section.description}{" "}
-                    </Typography>
-                  </div>
-                </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300"></div>
-              </div>
+            {CONTENT.desktop[currentIndex].map((section, index) => (
+              renderDesktopSection(section, index)
             ))}
           </div>
         </div>
@@ -181,7 +193,7 @@ const VisionAndMission: React.FC = () => {
         {/* Mobile Version */}
         <div className="block md:hidden relative overflow-hidden shadow-xl">
           <Image
-            src={mobileImages[currentIndex]}
+            src={IMAGES.mobile[currentIndex]}
             width={326}
             height={568}
             alt={`Slide ${currentIndex + 1}`}
@@ -192,7 +204,7 @@ const VisionAndMission: React.FC = () => {
               variant="custom"
               className="font-freightNeoMedium text-white text-2xl"
             >
-              {mobileContentSets[currentIndex].title}
+              {CONTENT.mobile[currentIndex].title}
             </Typography>
             <div
               className={`overflow-hidden transition-all duration-300 ${"h-16"}`}
@@ -202,17 +214,17 @@ const VisionAndMission: React.FC = () => {
                 fontWeight="font-normal"
                 className="font-FreightNeoProNormal mt-[5px] text-white"
               >
-                {mobileContentSets[currentIndex].description}
+                {CONTENT.mobile[currentIndex].description}
               </Typography>
             </div>
             <div className="flex space-x-5  rounded-[32px] py-4 px-6">
-              {mobileContentSets.map((_, dotIndex) => (
+              {CONTENT.mobile.map((_, dotIndex) => (
                 <button
                   key={dotIndex}
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      transition(dotIndex > currentIndex ? "right" : "left");
+                      handleTransition(dotIndex > currentIndex ? "right" : "left");
                     }
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
@@ -227,6 +239,4 @@ const VisionAndMission: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default VisionAndMission;
+}
