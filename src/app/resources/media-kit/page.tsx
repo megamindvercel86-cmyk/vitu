@@ -1,15 +1,35 @@
+// ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import MediaKits from "@/components/MediaKits/MediaKits";
 import MediaSectionIntro from "@/components/MediaSectionIntro/MediaSectionIntro";
-import React from "react";
 
-const page = () => {
+// ============= Types & Interfaces =============
+interface MediaKitPageProps {}
+
+// ============= Constants =============
+const NAVBAR_CONFIG = {
+  props: {
+    navbar: "secondary" as const,
+    showGetInTouch: true,
+  },
+};
+
+/**
+ * Media Kit Page Component
+ * Displays downloadable media resources and introductory content
+ * 
+ * Sections:
+ * 1. Media Section Introduction
+ * 2. Downloadable Media Kits
+ */
+export default function MediaKitPage({}: MediaKitPageProps) {
   return (
-    <Layout>
+    <Layout navbarProps={NAVBAR_CONFIG.props}>
+      {/* Media Introduction Section */}
       <MediaSectionIntro />
+
+      {/* Media Kits Section */}
       <MediaKits />
     </Layout>
   );
-};
-
-export default page;
+}
