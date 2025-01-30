@@ -27,11 +27,13 @@ interface CardProps {
   isViewMoreType?: "primary" | "secondary";
   bottomTitle?: string;
   isExpanded?: boolean;
+  subtitle?: string;
 }
 
 export default function AppleStyleCard({
   id,
   category,
+  subtitle,
   title,
   content,
   imageSrc,
@@ -47,7 +49,6 @@ export default function AppleStyleCard({
   isViewMoreType = "secondary",
   bottomTitle = "",
   isExpanded = true,
-
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -165,11 +166,11 @@ export default function AppleStyleCard({
           cardClassName
         )}
       >
-        <div className="relative z-40 p-8">
+        <div className="relative z-40 p-4 ">
           <motion.p
             layoutId={`card-category-${id}`}
             className={cn(
-              "text-sm md:text-base font-medium font-sans text-left",
+              "text-sm md:text-base font-freightNeoMedium text-white text-left pt-4",
               categoryClassName
             )}
           >
@@ -178,12 +179,22 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-title-${id}`}
             className={cn(
-              "text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2",
+              "text-2xl md:text-3xl font-freightNeoSemibold text-white max-w-xs text-left  [text-wrap:balance]  mt-1",
               titleClassName
             )}
           >
             {title}
           </motion.p>
+          <motion.p
+            layoutId={`card-title-${id}`}
+            className={cn(
+              "text-base md:text-3xl font-FreightNeoProNormal text-white max-w-xs text-left [text-wrap:balance]  mt-1",
+              titleClassName
+            )}
+          >
+            {subtitle}
+          </motion.p>
+          
         </div>
         <BlurImage
           src={imageSrc || "/placeholder.svg"}

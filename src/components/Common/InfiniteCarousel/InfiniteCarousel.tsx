@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -18,6 +16,10 @@ interface Card {
   isViewMore?: boolean;
   position?: "left" | "right";
   bottomTitle?: string
+  type?: "primary" | "secondary"
+  title?: string
+  subtitle?: string
+  category?: string
 }
 
 interface InfiniteCarouselProps {
@@ -55,6 +57,10 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
             imageSrc={card.url}
             expandedImageClassName="object-center"
             bottomTitle={card.bottomTitle}
+            isViewMoreType={card.type}
+            title={card.title}
+            subtitle={card.subtitle}
+            category={card.category}
           />
         </SwiperSlide>
       ))}

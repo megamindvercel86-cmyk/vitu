@@ -113,16 +113,14 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         >
           <div
             className={cn(
-              "absolute right-0  z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
+              "absolute right-0  z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
             )}
           ></div>
 
-          <div
-            className={cn(
-              "flex flex-row justify-start xl:gap-4 md:gap-2 lg:gap-3",
-              "mx-auto",
-            )}
-          >
+          <div className={cn(
+            "flex flex-row justify-between w-full",
+            ""
+          )}>
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -140,7 +138,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={"card" + index}
-                className="rounded-3xl"
+                className={cn(
+                  "rounded-3xl w-[280px] h-[350px]",
+                  "md:w-[350px] md:h-[350px]",
+                  "lg:w-[400px] lg:h-[500px]",
+                  "xl:w-[432px] xl:h-[540px] 2xl:w-[432px] 2xl:h-[540px]",
+                  "transition-all duration-300"
+                )}
               >
                 {item}
               </motion.div>
@@ -260,8 +264,7 @@ export const Card = ({
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         className="md:rounded-[20px] rounded-[10px] bg-gray-100 dark:bg-neutral-900 
-        md:h-[350px] md:max-w-[300px] lg:h-[500px] lg:max-w-[400px] 
-        xl:h-[540px] xl:max-w-[432px] overflow-hidden flex flex-col items-start justify-start relative z-10"
+         overflow-hidden flex flex-col items-start justify-start relative z-10 w-full h-full"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -317,7 +320,7 @@ export const BlurImage = ({
       className={cn(
         "transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
-        className,
+        className
       )}
       onLoad={() => setLoading(false)}
       src={src}
