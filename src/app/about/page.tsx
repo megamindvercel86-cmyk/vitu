@@ -44,7 +44,7 @@ export default function AboutPage({}: AboutPageProps) {
       <AboutHeroSection />
 
       {/* Company Story Section */}
-      {/* <StorySection /> */}
+      <StorySection />
 
       {/* Founder's Message Section */}
       <FounderMessage />

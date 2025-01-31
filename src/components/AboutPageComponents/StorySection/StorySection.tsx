@@ -1,180 +1,140 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SubHeading from "@/components/Common/SubHeding";
-import Heading from "@/components/Common/Heading";
-
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  {
-    src: "/images/timelineImages/timelineImage1.png",
-    year: "1956",
-    message: "The Beginning of Our Journey",
-  },
-  {
-    src: "/images/timelineImages/timelineImage2.png",
-    year: "1959",
-    message: "A Step Towards Innovation",
-  },
-  {
-    src: "/images/timelineImages/timelineImage3.png",
-    year: "1974",
-    message: "Expanding Horizons",
-  },
-  {
-    src: "/images/timelineImages/timelineImage4.png",
-    year: "1975",
-    message: "Breaking New Grounds",
-  },
-  {
-    src: "/images/timelineImages/timelineImage5.png",
-    year: "1990",
-    message: "A Year of Transformation",
-  },
-  {
-    src: "/images/timelineImages/timelineImage6.png",
-    year: "2003",
-    message: "Facing Challenges, Emerging Stronger",
-  },
-  {
-    src: "/images/timelineImages/timelineImage7.png",
-    year: "2023",
-    message: "Reaching New Heights",
-  },
-  {
-    src: "/images/timelineImages/timelineImage8.png",
-    year: "2024",
-    message: "Continuing the Legacy",
-  },
+  { src: "/images/timelineImages/timelineImage1.png", year: "1956", message: "KMK Group founded by Mr. K Madhav Kamath" },
+  { src: "/images/timelineImages/timelineImage2.png", year: "1959", message: "Distribution of Major FMCG Products & WeTwo Matches" },
+  { src: "/images/timelineImages/timelineImage3.png", year: "1974", message: "Established Maya Traders and affiliated ventures" },
+  { src: "/images/timelineImages/timelineImage4.png", year: "1975", message: "Entered into Coffee Plantations Market" },
+  { src: "/images/timelineImages/timelineImage5.png", year: "1990", message: "Expanded into wholesale distribution of WeTwo Fireworks under Mr K Ananth Kamath's ledership" },
+  { src: "/images/timelineImages/timelineImage6.png", year: "2003", message: "Expanded into real-estate by trading land, partnering with MUDA on a 75-Acre development" },
+  { src: "/images/timelineImages/timelineImage7.png", year: "2023", message: "Mr Laxman Kamath made a significant entry and established Vitu Realty" },
+  { src: "/images/timelineImages/timelineImage8.png", year: "2024", message: "Launched Vaikuntam City, a premium plotted Development" },
 ];
 
-function YearDisplay({ number }: { number: number }) {
+function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) {
   return (
-    <span className="inline-block w-[1ch] transition-transform duration-500">
-      {number}
-    </span>
+    <div className={`${isFixed ? "fixed bottom-28 left-48" : "absolute bottom-28 left-48"} pointer-events-none z-50`}>
+      <span className="text-[80px] font-bold text-white font-CandideCondensedMedium">
+        {number.split("").map((digit, index) => (
+          <span key={index} className="inline-block w-[1ch]">{digit}</span>
+        ))}
+      </span>
+    </div>
+  );
+}
+function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolean }) {
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messageRef.current) {
+      gsap.fromTo(
+        messageRef.current,
+        { 
+          opacity: 0,
+          y: 20
+        },
+        { 
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        }
+      );
+    }
+  }, [message]); // Re-run animation when message changes
+
+  return (
+    <div className={`${
+      isFixed ? "fixed bottom-32 right-10" : "absolute bottom-28 right-10"
+    } pointer-events-none z-50 max-w-[450px]`}>
+      <div ref={messageRef}>
+        <span className="text-[32px] font-bold text-white font-freightNeoSemibold leading-tight block text-right">
+          {message}
+        </span>
+      </div>
+    </div>
   );
 }
 
-export default function StorySection() {
+
+
+export default function Gallery() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const storySectionRef = useRef<HTMLDivElement>(null); // Ref for Story Section
+  const galleryRef = useRef<HTMLDivElement>(null);
   const [currentYear, setCurrentYear] = useState(images[0].year);
-  const [showYearDisplay, setShowYearDisplay] = useState(false); // State to control visibility of year display
+  const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
+  const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
-    const sections = gsap.utils.toArray<HTMLElement>(".section");
+    const gallery = galleryRef.current;
 
-    gsap.set(container, { height: "100vh" });
-    gsap.set(".sections-wrapper", {
-      width: sections.length  * 100 + "%",
-      display: "flex",
-      overflow: "hidden",
-    });
-    gsap.set(sections, { width: 100 / sections.length  + "%" });
+    if (!container || !gallery) return;
 
-    gsap.to(".sections-wrapper", {
-      x: () => -(container?.scrollWidth ?? 0 - window.innerWidth),
+    // Calculate the total width of all images
+    const totalWidth = gallery.scrollWidth;
+    const windowWidth = window.innerWidth;
+
+    // Create horizontal scroll animation
+    gsap.to(gallery, {
+      x: -(totalWidth - windowWidth),
       ease: "none",
       scrollTrigger: {
         trigger: container,
         pin: true,
         scrub: 1,
-        end: () => (container ? container.scrollWidth - window.innerWidth : 0),
+        end: () => `+=${totalWidth}`,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          const totalSections = images.length - 1;
-          const currentIndex = Math.min(
-            Math.floor(self.progress * totalSections),
-            totalSections - 1,
-          );
-          setCurrentYear(images[currentIndex].year);
-          setProgress(self.progress * 100);
+          setProgress(self.progress);
+          const imageIndex = Math.floor(self.progress * images.length);
+          if (imageIndex < images.length) {
+            setCurrentYear(images[imageIndex].year);   
+            setCurrentMessage(images[imageIndex].message);
+          }
         },
+        onEnter: () => setIsFixed(true),
+        onLeave: () => setIsFixed(false),
+        onEnterBack: () => setIsFixed(true),
+        onLeaveBack: () => setIsFixed(false),
       },
     });
-    // gsap.to(sections, {
-    //   xPercent: -100 * (sections.length - 1),
-    //   ease: "none",
-    //   scrollTrigger: {
-    //     trigger: container,
-    //     pin: true,
-    //     scrub: 1,
-    //     end: () => `+=${container.offsetWidth}`,
-    //     invalidateOnRefresh: true,
-    //     onUpdate: (self) => {
-    //       const progress = self.progress * 100;
-    //       if (pathRef.current) {
-    //         // Sync SVG path drawing with the scroll progress
-    //         pathRef.current.setAttribute(
-    //           "stroke-dasharray",
-    //           `${progress} ${100 - progress}`
-    //         );
-    //       }
-    //     },
-    //   },
-    // });
 
     return () => {
-      ScrollTrigger.killAll();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
-    <div className="app overflow-hidden font-sans">
-      {/* Top Section */}
-      <div className="pt-[128px] pb-[107px] text-center">
-        <SubHeading className="pb-6 text-2xl">
-          From the welcoming comfort at your doorstep to the serene spaces
-          designed just for you
-        </SubHeading>
-        <Heading className="">
-          At Vitu, Every Design Feels Like Home—Because It Is
-        </Heading>
-      </div>
+    <div className="relative">
+      {/* Year Display (Fixed only when in view) */}
+      <YearDisplay number={currentYear} isFixed={isFixed} />
+      <MessageDisplay message={currentMessage} isFixed={isFixed} />
+      <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
+        {/* Progress Bar */}
+        <div className="fixed top-0 left-0 w-full h-1 bg-gray-200">
+          <div className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${progress * 100}%` }} />
+        </div>
 
-      {/* Horizontal Scroll Section */}
-      <div ref={containerRef} className="h-screen overflow-hidden">
-        <div className="sections-wrapper h-full">
+        {/* Image Gallery */}
+        <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
           {images.map((image, index) => (
-            <div
-              key={index}
-              className="section h-full flex items-center justify-center relative"
-            >
-              {/* Image Section */}
-              <div className="w-full h-full">
-                <img
-                  src={image.src}
-                  alt={`Scene ${index}`}
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Message */}
-                <div className="absolute bottom-8 right-8 text-white">
-                  <p className="text-lg md:text-xl font-medium">
-                    {image.message}
-                  </p>
+            <div key={index} className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl">
+              <div className="absolute inset-0 gallery-image z-10">
+                <Image width={1594} height={904} src={image.src} alt={`Landscape ${image.year}`} className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+                
+                  <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
               </div>
             </div>
           ))}
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/50 to-transparent">
-          <div className="absolute bottom-4 left-1 right-1">
-            <div className="relative h-[2px] w-full">
-              {/* Background line */}
-              <div className="absolute inset-0 bg-white/20" />
-              {/* Progress line */}
-              <div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-300 to-purple-300 transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </div>
