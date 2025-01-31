@@ -52,8 +52,8 @@ const MediaKits: React.FC = () => {
                 card.variant === "white"
                   ? "bg-white"
                   : card.variant === "light"
-                  ? "bg-white"
-                  : "bg-[#1A1A1A]"
+                    ? "bg-white"
+                    : "bg-[#1A1A1A]"
               }`}
             >
               {card.logo ? (
@@ -105,7 +105,7 @@ const MediaKits: React.FC = () => {
                   <a
                     href={card.location}
                     download
-                    className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border font-freightNeoMedium ${
+                    className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border font-freightNeoMedium md:mb-0 mb-4 ${
                       card.variant === "dark"
                         ? "border-white text-white"
                         : "border-[#AE8566] text-[#AE8566]"

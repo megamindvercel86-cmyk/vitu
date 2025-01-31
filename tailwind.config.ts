@@ -37,7 +37,7 @@ export default {
         lg: "1024px",
         lg2: "1200px",
         xl: "1580px",
-        "2xl": "1500px",
+        "2xl": "2000px",
       },
       fontSize: {
         "56px": "56px",
