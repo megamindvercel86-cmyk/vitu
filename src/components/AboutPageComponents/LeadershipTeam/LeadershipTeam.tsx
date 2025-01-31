@@ -1,20 +1,39 @@
+"use client";
+
+// ============= Component Imports =============
 import React from "react";
 import Typography from "@/components/Typography/Typography";
-
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Navigation } from "swiper/modules";
+
+// ============= Style Imports =============
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@/components/Icons/Icons";
+import "../../Common/InfiniteCarousel/InfiniteCarousel.css";
 
-import "../../Common/InfiniteCarousel/InfiniteCarousel.css"
-import Image from "next/image";
+// ============= Types & Interfaces =============
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  role2?: string;
+  url: string;
+  isViewMore: boolean;
+}
 
-const desktopTeamMembers = [
+interface DesktopTeamMember {
+  id: number;
+  name: string;
+  title: string;
+  subtitle?: string;
+  url: string;
+  bottomTitle: string;
+}
+
+// ============= Constants =============
+const desktopTeamMembers: DesktopTeamMember[] = [
   {
     id: 1,
     name: "Ananth Kamath",
@@ -39,7 +58,7 @@ const desktopTeamMembers = [
   },
 ];
 
-const mobileTeamMembers = [
+const mobileTeamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Ananth Kamath",
@@ -86,21 +105,22 @@ const mobileTeamMembers = [
   },
 ];
 
+// ============= Component =============
+/**
+ * LeadershipTeam Component
+ * Displays team members in a grid layout for desktop and carousel for mobile
+ * 
+ * Features:
+ * - Responsive layout (grid/carousel)
+ * - Coverflow effect on mobile
+ * - Auto-playing slides
+ * - Different layouts for desktop/mobile
+ */
 export default function LeadershipTeam() {
-  const swiperRef = React.useRef<any>();
+  // ============= Refs =============
+  const swiperRef = React.useRef<any>(null);
 
-  const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
-
+  // ============= Render =============
   return (
     <div className="lg:pt-[153px] py-16 lg:py-0 lg:pb-[198px] xl:pt-[160px] xl:pb-[191px]">
       <div className="mx-auto xl:mx-[284px] lg:mx-[78px]">
@@ -189,11 +209,15 @@ export default function LeadershipTeam() {
   );
 }
 
-// TeamMemberCard component
+// ============= Sub Components =============
+/**
+ * TeamMemberCard Component
+ * Displays individual team member information
+ */
 const TeamMemberCard = ({
   member,
 }: {
-  member: (typeof desktopTeamMembers)[0];
+  member: DesktopTeamMember;
 }) => (
   <div className="text-center">
     <div className="aspect-auto lg:mb-[34px] w-full">
