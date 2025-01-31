@@ -10,7 +10,6 @@
     border-radius: 10px;
     background: none; /* Background removed */
     overflow: hidden; /* Ensure content doesn't overflow the border-radius */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for better visibility */
   }
   
   /* Medium devices (768px and up) */
