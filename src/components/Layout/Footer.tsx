@@ -186,7 +186,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Sign up for Our Newsletter"
-                  className="bg-transparent flex-grow text-footerTextColor text-sm md:text-lg placeholder:text-gray-400 focus:outline-none"
+                  className="bg-transparent flex-grow text-footerTextColor text-sm md:text-lg placeholder:text-footerTextColor focus:outline-none"
                 />
                 <button className="text-footerTextColor">
                   <svg

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.12.3",
     "@tabler/icons-react": "^3.28.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
@@ -16,10 +17,12 @@
     "formik": "^2.4.6",
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
+    "lottie-react": "^2.4.1",
     "next": "15.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
+    "react-lottie": "^1.2.10",
     "react-toastify": "^11.0.3",
     "react-youtube": "^10.1.0",
     "swiper": "^11.2.1",

@@ -4,8 +4,13 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import SubHeading from "@/components/Common/SubHeding";
 import Heading from "@/components/Common/Heading";
-
+import "./StorySection.css";
+import StorySectionAnimation1 from "@/components/Animations/StorySectionAnimation1";
+import StorySectionAnimation2 from "@/components/Animations/StorySectionAnimation2";
 gsap.registerPlugin(ScrollTrigger);
+
+const lottieAnimationURL =
+  "https://lottie.host/05df5b69-ac59-4204-af22-91c745dfe4dd/AQsEcUz4mq.lottie";
 
 const images = [
   {
@@ -94,7 +99,7 @@ function MessageDisplay({
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0,
           ease: "power2.out",
         }
       );
@@ -125,6 +130,8 @@ export default function Gallery() {
   const [progress, setProgress] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
   const [pathLength, setPathLength] = useState(0);
+  const [animation1Completed, setAnimation1Completed] = useState(false);
+  let svgWidth = galleryRef.current?.scrollWidth;
   useEffect(() => {
     const container = containerRef.current;
     const gallery = galleryRef.current;
@@ -133,6 +140,7 @@ export default function Gallery() {
 
     // Calculate the total width of all images
     const totalWidth = gallery.scrollWidth;
+
     const windowWidth = window.innerWidth;
 
     // Create horizontal scroll animation
@@ -174,7 +182,22 @@ export default function Gallery() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
+  useEffect(() => {
+    const animation = gsap.timeline({
+      onComplete: () => {
+        setAnimation1Completed(true); // Trigger second animation
+      },
+    });
+  
+    animation.fromTo(
+      ".story-animation-1",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
+    );
+  }, []);
+  
+  
+  console.log(svgWidth);
   return (
     <div className="relative">
       <div className="pt-[128px] pb-[107px] text-center">
@@ -189,56 +212,17 @@ export default function Gallery() {
       {/* Year Display (Fixed only when in view) */}
       <YearDisplay number={currentYear} isFixed={isFixed} />
       <MessageDisplay message={currentMessage} isFixed={isFixed} />
-      <div className="fixed pointer-events-none z-50 bottom-[4%]">
-        <svg
-          width="11606"
-          height="659"
-          viewBox="0 0 11606 659"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10057 367H10338V191H11254V367H11606"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M8648 378.426H8988C9006.14 331.165 9035.64 303.339 9136 250.426C9128.95 206.853 9111.84 154.797 9148 121.424C9189.02 83.5687 9248.93 73.1542 9282 109.425C9315.07 145.696 9301.73 226.927 9282 290.426C9319.29 321.201 9337.87 339.55 9358 378.426H9398C9420.05 342.288 9435.45 325.293 9468 302.426C9408.15 227.259 9408.81 157.87 9468 114.426C9511.44 82.5357 9543.63 85.7166 9584 121.424C9629.63 161.789 9620.21 229.478 9608 290.426C9662.86 306.438 9689.52 323.675 9732 366.426H10216"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M8800 379H8180L7794 205L7620 286L7561 276L7248 421H7188"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M5723 320.967H6327L6352 307.967C6333.62 238.386 6335.69 177.69 6382 127.967C6425.71 81.0387 6453.19 85.413 6522 113.967C6547.94 86.0049 6566.85 74.5621 6607 63.9672C6664.47 54.1186 6706.22 55.8281 6741 97.9666C6762.89 124.489 6763.96 141.471 6768 171.967C6775.23 226.532 6754.03 257.967 6731 307.967C6780.66 344.472 6803.7 368.964 6835 420.967H7253"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M4328 500H4644C4641.49 549.415 4651.83 568.745 4686 592C4715.87 647.863 4741.81 651.646 4798 628C4846.23 662.126 4872.84 665.522 4917 611C4958.52 615.735 4978.07 607.043 5009 580C5105.29 554.47 5110.09 519.185 5078 439C5115.42 402.241 5100.23 377.304 5082 321H5836"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M1448 346H1761V281L2399 33L2579 346L2923 538"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M0 356.743H421C468.804 324.202 500.047 313.325 561 304.243L572 271.242C534.069 202.375 539.183 188.557 547 136.243C553.224 94.5916 561.919 72.2184 596 34.2426C655.566 -5.70802 708.106 -1.04835 765 34.2426C803.667 84.5703 814 122.242 814 158.243C814 194.243 803.019 240.399 784 282.243C847.181 298.682 879.464 312.552 931 346.243H1483"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-          <path
-            d="M2583 350L3031 596V585H3051L3065 521H3147V508H3221L3330 521V537H3401V521H3452V500H3515V464H3537V404H3662V500H3705H4336"
-            stroke="#CFA484"
-            strokeWidth="11"
-          />
-        </svg>
-      </div>
+         {/* Animation 1 (Triggers Animation 2 after completion) */}
+    <div className="fixed pointer-events-none z-50 bottom-[54.5%] w-full flex justify-center">
+      {!animation1Completed ? <StorySectionAnimation1  /> : null}
+    </div>
+
+    {/* Animation 2 (Appears after Animation 1 finishes) */}
+    <div className="fixed pointer-events-none z-50 bottom-[54.5%] w-full flex justify-center">
+      {animation1Completed ? <StorySectionAnimation2  /> : null}
+    </div>
+    
+
       <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
         {/* Progress Bar */}
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200">
