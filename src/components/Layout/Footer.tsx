@@ -212,15 +212,18 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-xs text-center md:text-left">
-            © 2024 Vitu Realty | All rights reserved.
+          <p className="text-white text-xs text-center md:text-left">
+            © <span className="font-CandideCondensedNormal">2024</span>{" "}
+            <span className="font-freightNeoMedium">
+              Vitu Realty | All rights reserved.
+            </span>
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="text-gray-500 text-xs">
+            <a href="#" className="text-white text-xs font-freightNeoMedium">
               Legal Disclaimer
             </a>
-            <span className="text-gray-500 text-xs">|</span>
-            <a href="#" className="text-gray-500 text-xs">
+            <span className="text-white text-xs">|</span>
+            <a href="#" className="text-white text-xs font-freightNeoMedium">
               Terms of Service
             </a>
           </div>
