@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
-import AppleStyleCard from "../ui/apple-style-card";
 import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
 import ExpandableCards from "../Common/ExpandableCards/ExpandableCards";
 
@@ -74,18 +73,7 @@ const CARDS_DATA: Card[] = [
   },
 ];
 
-const CARD_CONTENT = (
-  <div className="bg-white dark:bg-neutral-800 p-8 rounded-3xl mb-4">
-    <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-xl font-sans max-w-3xl mx-auto">
-      <span className="font-bold text-neutral-700 dark:text-neutral-200">
-        Discover the power of innovation.
-      </span>{" "}
-      Our latest product combines cutting-edge technology with sleek design,
-      providing an unparalleled user experience that will transform the way
-      you interact with your devices.
-    </p>
-  </div>
-);
+
 
 /**
  * Explore Projects Component
@@ -100,8 +88,6 @@ const CARD_CONTENT = (
  * @component
  */
 const ExploreProjects: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const textWrapperRef = useRef<HTMLDivElement>(null);
 
 
   return (

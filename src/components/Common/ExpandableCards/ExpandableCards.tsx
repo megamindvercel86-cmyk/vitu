@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
+
+// Register ScrollToPlugin
+gsap.registerPlugin(ScrollToPlugin);
 
 const images = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -42,10 +47,33 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Add scroll listener to detect when user scrolls away
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isExpanded && containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        
+        // If component is not visible and it's expanded, just collapse it
+        if (!isVisible) {
+          setIsExpanded(false);
+          // Remove the auto-scroll back
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isExpanded]);
 
   const handleMouseEnter = () => {
-    setCursorText("Click to blast");
-    setCursorVariant("project");
+    // Only show cursor if not expanded
+    if (!isExpanded) {
+      setCursorText("Click to more ");
+      setCursorVariant("project");
+    }
   };
 
   const handleMouseLeave = () => {
@@ -53,16 +81,43 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
     setCursorVariant("default");
   };
 
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+    
+    // Smooth scroll to center when expanded
+    if (!isExpanded) {
+      setTimeout(() => {
+        const element = containerRef.current;
+        if (element) {
+          const yOffset = 300;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          
+          gsap.to(window, {
+            duration: 1.5,
+            scrollTo: {
+              y: y,
+              autoKill: false
+            },
+            ease: "power2.inOut"
+          });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <div className="h-auto flex items-center justify-center">
-        
-      <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />
+      {/* Only render cursor when not expanded */}
+      {!isExpanded && (
+        <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />
+      )}
       <div
+        ref={containerRef}
         className="mx-auto w-full relative"
         style={{ height: isExpanded ? "180vh" : "100vh" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={handleExpand}
       >
         {/* Text Content */}
         <motion.div
