@@ -17,7 +17,7 @@ export default function FounderMessage() {
       <div className="xl:w-[1355px] xl:h-[775px] lg:w-[1150px] lg:h-[657px] sm:w-[] sm:h-[324px] h-[324px] w-[259px] md:w-[850px]  md:h-[600px] rounded-2xl overflow-hidden">
         {/* Wrapper with rounded corners and hidden overflow */}
         <YouTube
-          videoId="UKag4LVAEdU"
+          videoId="b5hVv7QAXmQ"
           opts={{
             width: "100%",
             height: "100%",
