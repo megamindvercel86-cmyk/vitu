@@ -28,17 +28,18 @@ export default function HomeHeroSection() {
       <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]">
         {/* Background Image with Overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-center bg-cover"
           style={{
             backgroundImage: `url("${HERO_CONFIG.backgroundImage}")`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+
         </div>
 
         {/* Hero Content */}
         <div className="relative h-full flex xl:top-[343px] lg:top-[247px] sm:top-[157px] top-[157px] justify-center">
-          <div className="text-center text-white flex flex-col items-center">
+          <div className="flex flex-col items-center text-center text-white">
             <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] md:leading-none">
               {HERO_CONFIG.titles.main}
             </h1>

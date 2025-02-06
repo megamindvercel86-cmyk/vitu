@@ -109,7 +109,7 @@ export default function Navbar({
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "tween", duration: 0.3 }}
-          className="fixed inset-0 bg-white z-50 overflow-y-auto"
+          className="fixed inset-0 z-50 overflow-y-auto bg-white"
         >
           <div className="flex flex-col h-full">
             {/* Header */}
@@ -132,7 +132,7 @@ export default function Navbar({
                 <NavLink
                   key={href}
                   href={href}
-                  className="text-2xl font-FreightNeoProBold mb-8 last:mb-0"
+                  className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
@@ -152,7 +152,7 @@ export default function Navbar({
             </div>
 
             {/* Social Links - Updated for center alignment */}
-            <div className="mt-auto mb-8 flex justify-center gap-4 w-full">
+            <div className="flex justify-center w-full gap-4 mt-auto mb-8">
               <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryInstgramIcon/>
               </Link>
@@ -175,9 +175,9 @@ export default function Navbar({
   return (
     <div>
       <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
-        <nav className="flex justify-between items-center">
-          {/* Logo Section */}
-          <div className="flex items-center">
+        <nav className="flex flex-col items-center lg:flex-row w-full">
+          {/* Logo Section - Left 50% */}
+          <div className="w-full lg:w-1/2 flex items-center">
             <Link href="/">
               <Image
                 src={isNavbarPrimary ? logoWhite : logo}
@@ -185,22 +185,17 @@ export default function Navbar({
                 className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg:w-[225px] lg:h-[72px] xl:w-[260px] xl:h-[83px]"
               />
             </Link>
+            {/* Mobile Menu Button */}
+            <div
+              className="flex items-center cursor-pointer ml-auto lg:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div
-            className="md:flex lg:hidden flex items-center"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
-          </div>
-
-          {/* Navigation Links */}
-          <div
-            className={`flex flex-col md:gap-4 lg:gap-[86px] ml-20 max-w-[712px] lg:flex-row items-center mt-4 lg:mt-0 ${
-              isMenuOpen ? "block" : "hidden"
-            } md:hidden lg:flex`}
-          >
+          {/* Navigation Links - Right 50% */}
+          <div className="hidden lg:flex lg:w-1/2 items-center justify-end gap-[86px]">
             {NAV_LINKS.map(({ href, label }) => (
               <NavLink key={href} href={href} className={getLinkClassName(href)}>
                 {label}
