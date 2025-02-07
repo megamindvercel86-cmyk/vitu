@@ -5,7 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   defaultTextColor?: string;
-  onClick?: () => void;  // Make onClick optional
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({

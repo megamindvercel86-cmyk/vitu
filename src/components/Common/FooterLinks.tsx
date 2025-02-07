@@ -5,12 +5,13 @@ interface FooterLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
+  type?: "string" | "number"
 }
 
-const FooterLink = ({ href, children, className }: FooterLinkProps) => {
+const FooterLink = ({ href, children, className, type = "string" }: FooterLinkProps) => {
   const combinedClassName = classNames(
-    "font-FreightNeoProLight font-light text-base text-footerTextColor",
-    className,
+    `${type === "string" ? "font-FreightNeoProLight" : "font-CandideCondensedNormal"} font-light text-base 2xl:text-2xl text-footerTextColor`,
+    className
   );
 
   return (

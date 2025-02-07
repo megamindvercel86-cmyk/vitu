@@ -15,13 +15,41 @@ import {
   Youtube,
 } from "../Icons/Icons";
 
+/**
+ * Footer Component
+ * Renders the main footer section of the website with:
+ * - Company logo and tagline
+ * - Quick links (collapsible on mobile)
+ * - Resources section (collapsible on mobile)
+ * - Contact information
+ * - Newsletter signup
+ * - Copyright and legal links
+ */
 const Footer = () => {
+  // SVG for dropdown arrow used in mobile view
+  const DropdownArrow = () => (
+    <svg
+      className="w-5 h-5 text-footerTextColor"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  );
+
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
-          {/* Logo and Tagline Section */}
+          {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
+            {/* Logo */}
             <Image
               src={logo}
               alt="Logo"
@@ -29,11 +57,13 @@ const Footer = () => {
               height={72}
               className="w-36 md:w-56 lg:w-[224px] h-auto"
             />
-            <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
+            {/* Tagline */}
+            <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center 2xl:text-[] lg:text-left">
               Building Wholesome <br />
               Living Spaces
             </p>
-            <div className="mt-8 hidden lg:block">
+            {/* Recognition - Desktop only */}
+            <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="">Recognized by</FooterLink>
               <Image
                 src={chieverslog}
@@ -45,92 +75,72 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links - Dropdown for mobile */}
+          {/* Section 2: Quick Links */}
           <div>
+            {/* Mobile View - Collapsible */}
             <details className="lg:hidden border-b border-gray-700 pb-2">
               <summary className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
                 Quick Links
-                <svg
-                  className="w-5 h-5 text-footerTextColor"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                <DropdownArrow />
               </summary>
               <ul className="space-y-4 mt-4 text-gray-300">
                 <li>
-                  <FooterLink href="">About Us</FooterLink>
+                  <FooterLink href="/about">About Us</FooterLink>
                 </li>
                 <li>
-                  <FooterLink href="">Our Projects</FooterLink>
+                  <FooterLink href="/projects">Our Projects</FooterLink>
                 </li>
                 <li>
-                  <FooterLink href="">Careers</FooterLink>
+                  <FooterLink href="/career-application">Careers</FooterLink>
                 </li>
               </ul>
             </details>
 
+            {/* Desktop View */}
             <div className="hidden lg:block">
               <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
                 Quick Links
               </SubHeading>
               <ul className="space-y-4 text-gray-300">
                 <li>
-                  <FooterLink href="">About Us</FooterLink>
+                  <FooterLink href="/about">About Us</FooterLink>
                 </li>
                 <li>
-                  <FooterLink href="">Our Projects</FooterLink>
+                  <FooterLink href="/projects">Our Projects</FooterLink>
                 </li>
                 <li>
-                  <FooterLink href="">Careers</FooterLink>
+                  <FooterLink href="/career-application">Careers</FooterLink>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Resources - Dropdown for mobile */}
+          {/* Section 3: Resources */}
           <div>
-            {/* Resources */}
+            {/* Mobile View - Collapsible */}
             <details className="lg:hidden pb-2">
               <summary className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
                 Resources
-                <svg
-                  className="w-5 h-5 text-footerTextColor"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                <DropdownArrow />
               </summary>
               <ul className="space-y-4 mt-4 text-gray-300">
                 <li>
-                  <FooterLink href="">Media</FooterLink>
+                  <FooterLink href="/resources/media-kit">Media</FooterLink>
                 </li>
                 <li>
                   <FooterLink href="">Insights</FooterLink>
                 </li>
               </ul>
             </details>
+
+            {/* Desktop View */}
             <div className="hidden lg:block">
               <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
                 Resources
               </SubHeading>
               <ul className="space-y-4 text-gray-300">
                 <li>
-                  <FooterLink href="">Media</FooterLink>
+                  <FooterLink href="/resources/media-kit">Media</FooterLink>
                 </li>
                 <li>
                   <FooterLink href="">Insights</FooterLink>
@@ -139,32 +149,34 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Contact Section */}
+          {/* Section 4: Contact Information and Newsletter */}
           <div>
             <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
               Get in Touch
             </SubHeading>
+            {/* Contact Details */}
             <ul className="space-y-4 text-gray-300">
-              <li className="flex items-start">
+              <li className="flex  md:flex-row flex-col md:items-start items-center md:gap-0 gap-3">
                 <Share />
                 <FooterLink href="" className="pl-4">
-                  Laxman Commercial Complex Golikatta Bazar, Bunder, Mangalore -
-                  575001
+                  Laxman Commercial Complex Golikatta Bazar, Bunder, Mangalore -{" "}
+                  <span className="font-CandideCondensedNormal">575001</span>
                 </FooterLink>
               </li>
-              <li className="flex items-center">
+              <li className="flex  md:flex-row flex-col  md:items-start items-center md:gap-0 gap-3">
                 <Phone />
-                <FooterLink href="" className="pl-4">
+                <FooterLink href="" type="number" className="pl-4">
                   +91 89046 88886
                 </FooterLink>
               </li>
-              <li className="flex items-center">
+              <li className="flex  md:flex-row flex-col md:items-start items-center md:gap-0 gap-3 ">
                 <Mail />
                 <FooterLink href="" className="pl-4">
                   info@viturealty.com
                 </FooterLink>
               </li>
-              <li className="flex gap-2">
+              {/* Social Media Links */}
+              <li className="flex gap-2 justify-center md:justify-start">
                 <NavLink href="">
                   <Instgram />
                 </NavLink>
@@ -180,8 +192,8 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* Newsletter Signup */}
-            <div className="mt-8">
+            {/* Newsletter Signup Form */}
+            <div className="mt-8 hidden md:block">
               <div className="flex items-center border-b border-gray-700 w-full">
                 <input
                   type="email"
@@ -209,21 +221,51 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
+      <div className="py-6 mx-auto flex flex-col md:hidden">
+        <div className="flex gap-4 mt-4 md:mt-0 mx-auto">
+          <a
+            href="/terms-of-service"
+            className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+          >
+            Legal Disclaimer
+          </a>
+          <span className="text-[#FFFFFF66] text-xs">|</span>
+          <a
+            href="/terms-of-service"
+            className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+          >
+            Terms of Service
+          </a>
+        </div>
+        <hr className="w-[90%] border-[#FFFFFF66] mx-auto mt-4" />
+        <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left mt-4">
+            © <span className="font-CandideCondensedNormal">2024</span>{" "}
+            <span className="font-freightNeoMedium">
+              Vitu Realty | All rights reserved.
+            </span>
+          </p>
+      </div>
+      {/* Footer Bottom: Copyright and Legal Links */}
+      <div className="mt-8 border-t hidden md:block border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white text-xs text-center md:text-left">
+          <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
             © <span className="font-CandideCondensedNormal">2024</span>{" "}
             <span className="font-freightNeoMedium">
               Vitu Realty | All rights reserved.
             </span>
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="text-white text-xs font-freightNeoMedium">
+            <a
+              href="/terms-of-service"
+              className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+            >
               Legal Disclaimer
             </a>
-            <span className="text-white text-xs">|</span>
-            <a href="#" className="text-white text-xs font-freightNeoMedium">
+            <span className="text-[#FFFFFF66] text-xs">|</span>
+            <a
+              href="/terms-of-service"
+              className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+            >
               Terms of Service
             </a>
           </div>

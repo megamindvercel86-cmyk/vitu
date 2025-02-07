@@ -2,45 +2,30 @@
 
 // ============= Component Imports =============
 import React, { useRef } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
 import { FaCheck } from "react-icons/fa";
 
 // ============= Internal Imports =============
 import Button from "@/components/Common/Button";
-import { db, storage } from "@/firebase/firebaseConfig";
 import { Dropdown, Upload } from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
+
+// Form Related Imports
+import { useFormSubmission } from "../Form/useFormSubmission";
+import { JOB_OPTIONS } from "../Form/constants";
 
 // ============= Types & Interfaces =============
 interface FormSectionProps {
   heading: string;
   subheading: string;
-  page: string;
+  page: "General Enquire" | "Project Enquire" | "Career Application";
 }
 
-// ============= Constants =============
-const JOB_OPTIONS = [
-  { value: "", label: "Interested In", isDisabled: true },
-  { value: "Frontend Developer", label: "Frontend Developer" },
-  { value: "Backend Developer", label: "Backend Developer" },
-  { value: "Full Stack Developer", label: "Full Stack Developer" },
-  { value: "Other", label: "Other" },
-];
-
-const VALIDATION_SCHEMA = Yup.object({
-  fullName: Yup.string().required("Full Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  phone: Yup.string()
-    .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
-    .required("Phone number is required"),
-  comments: Yup.string().max(250, "Max 250 characters"),
-  option: Yup.string(),
-});
+// Update FORM_TYPES in constants.ts to match:
+export const FORM_TYPES = {
+  GENERAL: "General Enquire",
+  PROJECT: "Project Enquire",
+  CAREER: "Career Application"
+} as const;
 
 /**
  * Form Section Component
@@ -58,54 +43,22 @@ export default function FormSection({
   page,
 }: FormSectionProps) {
   // ============= Refs =============
-  const selectRef = useRef<HTMLSelectElement | null>(null);
+  const selectRef = useRef<HTMLSelectElement>(null);
 
   // ============= Form Handling =============
-  const formik = useFormik({
-    initialValues: {
-      fullName: "",
-      email: "",
-      phone: "",
-      comments: "",
-      whatsapp: false,
-      option: "",
-      resume: null as File | null,
-    },
-    validationSchema: VALIDATION_SCHEMA,
-    onSubmit: async (values, { resetForm }) => {
-      try {
-        await handleFormSubmission(values);
-        resetForm();
-      } catch (error) {
-        console.error("Error submitting form:", error);
-      }
-    },
-  });
+  const formik = useFormSubmission(page);
 
   // ============= Helper Functions =============
   const handleIconClick = () => {
-    selectRef.current?.focus();
-  };
-
-  const handleFormSubmission = async (values: typeof formik.values) => {
-    let resumeUrl: string | null = null;
-
-    if (values.resume) {
-      const storageRef = ref(storage, `resumes/${values.resume.name}`);
-      const uploadResult = await uploadBytes(storageRef, values.resume);
-      resumeUrl = uploadResult.ref.fullPath;
+    if (selectRef.current) {
+      selectRef.current.focus();
+      selectRef.current.click(); // Simulates a user click
     }
-
-    const collectionName =
-      page === "General Enquire"
-        ? "generalEnquiries"
-        : page === "Project Enquire"
-          ? "projectEnquiries"
-          : "careerApplications";
-
-    const collectionRef = collection(db, collectionName);
-    await addDoc(collectionRef, { ...values, resumeUrl });
   };
+  
+
+  // Base input class with placeholder and value font
+  const inputBaseClass = "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
 
   // Rest of your component (JSX) remains exactly the same
   return (
@@ -140,7 +93,7 @@ export default function FormSection({
               type="text"
               placeholder="Your Full Name"
               {...formik.getFieldProps("fullName")}
-              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+              className={inputBaseClass}
             />
             {formik.touched.fullName && formik.errors.fullName && (
               <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
@@ -152,7 +105,7 @@ export default function FormSection({
               type="email"
               placeholder="Your Email"
               {...formik.getFieldProps("email")}
-              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+              className={inputBaseClass}
             />
             {formik.touched.email && formik.errors.email && (
               <p className="text-red-500 text-sm">{formik.errors.email}</p>
@@ -164,7 +117,7 @@ export default function FormSection({
               type="text"
               placeholder="Your Phone Number"
               {...formik.getFieldProps("phone")}
-              className="w-full px-1 pb-[7px] text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+              className={inputBaseClass}
             />
             {formik.touched.phone && formik.errors.phone && (
               <p className="text-red-500 text-sm">{formik.errors.phone}</p>
@@ -176,7 +129,7 @@ export default function FormSection({
                 rows={3}
                 placeholder="Your Comments"
                 {...formik.getFieldProps("comments")}
-                className="w-full px-1 pb-1 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl"
+                className={inputBaseClass}
               />
               {formik.touched.comments && formik.errors.comments && (
                 <p className="text-red-500 text-sm">{formik.errors.comments}</p>
@@ -192,7 +145,7 @@ export default function FormSection({
               <select
                 ref={selectRef}
                 {...formik.getFieldProps("option")}
-                className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium pr-8 appearance-none"
+                className={`${inputBaseClass} pb-2 pr-8 appearance-none`}
               >
                 <option value="" disabled>
                   Interested In
@@ -211,7 +164,7 @@ export default function FormSection({
               </div>
             </div>
           )}
-          {page === "Career Application" && (
+          {page === FORM_TYPES.CAREER && (
             <>
               <div className="mt-[45px] relative">
                 <select
@@ -290,7 +243,16 @@ export default function FormSection({
                 </span>
               </label>
               <Button
-                onClick={() => formik.handleSubmit()}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach(field => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  formik.handleSubmit();
+                }}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
@@ -324,17 +286,35 @@ export default function FormSection({
                 </span>
               </label>
               <Button
-                onClick={() => formik.handleSubmit()}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach(field => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  formik.handleSubmit();
+                }}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
                 Submit
               </Button>
             </div>
           )}
-          {page === "Career Application" && (
+          {page === FORM_TYPES.CAREER && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
               <Button
-                onClick={() => formik.handleSubmit()}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach(field => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  formik.handleSubmit();
+                }}
                 className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
               >
                 Submit
