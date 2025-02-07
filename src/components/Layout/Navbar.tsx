@@ -6,11 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import NavLink from "../Common/NavLink";
 import Button from "../Common/Button";
-import { MenuIcon, MenuIconWhite, CloseIcon, SecondaryInstgramIcon, SecondaryLinkedInIcon, SecondaryMetaIcon, SecondaryYoutubeIcon } from "../Icons/Icons";
+import {
+  MenuIcon,
+  MenuIconWhite,
+  CloseIcon,
+  SecondaryInstgramIcon,
+  SecondaryLinkedInIcon,
+  SecondaryMetaIcon,
+  SecondaryYoutubeIcon,
+} from "../Icons/Icons";
 import logo from "../../../public/images/logos/logo.svg";
 import logoWhite from "../../../public/images/logos/logoWhite.svg";
 import { motion, AnimatePresence } from "framer-motion";
-
 
 // ============= Types & Interfaces =============
 type NavbarType = "primary" | "secondary";
@@ -75,28 +82,28 @@ export default function Navbar({
    */
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
-    
-    return `pt-1 ${
+
+    return `pt-1 2xl:text-4xl ${
       isActive
         ? isNavbarPrimary
           ? "text-white border-b-2 border-white"
           : "text-black border-b-2 border-black"
         : isNavbarPrimary
-        ? "text-white"
-        : "text-black"
+          ? "text-white"
+          : "text-black"
     }`;
   };
 
   // Add useEffect to control body scroll
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
 
@@ -115,11 +122,7 @@ export default function Navbar({
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
               <Link href="/">
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  className="w-[95px] h-[30px]"
-                />
+                <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </Link>
               <button onClick={() => setIsMenuOpen(false)}>
                 <CloseIcon />
@@ -139,8 +142,8 @@ export default function Navbar({
                 </NavLink>
               ))}
               {showGetInTouch && (
-                <Link 
-                  href="/project-enquire" 
+                <Link
+                  href="/project-enquire"
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full px-7"
                 >
@@ -153,17 +156,29 @@ export default function Navbar({
 
             {/* Social Links - Updated for center alignment */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryInstgramIcon/>
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
+                <SecondaryInstgramIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryMetaIcon/>
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
+                <SecondaryMetaIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryLinkedInIcon/>
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
+                <SecondaryLinkedInIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryYoutubeIcon/>
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
+                <SecondaryYoutubeIcon />
               </Link>
             </div>
           </div>
@@ -174,15 +189,15 @@ export default function Navbar({
 
   return (
     <div>
-      <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
+      <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
-          <div className="w-full lg:w-1/2 flex items-center">
+          <div className="w-full lg:w-1/2 flex items-center justify-start">
             <Link href="/">
               <Image
                 src={isNavbarPrimary ? logoWhite : logo}
                 alt="Logo"
-                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg:w-[225px] lg:h-[72px] xl:w-[260px] xl:h-[83px]"
+                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
               />
             </Link>
             {/* Mobile Menu Button */}
@@ -195,26 +210,32 @@ export default function Navbar({
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div className="hidden lg:flex lg:w-1/2 items-center justify-end gap-[86px]">
-            {NAV_LINKS.map(({ href, label }) => (
-              <NavLink key={href} href={href} className={getLinkClassName(href)}>
-                {label}
-              </NavLink>
-            ))}
+          <div className="hidden lg:flex lg:w-1/2 ml-28 items-center justify-between">
+            <div className="flex items-center justify-between w-full">
+              {NAV_LINKS.map(({ href, label }) => (
+                <NavLink
+                  key={href}
+                  href={href}
+                  className={getLinkClassName(href)}
+                >
+                  {label}
+                </NavLink>
+              ))}
+              {showGetInTouch && (
+                <Link href="/project-enquire">
+                  <Button
+                    className={`lg:h-[55px] w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] ${
+                      isNavbarPrimary ? "bg-white" : ""
+                    }`}
+                    defaultTextColor={buttonColor}
+                  >
+                    Get in Touch
+                  </Button>
+                </Link>
+              )}
+            </div>
 
             {/* CTA Button */}
-            <Link href="/project-enquire">
-              {showGetInTouch && (
-                <Button
-                  className={`lg:w-[204px] lg:h-[55px] text-[26px] ${
-                    isNavbarPrimary ? "bg-white" : ""
-                  }`}
-                  defaultTextColor={buttonColor}
-                >
-                  Get in Touch
-                </Button>
-              )}
-            </Link>
           </div>
         </nav>
       </header>

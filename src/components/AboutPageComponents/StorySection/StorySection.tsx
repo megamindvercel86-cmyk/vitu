@@ -141,51 +141,46 @@ export default function Gallery() {
 
     const totalWidth = gallery.scrollWidth;
     const windowWidth = window.innerWidth;
-
-    // Set up the SVG path initial state
     const pathLength = path.getTotalLength();
-    path.style.strokeDasharray = pathLength;
-    path.style.strokeDashoffset = pathLength;
+    
+    // Set initial path state
+    path.style.strokeDasharray = `${pathLength}`;
+    path.style.strokeDashoffset = `${pathLength}`;
 
-    // Create the scroll animation
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: container,
-          pin: true,
-          scrub: 1,
-          end: () => `+=${totalWidth}`,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            // Animate SVG path fill
-            const progress = self.progress;
-            setProgress(progress);
-            path.style.strokeDashoffset = pathLength - progress * pathLength;
+    // Create timeline for gallery scroll
+    const scrollTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        pin: true,
+        scrub: 1,
+        end: () => `+=${totalWidth}`,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          setProgress(progress);
+          path.style.strokeDashoffset = `${pathLength - progress * pathLength}`;
 
-            // Calculate which image is currently in view
-            const imageIndex = Math.min(
-              Math.floor(progress * images.length),
-              images.length - 1
-            );
-
-            // Update year and message
-            setCurrentYear(images[imageIndex].year);
-            setCurrentMessage(images[imageIndex].message);
-
-            // Set isFixed when scrolling is in progress
-            setIsFixed(progress > 0 && progress < 1);
-          },
+          const imageIndex = Math.min(
+            Math.floor(progress * images.length),
+            images.length - 1
+          );
+          setCurrentYear(images[imageIndex].year);
+          setCurrentMessage(images[imageIndex].message);
+          setIsFixed(progress > 0 && progress < 1);
         },
-      })
-      .to(gallery, {
-        x: -(totalWidth - windowWidth),
-        ease: "none",
-      });
+      },
+    });
+
+    // Animate gallery horizontally
+    scrollTimeline.to(gallery, {
+      x: () => -(totalWidth - windowWidth),
+      ease: "none"
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+}, []);
   useEffect(() => {
     const animation = gsap.timeline({
       onComplete: () => {
@@ -212,26 +207,22 @@ export default function Gallery() {
           At Vitu, Every Design Feels Like Home—Because It Is
         </Heading>
       </div>
-      
+
       <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
-        <div className="relative flex justify-center items-center w-full h-full">
           <svg
-            className={`${
-              isFixed ? "fixed" : "absolute"
-            } w-full h-[200px] pointer-events-none z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
+            className={`absolute w-full h-[500px] pointer-events-none z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
             <path
               ref={svgPathRef}
-              d="M0 54.6723H3.61913C4.03699 49.4478 4.29645 47.5064 4.82551 46.6345L4.92783 41.1086C4.68763 34.5006 4.62933 25.1767 4.71779 19.8935C5.07109 -8.39316 6.27747 0.881152 6.53167 3.81803C6.78587 6.75491 6.96254 14.7071 6.99698 20.5118C7.03143 26.3165 6.90651 38.3649 6.76002 42.8475C7.32603 45.6633 7.60484 47.8688 8.03102 52.972H15.1659V42.7702L20.6721 4.43631L22.2404 52.972L26.1353 91.7696V89.7601H26.2904L26.411 79.8675H27.1176V77.8581H27.7725L28.6859 79.8675V82.3407H29.2977V79.8675H29.7372V76.3123H30.2887V71.2115H30.4696V61.4734H31.5812V76.3123H40C40.0251 84.0533 40.0986 87.3674 40.3705 90.8421C40.6352 98.8256 40.8482 100.008 41.3356 96.4067C41.8489 102.013 42.0673 101.04 42.3611 93.6244C42.687 94.4406 42.86 93.4428 43.1452 89.1418C44.0015 84.5505 44.0085 79.0022 43.7656 67.5017C44.0365 61.9042 44.0043 57.5653 43.7656 48.6439H54.4765L54.7178 46.7891C54.5295 29.9865 54.7605 16.6138 55.5536 13.5561C55.7652 12.7404 56.131 16.1838 56.1913 16.9567C56.7415 8.51673 57.4989 5.24781 57.9061 11.3921C58.408 20.3572 58.4825 29.5597 58.0353 46.7891C58.4358 52.7649 58.6351 56.4878 58.9143 64.2557H62.4817L65.153 41.9973L65.67 43.5431L67.1779 30.7136L70.4782 57.6091H77.4666C77.5733 50.5892 77.8572 46.2811 78.7333 37.9785C78.6097 27.3994 78.6153 23.7147 78.7333 20.3572C78.8802 16.9122 78.977 15.5783 79.1685 14.0198C79.4322 12.2086 79.6308 12.2837 79.8363 14.0198C79.9597 15.0621 80.1622 19.1203 80.1917 26.4242C80.2114 31.2856 80.1168 38.2359 80.0086 44.3159C80.3136 48.8302 80.4592 51.669 80.6463 57.6091H80.991C81.2026 51.7058 81.3331 49.3808 81.5769 46.1708C81.1946 35.5407 81.0634 29.2355 81.3239 21.3134C81.6996 12.4811 81.9668 11.9448 82.5075 16.8021C82.8914 21.4469 82.9388 27.9958 82.8264 44.3159C83.2675 46.692 83.5019 49.0906 83.8863 56.218H89.0392V28.7041H96.9496V56.218H100"
+              d="M-1.57178 4.26862H2.1611C2.59209 3.96822 2.85971 3.85659 3.40539 3.80646L3.51093 3.48872C3.26319 3.10876 3.20305 2.57265 3.29429 2.26886C3.65869 0.642399 4.90299 1.17567 5.16518 1.34453C5.42737 1.5134 5.60959 1.97065 5.64512 2.30442C5.68064 2.63818 5.5518 3.33096 5.4007 3.5887C5.98451 3.75061 6.27208 3.87743 6.71165 4.17086H14.0708V3.58426L19.7501 1.38009L21.3676 4.17086L25.3849 6.40169V6.28615H25.5449L25.6693 5.71733H26.3981V5.60179H27.0736L28.0157 5.71733V5.85954H28.6468V5.71733H29.1V5.51291H29.6688V5.21962H29.8555V4.65968H31.002V5.51291H39.6854C39.7113 5.95801 39.7871 6.14857 40.0676 6.34837C40.3405 6.80741 40.5602 6.87538 41.063 6.66833C41.5924 6.99067 41.8176 6.93472 42.1207 6.50835C42.4569 6.55528 42.6353 6.49791 42.9294 6.2506C43.8126 5.9866 43.8199 5.66758 43.5694 5.00631C43.8488 4.68445 43.8155 4.43497 43.5694 3.922H54.6169L54.8658 3.81534C54.6715 2.84921 54.9099 2.08028 55.7279 1.90447C55.9461 1.85757 56.3234 2.05556 56.3856 2.1C56.9531 1.61471 57.7343 1.42675 58.1543 1.78004C58.672 2.29553 58.7488 2.82466 58.2876 3.81534C58.7006 4.15895 58.9062 4.37301 59.1941 4.81966H62.8737L65.6289 3.53982L66.1622 3.6287L67.7175 2.89101L71.1216 4.43749H78.3296C78.4396 4.03385 78.7324 3.78614 79.6361 3.30874C79.5086 2.70045 79.5144 2.48858 79.6361 2.29553C79.7876 2.09744 79.8875 2.02074 80.0849 1.93113C80.3569 1.82699 80.5617 1.83131 80.7737 1.93113C80.901 1.99106 81.1099 2.22441 81.1403 2.64438C81.1606 2.9239 81.063 3.32354 80.9515 3.67314C81.2661 3.93271 81.4162 4.09593 81.6092 4.43749H81.9647C82.183 4.09805 82.3176 3.96437 82.569 3.77979C82.1747 3.16857 82.0394 2.80602 82.3081 2.35051C82.6956 1.84266 82.9712 1.81182 83.5289 2.09111C83.9249 2.35818 83.9738 2.73474 83.8578 3.67314C84.3128 3.80976 84.5546 3.94768 84.951 4.3575H90.2659V2.77547H98.4249V4.3575H101.571"
               stroke="#CFA484"
-              strokeWidth="1"
+              strokeWidth="2"
               fill="none"
+              className="absolute"
             />
           </svg>
-        </div>
-        
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200">
           <div
             className="h-full bg-primary transition-all duration-300 ease-out"
@@ -239,7 +230,10 @@ export default function Gallery() {
           />
         </div>
 
-        <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
+        <div
+          ref={galleryRef}
+          className="flex absolute top-1/2 -translate-y-1/2 will-change-transform"
+        >
           {images.map((image, index) => (
             <div
               key={index}
