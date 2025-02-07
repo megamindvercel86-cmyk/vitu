@@ -40,10 +40,10 @@ export default function HomeHeroSection() {
         {/* Hero Content */}
         <div className="relative h-full flex xl:top-[343px] lg:top-[247px] 2xl:top-[550px] sm:top-[157px] top-[157px] justify-center">
           <div className="flex flex-col items-center text-center text-white">
-            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] 2xl:text-[150px] md:leading-none">
+            <h1 className="sm:text-[32px] md:text-[60px] text-[32px] font-freightNeoSemibold lg2:text-[100px] lg:text-[100px] 2xl:text-[150px] md:leading-none">
               {HERO_CONFIG.titles.main}
             </h1>
-            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] leading-none 2xl:text-[150px] md:pt-[28px] pt-0">
+            <h1 className="sm:text-[32px] md:text-[60px] text-[32px] font-freightNeoSemibold lg:text-[100px] leading-none 2xl:text-[150px] md:pt-[28px] pt-0">
               {HERO_CONFIG.titles.sub}
             </h1>
           </div>
@@ -55,7 +55,7 @@ export default function HomeHeroSection() {
         <div>
           <Typography
             variant="custom"
-            className="font-freightNeoMedium font text-[#040707CC] pb-6 sm:text-[22px] md:text-[18px] text-[16px] px-7 md:px-0"
+            className="font-freightNeoMedium font text-[#040707CC] pb-6 sm:text-[22px] md:text-[18px] 2xl:text-[34px] text-[16px] px-7 md:px-0"
           >
             {HERO_CONFIG.description}
           </Typography>
@@ -63,7 +63,7 @@ export default function HomeHeroSection() {
         <div>
           <Typography
             variant="custom"
-            className="lg:text-[56px] sm:text-[24px] md:text-[40px] text-[24px] font-freightNeoMedium text-customBrown px-7 md:px-0"
+            className="lg:text-[56px] sm:text-[24px] md:text-[40px] text-[24px] font-freightNeoMedium 2xl:text-[80px] text-customBrown px-7 md:px-0"
           >
             {HERO_CONFIG.tagline}
           </Typography>
