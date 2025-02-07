@@ -76,7 +76,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 xl:max-w-[100rem] lg:max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 2xl:max-w-[150rem] xl:max-w-[100rem] lg:max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
     >
@@ -90,7 +90,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="md:w-[361px] sm:w-[263px]  w-[300px] relative  border-[#4F3737] border-[1px] rounded-[14px] pt-[30px] pb-[26px] px-[21px]"
+            className="md:w-[361px] sm:w-[263px] 2xl:w-[500px]  w-[300px] relative  border-[#4F3737] border-[1px] rounded-[14px] pt-[30px] pb-[26px] px-[21px]"
             key={item.name}
           >
             <blockquote>
@@ -113,11 +113,11 @@ export const InfiniteMovingCards = ({
                     <div className="flex flex-col leading-8">
                       <Typography
                         variant="custom"
-                        className="text-[26px] font-freightNeoMedium text-customBrown"
+                        className="text-[26px] text-3xl font-freightNeoMedium text-customBrown"
                       >
                         {item.name}
                       </Typography>
-                      <Typography className="text-[#4F373799] font-normal">
+                      <Typography className="text-[#4F373799] 2xl:text-2xl font-normal">
                         {item.place}
                       </Typography>
                     </div>
@@ -127,7 +127,7 @@ export const InfiniteMovingCards = ({
               <div className="mt-5">
                 <Typography
                   variant="custom"
-                  className="text-base font-freightNeoMedium text-[#4F373799]"
+                  className="text-base 2xl:text-2xl font-freightNeoMedium text-[#4F373799]"
                 >
                   {item.comment}
                 </Typography>

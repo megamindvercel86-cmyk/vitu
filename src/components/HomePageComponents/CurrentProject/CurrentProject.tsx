@@ -49,18 +49,18 @@ const STATS_DATA = [
 const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div className="lg2:mt-[140px] mt-[70px] hidden md:flex lg:block md:justify-between">
+    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]">
       {STATS_DATA.map((stat, index) => (
-        <div key={index} className={`${index !== 0 ? 'lg:my-10' : ''} leading-[1.1]`}>
+        <div key={index} className={`leading-[1.1] ${index !== 0 ? 'lg:my-10' : ''}`}>
           <Typography
             variant="custom"
-            className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem]  lg2:text-[3.5rem] 2xl:text-[5rem] font-FreightNeoProNormal text-[#503637]"
+            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] text-[#503637]"
           >
             {stat.value}
           </Typography>
           <Typography
             variant="custom"
-            className="text-[24px] font-FreightNeoProNormal text-[#503637]"
+            className="font-FreightNeoProNormal text-[24px] text-[#503637]"
           >
             {stat.label}
           </Typography>
@@ -70,19 +70,19 @@ const CurrentProject: React.FC = () => {
   );
 
   return (
-    <div className="mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem] flex lg:flex-row sm:flex-col flex-col">
+    <div className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       {/* Left Column - Project Details */}
-      <div className="lg:w-1/2 w-full">
+      <div className="w-full lg:w-1/2">
         {/* Project Badge */}
-        <div className="bg-[#AE856614] rounded-md w-[166px] h-[34px] text-center flex items-center justify-center pt-1 2xl:text-[1.5rem] 2xl:w-[280px]">
-          <Typography variant="custom" className="text-customBrown font-FreightNeoProNormal">
+        <div className="flex items-center justify-center w-[166px] h-[34px] pt-1 rounded-md bg-[#AE856614] 2xl:w-[280px] 2xl:text-[1.5rem]">
+          <Typography variant="custom" className="font-FreightNeoProNormal text-customBrown">
             {PROJECT_DATA.badge}
           </Typography>
         </div>
         {/* Project Title */}
         <Typography
           variant="custom"
-          className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] w-[224px] md:w-full font-freightNeoMedium leading-[28px] 2xl:leading-[100px] md:leading-[72px] xl:leading-[67px] text-customBrown md:pt-0 pt-3"
+          className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
         >
           {PROJECT_DATA.title}
         </Typography>
@@ -91,7 +91,7 @@ const CurrentProject: React.FC = () => {
         <div className="flex items-center">
           <Typography
             variant="custom"
-            className="text-[#4F373799] font-freightNeoMedium lg:text-xl 2xl:text-[2.125rem] md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] 2xl:leading-[40px]"
+            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
           >
             {PROJECT_DATA.description.prefix}
             <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span>
@@ -101,29 +101,28 @@ const CurrentProject: React.FC = () => {
 
         {/* Desktop CTA */}
         <div className="mt-[29px]">
-          <button className="hidden md:block bg-none rounded-[36px] border-[2px] w-[287px] 2xl:text-[2.125rem] 2xl:w-[480px] 2xl:h-[66px] h-14 border-customBrown text-[22px] font-FreightNeoProBold text-customBrown items-center justify-center text-center">
+          <button className="hidden md:block items-center justify-center text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
             {PROJECT_DATA.cta}
           </button>
         </div>
 
-        {/* Project Stats */}
         {renderStats()}
       </div>
 
       {/* Right Column - Project Image */}
-      <div className="lg:w-1/2 w-full flex items-center justify-center">
+      <div className="flex items-center justify-center w-full lg:w-1/2">
         <Image
           src={PROJECT_DATA.image}
           width={708}
           height={400}
           alt={PROJECT_DATA.title}
-          className="object-contain"
+          className="w-full hfull object-contain"
         />
       </div>
 
       {/* Mobile CTA */}
-      <div className="md:hidden block w-full items-center justify-center text-center leading-[1] pt-10">
-        <button className="items-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
+      <div className="block md:hidden w-full pt-10 text-center leading-[1]">
+        <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
           {PROJECT_DATA.cta}
         </button>
       </div>

@@ -64,12 +64,12 @@ export default function Testimonial(): React.ReactElement {
     <div className="xl:mt-[166px] lg:mt-[206px]   mt-12">
       {/* Testimonial Header Section */}
       <div className="flex items-center justify-center flex-col lg:mb-[90px] mb-9">
-        <Typography variant="custom" className="text-customBrown md:text-lg text-xs font-freightNeoMedium">
+        <Typography variant="custom" className="text-customBrown md:text-lg text-xs 2xl:text-[2.125rem]   font-freightNeoMedium">
           CLIENT TESTIMONIAL
         </Typography>
         <Typography
           variant="custom"
-          className="text-customBrown md:text-[60px] leading-[28px] md:leading-[72px] xl:leading-[67px] text-2xl font-freightNeoMedium"
+          className="text-customBrown text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[90px] font-freightNeoMedium"
         >
           What our Clients say
         </Typography>
