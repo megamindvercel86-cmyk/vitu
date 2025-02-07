@@ -89,7 +89,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
             key={11}
             id={11}
             imageSrc={INITIATIVE_CARDS[0].url}
-            className="md:max-w-[528px] xl:max-w-[664px] md:h-[460px] lg:h-[660px] w-full"
+            className="md:max-w-[528px] 2xl:max-w-full xl:max-w-[664px] md:h-[460px] lg:h-[660px] w-full"
             cardClassName="rounded-[20px]"
             bottomTitle={INITIATIVE_CARDS[0].bottomTitle}
           />
@@ -122,7 +122,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
   );
 
   return (
-    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 xl:mx-[278px] lg:mx-[122px] md:mx-[60px]">
+    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       {/* Left Column - Content and First Image */}
       {renderLeftColumn()}
 
