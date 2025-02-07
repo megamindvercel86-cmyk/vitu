@@ -112,39 +112,38 @@ export default function VisionForTheFuture() {
   };
 
   return (
-    <div className="relative  text-[#42210B] overflow-hidden">
-      <div className="xl:mx-[210px]  xl:py-[157px] lg:py-[133px] md:py-[55px] sm:py-[44px] py-[44px] lg:pb-[157px] relative">
+    <div className="relative overflow-hidden text-[#42210B]">
+      <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
-        <div className="md:w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 sm:w-[257px] w-[257px] 2xl:w-[624px]">
+        <div className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
           <Typography
             variant="custom"
-            className="text-[1.5rem] md:px-0 md:text-[2.5rem] lg2:text-[3.5rem] sm:text-[1.5rem] w-[224px] 2xl:w-full 2xl:text-[5rem] md:w-full font-freightNeoMedium leading-none"
+            className="w-[14rem] md:w-full 2xl:w-full font-freightNeoMedium leading-none text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] md:px-0"
           >
             Embracing new Horizons in Living
           </Typography>
           <Typography
             variant="custom"
-            className="text-base 2xl:text-[2.125rem]  font-freightNeoMedium md:text-[20px] pt-1 font-light text-[#040707CC] leading-[19px] md:leading-relaxed"
+            className="pt-1 font-freightNeoMedium font-light text-base leading-[1.1875rem] text-[#040707CC] md:text-[1.25rem] md:leading-relaxed 2xl:text-[2.125rem]"
           >
             Rooted in our vision for bold growth and dedication to evolving our
             portfolio.
           </Typography>
         </div>
-        <div className="mt-8 lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 flex items-center justify-between">
+        <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
           <button
-            className="bg-[#AE856633] sm:hidden hidden   pt-1  text-customBrown pr-1 pl-[18px] py-[3px] 2xl:text-[1.5rem] rounded-full md:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+            className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
             onClick={() => console.log("Button clicked")}
           >
-            See What’s Next
+            See What's Next
             <CTAButtonIcon direction="right" />
           </button>
-          {/* Residential Type Section */}
-          <Typography className=" sm:hidden hidden md:block text-base lg:text-4xl font-FreightNeoProNormal text-[#4F373799]">
+          <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">
             {CAROUSEL_DATA[currentIndex].residentialType}
           </Typography>
         </div>
-        <div className="pt-6 relative overflow-hidden">
-          <div className="flex transition-transform duration-500 ease-in-out w-full h-[204px]   md:h-[530px] xl:h-[606px] 2xl:h-[1000px]">
+        <div className="relative pt-6 overflow-hidden">
+          <div className="flex w-full h-[12.75rem] transition-transform duration-500 ease-in-out md:h-[33.125rem] xl:h-[37.875rem] 2xl:h-[62.5rem]">
             {CAROUSEL_DATA.map((item, index) => (
               <div
                 key={index}
@@ -173,30 +172,28 @@ export default function VisionForTheFuture() {
           </div>
         </div>
 
-        {/* Description Section (static for currentIndex) */}
         <Typography
           variant="custom"
-          className="block md:hidden mx-[29px] text-lg font-FreightNeoProBold text-[#04070799] mt-6"
+          className="block mx-[1.8125rem] mt-6 font-FreightNeoProBold text-lg text-[#04070799] md:hidden"
         >
           {CAROUSEL_DATA[currentIndex].residentialType}
         </Typography>
-        <div className="lg:mx-[88px] md:mx-[66px] h-auto  sm:mx-[29px] mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between md:mt-[74px]">
-          <div className="lg:w-2/3 w-full">
-            <Typography className="text-base lg:text-xl h-[96px] 2xl:text-[2.125rem] font-FreightNeoProNormal text-[#4F373799]">
+        <div className="flex flex-col h-auto mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] lg:flex-row xl:mx-0 items-center lg:items-start justify-between md:mt-[4.625rem]">
+          <div className="w-full lg:w-2/3">
+            <Typography className="h-[6rem] font-FreightNeoProNormal text-base text-[#4F373799] lg:text-xl 2xl:text-[2.125rem]">
               {CAROUSEL_DATA[currentIndex].description}
             </Typography>
           </div>
 
-          {/* Pagination Dots Section */}
-          <div className="lg:w-1/2 w-full flex sm:flex-col flex-col md:flex-row sm:items-center items-center md:justify-end mt-6 lg:mt-0 ">
+          <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
             <button
-              className="bg-[#AE856633]  md:hidden w-[165px] mb-[45px] flex text-customBrown pr-1 p-[8px] t rounded-full sm:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+              className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
               onClick={() => console.log("Button clicked")}
             >
-              See What’s Next
+              See What's Next
               <CTAButtonIcon direction="right" />
             </button>
-            <div className="flex space-x-3 bg-[#AE856666] rounded-[32px] py-4 px-6">
+            <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]">
               {CAROUSEL_DATA.map((_, dotIndex) => (
                 <button
                   key={dotIndex}

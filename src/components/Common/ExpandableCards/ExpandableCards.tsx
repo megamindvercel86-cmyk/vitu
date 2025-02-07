@@ -16,21 +16,79 @@ const images = [
   "https://images.unsplash.com/photo-1600607687644-c7171b42498f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
 ];
 
-const expandedPositions = [
-  { top: "64%", left: "25%", right: "auto" },
-  { top: "50%", right: "1%", left: "auto" },
-  { top: "0%", right: "1%", left: "auto" },
-  { top: "50%", left: "1%", right: "auto" },
-  { top: "5%", left: "3%", right: "auto" },
-];
+// Update the getBreakpoint function to match your tailwind config
+const getBreakpoint = () => {
+  if (typeof window !== "undefined") {
+    if (window.innerWidth >= 2000) return "2xl";
+    if (window.innerWidth >= 1580) return "xl";
+    if (window.innerWidth >= 1024) return "lg";
+    return "md"; // default fallback
+  }
+  return "lg"; // default fallback for SSR
+};
 
-const notExpandedPositions = [
-  { top: "31%", left: "37%", right: "auto" },
-  { top: "10%", left: "41.4%", right: "auto" },
-  { top: "0%", left: "45%", right: "auto" },
-  { top: "26%", left: "50%", right: "auto" },
-  { top: "5%", left: "33%", right: "auto" },
-];
+// Update the breakpoint positions to match your config
+const expandedPositions = {
+  "2xl": [
+    { top: "40%", left: "30%", right: "auto" },
+    { top: "30%", right: "1%", left: "auto" },
+    { top: "0%", right: "1%", left: "auto" },
+    { top: "30%", left: "1%", right: "auto" },
+    { top: "5%", left: "3%", right: "auto" },
+  ],
+  xl: [
+    { top: "64%", left: "25%", right: "auto" },
+    { top: "50%", right: "1%", left: "auto" },
+    { top: "0%", right: "1%", left: "auto" },
+    { top: "50%", left: "1%", right: "auto" },
+    { top: "5%", left: "3%", right: "auto" },
+  ],
+  lg: [
+    { top: "55%", left: "15%", right: "auto" },
+    { top: "40%", right: "3%", left: "auto" },
+    { top: "10%", right: "3%", left: "auto" },
+    { top: "40%", left: "3%", right: "auto" },
+    { top: "15%", left: "8%", right: "auto" },
+  ],
+  md: [
+    { top: "50%", left: "10%", right: "auto" },
+    { top: "35%", right: "5%", left: "auto" },
+    { top: "15%", right: "5%", left: "auto" },
+    { top: "35%", left: "5%", right: "auto" },
+    { top: "20%", left: "10%", right: "auto" },
+  ],
+};
+
+const notExpandedPositions = {
+  "2xl": [
+    { top: "41%", left: "40%", right: "auto" },
+    { top: "30%", left: "41.4%", right: "auto" },
+    { top: "20%", left: "45%", right: "auto" },
+    { top: "36%", left: "47%", right: "auto" },
+    { top: "25%", left: "36%", right: "auto" },
+  ],
+  xl: [
+    { top: "31%", left: "35%", right: "auto" },
+    { top: "12%", left: "39%", right: "auto" },
+    { top: "2%", left: "43%", right: "auto" },
+    { top: "26%", left: "47%", right: "auto" },
+    { top: "7%", left: "31%", right: "auto" },
+  ],
+  lg: [
+    { top: "31%", left: "33%", right: "auto" },
+    { top: "14%", left: "37%", right: "auto" },
+    { top: "4%", left: "41%", right: "auto" },
+    { top: "26%", left: "44%", right: "auto" },
+    { top: "9%", left: "29%", right: "auto" },
+  ],
+  md: [
+    { top: "31%", left: "30%", right: "auto" },
+    { top: "16%", left: "34%", right: "auto" },
+    { top: "6%", left: "38%", right: "auto" },
+    { top: "26%", left: "41%", right: "auto" },
+    { top: "11%", left: "27%", right: "auto" },
+  ],
+};
 
 interface Card {
   id: number;
@@ -48,6 +106,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentBreakpoint, setCurrentBreakpoint] = useState(getBreakpoint());
 
   // Add scroll listener to detect when user scrolls away
   useEffect(() => {
@@ -55,7 +114,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       if (isExpanded && containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-        
+
         // If component is not visible and it's expanded, just collapse it
         if (!isVisible) {
           setIsExpanded(false);
@@ -64,9 +123,19 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isExpanded]);
+
+  // Add resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentBreakpoint(getBreakpoint());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleMouseEnter = () => {
     // Only show cursor if not expanded
@@ -83,22 +152,23 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);
-    
+
     // Smooth scroll to center when expanded
     if (!isExpanded) {
       setTimeout(() => {
         const element = containerRef.current;
         if (element) {
           const yOffset = 300;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          
+          const y =
+            element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
           gsap.to(window, {
             duration: 1.5,
             scrollTo: {
               y: y,
-              autoKill: false
+              autoKill: false,
             },
-            ease: "power2.inOut"
+            ease: "power2.inOut",
           });
         }
       }, 100);
@@ -165,8 +235,12 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         <AnimatePresence>
           {cards.map((card, index) => {
             const position = isExpanded
-              ? expandedPositions[index]
-              : notExpandedPositions[index];
+              ? expandedPositions[
+                  currentBreakpoint as keyof typeof expandedPositions
+                ][index]
+              : notExpandedPositions[
+                  currentBreakpoint as keyof typeof notExpandedPositions
+                ][index];
 
             return (
               <motion.div
@@ -188,7 +262,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   duration: 0.8,
                   ease: [0.43, 0.13, 0.23, 0.96],
                 }}
-                
               >
                 <AppleStyleCard
                   id={card.id}

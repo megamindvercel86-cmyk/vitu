@@ -50,7 +50,7 @@ const CurrentProject: React.FC = () => {
         <div key={index} className={`${index !== 0 ? 'my-10' : ''} leading-[1.1]`}>
           <Typography
             variant="custom"
-            className="text-[60px] font-FreightNeoProNormal text-[#503637]"
+            className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem]  lg2:text-[3.5rem] 2xl:text-[5rem] font-FreightNeoProNormal text-[#503637]"
           >
             {stat.value}
           </Typography>
@@ -66,7 +66,7 @@ const CurrentProject: React.FC = () => {
   );
 
   return (
-    <div className="xl:mx-[278px] lg:mx-[122px] md:mx-[60px] mx-[28px] sm:mx-[28px] flex lg:flex-row sm:flex-col flex-col">
+    <div className="xl:mx-[210px] lg:mx-[122px] md:mx-[60px] mx-[28px] sm:mx-[28px] flex lg:flex-row sm:flex-col flex-col">
       {/* Left Column - Project Details */}
       <div className="md:w-1/2 w-full">
         {/* Project Badge */}
@@ -75,11 +75,10 @@ const CurrentProject: React.FC = () => {
             {PROJECT_DATA.badge}
           </Typography>
         </div>
-
         {/* Project Title */}
         <Typography
           variant="custom"
-          className="text-2xl lg:text-[56px] w-[224px] md:w-full font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] text-customBrown md:pt-0 pt-3"
+          className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem]  lg2:text-[3.5rem] 2xl:text-[5rem] w-[224px] md:w-full font-freightNeoMedium leading-[28px] 2xl:leading-[100px] md:leading-[72px] xl:leading-[67px] text-customBrown md:pt-0 pt-3"
         >
           {PROJECT_DATA.title}
         </Typography>
