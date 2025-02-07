@@ -25,7 +25,7 @@ export default function HomeHeroSection() {
   return (
     <div>
       {/* Hero Background Section */}
-      <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]">
+      <div className="relative xl:h-[1080px] lg:h-[1026px] sm:h-[568px] h-[568px]   2xl:h-[100vh]">
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-center bg-cover"
@@ -38,12 +38,12 @@ export default function HomeHeroSection() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative h-full flex xl:top-[343px] lg:top-[247px] sm:top-[157px] top-[157px] justify-center">
+        <div className="relative h-full flex xl:top-[343px] lg:top-[247px] 2xl:top-[550px] sm:top-[157px] top-[157px] justify-center">
           <div className="flex flex-col items-center text-center text-white">
-            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] md:leading-none">
+            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] 2xl:text-[150px] md:leading-none">
               {HERO_CONFIG.titles.main}
             </h1>
-            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] leading-none md:pt-[28px] pt-0">
+            <h1 className="sm:text-[32px] md:text-[80px] text-[32px] font-freightNeoSemibold lg:text-[100px] leading-none 2xl:text-[150px] md:pt-[28px] pt-0">
               {HERO_CONFIG.titles.sub}
             </h1>
           </div>
