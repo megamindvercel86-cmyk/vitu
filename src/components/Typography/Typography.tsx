@@ -29,7 +29,7 @@ export default function Typography({
     <h2
       ref={ref}
       style={style}
-      className={`text-[32px] lg:text-[44px] 2xl:text-5xl ${
+      className={`text-[32px] lg2:text-[44px] 2xl:text-5xl ${
         fontWeight ? fontWeight : "font-medium"
       } ${className}`}
     >
@@ -39,7 +39,7 @@ export default function Typography({
     <h3
       ref={ref}
       style={style}
-      className={`${className} text-base lg:text-2xl ${
+      className={`${className} text-base lg2:text-2xl ${
         fontWeight ? fontWeight : "font-semibold"
       } `}
     >

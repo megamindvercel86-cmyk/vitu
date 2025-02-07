@@ -224,7 +224,7 @@ export default function Navbar({
               {showGetInTouch && (
                 <Link href="/project-enquire">
                   <Button
-                    className={`lg:h-[55px] w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] ${
+                    className={`w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}
