@@ -115,16 +115,16 @@ export default function VisionForTheFuture() {
     <div className="relative  text-[#42210B] overflow-hidden">
       <div className="xl:mx-[210px]  xl:py-[157px] lg:py-[133px] md:py-[55px] sm:py-[44px] py-[44px] lg:pb-[157px] relative">
         {/* Static Title, Subtitle, and Button */}
-        <div className="md:w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 sm:w-[257px] w-[257px]">
+        <div className="md:w-[424px] lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 sm:w-[257px] w-[257px] 2xl:w-[624px]">
           <Typography
             variant="custom"
-            className="text-2xl lg:text-[56px] w-[224px] md:w-full font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px]"
+            className="text-[1.5rem] md:px-0 md:text-[2.5rem] lg2:text-[3.5rem] sm:text-[1.5rem] w-[224px] 2xl:w-full 2xl:text-[5rem] md:w-full font-freightNeoMedium leading-none"
           >
             Embracing new Horizons in Living
           </Typography>
           <Typography
             variant="custom"
-            className="text-base   font-freightNeoMedium md:text-[20px] pt-1 font-light text-[#040707CC] leading-[19px] md:leading-relaxed"
+            className="text-base 2xl:text-[2.125rem]  font-freightNeoMedium md:text-[20px] pt-1 font-light text-[#040707CC] leading-[19px] md:leading-relaxed"
           >
             Rooted in our vision for bold growth and dedication to evolving our
             portfolio.
@@ -132,7 +132,7 @@ export default function VisionForTheFuture() {
         </div>
         <div className="mt-8 lg:mx-[88px] md:mx-[66px] mx-[29px] sm:mx-[29px] xl:mx-0 flex items-center justify-between">
           <button
-            className="bg-[#AE856633] sm:hidden hidden  text-customBrown pr-1 pl-[18px] py-[3px] rounded-full md:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
+            className="bg-[#AE856633] sm:hidden hidden   pt-1  text-customBrown pr-1 pl-[18px] py-[3px] 2xl:text-[1.5rem] rounded-full md:flex items-center justify-center gap-[11px] text-base font-freightNeoMedium"
             onClick={() => console.log("Button clicked")}
           >
             See What’s Next
@@ -144,7 +144,7 @@ export default function VisionForTheFuture() {
           </Typography>
         </div>
         <div className="pt-6 relative overflow-hidden">
-          <div className="flex transition-transform duration-500 ease-in-out w-full h-[204px]   md:h-[530px] xl:h-[606px]">
+          <div className="flex transition-transform duration-500 ease-in-out w-full h-[204px]   md:h-[530px] xl:h-[606px] 2xl:h-[1000px]">
             {CAROUSEL_DATA.map((item, index) => (
               <div
                 key={index}
@@ -182,7 +182,7 @@ export default function VisionForTheFuture() {
         </Typography>
         <div className="lg:mx-[88px] md:mx-[66px] h-auto  sm:mx-[29px] mx-[29px] xl:mx-0 flex flex-col lg:flex-row items-center lg:items-start justify-between md:mt-[74px]">
           <div className="lg:w-2/3 w-full">
-            <Typography className="text-base lg:text-xl h-[96px] font-FreightNeoProNormal text-[#4F373799]">
+            <Typography className="text-base lg:text-xl h-[96px] 2xl:text-[2.125rem] font-FreightNeoProNormal text-[#4F373799]">
               {CAROUSEL_DATA[currentIndex].description}
             </Typography>
           </div>
