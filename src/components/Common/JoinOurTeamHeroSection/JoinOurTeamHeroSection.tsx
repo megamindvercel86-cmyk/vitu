@@ -80,7 +80,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         {/* Title */}
         <Typography
           variant="custom"
-          className="text-white text-[32px] md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] text-center md:text-start font-freightNeoMedium mb-4 md:mb-6"
+          className="text-white text-[32px] md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] text-center md:text-start font-freightNeoMedium mb-4 md:mb-6 2xl:text-[72px]"
         >
           {CONTENT.title[0]}
           <br />
@@ -88,7 +88,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Typography>
 
         {/* Desktop CTA */}
-        <button className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px]">
+        <button className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]">
           {CONTENT.cta}
         </button>
 
