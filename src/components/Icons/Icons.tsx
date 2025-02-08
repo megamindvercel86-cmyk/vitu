@@ -409,8 +409,7 @@ export default CTAButtonIcon;
 export function PlayIcon() {
   return (
     <svg
-      width="34"
-      height="33"
+      className="w-[33px]   h-[33px] 2xl:w-12 2xl:h-12"
       viewBox="0 0 34 33"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
