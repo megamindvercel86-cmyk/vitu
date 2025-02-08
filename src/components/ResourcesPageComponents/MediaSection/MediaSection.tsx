@@ -133,16 +133,16 @@ export default function MediaSection(): React.ReactElement {
         {/* Content */}
         <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-            <SubHeading className="text-customTextGray font-medium">{item.source}</SubHeading>
-            <SubHeading className="text-customTextGray">|</SubHeading>
-            <SubHeading className="text-customTextGray">
+            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.source}</SubHeading>
+            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">|</SubHeading>
+            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">
               {month} <span className="font-CandideCondensedNormal">{day}</span> <span className="font-CandideCondensedNormal">{year}</span>
             </SubHeading>
           </div>
-          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4">
+          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
             {item.title}
           </SubHeading>
-          <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80">
+          <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 2xl:text-[1.5rem]">
             Read More
           </button>
         </div>
@@ -154,10 +154,10 @@ export default function MediaSection(): React.ReactElement {
     <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}
       <div className="text-left md:text-center mb-8 sm:mb-12">
-        <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">
+        <SubHeading className="text-customTextGray 2xl:text-[1.5rem] lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">
           NEWS & MEDIA
         </SubHeading>
-        <Heading className="lg:text-5xl text-customBrown xl:text-[52px] text-2xl font-semibold text-left md:text-center">
+        <Heading className="lg:text-5xl text-customBrown xl:text-[52px] text-2xl font-semibold text-left md:text-center 2xl:text-[64px]">
           Stay Updated with Our Latest Happenings
         </Heading>
       </div>
@@ -189,7 +189,7 @@ export default function MediaSection(): React.ReactElement {
             className="media-swiper h-full"
           >
             {NEWS_ITEMS.map((item) => (
-              <SwiperSlide key={item.id} className="media-slide h-full">
+              <SwiperSlide key={item.id} className="media-slide !h-auto">
                 {renderNewsCard(item)}
               </SwiperSlide>
             ))}

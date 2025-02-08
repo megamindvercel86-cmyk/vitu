@@ -151,7 +151,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl-mt-[75px] mt-[36px] px-6">
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl-mt-[75px] mt-[36px] ">
           <span className="font-FreightNeoProBold lg:text-2xl sm:text-base  text-customBrown  xl:text-[28px]">
             Explore More
           </span>
@@ -282,7 +282,7 @@ export const Card = ({
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.subtitle}` : undefined}
-            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 "
+            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
           >
             {card.subtitle}
           </motion.p>
