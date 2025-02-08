@@ -126,7 +126,7 @@ export default function LeadershipTeam() {
       <div className="mx-auto xl:mx-[284px] lg:mx-[78px]">
         <Typography
           variant="custom"
-          className="sm:text-2xl text-2xl md:text-6xl xl:text-[52px] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]"
+          className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]"
         >
           Our Leadership Team
         </Typography>
@@ -175,7 +175,7 @@ export default function LeadershipTeam() {
                   alt={card.name} 
                   width={400} 
                   height={500} 
-                  className="w-full h-full object-cover rounded-[10px]"
+                  className="w-full h-full object-cover rounded-[10px] 2xl:w-[100%]"
                 />
                 <div className="mt-4 text-center">
                   <Typography 
