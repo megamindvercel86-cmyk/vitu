@@ -219,7 +219,7 @@ const TeamMemberCard = ({
 }: {
   member: DesktopTeamMember;
 }) => (
-  <div className="text-center">
+  <div className="text-center   w-[100%]">
     <div className="aspect-auto lg:mb-[34px] w-full">
       <img
         src={member.url}
@@ -229,20 +229,20 @@ const TeamMemberCard = ({
     </div>
     <Typography
       variant="custom"
-      className="text-xl sm:text-xl md:text-4xl text-customTextGray font-freightNeoMedium"
+      className="text-xl sm:text-xl md:text-4xl 2xl:text-5xl text-customTextGray font-freightNeoMedium"
     >
       {member.name}
     </Typography>
     <Typography
       variant="custom"
-      className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl"
+      className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl 2xl:text-3xl"
     >
       {member.title}
     </Typography>
     {member.subtitle && (
       <Typography
         variant="custom"
-        className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl"
+        className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl 2xl:text-3xl"
       >
         {member.subtitle}
       </Typography>
