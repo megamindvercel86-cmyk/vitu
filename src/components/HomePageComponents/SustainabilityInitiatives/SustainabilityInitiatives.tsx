@@ -84,7 +84,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
         >
           {CONTENT.description}
         </Typography>
-        <div className="lg:mt-auto md:block hidden">
+        <div className="hidden lg:mt-auto md:block">
           <AppleStyleCard
             key={11}
             id={11}
@@ -99,21 +99,21 @@ export default function SustainabilityInitiatives(): React.ReactElement {
   );
 
   const renderRightColumn = () => (
-    <div className="md:w-1/2 md:flex hidden md:mt-0 mb-40">
-      <div className="flex w-full flex-col gap-8 lg:gap-12 xl:gap-16 items-end">
+    <div className="hidden mb-40 md:w-1/2 md:flex md:mt-0">
+      <div className="flex flex-col items-end w-full gap-8 lg:gap-12 xl:gap-16">
         <AppleStyleCard
           key={12}
           id={12}
           imageSrc={INITIATIVE_CARDS[1].url}
-          className="md:max-w-[593px] md:h-[542px] lg:h-[742px] w-full"
+          className="md:max-w-[593px] 2xl:max-w-[80%] md:h-[542px] lg:h-[742px] w-full"
           cardClassName="rounded-[20px]"
           bottomTitle={INITIATIVE_CARDS[1].bottomTitle}
-        />
+        />f
         <AppleStyleCard
           key={13}
           id={13}
           imageSrc={INITIATIVE_CARDS[2].url}
-          className="md:max-w-[593px] md:h-[260px] lg:h-[256px] w-full"
+          className="md:max-w-[593px] 2xl:max-w-[80% md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
           cardClassName="rounded-[20px]"
           bottomTitle={INITIATIVE_CARDS[2].bottomTitle}
         />
@@ -130,7 +130,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       {renderRightColumn()}
 
       {/* Mobile Carousel */}
-      <div className="md:hidden block mb-12">
+      <div className="block mb-12 md:hidden">
         <InfiniteCarousel cards={INITIATIVE_CARDS} />
       </div>
     </div>

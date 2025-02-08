@@ -142,7 +142,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   "rounded-3xl w-[280px] h-[350px]",
                   "md:w-[350px] md:h-[350px]",
                   "lg:w-[400px] lg:h-[500px]",
-                  "xl:w-[432px] xl:h-[540px] 2xl:w-[432px] 2xl:h-[540px]",
+                  "xl:w-[432px] xl:h-[540px] 2xl:w-[632px] 2xl:h-[640px]",
                   "transition-all duration-300"
                 )}
               >

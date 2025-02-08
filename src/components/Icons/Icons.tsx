@@ -375,8 +375,7 @@ const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({
 
   return (
     <svg
-      width="27"
-      height="27"
+      className="w-7 h-7 2xl:w-10 2xl:h-10"
       viewBox="0 0 27 27"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

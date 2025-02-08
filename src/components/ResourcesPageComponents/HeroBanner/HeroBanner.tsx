@@ -65,7 +65,7 @@ export default function HeroBanner(): React.ReactElement {
   );
 
   return (
-    <div className="relative xl:h-[67.5rem] md:h-[64.125rem] sm:h-[35.5rem] h-[35.5rem]">
+    <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[67.5rem] 2xl:h-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"

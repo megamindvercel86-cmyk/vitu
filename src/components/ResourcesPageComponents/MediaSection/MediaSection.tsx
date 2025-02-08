@@ -151,7 +151,7 @@ export default function MediaSection(): React.ReactElement {
   };
 
   return (
-    <div className="2xl:mx-[278px] 2xl:w-full xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
+    <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}
       <div className="text-left md:text-center mb-8 sm:mb-12">
         <SubHeading className="text-customTextGray lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">

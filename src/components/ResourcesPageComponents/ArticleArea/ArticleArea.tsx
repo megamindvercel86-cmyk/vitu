@@ -161,7 +161,7 @@ export default function ArticleArea(): React.ReactElement {
   );
 
   return (
-    <div className="2xl:mx-[278px] 2xl:w-full xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
+    <div className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         {renderHeader()}
