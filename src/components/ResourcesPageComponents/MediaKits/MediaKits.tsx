@@ -21,7 +21,7 @@ const MediaKits: React.FC = () => {
         "Take the first step towards the home of your dreams. Fill in the form and begin your journey.",
       buttonText: "Download Bio",
       variant: "white",
-      location: "/downloadingFiles/AboutUs.pdf", // Update with the correct file name if needed
+      location: "/downloadingFiles/AboutUs.pdf",
     },
     {
       title: "VITU REALTY",
@@ -43,7 +43,7 @@ const MediaKits: React.FC = () => {
 
   return (
     <div className="bg-[#EFEAE8] pt-[142px] pb-[133px] mx-auto flex justify-center">
-      <div className="container max-w-[1359px] md:mx-20 mx-7">
+      <div className="container max-w-[1359px] 2xl:max-w-[85%] md:mx-20 mx-7">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {downloadCards.map((card, index) => (
             <div
