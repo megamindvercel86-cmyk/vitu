@@ -82,9 +82,9 @@ export function Youtube() {
 export function Share() {
   return (
     <svg
-      width="15.6"
-      height="15.6"
-      viewBox="0 0 18 17"
+      width="28"
+      height="28"
+      viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
