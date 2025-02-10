@@ -1,24 +1,20 @@
-
 import Head from "next/head";
 
 interface SEOProps {
   title: string;
   description: string;
-  keywords?: string;
-  image?: string;
-  url?: string;
+  keywords: string;
+  image: string;
+  url: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: title,
-    description: description,
-    url: url,
-    image: image,
-  };
-
+export default function SEO({
+  title,
+  description,
+  keywords,
+  image,
+  url,
+}: SEOProps) {
   return (
     <Head>
       <title>{title}</title>
@@ -28,16 +24,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <link rel="canonical" href={url} />
     </Head>
   );
-};
-
-export default SEO;
+}

@@ -1,13 +1,12 @@
-"use client";
+// CareerApplicationPage.tsx
 
-// ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import FormSection from "@/components/Common/FormSection/FormSection";
+import SEO from "@/components/SEO";
 
-// ============= Types & Interfaces =============
+// Define the props type (if needed)
 interface CareerApplicationPageProps {}
 
-// ============= Constants =============
 const NAVBAR_CONFIG = {
   props: {
     showGetInTouch: false,
@@ -20,24 +19,25 @@ const FORM_CONFIG = {
   page: "Career Application" as const,
 };
 
-/**
- * Career Application Page Component
- * Handles the career application process with a form
- * 
- * Features:
- * 1. Form for career applications
- * 2. Hidden "Get in Touch" button
- * 3. Custom heading and subheading
- */
 export default function CareerApplicationPage({}: CareerApplicationPageProps) {
   return (
-    <Layout navbarProps={NAVBAR_CONFIG.props}>
-      {/* Career Application Form Section */}
-      <FormSection
-        heading={FORM_CONFIG.heading}
-        subheading={FORM_CONFIG.subheading}
-        page={FORM_CONFIG.page}
+    <>
+      {/* SEO Metadata */}
+      <SEO
+        title="Career Application | Vitu Realty"
+        description="Apply for exciting career opportunities at Vitu Realty. Fill out the career application form and join our dynamic team."
+        keywords="career, Vitu Realty, job application, real estate jobs, Mangalore"
+        image="https://yourwebsite.com/career-og-image.jpg"
+        url="https://yourwebsite.com/career-application"
       />
-    </Layout>
+      <Layout navbarProps={NAVBAR_CONFIG.props}>
+        {/* Career Application Form Section */}
+        <FormSection
+          heading={FORM_CONFIG.heading}
+          subheading={FORM_CONFIG.subheading}
+          page={FORM_CONFIG.page}
+        />
+      </Layout>
+    </>
   );
 }
