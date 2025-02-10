@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface ArticleCardProps {
@@ -17,7 +18,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
     <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       {/* Image Section */}
       <div className="aspect-[4/5] relative">
-        <img
+        <Image
+          width={200}
+          height={200}
           src={image}
           alt={title}
           className="absolute inset-0 w-full h-full object-cover"

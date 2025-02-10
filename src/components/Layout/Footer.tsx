@@ -69,10 +69,10 @@ const Footer: FC = () => {
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" />
               {/* Social Media Links */}
               <li className="flex gap-2 justify-center md:justify-start">
-                <NavLink href="https://www.instagram.com/vitu.realty"><Instgram /></NavLink>
-                <NavLink href="https://www.linkedin.com/company/vitu-realty/"><LinkedIn /></NavLink>
-                <NavLink href="https://www.youtube.com/@viturealty/featured"><Youtube /></NavLink>
-                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" ><Meta /></NavLink>
+                <NavLink href="https://www.instagram.com/vitu.realty" target={true}><Instgram /></NavLink>
+                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}><LinkedIn /></NavLink>
+                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}><Youtube /></NavLink>
+                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}><Meta /></NavLink>
               </li>
             </ul>
           </div>

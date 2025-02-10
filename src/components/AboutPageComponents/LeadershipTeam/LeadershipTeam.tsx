@@ -221,7 +221,9 @@ const TeamMemberCard = ({
 }) => (
   <div className="text-center   w-[100%]">
     <div className="aspect-auto lg:mb-[34px] w-full">
-      <img
+      <Image
+       width={400}
+       height={500}
         src={member.url}
         alt={member.name}
         className="w-full h-full object-cover rounded-[20px] shadow-lg"

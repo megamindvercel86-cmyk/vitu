@@ -14,6 +14,7 @@ import {
   PrimaryViewMoreButton,
   SecondaryViewMoreButton,
 } from "../Icons/Icons";
+import Image from 'next/image';
 
 interface Card {
   id: string;
@@ -163,9 +164,11 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
                 >
                   <div className="relative bg-white rounded-[20px] shadow-xl overflow-hidden h-full">
                     <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
-                    <img
+                    <Image
                       src={card.image}
                       alt={card.title}
+                      width={500}
+                      height={300}
                       className="w-full h-full object-cover absolute inset-0 z-10"
                     />
                     <div className="relative z-40 p-8">

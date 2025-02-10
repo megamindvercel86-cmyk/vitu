@@ -44,7 +44,7 @@ const NEWS_ITEMS: NewsItem[] = [
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+      "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
     title:
@@ -53,7 +53,7 @@ const NEWS_ITEMS: NewsItem[] = [
   {
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2000&auto=format&fit=crop",
+      "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
     title:
@@ -70,7 +70,7 @@ const NEWS_ITEMS: NewsItem[] = [
   {
     id: 6,
     image:
-      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+      "/images/mediaSectionImages/NewsItem1.png",
     source: "DAIJIWORLD",
     date: "NOV 18 2024",
     title:

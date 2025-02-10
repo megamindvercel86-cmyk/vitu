@@ -45,7 +45,7 @@ const FAQ = () => {
             <br /> Questions
           </Heading>
           <SubHeading className="sm:pt-[13px]  lg:pt-[24px] xl:pt-[40px] text-center lg:text-left">
-            Got questions? We've got answers <br /> no jargon, just clarity.
+            Got questions? We&apos;ve got answers <br /> no jargon, just clarity.
           </SubHeading>
         </div>
 
