@@ -51,7 +51,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
   {
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description: "Vitu Wellness Centre envisions a sanctuary of holistic healing, where mind, body, & soul unite in harmony, offering the perfect blend of care, tranquility, & rejuvenation for your well-being.",
+    description: "Vitu Wellness Centre envisions a sanctuary of holistic healing, where mind, body, &amp; soul unite in harmony, offering the perfect blend of care, tranquility, &amp; rejuvenation for your well-being.",
     image: "/svgs/image3.svg",
     residentialType: "Wellness Centre",
   },
