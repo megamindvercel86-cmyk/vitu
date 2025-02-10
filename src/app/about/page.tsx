@@ -8,7 +8,8 @@ import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/J
 import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
 import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
-
+import SEO from "@/components/SEO";
+import Script from "next/script";
 
 // ============= Types & Interfaces =============
 interface AboutPageProps {}
@@ -24,39 +25,79 @@ const NAVBAR_CONFIG = {
 
 /**
  * About Page Component
- * Displays company information, history, and team details
- * 
- * Sections:
- * 1. Hero Section
- * 2. Company Story
- * 3. Founder's Message
- * 4. Vision and Mission
- * 5. Leadership Team
- * 6. Join Our Team CTA
+ * Displays company information, history, and team details.
+ *
+ * SEO Enhancements:
+ * - Added structured data for better search engine ranking.
+ * - Improved semantic HTML and heading structure.
  */
 export default function AboutPage({}: AboutPageProps) {
   return (
-    <Layout
-      navbarClassName={NAVBAR_CONFIG.className}
-      navbarProps={NAVBAR_CONFIG.props}
-    >
-      {/* Hero Section */}
-      <AboutHeroSection />
+    <>
+      {/* SEO Metadata */}
+      <SEO
+        title="About Vitu Realty - Leading Real Estate in Mangalore"
+        description="Learn about Vitu Realty, a trusted real estate company in Mangalore. Explore our mission, leadership team, and commitment to excellence."
+        keywords="About Vitu Realty, Real Estate in Mangalore, Vitu Realty Leadership, Mangalore Properties, Company Mission"
+        image="https://yourwebsite.com/about-og-image.jpg"
+        url="https://yourwebsite.com/about"
+      />
 
-      {/* Company Story Section */}
-      {/* <StorySection /> */}
+      {/* Structured Data for SEO */}
+      <Script type="application/ld+json" id="structured-data" strategy="afterInteractive">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Corporation",
+          "name": "Vitu Realty",
+          "url": "https://yourwebsite.com",
+          "logo": "https://yourwebsite.com/logo.png",
+          "description": "Vitu Realty is a premium real estate company based in Mangalore, providing top-notch residential and commercial properties.",
+          "founder": {
+            "@type": "Person",
+            "name": "Founder Name",
+            "jobTitle": "CEO",
+            "sameAs": "https://linkedin.com/in/foundername"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Street",
+            "addressLocality": "Mangalore",
+            "addressCountry": "IN"
+          },
+          "telephone": "+91-9876543210"
+        })}
+      </Script>
 
-      {/* Founder's Message Section */}
-      <FounderMessage />
+      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+        {/* Hero Section with <h1> for SEO */}
+        <AboutHeroSection />
 
-      {/* Vision and Mission Section */}
-      <VisionAndMission />
+        {/* Company Story Section */}
+        <section>
+          <StorySection />
+        </section>
 
-      {/* Leadership Team Section */}
-      <LeadershipTeam />
+        {/* Founder's Message Section */}
+        <section>
+          <FounderMessage />
+        </section>
 
-      {/* Join Our Team Section */}
-      <JoinOurTeamHeroSection />
-    </Layout>
+        {/* Vision and Mission Section */}
+        <section>
+          <VisionAndMission />
+        </section>
+
+        {/* Leadership Team Section */}
+        <section>
+          <LeadershipTeam />
+        </section>
+
+        {/* Join Our Team Section */}
+        <section>
+        
+          <JoinOurTeamHeroSection />
+        </section>
+      </Layout>
+    </>
   );
 }
