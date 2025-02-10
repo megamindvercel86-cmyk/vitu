@@ -4,53 +4,23 @@ import React from "react";
 
 import Typography from "@/components/Typography/Typography";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import testimonialDataJson from "@/data/testimonials.json"
 
 // Types definition for testimonial data
 interface TestimonialData {
+  id: number
   name: string;
-  place: string;
   comment: string;
-  image: string;
+  rating: number;
 }
 
 // Sample testimonial data
-const testimonialData: TestimonialData[] = [
-  {
-    name: "Alice Johnson",
-    place: "New York, USA",
-    comment:
-      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
-    image: "",
-  },
-  {
-    name: "Bob Smith",
-    place: "London, UK",
-    comment:
-      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
-    image: "",
-  },
-  {
-    name: "Carol Williams",
-    place: "Sydney, Australia",
-    comment:
-      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
-    image: "",
-  },
-  {
-    name: "David Brown",
-    place: "Toronto, Canada",
-    comment:
-      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
-    image: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Eva Martinez",
-    place: "Barcelona, Spain",
-    comment:
-      "Vitu Realty delivers on its promise of 'Better Design.' The intelligent use of space, premium amenities, & serene environment make it the perfect home for our family. It's a place where every corner feels like it was made just for us.",
-    image: "/placeholder.svg?height=60&width=60",
-  },
-];
+const testimonialData: TestimonialData[] = testimonialDataJson;
+
+// Split the data into two halves for desktop
+const midIndex = Math.ceil(testimonialData.length / 2);
+const desktopDataLeft = testimonialData.slice(0, midIndex);
+const desktopDataRight = testimonialData.slice(midIndex);
 
 /**
  * Testimonial Component
@@ -77,11 +47,14 @@ export default function Testimonial(): React.ReactElement {
 
       {/* Desktop Testimonial Carousel - Right Direction */}
       <div className="md:flex hidden rounded-md  flex-col antialiased  items-center justify-center relative overflow-hidden">
-        <InfiniteMovingCards items={testimonialData} direction="right" speed="slow" />
+        <InfiniteMovingCards items={desktopDataRight} direction="right" speed="slow" />
       </div>
 
       {/* Mobile Testimonial Carousel - Left Direction */}
-      <div className="rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
+      <div className=" md:flex hidden rounded-md  flex-col antialiased  items-center justify-center relative overflow-hidden">
+        <InfiniteMovingCards items={desktopDataLeft} direction="left" speed="slow" />
+      </div>
+      <div className="rounded-md sm:hidden flex flex-col antialiased  items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={testimonialData} direction="left" speed="slow" />
       </div>
 

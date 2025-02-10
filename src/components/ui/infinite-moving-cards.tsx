@@ -13,10 +13,10 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
+    id: number;
     comment: string;
     name: string;
-    place: string;
-    image: string;
+    rating: number;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -97,7 +97,7 @@ export const InfiniteMovingCards = ({
               <div>
                 <div className="relative z-20 flex flex-row items-center">
                   <span className="flex flex-row gap-5">
-                    <div>
+                    {/* <div>
                       {item.image ? (
                         <Image
                           src={item.image}
@@ -109,7 +109,7 @@ export const InfiniteMovingCards = ({
                       ) : (
                         <div className="w-[53px] h-[53px] bg-[#D9D9D9] rounded-full" />
                       )}
-                    </div>
+                    </div> */}
                     <div className="flex flex-col leading-8">
                       <Typography
                         variant="custom"
@@ -118,7 +118,15 @@ export const InfiniteMovingCards = ({
                         {item.name}
                       </Typography>
                       <Typography className="text-[#4F373799] 2xl:text-2xl font-normal">
-                        {item.place}
+                        {/* {item.place} */}
+                        <span className="flex">
+                          {Array.from({ length: item.rating }, (_, index) => (
+                            <span key={index} className="text-yellow-500">★</span>
+                          ))}
+                          {Array.from({ length: 5 - item.rating }, (_, index) => (
+                            <span key={index} className="text-gray-300">★</span>
+                          ))}
+                        </span>
                       </Typography>
                     </div>
                   </span>
