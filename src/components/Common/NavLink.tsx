@@ -14,7 +14,7 @@ const NavLink = ({ href, children, className }: NavLinkProps) => {
   );
 
   return (
-    <Link href={href} className={combinedClassName}>
+    <Link href={href} className={combinedClassName} target="_blank">
       {children}
     </Link>
   );

@@ -59,12 +59,12 @@ export default function HomePage({}: HomePageProps) {
           "logo": "https://yourwebsite.com/logo.png",
           "description": "Find premium real estate properties in Mangalore with Vitu Realty.",
           "address": {
-            "@type": "PostalAddress",
+            "@type": "Laxman Commercial Complex, Golikatta Bazar",
             "streetAddress": "123 Main Street",
             "addressLocality": "Mangalore",
             "addressCountry": "IN"
           },
-          "telephone": "+91-9876543210"
+          "telephone": "+91-8904688886"
         })}
       </Script>
 
