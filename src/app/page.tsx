@@ -8,7 +8,8 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
-import "./globals.css";
+import SEO from "@/components/SEO";
+import Script from "next/script";
 
 // ============= Types & Interfaces =============
 interface HomePageProps {}
@@ -25,7 +26,7 @@ const NAVBAR_CONFIG = {
 /**
  * Home Page Component
  * Main landing page of the application
- * 
+ *
  * Sections:
  * 1. Hero Section
  * 2. Vision and Mission
@@ -38,33 +39,60 @@ const NAVBAR_CONFIG = {
  */
 export default function HomePage({}: HomePageProps) {
   return (
-    <Layout
-      navbarClassName={NAVBAR_CONFIG.className}
-      navbarProps={NAVBAR_CONFIG.props}
-    >
-      {/* Hero Section */}
-      <HomeHeroSection />
+    <>
+      {/* SEO Metadata */}
+      <SEO
+        title="Vitu Realty - Best Real Estate in Mangalore"
+        description="Find your dream home with Vitu Realty, Mangalore's top real estate company. Explore premium properties today!"
+        keywords="real estate, Mangalore, properties, Vitu Realty, buy home, best real estate company"
+        image="https://yourwebsite.com/og-image.jpg"
+        url="https://yourwebsite.com"
+      />
 
-      {/* Vision and Mission Section */}
-      <VisionAndMission />
+      {/* Schema Markup for Rich Snippets */}
+      <Script type="application/ld+json" id="structured-data" strategy="afterInteractive">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          "name": "Vitu Realty",
+          "url": "https://yourwebsite.com",
+          "logo": "https://yourwebsite.com/logo.png",
+          "description": "Find premium real estate properties in Mangalore with Vitu Realty.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Street",
+            "addressLocality": "Mangalore",
+            "addressCountry": "IN"
+          },
+          "telephone": "+91-9876543210"
+        })}
+      </Script>
 
-      {/* Future Vision Section */}
-      <VisionForTheFuture />
+      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+        {/* Hero Section (Should contain an <h1> inside the component) */}
+        <HomeHeroSection />
 
-      {/* Project Explorer Section */}
-      <ExploreProjectsWrapper />
+        {/* Vision and Mission Section */}
+        <VisionAndMission />
 
-      {/* Current Projects Section */}
-      <CurrentProject />
+        {/* Future Vision Section */}
+        <VisionForTheFuture />
 
-      {/* Testimonials Section */}
-      <Testimonials />
+        {/* Project Explorer Section */}
+        <ExploreProjectsWrapper />
 
-      {/* Sustainability Section */}
-      <SustainabilityInitiatives />
+        {/* Current Projects Section */}
+        <CurrentProject />
 
-      {/* Team Recruitment Section */}
-      <JoinOurTeamHeroSection />
-    </Layout>
+        {/* Testimonials Section */}
+        <Testimonials />
+
+        {/* Sustainability Section */}
+        <SustainabilityInitiatives />
+
+        {/* Team Recruitment Section */}
+        <JoinOurTeamHeroSection />
+      </Layout>
+    </>
   );
 }

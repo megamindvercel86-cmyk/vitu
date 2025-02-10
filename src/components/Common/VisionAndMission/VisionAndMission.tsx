@@ -1,9 +1,9 @@
 "use client";
-
 // ============= Component Imports =============
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
+import SEO from "@/components/SEO";
 
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
@@ -44,33 +44,51 @@ const CONTENT = {
       { title: "Smart Solutions", description: "Integrating technology..." },
     ],
     [
-      { title: "Sustainable Future", description: "Eco-friendly approaches..." },
+      {
+        title: "Sustainable Future",
+        description: "Eco-friendly approaches...",
+      },
       { title: "Natural Harmony", description: "Blending seamlessly..." },
       { title: "Green Living", description: "Creating spaces that..." },
     ],
     [
-      { title: "Luxury Redefined", description: "Excellence in every detail..." },
+      {
+        title: "Luxury Redefined",
+        description: "Excellence in every detail...",
+      },
       { title: "Premium Quality", description: "Uncompromising standards..." },
-      { title: "Timeless Elegance", description: "Creating lasting impressions..." },
+      {
+        title: "Timeless Elegance",
+        description: "Creating lasting impressions...",
+      },
     ],
   ],
   mobile: [
-    { title: "Innovative Sustainability", description: "Revolutionizing green living..." },
-    { title: "Affordable Luxury", description: "Redefining affordable lifestyle..." },
-    { title: "Client Satisfaction", description: "Redefining excellence by making..." },
+    {
+      title: "Innovative Sustainability",
+      description: "Revolutionizing green living...",
+    },
+    {
+      title: "Affordable Luxury",
+      description: "Redefining affordable lifestyle...",
+    },
+    {
+      title: "Client Satisfaction",
+      description: "Redefining excellence by making...",
+    },
   ],
 };
 
 /**
  * Vision And Mission Component
  * Displays company vision through an interactive carousel
- * 
+ *
  * Features:
  * 1. Auto-rotating carousel with smooth transitions
  * 2. Responsive design with different layouts for desktop/mobile
  * 3. Interactive hover states on desktop
  * 4. Navigation dots on mobile
- * 
+ *
  * @component
  */
 export default function VisionAndMission() {
@@ -80,24 +98,29 @@ export default function VisionAndMission() {
   const [direction, setDirection] = useState<Direction>("right");
 
   // ============= Handlers =============
-  const handleTransition = useCallback((newDirection: Direction) => {
-    if (isAnimating) return;
-
-    setIsAnimating(true);
-    setDirection(newDirection);
-
-    const nextIndex = newDirection === "right"
-      ? (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
-      : (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) % CAROUSEL_CONFIG.totalSlides;
-
-    setCurrentIndex(nextIndex);
-    setTimeout(() => setIsAnimating(false), CAROUSEL_CONFIG.transitionDuration);
-  }, [currentIndex, isAnimating]);
+  const handleTransition = useCallback(
+    (newDirection: Direction) => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setDirection(newDirection);
+      const nextIndex =
+        newDirection === "right"
+          ? (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
+          : (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) %
+            CAROUSEL_CONFIG.totalSlides;
+      setCurrentIndex(nextIndex);
+      setTimeout(
+        () => setIsAnimating(false),
+        CAROUSEL_CONFIG.transitionDuration
+      );
+    },
+    [currentIndex, isAnimating]
+  );
 
   // ============= Effects =============
   useEffect(() => {
     const timer = setInterval(
-      () => handleTransition("right"), 
+      () => handleTransition("right"),
       CAROUSEL_CONFIG.autoplayInterval
     );
     return () => clearInterval(timer);
@@ -108,12 +131,21 @@ export default function VisionAndMission() {
     <div key={index} className="flex-1 group/section relative">
       {/* Section content */}
       <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-        <Typography variant="h2" className="font-freightNeoMedium mb-[5px] text-center">
+        <Typography
+          variant="h2"
+          className="font-freightNeoMedium text-white  text-center"
+          aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
+        >
           {section.title}
         </Typography>
         {/* Hover description */}
         <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
-          <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[5px] text-center">
+          <Typography
+            variant="h3"
+            fontWeight="font-normal"
+            className="font-FreightNeoProNormal mt-[5px] text-white text-center"
+          >
+            {" "}
             {section.description}
           </Typography>
         </div>
@@ -124,69 +156,45 @@ export default function VisionAndMission() {
   );
 
   return (
-    <div className="bg-gray-100 sm:p-0 md:p-[1px]">
+    <>
+      {/* SEO Metadata */}
+      <SEO
+        title="Vitu Realty - Vision and Mission"
+        description="Discover Vitu Realty's vision and mission to revolutionize real estate in Mangalore with innovative design, sustainability, and luxury."
+        keywords="real estate vision, vitu realty mission, mangalore real estate, sustainable living"
+        image="/images/visionAndMissionImages/1.png"
+        url="https://yourwebsite.com/vision-and-mission"
+      />
+
       {/* Main Carousel */}
-      <div className="relative group">
+      <div className="bg-gray-100 sm:p-0 md:p-[1px]">
         {/* Desktop Version */}
         <div className="overflow-hidden hidden md:block shadow-xl aspect-[2/1] relative">
           {/* Image container */}
           <div
             className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-              currentIndex === currentIndex
-                ? "opacity-100 translate-x-0"
-                : direction === "right"
-                  ? currentIndex ===
-                    (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) % CAROUSEL_CONFIG.totalSlides
-                    ? "opacity-0 -translate-x-full"
-                    : "opacity-0 translate-x-full"
-                  : currentIndex === (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
-                    ? "opacity-0 translate-x-full"
-                    : "opacity-0 -translate-x-full"
+              direction === "right" ? "translate-x-0" : "-translate-x-full"
             }`}
           >
             <Image
-              width={1932}
-              height={1088}
               src={IMAGES.desktop[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
+              width={CAROUSEL_CONFIG.dimensions.desktop.width}
+              height={CAROUSEL_CONFIG.dimensions.desktop.height}
               className="w-full h-full object-cover"
             />
-
-            {/* Next image for smooth transition */}
-            <div
-              className={`absolute top-0 ${
-                direction === "left" ? "right-[-100%]" : "left-[-100%]"
-              } w-full h-full`}
-            >
-              <Image
-                width={1932}
-                height={1088}
-                src={
-                  IMAGES.desktop[
-                    (currentIndex +
-                      (direction === "left" ? 1 : -1) +
-                      IMAGES.desktop.length) %
-                      IMAGES.desktop.length
-                  ]
-                }
-                alt="Next slide"
-                className="w-full h-full object-cover"
-              />
-            </div>
           </div>
-
           {/* Vertical dividing lines */}
           <div className="absolute inset-0 flex">
             <div className="flex-1 border-r border-white"></div>
             <div className="flex-1 border-r border-white"></div>
             <div className="flex-1"></div>
           </div>
-
           {/* Sections with titles and hover descriptions */}
           <div className="absolute inset-0 flex">
-            {CONTENT.desktop[currentIndex].map((section, index) => (
+            {CONTENT.desktop[currentIndex].map((section, index) =>
               renderDesktopSection(section, index)
-            ))}
+            )}
           </div>
         </div>
 
@@ -194,15 +202,16 @@ export default function VisionAndMission() {
         <div className="block md:hidden relative overflow-hidden shadow-xl">
           <Image
             src={IMAGES.mobile[currentIndex]}
-            width={326}
-            height={568}
             alt={`Slide ${currentIndex + 1}`}
+            width={CAROUSEL_CONFIG.dimensions.mobile.width}
+            height={CAROUSEL_CONFIG.dimensions.mobile.height}
             className="w-full h-[679px] transition-all duration-500"
           />
           <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
             <Typography
               variant="custom"
               className="font-freightNeoMedium text-white text-2xl"
+              aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
             >
               {CONTENT.mobile[currentIndex].title}
             </Typography>
@@ -217,14 +226,16 @@ export default function VisionAndMission() {
                 {CONTENT.mobile[currentIndex].description}
               </Typography>
             </div>
-            <div className="flex space-x-5  rounded-[32px] py-4 px-6">
+            <div className="flex space-x-5 rounded-[32px] py-4 px-6">
               {CONTENT.mobile.map((_, dotIndex) => (
                 <button
                   key={dotIndex}
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      handleTransition(dotIndex > currentIndex ? "right" : "left");
+                      handleTransition(
+                        dotIndex > currentIndex ? "right" : "left"
+                      );
                     }
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
@@ -237,6 +248,6 @@ export default function VisionAndMission() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
