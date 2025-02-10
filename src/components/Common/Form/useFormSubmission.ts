@@ -13,17 +13,18 @@ export interface FormValues {
   option: string;
   resume: File | null;
 }
-
 export const useFormSubmission = (page: string) => {
   const handleFormSubmission = async (values: FormValues) => {
     let resumeUrl: string | null = null;
 
-    if (values.resume) {
+    // Upload resume only for "Career Applications"
+    if (page === "Career Application" && values.resume) {
       const storageRef = ref(storage, `resumes/${values.resume.name}`);
       const uploadResult = await uploadBytes(storageRef, values.resume);
       resumeUrl = uploadResult.ref.fullPath;
     }
 
+    // Determine collection name
     const collectionName =
       page === "General Enquire"
         ? "generalEnquiries"
@@ -31,8 +32,46 @@ export const useFormSubmission = (page: string) => {
         ? "projectEnquiries"
         : "careerApplications";
 
+    // Filter values based on page type
+    const filteredValues =
+      page === "General Enquire"
+        ? {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            comments: values.comments,
+            whatsapp: values.whatsapp,
+          }
+        : page === "Project Enquire"
+        ? {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            whatsapp: values.whatsapp,
+            interestedIn: values.option,
+          }
+        : {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            postionApplyingfor: values.option,
+            resumeUrl, // Store the uploaded resume URL in DB
+          };
+
+    // Save filtered data to Firestore
     const collectionRef = collection(db, collectionName);
-    await addDoc(collectionRef, { ...values, resumeUrl });
+    await addDoc(collectionRef, filteredValues);
+
+    // Send email notification
+    try {
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
   };
 
   const formik = useFormik<FormValues>({
@@ -57,4 +96,4 @@ export const useFormSubmission = (page: string) => {
   });
 
   return formik;
-}; 
+};

@@ -24,7 +24,7 @@ interface FormSectionProps {
 export const FORM_TYPES = {
   GENERAL: "General Enquire",
   PROJECT: "Project Enquire",
-  CAREER: "Career Application"
+  CAREER: "Career Application",
 } as const;
 
 /**
@@ -55,10 +55,10 @@ export default function FormSection({
       selectRef.current.click(); // Simulates a user click
     }
   };
-  
 
   // Base input class with placeholder and value font
-  const inputBaseClass = "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
+  const inputBaseClass =
+    "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
 
   // Rest of your component (JSX) remains exactly the same
   return (
@@ -117,7 +117,9 @@ export default function FormSection({
               type="text"
               placeholder="Your Phone Number"
               {...formik.getFieldProps("phone")}
-              className={inputBaseClass}
+              className={
+                "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium placeholder:text-[#04070799]"
+              }
             />
             {formik.touched.phone && formik.errors.phone && (
               <p className="text-red-500 text-sm">{formik.errors.phone}</p>
@@ -142,10 +144,11 @@ export default function FormSection({
           )}
           {page === "Project Enquire" && (
             <div className="mt-[45px] relative">
+              {/* Select Box */}
               <select
                 ref={selectRef}
                 {...formik.getFieldProps("option")}
-                className={`${inputBaseClass} pb-2 pr-8 appearance-none`}
+                className={`${inputBaseClass} pb-2 pr-10 appearance-none w-full border rounded-md`}
               >
                 <option value="" disabled>
                   Interested In
@@ -156,10 +159,9 @@ export default function FormSection({
                   </option>
                 ))}
               </select>
-              <div
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-customTextGray cursor-pointer"
-                onClick={handleIconClick}
-              >
+
+              {/* Dropdown Icon */}
+              <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
                 <Dropdown />
               </div>
             </div>
@@ -246,7 +248,7 @@ export default function FormSection({
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
                   if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach(field => {
+                    Object.keys(formik.values).forEach((field) => {
                       formik.setFieldTouched(field as any, true);
                     });
                     return;
@@ -289,7 +291,7 @@ export default function FormSection({
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
                   if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach(field => {
+                    Object.keys(formik.values).forEach((field) => {
                       formik.setFieldTouched(field as any, true);
                     });
                     return;
@@ -308,7 +310,7 @@ export default function FormSection({
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
                   if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach(field => {
+                    Object.keys(formik.values).forEach((field) => {
                       formik.setFieldTouched(field as any, true);
                     });
                     return;
