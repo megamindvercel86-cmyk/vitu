@@ -182,6 +182,7 @@ export default function VisionAndMission() {
               width={CAROUSEL_CONFIG.dimensions.desktop.width}
               height={CAROUSEL_CONFIG.dimensions.desktop.height}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           {/* Vertical dividing lines */}
@@ -206,6 +207,7 @@ export default function VisionAndMission() {
             width={CAROUSEL_CONFIG.dimensions.mobile.width}
             height={CAROUSEL_CONFIG.dimensions.mobile.height}
             className="w-full h-[679px] transition-all duration-500"
+            loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
             <Typography

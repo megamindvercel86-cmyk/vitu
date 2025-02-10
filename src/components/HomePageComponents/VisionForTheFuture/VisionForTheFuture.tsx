@@ -112,10 +112,10 @@ export default function VisionForTheFuture() {
   };
 
   return (
-    <div className="relative overflow-hidden text-[#42210B]">
+    <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
       <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
-        <div className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
+        <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
           <Typography
             variant="custom"
             className="w-[14rem] md:w-full 2xl:w-full font-freightNeoMedium leading-none text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] md:px-0"
@@ -129,11 +129,12 @@ export default function VisionForTheFuture() {
             Rooted in our vision for bold growth and dedication to evolving our
             portfolio.
           </Typography>
-        </div>
+        </header>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
           <button
             className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
             onClick={() => console.log("Button clicked")}
+            aria-label="See What's Next"
           >
             See What's Next
             <CTAButtonIcon direction="right" />
@@ -145,9 +146,9 @@ export default function VisionForTheFuture() {
         <div className="relative pt-6 overflow-hidden">
           <div className="flex w-full h-[12.75rem] transition-transform duration-500 ease-in-out md:h-[33.125rem] xl:h-[37.875rem] 2xl:h-[62.5rem]">
             {CAROUSEL_DATA.map((item, index) => (
-              <div
+              <figure
                 key={index}
-                className={`absolute inset-0 transition-all duration-500 w-full   h-full ease-in-out ${
+                className={`absolute inset-0 transition-all duration-500 w-full h-full ease-in-out ${
                   index === currentIndex
                     ? "opacity-100 translate-x-0"
                     : direction === "right"
@@ -158,6 +159,7 @@ export default function VisionForTheFuture() {
                         ? "opacity-0 translate-x-full"
                         : "opacity-0 -translate-x-full"
                 }`}
+                aria-hidden={index !== currentIndex}
               >
                 <Image
                   src={item.image}
@@ -166,8 +168,9 @@ export default function VisionForTheFuture() {
                   height={CAROUSEL_CONFIG.imageDimensions.height}
                   className={`w-full h-full object-contain ${getImageScale(index)}`}
                   quality={100}
+                  priority={index === 0} // Prioritize loading the first image
                 />
-              </div>
+              </figure>
             ))}
           </div>
         </div>
@@ -189,20 +192,19 @@ export default function VisionForTheFuture() {
             <button
               className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
               onClick={() => console.log("Button clicked")}
+              aria-label="See What's Next"
             >
               See What's Next
               <CTAButtonIcon direction="right" />
             </button>
-            <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]">
+            <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
               {CAROUSEL_DATA.map((_, dotIndex) => (
                 <button
                   key={dotIndex}
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      // Calculate the direction based on the dot index
-                      const direction =
-                        dotIndex > currentIndex ? "right" : "left";
+                      const direction = dotIndex > currentIndex ? "right" : "left";
                       handleTransition(direction);
                     }
                   }}
@@ -212,12 +214,13 @@ export default function VisionForTheFuture() {
                       : "bg-[#FFFFFF99]"
                   } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
+                  aria-current={dotIndex === currentIndex}
                 />
               ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

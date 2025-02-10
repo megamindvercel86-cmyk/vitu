@@ -49,7 +49,7 @@ const STATS_DATA = [
 const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]">
+    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]" aria-label="Project Statistics">
       {STATS_DATA.map((stat, index) => (
         <div key={index} className={`leading-[1.1] ${index !== 0 ? 'lg:my-10' : ''}`}>
           <Typography
@@ -70,23 +70,22 @@ const CurrentProject: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
+    <section className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]" aria-labelledby="project-title">
       {/* Left Column - Project Details */}
-      <div className="w-full lg:w-1/2">
-        {/* Project Badge */}
-        <div className="flex items-center justify-center w-[166px] h-[34px] pt-1 rounded-md bg-[#AE856614] 2xl:w-[280px] 2xl:text-[1.5rem]">
-          <Typography variant="custom" className="font-FreightNeoProNormal text-customBrown">
-            {PROJECT_DATA.badge}
-          </Typography>
-        </div>
-        {/* Project Title */}
-        <Typography
-          variant="custom"
-          className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
-        >
-          {PROJECT_DATA.title}
-        </Typography>
-
+      <article className="w-full lg:w-1/2">
+        <header>
+          {/* Project Badge */}
+          <div className="flex items-center justify-center w-[166px] h-[34px] pt-1 rounded-md bg-[#AE856614] 2xl:w-[280px] 2xl:text-[1.5rem]" aria-label="Project Availability">
+            <Typography variant="custom" className="font-FreightNeoProNormal text-customBrown">
+              {PROJECT_DATA.badge}
+            </Typography>
+          </div>
+          {/* Project Title */}
+          <h1 id="project-title" className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown">
+            {PROJECT_DATA.title}
+          </h1>
+        </header>
+        
         {/* Project Description */}
         <div className="flex items-center">
           <Typography
@@ -107,18 +106,18 @@ const CurrentProject: React.FC = () => {
         </div>
 
         {renderStats()}
-      </div>
+      </article>
 
       {/* Right Column - Project Image */}
-      <div className="flex items-center justify-center w-full lg:w-1/2">
+      <figure className="flex items-center justify-center w-full lg:w-1/2" aria-labelledby="project-title">
         <Image
           src={PROJECT_DATA.image}
           width={708}
           height={400}
-          alt={PROJECT_DATA.title}
-          className="w-full hfull object-contain"
+          alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
+          className="w-full h-full object-contain"
         />
-      </div>
+      </figure>
 
       {/* Mobile CTA */}
       <div className="block md:hidden w-full pt-10 text-center leading-[1]">
@@ -126,7 +125,7 @@ const CurrentProject: React.FC = () => {
           {PROJECT_DATA.cta}
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
