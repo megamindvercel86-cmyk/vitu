@@ -15,6 +15,47 @@ const NAVBAR_CONFIG = {
   },
 };
 
+
+/**
+ * Metadata for the Media Kit Page
+ */
+export async function generateMetadata() {
+  return {
+  title: "Media Kit - Vitu Realty | Download Logos, Branding & Assets",
+  description:
+    "Access Vitu Realty's official media kit, including high-quality logos, branding guidelines, and press materials for media use.",
+  keywords: [
+    "Media Kit",
+    "Vitu Realty Branding",
+    "Real Estate Media Resources",
+    "Download Logos",
+    "Brand Guidelines",
+    "Marketing Assets",
+  ],
+  openGraph: {
+    title: "Media Kit - Vitu Realty | Download Logos, Branding & Assets",
+    description:
+      "Access Vitu Realty's official media kit, including high-quality logos, branding guidelines, and press materials for media use.",
+    url: "https://viturealty.vercel.app/media-kit",
+    type: "website",
+    images: [
+      {
+        url: "https://viturealty.vercel.app/images/media-kit-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vitu Realty Media Kit",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Media Kit - Vitu Realty | Download Logos, Branding & Assets",
+    description:
+      "Access Vitu Realty's official media kit, including high-quality logos, branding guidelines, and press materials for media use.",
+    images: ["https://viturealty.vercel.app/images/media-kit-banner.jpg"],
+  },
+}
+};
 /**
  * Media Kit Page Component
  * Displays downloadable media resources and introductory content
