@@ -97,9 +97,9 @@ export default function AboutPage({}: AboutPageProps) {
         <AboutHeroSection />
 
         {/* Company Story Section */}
-        <section>
+        {/* <section>
           <StorySection />
-        </section>
+        </section> */}
 
         {/* Founder's Message Section */}
         <section>
