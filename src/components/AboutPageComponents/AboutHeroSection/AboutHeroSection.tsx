@@ -72,7 +72,7 @@ const AboutHeroSection: React.FC = () => {
             <h1 className={`
               font-freightNeoSemibold
               leading-none
-              sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+              text-[2rem]  sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
             `}>
               {ABOUT_HERO_CONFIG.titles.main}
             </h1>
