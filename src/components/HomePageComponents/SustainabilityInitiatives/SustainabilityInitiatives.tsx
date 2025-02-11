@@ -122,7 +122,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
   );
 
   return (
-    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
+    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 mx-0 sm:mx-0 md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       {/* Left Column - Content and First Image */}
       {renderLeftColumn()}
 

@@ -136,7 +136,7 @@ export default function VisionForTheFuture() {
             onClick={() => console.log("Button clicked")}
             aria-label="See What's Next"
           >
-            See What's Next
+            See What&apos;s Next
             <CTAButtonIcon direction="right" />
           </button>
           <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">
@@ -194,7 +194,7 @@ export default function VisionForTheFuture() {
               onClick={() => console.log("Button clicked")}
               aria-label="See What's Next"
             >
-              See What's Next
+               See What&apos;s Next
               <CTAButtonIcon direction="right" />
             </button>
             <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">

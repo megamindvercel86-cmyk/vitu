@@ -6,6 +6,7 @@ import React, {
   createContext,
   useContext,
   JSX,
+  useCallback,
 } from "react";
 import { IconX } from "@tabler/icons-react";
 
@@ -48,6 +49,10 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [canScrollRight, setCanScrollRight] = React.useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const isMobile = useCallback(() => {
+    return window && window.innerWidth < 768;
+  }, []);
+
   useEffect(() => {
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = initialScroll;
@@ -75,7 +80,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     }
   };
 
-  const handleCardClose = (index: number) => {
+  const handleCardClose = useCallback((index: number) => {
     if (carouselRef.current) {
       const containerWidth = carouselRef.current.clientWidth;
       const cardWidth = isMobile() ? 230 : 384; // Adjust width for mobile vs desktop
@@ -89,17 +94,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       });
       setCurrentIndex(index);
     }
-  };
+  }, [isMobile]);
 
   useEffect(() => {
     if (carouselRef.current && isMobile()) {
       handleCardClose(1); // Center the second card on mobile screens
     }
-  }, [handleCardClose]);
-
-  const isMobile = () => {
-    return window && window.innerWidth < 768;
-  };
+  }, [handleCardClose, isMobile]);
 
   return (
     <CarouselContext.Provider
@@ -190,10 +191,10 @@ export const Card = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
     onCardClose(index);
-  };
+  }, [onCardClose, index]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
