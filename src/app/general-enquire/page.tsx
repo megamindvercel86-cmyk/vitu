@@ -1,4 +1,4 @@
-"use client";
+
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
@@ -20,6 +20,42 @@ const FORM_CONFIG = {
   subheading: "Take the first step towards the home of your dreams. Fill in the form and begin your Journey.",
   page: "General Enquire" as const,
 };
+
+/**
+ * Metadata for the General Enquire Page
+ */
+export async function generateMetadata() {
+  const pageTitle = "Enquire Now | Vitu-Realty - Find Your Dream Home in Mangalore";
+  const pageDescription =
+    "Take the first step towards your dream home with Vitu-Realty. Fill out our inquiry form and explore premium plotted developments in Mangalore.";
+  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Dream-Home-Hero.jpg";
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: "https://viturealty.vercel.app/general-enquire",
+      siteName: "Vitu-Realty",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "Enquire Now - Vitu-Realty Dream Homes in Mangalore",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
+  };
+}
 
 /**
  * General Enquire Page Component

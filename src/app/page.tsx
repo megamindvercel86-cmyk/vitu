@@ -8,8 +8,7 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
-import SEO from "@/components/SEO";
-import Script from "next/script";
+
 
 // ============= Types & Interfaces =============
 interface HomePageProps {}
@@ -37,37 +36,46 @@ const NAVBAR_CONFIG = {
  * 7. Sustainability
  * 8. Team Recruitment
  */
+
+export async function generateMetadata() {
+  const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
+  const pageDescription =
+    "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
+  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: "https://viturealty.vercel.app/",
+      siteName: "Vitu-Realty",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "Vitu-Realty - Premium Plotted Developments in Mangalore",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
+  };
+}
+
+
 export default function HomePage({}: HomePageProps) {
   return (
     <>
-      {/* SEO Metadata */}
-      <SEO
-        title="Vitu Realty - Best Real Estate in Mangalore"
-        description="Find your dream home with Vitu Realty, Mangalore's top real estate company. Explore premium properties today!"
-        keywords="real estate, Mangalore, properties, Vitu Realty, buy home, best real estate company"
-        image="https://yourwebsite.com/og-image.jpg"
-        url="https://yourwebsite.com"
-      />
 
-      {/* Schema Markup for Rich Snippets */}
-      <Script type="application/ld+json" id="structured-data" strategy="afterInteractive">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "RealEstateAgent",
-          "name": "Vitu Realty",
-          "url": "https://yourwebsite.com",
-          "logo": "https://yourwebsite.com/logo.png",
-          "description": "Find premium real estate properties in Mangalore with Vitu Realty.",
-          "address": {
-            "@type": "Laxman Commercial Complex, Golikatta Bazar",
-            "streetAddress": "123 Main Street",
-            "addressLocality": "Mangalore",
-            "addressCountry": "IN"
-          },
-          "telephone": "+91-8904688886"
-        })}
-      </Script>
-
+      {/* <layout */}
       <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
         {/* Hero Section (Should contain an <h1> inside the component) */}
         <HomeHeroSection />

@@ -1,3 +1,4 @@
+"use client";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import React from "react";
 

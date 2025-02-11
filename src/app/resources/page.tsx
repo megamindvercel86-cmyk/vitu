@@ -1,5 +1,3 @@
-"use client";
-
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import HeroBanner from "@/components/ResourcesPageComponents/HeroBanner/HeroBanner";
@@ -19,6 +17,45 @@ const NAVBAR_CONFIG = {
   },
 };
 
+export async function generateMetadata() {
+  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
+return {
+  title: "Resources - Vitu Realty | Articles, Media & Downloads",
+  description:
+    "Explore Vitu Realty's resources, including insightful articles, media content, and downloadable media kits. Stay informed with our latest updates.",
+  keywords: [
+    "real estate resources",
+    "property articles",
+    "Vitu Realty media",
+    "real estate insights",
+    "download media kit",
+  ],
+  openGraph: {
+    title: "Resources - Vitu Realty | Articles, Media & Downloads",
+    description:
+      "Explore Vitu Realty's resources, including insightful articles, media content, and downloadable media kits. Stay informed with our latest updates.",
+    url: "https://viturealty.vercel.app/resources",
+    type: "website",
+    images: [
+      {
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Vitu Realty Resources",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources - Vitu Realty | Articles, Media & Downloads",
+    description:
+      "Explore Vitu Realty's resources, including insightful articles, media content, and downloadable media kits. Stay informed with our latest updates.",
+    images: [imageUrl],
+  },
+}
+
+  
+}
 /**
  * Resources Page Component
  * Displays various media resources and articles
