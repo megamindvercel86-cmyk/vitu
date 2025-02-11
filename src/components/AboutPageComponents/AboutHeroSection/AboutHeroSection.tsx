@@ -82,7 +82,7 @@ const AboutHeroSection: React.FC = () => {
               font-freightNeoSemibold
               leading-none
               pt-0 md:pt-[1.75rem]
-              sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+             text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
             `}>
               {ABOUT_HERO_CONFIG.titles.sub}
             </h1>
