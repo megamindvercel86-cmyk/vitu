@@ -36,54 +36,63 @@ body {
   src: url("/fonts/Freight Neo Pro Black.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Freight Neo Pro Medium";
   src: url("/fonts/Freight Neo Pro Medium.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Freight Neo Pro Semibold";
   src: url("/fonts/Freight Neo Pro Semibold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Freight Neo Pro Bold";
   src: url("/fonts/Freight Neo Pro Bold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Freight Neo Pro Light";
   src: url("/fonts/Freight Neo Pro Light.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Candide-CondensedBold";
   src: url("/fonts/Candide-CondensedBold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Candide-CondensedMedium";
   src: url("/fonts/Candide-CondensedMedium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Freight Neo Pro Normal";
   src: url("/fonts/Freight Neo Pro Book.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Candide-CondensedNormal";
   src: url("/fonts/Candide-CondensedRegular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 

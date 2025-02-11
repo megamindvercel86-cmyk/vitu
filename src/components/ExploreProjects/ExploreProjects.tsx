@@ -24,7 +24,7 @@ const CARDS_DATA: Card[] = [
   {
     id: 5,
     url: "/images/exploreProjectImages/4.png",
-    className: "absolute w-[297px] h-[371px] left-[323px] rounded-[20px] z-20",
+    className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
