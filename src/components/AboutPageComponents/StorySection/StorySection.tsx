@@ -12,8 +12,6 @@ import StorySectionAnimation2 from "@/components/Animations/StorySectionAnimatio
 import Typography from "@/components/Typography/Typography";
 gsap.registerPlugin(ScrollTrigger);
 
-const lottieAnimationURL =
-  "https://lottie.host/05df5b69-ac59-4204-af22-91c745dfe4dd/AQsEcUz4mq.lottie";
 
 const images = [
   {
