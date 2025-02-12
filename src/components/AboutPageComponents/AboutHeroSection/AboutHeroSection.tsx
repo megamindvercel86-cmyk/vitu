@@ -1,7 +1,8 @@
 "use client";
 import CTAButtonIcon from "@/components/Icons/Icons";
+import Image from "next/image";
 import React from "react";
-
+import backgroundImage from "../../../../public/images/backgroundImages/aboutPageBackgroundImageDesktop.webp"
 // ============= Types =============
 interface AboutHeroConfig {
   backgroundImage: string;
@@ -45,7 +46,7 @@ const AboutHeroSection: React.FC = () => {
         h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[67.5rem] 2xl:h-screen
       `}>
         {/* Background Image with Overlay */}
-        <div
+        {/* <div
           className={`
             absolute inset-0
             bg-cover bg-center
@@ -54,10 +55,10 @@ const AboutHeroSection: React.FC = () => {
             backgroundImage: `url("${ABOUT_HERO_CONFIG.backgroundImage}")`,
           }}
         >
-          {/* Gradient Overlay */}
+          Gradient Overlay
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-        </div>
-
+        </div> */}
+   <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover"   placeholder="blur" />
         {/* Hero Content */}
         <div className={`
           relative
