@@ -1,5 +1,6 @@
 import Typography from "@/components/Typography/Typography";
-
+import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.png"
+import Image from "next/image";
 // ============= Constants =============
 const HERO_CONFIG = {
   backgroundImage: "/images/backgroundImages/homePageBackgroundImageDesktop.png",
@@ -32,12 +33,13 @@ export default function HomeHeroSection() {
         aria-label="Modern real estate background"
       >
         {/* Background Image with Overlay */}
-        <div
+        {/* <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${HERO_CONFIG.backgroundImage}")` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
+        </div> */}
+        <Image src={bgImage} alt="Home Hero Background" fill className="object-cover"   placeholder="blur" />
 
         {/* Hero Content */}
         <div className="relative flex h-full justify-center top-[9.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[34.375rem]">

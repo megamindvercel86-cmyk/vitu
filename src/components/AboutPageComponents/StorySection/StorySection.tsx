@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -125,7 +127,7 @@ function MessageDisplay({
 export default function Gallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
-  const svgPathRef = useRef<SVGPathElement>(null);
+  const svgPathRef = useRef<HTMLDivElement>(null);
   const [currentYear, setCurrentYear] = useState(images[0].year);
   const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
@@ -133,6 +135,7 @@ export default function Gallery() {
   const [pathLength, setPathLength] = useState(0);
   const [animation1Completed, setAnimation1Completed] = useState(false);
   let svgWidth = galleryRef.current?.scrollWidth;
+
   useEffect(() => {
     const container = containerRef.current;
     const gallery = galleryRef.current;
@@ -142,11 +145,6 @@ export default function Gallery() {
 
     const totalWidth = gallery.scrollWidth;
     const windowWidth = window.innerWidth;
-    const pathLength = path.getTotalLength();
-    
-    // Set initial path state
-    path.style.strokeDasharray = `${pathLength}`;
-    path.style.strokeDashoffset = `${pathLength}`;
 
     // Create timeline for gallery scroll
     const scrollTimeline = gsap.timeline({
@@ -159,7 +157,8 @@ export default function Gallery() {
         onUpdate: (self) => {
           const progress = self.progress;
           setProgress(progress);
-          path.style.strokeDashoffset = `${pathLength - progress * pathLength}`;
+          // path.style.strokeDashoffset = `${pathLength - progress * pathLength}`;
+          // path.style.transform = `translateX(-${progress * 7000}px)`;
 
           const imageIndex = Math.min(
             Math.floor(progress * images.length),
@@ -175,13 +174,14 @@ export default function Gallery() {
     // Animate gallery horizontally
     scrollTimeline.to(gallery, {
       x: () => -(totalWidth - windowWidth),
-      ease: "none"
+      ease: "none",
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-}, []);
+  }, []);
+
   useEffect(() => {
     const animation = gsap.timeline({
       onComplete: () => {
@@ -198,41 +198,56 @@ export default function Gallery() {
 
   console.log(svgWidth);
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <div className="pt-[128px] pb-[107px] text-center">
-        <Typography variant="custom" className=" font-freightNeoMedium text-[#4F3737] text-[1rem]
+        <Typography
+          variant="custom"
+          className=" font-freightNeoMedium text-[#4F3737] text-[1rem]
               px-7 pb-6
               sm:text-[1.375rem]
               md:px-0 md:text-[1.125rem]
-              2xl:text-[2.125rem]">
+              2xl:text-[2.125rem]"
+        >
           From the welcoming comfort at your doorstep to the serene spaces
           designed just for you
         </Typography>
-        <Typography variant="custom" className="font-freightNeoMedium text-customBrown text-[1.5rem]
+        <Typography
+          variant="custom"
+          className="font-freightNeoMedium text-customBrown text-[1.5rem]
               px-7
               sm:text-[1.5rem]
               md:px-0 md:text-[2.5rem]
               lg2:text-[3.5rem]
-              2xl:text-[5rem]">
+              2xl:text-[5rem]"
+        >
           At Vitu, Every Design Feels Like Home—Because It Is
         </Typography>
       </div>
 
       <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
+        <div
+          className="absolute top-1/2 z-50"
+          ref={svgPathRef}
+          style={{
+            clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
+            transform: `translate(-${progress *9500}px , -50%)`,    
+          }}
+        >
           <svg
-            className={`absolute w-full h-[500px] pointer-events-none z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
+            width="11606"
+            height="659"
+            viewBox="0 0 11606 659"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              ref={svgPathRef}
-              d="M-1.57178 4.26862H2.1611C2.59209 3.96822 2.85971 3.85659 3.40539 3.80646L3.51093 3.48872C3.26319 3.10876 3.20305 2.57265 3.29429 2.26886C3.65869 0.642399 4.90299 1.17567 5.16518 1.34453C5.42737 1.5134 5.60959 1.97065 5.64512 2.30442C5.68064 2.63818 5.5518 3.33096 5.4007 3.5887C5.98451 3.75061 6.27208 3.87743 6.71165 4.17086H14.0708V3.58426L19.7501 1.38009L21.3676 4.17086L25.3849 6.40169V6.28615H25.5449L25.6693 5.71733H26.3981V5.60179H27.0736L28.0157 5.71733V5.85954H28.6468V5.71733H29.1V5.51291H29.6688V5.21962H29.8555V4.65968H31.002V5.51291H39.6854C39.7113 5.95801 39.7871 6.14857 40.0676 6.34837C40.3405 6.80741 40.5602 6.87538 41.063 6.66833C41.5924 6.99067 41.8176 6.93472 42.1207 6.50835C42.4569 6.55528 42.6353 6.49791 42.9294 6.2506C43.8126 5.9866 43.8199 5.66758 43.5694 5.00631C43.8488 4.68445 43.8155 4.43497 43.5694 3.922H54.6169L54.8658 3.81534C54.6715 2.84921 54.9099 2.08028 55.7279 1.90447C55.9461 1.85757 56.3234 2.05556 56.3856 2.1C56.9531 1.61471 57.7343 1.42675 58.1543 1.78004C58.672 2.29553 58.7488 2.82466 58.2876 3.81534C58.7006 4.15895 58.9062 4.37301 59.1941 4.81966H62.8737L65.6289 3.53982L66.1622 3.6287L67.7175 2.89101L71.1216 4.43749H78.3296C78.4396 4.03385 78.7324 3.78614 79.6361 3.30874C79.5086 2.70045 79.5144 2.48858 79.6361 2.29553C79.7876 2.09744 79.8875 2.02074 80.0849 1.93113C80.3569 1.82699 80.5617 1.83131 80.7737 1.93113C80.901 1.99106 81.1099 2.22441 81.1403 2.64438C81.1606 2.9239 81.063 3.32354 80.9515 3.67314C81.2661 3.93271 81.4162 4.09593 81.6092 4.43749H81.9647C82.183 4.09805 82.3176 3.96437 82.569 3.77979C82.1747 3.16857 82.0394 2.80602 82.3081 2.35051C82.6956 1.84266 82.9712 1.81182 83.5289 2.09111C83.9249 2.35818 83.9738 2.73474 83.8578 3.67314C84.3128 3.80976 84.5546 3.94768 84.951 4.3575H90.2659V2.77547H98.4249V4.3575H101.571"
+              d="M10057 367H10338V191H11254V367H11606M8648 378.426H8988C9006.14 331.165 9035.64 303.339 9136 250.426C9128.95 206.853 9111.84 154.797 9148 121.424C9189.02 83.5687 9248.93 73.1542 9282 109.425C9315.07 145.696 9301.73 226.927 9282 290.426C9319.29 321.201 9337.87 339.55 9358 378.426H9398C9420.05 342.288 9435.45 325.293 9468 302.426C9408.15 227.259 9408.81 157.87 9468 114.426C9511.44 82.5357 9543.63 85.7166 9584 121.424C9629.63 161.789 9620.21 229.478 9608 290.426C9662.86 306.438 9689.52 323.675 9732 366.426H10216M8800 379H8180L7794 205L7620 286L7561 276L7248 421H7188M5723 320.967H6327L6352 307.967C6333.62 238.386 6335.69 177.69 6382 127.967C6425.71 81.0387 6453.19 85.413 6522 113.967C6547.94 86.0049 6566.85 74.5621 6607 63.9672C6664.47 54.1186 6706.22 55.8281 6741 97.9666C6762.89 124.489 6763.96 141.471 6768 171.967C6775.23 226.532 6754.03 257.967 6731 307.967C6780.66 344.472 6803.7 368.964 6835 420.967H7253M4328 500H4644C4641.49 549.415 4651.83 568.745 4686 592C4715.87 647.863 4741.81 651.646 4798 628C4846.23 662.126 4872.84 665.522 4917 611C4958.52 615.735 4978.07 607.043 5009 580C5105.29 554.47 5110.09 519.185 5078 439C5115.42 402.241 5100.23 377.304 5082 321H5836M1448 346H1761V281L2399 33L2579 346L2923 538M0 356.743H421C468.804 324.202 500.047 313.325 561 304.243L572 271.242C534.069 202.375 539.183 188.557 547 136.243C553.224 94.5916 561.919 72.2184 596 34.2426C655.566 -5.70802 708.106 -1.04835 765 34.2426C803.667 84.5703 814 122.242 814 158.243C814 194.243 803.019 240.399 784 282.243C847.181 298.682 879.464 312.552 931 346.243H1483M2583 350L3031 596V585H3051L3065 521H3147V508H3221L3330 521V537H3401V521H3452V500H3515V464H3537V404H3662V500H4336"
               stroke="#CFA484"
-              strokeWidth="2"
-              fill="none"
-              className="absolute"
+              strokeWidth="11"
             />
           </svg>
+        </div>
+
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200">
           <div
             className="h-full bg-primary transition-all duration-300 ease-out"

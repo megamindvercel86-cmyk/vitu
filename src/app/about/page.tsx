@@ -7,7 +7,7 @@ import FounderMessage from "@/components/AboutPageComponents/FounderMessage/Foun
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
-
+import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";  
 
 
 
@@ -75,9 +75,9 @@ export default function AboutPage({}: AboutPageProps) {
         <AboutHeroSection />
 
         {/* Company Story Section */}
-        {/* <section>
+        <section>
           <StorySection />
-        </section> */}
+        </section>
 
         {/* Founder's Message Section */}
         <section>
