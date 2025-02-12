@@ -181,19 +181,7 @@ export default function Gallery() {
     };
   }, []);
 
-  useEffect(() => {
-    const animation = gsap.timeline({
-      onComplete: () => {
-        setAnimation1Completed(true); // Trigger second animation
-      },
-    });
-
-    animation.fromTo(
-      ".story-animation-1",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }
-    );
-  }, []);
+  
 
   console.log(svgWidth);
   return (
