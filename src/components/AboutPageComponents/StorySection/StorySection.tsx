@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
-import SubHeading from "@/components/Common/SubHeding";
-import Heading from "@/components/Common/Heading";
 import "./StorySection.css";
 import Typography from "@/components/Typography/Typography";
 gsap.registerPlugin(ScrollTrigger);
