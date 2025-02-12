@@ -234,7 +234,7 @@ export default function Gallery() {
           }}
         >
           <svg
-            width="15361"
+            width={svgWidth}
             height="959"
             viewBox="0 0 15361 859"
             fill="none"
