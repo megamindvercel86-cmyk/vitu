@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/private/", "/admin/" , "/api/"], // Prevent search engines from indexing sensitive areas
+        disallow: ["/private/", "/admin/"], // Prevent search engines from indexing sensitive areas
       },
     ],
     sitemap: ["https://www.viturealty.com/sitemap.xml"],
