@@ -9,6 +9,7 @@ import Typography from "@/components/Typography/Typography";
 gsap.registerPlugin(ScrollTrigger);
 
 
+
 const images = [
   {
     src: "/images/timelineImages/timelineImage1.png",
