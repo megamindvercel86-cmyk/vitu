@@ -1,9 +1,9 @@
 import Typography from "@/components/Typography/Typography";
-import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.png"
+import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp"
 import Image from "next/image";
 // ============= Constants =============
 const HERO_CONFIG = {
-  backgroundImage: "/images/backgroundImages/homePageBackgroundImageDesktop.png",
+  backgroundImage: "/images/backgroundImages/homePageBackgroundImageDesktop.webp",
   titles: {
     main: "Building Wholesome",
     sub: "Living Spaces",
