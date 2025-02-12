@@ -131,8 +131,7 @@ export default function Gallery() {
   const [currentYear, setCurrentYear] = useState(images[0].year);
   const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
-  const [isFixed, setIsFixed] = useState(false);
-  const [pathLength, setPathLength] = useState(0);
+  const [isFixed, setIsFixed] = useState(false)
   const [animation1Completed, setAnimation1Completed] = useState(false);
   let svgWidth = galleryRef.current?.scrollWidth;
 
