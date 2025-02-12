@@ -7,8 +7,6 @@ import Image from "next/image";
 import SubHeading from "@/components/Common/SubHeding";
 import Heading from "@/components/Common/Heading";
 import "./StorySection.css";
-import StorySectionAnimation1 from "@/components/Animations/StorySectionAnimation1";
-import StorySectionAnimation2 from "@/components/Animations/StorySectionAnimation2";
 import Typography from "@/components/Typography/Typography";
 gsap.registerPlugin(ScrollTrigger);
 
