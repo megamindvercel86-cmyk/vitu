@@ -234,7 +234,7 @@ export default function Gallery() {
           </svg>
         </div>
         <div
-          className="absolute top-[40%] z-50 "
+          className="absolute top-[49%] z-50 "
           ref={svgPathRef}
           style={{
             clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
