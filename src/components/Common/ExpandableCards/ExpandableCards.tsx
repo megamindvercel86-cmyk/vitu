@@ -51,11 +51,11 @@ const expandedPositions = {
     { top: "5%", left: "-1%", right: "auto" },
   ],
   md: [
-    { top: "50%", left: "10%", right: "auto" },
-    { top: "35%", right: "5%", left: "auto" },
-    { top: "15%", right: "5%", left: "auto" },
-    { top: "35%", left: "5%", right: "auto" },
-    { top: "20%", left: "10%", right: "auto" },
+    { top: "70%", left: "30%", right: "auto" },
+    { top: "65%", right: "-5%", left: "auto" },
+    { top: "20%", right: "-3%", left: "auto" },
+    { top: "55%", left: "-5%", right: "auto" },
+    { top: "23%", left: "-3%", right: "auto" },
   ],
 };
 
@@ -87,7 +87,7 @@ const notExpandedPositions = {
     { top: "6%", left: "38%", right: "auto" },
     { top: "26%", left: "41%", right: "auto" },
     { top: "11%", left: "27%", right: "auto" },
-    
+
   ],
 };
 
@@ -184,14 +184,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       )}
       <div
         ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh]" : "h-[100vh]"}`}
+        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh] md:h-[150vh]" : "h-[100vh]"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleExpand}
       >
         {/* Text Content */}
         <motion.div
-          className="absolute lg:top-[28rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[36rem] lg:top-[28rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -202,7 +202,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         >
           <div>
             <motion.h1
-              className="lg:text-[120px] md:text-7xl font-freightNeoMedium mb-4 text-customBrown"
+              className="xl:text-[120px]  md:text-7xl  font-freightNeoMedium mb-4 text-customBrown"
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -210,7 +210,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Home,
             </motion.h1>
             <motion.h2
-              className="lg:text-[120px] md:text-7xl font-freightNeoMedium mb-4 text-customBrown"
+              className="xl:text-[120px] md:text-7xl font-freightNeoMedium mb-4 text-customBrown"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -218,7 +218,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Way of Life
             </motion.h2>
             <motion.button
-              className="px-8 py-3 border-customBrown border-[2px] text-customBrown rounded-full text-[22px] font-FreightNeoProBold transition-colors"
+              className="px-8 py-3 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
