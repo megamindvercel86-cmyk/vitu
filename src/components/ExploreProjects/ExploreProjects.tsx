@@ -28,8 +28,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "297px",
-    height: "371px",
+    width: "2xl:w-[377px]  xl:w-[297px]",
+    height: "2xl:h-[441px] xl:h-[391px]",
   },
   {
     id: 4,
@@ -38,8 +38,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "348px",
-    height: "435px",
+    width: "xl:w-[348px] 2xl:w-[418px]",
+    height: "xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 2,
@@ -48,8 +48,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "348px",
-    height: "435px",
+    width: "xl:w-[348px] 2xl:w-[418px]",
+    height: "xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 3,
@@ -58,8 +58,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "left",
-    width: "348px",
-    height: "435px",
+    width: "xl:w-[348px] 2xl:w-[418px]",
+    height: "xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 1,
@@ -68,8 +68,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "left",
-    width: "348px",
-    height: "435px",
+    width: "xl:w-[348px] 2xl:w-[418px]",
+    height: "xl:h-[435px] 2xl:h-[505px]",
   },
 ];
 

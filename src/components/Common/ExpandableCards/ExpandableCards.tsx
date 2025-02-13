@@ -30,11 +30,11 @@ const getBreakpoint = () => {
 // Update the breakpoint positions to match your config
 const expandedPositions = {
   "2xl": [
-    { top: "40%", left: "30%", right: "auto" },
-    { top: "30%", right: "1%", left: "auto" },
-    { top: "0%", right: "1%", left: "auto" },
-    { top: "30%", left: "1%", right: "auto" },
-    { top: "5%", left: "3%", right: "auto" },
+    { top: "50%", left: "30%", right: "auto" },
+    { top: "40%", right: "1%", left: "auto" },
+    { top: "10%", right: "1%", left: "auto" },
+    { top: "45%", left: "1%", right: "auto" },
+    { top: "15%", left: "3%", right: "auto" },
   ],
   xl: [
     { top: "64%", left: "25%", right: "auto" },
@@ -183,15 +183,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       )}
       <div
         ref={containerRef}
-        className="mx-auto w-full relative"
-        style={{ height: isExpanded ? "180vh" : "100vh" }}
+        className={`mx-auto w-full relative ${isExpanded ? "h-[180vh]" : "h-[100vh]"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleExpand}
       >
         {/* Text Content */}
         <motion.div
-          className="absolute top-[35rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -245,7 +244,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             return (
               <motion.div
                 key={card.id}
-                className="absolute  overflow-hidden"
+                className={`${card.width} ${ card.height} absolute overflow-hidden`}
                 initial={false}
                 animate={{
                   scale: isExpanded ? 1 : 1 - index * 0.05,
@@ -253,8 +252,8 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   left: position.left,
                   right: "right" in position ? position.right : "auto",
                   zIndex: isExpanded ? 1 : images.length - index,
-                  width: card.width || "200px",
-                  height: card.height || "300px",
+                  // width: card.width || "200px",
+                  // height: card.height || "300px",
                   borderRadius: "16px",
                 }}
                 transition={{
