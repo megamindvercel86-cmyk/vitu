@@ -16,7 +16,7 @@ const Button = ({
   defaultTextColor = "text-white",
 }: ButtonProps) => {
   const combinedClassName = classNames(
-    "w-[146px] h-[55px] font-FreightNeoProBold rounded-[27.5px] bg-cusomButtonColor transition-colors pt-1",
+    "w-[146px] h-[55px] font-FreightNeoProBold rounded-[27.5px] bg-cusomButtonColor transition-color",
     defaultTextColor,
     className,
   );

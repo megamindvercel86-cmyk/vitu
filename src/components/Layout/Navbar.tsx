@@ -83,7 +83,7 @@ export default function Navbar({
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
 
-    return `pt-1 2xl:text-4xl ${
+    return ` 2xl:text-4xl ${
       isActive
         ? isNavbarPrimary
           ? "text-white border-b-2 border-white"
@@ -210,7 +210,7 @@ export default function Navbar({
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28" : "ml-[30rem]"} items-center justify-between`}>
+          <div className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28 2xl:ml-96" : "ml-[30rem]"} items-center justify-between`}>
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <NavLink
@@ -224,7 +224,7 @@ export default function Navbar({
               {showGetInTouch && (
                 <Link href="/project-enquire">
                   <Button
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] ${
+                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}
