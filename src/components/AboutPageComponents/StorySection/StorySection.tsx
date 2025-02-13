@@ -9,45 +9,45 @@ import Typography from "@/components/Typography/Typography";
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile1.png",
     src: "/images/timelineImages/timelineImage1.png",
     year: "1956",
     message: "KMK Group founded by Mr. K Madhav Kamath",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile2.png",
     src: "/images/timelineImages/timelineImage2.png",
     year: "1959",
     message: "Distribution of Major FMCG Products & WeTwo Matches",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile3.png",
     src: "/images/timelineImages/timelineImage3.png",
     year: "1974",
     message: "Established Maya Traders and affiliated ventures",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile4.png",
     src: "/images/timelineImages/timelineImage4.png",
     year: "1975",
     message: "Entered into Coffee Plantations Market",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile5.png",
     src: "/images/timelineImages/timelineImage5.png",
     year: "1990",
     message:
       "Expanded into wholesale distribution of WeTwo Fireworks under Mr K Ananth Kamath's ledership",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile6.png",
     src: "/images/timelineImages/timelineImage6.png",
     year: "2003",
     message:
       "Expanded into real-estate by trading land, partnering with MUDA on a 75-Acre development",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile7.png",
     src: "/images/timelineImages/timelineImage7.png",
     year: "2023",
     message:
       "Mr Laxman Kamath made a significant entry and established Vitu Realty",
   },
-  {
+  { mobileSrc: "/images/timelineImages/timelineImageMobile8.png",
     src: "/images/timelineImages/timelineImage8.png",
     year: "2024",
     message: "Launched Vaikuntam City, a premium plotted Development",
@@ -204,9 +204,9 @@ export default function Gallery() {
         </Typography>
       </div>
 
-      <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
+      <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
         <div
-          className="absolute top-[47%] z-50"
+          className="absolute top-[52%] z-50 sm:hidden md:block"
           ref={svgPathRef}
           style={{
             clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
@@ -245,14 +245,25 @@ export default function Gallery() {
               className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl"
             >
               <div className="absolute inset-0 gallery-image z-10">
+                <div>
+
                 <Image
                   width={1594}
                   height={904}
                   src={image.src}
                   alt={`Landscape ${image.year}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hidden   md:flex"
                   loading="lazy"
                 />
+                <Image
+                  width={1594}
+                  height={904}
+                  src={image.mobileSrc}
+                  alt={`Landscape ${image.year}`}
+                  className="w-full h-full object-cover md:hidden   sm:flex"
+                  loading="lazy"
+                />
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
                   <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
