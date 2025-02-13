@@ -28,8 +28,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "2xl:w-[377px]  xl:w-[297px]",
-    height: "2xl:h-[441px] xl:h-[391px]",
+    width: "2xl:w-[256px]  xl:w-[297px] lg:w-[247px]",
+    height: "2xl:h-[320px] xl:h-[391px] lg:h-[350px]",
   },
   {
     id: 4,
@@ -38,8 +38,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "xl:w-[348px] 2xl:w-[418px]",
-    height: "xl:h-[435px] 2xl:h-[505px]",
+    width: "lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 2,
@@ -48,8 +48,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "xl:w-[348px] 2xl:w-[418px]",
-    height: "xl:h-[435px] 2xl:h-[505px]",
+    width: "lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 3,
@@ -58,8 +58,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "left",
-    width: "xl:w-[348px] 2xl:w-[418px]",
-    height: "xl:h-[435px] 2xl:h-[505px]",
+    width: "lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
   },
   {
     id: 1,
@@ -68,8 +68,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "left",
-    width: "xl:w-[348px] 2xl:w-[418px]",
-    height: "xl:h-[435px] 2xl:h-[505px]",
+    width: "lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
   },
 ];
 
@@ -103,7 +103,7 @@ const ExploreProjects: React.FC = () => {
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
           <Typography
             variant="custom"
-            className="text-2xl text-customBrown font-freightNeoSemibold"
+            className="text-2xl lg:text-[] text-customBrown font-freightNeoSemibold"
           >
             A New Home,
           </Typography>
