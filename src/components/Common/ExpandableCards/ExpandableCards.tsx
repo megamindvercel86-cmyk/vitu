@@ -87,6 +87,7 @@ const notExpandedPositions = {
     { top: "6%", left: "38%", right: "auto" },
     { top: "26%", left: "41%", right: "auto" },
     { top: "11%", left: "27%", right: "auto" },
+    
   ],
 };
 
