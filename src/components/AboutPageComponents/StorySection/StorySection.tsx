@@ -158,22 +158,14 @@ function MessageDisplay({
   );
 }
 
-const getSvgPath = (width: number) => {
-  let path; // Declare the path variable
-
-  if (width >= 5120) path = FHD; // 5K
-  else if (width >= 3840) path = FHD; // 4K UHD
-  else if (width >= 2560) path = FHD; // Quad HD
-  else if (width >= 1920) path = FHD; // Full HD
-  else if (width >= 1600) path = FHD; // HD+
-  else if (width >= 1366) path = FHD; // HD
-  else if (width >= 1280) path = FHD; // Android tablets
-  else if (width >= 1024) path = FHD; // iPad
-  else if (width >= 720) path = FHD; // HD, older smartphones
-  else if (width >= 320) path = FHD; // Older smartphones
-
-  console.log(`Width: ${width}, SVG Path: ${path}`);
-  return path;
+const getSvgPath = (width: number): React.JSX.Element | null => {
+  if (width >= 5120) return <FHD />; // 5K
+  else if (width >= 3840) return <FHD />; // 4K UHD
+  else if (width >= 2560) return <FHD />; // Quad HD
+  else if (width >= 1920) return <FHD />; // Full HD
+  else if (width >= 1600) return <FHD />; // HD+
+  // Add other conditions as needed
+  return null; // Default case
 };
 
 export default function Gallery() {
@@ -185,10 +177,10 @@ export default function Gallery() {
   const [progress, setProgress] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
 
-  const [svg, setSvg] = useState(getSvgPath(typeof window !== 'undefined' ? window.innerWidth : 0));
+  const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   let svgWidth = galleryRef.current?.scrollWidth;
 
-  console.log(window.innerWidth);
+
   
   useEffect(() => {
     const container = containerRef.current;
@@ -237,9 +229,17 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const svgPath = getSvgPath(window.innerWidth);
+      setSvg(svgPath);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
       if (typeof window !== 'undefined') {
-        setSvg(getSvgPath(window.innerWidth));
+        const svgPath = getSvgPath(window.innerWidth);
+        setSvg(svgPath);
       }
     };
 
