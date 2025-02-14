@@ -185,7 +185,7 @@ export default function Gallery() {
   const [progress, setProgress] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
 
-  const [svg, setSvg] = useState(getSvgPath(window.innerWidth));
+  const [svg, setSvg] = useState(getSvgPath(typeof window !== 'undefined' ? window.innerWidth : 0));
   let svgWidth = galleryRef.current?.scrollWidth;
 
   console.log(window.innerWidth);
@@ -236,14 +236,22 @@ export default function Gallery() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setSvgPath(getSvgPath(window.innerWidth));
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setSvg(getSvgPath(window.innerWidth));
+      }
+    };
 
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
+    if (typeof window !== 'undefined') {
+      window.addEventListener("resize", handleResize);
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
 
   // console.log(svgWidth);
   return (
