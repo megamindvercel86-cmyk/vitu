@@ -236,14 +236,14 @@ export default function Gallery() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setSvgPath(getSvgPath(window.innerWidth));
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setSvgPath(getSvgPath(window.innerWidth));
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   // console.log(svgWidth);
   return (
@@ -345,8 +345,6 @@ export default function Gallery() {
 
       <YearDisplay number={currentYear} isFixed={isFixed} />
       <MessageDisplay message={currentMessage} isFixed={isFixed} />
-
-      <FHD />
     </div>
   );
 }
