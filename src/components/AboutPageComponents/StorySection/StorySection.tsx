@@ -43,7 +43,7 @@ const images = [
   {
     mobileSrc: "/images/timelineImages/timelineImageMobile6.png",
     src: "/images/timelineImages/timelineImage6.png",
-    year: "2003",
+    year: "2003-2012",
     message:
       "Expanded into real-estate by trading land, partnering with MUDA on a 75-Acre development",
   },
@@ -69,11 +69,31 @@ function YearDisplay({
   number: string;
   isFixed: boolean;
 }) {
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messageRef.current) {
+      gsap.fromTo(
+        messageRef.current,
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0,
+          // ease: "power2.out",
+        }
+      );
+    }
+  }, [number]); // Re-run animation when message changes
+
   return (
     <div
-      className={`${isFixed ? "fixed bottom-28 left-48" : "absolute bottom-28 left-48"} pointer-events-none z-50`}
+      className={`${isFixed ? "fixed bottom-28 left-20" : "absolute bottom-28 left-36"} pointer-events-none z-50`}
     >
-      <span className="text-[80px] font-bold text-white font-CandideCondensedMedium">
+      <span className="text-[80px]  text-white font-CandideCondensedMedium">
         {number.split("").map((digit, index) => (
           <span key={index} className="inline-block w-[1ch]">
             {digit}
@@ -104,7 +124,7 @@ function MessageDisplay({
           opacity: 1,
           y: 0,
           duration: 0,
-          ease: "power2.out",
+          // ease: "power2.out",
         }
       );
     }
@@ -117,8 +137,12 @@ function MessageDisplay({
       } pointer-events-none z-50 max-w-[450px]`}
     >
       <div ref={messageRef}>
-        <span className="text-[32px] font-bold text-white font-freightNeoSemibold leading-tight block text-right">
-          {message}
+        <span className="lg:text-2xl xl:text-[32px] font-bold text-white font-freightNeoSemibold leading-tight block text-right">
+          {message.split('').map((char, index) => (
+            <span key={index} className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}>
+              {char}
+            </span>
+          ))}
         </span>
       </div>
     </div>
@@ -133,7 +157,6 @@ export default function Gallery() {
   const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
-  const [displayedYear, setDisplayedYear] = useState(parseInt(images[0].year));
 
   let svgWidth = galleryRef.current?.scrollWidth;
 
@@ -189,24 +212,6 @@ export default function Gallery() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
-  useEffect(() => {
-    const yearChangeDuration = 1000;
-    const targetYear = parseInt(currentYear);
-    
-    const yearAnimation = gsap.to({ year: displayedYear }, {
-      year: targetYear,
-      duration: yearChangeDuration / 1000,
-      onUpdate: function() {
-        setDisplayedYear(Math.round(this.targets()[0].year));
-      },
-      onComplete: function() {
-        setDisplayedYear(targetYear);
-      }
-    });
-
-    return () => yearAnimation.kill();
-  }, [currentYear]);
 
   // console.log(svgWidth);
   return (
@@ -325,7 +330,7 @@ export default function Gallery() {
         </div>
       </div>
 
-      <YearDisplay number={displayedYear.toString()} isFixed={isFixed} />
+      <YearDisplay number={currentYear} isFixed={isFixed} />
       <MessageDisplay message={currentMessage} isFixed={isFixed} />
     </div>
   );
