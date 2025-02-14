@@ -133,6 +133,7 @@ export default function Gallery() {
   const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
+  const [displayedYear, setDisplayedYear] = useState(parseInt(images[0].year));
 
   let svgWidth = galleryRef.current?.scrollWidth;
 
@@ -189,6 +190,24 @@ export default function Gallery() {
     };
   }, []);
 
+  useEffect(() => {
+    const yearChangeDuration = 1000;
+    const targetYear = parseInt(currentYear);
+    
+    const yearAnimation = gsap.to({ year: displayedYear }, {
+      year: targetYear,
+      duration: yearChangeDuration / 1000,
+      onUpdate: function() {
+        setDisplayedYear(Math.round(this.targets()[0].year));
+      },
+      onComplete: function() {
+        setDisplayedYear(targetYear);
+      }
+    });
+
+    return () => yearAnimation.kill();
+  }, [currentYear]);
+
   // console.log(svgWidth);
   return (
     <div className="relative overflow-hidden">
@@ -227,7 +246,7 @@ export default function Gallery() {
           }}
         >
           <svg
-            width={svgWidth}
+            width="15361"
             height="959"
             viewBox="0 0 15361 859"
             fill="none"
@@ -285,7 +304,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-full h-full object-cover hidden   md:flex"
+                    className="w-[1920px] h-full object-cover hidden   md:flex"
                     loading="lazy"
                   />
                   <Image
@@ -306,8 +325,8 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* <YearDisplay number={currentYear} isFixed={isFixed} />
-      <MessageDisplay message={currentMessage} isFixed={isFixed} /> */}
+      <YearDisplay number={displayedYear.toString()} isFixed={isFixed} />
+      <MessageDisplay message={currentMessage} isFixed={isFixed} />
     </div>
   );
 }
