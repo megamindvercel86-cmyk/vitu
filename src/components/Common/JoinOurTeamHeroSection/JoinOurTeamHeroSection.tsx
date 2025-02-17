@@ -3,6 +3,7 @@
 // ============= Component Imports =============
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 interface ImageConfig {
@@ -14,7 +15,7 @@ interface ImageConfig {
 // ============= Constants =============
 const CONTENT = {
   title: ["Build Better with", "Vitu Realty"],
-  cta: "Enquire Now"
+  cta: "Enquire Now",
 };
 
 const IMAGES = {
@@ -41,16 +42,16 @@ const IMAGES = {
 /**
  * Join Our Team Hero Section Component
  * Hero section for team recruitment with responsive design
- * 
+ *
  * Features:
  * 1. Responsive background images
  * 2. Centered content with CTA
  * 3. Different CTAs for mobile/desktop
- * 
+ *
  * Layout:
  * - Desktop: Full-width image with left-aligned content
  * - Mobile: Full-width image with centered content
- * 
+ *
  * @returns {React.ReactElement} The JoinOurTeamHeroSection component
  */
 export default function JoinOurTeamHeroSection(): React.ReactElement {
@@ -88,15 +89,18 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Typography>
 
         {/* Desktop CTA */}
-        <button className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]">
-          {CONTENT.cta}
-        </button>
-
-        {/* Mobile CTA */}
-        <div className="mx-6 mt-44">
-          <button className="md:hidden w-full block  bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]">
+        <Link href="/general-enquire">
+          <button className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]">
             {CONTENT.cta}
           </button>
+        </Link>
+        {/* Mobile CTA */}
+        <div className="mx-6 mt-44">
+          <Link href="/general-enquire">
+            <button className="md:hidden w-full block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]">
+              {CONTENT.cta}
+            </button>
+          </Link>
         </div>
       </div>
     </div>
