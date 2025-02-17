@@ -4,17 +4,10 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
+import Typography from "@/components/Typography/Typography";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
-
-const images = [
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-  "https://images.unsplash.com/photo-1600607687644-c7171b42498f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-];
 
 // Update the getBreakpoint function to match your tailwind config
 const getBreakpoint = () => {
@@ -26,7 +19,38 @@ const getBreakpoint = () => {
   }
   return "lg"; // default fallback for SSR
 };
-
+const DummyContent = () => {
+  return (
+    <>
+      <div key={"dummy-content"}>
+        <Typography variant="h1" className="text-customBrown">
+          Foundations for the Future
+        </Typography>
+        <Typography
+          variant="h2"
+          className="font-freightNeoMedium text-[#040707CC] !text-[22px]"
+        >
+          Building Sustainably for a Better Tomorrow
+        </Typography>
+        <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[50px]">
+          At Vitu Realty, we believe that the future of real estate lies not
+          only in the structures we create but in the positive impact they have
+          on the environment and the communities they serve. Sustainability is
+          more than just a buzzword—it’s a guiding principle that informs every
+          aspect of our building practices. As we move into the future, it is
+          our responsibility to ensure that the properties we develop and the
+          spaces we design are both environmentally friendly and future-ready.
+        </Typography>
+        <Typography
+          variant="h2"
+          className="font-freightNeoSemibold text-[#040707CC] !text-[26px] pt-[45px]"
+        >
+          Why Sustainable Building Matters
+        </Typography>
+      </div>
+    </>
+  );
+};
 // Update the breakpoint positions to match your config
 const expandedPositions = {
   "2xl": [
@@ -87,7 +111,6 @@ const notExpandedPositions = {
     { top: "6%", left: "38%", right: "auto" },
     { top: "26%", left: "41%", right: "auto" },
     { top: "11%", left: "27%", right: "auto" },
-
   ],
 };
 
@@ -245,14 +268,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             return (
               <motion.div
                 key={card.id}
-                className={`${card.width} ${ card.height} absolute overflow-hidden`}
+                className={`${card.width} ${card.height} absolute overflow-hidden`}
                 initial={false}
                 animate={{
                   // scale: isExpanded ? 1 : 1 - index * 0.05,
                   top: position.top,
                   left: position.left,
                   right: "right" in position ? position.right : "auto",
-                  zIndex: isExpanded ? 1 : images.length - index,
+                  zIndex: isExpanded ? 1 : cards.length - index,
                   // width: card.width || "200px",
                   // height: card.height || "300px",
                   borderRadius: "16px",
@@ -268,6 +291,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   imageSrc={card.url}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"
+                  content={<DummyContent />}
                 />
               </motion.div>
             );

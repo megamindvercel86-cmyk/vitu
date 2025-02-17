@@ -113,40 +113,28 @@ export default function AppleStyleCard({
             ref={containerRef}
             layoutId={`expandable-card-${id}`}
             className={cn(
-              "max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit z-[60] my-10 rounded-3xl font-sans relative overflow-hidden",
+              "max-w-5xl mx-auto bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 rounded-3xl font-sans relative overflow-hidden",
               expandedClassName
             )}
           >
-            <div className="relative h-64 md:h-96">
+            <div className="relative h-auto ">
               <Image
                 src={imageSrc || "/placeholder.svg"}
                 alt={title || "Card image"}
-                fill
-                className={cn("object-cover", expandedImageClassName)}
+            
+                width={1042}
+                height={45}
+                className={cn("object-   h-[652px] w-full", expandedImageClassName)}
               />
             </div>
             <div className="p-4 md:p-10">
               <button
-                className="absolute top-4 right-4 h-8 w-8 bg-black/50 hover:bg-black/70 dark:bg-white/20 dark:hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                <IconX className="h-5 w-5 text-white" />
+                <IconX className="h-5 w-5 text-black" />
               </button>
-              <motion.p
-                layoutId={`card-category-${id}`}
-                className={cn("text-base font-medium", categoryClassName)}
-              >
-                {category}
-              </motion.p>
-              <motion.p
-                layoutId={`card-title-${id}`}
-                className={cn(
-                  "text-2xl md:text-5xl font-semibold mt-2",
-                  titleClassName
-                )}
-              >
-                {title}
-              </motion.p>
+              
               <div className="mt-6">{content}</div>
             </div>
           </motion.div>
