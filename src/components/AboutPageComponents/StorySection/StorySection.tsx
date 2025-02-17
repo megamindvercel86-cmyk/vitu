@@ -8,6 +8,8 @@ import "./StorySection.css";
 import Typography from "@/components/Typography/Typography";
 import FHD from "../../../../public/svgs/LineAnimations/fhd";
 import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
+import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
+import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles"
 // import HDL from "../../../../public/svgs/LineAnimations/HDL";
 // import HDPLUS from "../../../../public/svgs/LineAnimations/HDPLUS";
 // import HDM from "../../../../public/svgs/LineAnimations/HDM";
@@ -160,11 +162,14 @@ function MessageDisplay({
 }
 
 const getSvgPath = (width: number): React.JSX.Element | null => {
+
+  console.log(width,"width")
   if (width >= 5120) return <FHD />; // 5K
   else if (width >= 3840) return <FHD />; // 4K UHD
   else if (width >= 2560) return <FHD />; // Quad HD
-  else if (width >= 1920) return <FHDLAPTOP />; // Full HD
-  else if (width >= 1600) return <FHDLAPTOP />; // HD+
+  else if (width >= 1900) return <FHDLAPTOP />; // Full HD
+  else if (width >= 1600) return <HDPLUSLAPTOP />; // HD+
+  else if (width >= 1080) return <FULLHDMOBILE />;
   // Add other conditions as needed
   return null; // Default case
 };
@@ -331,7 +336,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-[1920px] h-full object-cover hidden   md:flex"
+                    className="w-[100vw] h-full object-cover hidden   md:flex"
                     loading="lazy"
                   />
                   <Image

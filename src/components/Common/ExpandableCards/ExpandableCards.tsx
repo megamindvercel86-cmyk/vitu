@@ -5,6 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
 import Typography from "@/components/Typography/Typography";
+import exploreProjects from "@/data/exploreProjects.json";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -19,38 +20,62 @@ const getBreakpoint = () => {
   }
   return "lg"; // default fallback for SSR
 };
-const DummyContent = () => {
+
+// Update the DummyContent component to accept props
+const DummyContent = ({ cardId }: { cardId: number }) => {
+  const project = exploreProjects.find((project) => project.id === cardId);
+
   return (
     <>
-      <div key={"dummy-content"}>
-        <Typography variant="h1" className="text-customBrown">
-          Foundations for the Future
-        </Typography>
-        <Typography
-          variant="h2"
-          className="font-freightNeoMedium text-[#040707CC] !text-[22px]"
-        >
-          Building Sustainably for a Better Tomorrow
-        </Typography>
-        <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[50px]">
-          At Vitu Realty, we believe that the future of real estate lies not
-          only in the structures we create but in the positive impact they have
-          on the environment and the communities they serve. Sustainability is
-          more than just a buzzword—it’s a guiding principle that informs every
-          aspect of our building practices. As we move into the future, it is
-          our responsibility to ensure that the properties we develop and the
-          spaces we design are both environmentally friendly and future-ready.
-        </Typography>
-        <Typography
-          variant="h2"
-          className="font-freightNeoSemibold text-[#040707CC] !text-[26px] pt-[45px]"
-        >
-          Why Sustainable Building Matters
-        </Typography>
-      </div>
+      {project && (
+        <div key={"dummy-content"}>
+          <Typography variant="h1" className="text-customBrown">
+            {project.title}
+          </Typography>
+          <Typography
+            variant="h2"
+            className="font-freightNeoMedium text-[#040707CC] !text-[22px]"
+          >
+            {project.subtitle}
+          </Typography>
+          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[50px]  !text-xl">
+            {project.introduction}
+          </Typography>
+          {project.sections.map((section, index) => (
+            <div key={index}>
+              <Typography
+                variant="h2"
+                className="font-freightNeoSemibold text-[#040707CC] !text-[26px] pt-[45px]"
+              >
+                {section.heading}
+              </Typography>
+              <Typography className="text-[#04070799] font-FreightNeoProNormal !text-xl">
+                {section.description}
+              </Typography>
+              {section.subsections &&
+                section.subsections.map((subsection, subIndex) => (
+                  <div key={subIndex}>
+                    <Typography className="font-FreightNeoProNormal text-[#04070799]  !text-xl">
+                      <strong>{subsection.subheading}:</strong>{" "}
+                      {subsection.description}
+                    </Typography>
+                  </div>
+                ))}
+            </div>
+          ))}
+          <div>
+            <div>
+              <Typography>Upnext</Typography>
+              <Typography>Upnext title   </Typography>
+            </div>
+            <div>up next icon</div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
+
 // Update the breakpoint positions to match your config
 const expandedPositions = {
   "2xl": [
@@ -291,7 +316,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   imageSrc={card.url}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"
-                  content={<DummyContent />}
+                  content={<DummyContent cardId={card.id} />}
                 />
               </motion.div>
             );
