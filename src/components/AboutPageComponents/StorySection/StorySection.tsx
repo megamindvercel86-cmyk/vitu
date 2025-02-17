@@ -7,6 +7,7 @@ import Image from "next/image";
 import "./StorySection.css";
 import Typography from "@/components/Typography/Typography";
 import FHD from "../../../../public/svgs/LineAnimations/fhd";
+import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 // import HDL from "../../../../public/svgs/LineAnimations/HDL";
 // import HDPLUS from "../../../../public/svgs/LineAnimations/HDPLUS";
 // import HDM from "../../../../public/svgs/LineAnimations/HDM";
@@ -162,7 +163,7 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
   if (width >= 5120) return <FHD />; // 5K
   else if (width >= 3840) return <FHD />; // 4K UHD
   else if (width >= 2560) return <FHD />; // Quad HD
-  else if (width >= 1920) return <FHD />; // Full HD
+  else if (width >= 1920) return <FHDLAPTOP />; // Full HD
   else if (width >= 1600) return <FHD />; // HD+
   // Add other conditions as needed
   return null; // Default case
