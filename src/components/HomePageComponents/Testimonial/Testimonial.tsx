@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import Head from "next/head";
+import Link from "next/link";
+
 import Typography from "@/components/Typography/Typography";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import testimonialDataJson from "@/data/testimonials.json";
@@ -21,30 +22,6 @@ const midIndex = Math.ceil(testimonialData.length / 2);
 const desktopDataLeft = testimonialData.slice(0, midIndex);
 const desktopDataRight = testimonialData.slice(midIndex);
 
-// Generate structured data for testimonials (JSON-LD)
-const generateStructuredData = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "itemReviewed": {
-      "@type": "LocalBusiness",
-      "name": "Vitu Realty"
-    },
-    "review": testimonialData.map((testimonial) => ({
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": testimonial.name
-      },
-      "reviewBody": testimonial.comment,
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": testimonial.rating,
-        "bestRating": "5"
-      }
-    }))
-  };
-};
 
 /**
  * Testimonial Component
@@ -56,24 +33,6 @@ const generateStructuredData = () => {
 export default function Testimonial(): React.ReactElement {
   return (
     <>
-      {/* SEO Metadata */}
-      <Head>
-        <title>Client Testimonials | Vitu Realty Reviews</title>
-        <meta
-          name="description"
-          content="See what our happy clients say about Vitu Realty. Read real reviews and testimonials from satisfied customers who found their dream home with us."
-        />
-        <meta
-          name="keywords"
-          content="client testimonials, real estate reviews, Vitu Realty feedback, property customer experiences"
-        />
-        <meta name="author" content="Vitu Realty" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateStructuredData()) }}
-        />
-      </Head>
-
       <section className="xl:mt-[166px] lg:mt-[206px] mt-12">
         {/* Testimonial Header Section */}
         <header className="flex items-center justify-center flex-col lg:mb-[90px] mb-9">
@@ -107,13 +66,14 @@ export default function Testimonial(): React.ReactElement {
 
         {/* Read More Section */}
         <div className="flex items-center justify-center flex-col mt-6 md:mt-[66px] mb-11 md:mb-[145px]">
-          <Typography
-            variant="custom"
-
-            className="text-customBrown font-FreightNeoProBold text-[22px] hover:underline"
-          >
-            Read More 
-          </Typography>
+          <Link href="/about">
+            <Typography
+              variant="custom"
+              className="text-customBrown font-FreightNeoProBold text-[22px] hover:underline"
+            >
+              Read More 
+            </Typography>
+          </Link>
         </div>
       </section>
     </>
