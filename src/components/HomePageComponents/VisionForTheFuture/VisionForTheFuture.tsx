@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
 import CTAButtonIcon from "@/components/Icons/Icons";
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
@@ -131,14 +132,15 @@ export default function VisionForTheFuture() {
           </Typography>
         </header>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
-          <button
-            className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
-            onClick={() => console.log("Button clicked")}
-            aria-label="See What's Next"
-          >
-            See What&apos;s Next
-            <CTAButtonIcon direction="right" />
-          </button>
+          <Link href="/about">
+            <button
+              className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
+              aria-label="See What's Next"
+            >
+              See What&apos;s Next
+              <CTAButtonIcon direction="right" />
+            </button>
+          </Link>
           <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">
             {CAROUSEL_DATA[currentIndex].residentialType}
           </Typography>
@@ -189,14 +191,15 @@ export default function VisionForTheFuture() {
           </div>
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
-            <button
-              className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
-              onClick={() => console.log("Button clicked")}
-              aria-label="See What's Next"
-            >
-               See What&apos;s Next
-              <CTAButtonIcon direction="right" />
-            </button>
+            <Link href="/about">
+              <button
+                className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
+                aria-label="See What's Next"
+              >
+                See What&apos;s Next
+                <CTAButtonIcon direction="right" />
+              </button>
+            </Link>
             <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
               {CAROUSEL_DATA.map((_, dotIndex) => (
                 <button
