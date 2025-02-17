@@ -164,7 +164,7 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
   else if (width >= 3840) return <FHD />; // 4K UHD
   else if (width >= 2560) return <FHD />; // Quad HD
   else if (width >= 1920) return <FHDLAPTOP />; // Full HD
-  else if (width >= 1600) return <FHD />; // HD+
+  else if (width >= 1600) return <FHDLAPTOP />; // HD+
   // Add other conditions as needed
   return null; // Default case
 };
