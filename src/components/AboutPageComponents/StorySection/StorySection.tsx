@@ -136,8 +136,10 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
 function ScrollController({
   progress,
   onDrag,
+  isFixed 
 }: {
   progress: number;
+  isFixed: boolean ;
   onDrag: (newProgress: number) => void;
 }) {
   console.log("ScrollController progress:", progress);
@@ -198,8 +200,8 @@ function ScrollController({
   }, [progress]);
 
   return (
-    <div className="fixed bottom-12 md:bottom-36 right-5 md:right-10 z-50 w-[90%] max-w-[430px]">
-      <div ref={trackRef} className="relative h-12 cursor-pointer rounded">
+    <div className="fixed bottom-12 md:bottom-36 right-5  z-50 w-[90%] max-w-[430px]">
+      <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
           viewBox="0 0 430 45"
           fill="none"
@@ -405,7 +407,7 @@ export default function Gallery() {
 
       <YearDisplay number={currentYear} isFixed={isFixed} />
       <MessageDisplay message={currentMessage} isFixed={isFixed} />
-      <ScrollController progress={progress} onDrag={setProgress} />
+      <ScrollController progress={progress} onDrag={setProgress} isFixed={isFixed}  />
     </div>
   );
 }
