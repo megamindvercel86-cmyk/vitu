@@ -11,7 +11,7 @@ import FHD from "../../../../public/svgs/LineAnimations/fhd";
 import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
-// ...other commented imports
+
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
