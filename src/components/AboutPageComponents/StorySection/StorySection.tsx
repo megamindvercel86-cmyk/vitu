@@ -13,6 +13,7 @@ import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 
 
+
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
 const images = [
