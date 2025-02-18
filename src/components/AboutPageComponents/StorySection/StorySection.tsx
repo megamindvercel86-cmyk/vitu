@@ -210,14 +210,15 @@ export default function Gallery() {
   
     // Dynamically calculate the translation value based on progress
     const translateX = progress * maxTranslateX;
-
+    const neww = maxTranslateX - visibleWidth
+console.log(totalWidth,visibleWidth,maxTranslateX,maxTranslateX,neww);
     if (windowWidth >= 1900) {
       return `translate(-${progress * 13450}px, -50%)`;
     } else if (windowWidth > 1400) {
       return `translate(-${progress * 11206 + 15}px, -50%)`;
     } else if (windowWidth > 100) {
       console.log(`Current progress: ${progress}, TranslateX: ${translateX}`);
-      return `translate(-${progress * 2180}px, -50%)`;
+      return `translate(-${progress * neww}px, -50%)`;
     } else {
       return `translate(-${progress * 13450}px, -50%)`;
     }
