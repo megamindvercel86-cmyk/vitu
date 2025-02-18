@@ -185,9 +185,29 @@ export default function Gallery() {
 
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   let svgWidth = galleryRef.current?.scrollWidth;
-  const windowWidth = window.innerWidth; 
-  console.log(svgWidth)
-  
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+  const getTransformStyle = () => {
+    if (windowWidth >= 1900) {
+      return `translate(-${progress * 13450}px, -50%)`;
+    } else if (windowWidth > 1500) {
+      return `translate(-${progress * 11206}px, -50%)`;
+    } else if (windowWidth > 1000) {
+      return `translate(-${progress * 6450}px, -50%)`;
+    } else {
+      return `translate(0, -50%)`;
+    }
+  };
   useEffect(() => {
     const container = containerRef.current;
     const gallery = galleryRef.current;
@@ -293,14 +313,7 @@ export default function Gallery() {
   ref={svgPathRef}
   style={{
     clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
-    transform:
-      windowWidth >= 1900
-        ? `translate(-${progress * 13450}px, -50%)`
-        : windowWidth > 1500
-        ? `translate(-${progress * 11205}px, -50%)`
-        : windowWidth > 1000
-        ? `translate(-${progress * 6450}px, -50%)`
-        : `translate(0, -50%)`,
+    transform: getTransformStyle()
   }}
 >
 
