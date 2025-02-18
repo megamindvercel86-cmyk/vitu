@@ -116,7 +116,7 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
     <div
       className={`${
         isFixed
-          ? "fixed md:bottom-56 bottom-32 md:right-10"
+          ? "fixed md:bottom-56 bottom-32 md:right-[59px]"
           : "absolute bottom-56 right-10"
       } pointer-events-none z-50 md:max-w-[450px] max-w-[300px]`}
     >
