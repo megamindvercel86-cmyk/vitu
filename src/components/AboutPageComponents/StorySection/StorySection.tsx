@@ -168,7 +168,7 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
   else if (width >= 3840) return <FHD />; // 4K UHD
   else if (width >= 2560) return <FHD />; // Quad HD
   else if (width >= 1900) return <FHDLAPTOP />; // Full HD
-  else if (width >= 1600) return <HDPLUSLAPTOP />; // HD+
+  else if (width >= 1500) return <HDPLUSLAPTOP />; // HD+
   else if (width >= 1080) return <FULLHDMOBILE />;
   // Add other conditions as needed
   return null; // Default case
@@ -185,8 +185,8 @@ export default function Gallery() {
 
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   let svgWidth = galleryRef.current?.scrollWidth;
-
-
+  const windowWidth = window.innerWidth; 
+  console.log(svgWidth)
   
   useEffect(() => {
     const container = containerRef.current;
@@ -288,14 +288,22 @@ export default function Gallery() {
       </div>
 
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
-        <div
-          className="absolute top-[47%] z-50 "
-          ref={svgPathRef}
-          style={{
-            clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
-            transform: `translate(-${progress * 13450}px , -50%)`,
-          }}
-        >
+      <div
+  className="absolute top-[47%] z-50"
+  ref={svgPathRef}
+  style={{
+    clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
+    transform:
+      windowWidth >= 1900
+        ? `translate(-${progress * 13450}px, -50%)`
+        : windowWidth > 1500
+        ? `translate(-${progress * 11205}px, -50%)`
+        : windowWidth > 1000
+        ? `translate(-${progress * 6450}px, -50%)`
+        : `translate(0, -50%)`,
+  }}
+>
+
          {svg}
         </div>
         {/* <div
