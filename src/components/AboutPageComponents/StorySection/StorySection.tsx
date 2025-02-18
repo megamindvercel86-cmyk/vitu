@@ -198,15 +198,20 @@ export default function Gallery() {
     }
   }, []);
   const getTransformStyle = () => {
-    if (windowWidth >= 1900) {
-      return `translate(-${progress * 13450}px, -50%)`;
-    } else if (windowWidth > 1500) {
-      return `translate(-${progress * 11206}px, -50%)`;
-    } else if (windowWidth > 1000) {
-      return `translate(-${progress * 6450}px, -50%)`;
-    } else {
-      return `translate(0, -50%)`;
-    }
+    const gallery = galleryRef.current;
+  
+    if (!gallery) return `translate(0, -50%)`;
+  
+    const totalWidth = gallery.scrollWidth; // Total scrollable width of the gallery
+    const visibleWidth = windowWidth; // Current viewport width
+  
+    // Calculate the maximum translation distance
+    const maxTranslateX = totalWidth - visibleWidth;
+  
+    // Dynamically calculate the translation value based on progress
+    const translateX = progress * maxTranslateX;
+  
+    return `translate(-${translateX}px, -50%)`;
   };
   useEffect(() => {
     const container = containerRef.current;
