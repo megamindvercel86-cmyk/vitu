@@ -162,14 +162,14 @@ function MessageDisplay({
 }
 
 const getSvgPath = (width: number): React.JSX.Element | null => {
+console.log(width,"23");
 
-  console.log(width,"width")
   if (width >= 5120) return <FHD />; // 5K
   else if (width >= 3840) return <FHD />; // 4K UHD
   else if (width >= 2560) return <FHD />; // Quad HD
   else if (width >= 1900) return <FHDLAPTOP />; // Full HD
   else if (width >= 1500) return <HDPLUSLAPTOP />; // HD+
-  else if (width >= 1080) return <FULLHDMOBILE />;
+  else if (width >= 100) return <FULLHDMOBILE />;
   // Add other conditions as needed
   return null; // Default case
 };
@@ -198,10 +198,10 @@ export default function Gallery() {
     }
   }, []);
   const getTransformStyle = () => {
+
+
     const gallery = galleryRef.current;
-  
     if (!gallery) return `translate(0, -50%)`;
-  
     const totalWidth = gallery.scrollWidth; // Total scrollable width of the gallery
     const visibleWidth = windowWidth; // Current viewport width
   
@@ -210,8 +210,17 @@ export default function Gallery() {
   
     // Dynamically calculate the translation value based on progress
     const translateX = progress * maxTranslateX;
-  
-    return `translate(-${translateX}px, -50%)`;
+
+    if (windowWidth >= 1900) {
+      return `translate(-${progress * 13450}px, -50%)`;
+    } else if (windowWidth > 1400) {
+      return `translate(-${progress * 11206 + 15}px, -50%)`;
+    } else if (windowWidth > 100) {
+      console.log(`Current progress: ${progress}, TranslateX: ${translateX}`);
+      return `translate(-${progress * 8250}px, -50%)`;
+    } else {
+      return `translate(-${progress * 13450}px, -50%)`;
+    }
   };
   useEffect(() => {
     const container = containerRef.current;
@@ -314,7 +323,7 @@ export default function Gallery() {
 
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
       <div
-  className="absolute top-[46%] z-50"
+  className="absolute top-[47%] z-50"
   ref={svgPathRef}
   style={{
     clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
