@@ -217,7 +217,7 @@ export default function Gallery() {
       return `translate(-${progress * 11206 + 15}px, -50%)`;
     } else if (windowWidth > 100) {
       console.log(`Current progress: ${progress}, TranslateX: ${translateX}`);
-      return `translate(-${progress * 2200}px, -50%)`;
+      return `translate(-${progress * 5370}px, -50%)`;
     } else {
       return `translate(-${progress * 13450}px, -50%)`;
     }
