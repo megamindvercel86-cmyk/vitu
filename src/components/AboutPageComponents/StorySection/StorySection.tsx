@@ -200,7 +200,7 @@ function ScrollController({
   }, [progress]);
 
   return (
-    <div className="fixed bottom-12 md:bottom-36 right-5  z-50 w-[90%] max-w-[430px]">
+    <div className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[430px]`}>
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
           viewBox="0 0 430 45"
