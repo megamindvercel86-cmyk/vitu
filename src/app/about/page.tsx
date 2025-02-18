@@ -80,9 +80,9 @@ export default function AboutPage({}: AboutPageProps) {
         </section>
 
         {/* Founder's Message Section */}
-        {/* <section>
+        <section>
           <FounderMessage />
-        </section> */}
+        </section>
 
         {/* Vision and Mission Section */}
         <section>
