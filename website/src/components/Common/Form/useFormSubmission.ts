@@ -1,8 +1,8 @@
 import { useFormik } from "formik";
 import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "@/firebase/firebaseConfig";
 import { formValidationSchema } from "./validations";
+import { ref, uploadBytes } from "firebase/storage";
 
 export interface FormValues {
   fullName: string;
@@ -23,14 +23,30 @@ export const useFormSubmission = (page: string) => {
       const uploadResult = await uploadBytes(storageRef, values.resume);
       resumeUrl = uploadResult.ref.fullPath;
     }
-
+    // if (page === "Career Application" && values.resume) {
+    //   const formData = new FormData();
+    //   formData.append("resume", values.resume);
+      
+    //   const response = await fetch("/api/uploadResume", {
+    //     method: "POST",
+    //     body: formData,
+    //   });
+    
+    //   if (!response.ok) {
+    //     throw new Error("Failed to upload resume.");
+    //   }
+    
+    //   const { url } = await response.json();
+    //   resumeUrl = url;
+    // }
+    
     // Determine collection name
     const collectionName =
       page === "General Enquire"
         ? "generalEnquiries"
         : page === "Project Enquire"
-        ? "projectEnquiries"
-        : "careerApplications";
+          ? "projectEnquiries"
+          : "careerApplications";
 
     // Filter values based on page type
     const filteredValues =
@@ -43,20 +59,20 @@ export const useFormSubmission = (page: string) => {
             whatsapp: values.whatsapp,
           }
         : page === "Project Enquire"
-        ? {
-            fullName: values.fullName,
-            email: values.email,
-            phone: values.phone,
-            whatsapp: values.whatsapp,
-            interestedIn: values.option,
-          }
-        : {
-            fullName: values.fullName,
-            email: values.email,
-            phone: values.phone,
-            postionApplyingfor: values.option,
-            resumeUrl, // Store the uploaded resume URL in DB
-          };
+          ? {
+              fullName: values.fullName,
+              email: values.email,
+              phone: values.phone,
+              whatsapp: values.whatsapp,
+              interestedIn: values.option,
+            }
+          : {
+              fullName: values.fullName,
+              email: values.email,
+              phone: values.phone,
+              postionApplyingfor: values.option,
+              resumeUrl, // Store the uploaded resume URL in DB
+            };
 
     // Save filtered data to Firestore
     const collectionRef = collection(db, collectionName);
