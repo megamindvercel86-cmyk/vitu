@@ -1,0 +1,224 @@
+"use client";
+
+// ============= Component Imports =============
+import React, { useRef } from "react";
+import Image from "next/image";
+import type { Swiper as SwiperType } from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react";
+import SubHeading from "@/components/Common/SubHeding";
+import Heading from "@/components/Common/Heading";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
+import "./MediaSection.css";
+
+// ============= Swiper Imports =============
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+// ============= Types & Interfaces =============
+interface NewsItem {
+  id: number;
+  image: string;
+  source: string;
+  date: string;
+  title: string;
+}
+
+// ============= Constants =============
+const NEWS_ITEMS: NewsItem[] = [
+  {
+    id: 1,
+    image: "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 2,
+    image: "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 3,
+    image:
+      "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 4,
+    image:
+      "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 5,
+    image: "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+  {
+    id: 6,
+    image:
+      "/images/mediaSectionImages/NewsItem1.png",
+    source: "DAIJIWORLD",
+    date: "NOV 18 2024",
+    title:
+      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
+  },
+];
+
+/**
+ * Media Section Component
+ * Displays news items in a responsive carousel layout
+ * 
+ * Features:
+ * 1. Responsive grid layout
+ * 2. Dynamic slides per view
+ * 3. Navigation controls
+ * 4. Infinite loop
+ * 
+ * Breakpoints:
+ * - Mobile: 1 slide
+ * - Tablet: 2 slides
+ * - Desktop: 3 slides
+ * 
+ * @returns {React.ReactElement} The MediaSection component
+ */
+export default function MediaSection(): React.ReactElement {
+  // ============= Refs =============
+  const swiperRef = useRef<SwiperType | undefined>(undefined);
+
+  // ============= Handlers =============
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
+  // ============= Render Helpers =============
+  const renderNewsCard = (item: NewsItem) => {
+    // Split the date string into parts
+    const [month, day, year] = item.date.split(' ');
+    
+    return (
+      <div className="media-card rounded-lg overflow-hidden">
+        {/* Image Container */}
+        <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={400}
+            height={310}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
+            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.source}</SubHeading>
+            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">|</SubHeading>
+            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">
+              {month} <span className="font-CandideCondensedNormal">{day}</span> <span className="font-CandideCondensedNormal">{year}</span>
+            </SubHeading>
+          </div>
+          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
+            {item.title}
+          </SubHeading>
+          <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 2xl:text-[1.5rem]">
+            Read More
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
+      {/* Header */}
+      <div className="text-left md:text-center mb-8 sm:mb-12">
+        <SubHeading className="text-customTextGray 2xl:text-[1.5rem] lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">
+          NEWS & MEDIA
+        </SubHeading>
+        <Heading className="lg:text-5xl text-customBrown xl:text-[52px] text-2xl font-semibold text-left md:text-center 2xl:text-[64px]">
+          Stay Updated with Our Latest Happenings
+        </Heading>
+      </div>
+
+      {/* Main Container */}
+      <div className="flex flex-col">
+        {/* Swiper Container */}
+        <div className="relative">
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 250430,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="media-swiper h-full"
+          >
+            {NEWS_ITEMS.map((item) => (
+              <SwiperSlide key={item.id} className="media-slide !h-auto">
+                {renderNewsCard(item)}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Navigation Controls - Moved inside flex container */}
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
+          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+            Explore More
+          </span>
+          <div className="flex gap-2">
+            <button
+              onClick={handlePrev}
+              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              aria-label="Previous slide"
+            >
+              <IconArrowNarrowLeft />
+            </button>
+            <button
+              onClick={handleNext}
+              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              aria-label="Next slide"
+            >
+              <IconArrowNarrowRight />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

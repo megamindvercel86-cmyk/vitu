@@ -1,0 +1,132 @@
+"use client";
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import Typography from "../Typography/Typography";
+import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
+import ExpandableCards from "../Common/ExpandableCards/ExpandableCards";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+interface Card {
+  id: number;
+  url: string;
+  className: string;
+  startPosition: { x?: number; y?: number };
+  isViewMore?: boolean;
+  position?: "left" | "right";
+  width?: string;
+  height?: string;
+}
+
+const CARDS_DATA: Card[] = [
+  {
+    id: 5,
+    url: "/images/exploreProjectImages/4.png",
+    className: "absolute left-[323px] rounded-[20px] z-20",
+    startPosition: { y: 100 },
+    isViewMore: true,
+    position: "left",
+    width: "2xl:w-[256px]  xl:w-[297px] lg:w-[247px] md:w-[200px]",
+    height: "2xl:h-[320px] xl:h-[391px] lg:h-[350px] md:h-[250px]",
+  },
+  {
+    id: 4,
+    url: "/images/exploreProjectImages/5.png",
+    className: "absolute right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: 100 },
+    isViewMore: true,
+    position: "left",
+    width: "md:w-[220px] lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
+  },
+  {
+    id: 2,
+    url: "/images/exploreProjectImages/2.png",
+    className: "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: 100 },
+    isViewMore: true,
+    position: "left",
+    width: "md:w-[220px] lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
+  },
+  {
+    id: 3,
+    url: "/images/exploreProjectImages/3.png",
+    className: "absolute left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
+    width: "md:w-[220px] lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
+  },
+  {
+    id: 1,
+    url: "/images/exploreProjectImages/1.png",
+    className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "left",
+    width: "md:w-[220px] lg:w-[298px] xl:w-[348px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg:h-[385px] xl:h-[435px] 2xl:h-[505px]",
+  },
+];
+
+
+
+/**
+ * Explore Projects Component
+ * Showcases project cards with animations and responsive layouts
+ * 
+ * Features:
+ * 1. Desktop: Expandable cards with GSAP animations
+ * 2. Mobile: Infinite carousel
+ * 3. Responsive design with different layouts
+ * 4. Interactive animations on scroll
+ * 
+ * @component
+ */
+const ExploreProjects: React.FC = () => {
+
+
+  return (
+    <>
+      {/* Desktop Version */}
+      <div className="md:block hidden relative z-0 overflow-hidden">
+        <ExpandableCards cards={CARDS_DATA} />
+      </div>
+
+      {/* Mobile Version */}
+      <div className="md:hidden block mb-12">
+        {/* Mobile Title Section */}
+        <div className="w-full flex flex-col items-center justify-center text-center pt-10">
+          <Typography
+            variant="custom"
+            className="text-2xl lg:text-[] text-customBrown font-freightNeoSemibold"
+          >
+            A New Home,
+          </Typography>
+          <Typography
+            variant="custom"
+            className="text-2xl text-customBrown font-freightNeoSemibold"
+          >
+            A New Way of Life
+          </Typography>
+        </div>
+
+        {/* Mobile Carousel */}
+        <InfiniteCarousel cards={CARDS_DATA} />
+
+        {/* Mobile CTA Button */}
+        <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">
+          <button className="items-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
+            Explore the Project Now
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ExploreProjects;
