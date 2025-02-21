@@ -3,6 +3,8 @@
 // ============= Component Imports =============
 import React, { useRef } from "react";
 import { FaCheck } from "react-icons/fa";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // ============= Internal Imports =============
 import Button from "@/components/Common/Button";
@@ -62,7 +64,9 @@ export default function FormSection({
 
   // Rest of your component (JSX) remains exactly the same
   return (
+
     <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
+      <ToastContainer />
       {/* Left Side Content */}
       <div className="flex-1">
         <Typography

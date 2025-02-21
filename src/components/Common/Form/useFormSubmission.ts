@@ -3,6 +3,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "@/firebase/firebaseConfig";
 import { formValidationSchema } from "./validations";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export interface FormValues {
   fullName: string;
   email: string;
@@ -68,7 +71,11 @@ export const useFormSubmission = (page: string) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
       });
+       // Show success toast
+       toast.success("Form submitted successfully!");
     } catch (error) {
+      toast.error("Error submitting form. Please try again later.");
+
       console.error("Error sending email:", error);
     }
   };
