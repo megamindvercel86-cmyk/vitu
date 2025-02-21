@@ -266,7 +266,7 @@ export default function Gallery() {
     const visibleWidth = windowWidth;
     const maxTranslateX = totalWidth - visibleWidth;
     // Adjust transform based on viewport width
-    if (windowWidth >= 1900) return `translate(-${progress * 13450}px, -50%)`;
+    if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
     else if (windowWidth > 1400) return `translate(-${progress * 11206 + 15}px, -50%)`;
     else if (windowWidth > 100) return `translate(-${progress * (maxTranslateX - visibleWidth)}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
