@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { promises as fs } from "fs";
+import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -14,6 +16,47 @@ export async function POST(req: Request) {
       page,
       resumeUrl,
     } = await req.json();
+    // Define the path to the HTML template
+    let templateFile = "";
+    switch (page) {
+      case "General Enquire":
+        templateFile = "Form for General Enquiries - Template (1).html";
+        break;
+      case "Project Enquire":
+        templateFile = "Form for Project Enquiries-Template.html";
+        break;
+      case "Career Application":
+        templateFile = "Form for Career Application.html";
+        break;
+      default:
+        throw new Error("Invalid form type");
+    }
+
+    // Define the path to the HTML template
+    const templatePath = path.join(process.cwd(), "emailTemplates", templateFile);
+
+    // Read the selected HTML template file
+    let emailTemplate = await fs.readFile(templatePath, "utf-8");
+
+    // Replace placeholders with actual form data
+    emailTemplate = emailTemplate
+      .replace("[Name from General EnquiriesForm]", fullName)
+      .replace("[Email from General Enquiries Form]", email)
+      .replace("[Phone from General Enquiries Form]", phone)
+      .replace("[Comments if any from General Enquiries Form]", comments || "")
+      .replace("[Name from Project Enquiry Form]", fullName)
+      .replace("[Email from Project Enquiry Form]", email)
+      .replace("[Phone from Project Enquiry Form]", phone)
+      .replace("[Field selected from Project Enquiry Form]", interestedIn || "")
+      .replace("[Name from Career Application Form]", fullName)
+      .replace("[Email from Career ApplicationForm]", email)
+      .replace("[Phone from Career Application Form]", phone)
+      .replace("[Role selected from Career Application Form]", postionApplyingfor || "");
+
+    // Add resume link for Career Application emails
+    if (page === "Career Application" && resumeUrl) {
+      emailTemplate += `<p><strong>Resume:</strong> <a href="${resumeUrl}" target="_blank" style="color: #007bff;">View Resume</a></p>`;
+    }
 
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -55,7 +98,7 @@ export async function POST(req: Request) {
       from: `${email}`,
       to: "developer.megamind@gmail.com", // Replace with the recipient's email
       subject,
-      html: message,
+      html: emailTemplate,
     });
 
     return NextResponse.json(
@@ -65,7 +108,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Email send error:", error);
     return NextResponse.json(
-      { message: "Failed to send email" },
+      { message: "Failed to send email",error },
       { status: 500 }
     );
   }

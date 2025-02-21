@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
-import SEO from "@/components/SEO";
 
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
@@ -157,14 +156,6 @@ export default function VisionAndMission() {
 
   return (
     <>
-      {/* SEO Metadata */}
-      <SEO
-        title="Vitu Realty - Vision and Mission"
-        description="Discover Vitu Realty's vision and mission to revolutionize real estate in Mangalore with innovative design, sustainability, and luxury."
-        keywords="real estate vision, vitu realty mission, mangalore real estate, sustainable living"
-        image="/images/visionAndMissionImages/1.png"
-        url="https://yourwebsite.com/vision-and-mission"
-      />
 
       {/* Main Carousel */}
       <div className="bg-gray-100 sm:p-0 md:p-[1px]">

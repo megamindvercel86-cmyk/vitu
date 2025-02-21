@@ -131,7 +131,8 @@ export default function FormSection({
                 rows={3}
                 placeholder="Your Comments"
                 {...formik.getFieldProps("comments")}
-                className={inputBaseClass}
+                className={`${inputBaseClass} pr-12` }
+                maxLength={250}
               />
               {formik.touched.comments && formik.errors.comments && (
                 <p className="text-red-500 text-sm">{formik.errors.comments}</p>

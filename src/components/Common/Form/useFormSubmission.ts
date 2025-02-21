@@ -3,7 +3,6 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "@/firebase/firebaseConfig";
 import { formValidationSchema } from "./validations";
-
 export interface FormValues {
   fullName: string;
   email: string;
