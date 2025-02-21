@@ -59,14 +59,14 @@ export async function generateMetadata() {
             />
   
             {/* Hero Content */}
-            <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-center text-white p-6">
+            <div className="absolute top-0 left-0 right-0 bottom-36 flex flex-col items-center justify-center text-center text-white">
               {/* 404 Title */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-freightNeoMedium">
                 Oops! Page Not Found
               </h1>
   
               {/* 404 Description */}
-              <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light">
+              <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light font-CandideCondensedNormal">
                 The page you're looking for doesn't exist or has been moved.
               </p>
   
