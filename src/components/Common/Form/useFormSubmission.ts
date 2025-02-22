@@ -50,13 +50,13 @@ export const useFormSubmission = (page: string) => {
             email: values.email,
             phone: values.phone,
             whatsapp: values.whatsapp,
-            interestedIn: values.option,
+            interstedIn: values.option,
           }
         : {
             fullName: values.fullName,
             email: values.email,
             phone: values.phone,
-            postionApplyingfor: values.option,
+            postionAppliedFor: values.option,
             resumeUrl, // Store the uploaded resume URL in DB
           };
 
