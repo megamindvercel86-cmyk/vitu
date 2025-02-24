@@ -6,6 +6,7 @@ import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
 import Typography from "@/components/Typography/Typography";
 import exploreProjects from "@/data/exploreProjects.json";
+import { ArrowRightIcon } from "@/components/Icons/Icons";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -21,10 +22,41 @@ const getBreakpoint = () => {
   return "lg"; // default fallback for SSR
 };
 
-// Update the DummyContent component to accept props
-const DummyContent = ({ cardId }: { cardId: number }) => {
-  const project = exploreProjects.find((project) => project.id === cardId);
+interface FooterProps {
+  onFooterClick: () => void;
+  nextProjectTitle: string;
+}
 
+const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
+  return (
+    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
+      <hr className="w-full h-[2px] bg-[#BDBEC2]" />
+      <div
+        onClick={onFooterClick}
+        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 cursor-pointer"
+      >
+        <div>
+          <p className="text-xs text-[#8E8E93] uppercase font-roboto">
+            Next Project
+          </p>
+          <h4 className="text-black1 font-roboto font-bold text-base max-w-[15rem] lg:max-w-none">
+            {nextProjectTitle}
+          </h4>
+        </div>
+        <ArrowRightIcon />
+      </div>
+    </div>
+  );
+};
+
+// Update the CardContent component to accept props
+const CardContent = ({ cardId }: { cardId: number }) => {
+  const project = exploreProjects.find((project) => project.id === cardId);
+  const handleFooterClick = () => {
+    console.log("Footer clicked - navigate to next project or perform other action");
+    // e.g., use Next.js router.push('/next-project') or any other action
+  };
+  const nextProject = exploreProjects.find((project) => project.id + 1 === cardId);
   return (
     <>
       {project && (
@@ -32,16 +64,16 @@ const DummyContent = ({ cardId }: { cardId: number }) => {
           <Typography variant="h1" className="text-customBrown">
             {project.title}
           </Typography>
-          <Typography
+          {/* <Typography
             variant="h2"
             className="font-freightNeoMedium text-[#040707CC] !text-[22px]"
           >
             {project.subtitle}
-          </Typography>
+          </Typography> */}
           <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[50px]  !text-xl">
             {project.introduction}
           </Typography>
-          {project.sections.map((section, index) => (
+          {/* {project.sections.map((section, index) => (
             <div key={index}>
               <Typography
                 variant="h2"
@@ -62,14 +94,11 @@ const DummyContent = ({ cardId }: { cardId: number }) => {
                   </div>
                 ))}
             </div>
-          ))}
-          <div>
-            <div>
-              <Typography>Upnext</Typography>
-              <Typography>Upnext title   </Typography>
-            </div>
-            <div>up next icon</div>
-          </div>
+          ))} */}
+          <Footer
+            onFooterClick={handleFooterClick}
+            nextProjectTitle="Next Project Title"
+          />
         </div>
       )}
     </>
@@ -316,7 +345,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                   imageSrc={card.url}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"
-                  content={<DummyContent cardId={card.id} />}
+                  content={<CardContent cardId={card.id} />}
                 />
               </motion.div>
             );

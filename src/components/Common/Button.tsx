@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   defaultTextColor?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled:boolean;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   children,
   className,
   defaultTextColor = "text-white",
+  disabled = false ,
 }: ButtonProps) => {
   const combinedClassName = classNames(
     "w-[146px] h-[55px] font-FreightNeoProBold rounded-[27.5px] bg-cusomButtonColor transition-color",
@@ -22,7 +24,7 @@ const Button = ({
   );
 
   return (
-    <button onClick={onClick} className={combinedClassName}>
+    <button onClick={onClick} disabled={disabled} className={combinedClassName}>
       {children}
     </button>
   );

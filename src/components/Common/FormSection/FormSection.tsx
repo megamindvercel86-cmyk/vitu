@@ -1,10 +1,10 @@
 "use client";
 
 // ============= Component Imports =============
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // ============= Internal Imports =============
 import Button from "@/components/Common/Button";
@@ -13,7 +13,7 @@ import Typography from "@/components/Typography/Typography";
 
 // Form Related Imports
 import { useFormSubmission } from "../Form/useFormSubmission";
-import { JOB_OPTIONS,PROJECT_ENQUIRIES ,FORM_TYPES} from "../Form/constants";
+import { JOB_OPTIONS, PROJECT_ENQUIRIES, FORM_TYPES } from "../Form/constants";
 
 // ============= Types & Interfaces =============
 interface FormSectionProps {
@@ -21,8 +21,6 @@ interface FormSectionProps {
   subheading: string;
   page: "General Enquire" | "Project Enquire" | "Career Application";
 }
-
-
 
 /**
  * Form Section Component
@@ -45,21 +43,37 @@ export default function FormSection({
   // ============= Form Handling =============
   const formik = useFormSubmission(page);
 
-  // ============= Helper Functions =============
-  const handleIconClick = () => {
-    if (selectRef.current) {
-      selectRef.current.focus();
-      selectRef.current.click(); // Simulates a user click
-    }
-  };
-
+  const [isLoading, setIsLoading] = useState(false);
   // Base input class with placeholder and value font
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
-
+  // Loading animation (you can style this further or use an SVG spinner)
+  const LoadingSpinner = () => (
+    <div className="flex items-center justify-center">
+      <svg
+        className="animate-spin h-5 w-5 text-black"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
+      </svg>
+    </div>
+  );
   // Rest of your component (JSX) remains exactly the same
   return (
-
     <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
       <ToastContainer />
       {/* Left Side Content */}
@@ -130,7 +144,7 @@ export default function FormSection({
                 rows={3}
                 placeholder="Your Comments"
                 {...formik.getFieldProps("comments")}
-                className={`${inputBaseClass} pr-12` }
+                className={`${inputBaseClass} pr-12`}
                 maxLength={250}
               />
               {formik.touched.comments && formik.errors.comments && (
@@ -184,8 +198,8 @@ export default function FormSection({
                   ))}
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                <Dropdown />
-              </div>
+                  <Dropdown />
+                </div>
               </div>
               <div className="mt-[45px] relative">
                 <div className="w-full px-1 pb-2 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium">
@@ -219,10 +233,29 @@ export default function FormSection({
           {page === "General Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 pt-[45px] mb-[54px] md:mb-[145px]">
               <Button
-                onClick={() => formik.handleSubmit()}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  setIsLoading(true); // Start loading
+                  Promise.resolve(formik.handleSubmit()).finally(() =>
+                    setIsLoading(false)
+                  ); // Stop loading after submission
+                }}
+                disabled={isLoading}
                 className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
               >
-                Submit
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <LoadingSpinner />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
                 <div className="relative">
@@ -250,21 +283,50 @@ export default function FormSection({
                     });
                     return;
                   }
-                  formik.handleSubmit();
+                  setIsLoading(true); // Start loading
+                  Promise.resolve(formik.handleSubmit()).finally(() =>
+                    setIsLoading(false)
+                  ); // Stop loading after submission
                 }}
+                disabled={isLoading}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
-                Submit
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <LoadingSpinner />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           )}
           {page === "Project Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 mb-[54px]  pt-[45px] md:mb-[145px]">
               <Button
-                onClick={() => formik.handleSubmit()}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  setIsLoading(true); // Start loading
+                  Promise.resolve(formik.handleSubmit()).finally(() =>
+                    setIsLoading(false)
+                  ); // Stop loading after submission
+                }}
+                disabled={isLoading}
                 className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
               >
-                Submit
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <LoadingSpinner />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
               <label className="flex items-center gap-3 cursor-pointer group w-fit">
                 <div className="relative">
@@ -293,18 +355,28 @@ export default function FormSection({
                     });
                     return;
                   }
-                  formik.handleSubmit();
+                  setIsLoading(true); // Start loading
+                  Promise.resolve(formik.handleSubmit()).finally(() =>
+                    setIsLoading(false)
+                  ); // Stop loading after submission
                 }}
+                disabled={isLoading}
                 className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
               >
-                Submit
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <LoadingSpinner />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
               <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
                   if (!formik.isValid || !formik.dirty) {
                     Object.keys(formik.values).forEach((field) => {
@@ -312,11 +384,27 @@ export default function FormSection({
                     });
                     return;
                   }
-                  formik.handleSubmit();
+                  
+                  
+                  try {
+                    setIsLoading(true); // Start loading
+                    await formik.handleSubmit(); // Wait for the form submission to finish
+                  } catch (error) {
+                    console.error("Form submission failed", error);
+                  } finally {
+                    setIsLoading(false); // Stop loading after submission (whether success or failure)
+                  }
                 }}
+                disabled={isLoading}
                 className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
               >
-                Submit
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <LoadingSpinner />
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           )}

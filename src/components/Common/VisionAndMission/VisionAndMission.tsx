@@ -38,45 +38,64 @@ const IMAGES = {
 const CONTENT = {
   desktop: [
     [
-      { title: "Innovative Design", description: "Pushing boundaries..." },
-      { title: "Modern Living", description: "Contemporary spaces..." },
-      { title: "Smart Solutions", description: "Integrating technology..." },
+      { 
+        title: "Prime Locations", 
+        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
+      },
+      { 
+        title: "Accessible Luxury", 
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
+      },
+      { 
+        title: "Trusted Experience / Happy Residents", 
+        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
+      },
     ],
     [
       {
-        title: "Sustainable Future",
-        description: "Eco-friendly approaches...",
+        title: "Sustainable Living",
+        description: "Eco-friendly developments with energy-efficient designs and green spaces for a better tomorrow.",
       },
-      { title: "Natural Harmony", description: "Blending seamlessly..." },
-      { title: "Green Living", description: "Creating spaces that..." },
+      { 
+        title: "Seamless Nature Integration", 
+        description: "Architectural designs that blend harmoniously with nature, providing serenity and peace." 
+      },
+      { 
+        title: "Green & Smart Homes", 
+        description: "Smart technology meets sustainability for a future-ready living experience." 
+      },
     ],
     [
       {
-        title: "Luxury Redefined",
-        description: "Excellence in every detail...",
+        title: "Redefining Luxury",
+        description: "Impeccable craftsmanship and premium materials that set new standards in elegance.",
       },
-      { title: "Premium Quality", description: "Uncompromising standards..." },
+      { 
+        title: "Uncompromising Quality", 
+        description: "Every home is a masterpiece, built with precision and excellence to last generations." 
+      },
       {
-        title: "Timeless Elegance",
-        description: "Creating lasting impressions...",
+        title: "Timeless Architectural Beauty",
+        description: "Homes designed with aesthetics and functionality in mind, ensuring lasting appeal.",
       },
     ],
   ],
   mobile: [
     {
-      title: "Innovative Sustainability",
-      description: "Revolutionizing green living...",
+      title: "Smart & Sustainable Homes",
+      description: "Innovative real estate solutions that prioritize sustainability and modern living.",
     },
     {
-      title: "Affordable Luxury",
-      description: "Redefining affordable lifestyle...",
+      title: "Luxury Within Reach",
+      description: "High-end living spaces made accessible without compromising on quality.",
     },
     {
-      title: "Client Satisfaction",
-      description: "Redefining excellence by making...",
+      title: "Customer-Centric Approach",
+      description: "Designed to meet every need, ensuring satisfaction and long-term value for homeowners.",
     },
   ],
 };
+
 
 /**
  * Vision And Mission Component
@@ -156,7 +175,6 @@ export default function VisionAndMission() {
 
   return (
     <>
-
       {/* Main Carousel */}
       <div className="bg-gray-100 sm:p-0 md:p-[1px]">
         {/* Desktop Version */}
