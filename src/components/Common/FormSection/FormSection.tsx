@@ -13,7 +13,7 @@ import Typography from "@/components/Typography/Typography";
 
 // Form Related Imports
 import { useFormSubmission } from "../Form/useFormSubmission";
-import { JOB_OPTIONS } from "../Form/constants";
+import { JOB_OPTIONS,PROJECT_ENQUIRIES ,FORM_TYPES} from "../Form/constants";
 
 // ============= Types & Interfaces =============
 interface FormSectionProps {
@@ -22,12 +22,7 @@ interface FormSectionProps {
   page: "General Enquire" | "Project Enquire" | "Career Application";
 }
 
-// Update FORM_TYPES in constants.ts to match:
-export const FORM_TYPES = {
-  GENERAL: "General Enquire",
-  PROJECT: "Project Enquire",
-  CAREER: "Career Application",
-} as const;
+
 
 /**
  * Form Section Component
@@ -158,7 +153,7 @@ export default function FormSection({
                 <option value="" disabled>
                   Interested In
                 </option>
-                {JOB_OPTIONS.map((option) => (
+                {PROJECT_ENQUIRIES.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -188,12 +183,9 @@ export default function FormSection({
                     </option>
                   ))}
                 </select>
-                <div
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-customTextGray cursor-pointer"
-                  onClick={handleIconClick}
-                >
-                  <Dropdown />
-                </div>
+                <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                <Dropdown />
+              </div>
               </div>
               <div className="mt-[45px] relative">
                 <div className="w-full px-1 pb-2 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium">
