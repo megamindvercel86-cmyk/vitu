@@ -7,7 +7,7 @@ interface ButtonProps {
   className?: string;
   defaultTextColor?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled:boolean;
+  disabled?:boolean;
 }
 
 const Button = ({
