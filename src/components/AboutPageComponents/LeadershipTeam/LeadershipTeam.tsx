@@ -14,96 +14,50 @@ import "swiper/css/navigation";
 import "../../Common/InfiniteCarousel/InfiniteCarousel.css";
 
 // ============= Types & Interfaces =============
+
 interface TeamMember {
   id: number;
   name: string;
   role: string;
-  role2?: string;
   url: string;
-  isViewMore: boolean;
-}
-
-interface DesktopTeamMember {
-  id: number;
-  name: string;
-  title: string;
-  subtitle?: string;
-  url: string;
-  bottomTitle: string;
 }
 
 // ============= Constants =============
-const desktopTeamMembers: DesktopTeamMember[] = [
-  {
-    id: 1,
-    name: "Ananth Kamath",
-    title: "Managing Director",
-    url: "/images/leaderShipTeamImages/AnanthKamath.png",
-    bottomTitle: "Managing Director",
-  },
-  {
-    id: 2,
-    name: "Laxman Kamath",
-    title: "Executive Director",
-    url: "/images/leaderShipTeamImages/LaxmanKamath.png",
-    bottomTitle: "Executive Director",
-  },
-  {
-    id: 3,
-    name: "Ananya Bhandary",
-    title: "Senior Executive",
-    url: "/images/leaderShipTeamImages/AnanyaBhandary.png",
-    bottomTitle: "Senior Executive",
-    subtitle: "Business Development",
-  },
-];
-
-const mobileTeamMembers: TeamMember[] = [
+const desktopTeamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Ananth Kamath",
     role: "Managing Director",
     url: "/images/leaderShipTeamImages/AnanthKamath.png",
-    isViewMore: false,
+  
   },
   {
     id: 2,
     name: "Laxman Kamath",
     role: "Executive Director",
     url: "/images/leaderShipTeamImages/LaxmanKamath.png",
-    isViewMore: false,
+   
   },
   {
     id: 3,
     name: "Ananya Bhandary",
-    role: "Senior Executive ",
-    role2: "Business Development",
+    role: "Senior Executive Business Development",
     url: "/images/leaderShipTeamImages/AnanyaBhandary.png",
-    isViewMore: false,
   },
   {
     id: 4,
-    name: "Ananth Kamath",
-    role: "Managing Director",
-    url: "/images/leaderShipTeamImages/AnanthKamath.png",
-    isViewMore: false,
-  },
-  {
-    id: 5,
     name: "Laxman Kamath",
     role: "Executive Director",
     url: "/images/leaderShipTeamImages/LaxmanKamath.png",
-    isViewMore: false,
   },
   {
-    id: 6,
+    id: 5,
     name: "Ananya Bhandary",
-    role: "Senior Executive ",
-    role2: "Business Development",
+    role: "Senior Executive",
     url: "/images/leaderShipTeamImages/AnanyaBhandary.png",
-    isViewMore: false,
   },
 ];
+
 
 // ============= Component =============
 /**
@@ -168,7 +122,7 @@ export default function LeadershipTeam() {
             }}
             className="mySwiper md:h-[700px] h-[450px]"
           >
-            {mobileTeamMembers.map((card, index) => (
+            {desktopTeamMembers.map((card, index) => (
               <SwiperSlide key={index} className="swiper-slide !overflow-visible">
                 <Image 
                   src={card.url} 
@@ -190,14 +144,6 @@ export default function LeadershipTeam() {
                   >
                     {card.role}
                   </Typography>
-                  {card.role2 && (
-                    <Typography 
-                      variant="custom" 
-                      className="text-xl text-[#04070799] font-FreightNeoProNormal"
-                    >
-                      {card.role2}
-                    </Typography>
-                  )}
                 </div>
               </SwiperSlide>
             ))}
@@ -217,7 +163,7 @@ export default function LeadershipTeam() {
 const TeamMemberCard = ({
   member,
 }: {
-  member: DesktopTeamMember;
+  member: TeamMember;
 }) => (
   <div className="text-center   w-[100%]">
     <div className="aspect-auto lg:mb-[34px] w-full">
@@ -237,17 +183,10 @@ const TeamMemberCard = ({
     </Typography>
     <Typography
       variant="custom"
-      className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl 2xl:text-3xl"
+      className="text-customTextGray font-FreightNeoProNormal px-20 lg:text-2xl 2xl:text-3xl"
     >
-      {member.title}
+      {member.role}
     </Typography>
-    {member.subtitle && (
-      <Typography
-        variant="custom"
-        className="text-customTextGray font-FreightNeoProNormal px-0 lg:text-2xl 2xl:text-3xl"
-      >
-        {member.subtitle}
-      </Typography>
-    )}
+   
   </div>
 );
