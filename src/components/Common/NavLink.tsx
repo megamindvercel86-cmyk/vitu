@@ -13,7 +13,7 @@ interface NavLinkProps {
 
 const NavLink = ({ href, children, className, target = false, onClick }: NavLinkProps) => {
   const combinedClassName = classNames(
-    "lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium",
+    "lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer",
     className,
   );
 

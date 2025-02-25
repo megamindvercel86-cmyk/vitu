@@ -24,6 +24,7 @@ import {
 interface CarouselProps {
   items: JSX.Element[];
   initialScroll?: number;
+  height?:string
 }
 
 type Card = {
@@ -43,7 +44,7 @@ export const CarouselContext = createContext<{
   currentIndex: 0,
 });
 
-export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
+export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -83,7 +84,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const handleCardClose = useCallback((index: number) => {
     if (carouselRef.current) {
       const containerWidth = carouselRef.current.clientWidth;
-      const cardWidth = isMobile() ? 230 : 384; // Adjust width for mobile vs desktop
+      const cardWidth = isMobile() ? 230 : 384;
       const gap = isMobile() ? 4 : 8;
       const scrollPosition =
         index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
@@ -98,7 +99,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   useEffect(() => {
     if (carouselRef.current && isMobile()) {
-      handleCardClose(1); // Center the second card on mobile screens
+      handleCardClose(1);
     }
   }, [handleCardClose, isMobile]);
 
@@ -108,20 +109,23 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     >
       <div className="relative w-full">
         <div
-          className="flex overflow-x-scroll overscroll-x-auto  scroll-smooth [scrollbar-width:none]"
+          className={`flex overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
           ref={carouselRef}
           onScroll={checkScrollability}
         >
           <div
             className={cn(
-              "absolute right-0  z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
+              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
             )}
           ></div>
 
-          <div className={cn(
-            "flex flex-row justify-between w-full",
-            ""
-          )}>
+          {/* Updated container for cards */}
+          <div 
+            className={cn(
+              "flex flex-row gap-4", // Added gap and padding
+              "min-w-max" // Ensures container grows with content
+            )}
+          >
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -140,10 +144,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 }}
                 key={"card" + index}
                 className={cn(
-                  "rounded-3xl w-[280px] h-[350px]",
+                  "rounded-3xl flex-shrink-0", // Added flex-shrink-0
+                  "w-[280px] h-[350px]",
                   "md:w-[350px] md:h-[350px]",
                   "lg:w-[400px] lg:h-[500px]",
-                  "xl:w-[432px] xl:h-[540px] 2xl:w-[632px] 2xl:h-[640px]",
+                  "xl:w-[432px] xl:h-[540px]",
+                  "2xl:w-[632px] 2xl:h-[640px]",
                   "transition-all duration-300"
                 )}
               >
@@ -152,8 +158,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl-mt-[75px] mt-[36px] ">
-          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base  text-customBrown  xl:text-[28px]">
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
+          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
             Explore More
           </span>
           <div className="flex gap-2">

@@ -54,6 +54,7 @@ const ARTICLES: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
+  
 ];
 
 const MOBILE_ARTICLES: Article[] = [
