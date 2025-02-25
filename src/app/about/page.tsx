@@ -67,6 +67,8 @@ const NAVBAR_CONFIG = {
 // }
 
 
+
+
 export default function AboutPage({}: AboutPageProps) {
   const storySectionRef = useRef<HTMLElement | null>(null);
   const scrollToStory = () => {
