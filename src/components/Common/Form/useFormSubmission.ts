@@ -25,7 +25,7 @@ const uploadToCloudinary = async (file: File): Promise<string> => {
 
   try {
     const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+      `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`,  // Use 'raw'
       { method: 'POST', body: formData }
     );
     const data = await response.json();
@@ -36,6 +36,7 @@ const uploadToCloudinary = async (file: File): Promise<string> => {
     throw error;
   }
 };
+
 
 export const useFormSubmission = (page: string) => {
   const handleFormSubmission = async (values: FormValues): Promise<void> => {
