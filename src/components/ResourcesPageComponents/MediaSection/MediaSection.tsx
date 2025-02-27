@@ -1,7 +1,7 @@
 "use client";
 
 // ============= Component Imports =============
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,65 +18,12 @@ import "swiper/css/navigation";
 // ============= Types & Interfaces =============
 interface NewsItem {
   id: number;
-  image: string;
-  source: string;
-  date: string;
+  fileUrl: string;
+  link: string;
   title: string;
+  description:string;
 }
 
-// ============= Constants =============
-const NEWS_ITEMS: NewsItem[] = [
-  {
-    id: 1,
-    image: "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title: "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-  {
-    id: 2,
-    image: "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-  {
-    id: 3,
-    image:
-      "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-  {
-    id: 4,
-    image:
-      "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-  {
-    id: 5,
-    image: "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-  {
-    id: 6,
-    image:
-      "/images/mediaSectionImages/NewsItem1.png",
-    source: "DAIJIWORLD",
-    date: "NOV 18 2024",
-    title:
-      "Vitu Realty wins Economic Times 'Innovative Plot Developer of the Year – Mangalore' award",
-  },
-];
 
 /**
  * Media Section Component
@@ -111,18 +58,49 @@ export default function MediaSection(): React.ReactElement {
       swiperRef.current.slideNext();
     }
   };
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchTeamMembers() {
+      try {
+        const response = await fetch("/api/news");
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
+        }
+        const data = await response.json();
+        console.log(data.data); // Check the structure of the response
+
+        // Filter out team members where development is true
+        
+
+        setNews(data.data); // Set filtered data to state
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+      }
+    }
+
+    fetchTeamMembers();
+  }, []);
+
+
+
 
   // ============= Render Helpers =============
   const renderNewsCard = (item: NewsItem) => {
     // Split the date string into parts
-    const [month, day, year] = item.date.split(' ');
-    
+    // const [month, day, year] = item.date.split(' ');
+    const handleReadMore = () => {
+      // Open the link in a new tab
+      window.open(item.link, "_blank");
+    };
     return (
       <div className="media-card rounded-lg overflow-hidden">
         {/* Image Container */}
         <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
           <Image
-            src={item.image}
+            src={item.fileUrl}
             alt={item.title}
             width={400}
             height={310}
@@ -133,18 +111,18 @@ export default function MediaSection(): React.ReactElement {
         {/* Content */}
         <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.source}</SubHeading>
-            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">|</SubHeading>
-            <SubHeading className="text-customTextGray 2xl:text-[1.5rem]">
-              {month} <span className="font-CandideCondensedNormal">{day}</span> <span className="font-CandideCondensedNormal">{year}</span>
-            </SubHeading>
+            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.title}</SubHeading>
           </div>
           <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
-            {item.title}
+            {item.description}
           </SubHeading>
-          <button className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 2xl:text-[1.5rem]">
-            Read More
-          </button>
+          <button
+          onClick={handleReadMore}
+          className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 2xl:text-[1.5rem]"
+        >
+          Read More
+        </button>
+
         </div>
       </div>
     );
@@ -188,7 +166,7 @@ export default function MediaSection(): React.ReactElement {
             }}
             className="media-swiper h-full"
           >
-            {NEWS_ITEMS.map((item) => (
+            {news?.map((item) => (
               <SwiperSlide key={item.id} className="media-slide !h-auto">
                 {renderNewsCard(item)}
               </SwiperSlide>
