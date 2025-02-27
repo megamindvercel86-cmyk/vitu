@@ -109,7 +109,7 @@ export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: Carouse
     >
       <div className="relative w-full">
         <div
-          className={`flex overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
+          className={`flex justify-center  overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -122,7 +122,7 @@ export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: Carouse
           {/* Updated container for cards */}
           <div 
             className={cn(
-              "flex flex-row gap-4", // Added gap and padding
+              "flex flex-row gap-8", // Added gap and padding
               "min-w-max" // Ensures container grows with content
             )}
           >

@@ -5,15 +5,7 @@ import chieverslog from "../../../public/images/logos/chieverslog.svg";
 import SubHeading from "../Common/SubHeding";
 import NavLink from "../Common/NavLink";
 import FooterLink from "../Common/FooterLinks";
-import {
-  Instgram,
-  LinkedIn,
-  Mail,
-  Meta,
-  Phone,
-  Share,
-  Youtube,
-} from "../Icons/Icons";
+import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/Icons";
 
 /**
  * Footer Component
@@ -27,12 +19,7 @@ import {
 const Footer: FC = () => {
   // SVG Arrow for collapsible sections in mobile view
   const DropdownArrow: FC = () => (
-    <svg
-      className="w-5 h-5 text-footerTextColor"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
+    <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
     </svg>
   );
@@ -55,10 +42,23 @@ const Footer: FC = () => {
           </div>
 
           {/* Quick Links */}
-          <FooterSection title="Quick Links" links={[{ href: "/about", label: "About Us" }, { href: "/projects", label: "Our Projects" }, { href: "/career-application", label: "Careers" }]} />
+          <FooterSection
+            title="Quick Links"
+            links={[
+              { href: "/about", label: "About Us" },
+              { href: "/projects", label: "Our Projects" },
+              { href: "/career-application", label: "Careers" },
+            ]}
+          />
 
           {/* Resources */}
-          <FooterSection title="Resources" links={[{ href: "/resources/media-kit", label: "Media" }, { href: "#", label: "Insights" }]} />
+          <FooterSection
+            title="Resources"
+            links={[
+              { href: "/resources/media-kit", label: "Media" },
+              { href: "#", label: "Insights" },
+            ]}
+          />
 
           {/* Contact Information */}
           <div>
@@ -69,10 +69,18 @@ const Footer: FC = () => {
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" />
               {/* Social Media Links */}
               <li className="flex gap-2 justify-center md:justify-start">
-                <NavLink href="https://www.instagram.com/vitu.realty" target={true}><Instgram /></NavLink>
-                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}><LinkedIn /></NavLink>
-                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}><Youtube /></NavLink>
-                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}><Meta /></NavLink>
+                <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
+                  <Instgram />
+                </NavLink>
+                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}>
+                  <LinkedIn />
+                </NavLink>
+                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}>
+                  <Youtube />
+                </NavLink>
+                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}>
+                  <Meta />
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -85,18 +93,8 @@ const Footer: FC = () => {
   );
 };
 const DropdownArrow = () => (
-  <svg
-    className="w-5 h-5 text-footerTextColor"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 9l-7 7-7-7"
-    />
+  <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </svg>
 );
 /**
@@ -146,15 +144,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string }> = ({ icon, text
   return (
     <li className="flex md:flex-row flex-col md:items-start items-center md:gap-0 gap-3">
       {icon}
-      <FooterLink href="#" className="pl-4">
+      <FooterLink href="#" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode ? (
-          <span className={`font-CandideCondensedNormal`}>
-            {text}
-          </span>
-        ) : (
-          text
-        )}
+        {isPhoneNumber || isPincode ? <span className={`font-CandideCondensedNormal`}>{text}</span> : text}
       </FooterLink>
     </li>
   );
@@ -168,13 +160,16 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2024</span>{" "}
-        <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">2024</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">Legal Disclaimer</a>
+        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+          Legal Disclaimer
+        </a>
         <span className="text-[#FFFFFF66] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">Terms of Service</a>
+        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+          Terms of Service
+        </a>
       </div>
     </div>
   </div>
