@@ -185,6 +185,7 @@ interface Card {
   url: string;
   width?: string;
   height?: string;
+  position?: "left" | "right" ;
 }
 
 interface ExpandableCardsProps {
@@ -354,6 +355,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               >
                 <AppleStyleCard
                   id={card.id}
+                  position={card.position}
                   imageSrc={card.url}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"

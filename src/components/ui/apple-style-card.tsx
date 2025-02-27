@@ -192,7 +192,7 @@ export default function AppleStyleCard({
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography variant="custom" className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl">{bottomTitle}</Typography>
         </div>
-        <div className="absolute bottom-4 md:right-8 right-4 z-50">
+        <div className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}>
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (
               <PrimaryViewMoreButton />
