@@ -118,16 +118,16 @@ export default function AppleStyleCard({
             )}
           >
             <div className="relative h-auto ">
-              <Image
+              {/* <Image
                 src={imageSrc || "/placeholder.svg"}
                 alt={title || "Card image"}
             
                 width={1042}
                 height={45}
                 className={cn("object-   h-[652px] w-full", expandedImageClassName)}
-              />
+              /> */}
             </div>
-            <div className="p-4 md:p-10">
+            <div className="">
               <button
                 className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
@@ -135,7 +135,7 @@ export default function AppleStyleCard({
                 <IconX className="h-5 w-5 text-black" />
               </button>
               
-              <div className="mt-6">{content}</div>
+              <div>{content}</div>
             </div>
           </motion.div>
         </div>
@@ -201,12 +201,13 @@ export default function AppleStyleCard({
             ))}
         </div>
 
-        <Image
+        {/* <Image
           src={imageSrc || "/placeholder.svg"}
           alt={title || "Card image"}
           fill
           className={cn("object-cover absolute z-10 inset-0", imageClassName)}
-        />
+        /> */}
+        
       </motion.button>
 
       {isMounted && createPortal(modalContent, document.body)}

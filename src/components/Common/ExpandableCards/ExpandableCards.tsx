@@ -7,6 +7,8 @@ import CustomCursor from "../CustomCursor";
 import Typography from "@/components/Typography/Typography";
 import exploreProjects from "@/data/exploreProjects.json";
 import { ArrowRightIcon } from "@/components/Icons/Icons";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -28,18 +30,20 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
+  console.log("FooterProps", nextProjectTitle);
+
   return (
-    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
+    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
       <div
         onClick={onFooterClick}
-        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 cursor-pointer"
+        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 cursor-pointer"
       >
         <div>
-          <p className="text-xs text-[#8E8E93] uppercase font-roboto">
-            Next Project
+          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
+            UP NEXT
           </p>
-          <h4 className="text-black1 font-roboto font-bold text-base max-w-[15rem] lg:max-w-none">
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
             {nextProjectTitle}
           </h4>
         </div>
@@ -48,57 +52,65 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     </div>
   );
 };
-
+let project;
 // Update the CardContent component to accept props
 const CardContent = ({ cardId }: { cardId: number }) => {
-  const project = exploreProjects.find((project) => project.id === cardId);
+  const [currentCardId, setCurrentCardId] = useState(cardId);
+
+  let project = exploreProjects.find((project) => project.id === currentCardId);
+
   const handleFooterClick = () => {
-    console.log("Footer clicked - navigate to next project or perform other action");
-    // e.g., use Next.js router.push('/next-project') or any other action
+    console.log(
+      "Footer clicked - navigate to next project or perform other action"
+    );
+
+    const nextProject = exploreProjects.find((project) => {
+      if (project.id === 5) {
+        return 1 === currentCardId;
+      } else {
+        return project.id + 1 === currentCardId;
+      }
+    });
+
+    if (nextProject) {
+      setCurrentCardId(nextProject.id); // Update state to trigger re-render
+    }
   };
-  const nextProject = exploreProjects.find((project) => project.id + 1 === cardId);
+
+  const nextProject = exploreProjects.find((project) => {
+    if (project.id === 5) {
+      return 1 === currentCardId;
+    } else {
+      return project.id + 1 === currentCardId;
+    }
+  });
+
+  console.log(nextProject);
+
   return (
     <>
       {project && (
         <div key={"dummy-content"}>
+          <Image
+            src={project.url || "/placeholder.svg"}
+            alt={nextProject?.title || "Card image"}
+            width={1042}
+            height={45}
+            className={cn("object-   h-[652px] w-full")}
+          />
+          <div className="p-4 md:p-10">
+
           <Typography variant="h1" className="text-customBrown">
             {project.title}
           </Typography>
-          {/* <Typography
-            variant="h2"
-            className="font-freightNeoMedium text-[#040707CC] !text-[22px]"
-          >
-            {project.subtitle}
-          </Typography> */}
-          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[50px]  !text-xl">
+          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
             {project.introduction}
           </Typography>
-          {/* {project.sections.map((section, index) => (
-            <div key={index}>
-              <Typography
-                variant="h2"
-                className="font-freightNeoSemibold text-[#040707CC] !text-[26px] pt-[45px]"
-              >
-                {section.heading}
-              </Typography>
-              <Typography className="text-[#04070799] font-FreightNeoProNormal !text-xl">
-                {section.description}
-              </Typography>
-              {section.subsections &&
-                section.subsections.map((subsection, subIndex) => (
-                  <div key={subIndex}>
-                    <Typography className="font-FreightNeoProNormal text-[#04070799]  !text-xl">
-                      <strong>{subsection.subheading}:</strong>{" "}
-                      {subsection.description}
-                    </Typography>
-                  </div>
-                ))}
-            </div>
-          ))} */}
           <Footer
             onFooterClick={handleFooterClick}
-            nextProjectTitle="Next Project Title"
+            nextProjectTitle={nextProject?.title || ""}
           />
+          </div>
         </div>
       )}
     </>
