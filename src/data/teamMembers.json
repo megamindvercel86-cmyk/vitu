@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "role": "Developer",
+    "fileUrl": "/images/teamMembers/john_doe.png"
+  },
+  {
+    "id": "2",
+    "name": "Jane Smith",
+    "role": "Designer",
+    "fileUrl": "/images/teamMembers/jane_smith.png"
+  },
+  {
+    "id": "3",
+    "name": "Alice Johnson",
+    "role": "Project Manager",
+    "fileUrl": "/images/teamMembers/alice_johnson.png"
+  },
+  {
+    "id": "4",
+    "name": "Bob Brown",
+    "role": "QA Engineer",
+    "fileUrl": "/images/teamMembers/bob_brown.png"
+  }
+]
