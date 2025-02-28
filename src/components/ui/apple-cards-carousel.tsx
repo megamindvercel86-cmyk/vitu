@@ -24,7 +24,8 @@ import {
 interface CarouselProps {
   items: JSX.Element[];
   initialScroll?: number;
-  height?:string
+  height?: string;
+  exploreMore?: boolean;
 }
 
 type Card = {
@@ -44,7 +45,12 @@ export const CarouselContext = createContext<{
   currentIndex: 0,
 });
 
-export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: CarouselProps) => {
+export const Carousel = ({
+  items,
+  initialScroll = 0,
+  height = "h-auto",
+  exploreMore = true,
+}: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -81,21 +87,24 @@ export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: Carouse
     }
   };
 
-  const handleCardClose = useCallback((index: number) => {
-    if (carouselRef.current) {
-      const containerWidth = carouselRef.current.clientWidth;
-      const cardWidth = isMobile() ? 230 : 384;
-      const gap = isMobile() ? 4 : 8;
-      const scrollPosition =
-        index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
+  const handleCardClose = useCallback(
+    (index: number) => {
+      if (carouselRef.current) {
+        const containerWidth = carouselRef.current.clientWidth;
+        const cardWidth = isMobile() ? 230 : 384;
+        const gap = isMobile() ? 4 : 8;
+        const scrollPosition =
+          index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
 
-      carouselRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-      setCurrentIndex(index);
-    }
-  }, [isMobile]);
+        carouselRef.current.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+        setCurrentIndex(index);
+      }
+    },
+    [isMobile]
+  );
 
   useEffect(() => {
     if (carouselRef.current && isMobile()) {
@@ -120,9 +129,9 @@ export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: Carouse
           ></div>
 
           {/* Updated container for cards */}
-          <div 
+          <div
             className={cn(
-              "flex flex-row gap-8", // Added gap and padding
+              "flex flex-row gap-8 xl:gap-4", // Added gap and padding
               "min-w-max" // Ensures container grows with content
             )}
           >
@@ -158,27 +167,29 @@ export const Carousel = ({ items, initialScroll = 0, height ="h-auto" }: Carouse
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
-            Explore More
-          </span>
-          <div className="flex gap-2">
-            <button
-              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-              onClick={scrollLeft}
-              disabled={!canScrollLeft}
-            >
-              <IconArrowNarrowLeft />
-            </button>
-            <button
-              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-              onClick={scrollRight}
-              disabled={!canScrollRight}
-            >
-              <IconArrowNarrowRight />
-            </button>
+        {exploreMore && (
+          <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
+            <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+              Explore More
+            </span>
+            <div className="flex gap-2">
+              <button
+                className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+                onClick={scrollLeft}
+                disabled={!canScrollLeft}
+              >
+                <IconArrowNarrowLeft />
+              </button>
+              <button
+                className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+                onClick={scrollRight}
+                disabled={!canScrollRight}
+              >
+                <IconArrowNarrowRight />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </CarouselContext.Provider>
   );

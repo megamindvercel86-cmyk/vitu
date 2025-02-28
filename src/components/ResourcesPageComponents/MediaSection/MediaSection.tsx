@@ -47,20 +47,33 @@ export default function MediaSection(): React.ReactElement {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
 
   // ============= Handlers =============
-  const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
-  };
+  const [isBeginning, setIsBeginning] = useState(true);
+const [isEnd, setIsEnd] = useState(false);
 
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
+useEffect(() => {
+  if (swiperRef.current) {
+    setIsBeginning(swiperRef.current.isBeginning);
+    setIsEnd(swiperRef.current.isEnd);
+  }
+}, []);
+
+const handlePrev = () => {
+  if (swiperRef.current) {
+    swiperRef.current.slidePrev();
+    setIsBeginning(swiperRef.current.isBeginning);
+    setIsEnd(swiperRef.current.isEnd);
+  }
+};
+
+const handleNext = () => {
+  if (swiperRef.current) {
+    swiperRef.current.slideNext();
+    setIsBeginning(swiperRef.current.isBeginning);
+    setIsEnd(swiperRef.current.isEnd);
+  }
+};
+
   const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchTeamMembers() {
@@ -153,7 +166,7 @@ export default function MediaSection(): React.ReactElement {
             slidesPerView={1}
             loop={true}
             autoplay={{
-              delay: 250430,
+              delay: 2500,
               disableOnInteraction: false,
             }}
             breakpoints={{

@@ -62,13 +62,34 @@ export default function LeadershipTeam() {
         {/* Desktop Carousel */}
         <div className="hidden lg:block">
           
-          <Carousel
-            
-            height="h-[42.5rem]"
-            items={teamMembers.map((member) => (
-              <TeamMemberCard key={member.id} member={member} />
-            ))}
-          />
+        <Swiper
+            // onSwiper={(swiper) => {
+            //   swiperRef.current = swiper;
+            // }}
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="media-swiper h-full"
+          >
+          {teamMembers.map((member) => (
+              <SwiperSlide key={member.id} className="media-slide !h-auto">
+              <TeamMemberCard member={member} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
           
         </div>
 
