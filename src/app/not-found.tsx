@@ -1,7 +1,7 @@
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import Image from "next/image";
-import bgImage from "../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp"
+import bgImage from "../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
 import Link from "next/link";
 
 // ============= Constants =========
@@ -12,7 +12,6 @@ const NAVBAR_CONFIG = {
     showGetInTouch: true,
   },
 };
-
 
 export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
@@ -45,40 +44,34 @@ export async function generateMetadata() {
       images: [imageUrl],
     },
   };
-}export default function NotFound() {
-    return (
-      <>
-        <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
-          <div className="relative" role="img" aria-label="Modern real estate background">
-            {/* Background Image */}
-            <Image
-              src={bgImage}
-              alt="Home Hero Background"
-              placeholder="blur"
-              className="w-full h-full object-cover"
-            />
-  
-            {/* Hero Content */}
-            <div className="absolute top-0 left-0 right-0 bottom-36 flex flex-col items-center justify-center text-center text-white">
-              {/* 404 Title */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-freightNeoMedium">
-                Oops! Page Not Found
-              </h1>
-  
-              {/* 404 Description */}
-              <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light font-CandideCondensedNormal">
-                The page you're looking for doesn't exist or has been moved.
-              </p>
-  
-              {/* Go Back to Home Button */}
-              {/* <Link href="/" passHref>
+}
+export default function NotFound() {
+  return (
+    <>
+      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+        <div className="relative" role="img" aria-label="Modern real estate background">
+          {/* Background Image */}
+          <Image src={bgImage} alt="Home Hero Background" placeholder="blur" className="w-full h-full object-cover" />
+
+          {/* Hero Content */}
+          <div className="absolute top-0 left-0 right-0 bottom-36 flex flex-col items-center justify-center text-center text-white">
+            {/* 404 Title */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-freightNeoMedium">Oops! Page Not Found</h1>
+
+            {/* 404 Description */}
+            <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light font-CandideCondensedNormal">
+              The page you're looking for doesn't exist or has been moved.
+            </p>
+
+            {/* Go Back to Home Button */}
+            {/* <Link href="/" passHref>
                 <button className="mt-8 px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
                   Go Back to Home
                 </button>
               </Link> */}
-            </div>
           </div>
-        </Layout>
-      </>
-    );
-  }
+        </div>
+      </Layout>
+    </>
+  );
+}
