@@ -6,7 +6,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
 import ExpandableCards from "../Common/ExpandableCards/ExpandableCards";
-
+import exploreProjects from "@/data/exploreProjects.json";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface Card {
@@ -116,7 +116,7 @@ const ExploreProjects: React.FC = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <InfiniteCarousel cards={CARDS_DATA} />
+        <InfiniteCarousel cards={CARDS_DATA} data={exploreProjects}/>
 
         {/* Mobile CTA Button */}
         <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">

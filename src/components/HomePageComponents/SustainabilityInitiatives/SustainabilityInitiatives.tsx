@@ -5,7 +5,7 @@ import Typography from "@/components/Typography/Typography";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
 import CardContent from "@/components/Common/CardContents/CardContents";
-
+import sustainabilityInitiatives from "@/data/sustainabilityInitiatives.json";
 // ============= Types & Interfaces =============
 interface InitiativeCard {
   id: number;
@@ -140,7 +140,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
 
       {/* Mobile Carousel */}
       <div className="block mb-12 md:hidden">
-        <InfiniteCarousel cards={INITIATIVE_CARDS} />
+        <InfiniteCarousel cards={INITIATIVE_CARDS} data={sustainabilityInitiatives}/>
       </div>
     </div>
   );

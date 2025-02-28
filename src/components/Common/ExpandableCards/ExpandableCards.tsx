@@ -104,7 +104,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             {project.title}
           </Typography>
           <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-            {project.introduction}
+            {project.description}
           </Typography>
           <Footer
             onFooterClick={handleFooterClick}

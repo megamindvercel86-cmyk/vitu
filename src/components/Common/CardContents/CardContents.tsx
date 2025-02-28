@@ -12,8 +12,8 @@ const CardContent = ({id}: {id:number}) => {
   let project: {
     id: number;
     url: string;
-    bottomTitle: string;
-    content: string;
+    title: string;
+    description: string;
 } | undefined
 
    project = sustainabilityInitiatives.find((project) => project.id === currentCardId);
@@ -51,19 +51,19 @@ const CardContent = ({id}: {id:number}) => {
       <div key={"dummy-content"}>
         <Image
           src={project?.url || "/placeholder.svg"}
-          alt={project?.bottomTitle || "Card image"}
+          alt={project?.title || "Card image"}
           width={1042}
           height={45}
           className={cn("object-   h-[652px] w-full")}
         />
         <div className="p-4 md:p-10">
           <Typography variant="h1" className="text-customBrown">
-            {project?.bottomTitle}
+            {project?.title}
           </Typography>
-          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project?.content}</Typography>
+          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project?.description}</Typography>
           <Footer
                     onFooterClick={handleFooterClick}
-                    nextProjectTitle={nextProject?.bottomTitle || ""}
+                    nextProjectTitle={nextProject?.title || ""}
                   />
         </div>
       </div>

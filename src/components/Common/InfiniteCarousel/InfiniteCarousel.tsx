@@ -14,7 +14,6 @@ import {
   IconArrowNarrowRight,
 } from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
-import exploreProjects from "@/data/exploreProjects.json";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 // Define a type for the card object
@@ -33,10 +32,13 @@ interface Card {
   role?: string;
   role2?: string;
   name?: string;
+  description?: string;
 }
 
 interface InfiniteCarouselProps {
   cards: Card[];
+  isSustainable?: boolean;
+  data?: Card[];
 }
 
 interface FooterProps {
@@ -69,19 +71,15 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 };
 
 // Update the CardContent component to accept props
-const CardContent = ({ cardId }: { cardId: number }) => {
+const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
-  let project = exploreProjects.find((project) => project.id === currentCardId);
+  let project = data.find((project: Card) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    console.log(
-      "Footer clicked - navigate to next project or perform other action"
-    );
-
-    const nextProject = exploreProjects.find((project) => {
-      if (project.id === 5) {
-        return 1 === currentCardId;
+    const nextProject = data.find((project: Card) => {
+      if (project.id === data[data.length-1].id) {
+        return data[0].id === currentCardId;
       } else {
         return project.id + 1 === currentCardId;
       }
@@ -92,7 +90,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
     }
   };
 
-  const nextProject = exploreProjects.find((project) => {
+  const nextProject = data.find((project) => {
     if (project.id === 5) {
       return 1 === currentCardId;
     } else {
@@ -100,7 +98,6 @@ const CardContent = ({ cardId }: { cardId: number }) => {
     }
   });
 
-  console.log(nextProject);
 
   return (
     <>
@@ -111,7 +108,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}
-            className={cn("object-   h-[652px] w-full")}
+            className={cn("object-   h-[300px] w-full")}
           />
           <div className="p-4 md:p-10">
 
@@ -119,7 +116,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             {project.title}
           </Typography>
           <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-            {project.introduction}
+            {project.description}
           </Typography>
           <Footer
             onFooterClick={handleFooterClick}
@@ -132,7 +129,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
   );
 };
 
-const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
+const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
 
   const handlePrev = () => {
@@ -190,7 +187,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards }) => {
               subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
-              content={<CardContent cardId={card.id} />}
+              content={data&&<CardContent cardId={card.id} data={data}/>}
             />
             <Typography variant="custom"> {card.name}</Typography>
           </SwiperSlide>
