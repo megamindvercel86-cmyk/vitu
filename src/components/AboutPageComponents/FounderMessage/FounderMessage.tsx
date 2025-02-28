@@ -23,6 +23,7 @@ interface VideoData {
   videoUrl: string;
 }
 
+
 /**
  * FounderMessage Component
  * Displays an embedded YouTube video with a play button to watch the full video.
