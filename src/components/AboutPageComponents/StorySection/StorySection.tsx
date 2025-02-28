@@ -268,7 +268,7 @@ export default function Gallery() {
     // Adjust transform based on viewport width
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
     else if (windowWidth > 1400) return `translate(-${progress * 11206 + 15}px, -50%)`;
-    else if (windowWidth > 100) return `translate(-${progress * (maxTranslateX - visibleWidth)}px, -50%)`;
+    else if (windowWidth > 100) return `translate(-${progress * (maxTranslateX - visibleWidth + 80)}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
 
@@ -351,7 +351,7 @@ export default function Gallery() {
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
         <div
-          className="absolute top-[46%] z-50"
+          className="absolute md:top-[46%] top-[38%] z-50"
           ref={svgPathRef}
           style={{
             clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
