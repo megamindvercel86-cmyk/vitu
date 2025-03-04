@@ -1,25 +1,12 @@
 "use client";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-  JSX,
-  useCallback,
-} from "react";
+import React, { useEffect, useRef, useState, createContext, useContext, JSX, useCallback } from "react";
 import { IconX } from "@tabler/icons-react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  PrimaryViewMoreButton,
-  SecondaryViewMoreButton,
-} from "../Icons/Icons";
+import { IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -45,12 +32,7 @@ export const CarouselContext = createContext<{
   currentIndex: 0,
 });
 
-export const Carousel = ({
-  items,
-  initialScroll = 0,
-  height = "h-auto",
-  exploreMore = true,
-}: CarouselProps) => {
+export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreMore = true }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -93,8 +75,7 @@ export const Carousel = ({
         const containerWidth = carouselRef.current.clientWidth;
         const cardWidth = isMobile() ? 230 : 384;
         const gap = isMobile() ? 4 : 8;
-        const scrollPosition =
-          index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
+        const scrollPosition = index * (cardWidth + gap) - (containerWidth - cardWidth) / 2;
 
         carouselRef.current.scrollTo({
           left: scrollPosition,
@@ -113,20 +94,14 @@ export const Carousel = ({
   }, [handleCardClose, isMobile]);
 
   return (
-    <CarouselContext.Provider
-      value={{ onCardClose: handleCardClose, currentIndex }}
-    >
+    <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <div className="relative w-full">
         <div
           className={`flex justify-center  overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div
-            className={cn(
-              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
-            )}
-          ></div>
+          <div className={cn("absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l")}></div>
 
           {/* Updated container for cards */}
           <div
@@ -169,9 +144,7 @@ export const Carousel = ({
         </div>
         {exploreMore && (
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-            <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
-              Explore More
-            </span>
+            <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
             <div className="flex gap-2">
               <button
                 className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -195,15 +168,7 @@ export const Carousel = ({
   );
 };
 
-export const Card = ({
-  card,
-  index,
-  layout = false,
-}: {
-  card: Card;
-  index: number;
-  layout?: boolean;
-}) => {
+export const Card = ({ card, index, layout = false }: { card: Card; index: number; layout?: boolean }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
@@ -247,6 +212,7 @@ export const Card = ({
               exit={{ opacity: 0 }}
               className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
             />
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -305,41 +271,19 @@ export const Card = ({
             {card.subtitle}
           </motion.p>
         </div>
-        <BlurImage
-          src={card.src}
-          alt={card.title}
-          fill
-          className="object-cover absolute z-10 inset-0"
-        />
+        <BlurImage src={card.src} alt={card.title} fill className="object-cover absolute z-10 inset-0" />
         {/* Plus icon at the bottom right */}
-        <div className="absolute bottom-4 right-4 z-50">
-          {card.type === "primary" ? (
-            <PrimaryViewMoreButton />
-          ) : (
-            <SecondaryViewMoreButton />
-          )}
-        </div>
+        <div className="absolute bottom-4 right-4 z-50">{card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}</div>
       </motion.button>
     </>
   );
 };
 
-export const BlurImage = ({
-  height,
-  width,
-  src,
-  className,
-  alt,
-  ...rest
-}: ImageProps) => {
+export const BlurImage = ({ height, width, src, className, alt, ...rest }: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
-      className={cn(
-        "transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
-        className
-      )}
+      className={cn("transition duration-300", isLoading ? "blur-sm" : "blur-0", className)}
       onLoad={() => setLoading(false)}
       src={src}
       width={width}

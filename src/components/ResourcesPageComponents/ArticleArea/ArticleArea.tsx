@@ -130,10 +130,12 @@ export default function ArticleArea(): React.ReactElement {
     ARTICLES.map(article => ({
       ...article,
       src: article.url,
+      
       content: (
         <div className="text-neutral-700 p-4">
           <p>{article.subtitle || "Discover more insights in this article."}</p>
         </div>
+        
       ),
     }));
 
@@ -180,7 +182,7 @@ export default function ArticleArea(): React.ReactElement {
 
         {/* Mobile Carousel */}
         <div className="relative md:block lg:hidden">
-          <InfiniteCarousel cards={MOBILE_ARTICLES} />
+          <InfiniteCarousel cards={ARTICLES} data={ARTICLES} />
         </div>
       </main>
     </div>

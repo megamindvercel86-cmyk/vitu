@@ -36,18 +36,16 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
       <div
-        onClick={onFooterClick}
-        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 cursor-pointer"
+        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 "
       >
         <div>
-          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
-            UP NEXT
-          </p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
-            {nextProjectTitle}
-          </h4>
+          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">UP NEXT</p>
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
         </div>
-        <ArrowRightIcon />
+        <div onClick={onFooterClick} className="cursor-pointer">
+          
+          <ArrowRightIcon />
+        </div>
       </div>
     </div>
   );
@@ -60,9 +58,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
   let project = exploreProjects.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    console.log(
-      "Footer clicked - navigate to next project or perform other action"
-    );
+    console.log("Footer clicked - navigate to next project or perform other action");
 
     const nextProject = exploreProjects.find((project) => {
       if (project.id === 5) {
@@ -99,17 +95,11 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             className={cn("object-   h-[652px] w-full")}
           />
           <div className="p-4 md:p-10">
-
-          <Typography variant="h1" className="text-customBrown">
-            {project.title}
-          </Typography>
-          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-            {project.description}
-          </Typography>
-          <Footer
-            onFooterClick={handleFooterClick}
-            nextProjectTitle={nextProject?.title || ""}
-          />
+            <Typography variant="h1" className="text-customBrown">
+              {project.title}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
+            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
       )}
@@ -185,7 +175,7 @@ interface Card {
   url: string;
   width?: string;
   height?: string;
-  position?: "left" | "right" ;
+  position?: "left" | "right";
 }
 
 interface ExpandableCardsProps {
@@ -250,8 +240,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         const element = containerRef.current;
         if (element) {
           const yOffset = 300;
-          const y =
-            element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
           gsap.to(window, {
             duration: 1.5,
@@ -269,9 +258,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   return (
     <div className="h-auto flex items-center justify-center">
       {/* Only render cursor when not expanded */}
-      {!isExpanded && (
-        <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />
-      )}
+      {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh] md:h-[150vh]" : "h-[100vh]"}`}
@@ -325,12 +312,8 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         <AnimatePresence>
           {cards.map((card, index) => {
             const position = isExpanded
-              ? expandedPositions[
-                  currentBreakpoint as keyof typeof expandedPositions
-                ][index]
-              : notExpandedPositions[
-                  currentBreakpoint as keyof typeof notExpandedPositions
-                ][index];
+              ? expandedPositions[currentBreakpoint as keyof typeof expandedPositions][index]
+              : notExpandedPositions[currentBreakpoint as keyof typeof notExpandedPositions][index];
 
             return (
               <motion.div

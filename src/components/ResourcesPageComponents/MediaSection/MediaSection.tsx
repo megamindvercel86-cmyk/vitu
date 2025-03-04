@@ -55,7 +55,7 @@ useEffect(() => {
     setIsBeginning(swiperRef.current.isBeginning);
     setIsEnd(swiperRef.current.isEnd);
   }
-}, []);
+}, [swiperRef.current]);
 
 const handlePrev = () => {
   if (swiperRef.current) {

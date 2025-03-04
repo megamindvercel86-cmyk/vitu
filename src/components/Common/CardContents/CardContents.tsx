@@ -82,14 +82,17 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
       <div
-          onClick={onFooterClick}
-        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 cursor-pointer"
+        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 "
       >
         <div>
           <p className="text-xs text-[#8E8E93] uppercase font-roboto">Up Next</p>
           <h4 className="text-black1 font-roboto font-bold text-base max-w-[15rem] lg:max-w-none">{nextProjectTitle} </h4>
         </div>
-        <ArrowRightIcon />
+          
+          <div onClick={onFooterClick} className="cursor-pointer">
+          <ArrowRightIcon />
+
+        </div>
       </div>
     </div>
   );
