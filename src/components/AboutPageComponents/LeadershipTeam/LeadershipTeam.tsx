@@ -7,7 +7,7 @@ import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Navigation } from "swiper/modules";
-import { Carousel } from "@/components/ui/apple-cards-carousel";
+
 // ============= Style Imports =============
 import "swiper/css";
 import "swiper/css/effect-coverflow";
