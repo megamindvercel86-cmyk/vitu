@@ -97,7 +97,7 @@ export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreM
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <div className="relative w-full">
         <div
-          className={`flex justify-center  overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
+          className={`flex justify-center flex-wrap overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -106,7 +106,7 @@ export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreM
           {/* Updated container for cards */}
           <div
             className={cn(
-              "flex flex-row gap-8 xl:gap-4", // Added gap and padding
+              "flex flex-row gap-8 xl:gap-4 rounded-3xl", // Added gap and padding
               "min-w-max" // Ensures container grows with content
             )}
           >
@@ -131,7 +131,7 @@ export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreM
                   "rounded-3xl flex-shrink-0", // Added flex-shrink-0
                   "w-[280px] h-[350px]",
                   "md:w-[350px] md:h-[350px]",
-                  "lg:w-[400px] lg:h-[500px]",
+                  "lg:w-[370px] lg:h-[500px]",
                   "xl:w-[432px] xl:h-[540px]",
                   "2xl:w-[632px] 2xl:h-[640px]",
                   "transition-all duration-300"
@@ -228,6 +228,12 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
               <motion.p
+                layoutId={layout ? `category-${card.src}` : undefined}
+                className="text-base font-medium text-black dark:text-white font-freightNeoMedium"
+              >
+              <Image src={card.src} height={100} width={50} alt="img" />
+              </motion.p>
+              <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
                 className="text-base font-medium text-black dark:text-white font-freightNeoMedium"
               >
@@ -247,28 +253,28 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="md:rounded-[20px] rounded-[10px] bg-gray-100 dark:bg-neutral-900 
-         overflow-hidden flex flex-col items-start justify-start relative z-10 w-full h-full"
+        className="md:rounded-[20px] rounded-[30px] bg-gray-100 dark:bg-neutral-900 
+          flex flex-col items-start justify-start relative z-10 w-full h-full"
       >
-        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/ via-transparent to-transparent z-30 pointer-events-none" />
+        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white  md:text-base font-mediu text-left font-freightNeoMedium lg-text-base text-xs 2xl:text-3xl"
+        layoutId={layout ? `category-${card.category}` : undefined}
+        className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"
           >
-            {card.category}
+        {card.category}
           </motion.p>
           <motion.p
-            layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
+        layoutId={layout ? `title-${card.title}` : undefined}
+        className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
           >
-            {card.title}
+        {card.title}
           </motion.p>
           <motion.p
-            layoutId={layout ? `title-${card.subtitle}` : undefined}
-            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
+        layoutId={layout ? `subtitle-${card.subtitle}` : undefined}
+        className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
           >
-            {card.subtitle}
+        {card.subtitle}
           </motion.p>
         </div>
         <BlurImage src={card.src} alt={card.title} fill className="object-cover absolute z-10 inset-0" />
@@ -290,6 +296,7 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: Image
       height={height}
       loading="lazy"
       decoding="async"
+      
       blurDataURL={typeof src === "string" ? src : undefined}
       alt={alt ? alt : "Background of a beautiful view"}
       {...rest}
