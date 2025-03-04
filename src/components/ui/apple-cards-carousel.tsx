@@ -1,12 +1,15 @@
 "use client";
 import React, { useEffect, useRef, useState, createContext, useContext, JSX, useCallback } from "react";
 import { IconX } from "@tabler/icons-react";
-
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
+
+import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
+import Typography from "../Typography/Typography";
+import articleArea from "@/data/articleArea.json";
+
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -16,12 +19,13 @@ interface CarouselProps {
 }
 
 type Card = {
-  src: string;
-  title: string;
+  url?: string;
+  title?: string;
   subtitle?: string;
-  category: string;
-  content: React.ReactNode;
+  category?: string;
+  content?: React.ReactNode;
   type?: string;
+  id?: number;
 };
 
 export const CarouselContext = createContext<{
@@ -201,6 +205,57 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
     setOpen(true);
   };
 
+
+
+
+  // ====================
+
+
+
+  const [currentCardId, setCurrentCardId] = useState(card.id);
+
+
+  console.log(currentCardId,"erer");
+  
+
+
+  let project: {
+    id: number;
+    url: string;
+    title: string;
+    description?: string;
+} | undefined
+
+   project = articleArea.find((project) => project.id === currentCardId);
+
+  const handleFooterClick = () => {
+    console.log(
+      "Footer clicked - navigate to next project or perform other action"
+    );
+
+    const nextProject = articleArea.find((project) => {
+      if (project.id === 3) {
+        return 1 === currentCardId;
+      } else {
+        return project.id + 1 === currentCardId;
+      }
+    });
+
+    if (nextProject) {
+      setCurrentCardId(nextProject.id); // Update state to trigger re-render
+    }
+  };
+
+  const nextProject = articleArea.find((project) => {
+    if (project.id === 3) {
+      return 1 === currentCardId;
+    } else {
+      return project.id + 1 === currentCardId;
+    }
+  });
+
+  console.log(nextProject);
+
   return (
     <>
       <AnimatePresence>
@@ -218,9 +273,56 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               ref={containerRef}
-              layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              layoutId={`expandable-card-${card.url}`}
+              className={cn(
+                "max-w-5xl mx-auto bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 rounded-3xl font-sans relative overflow-hidden",
+              )}
             >
+              <div className="relative h-auto ">
+                {/* <Image
+                         src={imageSrc || "/placeholder.svg"}
+                         alt={title || "Card image"}
+                     
+                         width={1042}
+                         height={45}
+                         className={cn("object-   h-[652px] w-full", expandedImageClassName)}
+                       /> */}
+              </div>
+              <div className="">
+                <button
+                  className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
+                  onClick={handleClose}
+                >
+                  <IconX className="h-5 w-5 text-black" />
+                </button>
+
+                <div>
+                  <div key={"dummy-content"}>
+                    <Image
+                      src={card?.url || "/placeholder.svg"}
+                      alt={card?.title || "Card image"}
+                      width={1042}
+                      height={45}
+                      className={cn("object-   h-[652px] w-full")}
+                    />
+                    <div className="p-4 md:p-10">
+                      <Typography variant="h1" className="text-customBrown">
+                        {card?.title}
+                      </Typography>
+                      <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+                        <span className="text-neutral-700">
+                          {card?.content}
+                        </span>
+                      </Typography>
+                      <Footer
+                                           onFooterClick={handleFooterClick}
+                                           nextProjectTitle={nextProject?.title || ""}
+                                         />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <button
                 className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
                 onClick={handleClose}
@@ -246,6 +348,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
                 {card.title}
               </motion.p>
               <div className="py-10">{card.content}</div>
+
             </motion.div>
           </div>
         )}
@@ -253,14 +356,20 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
+
+        className="md:rounded-[20px] overflow-hidden rounded-[30px] bg-gray-100 dark:bg-neutral-900 
+
         className="md:rounded-[20px] rounded-[30px] bg-gray-100 dark:bg-neutral-900 
+
           flex flex-col items-start justify-start relative z-10 w-full h-full"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
+
         layoutId={layout ? `category-${card.category}` : undefined}
         className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"
+
           >
         {card.category}
           </motion.p>
@@ -271,13 +380,17 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
         {card.title}
           </motion.p>
           <motion.p
+
         layoutId={layout ? `subtitle-${card.subtitle}` : undefined}
         className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
+
           >
         {card.subtitle}
           </motion.p>
         </div>
-        <BlurImage src={card.src} alt={card.title} fill className="object-cover absolute z-10 inset-0" />
+
+        <BlurImage src={card.url || "/placeholder.svg"} alt={card.title || "Card image"} fill className="object-cover absolute z-10 inset-0" />
+
         {/* Plus icon at the bottom right */}
         <div className="absolute bottom-4 right-4 z-50">{card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}</div>
       </motion.button>
@@ -301,5 +414,34 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: Image
       alt={alt ? alt : "Background of a beautiful view"}
       {...rest}
     />
+  );
+};
+
+
+
+
+interface FooterProps {
+  onFooterClick?: () => void;
+  nextProjectTitle: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
+  return (
+    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
+      <hr className="w-full h-[2px] bg-[#BDBEC2]" />
+      <div
+        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 "
+      >
+        <div>
+          <p className="text-xs text-[#8E8E93] uppercase font-roboto">Up Next</p>
+          <h4 className="text-black1 font-roboto font-bold text-base max-w-[15rem] lg:max-w-none">{nextProjectTitle} </h4>
+        </div>
+          
+          <div onClick={onFooterClick} className="cursor-pointer">
+          <ArrowRightIcon />
+
+        </div>
+      </div>
+    </div>
   );
 };

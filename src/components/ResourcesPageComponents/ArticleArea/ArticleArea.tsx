@@ -57,56 +57,7 @@ const ARTICLES: Article[] = [
   
 ];
 
-const MOBILE_ARTICLES: Article[] = [
-  { 
-    id: 1,
-    category: "BLOG",
-    title: "Embracing the Art of Coastal Living",
-    subtitle: "Learn about talent and local infrastructure benefits",
-    type: "primary",
-    url: "/images/articleImages/articleImage1.jpg",
-  },
-  {
-    id: 2,
-    category: "NEWS",
-    title: "Life by the Waves",
-    subtitle: "This is a sampletext by the people",
-    type: "secondary",
-    url: "/images/articleImages/articleImage2.jpg",
-  },
-  {
-    id: 3,
-    category: "BLOG",
-    title: "Foundations for the Future",
-    subtitle: "Building Sustainability for a Better Tomorrow",
-    type: "secondary",
-    url: "/images/articleImages/articleImage3.jpg",
-  },
-  { 
-    id: 4,
-    category: "BLOG",
-    title: "Embracing the Art of Coastal Living",
-    subtitle: "Learn about talent and local infrastructure benefits",
-    type: "primary",
-    url: "/images/articleImages/articleImage1.jpg",
-  },
-  {
-    id: 5,
-    category: "NEWS",
-    title: "Life by the Waves",
-    subtitle: "This is a sampletext by the people",
-    type: "secondary",
-    url: "/images/articleImages/articleImage2.jpg",
-  },
-  {
-    id: 6,
-    category: "BLOG",
-    title: "Foundations for the Future",
-    subtitle: "Building Sustainability for a Better Tomorrow",
-    type: "secondary",
-    url: "/images/articleImages/articleImage3.jpg",
-  },
-];
+
 
 
 /**
@@ -126,18 +77,19 @@ const MOBILE_ARTICLES: Article[] = [
  */
 export default function ArticleArea(): React.ReactElement {
   // ============= Data Transformers =============
-  const getCarouselCards = (): CarouselCard[] => 
-    ARTICLES.map(article => ({
-      ...article,
-      src: article.url,
+  // const getCarouselCards = (): CarouselCard[] => 
+  //   ARTICLES.map(article => ({
+  //     ...article,
+  //     src: article.url,
       
-      content: (
-        <div className="text-neutral-700 p-4">
-          <p>{article.subtitle || "Discover more insights in this article."}</p>
-        </div>
+  //     content: (
+  //       <div className="text-neutral-700 p-4">
+  //         <p>{article.subtitle || "Discover more insights in this article."}</p>
+  //       </div>
         
-      ),
-    }));
+  //     ),
+  //   }));
+
 
   // ============= Render Helpers =============
   const renderHeader = () => (
@@ -173,7 +125,7 @@ export default function ArticleArea(): React.ReactElement {
         <div className="relative lg:block hidden">
           <div className="w-full h-full">
             <Carousel
-              items={getCarouselCards().map((card, index) => (
+              items={ARTICLES.map((card, index) => (
                 <Card key={index} card={card} index={index} layout={true} />
               ))}
             />

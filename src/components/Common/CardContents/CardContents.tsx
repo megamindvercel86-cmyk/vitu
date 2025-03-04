@@ -97,3 +97,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     </div>
   );
 };
+
+
+
+
