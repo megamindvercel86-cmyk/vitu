@@ -60,9 +60,9 @@ export default function LeadershipTeam() {
         </Typography>
 
         {/* Desktop Carousel */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex mx-72 gap-10">
           
-        <Swiper
+        {/* <Swiper
             // onSwiper={(swiper) => {
             //   swiperRef.current = swiper;
             // }}
@@ -83,13 +83,13 @@ export default function LeadershipTeam() {
               },
             }}
             className="media-swiper h-full"
-          >
+          > */}
           {teamMembers.map((member) => (
-              <SwiperSlide key={member.id} className="media-slide !h-auto">
+          
               <TeamMemberCard member={member} />
-            </SwiperSlide>
+           
           ))}
-        </Swiper>
+        {/* </Swiper> */}
           
         </div>
 

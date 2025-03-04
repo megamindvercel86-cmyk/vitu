@@ -52,46 +52,46 @@ const CONTENT = {
       },
     ],
     [
-      {
-        title: "Sustainable Living",
-        description: "Eco-friendly developments with energy-efficient designs and green spaces for a better tomorrow.",
+      { 
+        title: "Prime Locations", 
+        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
       },
       { 
-        title: "Seamless Nature Integration", 
-        description: "Architectural designs that blend harmoniously with nature, providing serenity and peace." 
+        title: "Accessible Luxury", 
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
       },
       { 
-        title: "Green & Smart Homes", 
-        description: "Smart technology meets sustainability for a future-ready living experience." 
+        title: "Trusted Experience / Happy Residents", 
+        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
       },
     ],
     [
-      {
-        title: "Redefining Luxury",
-        description: "Impeccable craftsmanship and premium materials that set new standards in elegance.",
+      { 
+        title: "Prime Locations", 
+        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
       },
       { 
-        title: "Uncompromising Quality", 
-        description: "Every home is a masterpiece, built with precision and excellence to last generations." 
+        title: "Accessible Luxury", 
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
       },
-      {
-        title: "Timeless Architectural Beauty",
-        description: "Homes designed with aesthetics and functionality in mind, ensuring lasting appeal.",
+      { 
+        title: "Trusted Experience / Happy Residents", 
+        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
       },
     ],
   ],
   mobile: [
-    {
-      title: "Smart & Sustainable Homes",
-      description: "Innovative real estate solutions that prioritize sustainability and modern living.",
+    { 
+      title: "Prime Locations", 
+      description: "Strategically located properties offering convenience, connectivity, and high investment value." 
     },
-    {
-      title: "Luxury Within Reach",
-      description: "High-end living spaces made accessible without compromising on quality.",
+    { 
+      title: "Accessible Luxury", 
+      description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
     },
-    {
-      title: "Customer-Centric Approach",
-      description: "Designed to meet every need, ensuring satisfaction and long-term value for homeowners.",
+    { 
+      title: "Trusted Experience / Happy Residents", 
+      description: "Delivering homes where families thrive, backed by years of trust and excellence." 
     },
   ],
 };
@@ -232,7 +232,7 @@ export default function VisionAndMission() {
               <Typography
                 variant="h3"
                 fontWeight="font-normal"
-                className="font-FreightNeoProNormal mt-[5px] text-white"
+                className="font-FreightNeoProNormal mt-[0px] text-white"
               >
                 {CONTENT.mobile[currentIndex].description}
               </Typography>
