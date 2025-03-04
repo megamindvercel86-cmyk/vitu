@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-
 import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
 import Typography from "../Typography/Typography";
 import articleArea from "@/data/articleArea.json";
@@ -267,7 +266,6 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
               exit={{ opacity: 0 }}
               className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
             />
-
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -322,33 +320,6 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
                   </div>
                 </div>
               </div>
-
-              <button
-                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
-                onClick={handleClose}
-              >
-                <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
-              </button>
-              <motion.p
-                layoutId={layout ? `category-${card.src}` : undefined}
-                className="text-base font-medium text-black dark:text-white font-freightNeoMedium"
-              >
-              <Image src={card.src} height={100} width={50} alt="img" />
-              </motion.p>
-              <motion.p
-                layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-black dark:text-white font-freightNeoMedium"
-              >
-                {card.category}
-              </motion.p>
-              <motion.p
-                layoutId={layout ? `title-${card.title}` : undefined}
-                className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white"
-              >
-                {card.title}
-              </motion.p>
-              <div className="py-10">{card.content}</div>
-
             </motion.div>
           </div>
         )}
@@ -356,41 +327,31 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-
         className="md:rounded-[20px] overflow-hidden rounded-[30px] bg-gray-100 dark:bg-neutral-900 
-
-        className="md:rounded-[20px] rounded-[30px] bg-gray-100 dark:bg-neutral-900 
-
           flex flex-col items-start justify-start relative z-10 w-full h-full"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
-
-        layoutId={layout ? `category-${card.category}` : undefined}
-        className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"
-
+            layoutId={layout ? `category-${card.category}` : undefined}
+            className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"
           >
-        {card.category}
+            {card.category}
           </motion.p>
           <motion.p
-        layoutId={layout ? `title-${card.title}` : undefined}
-        className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
+            layoutId={layout ? `title-${card.title}` : undefined}
+            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
           >
-        {card.title}
+            {card.title}
           </motion.p>
           <motion.p
-
-        layoutId={layout ? `subtitle-${card.subtitle}` : undefined}
-        className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
-
+            layoutId={layout ? `subtitle-${card.subtitle}` : undefined}
+            className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
           >
-        {card.subtitle}
+            {card.subtitle}
           </motion.p>
         </div>
-
         <BlurImage src={card.url || "/placeholder.svg"} alt={card.title || "Card image"} fill className="object-cover absolute z-10 inset-0" />
-
         {/* Plus icon at the bottom right */}
         <div className="absolute bottom-4 right-4 z-50">{card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}</div>
       </motion.button>
@@ -409,7 +370,6 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: Image
       height={height}
       loading="lazy"
       decoding="async"
-      
       blurDataURL={typeof src === "string" ? src : undefined}
       alt={alt ? alt : "Background of a beautiful view"}
       {...rest}
