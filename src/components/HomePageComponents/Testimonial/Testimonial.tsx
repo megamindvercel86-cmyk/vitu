@@ -66,14 +66,15 @@ export default function Testimonial(): React.ReactElement {
 
         {/* Read More Section */}
         <div className="flex items-center justify-center flex-col mt-6 md:mt-[66px] mb-11 md:mb-[145px]">
-          <Link href="/about">
+          {/* hide for now bacause we dont have more  */}
+          {/* <Link href="/about">
             <Typography
               variant="custom"
               className="text-customBrown font-FreightNeoProBold text-[22px] hover:underline"
             >
               Read More 
             </Typography>
-          </Link>
+          </Link> */}
         </div>
       </section>
     </>

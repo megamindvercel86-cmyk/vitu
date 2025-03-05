@@ -50,7 +50,7 @@ export default function RootLayout({
         `,
           }}
         ></Script>
-        <Script
+        {/* <Script
           id="clarity-analytics"
           dangerouslySetInnerHTML={{
             __html: `
@@ -61,7 +61,7 @@ export default function RootLayout({
     })(window, document, "clarity", "script", "n2lykw9kcy");
         `,
           }}
-        ></Script>
+        ></Script> */}
         {children}
       </body>
     </html>

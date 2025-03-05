@@ -14,6 +14,7 @@ import "./MediaSection.css";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 interface NewsItem {
@@ -128,12 +129,14 @@ const handleNext = () => {
           <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
             {item.description}
           </SubHeading>
-          <button
-          onClick={handleReadMore}
-          className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 2xl:text-[1.5rem]"
-        >
-          Read More
-        </button>
+          <Link
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
+      >
+        Read More
+      </Link>
 
         </div>
       </div>
@@ -188,7 +191,7 @@ const handleNext = () => {
 
         {/* Navigation Controls - Moved inside flex container */}
         <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+          {/* <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
             Explore More
           </span>
           <div className="flex gap-2">
@@ -206,7 +209,7 @@ const handleNext = () => {
             >
               <IconArrowNarrowRight />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

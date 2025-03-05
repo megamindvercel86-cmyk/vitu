@@ -146,7 +146,7 @@ export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreM
         </div>
         {exploreMore && (
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-            <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
+            {/* <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
             <div className="flex gap-2">
               <button
                 className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -162,7 +162,7 @@ export const Carousel = ({ items, initialScroll = 0, height = "h-auto", exploreM
               >
                 <IconArrowNarrowRight />
               </button>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

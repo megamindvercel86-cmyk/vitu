@@ -178,7 +178,7 @@ export default function VisionAndMission() {
       {/* Main Carousel */}
       <div className="bg-gray-100 sm:p-0 md:p-[1px]">
         {/* Desktop Version */}
-        <div className="overflow-hidden hidden md:block shadow-xl aspect-[2/1] relative">
+        <div className="overflow-hidden hidden md:block shadow-xl h-[100vh] w-[100vw] aspect-[2/1] relative">
           {/* Image container */}
           <div
             className={`absolute inset-0 transition-all duration-500 ease-in-out ${
@@ -190,7 +190,7 @@ export default function VisionAndMission() {
               alt={`Slide ${currentIndex + 1}`}
               width={CAROUSEL_CONFIG.dimensions.desktop.width}
               height={CAROUSEL_CONFIG.dimensions.desktop.height}
-              className="w-full h-full object-cover"
+              className="w-full  object-contain"
               loading="lazy"
             />
           </div>

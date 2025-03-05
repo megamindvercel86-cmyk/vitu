@@ -292,7 +292,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Way of Life
             </motion.h2>
             <motion.button
-              className="px-8 py-3 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+              className="px-8 py-3 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
