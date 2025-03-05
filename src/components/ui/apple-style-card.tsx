@@ -99,7 +99,7 @@ export default function AppleStyleCard({
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 h-screen  z-50 overflow-auto">
+        <div className="fixed inset-0 h-screen mx-auto  z-50 overflow-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -113,7 +113,7 @@ export default function AppleStyleCard({
             ref={containerRef}
             layoutId={`expandable-card-${id}`}
             className={cn(
-              "max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 mx-5 rounded-3xl font-sans relative overflow-hidden",
+              "max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 sm:mx-5 md:mx-auto rounded-3xl font-sans relative overflow-hidden",
               expandedClassName
             )}
           >
