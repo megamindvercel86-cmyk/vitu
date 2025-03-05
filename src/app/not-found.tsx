@@ -3,6 +3,7 @@
 import Layout from "@/components/Layout/Layout";
 import Image from "next/image";
 import bgImage from "../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
+import Link from "next/link";
 ``
 // ============= Constants =========
 const NAVBAR_CONFIG = {
