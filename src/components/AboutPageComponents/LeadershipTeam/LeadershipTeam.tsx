@@ -28,7 +28,6 @@ export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>([]);
-  console.log(teamMembersCarousal);
   
   
   useEffect(() => {
