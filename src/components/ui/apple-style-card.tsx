@@ -118,14 +118,6 @@ export default function AppleStyleCard({
             )}
           >
             <div className="relative h-auto ">
-              {/* <Image
-                src={imageSrc || "/placeholder.svg"}
-                alt={title || "Card image"}
-            
-                width={1042}
-                height={45}
-                className={cn("object-   h-[652px] w-full", expandedImageClassName)}
-              /> */}
             </div>
             <div className="">
               <button
