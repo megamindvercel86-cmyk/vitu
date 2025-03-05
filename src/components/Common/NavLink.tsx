@@ -1,6 +1,5 @@
 import Link from "next/link";
 import classNames from "classnames";
-import { HTMLAttributeAnchorTarget } from "react";
 
 
 interface NavLinkProps {

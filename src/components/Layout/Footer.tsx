@@ -143,7 +143,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string }> = ({ icon, text
   const email= text.includes("info@viturealty.com")
 
   return (
-    <li className={`flex md:flex-row flex-col  align-middle items-center md:gap-0 gap-3 `}>
+    <li className={`flex md:flex-row flex-col  align-middle ${isPincode&&'lg:items-start'} items-center md:gap-0 gap-3 `}>
       {icon}
       <FooterLink href="#" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}

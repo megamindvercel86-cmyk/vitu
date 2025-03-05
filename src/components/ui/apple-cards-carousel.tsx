@@ -9,7 +9,6 @@ import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewM
 import Typography from "../Typography/Typography";
 import articleArea from "@/data/articleArea.json";
 
-
 interface CarouselProps {
   items: JSX.Element[];
   initialScroll?: number;
@@ -20,7 +19,7 @@ interface CarouselProps {
 type Card = {
   url?: string;
   title?: string;
-  subtitle?: string;
+  description?: string;
   category?: string;
   content?: React.ReactNode;
   type?: string;
@@ -204,33 +203,23 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
     setOpen(true);
   };
 
-
-
-
   // ====================
-
-
 
   const [currentCardId, setCurrentCardId] = useState(card.id);
 
 
-  console.log(currentCardId,"erer");
-  
+  let project:
+    | {
+        id: number;
+        url: string;
+        title: string;
+        description?: string;
+      }
+    | undefined;
 
-
-  let project: {
-    id: number;
-    url: string;
-    title: string;
-    description?: string;
-} | undefined
-
-   project = articleArea.find((project) => project.id === currentCardId);
+  project = articleArea.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    console.log(
-      "Footer clicked - navigate to next project or perform other action"
-    );
 
     const nextProject = articleArea.find((project) => {
       if (project.id === 3) {
@@ -253,7 +242,6 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
     }
   });
 
-  console.log(nextProject);
 
   return (
     <>
@@ -272,9 +260,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={`expandable-card-${card.url}`}
-              className={cn(
-                "max-w-5xl mx-auto bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 rounded-3xl font-sans relative overflow-hidden",
-              )}
+              className={cn("max-w-5xl mx-auto bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 rounded-3xl font-sans relative overflow-hidden")}
             >
               <div className="relative h-auto ">
                 {/* <Image
@@ -297,25 +283,20 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
                 <div>
                   <div key={"dummy-content"}>
                     <Image
-                      src={card?.url || "/placeholder.svg"}
-                      alt={card?.title || "Card image"}
+                      src={project?.url || "/placeholder.svg"}
+                      alt={project?.title || "Card image"}
                       width={1042}
                       height={45}
                       className={cn("object-   h-[652px] w-full")}
                     />
                     <div className="p-4 md:p-10">
                       <Typography variant="h1" className="text-customBrown">
-                        {card?.title}
+                        {project?.title}
                       </Typography>
                       <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-                        <span className="text-neutral-700">
-                          {card?.content}
-                        </span>
+                        <span className="text-neutral-700">{project?.description}</span>
                       </Typography>
-                      <Footer
-                                           onFooterClick={handleFooterClick}
-                                           nextProjectTitle={nextProject?.title || ""}
-                                         />
+                      <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
                     </div>
                   </div>
                 </div>
@@ -345,10 +326,10 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
             {card.title}
           </motion.p>
           <motion.p
-            layoutId={layout ? `subtitle-${card.subtitle}` : undefined}
+            layoutId={layout ? `subtitle-${card.description}` : undefined}
             className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
           >
-            {card.subtitle}
+            {card.description}
           </motion.p>
         </div>
         <BlurImage src={card.url || "/placeholder.svg"} alt={card.title || "Card image"} fill className="object-cover absolute z-10 inset-0" />
@@ -377,9 +358,6 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: Image
   );
 };
 
-
-
-
 interface FooterProps {
   onFooterClick?: () => void;
   nextProjectTitle: string;
@@ -389,17 +367,14 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
-      <div
-        className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 "
-      >
+      <div className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 ">
         <div>
           <p className="text-xs text-[#8E8E93] uppercase font-roboto">Up Next</p>
           <h4 className="text-black1 font-roboto font-bold text-base max-w-[15rem] lg:max-w-none">{nextProjectTitle} </h4>
         </div>
-          
-          <div onClick={onFooterClick} className="cursor-pointer">
-          <ArrowRightIcon />
 
+        <div onClick={onFooterClick} className="cursor-pointer">
+          <ArrowRightIcon />
         </div>
       </div>
     </div>

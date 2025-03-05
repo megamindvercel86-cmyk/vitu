@@ -83,7 +83,6 @@ const handleNext = () => {
           throw new Error("Failed to fetch users");
         }
         const data = await response.json();
-        console.log(data.data); // Check the structure of the response
 
         // Filter out team members where development is true
         

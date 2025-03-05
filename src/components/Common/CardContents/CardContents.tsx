@@ -19,9 +19,7 @@ const CardContent = ({id}: {id:number}) => {
    project = sustainabilityInitiatives.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    console.log(
-      "Footer clicked - navigate to next project or perform other action"
-    );
+    
 
     const nextProject = sustainabilityInitiatives.find((project) => {
       if (project.id === 16) {
@@ -44,7 +42,6 @@ const CardContent = ({id}: {id:number}) => {
     }
   });
 
-  console.log(nextProject);
 
   return (
     <>

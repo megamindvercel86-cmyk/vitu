@@ -30,7 +30,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
-  console.log("FooterProps", nextProjectTitle);
 
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
@@ -58,7 +57,6 @@ const CardContent = ({ cardId }: { cardId: number }) => {
   let project = exploreProjects.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    console.log("Footer clicked - navigate to next project or perform other action");
 
     const nextProject = exploreProjects.find((project) => {
       if (project.id === 5) {
@@ -81,7 +79,6 @@ const CardContent = ({ cardId }: { cardId: number }) => {
     }
   });
 
-  console.log(nextProject);
 
   return (
     <>

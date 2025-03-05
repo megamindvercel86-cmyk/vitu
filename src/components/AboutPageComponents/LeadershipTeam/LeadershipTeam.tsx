@@ -27,6 +27,10 @@ interface TeamMember {
 export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>([]);
+  console.log(teamMembersCarousal);
+  
+  
   useEffect(() => {
     async function fetchTeamMembers() {
       try {
@@ -35,12 +39,13 @@ export default function LeadershipTeam() {
           throw new Error("Failed to fetch users");
         }
         const data = await response.json();
-        console.log(data.data); // Check the structure of the response
 
         // Filter out team members where development is true
         const filteredData = data.data.filter((member: TeamMember) => member.development !== true);
 
         setTeamMembers(filteredData); // Set filtered data to state
+        setTeamMembersCarousal([...filteredData,...filteredData]); // Set filtered data to state
+        
       } catch (error) {
         console.error("Error fetching team members:", error);
       }
@@ -85,9 +90,13 @@ export default function LeadershipTeam() {
             }}
             className="media-swiper h-full"
           > */}
-          {teamMembers.map((member) => (
+          {teamMembers.map((member,index) => (
           
+
+              <TeamMemberCard member={member} key={index} />
+
               <TeamMemberCard key={member.id} member={member} />
+
            
           ))}
         {/* </Swiper> */}
@@ -117,8 +126,8 @@ export default function LeadershipTeam() {
             }}
             className="mySwiper md:h-[700px] h-[450px]"
           >
-            {teamMembers.map((member) => (
-              <SwiperSlide key={member.id} className="swiper-slide !overflow-visible">
+            {teamMembersCarousal.map((member,index) => (
+              <SwiperSlide key={index} className="swiper-slide !overflow-visible">
                 <div className="text-center">
                   <Image
                     src={member.fileUrl}

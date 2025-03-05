@@ -10,7 +10,7 @@ interface Article {
   id: number;
   category: string;
   title: string;
-  subtitle: string;
+  description: string;
   type: "primary" | "secondary";
   url: string;
 }
@@ -34,7 +34,7 @@ const ARTICLES: Article[] = [
     id: 1,
     category: "BLOG",
     title: "Embracing the Art of Coastal Living",
-    subtitle: "Learn about talent and local infrastructure benefits",
+    description: "Learn about talent and local infrastructure benefits",
     type: "primary",
     url: "/images/articleImages/articleImage1.jpg",
   },
@@ -42,7 +42,7 @@ const ARTICLES: Article[] = [
     id: 2,
     category: "NEWS",
     title: "Life by the Waves",
-    subtitle: "This is a sampletext by the people",
+    description: "This is a sampletext by the people",
     type: "secondary",
     url: "/images/articleImages/articleImage2.jpg",
   },
@@ -50,10 +50,64 @@ const ARTICLES: Article[] = [
     id: 3,
     category: "BLOG",
     title: "Foundations for the Future",
-    subtitle: "Building Sustainability for a Better Tomorrow",
+    description: "Building Sustainability for a Better Tomorrow",
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
+  
+  
+];
+
+const ARTICLES_MOBAIL: Article[] = [
+  { 
+    id: 1,
+    category: "BLOG",
+    title: "Embracing the Art of Coastal Living",
+    description: "Learn about talent and local infrastructure benefits",
+    type: "primary",
+    url: "/images/articleImages/articleImage1.jpg",
+  },
+  {
+    id: 2,
+    category: "NEWS",
+    title: "Life by the Waves",
+    description: "This is a sampletext by the people",
+    type: "secondary",
+    url: "/images/articleImages/articleImage2.jpg",
+  },
+  {
+    id: 3,
+    category: "BLOG",
+    title: "Foundations for the Future",
+    description: "Building Sustainability for a Better Tomorrow",
+    type: "secondary",
+    url: "/images/articleImages/articleImage3.jpg",
+  },
+  { 
+    id: 4,
+    category: "BLOG",
+    title: "Embracing the Art of Coastal Living",
+    description: "Learn about talent and local infrastructure benefits",
+    type: "primary",
+    url: "/images/articleImages/articleImage1.jpg",
+  },
+  {
+    id: 5,
+    category: "NEWS",
+    title: "Life by the Waves",
+    description: "This is a sampletext by the people",
+    type: "secondary",
+    url: "/images/articleImages/articleImage2.jpg",
+  },
+  {
+    id: 6,
+    category: "BLOG",
+    title: "Foundations for the Future",
+    description: "Building Sustainability for a Better Tomorrow",
+    type: "secondary",
+    url: "/images/articleImages/articleImage3.jpg",
+  },
+  
   
 ];
 
@@ -134,7 +188,7 @@ export default function ArticleArea(): React.ReactElement {
 
         {/* Mobile Carousel */}
         <div className="relative md:block lg:hidden">
-          <InfiniteCarousel cards={ARTICLES} data={ARTICLES} />
+          <InfiniteCarousel cards={ARTICLES_MOBAIL} data={ARTICLES_MOBAIL} />
         </div>
       </main>
     </div>

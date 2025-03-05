@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from 'swiper';
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -8,11 +8,7 @@ import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "./InfiniteCarousel.css";
 import AppleStyleCard from "@/components/ui/apple-style-card";
-import {
-  ArrowRightIcon,
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@/components/Icons/Icons";
+import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -47,8 +43,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
-  console.log("FooterProps", nextProjectTitle);
-
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
@@ -57,12 +51,8 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
         className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 cursor-pointer"
       >
         <div>
-          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
-            UP NEXT
-          </p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
-            {nextProjectTitle}
-          </h4>
+          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">UP NEXT</p>
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
         </div>
         <ArrowRightIcon />
       </div>
@@ -72,32 +62,18 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 
 // Update the CardContent component to accept props
 const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
+
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
-  let project = data.find((project: Card) => project.id === currentCardId);
+  let project = data.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    const nextProject = data.find((project: Card) => {
-      if (project.id === data[data.length-1].id) {
-        return data[0].id === currentCardId;
-      } else {
-        return project.id + 1 === currentCardId;
-      }
-    });
-
-    if (nextProject) {
-      setCurrentCardId(nextProject.id); // Update state to trigger re-render
-    }
+    const currentIndex = data.findIndex((project) => project.id === currentCardId);
+    const nextProject = data[(currentIndex + 1) % data.length];
+    setCurrentCardId(nextProject.id);
   };
 
-  const nextProject = data.find((project) => {
-    if (project.id === 5) {
-      return 1 === currentCardId;
-    } else {
-      return project.id + 1 === currentCardId;
-    }
-  });
-
+  const nextProject = data[(data.findIndex((project) => project.id === currentCardId) + 1) % data.length];
 
   return (
     <>
@@ -108,20 +84,14 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}
-            className={cn("object-   h-[300px] w-full")}
+            className={cn("h-[300px] w-full")}
           />
           <div className="p-4 md:p-10">
-
-          <Typography variant="h1" className="text-customBrown">
-            {project.title}
-          </Typography>
-          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-            {project.description}
-          </Typography>
-          <Footer
-            onFooterClick={handleFooterClick}
-            nextProjectTitle={nextProject?.title || ""}
-          />
+            <Typography variant="h1" className="text-customBrown">
+              {project.title}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
+            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
       )}
@@ -149,8 +119,8 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
       <Swiper
         modules={[EffectCoverflow, Autoplay, Navigation]}
         navigation={{
-          prevEl: '.swiper-button-prev',
-          nextEl: '.swiper-button-next',
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -175,7 +145,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
         className="mySwiper"
       >
         {cards.map((card, index) => (
-          <SwiperSlide key={index} className="swiper-slide">
+          <SwiperSlide key={index + 5} className="swiper-slide">
             <AppleStyleCard
               key={card.id + 5}
               id={card.id + 5}
@@ -187,16 +157,14 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
               subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
-              content={data&&<CardContent cardId={card.id} data={data}/>}
+              content={data && <CardContent cardId={card.id} data={data} />}
             />
             <Typography variant="custom"> {card.name}</Typography>
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="flex items-center justify-between gap-4 px-7">
-        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
-          Explore More
-        </span>
+        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
         <div className="flex gap-2">
           <button
             onClick={handlePrev}

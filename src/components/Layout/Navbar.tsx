@@ -222,7 +222,7 @@ export default function Navbar({
                 </NavLink>
               ))}
               {showGetInTouch && (
-                <Link href="/project-enquire">
+                <Link href="/general-enquire">
                   <Button
                     className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""

@@ -6,7 +6,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Draggable from "gsap/Draggable";
 import "./StorySection.css";
-import Typography from "@/components/Typography/Typography";
 import FHD from "../../../../public/svgs/LineAnimations/fhd";
 import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
@@ -143,7 +142,6 @@ function ScrollController({
   isFixed: boolean ;
   onDrag: (newProgress: number) => void;
 }) {
-  console.log("ScrollController progress:", progress);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const controllerRef = useRef<HTMLDivElement | null>(null);
   const [draggable, setDraggable] = useState<Draggable | null>(null);
@@ -166,7 +164,6 @@ function ScrollController({
         inertia: true,
         onDrag: function () {
           const newProgress = this.x / trackWidth;
-          console.log(`Draggable progress: ${(newProgress * 100).toFixed(2)}%`);
           // Directly update progress state via onDrag callback
           onDrag(newProgress);
         },
@@ -314,7 +311,6 @@ export default function Gallery() {
         onUpdate: (self) => {
           const newProgress = self.progress;
           setProgress(newProgress);
-          console.log(`Scrolled: ${(newProgress * 100).toFixed(2)}%`);
           setIsFixed(newProgress > 0 && newProgress < 1);
         },
       },
