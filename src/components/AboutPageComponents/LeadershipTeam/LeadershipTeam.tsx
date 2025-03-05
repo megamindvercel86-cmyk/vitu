@@ -87,7 +87,7 @@ export default function LeadershipTeam() {
           > */}
           {teamMembers.map((member) => (
           
-              <TeamMemberCard member={member} />
+              <TeamMemberCard key={member.id} member={member} />
            
           ))}
         {/* </Swiper> */}
