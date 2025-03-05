@@ -95,8 +95,6 @@ export default function LeadershipTeam() {
 
               <TeamMemberCard member={member} key={index} />
 
-              <TeamMemberCard key={member.id} member={member} />
-
            
           ))}
         {/* </Swiper> */}
