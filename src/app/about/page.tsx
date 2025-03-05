@@ -11,7 +11,6 @@ import StorySection from "@/components/AboutPageComponents/StorySection/StorySec
 import { useRef } from 'react';
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
-
 interface AboutPageProps {}
 
 // ============= Constants =============
