@@ -100,23 +100,35 @@ const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
             </h1>
 
             {/* CTA Button */}
-            <button
-              type="button"
-              className={`
-        mt-8
-        flex items-center justify-center
-        gap-[0.6875rem]
-        rounded-full
-        bg-[#815C46]
-        pl-[1.125rem] pr-[0.0625rem] py-[0.1875rem]
-        text-base font-freightNeoMedium text-white
-        2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
-      `}
-              onClick={onScrollToStory}
-            >
-              {ABOUT_HERO_CONFIG.cta.text}
-              <CTAButtonIcon />
-            </button>
+            <div className="relative group cursor-pointer">
+              <button
+                type="button"
+                className={`
+      relative group
+      mt-8
+      flex items-center justify-center
+      gap-[0.6875rem]
+      rounded-full
+      pl-[1.125rem] pr-[0.0625rem] py-[0.1875rem]
+      text-base font-freightNeoMedium text-white
+      2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
+      overflow-hidden
+    `}
+                onClick={onScrollToStory}
+              >
+                {/* Default background */}
+                <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
+
+                {/* Hover background with transform from right */}
+
+                {/* Button content */}
+                <span className="relative z-10">
+                  {ABOUT_HERO_CONFIG.cta.text}
+                </span>
+                <div className="absolute inset-0 bg-[#614130] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300 "></div>
+                <CTAButtonIcon />
+              </button>
+            </div>
           </div>
         </div>
       </div>

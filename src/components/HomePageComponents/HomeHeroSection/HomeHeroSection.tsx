@@ -28,7 +28,7 @@ export default function HomeHeroSection() {
     <section>
       {/* Hero Background Section */}
       <div
-        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[67.5rem] 2xl:h-screen"
+        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-screen 2xl:h-screen"
         role="img"
         aria-label="Modern real estate background"
       >
