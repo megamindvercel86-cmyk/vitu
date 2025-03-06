@@ -27,28 +27,15 @@ interface TeamMember {
 export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>(
+    []
+  );
 
-  const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>([]);
-  
-  
-  useEffect(() => {
-    async function fetchTeamMembers() {
-      try {
-        const response = await fetch("/api/users");
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        }
-        const data = await response.json();
-
-        // Filter out team members where development is true
-        const filteredData = data.data.filter((member: TeamMember) => member.development !== true);
-
-        setTeamMembers(filteredData); // Set filtered data to state
-        setTeamMembersCarousal([...filteredData,...filteredData]); // Set filtered data to state
-        
-      } catch (error) {
-        console.error("Error fetching team members:", error);
-
+  async function fetchTeamMembers() {
+    try {
+      const response = await fetch("/api/users");
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
       }
       const data = await response.json();
 
