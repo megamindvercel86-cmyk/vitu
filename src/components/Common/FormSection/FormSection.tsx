@@ -14,6 +14,7 @@ import Typography from "@/components/Typography/Typography";
 // Form Related Imports
 import { useFormSubmission } from "../Form/useFormSubmission";
 import { JOB_OPTIONS, PROJECT_ENQUIRIES, FORM_TYPES } from "../Form/constants";
+import Loader from "@/components/LoaderComponent/LoaderComponent";
 
 // ============= Types & Interfaces =============
 interface FormSectionProps {
@@ -41,9 +42,15 @@ export default function FormSection({
   const selectRef = useRef<HTMLSelectElement>(null);
 
   // ============= Form Handling =============
-  const formik = useFormSubmission(page);
+  const handleSuccess = () => {
+    console.log("Form submission complete! Performing additional actions...");
+    // You can navigate to another page, show a modal, etc.
+  };
+  
+  const { formik, isLoading } = useFormSubmission(page, handleSuccess);
 
-  const [isLoading, setIsLoading] = useState(false);
+  
+  
   // Base input class with placeholder and value font
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
@@ -232,6 +239,11 @@ export default function FormSection({
           )}
           {page === "General Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 pt-[45px] mb-[54px] md:mb-[145px]">
+               {isLoading ? (
+                  <span className="lg:hidden block items-center justify-center">
+                    <Loader />
+                  </span>
+                ) : (
               <Button
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
@@ -241,22 +253,23 @@ export default function FormSection({
                     });
                     return;
                   }
-                  setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    setIsLoading(false)
-                  ); // Stop loading after submission
+                  try {
+                  formik.handleSubmit()
+                    
+                  } catch (error) {
+                    console.log(error);
+                    
+                  }
+                  
                 }}
                 disabled={isLoading}
-                className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
+                className="lg:hidden block text-[26px] w-full lg:w-[146px] "
               >
-                {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <LoadingSpinner />
-                  </span>
-                ) : (
-                  "Submit"
-                )}
+               
+                  Submit
               </Button>
+            )}
+
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
@@ -274,8 +287,14 @@ export default function FormSection({
                   Receive Updates on WhatsApp
                 </span>
               </label>
-              <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              {isLoading ? (
+                <span className="lg:block hidden items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                <Button
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  
                   e.preventDefault();
                   if (!formik.isValid || !formik.dirty) {
                     Object.keys(formik.values).forEach((field) => {
@@ -283,26 +302,33 @@ export default function FormSection({
                     });
                     return;
                   }
-                  setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    setIsLoading(false)
-                  ); // Stop loading after submission
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
+
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                     // Ensure form submission is awaited
+                  } finally {
+                  }
                 }}
-                disabled={isLoading}
-                className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
-              >
-                {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <LoadingSpinner />
-                  </span>
-                ) : (
-                  "Submit"
-                )}
-              </Button>
+                
+                  disabled={isLoading}
+                  className="lg:block hidden text-[26px] w-full lg:w-[146px] "
+                >
+                  Submit
+                </Button>
+              )}
+
             </div>
           )}
           {page === "Project Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 mb-[54px]  pt-[45px] md:mb-[145px]">
+               {isLoading ? (
+                  <span className=" lg:hidden block  items-center justify-center">
+                    <Loader />
+                  </span>
+                ) : (
               <Button
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
@@ -312,22 +338,21 @@ export default function FormSection({
                     });
                     return;
                   }
-                  setIsLoading(true); // Start loading
+                  // setIsLoading(true); // Start loading
                   Promise.resolve(formik.handleSubmit()).finally(() =>
-                    setIsLoading(false)
+                    // setIsLoading(false)
+                  console.log("2")
+                  
                   ); // Stop loading after submission
                 }}
                 disabled={isLoading}
-                className="lg:hidden block text-[26px] w-full lg:w-[146px] pt-1"
+                className="lg:hidden block text-[26px] w-full lg:w-[146px]"
               >
-                {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <LoadingSpinner />
-                  </span>
-                ) : (
-                  "Submit"
-                )}
+               
+                  Submit
               </Button>
+            )}
+
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
@@ -346,6 +371,11 @@ export default function FormSection({
                   Receive Updates on WhatsApp
                 </span>
               </label>
+              {isLoading ? (
+                  <span className="lg:block hidden items-center justify-center">
+                    <Loader />
+                  </span>
+                ) : (
               <Button
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
@@ -355,26 +385,30 @@ export default function FormSection({
                     });
                     return;
                   }
-                  setIsLoading(true); // Start loading
+                  // setIsLoading(true); // Start loading
                   Promise.resolve(formik.handleSubmit()).finally(() =>
-                    setIsLoading(false)
+                    // setIsLoading(false) 
+                  console.log("3")
+                  
                   ); // Stop loading after submission
                 }}
                 disabled={isLoading}
-                className="lg:block hidden text-[26px] w-full lg:w-[146px] pt-1"
+                className="lg:block hidden text-[26px] w-full lg:w-[146px] "
               >
-                {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <LoadingSpinner />
-                  </span>
-                ) : (
-                  "Submit"
-                )}
+                
+                  Submit
               </Button>
+            )}
+
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
+              {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <Loader />
+                  </span>
+                ) : (
               <Button
                 onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
@@ -387,25 +421,22 @@ export default function FormSection({
                   
                   
                   try {
-                    setIsLoading(true); // Start loading
+                    // setIsLoading(true); // Start loading
                     formik.handleSubmit(); // Handle form submission
                   } catch (error) {
                     console.error("Form submission failed", error);
                   } finally {
-                    setIsLoading(false); // Stop loading after submission (whether success or failure)
+                    // setIsLoading(false); // Stop loading after submission (whether success or failure)
                   }
                 }}
                 disabled={isLoading}
                 className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
               >
-                {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <LoadingSpinner />
-                  </span>
-                ) : (
-                  "Submit"
-                )}
+                
+                  Submit
               </Button>
+            )}
+
             </div>
           )}
         </form>
