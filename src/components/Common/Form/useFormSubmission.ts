@@ -4,6 +4,7 @@ import { db } from "@/firebase/firebaseConfig";
 import { formValidationSchema } from "./validations";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 export interface FormValues {
   fullName: string;
@@ -38,22 +39,25 @@ const uploadToCloudinary = async (file: File): Promise<string> => {
 };
 
 
-export const useFormSubmission = (page: string) => {
+export const useFormSubmission = (page: string, callback?: () => void) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleFormSubmission = async (values: FormValues): Promise<void> => {
     let resumeUrl: string | null = null;
-  
+    setIsLoading(true);
+
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToCloudinary(values.resume);
       }
-  
+
       const collectionName =
         page === "General Enquire"
           ? "generalEnquiries"
           : page === "Project Enquire"
           ? "projectEnquiries"
           : "careerApplications";
-  
+
       const filteredValues =
         page === "General Enquire"
           ? {
@@ -78,21 +82,26 @@ export const useFormSubmission = (page: string) => {
               postionAppliedFor: values.option,
               resumeUrl,
             };
-  
+
       const collectionRef = collection(db, collectionName);
       await addDoc(collectionRef, filteredValues);
-  
+
       await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
       });
-  
+
       toast.success("Form submitted successfully!");
+      
+      if (callback) {
+        callback(); // Call the callback function after successful submission
+      }
     } catch (error) {
       toast.error("Error submitting form. Please try again later.");
       console.error("Error submitting form:", error);
-      throw error; // Ensure the error propagates
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -114,10 +123,9 @@ export const useFormSubmission = (page: string) => {
         })
         .catch((error) => {
           console.error("Error submitting form:", error);
-          throw error; // Ensure the error is propagated
         });
     },
   });
 
-  return formik;
+  return { formik, isLoading };
 };
