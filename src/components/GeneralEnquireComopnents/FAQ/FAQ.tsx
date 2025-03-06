@@ -91,12 +91,12 @@ const FAQ = () => {
 
           {/* Read More Section */}
           <div className="flex justify-end mt-[46px] mr-[19px] mb-[162px]">
-            <button
+            {/* <button
               className="font-freightNeoSemibold text-xl text-customTextGray"
               onClick={() => alert("Navigating to more FAQs or another page")}
             >
               Read More
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

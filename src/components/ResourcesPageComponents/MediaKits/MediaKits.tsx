@@ -42,7 +42,7 @@ const MediaKits: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#EFEAE8] pt-[142px] pb-[133px] mx-auto flex justify-center">
+    <div className="bg-[#EFEAE8] pt-[100px] lg:pt-[142px] pb-[100px] mx-auto flex justify-center">
       <div className="container max-w-[1359px] 2xl:max-w-[85%] md:mx-20 mx-7">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {downloadCards.map((card, index) => (
@@ -73,7 +73,7 @@ const MediaKits: React.FC = () => {
                     <a
                       href={card.location}
                       download
-                      className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border mb-[50px] font-freightNeoMedium ${
+                      className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border mb-[35px] font-freightNeoMedium ${
                         card.variant === "dark"
                           ? "border-white text-white"
                           : "border-[#AE8566] text-[#AE8566]"
@@ -105,7 +105,7 @@ const MediaKits: React.FC = () => {
                   <a
                     href={card.location}
                     download
-                    className={`inline-flex text-[20px] items-center gap-2 px-6 py-2 rounded-full border font-freightNeoMedium ${
+                    className={`inline-flex text-[20px] items-center gap-2 mb-[35px] lg:mb-[20px] px-6 py-2 rounded-full border font-freightNeoMedium ${
                       card.variant === "dark"
                         ? "border-white text-white"
                         : "border-[#AE8566] text-[#AE8566]"

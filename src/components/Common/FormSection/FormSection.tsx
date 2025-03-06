@@ -3,7 +3,7 @@
 // ============= Component Imports =============
 import React, { useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // ============= Internal Imports =============
@@ -257,7 +257,7 @@ export default function FormSection({
                   "Submit"
                 )}
               </Button>
-              <label className="flex items-center gap-3 cursor-pointer group w-fit">
+              <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
                     type="checkbox"
@@ -328,7 +328,7 @@ export default function FormSection({
                   "Submit"
                 )}
               </Button>
-              <label className="flex items-center gap-3 cursor-pointer group w-fit">
+              <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
                     type="checkbox"
@@ -388,7 +388,7 @@ export default function FormSection({
                   
                   try {
                     setIsLoading(true); // Start loading
-                    await formik.handleSubmit(); // Wait for the form submission to finish
+                    formik.handleSubmit(); // Handle form submission
                   } catch (error) {
                     console.error("Form submission failed", error);
                   } finally {

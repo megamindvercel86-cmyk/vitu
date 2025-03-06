@@ -1,0 +1,30 @@
+[
+  {
+	"id": "076hdbvg0xGdintkT9fE",
+	"role": "Executive Director",
+	"name": "Laxman Kamath",
+	"email": "laxmankamath123@gmail.com",
+	"fileUrl": "https://res.cloudinary.com/dvandhsai/image/upload/v1740480440/lexgyyggygzkfkcj8xad.png"
+  },
+  {
+	"id": "xbuBFMiMts2BmKemC9Ek",
+	"fileUrl": "https://res.cloudinary.com/dvandhsai/image/upload/v1740480476/zw4o7o0ky4swemb4krvj.png",
+	"email": "test@gmail.com",
+	"role": "Managing Director",
+	"name": "Ananth Kamath"
+  },
+  {
+	"id": 5,
+	"role": "Executive Director",
+	"name": "Laxman Kamath",
+	"email": "laxmankamath123@gmail.com",
+	"fileUrl": "https://res.cloudinary.com/dvandhsai/image/upload/v1740480440/lexgyyggygzkfkcj8xad.png"
+  },
+  {
+	"id": 6,
+	"fileUrl": "https://res.cloudinary.com/dvandhsai/image/upload/v1740480476/zw4o7o0ky4swemb4krvj.png",
+	"email": "test@gmail.com",
+	"role": "Managing Director",
+	"name": "Ananth Kamath"
+  }
+]

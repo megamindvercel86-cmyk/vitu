@@ -64,7 +64,7 @@ function MediaSectionIntro() {
               />
             </div>
           </div>
-          <div className="h-[304px] md:h-auto bg-[#AE8566] ">
+          <div className="h-[330px]   md:h-auto bg-[#AE8566] ">
             <Typography
               variant="custom"
               className="text-[32px] md:text-5xl px-7 pt-[42px] leading-[1] pb-[10px]  text-center font-freightNeoMedium text-white"
@@ -78,7 +78,7 @@ function MediaSectionIntro() {
               Grab our brand assets & get to know us <br /> in just a few
               clicks!
             </Typography>
-            <div className="px-7 md:pb-12 pb-0 w-full">
+            <div className="px-7 md:pb-16 pb-0 w-full">
               <button className="flex items-center justify-center gap-4 w-full h-[58px] text-2xl font-freightNeoMedium text-white rounded-[34px] border-white border-[2px] mt-[49px]">
                 <Download />
                 <span className="pt-1">Download Now</span>

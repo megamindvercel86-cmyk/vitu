@@ -1,6 +1,5 @@
 "use client";
 
-
 // ============= Component Imports =============
 import React, { useEffect, useState } from "react";
 import Typography from "@/components/Typography/Typography";
@@ -13,6 +12,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "../../Common/InfiniteCarousel/InfiniteCarousel.css";
+import dummy from "@/data/dummy.json";
 
 // ============= Types & Interfaces =============
 interface TeamMember {
@@ -27,6 +27,7 @@ interface TeamMember {
 export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+
   const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>([]);
   
   
@@ -47,12 +48,45 @@ export default function LeadershipTeam() {
         
       } catch (error) {
         console.error("Error fetching team members:", error);
-      }
-    }
 
+      }
+      const data = await response.json();
+
+      const filteredData = data.data.filter(
+        (member: TeamMember) => member.development !== true
+      );
+
+      setTeamMembersCarousal([
+        ...filteredData,
+        ...filteredData.map((member: TeamMember, index: number) => ({
+          ...member,
+
+          id: index + 5,
+        })),
+      ]);
+
+      const updatedData = filteredData.map(
+        (member: TeamMember, index: number) => ({
+          ...member,
+
+          id: index + 5,
+        })
+      );
+
+      // Update states in a single batch to ensure consistency
+      setTeamMembers(filteredData);
+      // setTeamMembersCarousal([...updatedData, ...filteredData]);
+
+      // setTeamMembersCarousal([...filteredData, { ...filteredData[0], id: 1 }, { ...filteredData[1], id: 2 }]);
+    } catch (error) {
+      console.error("Error fetching team members:", error);
+    }
+  }
+
+  useEffect(() => {
     fetchTeamMembers();
   }, []);
-
+  console.log(teamMembersCarousal);
   return (
     <div className="lg:pt-[153px] py-16 lg:py-0 lg:pb-[198px] xl:pt-[160px] xl:pb-[191px]">
       <div className="mx-auto xl:mx-[284px] lg:mx-[78px]">
@@ -66,8 +100,7 @@ export default function LeadershipTeam() {
 
         {/* Desktop Carousel */}
         <div className="hidden lg:flex mx-72 gap-10">
-          
-        {/* <Swiper
+          {/* <Swiper
             // onSwiper={(swiper) => {
             //   swiperRef.current = swiper;
             // }}
@@ -89,60 +122,66 @@ export default function LeadershipTeam() {
             }}
             className="media-swiper h-full"
           > */}
-          {teamMembers.map((member,index) => (
-          
-
-              <TeamMemberCard member={member} key={index} />
-
-           
+          {teamMembers.map((member, index) => (
+            <TeamMemberCard member={member} key={index} />
           ))}
-        {/* </Swiper> */}
-          
+          {/* </Swiper> */}
         </div>
 
         {/* Mobile Carousel */}
         <div className="lg:hidden">
-          <Swiper
-            modules={[EffectCoverflow, Autoplay, Navigation]}
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={"auto"}
-            loop={true}
-            spaceBetween={20}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper md:h-[700px] h-[450px]"
-          >
-            {teamMembersCarousal.map((member,index) => (
-              <SwiperSlide key={index} className="swiper-slide !overflow-visible">
-                <div className="text-center">
-                  <Image
-                    src={member.fileUrl}
-                    alt={member.name}
-                    width={400}
-                    height={500}
-                    className="w-full h-full object-cover rounded-[10px] shadow-lg"
-                  />
-                  <Typography variant="custom" className="text-xl text-[#04070799] font-freightNeoMedium mt-4">
-                    {member.name}
-                  </Typography>
-                  <Typography variant="custom" className="text-xl text-[#04070799] font-FreightNeoProNormal">
-                    {member.role}
-                  </Typography>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {teamMembersCarousal.length > 0 && (
+            <Swiper
+              modules={[EffectCoverflow, Autoplay, Navigation]}
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              loop={true}
+              spaceBetween={20}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              className="mySwiper md:h-[700px] h-[450px]"
+            >
+              {teamMembersCarousal.map((member, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="swiper-slide !overflow-visible"
+                >
+                  <div className="text-center">
+                    <Image
+                      src={member.fileUrl}
+                      alt={member.name}
+                      width={400}
+                      height={500}
+                      className="w-full h-full object-cover rounded-[10px] shadow-lg"
+                    />
+                    <Typography
+                      variant="custom"
+                      className="text-xl text-[#04070799] font-freightNeoMedium mt-4"
+                    >
+                      {member.name}
+                    </Typography>
+                    <Typography
+                      variant="custom"
+                      className="text-xl text-[#04070799] font-FreightNeoProNormal"
+                    >
+                      {member.role}
+                    </Typography>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
       </div>
     </div>
@@ -153,12 +192,24 @@ export default function LeadershipTeam() {
 const TeamMemberCard = ({ member }: { member: TeamMember }) => (
   <div className="text-center w-[100%]  ">
     <div className="aspect-auto lg:mb-[34px] w-full">
-      <Image width={400} height={500} src={member.fileUrl} alt={member.name} className="w-full h-full object-cover rounded-[20px] shadow-lg" />
+      <Image
+        width={400}
+        height={500}
+        src={member.fileUrl}
+        alt={member.name}
+        className="w-full h-full object-cover rounded-[20px] shadow-lg"
+      />
     </div>
-    <Typography variant="custom" className="text-xl sm:text-xl md:text-4xl 2xl:text-5xl text-customTextGray font-freightNeoMedium">
+    <Typography
+      variant="custom"
+      className="text-xl sm:text-xl md:text-4xl 2xl:text-5xl text-customTextGray font-freightNeoMedium"
+    >
       {member.name}
     </Typography>
-    <Typography variant="custom" className="text-customTextGray font-FreightNeoProNormal px-20 lg:text-2xl 2xl:text-3xl">
+    <Typography
+      variant="custom"
+      className="text-customTextGray font-FreightNeoProNormal px-20 lg:text-2xl 2xl:text-3xl"
+    >
       {member.role}
     </Typography>
   </div>
