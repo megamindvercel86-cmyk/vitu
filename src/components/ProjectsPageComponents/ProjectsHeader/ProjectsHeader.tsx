@@ -2,23 +2,19 @@ import Typography from "@/components/Typography/Typography";
 
 export default function ProjectHeader() {
   return (
-    <div className="pt-[128px] pb-[107px] text-center">
+    <div className="">
       <Typography
         variant="custom"
-        className="font-freightNeoMedium text-[#4F3737] text-[1rem]
-                     pb-6 sm:text-[1.375rem] md:px-32 md:text-[1.125rem] 2xl:text-[2.125rem]"
+        className="font-freightNeoMedium text-[#4F3737] text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto"
       >
-        Discover a thoughtfully designed, uniquely authentic experience just for
-        you. Enjoy a harmonious blend of modern design, lush surroundings, &
-        exclusive amenities, setting a new standard for coastal living at
-        Vaikuntam City.
+        Just 5 minutes away from the serene NITK Surathkal beach, our premium
+        plotted development offers unparalleled access to coastal beauty.
       </Typography>
       <Typography
-        variant="custom"
-        className="font-freightNeoMedium text-customBrown text-[1.5rem]
-                     px-7 sm:text-[1.5rem] md:px-0 md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem]"
+        variant="h1"
+        className="font-freightNeoMedium text-customBrown text-xl md:text-2xl lg:text-3xl !leading-none xl:text-[60px] mt-6 max-w-4xl"
       >
-        Discover Your Sanctuary
+        Enjoy the waves & the ease of beachside living.
       </Typography>
     </div>
   );

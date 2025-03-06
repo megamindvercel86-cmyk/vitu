@@ -73,13 +73,11 @@ export default function HomePage({}: HomePageProps) {
       {/* <layout */}
       <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
         {/* Hero Section (Should contain an <h1> inside the component) */}
+        <div className="">
+
         <PojectHeroSection />
-        <section>
-          <ProjectHeader />
-        </section>
-        <section>
-          <ProjectCarousel />
-        </section>
+        </div>
+       
       </Layout>
     </>
   );

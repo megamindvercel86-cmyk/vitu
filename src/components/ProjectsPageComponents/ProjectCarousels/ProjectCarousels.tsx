@@ -19,7 +19,7 @@ const desktopDataRight = [
  */
 export default function ProjectCarousel(): React.ReactElement {
   return (
-    <section className="pb-24">
+    <section className="pb-24 bg-gradient-to-b from-[#e4dcd6] to-[#FBFAF8]">
       {/* Desktop Project Carousel - Right Direction */}
       <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={desktopDataRight} direction="left" speed="slow" />
