@@ -11,6 +11,7 @@
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.12.3",
     "@next/bundle-analyzer": "^15.1.6",
+    "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.28.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
@@ -27,6 +28,8 @@
     "react-lottie": "^1.2.10",
     "react-toastify": "^11.0.3",
     "react-youtube": "^10.1.0",
+    "sass": "^1.85.1",
+    "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.2.1",
     "tailwind-merge": "^2.6.0",
     "yup": "^1.6.1"
