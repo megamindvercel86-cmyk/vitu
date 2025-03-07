@@ -101,48 +101,44 @@ export default function HomePage({}: HomePageProps) {
 
   return (
     <>
-      {/* <layout */}
+      {/* Layout section */}
       <Layout
         navbarClassName={NAVBAR_CONFIG.className}
         navbarProps={NAVBAR_CONFIG.props}
       >
-       
-    
-      
-   
         {/* Hero Section (Should contain an <h1> inside the component) */}
         <section className="">
           <ProjectHeroSection />
         </section>
         <section>
-          <LocationAdvantage/>
+          <LocationAdvantage />
         </section>
         <section className="bg-[#fbfaf8] pt-36">
-          <CurrentProject/>
+          <CurrentProject />
         </section>
         <section className="bg-[#fbfaf8] pt-36">
-          <ExploreProjectsWrapper/>
+          <ExploreProjectsWrapper />
         </section>
        
         <section ref={container} className="bg-[#fbfaf8] pt-36">
-        {plots.map((project, i) => {
-          const targetScale = 1 - (plots.length - i) * 0.05;
-          return (
-            <Plot
-              key={p_${i}}
-              i={i}
-              {...project}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            />
-          );
-        })}
-      </section>
-      <section className="bg-[#fbfaf8] pt-36">
-          <LegacyBuiltComponent/>
+          {plots.map((project, i) => {
+            const targetScale = 1 - (plots.length - i) * 0.05;
+            return (
+              <Plot
+                key={`p_${i}`}
+                i={i}
+                {...project}
+                progress={scrollYProgress}
+                range={[i * 0.25, 1]}
+                targetScale={targetScale}
+              />
+            );
+          })}
+        </section>
+        <section className="bg-[#fbfaf8] pt-36">
+          <LegacyBuiltComponent />
         </section>
       </Layout>
-   </>
+    </>
   );
 }
