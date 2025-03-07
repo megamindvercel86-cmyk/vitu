@@ -9,7 +9,6 @@ import SustainabilityInitiatives from "@/components/HomePageComponents/Sustainab
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
-
 // ============= Types & Interfaces =============
 interface HomePageProps {}
 
@@ -41,7 +40,8 @@ export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
     "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
 
   return {
     title: pageTitle,
@@ -70,13 +70,14 @@ export async function generateMetadata() {
   };
 }
 
-
 export default function HomePage({}: HomePageProps) {
   return (
     <>
-
       {/* <layout */}
-      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+      <Layout
+        navbarClassName={NAVBAR_CONFIG.className}
+        navbarProps={NAVBAR_CONFIG.props}
+      >
         {/* Hero Section (Should contain an <h1> inside the component) */}
         <HomeHeroSection />
 

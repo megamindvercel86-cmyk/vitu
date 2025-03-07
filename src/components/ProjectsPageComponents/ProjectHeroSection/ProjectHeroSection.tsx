@@ -5,8 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CTAButtonIcon from "@/components/Icons/Icons";
-import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
-import Typography from "@/components/Typography/Typography";
+import backgroundImage from "../../../../public/images/backgroundImages/image.png";
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
 
@@ -67,7 +66,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[280vh] xl:h-[240vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[180vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
         className="layer absolute top-0 left-0 w-full h-full z-[-1]"

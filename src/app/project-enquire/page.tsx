@@ -1,5 +1,3 @@
-
-
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import FormSection from "@/components/Common/FormSection/FormSection";
@@ -16,15 +14,18 @@ const NAVBAR_CONFIG = {
 
 const FORM_CONFIG = {
   heading: "Your dream home is closer than you think!",
-  subheading: "Begin your journey to a new home—fill out the form & let's get started.",
+  subheading:
+    "Begin your journey to a new home—fill out the form & let's get started.",
   page: "Project Enquire" as const,
 };
 
 export async function generateMetadata() {
-  const pageTitle = "Project Enquiry | Vitu-Realty - Find Your Perfect Property in Mangalore";
+  const pageTitle =
+    "Project Enquiry | Vitu-Realty - Find Your Perfect Property in Mangalore";
   const pageDescription =
     "Start your journey to owning your dream property with Vitu-Realty. Fill out our project enquiry form and explore premium plotted developments tailored to your needs.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
 
   return {
     title: pageTitle,
@@ -56,7 +57,7 @@ export async function generateMetadata() {
 /**
  * Project Enquire Page Component
  * Handles specific project and property inquiries
- * 
+ *
  * Features:
  * 1. Project inquiry form
  * 2. Hidden "Get in Touch" button

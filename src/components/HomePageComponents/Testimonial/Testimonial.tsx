@@ -22,7 +22,6 @@ const midIndex = Math.ceil(testimonialData.length / 2);
 const desktopDataLeft = testimonialData.slice(0, midIndex);
 const desktopDataRight = testimonialData.slice(midIndex);
 
-
 /**
  * Testimonial Component
  * Displays client testimonials in an infinite scrolling carousel.
@@ -53,15 +52,27 @@ export default function Testimonial(): React.ReactElement {
 
         {/* Desktop Testimonial Carousel - Right Direction */}
         <div className="md:flex hidden rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteMovingCards items={desktopDataRight} direction="right" speed="slow" />
+          <InfiniteMovingCards
+            items={desktopDataRight}
+            direction="right"
+            speed="slow"
+          />
         </div>
 
         {/* Mobile Testimonial Carousel - Left Direction */}
         <div className="md:flex hidden rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteMovingCards items={desktopDataLeft} direction="left" speed="slow" />
+          <InfiniteMovingCards
+            items={desktopDataLeft}
+            direction="left"
+            speed="slow"
+          />
         </div>
         <div className="rounded-md sm:hidden flex flex-col antialiased items-center justify-center relative overflow-hidden">
-          <InfiniteMovingCards items={testimonialData} direction="left" speed="slow" />
+          <InfiniteMovingCards
+            items={testimonialData}
+            direction="left"
+            speed="slow"
+          />
         </div>
 
         {/* Read More Section */}

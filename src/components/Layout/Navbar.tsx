@@ -210,7 +210,9 @@ export default function Navbar({
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"} items-center justify-between`}>
+          <div
+            className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"} items-center justify-between`}
+          >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <NavLink

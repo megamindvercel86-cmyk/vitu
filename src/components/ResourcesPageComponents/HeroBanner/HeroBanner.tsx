@@ -11,7 +11,8 @@ interface HeroBannerProps {}
 const CONTENT = {
   badge: "BLOG",
   title: "Is it Really worth it?",
-  description: "Is real estate investment worth it? We break down the pros, cons, and key considerations to help you decide.",
+  description:
+    "Is real estate investment worth it? We break down the pros, cons, and key considerations to help you decide.",
   cta: "Read Now",
 };
 
@@ -22,17 +23,17 @@ const BACKGROUND = {
 /**
  * Hero Banner Component
  * Main banner section for resources page
- * 
+ *
  * Features:
  * 1. Full-width background image
  * 2. Content aligned to bottom
  * 3. Responsive text and layout
  * 4. CTA button
- * 
+ *
  * Layout:
  * - Desktop: Left-aligned content with right-aligned CTA
  * - Mobile: Stacked layout with full-width CTA
- * 
+ *
  * @returns {React.ReactElement} The HeroBanner component
  */
 export default function HeroBanner(): React.ReactElement {
@@ -41,13 +42,22 @@ export default function HeroBanner(): React.ReactElement {
     <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
       {/* Text Content */}
       <div>
-        <Typography variant="custom" className="text-white lg:text-2xl sm:text-xs 2xl:text-[2.5rem]">
+        <Typography
+          variant="custom"
+          className="text-white lg:text-2xl sm:text-xs 2xl:text-[2.5rem]"
+        >
           {CONTENT.badge}
         </Typography>
-        <Typography variant="custom" className="text-white font-freightNeoMedium md:text-[4rem] sm:text-[2rem] text-[2rem] 2xl:text-[7.375rem]">
+        <Typography
+          variant="custom"
+          className="text-white font-freightNeoMedium md:text-[4rem] sm:text-[2rem] text-[2rem] 2xl:text-[7.375rem]"
+        >
           {CONTENT.title}
         </Typography>
-        <Typography variant="custom" className="text-white md:text-2xl sm:text-sm text-sm font-freightNeoMedium md:w-[38.688rem] 2xl:w-[50rem] w-full 2xl:text-[2rem]">
+        <Typography
+          variant="custom"
+          className="text-white md:text-2xl sm:text-sm text-sm font-freightNeoMedium md:w-[38.688rem] 2xl:w-[50rem] w-full 2xl:text-[2rem]"
+        >
           {CONTENT.description}
         </Typography>
       </div>

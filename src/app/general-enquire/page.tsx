@@ -1,5 +1,3 @@
-
-
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import FormSection from "@/components/Common/FormSection/FormSection";
@@ -17,7 +15,8 @@ const NAVBAR_CONFIG = {
 
 const FORM_CONFIG = {
   heading: "Excited about the possibilities your next home could offer?",
-  subheading: "Take the first step towards the home of your dreams. Fill in the form and begin your Journey.",
+  subheading:
+    "Take the first step towards the home of your dreams. Fill in the form and begin your Journey.",
   page: "General Enquire" as const,
 };
 
@@ -25,10 +24,12 @@ const FORM_CONFIG = {
  * Metadata for the General Enquire Page
  */
 export async function generateMetadata() {
-  const pageTitle = "Enquire Now | Vitu-Realty - Find Your Dream Home in Mangalore";
+  const pageTitle =
+    "Enquire Now | Vitu-Realty - Find Your Dream Home in Mangalore";
   const pageDescription =
     "Take the first step towards your dream home with Vitu-Realty. Fill out our inquiry form and explore premium plotted developments in Mangalore.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Dream-Home-Hero.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Dream-Home-Hero.jpg";
 
   return {
     title: pageTitle,
@@ -60,7 +61,7 @@ export async function generateMetadata() {
 /**
  * General Enquire Page Component
  * Handles general inquiries about homes and properties
- * 
+ *
  * Features:
  * 1. Inquiry form for potential customers
  * 2. FAQ section for common questions

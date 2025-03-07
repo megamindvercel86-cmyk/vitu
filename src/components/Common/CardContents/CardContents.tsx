@@ -18,7 +18,7 @@ const CardContent = ({ id }: { id: number }) => {
     | undefined;
 
   project = sustainabilityInitiatives.find(
-    (project) => project.id === currentCardId
+    (project) => project.id === currentCardId,
   );
 
   const handleFooterClick = () => {

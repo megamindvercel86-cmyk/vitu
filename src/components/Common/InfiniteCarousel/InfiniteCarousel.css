@@ -1,34 +1,33 @@
 .swiper {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  width: 231px;
+  height: 289px;
+  border-radius: 10px;
+  background: none; /* Background removed */
+  overflow: hidden; /* Ensure content doesn't overflow the border-radius */
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .swiper-slide {
-    width: 231px;
-    height: 289px;
-    border-radius: 10px;
-    background: none; /* Background removed */
-    overflow: hidden; /* Ensure content doesn't overflow the border-radius */
+    width: 400px !important;
+    height: 500px !important;
   }
-  
-  /* Medium devices (768px and up) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .swiper-slide {
-      width: 400px !important;
-      height: 500px !important;
-    }
-  }
-  
-  .swiper-slide-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the container without distorting */
-    border-radius: 10px; /* Same border-radius applied to the image */
-  }
-  
-  .swiper-3d .swiper-slide-shadow-left {
-    background-image: linear-gradient(to left, #00000080, #0000);
-  }
-  
+}
+
+.swiper-slide-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distorting */
+  border-radius: 10px; /* Same border-radius applied to the image */
+}
+
+.swiper-3d .swiper-slide-shadow-left {
+  background-image: linear-gradient(to left, #00000080, #0000);
+}

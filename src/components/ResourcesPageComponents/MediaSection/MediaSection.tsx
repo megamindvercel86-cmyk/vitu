@@ -3,11 +3,14 @@
 // ============= Component Imports =============
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import type { Swiper as SwiperType } from 'swiper';
+import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SubHeading from "@/components/Common/SubHeding";
 import Heading from "@/components/Common/Heading";
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
+import {
+  IconArrowNarrowLeft,
+  IconArrowNarrowRight,
+} from "@/components/Icons/Icons";
 import "./MediaSection.css";
 
 // ============= Swiper Imports =============
@@ -22,25 +25,24 @@ interface NewsItem {
   fileUrl: string;
   link: string;
   title: string;
-  description:string;
+  description: string;
 }
-
 
 /**
  * Media Section Component
  * Displays news items in a responsive carousel layout
- * 
+ *
  * Features:
  * 1. Responsive grid layout
  * 2. Dynamic slides per view
  * 3. Navigation controls
  * 4. Infinite loop
- * 
+ *
  * Breakpoints:
  * - Mobile: 1 slide
  * - Tablet: 2 slides
  * - Desktop: 3 slides
- * 
+ *
  * @returns {React.ReactElement} The MediaSection component
  */
 export default function MediaSection(): React.ReactElement {
@@ -49,30 +51,30 @@ export default function MediaSection(): React.ReactElement {
 
   // ============= Handlers =============
   const [isBeginning, setIsBeginning] = useState(true);
-const [isEnd, setIsEnd] = useState(false);
+  const [isEnd, setIsEnd] = useState(false);
 
-useEffect(() => {
-  if (swiperRef.current) {
-    setIsBeginning(swiperRef.current.isBeginning);
-    setIsEnd(swiperRef.current.isEnd);
-  }
-}, [swiperRef.current]);
+  useEffect(() => {
+    if (swiperRef.current) {
+      setIsBeginning(swiperRef.current.isBeginning);
+      setIsEnd(swiperRef.current.isEnd);
+    }
+  }, [swiperRef.current]);
 
-const handlePrev = () => {
-  if (swiperRef.current) {
-    swiperRef.current.slidePrev();
-    setIsBeginning(swiperRef.current.isBeginning);
-    setIsEnd(swiperRef.current.isEnd);
-  }
-};
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+      setIsBeginning(swiperRef.current.isBeginning);
+      setIsEnd(swiperRef.current.isEnd);
+    }
+  };
 
-const handleNext = () => {
-  if (swiperRef.current) {
-    swiperRef.current.slideNext();
-    setIsBeginning(swiperRef.current.isBeginning);
-    setIsEnd(swiperRef.current.isEnd);
-  }
-};
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+      setIsBeginning(swiperRef.current.isBeginning);
+      setIsEnd(swiperRef.current.isEnd);
+    }
+  };
 
   const [news, setNews] = useState<NewsItem[]>([]);
 
@@ -86,7 +88,6 @@ const handleNext = () => {
         const data = await response.json();
 
         // Filter out team members where development is true
-        
 
         setNews(data.data); // Set filtered data to state
       } catch (error) {
@@ -96,9 +97,6 @@ const handleNext = () => {
 
     fetchTeamMembers();
   }, []);
-
-
-
 
   // ============= Render Helpers =============
   const renderNewsCard = (item: NewsItem) => {
@@ -124,20 +122,21 @@ const handleNext = () => {
         {/* Content */}
         <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.title}</SubHeading>
+            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">
+              {item.title}
+            </SubHeading>
           </div>
           <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
             {item.description}
           </SubHeading>
           <Link
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
-      >
-        Read More
-      </Link>
-
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
+          >
+            Read More
+          </Link>
         </div>
       </div>
     );

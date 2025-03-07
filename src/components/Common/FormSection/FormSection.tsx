@@ -46,11 +46,9 @@ export default function FormSection({
     console.log("Form submission complete! Performing additional actions...");
     // You can navigate to another page, show a modal, etc.
   };
-  
+
   const { formik, isLoading } = useFormSubmission(page, handleSuccess);
 
-  
-  
   // Base input class with placeholder and value font
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
@@ -228,7 +226,7 @@ export default function FormSection({
                     onChange={(event) => {
                       formik.setFieldValue(
                         "resume",
-                        event.currentTarget.files?.[0] || null
+                        event.currentTarget.files?.[0] || null,
                       );
                     }}
                     className="sr-only"
@@ -239,36 +237,32 @@ export default function FormSection({
           )}
           {page === "General Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 pt-[45px] mb-[54px] md:mb-[145px]">
-               {isLoading ? (
-                  <span className="lg:hidden block items-center justify-center">
-                    <Loader />
-                  </span>
-                ) : (
-              <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                      formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  try {
-                  formik.handleSubmit()
-                    
-                  } catch (error) {
-                    console.log(error);
-                    
-                  }
-                  
-                }}
-                disabled={isLoading}
-                className="lg:hidden block text-[26px] w-full lg:w-[146px] "
-              >
-               
+              {isLoading ? (
+                <span className="lg:hidden block items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                <Button
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    try {
+                      formik.handleSubmit();
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  }}
+                  disabled={isLoading}
+                  className="lg:hidden block text-[26px] w-full lg:w-[146px] "
+                >
                   Submit
-              </Button>
-            )}
+                </Button>
+              )}
 
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
@@ -293,65 +287,60 @@ export default function FormSection({
                 </span>
               ) : (
                 <Button
-                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
-                  
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                      formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  // Start loading
-                  try {
-                    // setIsLoading(true);
+                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    // Start loading
+                    try {
+                      // setIsLoading(true);
 
-                    await formik.handleSubmit();
-                    // setIsLoading(false); // Stop loading after submission
-                     // Ensure form submission is awaited
-                  } finally {
-                  }
-                }}
-                
+                      await formik.handleSubmit();
+                      // setIsLoading(false); // Stop loading after submission
+                      // Ensure form submission is awaited
+                    } finally {
+                    }
+                  }}
                   disabled={isLoading}
                   className="lg:block hidden text-[26px] w-full lg:w-[146px] "
                 >
                   Submit
                 </Button>
               )}
-
             </div>
           )}
           {page === "Project Enquire" && (
             <div className="flex items-center flex-col lg:flex-row justify-between gap-2 mb-[54px]  pt-[45px] md:mb-[145px]">
-               {isLoading ? (
-                  <span className=" lg:hidden block  items-center justify-center">
-                    <Loader />
-                  </span>
-                ) : (
-              <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                      formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  // setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    // setIsLoading(false)
-                  console.log("2")
-                  
-                  ); // Stop loading after submission
-                }}
-                disabled={isLoading}
-                className="lg:hidden block text-[26px] w-full lg:w-[146px]"
-              >
-               
+              {isLoading ? (
+                <span className=" lg:hidden block  items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                <Button
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    // setIsLoading(true); // Start loading
+                    Promise.resolve(formik.handleSubmit()).finally(() =>
+                      // setIsLoading(false)
+                      console.log("2"),
+                    ); // Stop loading after submission
+                  }}
+                  disabled={isLoading}
+                  className="lg:hidden block text-[26px] w-full lg:w-[146px]"
+                >
                   Submit
-              </Button>
-            )}
+                </Button>
+              )}
 
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
@@ -372,71 +361,65 @@ export default function FormSection({
                 </span>
               </label>
               {isLoading ? (
-                  <span className="lg:block hidden items-center justify-center">
-                    <Loader />
-                  </span>
-                ) : (
-              <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                      formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  // setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    // setIsLoading(false) 
-                  console.log("3")
-                  
-                  ); // Stop loading after submission
-                }}
-                disabled={isLoading}
-                className="lg:block hidden text-[26px] w-full lg:w-[146px] "
-              >
-                
+                <span className="lg:block hidden items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                <Button
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    // setIsLoading(true); // Start loading
+                    Promise.resolve(formik.handleSubmit()).finally(() =>
+                      // setIsLoading(false)
+                      console.log("3"),
+                    ); // Stop loading after submission
+                  }}
+                  disabled={isLoading}
+                  className="lg:block hidden text-[26px] w-full lg:w-[146px] "
+                >
                   Submit
-              </Button>
-            )}
-
+                </Button>
+              )}
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
             <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
               {isLoading ? (
-                  <span className="flex items-center justify-center">
-                    <Loader />
-                  </span>
-                ) : (
-              <Button
-                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                      formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  
-                  
-                  try {
-                    // setIsLoading(true); // Start loading
-                    formik.handleSubmit(); // Handle form submission
-                  } catch (error) {
-                    console.error("Form submission failed", error);
-                  } finally {
-                    // setIsLoading(false); // Stop loading after submission (whether success or failure)
-                  }
-                }}
-                disabled={isLoading}
-                className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
-              >
-                
-                  Submit
-              </Button>
-            )}
+                <span className="flex items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                <Button
+                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
 
+                    try {
+                      // setIsLoading(true); // Start loading
+                      formik.handleSubmit(); // Handle form submission
+                    } catch (error) {
+                      console.error("Form submission failed", error);
+                    } finally {
+                      // setIsLoading(false); // Stop loading after submission (whether success or failure)
+                    }
+                  }}
+                  disabled={isLoading}
+                  className="text-[26px] pt-1 sm:w-full w-full md:w-[146px]"
+                >
+                  Submit
+                </Button>
+              )}
             </div>
           )}
         </form>

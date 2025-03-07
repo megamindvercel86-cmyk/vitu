@@ -1,7 +1,6 @@
 "use client";
 
-
-import 'swiper/css';
+import "swiper/css";
 
 interface InfiniteMovingCardsProps {
   items: Array<{
@@ -14,6 +13,10 @@ interface InfiniteMovingCardsProps {
   speed: "slow" | "normal" | "fast";
 }
 
-export function InfiniteMovingCards({ items, direction, speed }: InfiniteMovingCardsProps) {
+export function InfiniteMovingCards({
+  items,
+  direction,
+  speed,
+}: InfiniteMovingCardsProps) {
   // Your existing InfiniteMovingCards implementation
-} 
+}

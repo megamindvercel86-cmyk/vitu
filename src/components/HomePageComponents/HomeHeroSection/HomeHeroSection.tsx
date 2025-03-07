@@ -1,9 +1,10 @@
 import Typography from "@/components/Typography/Typography";
-import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp"
+import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
 import Image from "next/image";
 // ============= Constants =============
 const HERO_CONFIG = {
-  backgroundImage: "/images/backgroundImages/homePageBackgroundImageDesktop.webp",
+  backgroundImage:
+    "/images/backgroundImages/homePageBackgroundImageDesktop.webp",
   titles: {
     main: "Building Wholesome",
     sub: "Living Spaces",
@@ -39,7 +40,13 @@ export default function HomeHeroSection() {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div> */}
-        <Image src={bgImage} alt="Home Hero Background" fill className="object-cover"   placeholder="blur" />
+        <Image
+          src={bgImage}
+          alt="Home Hero Background"
+          fill
+          className="object-cover"
+          placeholder="blur"
+        />
 
         {/* Hero Content */}
         <div className="relative flex h-full justify-center top-[12.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[34.375rem]">

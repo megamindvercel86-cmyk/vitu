@@ -12,7 +12,6 @@ const Loader = () => {
           borderTop: "5px solid #ae8566",
           borderRadius: "50%",
           animation: "spin 1s linear infinite",
-          
         }}
       />
       <style>

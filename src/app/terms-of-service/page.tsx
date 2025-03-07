@@ -13,11 +13,12 @@ const NAVBAR_CONFIG = {
   },
 };
 
-
 export async function generateMetadata() {
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
   return {
-    title: "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
+    title:
+      "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
     description:
       "Read Vitu Realty's Terms of Service to understand our policies, legal agreements, and user guidelines for using our platform and services.",
     keywords: [
@@ -29,7 +30,8 @@ export async function generateMetadata() {
       "Real Estate Terms",
     ],
     openGraph: {
-      title: "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
+      title:
+        "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
       description:
         "Read Vitu Realty's Terms of Service to understand our policies, legal agreements, and user guidelines for using our platform and services.",
       url: "https://viturealty.vercel.app/terms-of-service",
@@ -45,18 +47,18 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
+      title:
+        "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
       description:
         "Read Vitu Realty's Terms of Service to understand our policies, legal agreements, and user guidelines for using our platform and services.",
       images: [imageUrl],
     },
-  }
-
+  };
 }
 /**
  * Terms of Service Page Component
  * Displays the company's terms of service and legal information
- * 
+ *
  * Features:
  * 1. Terms and conditions content
  * 2. Legal agreements

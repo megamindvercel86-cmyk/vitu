@@ -25,12 +25,13 @@ const CONTENT = {
   header: {
     badge: "INSIGHTS",
     title: "Your Home Discovery Center",
-    description: "Delve into all things Realty through our insights - uncover articles, tips, and stories inspiring your dream home journey.",
+    description:
+      "Delve into all things Realty through our insights - uncover articles, tips, and stories inspiring your dream home journey.",
   },
 };
 
 const ARTICLES: Article[] = [
-  { 
+  {
     id: 1,
     category: "BLOG",
     title: "Embracing the Art of Coastal Living",
@@ -54,12 +55,10 @@ const ARTICLES: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
-  
-  
 ];
 
 const ARTICLES_MOBAIL: Article[] = [
-  { 
+  {
     id: 1,
     category: "BLOG",
     title: "Embracing the Art of Coastal Living",
@@ -83,7 +82,7 @@ const ARTICLES_MOBAIL: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
-  { 
+  {
     id: 4,
     category: "BLOG",
     title: "Embracing the Art of Coastal Living",
@@ -107,43 +106,37 @@ const ARTICLES_MOBAIL: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
-  
-  
 ];
-
-
-
 
 /**
  * Article Area Component
  * Displays articles in carousel format for both desktop and mobile
- * 
+ *
  * Features:
  * 1. Header section with title and description
  * 2. Desktop carousel with expandable cards
  * 3. Mobile carousel with swipeable cards
- * 
+ *
  * Layout:
  * - Desktop: Full-width carousel with large cards
  * - Mobile: Single column carousel
- * 
+ *
  * @returns {React.ReactElement} The ArticleArea component
  */
 export default function ArticleArea(): React.ReactElement {
   // ============= Data Transformers =============
-  // const getCarouselCards = (): CarouselCard[] => 
+  // const getCarouselCards = (): CarouselCard[] =>
   //   ARTICLES.map(article => ({
   //     ...article,
   //     src: article.url,
-      
+
   //     content: (
   //       <div className="text-neutral-700 p-4">
   //         <p>{article.subtitle || "Discover more insights in this article."}</p>
   //       </div>
-        
+
   //     ),
   //   }));
-
 
   // ============= Render Helpers =============
   const renderHeader = () => (

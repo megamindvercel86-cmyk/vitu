@@ -33,7 +33,11 @@ export async function POST(req: Request) {
     }
 
     // Define the path to the HTML template
-    const templatePath = path.join(process.cwd(), "emailTemplates", templateFile);
+    const templatePath = path.join(
+      process.cwd(),
+      "emailTemplates",
+      templateFile,
+    );
 
     // Read the selected HTML template file
     let emailTemplate = await fs.readFile(templatePath, "utf-8");
@@ -51,7 +55,10 @@ export async function POST(req: Request) {
       .replace("[Name from Career Application Form]", fullName)
       .replace("[Email from Career ApplicationForm]", email)
       .replace("[Phone from Career Application Form]", phone)
-      .replace("[Role selected from Career Application Form]", postionApplyingfor || "");
+      .replace(
+        "[Role selected from Career Application Form]",
+        postionApplyingfor || "",
+      );
 
     // Add resume link for Career Application emails
     if (page === "Career Application" && resumeUrl) {
@@ -103,13 +110,13 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "Email sent successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Email send error:", error);
     return NextResponse.json(
-      { message: "Failed to send email",error },
-      { status: 500 }
+      { message: "Failed to send email", error },
+      { status: 500 },
     );
   }
 }

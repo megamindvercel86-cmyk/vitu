@@ -38,64 +38,75 @@ const IMAGES = {
 const CONTENT = {
   desktop: [
     [
-      { 
-        title: "Prime Locations", 
-        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
+      {
+        title: "Prime Locations",
+        description:
+          "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
-      { 
-        title: "Accessible Luxury", 
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
+      {
+        title: "Accessible Luxury",
+        description:
+          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
-      { 
-        title: "Trusted Experience / Happy Residents", 
-        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
-      },
-    ],
-    [
-      { 
-        title: "Prime Locations", 
-        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
-      },
-      { 
-        title: "Accessible Luxury", 
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
-      },
-      { 
-        title: "Trusted Experience / Happy Residents", 
-        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
+      {
+        title: "Trusted Experience / Happy Residents",
+        description:
+          "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
     [
-      { 
-        title: "Prime Locations", 
-        description: "Strategically located properties offering convenience, connectivity, and high investment value." 
+      {
+        title: "Prime Locations",
+        description:
+          "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
-      { 
-        title: "Accessible Luxury", 
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
+      {
+        title: "Accessible Luxury",
+        description:
+          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
-      { 
-        title: "Trusted Experience / Happy Residents", 
-        description: "Delivering homes where families thrive, backed by years of trust and excellence." 
+      {
+        title: "Trusted Experience / Happy Residents",
+        description:
+          "Delivering homes where families thrive, backed by years of trust and excellence.",
+      },
+    ],
+    [
+      {
+        title: "Prime Locations",
+        description:
+          "Strategically located properties offering convenience, connectivity, and high investment value.",
+      },
+      {
+        title: "Accessible Luxury",
+        description:
+          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      },
+      {
+        title: "Trusted Experience / Happy Residents",
+        description:
+          "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
   ],
   mobile: [
-    { 
-      title: "Prime Locations", 
-      description: "Strategically located properties offering convenience, connectivity, and high investment value." 
+    {
+      title: "Prime Locations",
+      description:
+        "Strategically located properties offering convenience, connectivity, and high investment value.",
     },
-    { 
-      title: "Accessible Luxury", 
-      description: "Luxury living at accessible prices, designed to offer comfort and sophistication." 
+    {
+      title: "Accessible Luxury",
+      description:
+        "Luxury living at accessible prices, designed to offer comfort and sophistication.",
     },
-    { 
-      title: "Trusted Experience / Happy Residents", 
-      description: "Delivering homes where families thrive, backed by years of trust and excellence." 
+    {
+      title: "Trusted Experience / Happy Residents",
+      description:
+        "Delivering homes where families thrive, backed by years of trust and excellence.",
     },
   ],
 };
-
 
 /**
  * Vision And Mission Component
@@ -129,17 +140,17 @@ export default function VisionAndMission() {
       setCurrentIndex(nextIndex);
       setTimeout(
         () => setIsAnimating(false),
-        CAROUSEL_CONFIG.transitionDuration
+        CAROUSEL_CONFIG.transitionDuration,
       );
     },
-    [currentIndex, isAnimating]
+    [currentIndex, isAnimating],
   );
 
   // ============= Effects =============
   useEffect(() => {
     const timer = setInterval(
       () => handleTransition("right"),
-      CAROUSEL_CONFIG.autoplayInterval
+      CAROUSEL_CONFIG.autoplayInterval,
     );
     return () => clearInterval(timer);
   }, [handleTransition]);
@@ -203,7 +214,7 @@ export default function VisionAndMission() {
           {/* Sections with titles and hover descriptions */}
           <div className="absolute inset-0 flex">
             {CONTENT.desktop[currentIndex].map((section, index) =>
-              renderDesktopSection(section, index)
+              renderDesktopSection(section, index),
             )}
           </div>
         </div>
@@ -245,7 +256,7 @@ export default function VisionAndMission() {
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
                       handleTransition(
-                        dotIndex > currentIndex ? "right" : "left"
+                        dotIndex > currentIndex ? "right" : "left",
                       );
                     }
                   }}

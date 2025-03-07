@@ -14,14 +14,17 @@ const NAVBAR_CONFIG = {
 
 const FORM_CONFIG = {
   heading: "The career you've been waiting for starts here!",
-  subheading: "Begin your journey to a rewarding career—fill out the form & let's get started",
+  subheading:
+    "Begin your journey to a rewarding career—fill out the form & let's get started",
   page: "Career Application" as const,
 };
 export async function generateMetadata() {
-  const pageTitle = "Join Our Team | Vitu-Realty - Start Your Rewarding Career Today";
+  const pageTitle =
+    "Join Our Team | Vitu-Realty - Start Your Rewarding Career Today";
   const pageDescription =
     "Begin your journey to a rewarding career with Vitu-Realty. Fill out our application form and take the first step toward professional growth and success.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Career-Application-Hero.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Career-Application-Hero.jpg";
 
   return {
     title: pageTitle,
@@ -52,7 +55,6 @@ export async function generateMetadata() {
 export default function CareerApplicationPage({}: CareerApplicationPageProps) {
   return (
     <>
-
       <Layout navbarProps={NAVBAR_CONFIG.props}>
         {/* Career Application Form Section */}
         <FormSection

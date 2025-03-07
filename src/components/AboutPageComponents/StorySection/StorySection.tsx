@@ -11,8 +11,6 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 
-
-
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
 const images = [
@@ -69,7 +67,13 @@ const images = [
   },
 ];
 
-function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) {
+function YearDisplay({
+  number,
+  isFixed,
+}: {
+  number: string;
+  isFixed: boolean;
+}) {
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,7 +81,7 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
       gsap.fromTo(
         messageRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0 }
+        { opacity: 1, y: 0, duration: 0 },
       );
     }
   }, [number]);
@@ -85,7 +89,9 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   return (
     <div
       className={`${
-        isFixed ? "fixed md:bottom-28 bottom-52 md:left-20 left-5" : "absolute bottom-28 left-36"
+        isFixed
+          ? "fixed md:bottom-28 bottom-52 md:left-20 left-5"
+          : "absolute bottom-28 left-36"
       } pointer-events-none z-50`}
     >
       <span className="md:text-[80px] text-[40px] text-white font-CandideCondensedMedium">
@@ -99,7 +105,13 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   );
 }
 
-function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolean }) {
+function MessageDisplay({
+  message,
+  isFixed,
+}: {
+  message: string;
+  isFixed: boolean;
+}) {
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -107,7 +119,7 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
       gsap.fromTo(
         messageRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0 }
+        { opacity: 1, y: 0, duration: 0 },
       );
     }
   }, [message]);
@@ -123,7 +135,10 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
       <div ref={messageRef}>
         <span className="lg:text-2xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
           {message.split("").map((char, index) => (
-            <span key={index} className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}>
+            <span
+              key={index}
+              className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}
+            >
               {char}
             </span>
           ))}
@@ -136,10 +151,10 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
 function ScrollController({
   progress,
   onDrag,
-  isFixed 
+  isFixed,
 }: {
   progress: number;
-  isFixed: boolean ;
+  isFixed: boolean;
   onDrag: (newProgress: number) => void;
 }) {
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -148,7 +163,8 @@ function ScrollController({
 
   const updateDraggableBounds = () => {
     if (trackRef.current && controllerRef.current && draggable) {
-      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth =
+        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       draggable.applyBounds(trackRef.current);
       gsap.set(controllerRef.current, { x: progress * trackWidth });
     }
@@ -156,7 +172,8 @@ function ScrollController({
 
   useEffect(() => {
     if (controllerRef.current && trackRef.current) {
-      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth =
+        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       // Create the draggable instance
       const newDraggable = Draggable.create(controllerRef.current, {
         type: "x",
@@ -192,13 +209,16 @@ function ScrollController({
 
   useEffect(() => {
     if (trackRef.current && controllerRef.current) {
-      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth =
+        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       gsap.to(controllerRef.current, { x: progress * trackWidth });
     }
   }, [progress]);
 
   return (
-    <div className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[430px]`}>
+    <div
+      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[430px]`}
+    >
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
           viewBox="0 0 430 45"
@@ -225,11 +245,16 @@ function ScrollController({
 }
 
 const getSvgPath = (width: number): React.JSX.Element | null => {
-  if (width >= 5120) return <FHD />; // 5K
-  else if (width >= 3840) return <FHD />; // 4K UHD
-  else if (width >= 2560) return <FHD />; // Quad HD
-  else if (width >= 1900) return <FHDLAPTOP />; // Full HD
-  else if (width >= 1500) return <HDPLUSLAPTOP />; // HD+
+  if (width >= 5120)
+    return <FHD />; // 5K
+  else if (width >= 3840)
+    return <FHD />; // 4K UHD
+  else if (width >= 2560)
+    return <FHD />; // Quad HD
+  else if (width >= 1900)
+    return <FHDLAPTOP />; // Full HD
+  else if (width >= 1500)
+    return <HDPLUSLAPTOP />; // HD+
   else if (width >= 100) return <FULLHDMOBILE />;
   return null;
 };
@@ -264,14 +289,18 @@ export default function Gallery() {
     const maxTranslateX = totalWidth - visibleWidth;
     // Adjust transform based on viewport width
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
-    else if (windowWidth > 1400) return `translate(-${progress * 11280}px, -50%)`;
+    else if (windowWidth > 1400)
+      return `translate(-${progress * 11280}px, -50%)`;
     else if (windowWidth > 100) return `translate(-${progress * 2300}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
 
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
-    const imageIndex = Math.min(Math.floor(progress * images.length), images.length - 1);
+    const imageIndex = Math.min(
+      Math.floor(progress * images.length),
+      images.length - 1,
+    );
     setCurrentYear(images[imageIndex].year);
     setCurrentMessage(images[imageIndex].message);
 
@@ -362,9 +391,15 @@ export default function Gallery() {
             style={{ width: `${progress * 100}%` }}
           />
         </div>
-        <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
+        <div
+          ref={galleryRef}
+          className="flex absolute top-1/2 -translate-y-1/2 will-change-transform"
+        >
           {images.map((image, index) => (
-            <div key={index} className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl">
+            <div
+              key={index}
+              className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl"
+            >
               <div className="absolute inset-0 gallery-image z-10">
                 <div className="h-[100vh]">
                   <Image
@@ -395,7 +430,11 @@ export default function Gallery() {
 
       <YearDisplay number={currentYear} isFixed={isFixed} />
       <MessageDisplay message={currentMessage} isFixed={isFixed} />
-      <ScrollController progress={progress} onDrag={setProgress} isFixed={isFixed}  />
+      <ScrollController
+        progress={progress}
+        onDrag={setProgress}
+        isFixed={isFixed}
+      />
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 import React from "react";
 import classNames from "classnames";
 
@@ -7,7 +6,7 @@ interface ButtonProps {
   className?: string;
   defaultTextColor?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled?:boolean;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -15,7 +14,7 @@ const Button = ({
   children,
   className,
   defaultTextColor = "text-white",
-  disabled = false ,
+  disabled = false,
 }: ButtonProps) => {
   const combinedClassName = classNames(
     "w-[146px] h-[55px] font-FreightNeoProBold rounded-[27.5px] bg-cusomButtonColor transition-color",

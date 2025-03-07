@@ -15,9 +15,7 @@ interface PlotProps {
   color: string;
   key: string;
   i: number;
-  
 }
-
 
 const Plot = ({
   title,
@@ -47,19 +45,17 @@ const Plot = ({
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2 className="text-customBrown font-FreightNeoProNormal !text-5xl">{title}</h2>
-            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6">{description}</p>
+            <h2 className="text-customBrown font-FreightNeoProNormal !text-5xl">
+              {title}
+            </h2>
+            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6">
+              {description}
+            </p>
           </div>
 
           <div className={styles.imageContainer}>
-            <motion.div className={styles.inner} >
-              <Image
-                fill
-                src={src}
-                alt={title}
-              
-                priority
-              />
+            <motion.div className={styles.inner}>
+              <Image fill src={src} alt={title} priority />
             </motion.div>
           </div>
         </div>

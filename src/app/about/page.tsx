@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
@@ -7,8 +7,8 @@ import FounderMessage from "@/components/AboutPageComponents/FounderMessage/Foun
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
-import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";  
-import { useRef } from 'react';
+import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
+import { useRef } from "react";
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
 interface AboutPageProps {}
@@ -65,25 +65,27 @@ const NAVBAR_CONFIG = {
 //   };
 // }
 
-
-
-
 export default function AboutPage({}: AboutPageProps) {
   const storySectionRef = useRef<HTMLElement | null>(null);
   const scrollToStory = () => {
     if (storySectionRef.current) {
-      const header = document.querySelector('.absolute.top-10.left-0.right-0.z-10.w-full') as HTMLElement | null;
+      const header = document.querySelector(
+        ".absolute.top-10.left-0.right-0.z-10.w-full",
+      ) as HTMLElement | null;
       const headerHeight = header ? header.offsetHeight : 0;
       const sectionTop = storySectionRef.current.offsetTop;
       const targetScroll = sectionTop - headerHeight;
-      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
     }
   };
   return (
     <>
-      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+      <Layout
+        navbarClassName={NAVBAR_CONFIG.className}
+        navbarProps={NAVBAR_CONFIG.props}
+      >
         {/* Hero Section with <h1> for SEO */}
-        <AboutHeroSection onScrollToStory={scrollToStory}/>
+        <AboutHeroSection onScrollToStory={scrollToStory} />
 
         {/* Company Story Section */}
         <section>

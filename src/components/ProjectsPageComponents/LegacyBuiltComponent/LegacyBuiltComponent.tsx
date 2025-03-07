@@ -9,19 +9,31 @@ const LegacyBuiltComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0 lg:mb-[260px] ">
-          <h1 className="text-6xl font-semibold font-FreightNeoProNormal text-[#4F3737]">A Legacy Built on Trust</h1>
+          <h1 className="text-6xl font-semibold font-FreightNeoProNormal text-[#4F3737]">
+            A Legacy Built on Trust
+          </h1>
           <p className="mt-4  lg:w-[240px]  text-[#4F373799] font-[400] font-FreightNeoProNormal">
-            Every Vitu Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
-            & premium amenities.
+            Every Vitu Realty property embodies our Client centric philosophy.
+            Thoughtfully designed homes with abundant natural light, smart
+            spaces, & premium amenities.
           </p>
-          <a href="#" className="mt-4 font-[700] font-FreightNeoProNormal inline-block  text-[#4F3737] hover:underline">
+          <a
+            href="#"
+            className="mt-4 font-[700] font-FreightNeoProNormal inline-block  text-[#4F3737] hover:underline"
+          >
             Discover Our Story →
           </a>
         </div>
 
         {/* Center Image */}
         <div className="flex justify-center">
-          <Image src={projectPageBg} alt="Green Leaves" width={300} height={500} className="rounded-xl shadow-lg object-cover" />
+          <Image
+            src={projectPageBg}
+            alt="Green Leaves"
+            width={300}
+            height={500}
+            className="rounded-xl shadow-lg object-cover"
+          />
         </div>
 
         {/* Right Recognition Section */}
@@ -31,7 +43,8 @@ const LegacyBuiltComponent = () => {
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>
           <p className="mt-12 text-[#4F3737] text-justify text-sm">
-            Founded in 1956, our team brings years of cross-industry expertise on average, delivering exceptional skill & knowledge in every field.
+            Founded in 1956, our team brings years of cross-industry expertise
+            on average, delivering exceptional skill & knowledge in every field.
           </p>
         </div>
       </div>

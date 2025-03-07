@@ -114,11 +114,10 @@ export default function AppleStyleCard({
             layoutId={`expandable-card-${id}`}
             className={cn(
               "max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 sm:mx-5 md:mx-auto rounded-3xl font-sans relative overflow-hidden",
-              expandedClassName
+              expandedClassName,
             )}
           >
-            <div className="relative h-auto ">
-            </div>
+            <div className="relative h-auto "></div>
             <div className="">
               <button
                 className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
@@ -126,7 +125,7 @@ export default function AppleStyleCard({
               >
                 <IconX className="h-5 w-5 text-black" />
               </button>
-              
+
               <div>{content}</div>
             </div>
           </motion.div>
@@ -143,7 +142,7 @@ export default function AppleStyleCard({
         className={cn(
           "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
           className,
-          cardClassName
+          cardClassName,
         )}
       >
         <div className="relative z-40 p-4">
@@ -151,7 +150,7 @@ export default function AppleStyleCard({
             layoutId={`card-category-${id}`}
             className={cn(
               "text-sm md:text-base font-freightNeoMedium text-white text-left pt-4",
-              categoryClassName
+              categoryClassName,
             )}
           >
             {category}
@@ -160,7 +159,7 @@ export default function AppleStyleCard({
             layoutId={`card-title-${id}`}
             className={cn(
               "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
-              titleClassName
+              titleClassName,
             )}
           >
             {title}
@@ -169,7 +168,7 @@ export default function AppleStyleCard({
             layoutId={`card-subtitle-${id}`}
             className={cn(
               "text-base md:text-xl xl:text-2xl font-FreightNeoProNormal text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
-              titleClassName
+              titleClassName,
             )}
           >
             {subtitle}
@@ -182,9 +181,16 @@ export default function AppleStyleCard({
           className="object-cover absolute z-10 inset-0"
         />
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
-          <Typography variant="custom" className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl">{bottomTitle}</Typography>
+          <Typography
+            variant="custom"
+            className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl"
+          >
+            {bottomTitle}
+          </Typography>
         </div>
-        <div className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}>
+        <div
+          className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
+        >
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (
               <PrimaryViewMoreButton />
@@ -199,7 +205,6 @@ export default function AppleStyleCard({
           fill
           className={cn("object-cover absolute z-10 inset-0", imageClassName)}
         /> */}
-        
       </motion.button>
 
       {isMounted && createPortal(modalContent, document.body)}
@@ -221,7 +226,7 @@ export const BlurImage = ({
       className={cn(
         "transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
-        className
+        className,
       )}
       onLoad={() => setLoading(false)}
       src={src}

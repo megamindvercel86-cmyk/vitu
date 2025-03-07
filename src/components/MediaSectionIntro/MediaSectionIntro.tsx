@@ -6,11 +6,13 @@ import Image from "next/image";
 function MediaSectionIntro() {
   return (
     <>
-      <div className="hidden lg:block relative mx-4 md:mx-[40px] lg:mx-[133px] xl:mx-[210px] 
+      <div
+        className="hidden lg:block relative mx-4 md:mx-[40px] lg:mx-[133px] xl:mx-[210px] 
         mt-16 md:mt-[137px] xl:mt-[200px] 
-        mb-[168px] xl:mb-[223px]">
+        mb-[168px] xl:mb-[223px]"
+      >
         {/* Image overlay */}
-        
+
         <Image
           src={"/images/mediakit.png"}
           className="absolute right-0 lg:right-[101px] rounded-[24px] z-10
@@ -22,10 +24,12 @@ function MediaSectionIntro() {
           height={724}
         />
         {/* Background div */}
-        <div className="relative w-full bg-[#AE8566] rounded-[24px] z-0
+        <div
+          className="relative w-full bg-[#AE8566] rounded-[24px] z-0
           h
         xl:px-[105px] md:px-16
-          py-8 md:py-[40px] lg:py-[106px]">
+          py-8 md:py-[40px] lg:py-[106px]"
+        >
           <div className="w-[50%]">
             <Typography
               variant="custom"
@@ -37,12 +41,15 @@ function MediaSectionIntro() {
               variant="custom"
               className="text-lg md:text-xl lg:text-2xl font-freightNeoMedium text-white mt-4"
             >
-              Grab our brand assets & get to know us <br /> in just a few clicks!
+              Grab our brand assets & get to know us <br /> in just a few
+              clicks!
             </Typography>
-            <button className="flex items-center justify-center gap-4 
+            <button
+              className="flex items-center justify-center gap-4 
               w-full md:w-[272px] h-[58px] 
               text-xl md:text-2xl font-freightNeoMedium text-white 
-              rounded-[34px] border-white border-[2px] mt-[49px]">
+              rounded-[34px] border-white border-[2px] mt-[49px]"
+            >
               <Download />
               <span className="pt-1">Download Now</span>
             </button>

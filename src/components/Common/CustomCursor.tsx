@@ -21,11 +21,28 @@ const CustomCursor = ({ cursorVariant, cursorText }: CustomCursorProps) => {
     <motion.div
       className="fixed pointer-events-none flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl bg-customBrown text-white font-bold"
       variants={{
-        default: { opacity: 1, height: 0, width: 0, x: mousePosition.x, y: mousePosition.y },
-        project: { opacity: 1, height: 50, width: 170, x: mousePosition.x - 32, y: mousePosition.y - 32 },
+        default: {
+          opacity: 1,
+          height: 0,
+          width: 0,
+          x: mousePosition.x,
+          y: mousePosition.y,
+        },
+        project: {
+          opacity: 1,
+          height: 50,
+          width: 170,
+          x: mousePosition.x - 32,
+          y: mousePosition.y - 32,
+        },
       }}
       animate={cursorVariant}
-      style={{ top: 0, left: 0, transform: "translate(-50%, -50%)", zIndex: 1000 }}
+      style={{
+        top: 0,
+        left: 0,
+        transform: "translate(-50%, -50%)",
+        zIndex: 1000,
+      }}
     >
       {cursorText}
     </motion.div>

@@ -94,7 +94,10 @@ export default function SustainabilityInitiatives(): React.ReactElement {
         >
           {CONTENT.title}
         </Typography>
-        <Typography variant="custom" className="md:text-[#4F373799] text-[#04070799] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12">
+        <Typography
+          variant="custom"
+          className="md:text-[#4F373799] text-[#04070799] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
+        >
           {CONTENT.description}
         </Typography>
         <div className="hidden lg:mt-auto md:block">
@@ -147,7 +150,10 @@ export default function SustainabilityInitiatives(): React.ReactElement {
 
       {/* Mobile Carousel */}
       <div className="block mb-12 md:hidden">
-        <InfiniteCarousel cards={INITIATIVE_CARDS} data={sustainabilityInitiatives}/>
+        <InfiniteCarousel
+          cards={INITIATIVE_CARDS}
+          data={sustainabilityInitiatives}
+        />
       </div>
     </div>
   );

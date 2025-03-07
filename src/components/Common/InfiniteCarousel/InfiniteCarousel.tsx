@@ -8,7 +8,11 @@ import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "./InfiniteCarousel.css";
 import AppleStyleCard from "@/components/ui/apple-style-card";
-import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
+import {
+  ArrowRightIcon,
+  IconArrowNarrowLeft,
+  IconArrowNarrowRight,
+} from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -51,8 +55,12 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
         className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 cursor-pointer"
       >
         <div>
-          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">UP NEXT</p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
+          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
+            UP NEXT
+          </p>
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
+            {nextProjectTitle}
+          </h4>
         </div>
         <ArrowRightIcon />
       </div>
@@ -62,18 +70,23 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 
 // Update the CardContent component to accept props
 const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
-
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
   let project = data.find((project) => project.id === currentCardId);
 
   const handleFooterClick = () => {
-    const currentIndex = data.findIndex((project) => project.id === currentCardId);
+    const currentIndex = data.findIndex(
+      (project) => project.id === currentCardId,
+    );
     const nextProject = data[(currentIndex + 1) % data.length];
     setCurrentCardId(nextProject.id);
   };
 
-  const nextProject = data[(data.findIndex((project) => project.id === currentCardId) + 1) % data.length];
+  const nextProject =
+    data[
+      (data.findIndex((project) => project.id === currentCardId) + 1) %
+        data.length
+    ];
 
   return (
     <>
@@ -90,8 +103,13 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
             <Typography variant="h1" className="text-customBrown">
               {project.title}
             </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
-            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+              {project.description}
+            </Typography>
+            <Footer
+              onFooterClick={handleFooterClick}
+              nextProjectTitle={nextProject?.title || ""}
+            />
           </div>
         </div>
       )}
@@ -164,7 +182,9 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
         ))}
       </Swiper>
       <div className="flex items-center justify-between gap-4 px-7">
-        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
+        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+          Explore More
+        </span>
         <div className="flex gap-2">
           <button
             onClick={handlePrev}

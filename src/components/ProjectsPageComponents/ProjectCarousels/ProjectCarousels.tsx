@@ -11,7 +11,6 @@ const desktopDataRight = [
   { src: "/images/carousal/slider4-min.jpg", alt: "Project 4" },
   { src: "/images/carousal/slider5-min.jpg", alt: "Project 5" },
   { src: "/images/carousal/slider6-min.jpg", alt: "Project 6" },
-
 ];
 
 /**
@@ -24,10 +23,14 @@ export default function ProjectCarousel(): React.ReactElement {
     <section className="pb-24 bg-gradient-to-b from-[#e4dcd6] to-[#FBFAF8]">
       {/* Desktop Project Carousel - Right Direction */}
       <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-        <InfiniteMovingCards items={desktopDataRight} direction="left" speed="slow" />
+        <InfiniteMovingCards
+          items={desktopDataRight}
+          direction="left"
+          speed="slow"
+        />
       </div>
-      <button   className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
-      Contact Us for a Visit
+      <button className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
+        Contact Us for a Visit
       </button>
     </section>
   );

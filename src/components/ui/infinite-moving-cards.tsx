@@ -121,11 +121,18 @@ export const InfiniteMovingCards = ({
                         {/* {item.place} */}
                         <span className="flex">
                           {Array.from({ length: item.rating }, (_, index) => (
-                            <span key={index} className="text-yellow-500">★</span>
+                            <span key={index} className="text-yellow-500">
+                              ★
+                            </span>
                           ))}
-                          {Array.from({ length: 5 - item.rating }, (_, index) => (
-                            <span key={index} className="text-gray-300">★</span>
-                          ))}
+                          {Array.from(
+                            { length: 5 - item.rating },
+                            (_, index) => (
+                              <span key={index} className="text-gray-300">
+                                ★
+                              </span>
+                            ),
+                          )}
                         </span>
                       </Typography>
                     </div>

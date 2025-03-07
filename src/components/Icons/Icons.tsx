@@ -361,20 +361,18 @@ export function IconArrowNarrowRight() {
 
 interface CTAButtonIconProps {
   direction?: "left" | "right" | "down"; // Prop for arrow direction
-  fill?:string;
+  fill?: string;
 }
 
 const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({
   direction = "down",
-  fill = "#614130"
+  fill = "#614130",
 }) => {
   const transformMap: Record<string, string> = {
     left: "rotate(90deg)",
     right: "rotate(-90deg)",
     down: "rotate(0deg)", // Default down
   };
-
-  
 
   return (
     <svg

@@ -37,29 +37,37 @@ const CAROUSEL_CONFIG = {
 const CAROUSEL_DATA: CarouselItem[] = [
   {
     title: "Embracing new Horizons in Living",
-    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description: "Vitu Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care, and community for your golden years.",
+    subtitle:
+      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
+      "Vitu Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care, and community for your golden years.",
     image: "/svgs/image1.svg",
     residentialType: "Retirement Homes",
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description: "Vitu Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure, and rejuvenation for every moment of your escape.",
+    subtitle:
+      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
+      "Vitu Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure, and rejuvenation for every moment of your escape.",
     image: "/svgs/image2.svg",
     residentialType: "Resorts",
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description: "Vitu Wellness Centre envisions a sanctuary of holistic healing, where mind, body, &amp; soul unite in harmony, offering the perfect blend of care, tranquility, &amp; rejuvenation for your well-being.",
+    subtitle:
+      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
+      "Vitu Wellness Centre envisions a sanctuary of holistic healing, where mind, body, &amp; soul unite in harmony, offering the perfect blend of care, tranquility, &amp; rejuvenation for your well-being.",
     image: "/svgs/image3.svg",
     residentialType: "Wellness Centre",
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description: "Vitu Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
+    subtitle:
+      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
+      "Vitu Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
     image: "/svgs/image4.svg",
     residentialType: "Commercial Spaces",
   },
@@ -68,13 +76,13 @@ const CAROUSEL_DATA: CarouselItem[] = [
 /**
  * Vision For Future Component
  * Showcases future residential projects through an interactive carousel
- * 
+ *
  * Features:
  * 1. Auto-rotating carousel with smooth transitions
  * 2. Responsive design with different layouts
  * 3. Interactive navigation dots
  * 4. CTA button for next slide
- * 
+ *
  * @component
  */
 export default function VisionForTheFuture() {
@@ -84,36 +92,47 @@ export default function VisionForTheFuture() {
   const [direction, setDirection] = useState<Direction>("right");
 
   // ============= Handlers =============
-  const handleTransition = useCallback((newDirection: Direction) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setDirection(newDirection);
+  const handleTransition = useCallback(
+    (newDirection: Direction) => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setDirection(newDirection);
 
-    const nextIndex = newDirection === "right"
-      ? (currentIndex + 1) % CAROUSEL_DATA.length
-      : (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length;
-    
-    setCurrentIndex(nextIndex);
-    setTimeout(() => setIsAnimating(false), CAROUSEL_CONFIG.transitionDuration);
-  }, [currentIndex, isAnimating]);
+      const nextIndex =
+        newDirection === "right"
+          ? (currentIndex + 1) % CAROUSEL_DATA.length
+          : (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length;
+
+      setCurrentIndex(nextIndex);
+      setTimeout(
+        () => setIsAnimating(false),
+        CAROUSEL_CONFIG.transitionDuration,
+      );
+    },
+    [currentIndex, isAnimating],
+  );
 
   // ============= Effects =============
   useEffect(() => {
     const timer = setInterval(
-      () => handleTransition("right"), 
-      CAROUSEL_CONFIG.autoplayInterval
+      () => handleTransition("right"),
+      CAROUSEL_CONFIG.autoplayInterval,
     );
     return () => clearInterval(timer);
   }, [handleTransition]);
 
   // ============= Render Helpers =============
   const getImageScale = (index: number) => {
-    const scale = CAROUSEL_CONFIG.scales[index as keyof typeof CAROUSEL_CONFIG.scales];
+    const scale =
+      CAROUSEL_CONFIG.scales[index as keyof typeof CAROUSEL_CONFIG.scales];
     return `scale-x-[${scale.mobile.x}] scale-y-[${scale.mobile.y}] md:scale-x-[${scale.desktop.x}] md:scale-y-[${scale.desktop.y}]`;
   };
 
   return (
-    <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
+    <section
+      className="relative overflow-hidden text-[#42210B]"
+      aria-label="Vision for the Future Carousel"
+    >
       <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
         <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
@@ -154,7 +173,9 @@ export default function VisionForTheFuture() {
                   index === currentIndex
                     ? "opacity-100 translate-x-0"
                     : direction === "right"
-                      ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
+                      ? index ===
+                        (currentIndex - 1 + CAROUSEL_DATA.length) %
+                          CAROUSEL_DATA.length
                         ? "opacity-0 -translate-x-full"
                         : "opacity-0 translate-x-full"
                       : index === (currentIndex + 1) % CAROUSEL_DATA.length
@@ -200,14 +221,19 @@ export default function VisionForTheFuture() {
                 <CTAButtonIcon direction="right" />
               </button>
             </Link>
-            <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
+            <div
+              className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]"
+              role="group"
+              aria-label="Carousel Navigation Dots"
+            >
               {CAROUSEL_DATA.map((_, dotIndex) => (
                 <button
                   key={dotIndex}
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      const direction = dotIndex > currentIndex ? "right" : "left";
+                      const direction =
+                        dotIndex > currentIndex ? "right" : "left";
                       handleTransition(direction);
                     }
                   }}

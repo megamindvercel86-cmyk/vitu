@@ -14,7 +14,7 @@ import {
   PrimaryViewMoreButton,
   SecondaryViewMoreButton,
 } from "../Icons/Icons";
-import Image from 'next/image';
+import Image from "next/image";
 
 interface Card {
   id: string;

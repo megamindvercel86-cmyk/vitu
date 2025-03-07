@@ -26,7 +26,7 @@ export const InfiniteMovingCards = ({
     if (containerRef.current) {
       containerRef.current.style.setProperty(
         "--animation-direction",
-        direction === "left" ? "forwards" : "reverse"
+        direction === "left" ? "forwards" : "reverse",
       );
     }
   }, [direction]);
@@ -68,7 +68,7 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex min-w-full shrink-0 gap-6 md:gap-12 lg:gap-24 w-max flex-nowrap",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items.map(({ src, alt }, idx) => (

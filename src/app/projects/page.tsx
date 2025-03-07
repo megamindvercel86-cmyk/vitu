@@ -107,7 +107,7 @@ export default function ProjectPage({}: ProjectPageProps) {
         navbarProps={NAVBAR_CONFIG.props}
       >
         {/* Hero Section (Should contain an <h1> inside the component) */}
-        <section >
+        <section>
           <ProjectHeroSection />
         </section>
         <section className="bg-[#ffffff]">
@@ -122,7 +122,6 @@ export default function ProjectPage({}: ProjectPageProps) {
 
         <section ref={container} className="bg-[#FBFAF8]">
           {plots.map((project, i) => {
-         
             const targetScale = 1 - (plots.length - i) * 0.05;
             return (
               <Plot
@@ -144,4 +143,3 @@ export default function ProjectPage({}: ProjectPageProps) {
     </>
   );
 }
-

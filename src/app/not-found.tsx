@@ -1,10 +1,9 @@
-
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import Image from "next/image";
 import bgImage from "../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
 import Link from "next/link";
-``
+``;
 // ============= Constants =========
 const NAVBAR_CONFIG = {
   className: "absolute top-0 left-0 right-0 z-10 w-full",
@@ -18,7 +17,8 @@ export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
     "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
+  const imageUrl =
+    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
 
   return {
     title: pageTitle,
@@ -49,7 +49,11 @@ export async function generateMetadata() {
 
 export default function NotFound() {
   return (
-    <div className="relative" role="img" aria-label="Modern real estate background">
+    <div
+      className="relative"
+      role="img"
+      aria-label="Modern real estate background"
+    >
       <Image
         src={bgImage}
         alt="Home Hero Background"
@@ -63,7 +67,10 @@ export default function NotFound() {
         <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light font-CandideCondensedNormal">
           The page you’re looking for doesn’t exist or has been moved.
         </p>
-        <Link href="/" className="mt-8 px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
+        <Link
+          href="/"
+          className="mt-8 px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
+        >
           Go Back to Home
         </Link>
       </div>

@@ -1,8 +1,7 @@
 "use client";
 
 import Button from "../Common/Button";
-import { useRouter } from 'next/navigation';
-
+import { useRouter } from "next/navigation";
 
 export default function MediaKit() {
   const router = useRouter();
@@ -14,7 +13,10 @@ export default function MediaKit() {
           Download our Media Kit & Get Started!
         </span>
         <div className="flex lg:justify-end mt-3 lg:mt-0 sm:justify-center md:w-auto sm:w-full w-full">
-          <Button className="md:w-[236px] lg:h-[55px] lg:text-[28px] text-base w-full" onClick={() => router.push('resources/media-kit')}>
+          <Button
+            className="md:w-[236px] lg:h-[55px] lg:text-[28px] text-base w-full"
+            onClick={() => router.push("resources/media-kit")}
+          >
             Download Now
           </Button>
         </div>

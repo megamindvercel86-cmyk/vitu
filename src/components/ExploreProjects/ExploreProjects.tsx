@@ -44,7 +44,8 @@ const CARDS_DATA: Card[] = [
   {
     id: 2,
     url: "/images/exploreProjectImages/2.png",
-    className: "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
+    className:
+      "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
@@ -64,7 +65,8 @@ const CARDS_DATA: Card[] = [
   {
     id: 1,
     url: "/images/exploreProjectImages/1.png",
-    className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    className:
+      "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
@@ -73,23 +75,19 @@ const CARDS_DATA: Card[] = [
   },
 ];
 
-
-
 /**
  * Explore Projects Component
  * Showcases project cards with animations and responsive layouts
- * 
+ *
  * Features:
  * 1. Desktop: Expandable cards with GSAP animations
  * 2. Mobile: Infinite carousel
  * 3. Responsive design with different layouts
  * 4. Interactive animations on scroll
- * 
+ *
  * @component
  */
 const ExploreProjects: React.FC = () => {
-
-
   return (
     <>
       {/* Desktop Version */}
@@ -116,7 +114,7 @@ const ExploreProjects: React.FC = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <InfiniteCarousel cards={CARDS_DATA} data={exploreProjects}/>
+        <InfiniteCarousel cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
         <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">

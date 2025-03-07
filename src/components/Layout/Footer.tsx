@@ -5,7 +5,15 @@ import chieverslog from "../../../public/images/logos/chieverslog.svg";
 import SubHeading from "../Common/SubHeding";
 import NavLink from "../Common/NavLink";
 import FooterLink from "../Common/FooterLinks";
-import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/Icons";
+import {
+  Instgram,
+  LinkedIn,
+  Mail,
+  Meta,
+  Phone,
+  Share,
+  Youtube,
+} from "../Icons/Icons";
 
 /**
  * Footer Component
@@ -19,8 +27,18 @@ import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/
 const Footer: FC = () => {
   // SVG Arrow for collapsible sections in mobile view
   const DropdownArrow: FC = () => (
-    <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    <svg
+      className="w-5 h-5 text-footerTextColor"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 9l-7 7-7-7"
+      />
     </svg>
   );
 
@@ -30,14 +48,26 @@ const Footer: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
-            <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
+            <Image
+              src={logo}
+              alt="Logo"
+              width={225}
+              height={72}
+              className="w-36 md:w-56 lg:w-[224px] h-auto"
+            />
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Building Wholesome <br /> Living Spaces
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="#">Recognized by</FooterLink>
-              <Image src={chieverslog} alt="chieverslog" width={148} height={82} className="mt-4" />
+              <Image
+                src={chieverslog}
+                alt="chieverslog"
+                width={148}
+                height={82}
+                className="mt-4"
+              />
             </div>
           </div>
 
@@ -62,23 +92,40 @@ const Footer: FC = () => {
 
           {/* Contact Information */}
           <div>
-            <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">Get in Touch</SubHeading>
+            <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
+              Get in Touch
+            </SubHeading>
             <ul className="space-y-4 text-gray-300">
-              <FooterContactItem icon={<Share />} text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001" />
+              <FooterContactItem
+                icon={<Share />}
+                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
+              />
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" />
               {/* Social Media Links */}
               <li className="flex gap-2 justify-center md:justify-start">
-                <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
+                <NavLink
+                  href="https://www.instagram.com/vitu.realty"
+                  target={true}
+                >
                   <Instgram />
                 </NavLink>
-                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}>
+                <NavLink
+                  href="https://www.linkedin.com/company/vitu-realty/"
+                  target={true}
+                >
                   <LinkedIn />
                 </NavLink>
-                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}>
+                <NavLink
+                  href="https://www.youtube.com/@viturealty/featured"
+                  target={true}
+                >
                   <Youtube />
                 </NavLink>
-                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}>
+                <NavLink
+                  href="https://www.facebook.com/p/VITU-Realty-61557046860214/"
+                  target={true}
+                >
                   <Meta />
                 </NavLink>
               </li>
@@ -93,15 +140,28 @@ const Footer: FC = () => {
   );
 };
 const DropdownArrow = () => (
-  <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  <svg
+    className="w-5 h-5 text-footerTextColor"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 9l-7 7-7-7"
+    />
   </svg>
 );
 /**
  * FooterSection Component
  * - Handles quick links and resource sections with collapsible mobile support
  */
-const FooterSection: FC<{ title: string; links: { href: string; label: string }[] }> = ({ title, links }) => (
+const FooterSection: FC<{
+  title: string;
+  links: { href: string; label: string }[];
+}> = ({ title, links }) => (
   <div>
     {/* Mobile View */}
     <details className="lg:hidden border-b border-gray-700 pb-2">
@@ -120,7 +180,9 @@ const FooterSection: FC<{ title: string; links: { href: string; label: string }[
 
     {/* Desktop View */}
     <div className="hidden lg:block">
-      <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">{title}</SubHeading>
+      <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">
+        {title}
+      </SubHeading>
       <ul className="space-y-4 text-gray-300">
         {links.map((link) => (
           <li key={link.href}>
@@ -136,19 +198,27 @@ const FooterSection: FC<{ title: string; links: { href: string; label: string }[
  * FooterContactItem Component
  * - Renders contact details with icons
  */
-const FooterContactItem: FC<{ icon: JSX.Element; text: string }> = ({ icon, text }) => {
+const FooterContactItem: FC<{ icon: JSX.Element; text: string }> = ({
+  icon,
+  text,
+}) => {
   // Check if the text contains the phone number or pincode and apply the custom font
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
-  const email= text.includes("info@viturealty.com")
+  const email = text.includes("info@viturealty.com");
 
   return (
-    <li className={`flex md:flex-row flex-col  align-middle ${isPincode&&'lg:items-start'} items-center md:gap-0 gap-3 `}>
+    <li
+      className={`flex md:flex-row flex-col  align-middle ${isPincode && "lg:items-start"} items-center md:gap-0 gap-3 `}
+    >
       {icon}
       <FooterLink href="#" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-        
+        {isPhoneNumber || isPincode || email ? (
+          <span className={`font-CandideCondensedNormal`}>{text}</span>
+        ) : (
+          "fdtext"
+        )}
       </FooterLink>
     </li>
   );
@@ -162,14 +232,23 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2024</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">2024</span>{" "}
+        <span className="font-freightNeoMedium">
+          Vitu Realty | All rights reserved.
+        </span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+        <a
+          href="/terms-of-service"
+          className="text-[#FFFFFF66] text-xs font-freightNeoMedium "
+        >
           Legal Disclaimer
         </a>
         <span className="text-[#FFFFFF66] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+        <a
+          href="/terms-of-service"
+          className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+        >
           Terms of Service
         </a>
       </div>

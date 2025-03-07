@@ -9,4 +9,4 @@ const ExploreProjects = dynamic(
 
 export default function ExploreProjectsWrapper() {
   return <ExploreProjects />;
-} 
+}

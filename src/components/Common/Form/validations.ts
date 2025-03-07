@@ -10,4 +10,4 @@ export const formValidationSchema = Yup.object({
     .required("Phone number is required"),
   comments: Yup.string().max(250, "Max 250 characters"),
   option: Yup.string(),
-}); 
+});

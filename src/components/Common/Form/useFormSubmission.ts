@@ -2,8 +2,8 @@ import { useFormik } from "formik";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import { formValidationSchema } from "./validations";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
 export interface FormValues {
@@ -17,27 +17,26 @@ export interface FormValues {
 }
 
 const uploadToCloudinary = async (file: File): Promise<string> => {
-  const cloudName = 'dvandhsai'; 
-  const uploadPreset = 'resume'; 
+  const cloudName = "dvandhsai";
+  const uploadPreset = "resume";
 
   const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', uploadPreset);
+  formData.append("file", file);
+  formData.append("upload_preset", uploadPreset);
 
   try {
     const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`,  // Use 'raw'
-      { method: 'POST', body: formData }
+      `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, // Use 'raw'
+      { method: "POST", body: formData },
     );
     const data = await response.json();
     if (!response.ok) throw new Error(data.error?.message || "Upload failed");
     return data.secure_url;
   } catch (error) {
-    console.error('Error uploading to Cloudinary:', error);
+    console.error("Error uploading to Cloudinary:", error);
     throw error;
   }
 };
-
 
 export const useFormSubmission = (page: string, callback?: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -55,8 +54,8 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         page === "General Enquire"
           ? "generalEnquiries"
           : page === "Project Enquire"
-          ? "projectEnquiries"
-          : "careerApplications";
+            ? "projectEnquiries"
+            : "careerApplications";
 
       const filteredValues =
         page === "General Enquire"
@@ -68,20 +67,20 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               whatsapp: values.whatsapp,
             }
           : page === "Project Enquire"
-          ? {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              whatsapp: values.whatsapp,
-              interstedIn: values.option,
-            }
-          : {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              postionAppliedFor: values.option,
-              resumeUrl,
-            };
+            ? {
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                whatsapp: values.whatsapp,
+                interstedIn: values.option,
+              }
+            : {
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                postionAppliedFor: values.option,
+                resumeUrl,
+              };
 
       const collectionRef = collection(db, collectionName);
       await addDoc(collectionRef, filteredValues);
@@ -93,7 +92,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       });
 
       toast.success("Form submitted successfully!");
-      
+
       if (callback) {
         callback(); // Call the callback function after successful submission
       }

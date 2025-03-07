@@ -28,7 +28,7 @@ export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>(
-    []
+    [],
   );
 
   async function fetchTeamMembers() {
@@ -40,7 +40,7 @@ export default function LeadershipTeam() {
       const data = await response.json();
 
       const filteredData = data.data.filter(
-        (member: TeamMember) => member.development !== true
+        (member: TeamMember) => member.development !== true,
       );
 
       setTeamMembersCarousal([
@@ -57,7 +57,7 @@ export default function LeadershipTeam() {
           ...member,
 
           id: index + 5,
-        })
+        }),
       );
 
       // Update states in a single batch to ensure consistency
