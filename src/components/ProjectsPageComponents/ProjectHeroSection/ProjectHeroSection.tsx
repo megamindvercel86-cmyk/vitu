@@ -67,7 +67,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[280vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
         className="layer absolute top-0 left-0 w-full h-full z-[-1]"
@@ -174,10 +174,10 @@ const ProjectHeroSection: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="absolute  inset-0 flex flex-col items-center top-[55rem] text-center px-6">
+      <div className="absolute  inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute inset-0 flex flex-col items-center top-[80rem] text-center px-6">
+      <div className="absolute inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[80rem] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>

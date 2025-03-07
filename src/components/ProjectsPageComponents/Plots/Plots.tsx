@@ -2,16 +2,22 @@
 
 import Image from "next/image";
 import styles from "./Plot.module.scss";
-import { useTransform, motion, useScroll } from "framer-motion";
+import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
 import { useRef } from "react";
 
 interface PlotProps {
+  progress: MotionValue<number>;
+  range: number[];
+  targetScale: number;
   title: string;
   description: string;
   src: string;
-  color?: string;
-  i?: number;
+  color: string;
+  key: string;
+  i: number;
+  // Other props...
 }
+
 
 const Plot = ({
   title,
