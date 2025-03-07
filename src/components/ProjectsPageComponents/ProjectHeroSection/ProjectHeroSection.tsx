@@ -67,7 +67,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[240vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[280vh] xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
         className="layer absolute top-0 left-0 w-full h-full z-[-1]"
@@ -77,7 +77,7 @@ const ProjectHeroSection: React.FC = () => {
           src={backgroundImage}
           alt="Background Layer"
           fill
-          className="object-cover"
+          className="object-contain"
           placeholder="blur"
         />
       </div>
@@ -169,15 +169,15 @@ const ProjectHeroSection: React.FC = () => {
 
             {/* Button content */}
             <span className="relative z-10">Scroll to Learn More</span>
-            <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300 "></div>
+            <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 "></div>
             <CTAButtonIcon fill="#4B9480" />
           </button>
         </div>
       </div>
-      <div className="absolute  inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] text-center px-6">
+      <div className="absolute  inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[55rem] text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[80rem] text-center px-6">
+      <div className="absolute inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[80rem] top-[100vh] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>
