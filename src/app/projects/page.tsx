@@ -121,19 +121,21 @@ export default function ProjectPage({}: ProjectPageProps) {
         </section>
        
         <section ref={container} className="bg-[#fbfaf8] pt-36">
-          {plots.map((project, i) => {
-            const targetScale = 1 - (plots.length - i) * 0.05;
-            return (
-              <Plot
-                key={`p_${i}`}
-                i={i}
-                {...project}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
-              />
-            );
-          })}
+        {plots.map((project, i) => {
+  console.log(project.src);  // Log src to check if it's a valid URL
+  const targetScale = 1 - (plots.length - i) * 0.05;
+  return (
+    <Plot
+      key={`p_${i}`}
+      i={i}
+      {...project}
+      progress={scrollYProgress}
+      range={[i * 0.25, 1]}
+      targetScale={targetScale}
+    />
+  );
+})}
+
         </section>
         <section className="bg-[#fbfaf8] pt-36">
           <LegacyBuiltComponent />

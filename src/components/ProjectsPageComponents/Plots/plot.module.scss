@@ -10,20 +10,15 @@
     flex-direction: column;
     position: relative;
     top: -25%;
-    height: 500px;
+    height: 600px;
     width: 1000px;
     border-radius: 25px;
     padding:50px;
     transform-origin: top;
-    h2{
-      text-align: center;
-      margin: 0px;
-      font-size: 28px;
-    }
+   
     .body{
       display: flex;
       height: 100%;
-      margin-top: 50px;
       gap: 50px;
 
       .description{
@@ -31,11 +26,8 @@
         position: relative;
         top: 10%;
         p{
-          font-size: 16px;
-          &::first-letter{
-            font-size: 28px;
-            font-family: 'Title';
-          }
+          font-size: 24px;
+          
         }
         span{
           display: flex;
@@ -53,7 +45,7 @@
         position: relative;
         width: 60%;
         height: 100%;
-        border-radius: 25px;
+        border-radius: 18px;
         overflow: hidden;
         .inner{
           width: 100%;
