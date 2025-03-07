@@ -120,6 +120,7 @@ export default function ProjectPage({}: ProjectPageProps) {
           <ExploreProjectsWrapper />
         </section>
        
+
         <section ref={container} className="bg-[#fbfaf8] pt-36">
         {plots.map((project, i) => {
   console.log(project.src);  // Log src to check if it's a valid URL
@@ -137,6 +138,7 @@ export default function ProjectPage({}: ProjectPageProps) {
 })}
 
         </section>
+
         <section className="bg-[#fbfaf8] pt-36">
           <LegacyBuiltComponent />
         </section>

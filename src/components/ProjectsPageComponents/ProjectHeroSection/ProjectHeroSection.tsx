@@ -135,7 +135,10 @@ const ProjectHeroSection: React.FC = () => {
     font-freightNeoMedium
     leading-none
     pt-0 md:pt-[1rem]
-    text-2xl
+    lg:text-2xl
+    text-md
+    
+    text-center
   `}
         >
           Discover <span className="font-CandideCondensedMedium">21,587</span>{" "}
