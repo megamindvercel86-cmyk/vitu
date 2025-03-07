@@ -16,7 +16,7 @@ import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreP
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
 
 // ============= Types & Interfaces =============
-interface HomePageProps {}
+interface ProjectPageProps {}
 
 // ============= Constants =========
 const NAVBAR_CONFIG = {
@@ -76,7 +76,7 @@ const NAVBAR_CONFIG = {
 //   };
 // }
 
-export default function HomePage({}: HomePageProps) {
+export default function ProjectPage({}: ProjectPageProps) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
