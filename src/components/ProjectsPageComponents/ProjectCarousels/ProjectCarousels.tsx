@@ -5,10 +5,12 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-carousel-card";
 
 // Dummy data for ProjectCarousel
 const desktopDataRight = [
-  { src: "/images/timelineImages/timelineImage8.png", alt: "Project 1" },
-  { src: "/images/backgroundImages/aboutPageBackgroundImageDesktop.png", alt: "Project 2" },
-  { src: "/images/backgroundImages/homePageBackgroundImageDesktop.png", alt: "Project 3" },
-  { src: "/images/backgroundImages/resourcesPageBackground.png", alt: "Project 4" },
+  { src: "/images/carousal/Slider1-min.jpg", alt: "Project 1" },
+  { src: "/images/carousal/Slider2-min.jpg", alt: "Project 2" },
+  { src: "/images/carousal/Slider3-min.jpg", alt: "Project 3" },
+  { src: "/images/carousal/Slider4-min.jpg", alt: "Project 4" },
+  { src: "/images/carousal/Slider5-min.jpg", alt: "Project 5" },
+  { src: "/images/carousal/Slider6-min.jpg", alt: "Project 6" },
 
 ];
 

@@ -374,6 +374,8 @@ const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({
     down: "rotate(0deg)", // Default down
   };
 
+  
+
   return (
     <svg
       className="w-7 h-7 2xl:w-10 2xl:h-10 mr-1"

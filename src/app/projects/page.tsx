@@ -9,6 +9,12 @@ import ProjectHeroSection from "@/components/ProjectsPageComponents/ProjectHeroS
 import { plots } from "../../data/plotsData";
 import Plot from "@/components/ProjectsPageComponents/Plots/Plots";
 
+import LocationAdvantage from "@/components/ProjectsPageComponents/ProjectLocationAdvantage/ProjectLocationAdvantage";
+import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
+
+import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
+import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
+
 // ============= Types & Interfaces =============
 interface HomePageProps {}
 
@@ -94,15 +100,36 @@ export default function HomePage({}: HomePageProps) {
   }, []);
 
   return (
-    <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
-      {/* Hero Section (Should contain an <h1> inside the component) */}
-      <ProjectHeroSection />
-      <section ref={container}>
+    <>
+      {/* <layout */}
+      <Layout
+        navbarClassName={NAVBAR_CONFIG.className}
+        navbarProps={NAVBAR_CONFIG.props}
+      >
+       
+    
+      
+   
+        {/* Hero Section (Should contain an <h1> inside the component) */}
+        <section className="">
+          <ProjectHeroSection />
+        </section>
+        <section>
+          <LocationAdvantage/>
+        </section>
+        <section className="bg-[#fbfaf8] pt-36">
+          <CurrentProject/>
+        </section>
+        <section className="bg-[#fbfaf8] pt-36">
+          <ExploreProjectsWrapper/>
+        </section>
+       
+        <section ref={container} className="bg-[#fbfaf8] pt-36">
         {plots.map((project, i) => {
           const targetScale = 1 - (plots.length - i) * 0.05;
           return (
             <Plot
-              key={`p_${i}`}
+              key={p_${i}}
               i={i}
               {...project}
               progress={scrollYProgress}
@@ -112,6 +139,10 @@ export default function HomePage({}: HomePageProps) {
           );
         })}
       </section>
-    </Layout>
+      <section className="bg-[#fbfaf8] pt-36">
+          <LegacyBuiltComponent/>
+        </section>
+      </Layout>
+   </>
   );
 }
