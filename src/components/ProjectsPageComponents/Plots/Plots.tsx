@@ -15,7 +15,7 @@ interface PlotProps {
   color: string;
   key: string;
   i: number;
-  // Other props...
+  
 }
 
 
