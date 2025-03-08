@@ -14,6 +14,7 @@ import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/C
 
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
+import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
 
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
@@ -113,19 +114,20 @@ export default function ProjectPage({}: ProjectPageProps) {
         <section className="bg-[#FBFAF8] pt-36">
           <CurrentProject />
         </section>
-        <section className="bg-[#FBFAF8] pt-36">
+        <section className="bg-[#FBFAF8] pt-80">
           <ExploreProjectsWrapper />
         </section>
-
         <section ref={container} className="bg-[#FBFAF8] ">
           {plots.map((project, i) => {
             const targetScale = 1 - (plots.length - i) * 0.05;
             return <Plot key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * 0.25, 1]} targetScale={targetScale} />;
           })}
         </section>
-
-        <section className="bg-[#fbfaf8] pt-36">
+        <section className="bg-[#fbfaf8] ">
           <LegacyBuiltComponent />
+        </section>
+        <section className="pt-28">
+          <ProjectBottomSection/>
         </section>
       </Layout>
     </>

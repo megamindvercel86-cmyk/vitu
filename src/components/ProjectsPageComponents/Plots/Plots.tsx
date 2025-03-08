@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./Plot.module.scss";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+import { MotionValue } from "framer-motion";
 
 interface PlotProps {
   title: string;
@@ -11,6 +12,9 @@ interface PlotProps {
   src: string;
   color?: string;
   i?: number;
+  progress: MotionValue<number>; // Add this
+  range: number[]; // Add this
+  targetScale: number; // Add this
 }
 
 const Plot = ({
@@ -19,6 +23,9 @@ const Plot = ({
   src,
   color = "#f5f5f5",
   i = 0,
+  progress,
+  range,
+  targetScale,
 }: PlotProps) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,7 +33,7 @@ const Plot = ({
     offset: ["start end", "start start"],
   });
 
-  const scale = useTransform(scrollYProgress, [1, 1], [1, 1]);
+  const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
 
   return (
     <div ref={container} className={styles.cardContainer}>
