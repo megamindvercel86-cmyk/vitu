@@ -66,16 +66,43 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[200vh] lg:h-[280vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[180vh] overflow-hidden">
       {/* Parallax Layers */}
-      <div className="layer absolute top-0 left-0 w-full h-full z-[-1]" data-depth="0.50">
-        <Image src={backgroundImage} alt="Background Layer" fill className="object-cover" placeholder="blur" />
+      <div
+        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        data-depth="0.50"
+      >
+        <Image
+          src={backgroundImage}
+          alt="Background Layer"
+          fill
+          className="object-contain"
+          placeholder="blur"
+        />
       </div>
-      <div className="layer absolute top-0 left-0 w-full h-full z-[-1]" data-depth="0.70">
-        <Image src={backgroundImage} alt="Midground Layer" fill className="object-cover" placeholder="blur" />
+      <div
+        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        data-depth="0.70"
+      >
+        <Image
+          src={backgroundImage}
+          alt="Midground Layer"
+          fill
+          className="object-cover"
+          placeholder="blur"
+        />
       </div>
-      <div className="layer absolute top-0 left-0 w-full h-full z-[-1]" data-depth="0.70">
-        <Image src={backgroundImage} alt="Foreground Layer" fill className="object-cover" placeholder="blur" />
+      <div
+        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        data-depth="0.70"
+      >
+        <Image
+          src={backgroundImage}
+          alt="Foreground Layer"
+          fill
+          className="object-cover"
+          placeholder="blur"
+        />
       </div>
 
       {/* Hero Content */}
@@ -108,14 +135,13 @@ const ProjectHeroSection: React.FC = () => {
     leading-none
     pt-0 md:pt-[1rem]
     lg:text-2xl
-    text-sm
-    w-[70%]
-    mt-3
-    text
+    text-md
+    
     text-center
   `}
         >
-          Discover <span className="font-CandideCondensedMedium">21,587</span> SqM of Luxuriously Affordable Coastal Bliss
+          Discover <span className="font-CandideCondensedMedium">21,587</span>{" "}
+          SqM of Luxuriously Affordable Coastal Bliss
         </h1>
 
         {/* CTA Button */}
@@ -141,28 +167,16 @@ const ProjectHeroSection: React.FC = () => {
             {/* Hover background with transform from right */}
 
             {/* Button content */}
-<<<<<<< HEAD
-            <span className="relative z-[9]">Scroll to Learn More</span>
-            <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300 "></div>
-=======
             <span className="relative z-10">Scroll to Learn More</span>
             <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 "></div>
->>>>>>> main
             <CTAButtonIcon fill="#4B9480" />
           </button>
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="absolute  inset-0 flex flex-col items-center top-[36rem] lg:top-[55rem] text-center px-6">
-        <ProjectHeader />
-      </div>
-      <div className="absolute inset-0 flex flex-col items-center  top-[55rem] lg:top-[80rem] text-center px-6">
-=======
       <div className="absolute  inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[55rem] text-center px-6">
         <ProjectHeader />
       </div>
       <div className="absolute inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[80rem] top-[100vh] text-center px-6">
->>>>>>> main
         <ProjectCarousel />
       </div>
     </section>
