@@ -23,7 +23,7 @@ const LocationAdvantage = () => {
           beachside retreat right at your doorstep.
         </p>
 
-        <div className="relative group cursor-pointer mt-4">
+        <div className="relative group cursor-pointer mt-4 mb-11">
           <button
             type="button"
             className={`

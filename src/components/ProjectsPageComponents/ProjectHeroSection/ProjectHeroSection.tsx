@@ -8,6 +8,7 @@ import CTAButtonIcon from "@/components/Icons/Icons";
 import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
+import { Link } from "react-scroll";
 
 // ============= Types =============
 interface AboutHeroConfig {
@@ -66,7 +67,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[203vh] lg:h-[300vh] xl:h-[240vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[170vh] lg:h-[300vh] xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
         className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }}
@@ -136,6 +137,7 @@ const ProjectHeroSection: React.FC = () => {
     pt-0 md:pt-[1rem]
     lg:text-2xl
     text-md
+    px-10
     
     text-center
   `}
@@ -145,7 +147,7 @@ const ProjectHeroSection: React.FC = () => {
         </h1>
 
         {/* CTA Button */}
-        <div className="relative group cursor-pointer">
+        <Link to="carousal" smooth={true} duration={700}> <div className="relative group cursor-pointer">
           <button
             type="button"
             className={`
@@ -172,11 +174,12 @@ const ProjectHeroSection: React.FC = () => {
             <CTAButtonIcon fill="#4B9480" />
           </button>
         </div>
+        </Link>
       </div>
-      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[33rem] text-center px-6">
+      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[33rem]  text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute  inset-0 flex flex-col items-center lg:top-[88rem] top-[120vh] text-center px-6">
+      <div  className="absolute  inset-0 flex flex-col items-center lg:top-[88rem] top-[100vh] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>
