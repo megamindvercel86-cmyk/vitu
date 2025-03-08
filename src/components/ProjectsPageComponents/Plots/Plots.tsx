@@ -32,7 +32,7 @@ const Plot = ({
     <div ref={container} className={styles.cardContainer}>
       <motion.div
         style={{
-          backgroundColor: color,
+          backgroundColor: "#ffffff",
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
