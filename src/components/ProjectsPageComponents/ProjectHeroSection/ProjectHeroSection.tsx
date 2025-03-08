@@ -66,10 +66,10 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[180vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[203vh] lg:h-[300vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
-        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }}
         data-depth="0.50"
       >
         <Image
@@ -81,7 +81,7 @@ const ProjectHeroSection: React.FC = () => {
         />
       </div>
       <div
-        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }}
         data-depth="0.70"
       >
         <Image
@@ -93,7 +93,7 @@ const ProjectHeroSection: React.FC = () => {
         />
       </div>
       <div
-        className="layer absolute top-0 left-0 w-full h-full z-[-1]"
+        className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }}
         data-depth="0.70"
       >
         <Image
@@ -173,10 +173,10 @@ const ProjectHeroSection: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="absolute  inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[55rem] text-center px-6">
+      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[33rem] text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[80rem] top-[100vh] text-center px-6">
+      <div className="absolute  inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[88rem] top-[120vh] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>

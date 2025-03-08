@@ -101,7 +101,7 @@ export default function ProjectPage({}: ProjectPageProps) {
   }, []);
 
   return (
-    <>
+    <div className="bg-[#e4dcd6]">
       {/* Layout section */}
       <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
         {/* Hero Section (Should contain an <h1> inside the component) */}
@@ -130,6 +130,6 @@ export default function ProjectPage({}: ProjectPageProps) {
           <ProjectBottomSection/>
         </section>
       </Layout>
-    </>
+      </div>
   );
 }
