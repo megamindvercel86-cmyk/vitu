@@ -108,37 +108,45 @@ export default function MediaSection(): React.ReactElement {
     };
     return (
       <div className="media-card rounded-lg overflow-hidden">
-        {/* Image Container */}
-        <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
-          <Image
-            src={item.fileUrl}
-            alt={item.title}
-            width={400}
-            height={310}
-            className="w-full h-full object-cover"
-          />
-        </div>
+  {/* Image Container */}
+  <Link href={item.link} target="_blank" rel="noopener noreferrer">
+    <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
+      <Image
+        src={item.fileUrl}
+        alt={item.title}
+        width={400}
+        height={310}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </Link>
 
-        {/* Content */}
-        <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">
-              {item.title}
-            </SubHeading>
-          </div>
-          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
-            {item.description}
-          </SubHeading>
-          <Link
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
-          >
-            Read More
-          </Link>
-        </div>
-      </div>
+  {/* Content */}
+  <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
+  <Link href={item.link} target="_blank" rel="noopener noreferrer">
+    <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
+      <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">
+        {item.title}
+      </SubHeading>
+    </div>
+    </Link>
+    <Link href={item.link} target="_blank" rel="noopener noreferrer">
+    <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
+      {item.description}
+    </SubHeading>
+    </Link>
+    {/* Read More Link - This should not be wrapped inside another Link */}
+    <Link
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
+    >
+      Read More
+    </Link>
+  </div>
+</div>
+
     );
   };
 

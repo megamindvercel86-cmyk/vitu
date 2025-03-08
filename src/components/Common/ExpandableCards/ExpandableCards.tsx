@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
-      <div className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
+      <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
         <div>
           <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
             UP NEXT

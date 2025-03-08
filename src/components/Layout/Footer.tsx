@@ -111,6 +111,12 @@ const Footer: FC = () => {
                   <Instgram />
                 </NavLink>
                 <NavLink
+                  href="https://www.facebook.com/p/VITU-Realty-61557046860214/"
+                  target={true}
+                >
+                  <Meta />
+                </NavLink>
+                <NavLink
                   href="https://www.linkedin.com/company/vitu-realty/"
                   target={true}
                 >
@@ -122,12 +128,7 @@ const Footer: FC = () => {
                 >
                   <Youtube />
                 </NavLink>
-                <NavLink
-                  href="https://www.facebook.com/p/VITU-Realty-61557046860214/"
-                  target={true}
-                >
-                  <Meta />
-                </NavLink>
+               
               </li>
             </ul>
           </div>

@@ -278,12 +278,12 @@ export const Card = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 h-screen z-50 overflow-auto">
+          <div className="fixed inset-0 h-screen  z-50 overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
+              className=" backdrop-blur-lg h-full w-full fixed inset-0"
             />
             <motion.div
               initial={{ opacity: 0 }}
@@ -326,7 +326,7 @@ export const Card = ({
                       <Typography variant="h1" className="text-customBrown">
                         {project?.title}
                       </Typography>
-                      <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+                      <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px]  !text-xl">
                         <span className="text-neutral-700">
                           {project?.description}
                         </span>
@@ -427,7 +427,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pb-20 pt-20 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
-      <div className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 ">
+      <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-10 lg:py-14 ">
         <div>
           <p className="text-xs text-[#8E8E93] uppercase font-roboto">
             Up Next
