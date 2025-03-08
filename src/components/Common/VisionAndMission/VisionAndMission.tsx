@@ -49,7 +49,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -66,7 +66,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience ",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -83,7 +83,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience ",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -101,7 +101,7 @@ const CONTENT = {
         "Luxury living at accessible prices, designed to offer comfort and sophistication.",
     },
     {
-      title: "Trusted Experience / Happy Residents",
+      title: "Trusted Experience ",
       description:
         "Delivering homes where families thrive, backed by years of trust and excellence.",
     },
