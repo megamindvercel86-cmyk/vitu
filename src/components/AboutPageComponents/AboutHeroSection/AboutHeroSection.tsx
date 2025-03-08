@@ -122,7 +122,7 @@ const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
                 {/* Hover background with transform from right */}
 
                 {/* Button content */}
-                <span className="relative z-10">
+                <span className="relative z-[9]">
                   {ABOUT_HERO_CONFIG.cta.text}
                 </span>
                 <div className="absolute inset-0 bg-[#614130] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300 "></div>
