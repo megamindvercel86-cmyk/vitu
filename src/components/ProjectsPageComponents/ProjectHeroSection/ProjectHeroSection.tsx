@@ -5,7 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CTAButtonIcon from "@/components/Icons/Icons";
-import backgroundImage from "../../../../public/images/backgroundImages/image.png";
+import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
 
@@ -66,7 +66,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[203vh] lg:h-[300vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[203vh] lg:h-[300vh] xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
       <div
         className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }}
@@ -176,7 +176,7 @@ const ProjectHeroSection: React.FC = () => {
       <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[33rem] text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute  inset-0 flex flex-col items-center xl:top-[85rem] lg:top-[88rem] top-[120vh] text-center px-6">
+      <div className="absolute  inset-0 flex flex-col items-center lg:top-[88rem] top-[120vh] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>
