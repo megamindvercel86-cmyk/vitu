@@ -4,9 +4,6 @@
 import Button from "@/components/Common/Button";
 import Typography from "@/components/Typography/Typography";
 
-// ============= Types & Interfaces =============
-interface HeroBannerProps {}
-
 // ============= Constants =============
 const CONTENT = {
   badge: "BLOG",
@@ -39,7 +36,7 @@ const BACKGROUND = {
 export default function HeroBanner(): React.ReactElement {
   // ============= Render Helpers =============
   const renderContent = () => (
-    <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
+    <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0 xl:flex-col xl:items-start">
       {/* Text Content */}
       <div>
         <Typography
@@ -63,7 +60,17 @@ export default function HeroBanner(): React.ReactElement {
       </div>
 
       {/* CTA Button */}
-      <div className="w-full lg:w-auto md:w-full">
+      <div className="w-full lg:w-auto md:w-full lg:block xl:hidden">
+        <Button
+          onClick={() => {}}
+          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
+        >
+          {CONTENT.cta}
+        </Button>
+      </div>
+    
+      {/* CTA Button for XL screens */}
+      <div className="hidden xl:block mt-4">
         <Button
           onClick={() => {}}
           className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
@@ -75,7 +82,7 @@ export default function HeroBanner(): React.ReactElement {
   );
 
   return (
-    <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[67.5rem] 2xl:h-screen">
+    <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[100vh] 2xl:h-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"

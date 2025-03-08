@@ -119,9 +119,9 @@ const expandedPositions = {
   xl: [
     { top: "64%", left: "25%", right: "auto" },
     { top: "50%", right: "1%", left: "auto" },
-    { top: "0%", right: "1%", left: "auto" },
+    { top: "12%", right: "1%", left: "auto" },
     { top: "50%", left: "1%", right: "auto" },
-    { top: "5%", left: "3%", right: "auto" },
+    { top: "15%", left: "3%", right: "auto" },
   ],
   lg: [
     { top: "65%", left: "30%", right: "auto" },
