@@ -2,19 +2,15 @@
 
 import Image from "next/image";
 import styles from "./Plot.module.scss";
-import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
+import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 
 interface PlotProps {
-  progress: MotionValue<number>;
-  range: number[];
-  targetScale: number;
   title: string;
   description: string;
   src: string;
-  color: string;
-  key: string;
-  i: number;
+  color?: string;
+  i?: number;
 }
 
 const Plot = ({
@@ -30,7 +26,6 @@ const Plot = ({
     offset: ["start end", "start start"],
   });
 
-  // const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(scrollYProgress, [1, 1], [1, 1]);
 
   return (
@@ -45,10 +40,10 @@ const Plot = ({
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2 className="text-customBrown font-FreightNeoProNormal !text-5xl">
+            <h2 className="text-customBrown font-FreightNeoProNormal !text-4xl sm:!text-2xl">
               {title}
             </h2>
-            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6">
+            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base">
               {description}
             </p>
           </div>
