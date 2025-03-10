@@ -37,7 +37,7 @@ interface FormSectionProps {
 export default function FormSection({ heading, subheading, page }: FormSectionProps) {
   // ============= Refs =============
   const selectRef = useRef<HTMLSelectElement>(null);
-
+  const [open, setOpen] = useState<boolean>(false);
   // ============= Form Handling =============
   const handleSuccess = () => {
     console.log("Form submission complete! Performing additional actions...");
@@ -99,15 +99,15 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
           </div>
 
           <div className="mt-[45px]">
-  <input
-    type="number"
-    placeholder="Your Phone Number"
-    {...formik.getFieldProps("phone")}
-    className="w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium placeholder:text-[#04070799] 
+            <input
+              type="number"
+              placeholder="Your Phone Number"
+              {...formik.getFieldProps("phone")}
+              className="w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium placeholder:text-[#04070799] 
       appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
-  />
-  {formik.touched.phone && formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
-</div>
+            />
+            {formik.touched.phone && formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
+          </div>
 
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
@@ -126,50 +126,67 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
             </div>
           )}
           {page === "Project Enquire" && (
-            <div className="mt-[45px] relative">
-              {/* Select Box */}
-              <select
-                ref={selectRef}
-                {...formik.getFieldProps("option")}
-                className={`${inputBaseClass} pb-2 pr-10 bg-black appearance-none w-full   rounded-md`}
+            <div className="relative mt-8 z-[999] bg-white">
+              {/* Dropdown Button */}
+              <div
+                className="bg-white text-customTextGray font-freightNeoMedium text-xl   py-3 rounded-md flex justify-between items-center cursor-pointer"
+                onClick={() => setOpen(!open)}
               >
-                <option value="" disabled>
-                  Interested In
-                </option>
-                {PROJECT_ENQUIRIES.map((option) => (
-                  <option key={option.value} value={option.value} >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-
-              {/* Dropdown Icon */}
-              <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                <span>{formik.values.option || "Intresed In"}</span>
                 <Dropdown />
               </div>
+              <hr className="border-black border-opacity-20"/>
+
+              {/* Dropdown Menu */}
+              {open && (
+                <div className="absolute w-full bg-white font-freightNeoMedium  rounded-md ">
+                  {PROJECT_ENQUIRIES.map((option) => (
+                    <div
+                      key={option.value}
+                      className="px-4 py-2 text-customTextGray text-xl hover:bg-gray-200 cursor-pointer"
+                      onClick={() => {
+                        formik.setFieldValue("option", option.label);
+                        setOpen(false);
+                      }}
+                    >
+                      {option.label}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
             <>
-              <div className="mt-[45px] relative">
-                <select
-                  ref={selectRef}
-                  {...formik.getFieldProps("option")}
-                  className="w-full px-1 pb-2 text-customTextGray placeholder:text-customPlaceHolderGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium pr-8 appearance-none"
+                <div className="relative mt-8 z-[999] bg-white">
+                {/* Dropdown Button */}
+                <div
+                  className="bg-white text-customTextGray font-freightNeoMedium text-lg py-3 rounded-md flex justify-between items-center cursor-pointer"
+                  onClick={() => setOpen(!open)}
                 >
-                  <option value="" disabled>
-                    Position Being Applied For
-                  </option>
-                  {JOB_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                  <span>{formik.values.option || "Position Being Applied For"}</span>
                   <Dropdown />
                 </div>
-              </div>
+                <hr className="border-black border-opacity-20" />
+
+                {/* Dropdown Menu */}
+                {open && (
+                  <div className="absolute w-full bg-white rounded-md">
+                  {JOB_OPTIONS.map((option) => (
+                    <div
+                    key={option.value}
+                    className="px-4 py-2 text-customTextGray font-freightNeoMedium text-lg hover:bg-gray-200 cursor-pointer"
+                    onClick={() => {
+                      formik.setFieldValue("option", option.label);
+                      setOpen(false);
+                    }}
+                    >
+                    {option.label}
+                    </div>
+                  ))}
+                  </div>
+                )}
+                </div>
               <div className="mt-[45px] relative">
                 <div className="w-full px-1 pb-2 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium">
                   <label htmlFor="resume-upload" className="flex items-center cursor-pointer text-customTextGray w-full justify-between">
@@ -222,16 +239,21 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
 
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
-                  <input type="checkbox" {...formik.getFieldProps("whatsapp")} className="sr-only peer" />
+                  <input
+                    type="checkbox"
+                    {...formik.getFieldProps("whatsapp")}
+                    checked={formik.values.whatsapp} // Ensure controlled behavior
+                    onChange={formik.handleChange} // Ensure the change is handled properly
+                    className="sr-only peer"
+                  />
 
-                  <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors">
-                    {formik.values.whatsapp && (
-                      <FaCheck className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    )}
+                  <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors relative flex items-center justify-center">
+                    {formik.values.whatsapp && <FaCheck className="w-3 h-3 text-white" />}
                   </div>
                 </div>
                 <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">Receive Updates on WhatsApp</span>
               </label>
+
               {isLoading ? (
                 <span className="lg:block hidden items-center justify-center">
                   <Loader />
@@ -275,22 +297,22 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               ) : (
                 <Button
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                    formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  // setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    // setIsLoading(false)
-                    console.log("2")
-                  ); // Stop loading after submission
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    // setIsLoading(true); // Start loading
+                    Promise.resolve(formik.handleSubmit()).finally(() =>
+                      // setIsLoading(false)
+                      console.log("2")
+                    ); // Stop loading after submission
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${
-                  !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
+                    !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
                   Submit
@@ -316,22 +338,22 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               ) : (
                 <Button
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                    formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
-                  // setIsLoading(true); // Start loading
-                  Promise.resolve(formik.handleSubmit()).finally(() =>
-                    // setIsLoading(false)
-                    console.log("3")
-                  ); // Stop loading after submission
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
+                    // setIsLoading(true); // Start loading
+                    Promise.resolve(formik.handleSubmit()).finally(() =>
+                      // setIsLoading(false)
+                      console.log("3")
+                    ); // Stop loading after submission
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:block hidden text-[26px] w-full lg:w-[146px] ${
-                  !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
+                    !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
                   Submit
@@ -348,26 +370,26 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               ) : (
                 <Button
                   onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  if (!formik.isValid || !formik.dirty) {
-                    Object.keys(formik.values).forEach((field) => {
-                    formik.setFieldTouched(field as any, true);
-                    });
-                    return;
-                  }
+                    e.preventDefault();
+                    if (!formik.isValid || !formik.dirty) {
+                      Object.keys(formik.values).forEach((field) => {
+                        formik.setFieldTouched(field as any, true);
+                      });
+                      return;
+                    }
 
-                  try {
-                    // setIsLoading(true); // Start loading
-                    formik.handleSubmit(); // Handle form submission
-                  } catch (error) {
-                    console.error("Form submission failed", error);
-                  } finally {
-                    // setIsLoading(false); // Stop loading after submission (whether success or failure)
-                  }
+                    try {
+                      // setIsLoading(true); // Start loading
+                      formik.handleSubmit(); // Handle form submission
+                    } catch (error) {
+                      console.error("Form submission failed", error);
+                    } finally {
+                      // setIsLoading(false); // Stop loading after submission (whether success or failure)
+                    }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`text-[26px] pt-1 sm:w-full w-full md:w-[146px] ${
-                  !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
+                    !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
                   Submit

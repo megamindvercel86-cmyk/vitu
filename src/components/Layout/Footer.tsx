@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FC, JSX } from "react";
+import React, { FC, JSX, useRef } from "react";
 import logo from "../../../public/images/logos/logolight.svg";
 import chieverslog from "../../../public/images/logos/chieverslog.svg";
 import SubHeading from "../Common/SubHeding";
@@ -8,6 +8,9 @@ import FooterLink from "../Common/FooterLinks";
 import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/Icons";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
+import { db } from "@/firebase/firebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 /**
  * Footer Component
@@ -25,6 +28,29 @@ const Footer: FC = () => {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
     </svg>
   );
+
+  const email = useRef<HTMLInputElement>(null);
+  console.log(email);
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (email.current) {
+      const emailValue = email.current.value;
+      console.log(emailValue);
+
+      const collectionRef = collection(db, "newsLetter");
+      await addDoc(collectionRef, { email: emailValue });
+
+      // await fetch("/api/sendEmail", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(emailValue),
+      // });
+      toast.success("Thank You For The Newsletter SignUp");
+
+      email.current.value = "";
+    }
+  };
 
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
@@ -92,15 +118,21 @@ const Footer: FC = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="pt-16 w-[90%] hidden lg:block cursor-pointer relative">
-              <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
-                <input
-                  className="text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC] pr-10"
-                  placeholder="Sign Up for Our Newsletter"
-                />
-                <BsArrowRight className="text-[#EADFD1CC] text-2xl absolute right-0 bottom-6 translate-y-1/2" />
+            <form onSubmit={submitHandler}>
+              <div className="pt-16 w-[90%] hidden lg:block cursor-pointer relative">
+                <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
+                  <input
+                    type="email"
+                    ref={email}
+                    className="text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC] pr-10"
+                    placeholder="Sign Up for Our Newsletter"
+                  />
+                  <button type="submit">
+                    <BsArrowRight className="text-[#EADFD1CC] text-2xl absolute right-0 bottom-6 translate-y-1/2" />
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

@@ -105,7 +105,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       email: "",
       phone: "",
       comments: "",
-      whatsapp: false,
+      whatsapp: true,
       option: "",
       resume: null,
     },
