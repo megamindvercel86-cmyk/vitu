@@ -15,6 +15,11 @@ interface YouTubeOptions {
     modestbranding: number;
     playsinline: number;
     autoplay: number;
+    controls: number;        // Added
+    showinfo?: number;       // Added (optional since it's deprecated)
+    fs: number;              // Added
+    cc_load_policy: number;  // Added
+    disablekb: number;       // Added
   };
 }
 
@@ -49,6 +54,11 @@ export default function FounderMessage(): React.ReactElement {
       modestbranding: 1,
       playsinline: 1,
       autoplay: 0,
+      controls: 0,           // Hide all controls
+      showinfo: 0,           // Attempt to hide title (deprecated)
+      fs: 0,                 // No fullscreen button
+      cc_load_policy: 0,     // No captions
+      disablekb: 1,          // No keyboard controls
     },
   };
 

@@ -130,7 +130,7 @@ function MessageDisplay({
         isFixed
           ? "fixed md:bottom-56 bottom-32 md:right-[59px]"
           : "absolute bottom-56 right-10"
-      } pointer-events-none z-50 md:max-w-[450px] max-w-[300px]`}
+      } pointer-events-none z-50 md:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
         <span className="lg:text-2xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
@@ -217,7 +217,7 @@ function ScrollController({
 
   return (
     <div
-      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[430px]`}
+      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[550px]`}
     >
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
@@ -407,7 +407,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-[100vw] h-full object-cover hidden md:flex"
+                    className="w-[100vw] h-full object-cove hidden md:flex"
                     loading="lazy"
                   />
                   <Image
