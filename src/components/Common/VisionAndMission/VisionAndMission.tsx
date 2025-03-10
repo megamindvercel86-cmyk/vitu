@@ -158,29 +158,29 @@ export default function VisionAndMission() {
   // ============= Render Helpers =============
   const renderDesktopSection = (section: ContentItem, index: number) => (
     <div key={index} className="flex-1 group/section relative">
-      {/* Section content */}
-      <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+      {/* Hover overlay - moved up in DOM order and given lower z-index */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 z-10" />
+      
+      {/* Section content - given higher z-index */}
+      <div className="absolute inset-x-0 bottom-0 p-6 text-white z-20">
         <Typography
           variant="h2"
-          className="font-freightNeoMedium text-white  text-center"
+          className="font-freightNeoMedium text-white text-center"
           aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
         >
           {section.title}
         </Typography>
         {/* Hover description */}
-        <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
+        <div className="overflow-hidden h-0 group-hover/section:h-24 transition-all duration-300">
           <Typography
             variant="h3"
             fontWeight="font-normal"
             className="font-FreightNeoProNormal mt-[5px] text-white text-center"
           >
-            {" "}
             {section.description}
           </Typography>
         </div>
       </div>
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300" />
     </div>
   );
 

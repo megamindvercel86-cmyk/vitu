@@ -419,7 +419,7 @@ export default function Gallery() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/100 to-transparent">
                   <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
               </div>
