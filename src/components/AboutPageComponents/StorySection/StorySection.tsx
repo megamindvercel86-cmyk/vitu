@@ -407,7 +407,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-[100vw] h-full object-cove hidden md:flex"
+                    className="w-[100vw] h-full object-cover hidden md:flex"
                     loading="lazy"
                   />
                   <Image
