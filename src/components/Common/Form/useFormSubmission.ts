@@ -5,7 +5,21 @@ import { formValidationSchema } from "./validations";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "@/firebase/firebaseConfig"; // Make sure storage is exported
+
+const uploadToFirebaseStorage = async (file: File): Promise<string> => {
+  const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`); // Unique name
+
+  try {
+    const snapshot = await uploadBytes(fileRef, file);
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    return downloadURL; // Return file URL for database storage
+  } catch (error) {
+    console.error("Error uploading to Firebase Storage:", error);
+    throw error;
+  }
+};
 
 export interface FormValues {
   fullName: string;
@@ -16,20 +30,6 @@ export interface FormValues {
   option: string;
   resume: File | null;
 }
-
-const uploadToFirebaseStorage = async (file: File): Promise<string> => {
-  const storage = getStorage();
-  const fileRef = ref(storage, `resumes/${file.name}-${Date.now()}`);
-
-  try {
-    const snapshot = await uploadBytes(fileRef, file);
-    const downloadURL = await getDownloadURL(snapshot.ref);
-    return downloadURL;
-  } catch (error) {
-    console.error("Error uploading file to Firebase Storage:", error);
-    throw error;
-  }
-};
 
 
 export const useFormSubmission = (page: string, callback?: () => void) => {
@@ -42,6 +42,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
+
       }
 
       const collectionName =

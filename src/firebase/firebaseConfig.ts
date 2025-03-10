@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCCe_H7JWChegUvjugESwF_l-M6ixq9yOc",
   authDomain: "vitu-realty--website.firebaseapp.com",
   projectId: "vitu-realty--website",
-  storageBucket: "vitu-realty--website.appspot.com",
+  storageBucket: "vitu-realty--website.firebasestorage.app",
   messagingSenderId: "507741321339",
   appId: "1:507741321339:web:79b72ae7f8c78436b20ade",
   measurementId: "G-64MSFS4QMM",
