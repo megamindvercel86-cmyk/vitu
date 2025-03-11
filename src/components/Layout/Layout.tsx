@@ -1,5 +1,6 @@
 "use client";
 
+import { ToastContainer } from "react-toastify";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -28,6 +29,7 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <>
+    <ToastContainer />
       {/* Navbar Section */}
       <div className={navbarClassName || ""}>
         <Navbar {...navbarProps} />

@@ -7,6 +7,9 @@ import Typography from "@/components/Typography/Typography";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Link from "next/link";
 
+import { CiPlay1 } from "react-icons/ci";
+import { CiPause1 } from "react-icons/ci";
+
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
 
@@ -37,8 +40,7 @@ const CAROUSEL_CONFIG = {
 const CAROUSEL_DATA: CarouselItem[] = [
   {
     title: "Embracing new Horizons in Living",
-    subtitle:
-      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "Vitu Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care, and community for your golden years.",
     image: "/svgs/image1.svg",
@@ -46,8 +48,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle:
-      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "Vitu Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure, and rejuvenation for every moment of your escape.",
     image: "/svgs/image2.svg",
@@ -55,8 +56,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle:
-      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "Vitu Wellness Centre envisions a sanctuary of holistic healing, where mind, body, &amp; soul unite in harmony, offering the perfect blend of care, tranquility, &amp; rejuvenation for your well-being.",
     image: "/svgs/image3.svg",
@@ -64,8 +64,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
   },
   {
     title: "Embracing new Horizons in Living",
-    subtitle:
-      "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "Vitu Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
     image: "/svgs/image4.svg",
@@ -90,6 +89,8 @@ export default function VisionForTheFuture() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState<Direction>("right");
+  const [isPlay, setIsPlay] = useState<boolean>(true);
+  const [progress, setProgress] = useState(0);
 
   // ============= Handlers =============
   const handleTransition = useCallback(
@@ -99,40 +100,42 @@ export default function VisionForTheFuture() {
       setDirection(newDirection);
 
       const nextIndex =
-        newDirection === "right"
-          ? (currentIndex + 1) % CAROUSEL_DATA.length
-          : (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length;
+        newDirection === "right" ? (currentIndex + 1) % CAROUSEL_DATA.length : (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length;
 
       setCurrentIndex(nextIndex);
-      setTimeout(
-        () => setIsAnimating(false),
-        CAROUSEL_CONFIG.transitionDuration,
-      );
+      setTimeout(() => setIsAnimating(false), CAROUSEL_CONFIG.transitionDuration);
     },
-    [currentIndex, isAnimating],
+    [currentIndex, isAnimating]
   );
 
   // ============= Effects =============
   useEffect(() => {
-    const timer = setInterval(
-      () => handleTransition("right"),
-      CAROUSEL_CONFIG.autoplayInterval,
-    );
+    let timer: NodeJS.Timeout;
+    if (isPlay) {
+      timer = setInterval(() => {
+        setProgress((prevProgress) => {
+          if (prevProgress >= 100) {
+            handleTransition("right");
+            return 0;
+          }
+          return prevProgress + 1;
+        });
+      }, CAROUSEL_CONFIG.autoplayInterval / 100);
+    } else {
+      setProgress(0);
+    }
     return () => clearInterval(timer);
-  }, [handleTransition]);
+  }, [handleTransition, isPlay]);
 
   // ============= Render Helpers =============
+
   const getImageScale = (index: number) => {
-    const scale =
-      CAROUSEL_CONFIG.scales[index as keyof typeof CAROUSEL_CONFIG.scales];
+    const scale = CAROUSEL_CONFIG.scales[index as keyof typeof CAROUSEL_CONFIG.scales];
     return `scale-x-[${scale.mobile.x}] scale-y-[${scale.mobile.y}] md:scale-x-[${scale.desktop.x}] md:scale-y-[${scale.desktop.y}]`;
   };
 
   return (
-    <section
-      className="relative overflow-hidden text-[#42210B]"
-      aria-label="Vision for the Future Carousel"
-    >
+    <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
       <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
         <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
@@ -146,8 +149,7 @@ export default function VisionForTheFuture() {
             variant="custom"
             className="pt-1 font-freightNeoMedium font-light text-base leading-[1.1875rem] text-[#040707CC] md:text-[1.25rem] md:leading-relaxed 2xl:text-[2.125rem]"
           >
-            Rooted in our vision for bold growth and dedication to evolving our
-            portfolio.
+            Rooted in our vision for bold growth and dedication to evolving our portfolio.
           </Typography>
         </header>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
@@ -173,9 +175,7 @@ export default function VisionForTheFuture() {
                   index === currentIndex
                     ? "opacity-100 translate-x-0"
                     : direction === "right"
-                      ? index ===
-                        (currentIndex - 1 + CAROUSEL_DATA.length) %
-                          CAROUSEL_DATA.length
+                      ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
                         ? "opacity-0 -translate-x-full"
                         : "opacity-0 translate-x-full"
                       : index === (currentIndex + 1) % CAROUSEL_DATA.length
@@ -198,10 +198,7 @@ export default function VisionForTheFuture() {
           </div>
         </div>
 
-        <Typography
-          variant="custom"
-          className="block mx-[1.8125rem] mt-6 font-FreightNeoProBold text-lg text-[#04070799] md:hidden"
-        >
+        <Typography variant="custom" className="block mx-[1.8125rem] mt-6 font-FreightNeoProBold text-lg text-[#04070799] md:hidden">
           {CAROUSEL_DATA[currentIndex].residentialType}
         </Typography>
         <div className="flex flex-col h-auto mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] lg:flex-row xl:mx-0 items-center lg:items-start justify-between md:mt-[4.625rem]">
@@ -221,26 +218,47 @@ export default function VisionForTheFuture() {
                 <CTAButtonIcon direction="right" />
               </button>
             </Link>
-            <div
-              className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]"
-              role="group"
-              aria-label="Carousel Navigation Dots"
-            >
+            <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
+              <svg width="50" height="50" viewBox="0 0 50 50">
+                {/* Background Circle */}
+                <circle cx="25" cy="25" r="22" stroke="#dbc9bc" strokeWidth="2" fill="none" opacity="0.3" />
+                
+                {/* Progress Circle */}
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="22"
+                  stroke="#dbc9bc"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeDasharray={138} // 2 * π * r (full circle length)
+                  strokeDashoffset={(1 - progress / 100) * 138} // Adjust offset to show progress
+                  strokeLinecap="round"
+                  className="transition-all duration-100"
+                  transform="rotate(-90 25 25)" // Rotate the circle to start from the top
+                />
+
+                {/* Play/Pause Icon */}
+                <foreignObject x="14" y="14" width="22" height="22">
+                  <button className="w-full h-full flex items-center justify-center">
+                    {isPlay ? <CiPause1 className="text-2xl text-[#dbc9bc]" /> : <CiPlay1 className="text-2xl  text-[#dbc9bc]" />}
+                  </button>
+                </foreignObject>
+              </svg>
+            </div>
+            <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
               {CAROUSEL_DATA.map((_, dotIndex) => (
                 <button
                   key={dotIndex}
                   disabled={isAnimating}
                   onClick={() => {
                     if (dotIndex !== currentIndex) {
-                      const direction =
-                        dotIndex > currentIndex ? "right" : "left";
+                      const direction = dotIndex > currentIndex ? "right" : "left";
                       handleTransition(direction);
                     }
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    dotIndex === currentIndex
-                      ? "bg-white md:w-8 w-9"
-                      : "bg-[#FFFFFF99]"
+                    dotIndex === currentIndex ? "bg-white md:w-8 w-9" : "bg-[#FFFFFF99]"
                   } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
                   aria-current={dotIndex === currentIndex}

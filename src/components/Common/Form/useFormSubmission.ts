@@ -5,6 +5,21 @@ import { formValidationSchema } from "./validations";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "@/firebase/firebaseConfig"; // Make sure storage is exported
+
+const uploadToFirebaseStorage = async (file: File): Promise<string> => {
+  const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`); // Unique name
+
+  try {
+    const snapshot = await uploadBytes(fileRef, file);
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    return downloadURL; // Return file URL for database storage
+  } catch (error) {
+    console.error("Error uploading to Firebase Storage:", error);
+    throw error;
+  }
+};
 
 export interface FormValues {
   fullName: string;
@@ -16,27 +31,6 @@ export interface FormValues {
   resume: File | null;
 }
 
-const uploadToCloudinary = async (file: File): Promise<string> => {
-  const cloudName = "dvandhsai";
-  const uploadPreset = "resume";
-
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", uploadPreset);
-
-  try {
-    const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, // Use 'raw'
-      { method: "POST", body: formData },
-    );
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error?.message || "Upload failed");
-    return data.secure_url;
-  } catch (error) {
-    console.error("Error uploading to Cloudinary:", error);
-    throw error;
-  }
-};
 
 export const useFormSubmission = (page: string, callback?: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,7 +41,8 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
 
     try {
       if (page === "Career Application" && values.resume) {
-        resumeUrl = await uploadToCloudinary(values.resume);
+        resumeUrl = await uploadToFirebaseStorage(values.resume);
+
       }
 
       const collectionName =
@@ -110,7 +105,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       email: "",
       phone: "",
       comments: "",
-      whatsapp: false,
+      whatsapp: true,
       option: "",
       resume: null,
     },

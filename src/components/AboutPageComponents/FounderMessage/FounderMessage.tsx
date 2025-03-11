@@ -15,6 +15,11 @@ interface YouTubeOptions {
     modestbranding: number;
     playsinline: number;
     autoplay: number;
+    controls: number;        // Added
+    showinfo?: number;       // Added (optional since it's deprecated)
+    fs: number;              // Added
+    cc_load_policy: number;  // Added
+    disablekb: number;       // Added
   };
 }
 
@@ -49,6 +54,11 @@ export default function FounderMessage(): React.ReactElement {
       modestbranding: 1,
       playsinline: 1,
       autoplay: 0,
+      controls: 0,           // Hide all controls
+      showinfo: 0,           // Attempt to hide title (deprecated)
+      fs: 0,                 // No fullscreen button
+      cc_load_policy: 0,     // No captions
+      disablekb: 1,          // No keyboard controls
     },
   };
 
@@ -83,7 +93,7 @@ export default function FounderMessage(): React.ReactElement {
   return (
     <div className="flex flex-col items-center justify-center pt-8 pb-10 lg:pt-48 lg:pb-40 xl:pt-40 xl:pb-40 2xl:h-screen">
       {/* Video Wrapper */}
-      <div className="w-[259px] h-[324px] md:w-[850px] md:h-[600px] lg:w-[1150px] lg:h-[657px] xl:w-[1355px] xl:h-[775px] 2xl:w-[90%] 2xl:h-screen rounded-2xl overflow-hidden">
+      <div className="w-[90vw] h-[324px] lg:w-[90vw]md:h-[600px] lg:w-[90vw] lg:h-[657px] xl:w-[1355px] xl:h-[775px] 2xl:w-[90%] 2xl:h-screen rounded-2xl overflow-hidden">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center">
             Loading...

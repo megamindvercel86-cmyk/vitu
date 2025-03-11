@@ -147,7 +147,7 @@ export default function Navbar({
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full px-7"
                 >
-                  <button className="w-full h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                  <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
                 </Link>
@@ -226,7 +226,7 @@ export default function Navbar({
               {showGetInTouch && (
                 <Link href="/general-enquire">
                   <Button
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 lg:text-[20px] 2xl:text-4xl ${
+                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}

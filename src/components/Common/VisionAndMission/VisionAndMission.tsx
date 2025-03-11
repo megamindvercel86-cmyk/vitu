@@ -49,7 +49,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -66,7 +66,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience ",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -83,7 +83,7 @@ const CONTENT = {
           "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
-        title: "Trusted Experience / Happy Residents",
+        title: "Trusted Experience ",
         description:
           "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
@@ -101,7 +101,7 @@ const CONTENT = {
         "Luxury living at accessible prices, designed to offer comfort and sophistication.",
     },
     {
-      title: "Trusted Experience / Happy Residents",
+      title: "Trusted Experience ",
       description:
         "Delivering homes where families thrive, backed by years of trust and excellence.",
     },
@@ -158,29 +158,29 @@ export default function VisionAndMission() {
   // ============= Render Helpers =============
   const renderDesktopSection = (section: ContentItem, index: number) => (
     <div key={index} className="flex-1 group/section relative">
-      {/* Section content */}
-      <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+      {/* Hover overlay - moved up in DOM order and given lower z-index */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 z-10" />
+      
+      {/* Section content - given higher z-index */}
+      <div className="absolute inset-x-0 bottom-0 p-6 text-white z-20">
         <Typography
           variant="h2"
-          className="font-freightNeoMedium text-white  text-center"
+          className="font-freightNeoMedium text-white text-center"
           aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
         >
           {section.title}
         </Typography>
         {/* Hover description */}
-        <div className="overflow-hidden h-0 group-hover/section:h-16 transition-all duration-300">
+        <div className="overflow-hidden h-0 group-hover/section:h-24 transition-all duration-300">
           <Typography
             variant="h3"
             fontWeight="font-normal"
             className="font-FreightNeoProNormal mt-[5px] text-white text-center"
           >
-            {" "}
             {section.description}
           </Typography>
         </div>
       </div>
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-black/0 group-hover/section:bg-black/10 transition-all duration-300" />
     </div>
   );
 
@@ -189,7 +189,7 @@ export default function VisionAndMission() {
       {/* Main Carousel */}
       <div className="bg-gray-100 sm:p-0 md:p-[1px]">
         {/* Desktop Version */}
-        <div className="overflow-hidden hidden md:block shadow-xl h-[100vh] w-[100vw] aspect-[2/1] relative">
+        <div className="overflow-hidden hidden md:block shadow-xl xl:h-[100vh] w-[100%] aspect-[2/1] relative">
           {/* Image container */}
           <div
             className={`absolute inset-0 transition-all duration-500 ease-in-out ${

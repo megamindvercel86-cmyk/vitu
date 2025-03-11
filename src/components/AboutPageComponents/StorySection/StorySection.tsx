@@ -10,6 +10,8 @@ import FHD from "../../../../public/svgs/LineAnimations/fhd";
 import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
+import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
+import SvgWave1024x768 from "../../../../public/svgs/LineAnimations/SvgWave1024x768";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -130,7 +132,7 @@ function MessageDisplay({
         isFixed
           ? "fixed md:bottom-56 bottom-32 md:right-[59px]"
           : "absolute bottom-56 right-10"
-      } pointer-events-none z-50 md:max-w-[450px] max-w-[300px]`}
+      } pointer-events-none z-50 md:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
         <span className="lg:text-2xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
@@ -217,7 +219,7 @@ function ScrollController({
 
   return (
     <div
-      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[430px]`}
+      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[550px]`}
     >
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
@@ -244,7 +246,7 @@ function ScrollController({
   );
 }
 
-const getSvgPath = (width: number): React.JSX.Element | null => {
+const getSvgPath = (width: number,height:number): React.JSX.Element | null => {
   if (width >= 5120)
     return <FHD />; // 5K
   else if (width >= 3840)
@@ -255,6 +257,10 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
     return <FHDLAPTOP />; // Full HD
   else if (width >= 1500)
     return <HDPLUSLAPTOP />; // HD+
+  else if (width >= 1024 && height >= 768)
+    return  <FULLHDMOBILE />
+  else if (width >= 1024)
+    return <SvgWave1024 />
   else if (width >= 100) return <FULLHDMOBILE />;
   return null;
 };
@@ -269,12 +275,14 @@ export default function Gallery() {
   const [isFixed, setIsFixed] = useState(false);
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
-
+  const [windowHeight, setWindowHeight] = useState(0);
   // Update windowWidth on resize
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight)
       const handleResize = () => setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight)
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
@@ -291,10 +299,22 @@ export default function Gallery() {
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
     else if (windowWidth > 1400)
       return `translate(-${progress * 11280}px, -50%)`;
-    else if (windowWidth > 100) return `translate(-${progress * 2300}px, -50%)`;
+    else if (windowWidth >= 1024 && windowHeight >= 768) return `translate(-${progress * 500}px, -50%)`;
+    else if (windowWidth >= 1024) return `translate(-${progress * 7500}px, -50%)`;
+    else if (windowWidth > 100) return `translate(-${progress * 7500}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
-
+  const getTopValue = () => {
+    const gallery = galleryRef.current;
+    if (!gallery) return 
+    const totalWidth = gallery.scrollWidth;
+    const visibleWidth = windowWidth;
+  
+    // Adjust transform based on viewport width
+    if (windowWidth >= 1900) return `46%`;
+    else if (windowWidth >= 1024) return `45%`;
+    else return `38%`;
+  };
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
     const imageIndex = Math.min(
@@ -358,14 +378,14 @@ export default function Gallery() {
   // Set the SVG path based on window width
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setSvg(getSvgPath(window.innerWidth));
+      setSvg(getSvgPath(window.innerWidth,window.innerHeight));
     }
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        setSvg(getSvgPath(window.innerWidth));
+        setSvg(getSvgPath(window.innerWidth,window.innerHeight));
       }
     };
     window.addEventListener("resize", handleResize);
@@ -374,11 +394,12 @@ export default function Gallery() {
 
   return (
     <div className="relative overflow-hidden">
-      <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
+      <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
         <div
-          className="absolute md:top-[46%] top-[38%] z-50"
+          className="absolute z-50"
           ref={svgPathRef}
           style={{
+            top: getTopValue(),
             clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
             transform: getTransformStyle(),
           }}
@@ -398,7 +419,7 @@ export default function Gallery() {
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl"
+              className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl"
             >
               <div className="absolute inset-0 gallery-image z-10">
                 <div className="h-[100vh]">
@@ -407,7 +428,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-[100vw] h-full object-cover hidden md:flex"
+                    className="w-[100vw]  h-full object-cover hidden md:flex"
                     loading="lazy"
                   />
                   <Image
@@ -419,7 +440,7 @@ export default function Gallery() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/100 to-transparent">
                   <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
               </div>

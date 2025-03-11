@@ -134,15 +134,15 @@ const CurrentProject: React.FC = () => {
 
       {/* Right Column - Project Image */}
       <figure
-        className="flex items-center justify-center w-full lg:w-1/2"
+        className="flex items-center h-[70vh] justify-center w-full lg:w-1/2"
         aria-labelledby="project-title"
       >
         <Image
           src={PROJECT_DATA.image}
           width={708}
-          height={400}
+          height={300}
           alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
-          className="w-full h-full object-contain"
+          className=" object-cover"
         />
       </figure>
 

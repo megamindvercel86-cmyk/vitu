@@ -19,8 +19,7 @@ interface AboutHeroConfig {
 
 // ============= Constants =============
 const ABOUT_HERO_CONFIG: AboutHeroConfig = {
-  backgroundImage:
-    "/images/backgroundImages/aboutPageBackgroundImageDesktop.png",
+  backgroundImage: "/images/backgroundImages/aboutPageBackgroundImageDesktop.png",
   titles: {
     main: "Building Wholesome",
     sub: "Living Spaces",
@@ -41,24 +40,18 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
  * 4. Responsive design for all screen sizes
  */
 
-
 const AboutHeroSection: React.FC = () => {
+
   return (
     <section className="relative w-full">
       {/* Hero Background Section */}
       <div
         className={`
         relative
-        h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[67.5rem] 2xl:h-screen
+        h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[100vh] 2xl:h-screen
       `}
       >
-        <Image
-          src={backgroundImage}
-          alt="Home Hero Background"
-          fill
-          className="object-cover"
-          placeholder="blur"
-        />
+        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover" placeholder="blur" />
         {/* Hero Content */}
         <div
           className={`
@@ -107,7 +100,7 @@ const AboutHeroSection: React.FC = () => {
       flex items-center justify-center
       gap-[0.6875rem]
       rounded-full
-      pl-[1.125rem] pr-[0.0625rem] py-[0.1875rem]
+      pl-[0.5rem] pr-[1.125rem] py-[0.1875rem]
       text-base font-freightNeoMedium text-white
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
@@ -117,14 +110,15 @@ const AboutHeroSection: React.FC = () => {
                 {/* Default background */}
                 <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
 
-                {/* Hover background with transform from right */}
+                {/* Hover background with transform from left */}
+                <div className="absolute inset-0 bg-[#614130] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300">
 
-                {/* Button content */}
-                <span className="relative z-[9]">
-                  {ABOUT_HERO_CONFIG.cta.text}
-                </span>
-                <div className="absolute inset-0 bg-[#614130] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-300 "></div>
+                  
+                </div>
+
+                {/* Button content: Icon on left */}
                 <CTAButtonIcon />
+                <span className="relative z-[9]">{ABOUT_HERO_CONFIG.cta.text}</span>
               </button>
             </div></Link>
           </div>

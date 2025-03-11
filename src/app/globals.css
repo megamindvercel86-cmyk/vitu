@@ -113,3 +113,10 @@ body {
   display: block;
   width: 100%;
 }
+
+
+
+option {
+  border: none;
+  background: white; /* Optional */
+}

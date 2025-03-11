@@ -7,10 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SubHeading from "@/components/Common/SubHeding";
 import Heading from "@/components/Common/Heading";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@/components/Icons/Icons";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
 import "./MediaSection.css";
 
 // ============= Swiper Imports =============
@@ -100,48 +97,47 @@ export default function MediaSection(): React.ReactElement {
 
   // ============= Render Helpers =============
   const renderNewsCard = (item: NewsItem) => {
-    // Split the date string into parts
-    // const [month, day, year] = item.date.split(' ');
     const handleReadMore = () => {
       // Open the link in a new tab
       window.open(item.link, "_blank");
     };
+  
     return (
       <div className="media-card rounded-lg overflow-hidden">
-        {/* Image Container */}
-        <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
-          <Image
-            src={item.fileUrl}
-            alt={item.title}
-            width={400}
-            height={310}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-            <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">
-              {item.title}
-            </SubHeading>
+        {/* Entire Card Clickable */}
+        <Link href={item.link} target="_blank" rel="noopener noreferrer">
+          <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
+            {/* Image Container */}
+            <Image
+              src={item.fileUrl}
+              alt={item.title}
+              width={400}
+              height={310}
+              className="w-full h-full object-cover"
+            />
           </div>
-          <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
-            {item.description}
-          </SubHeading>
-          <Link
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline 2xl:text-[1.5rem]"
-          >
-            Read More
-          </Link>
-        </div>
+  
+          {/* Content */}
+          <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
+              <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.title}</SubHeading>
+            </div>
+            <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
+              {item.description}
+            </SubHeading>
+            {/* Read More Link - Inside the main link but separate */}
+            <span
+              onClick={handleReadMore}
+              className="font-CandideCondensedMedium text-customBrown text-base lg:text-xl hover:opacity-80 underline cursor-pointer 2xl:text-[1.5rem]"
+            >
+              Read More
+            </span>
+          </div>
+        </Link>
       </div>
     );
   };
-
+  
   return (
     <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}

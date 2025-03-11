@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
-      <div className="px-0  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
+      <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
         <div>
           <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
             UP NEXT
@@ -119,9 +119,9 @@ const expandedPositions = {
   xl: [
     { top: "64%", left: "25%", right: "auto" },
     { top: "50%", right: "1%", left: "auto" },
-    { top: "0%", right: "1%", left: "auto" },
+    { top: "12%", right: "1%", left: "auto" },
     { top: "50%", left: "1%", right: "auto" },
-    { top: "5%", left: "3%", right: "auto" },
+    { top: "15%", left: "3%", right: "auto" },
   ],
   lg: [
     { top: "65%", left: "30%", right: "auto" },
@@ -271,7 +271,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[36rem] lg:top-[28rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem] lg2:top-[28rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -282,7 +282,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         >
           <div>
             <motion.h1
-              className="xl:text-[120px]  md:text-7xl  font-freightNeoMedium mb-4 text-customBrown"
+              className="xl:text-[120px] lg:text-5xl lg2:text-7xl  md:text-5xl  font-freightNeoMedium mb-4 text-customBrown"
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -290,7 +290,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Home,
             </motion.h1>
             <motion.h2
-              className="xl:text-[120px] md:text-7xl font-freightNeoMedium mb-4 text-customBrown"
+              className="xl:text-[120px] lg:text-5xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -298,7 +298,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Way of Life
             </motion.h2>
             <motion.button
-              className="px-8 py-3 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
+              className="lg:px-8 lg:py-3 md:px-5 md:py-2   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}

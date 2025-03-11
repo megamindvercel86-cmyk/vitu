@@ -87,16 +87,16 @@ export default function SustainabilityInitiatives(): React.ReactElement {
   // ============= Render Helpers =============
   const renderLeftColumn = () => (
     <div className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0">
-      <div className="max-w-[700px] lg:max-w-none mx-auto lg:mx-0">
+      <div className="lg:max-w-none mx-auto lg:mx-0">
         <Typography
           variant="custom"
-          className="text-customBrown text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
+          className="text-customBrown max-w-full xl:max-w-[500px] text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
         >
           {CONTENT.title}
         </Typography>
         <Typography
           variant="custom"
-          className="md:text-[#4F373799] text-[#04070799] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
+          className="md:text-[#4F373799] text-[#04070799] max-w-full xl:max-w-[500px] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
         >
           {CONTENT.description}
         </Typography>
@@ -131,7 +131,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
           key={13}
           id={13}
           imageSrc={INITIATIVE_CARDS[2].url}
-          className="md:max-w-[593px]  md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
+          className="md:max-w-[593px]   md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
           cardClassName="rounded-[20px]"
           bottomTitle={INITIATIVE_CARDS[2].bottomTitle}
           content={<CardContent id={INITIATIVE_CARDS[2].id} />}
