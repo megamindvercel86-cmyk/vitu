@@ -119,19 +119,19 @@ const Footer: FC = () => {
               </li>
             </ul>
             <form onSubmit={submitHandler}>
-              <div className="pt-16 w-[90%] hidden lg:block cursor-pointer relative">
+                <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
                 <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input
-                    type="email"
-                    ref={email}
-                    className="text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC] pr-10"
-                    placeholder="Sign Up for Our Newsletter"
+                  type="email"
+                  ref={email}
+                  className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
+                  placeholder="Sign Up for Our Newsletter"
                   />
                   <button type="submit">
-                    <BsArrowRight className="text-[#EADFD1CC] text-2xl absolute right-0 bottom-6 translate-y-1/2" />
+                  <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>
-              </div>
+                </div>
             </form>
           </div>
         </div>

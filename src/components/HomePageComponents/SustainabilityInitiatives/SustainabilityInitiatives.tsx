@@ -131,7 +131,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
           key={13}
           id={13}
           imageSrc={INITIATIVE_CARDS[2].url}
-          className="md:max-w-[593px]  md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
+          className="md:max-w-[593px]   md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
           cardClassName="rounded-[20px]"
           bottomTitle={INITIATIVE_CARDS[2].bottomTitle}
           content={<CardContent id={INITIATIVE_CARDS[2].id} />}

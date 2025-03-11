@@ -218,7 +218,7 @@ export default function VisionForTheFuture() {
                 <CTAButtonIcon direction="right" />
               </button>
             </Link>
-            <div className="relative lg:pe-5 pb-7 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
+            <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
               <svg width="50" height="50" viewBox="0 0 50 50">
                 {/* Background Circle */}
                 <circle cx="25" cy="25" r="22" stroke="#dbc9bc" strokeWidth="2" fill="none" opacity="0.3" />
