@@ -1,29 +1,29 @@
 export const plots = [
   {
-    title: "Corner Plots",
+    title: "Corner plots - 10",
     description:
-      "Corner plots provide superior ventilation, natural light, dual access, and flexible design, enhancing value for homeowners and developers.",
+      "Corner plots offer extra space, natural light, and cross ventilation, giving you endless design possibilities and higher property value. A perfect choice for those seeking both comfort and investment potential.",
     src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1200",
     color: "#cac3c3",
   },
   {
-    title: "Waterfront Plots",
+    title: "Signature plots - 46",
     description:
-      "Premium waterfront locations offering stunning views, private beach access, and exclusive lifestyle opportunities perfect for luxury homes.",
+      "Our exclusive Signature Plots boast prime views, proximity to the clubhouse, and easy road access, offering the ultimate in luxury and prestige.",
     src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200",
     color: "#dcd7d7",
   },
   {
-    title: "Garden Plots",
+    title: "Premium plots - 43",
     description:
-      "Spacious plots with dedicated garden space, perfect for nature enthusiasts and families looking to create their own green paradise.",
+      "Crafted for elegance and functionality, our Premium Plots are designed to give you the perfect foundation for your dream home, where luxury and quality meet.",
     src: "https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&q=80&w=1200",
     color: "#edebeb",
   },
   {
-    title: "Hill View Plots",
+    title: "Standard plots - 7",
     description:
-      "Elevated plots offering panoramic views, cooler climate, and natural terrain perfect for modern architectural designs.",
+      "Discover the perfect space to build your dream home with our Standard Plots, offering prime locations and endless possibilities for your ideal lifestyle.",
     src: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&q=80&w=1200",
     color: "#ffffff",
   },

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Mr. N Harish Bhat",
+    "name": "Mr.N Harish Bhat",
     "rating": 5,
     "comment": "I discovered VITU Realty online, and the team was very helpful in guiding me to the perfect property. The location and ready-to-build features stood out the most, making my experience seamless. I’m highly satisfied and would definitely recommend VITU Realty!"
   },
@@ -31,50 +31,40 @@
   },
   {
     "id": 6,
-    "name": "Mr. Yashaswi H.R",
+    "name": "Mr.Yashaswi H.R",
     "rating": 5,
     "comment": "VITU Realty exceeded my expectations. I was truly impressed by the thoughtful planning and excellent amenities. I discovered them on Instagram, and everything went smoothly. Very satisfied with the entire process from start to finish!"
   },
 
   {
     "id": 7,
-    "name": "Mr. Ashok S Prabhu",
+    "name": "Mr.Ashok S Prabhu",
     "rating": 5,
     "comment": "I came across VITU Realty through ads and hoardings, and I’m really glad I did! The location and amenities were impressive, and their service was top-notch. I’ve already recommended them to my friends and family!"
   },
   {
     "id": 8,
-    "name": "Mr. Raghavendra Jigalur",
+    "name": "Mr.Raghavendra Jigalur",
     "rating": 5,
     "comment": "I first learned about VITU Realty at the Business Expo in Mangaluru. The team provided all the details I needed to make an informed decision. Their amenities and thoughtful planning truly stood out. A great experience overall!"
   },
   {
     "id": 9,
-    "name": "Mr. Mahesh Kanchan",
+    "name": "Mr.Mahesh Kanchan",
     "rating": 5,
     "comment": "The gated community and premium amenities at VITU Realty really impressed me. I found them through an associate and online searches. Nikala was fantastic—she guided me through the process and assisted even after the deal was closed. Seamless experience!"
   },
   {
     "id": 10,
-    "name": "Mr. Preetham L Shetty",
+    "name": "Mr.Preetham L Shetty",
     "rating": 4,
     "comment": "I discovered VITU Realty through Instagram ads and was impressed by how well-planned their properties are. The entire experience was smooth and hassle-free. I would definitely recommend them to anyone looking for a great property!"
   },
-  {
-    "id": 11,
-    "name": "Mr. Prasanna Shetty",
-    "rating": 5,
-    "comment": "I came across VITU Realty on Instagram and had a great experience overall. The clubhouse and park were highlights that made the property even more appealing. I would certainly recommend them to anyone looking for a new home!"
-  },
-  {
-    "id": 12,
-    "name": "Mr. Navinchandra Pai",
-    "rating": 5,
-    "comment": "I discovered VITU Realty through radio and hoardings. The team was very helpful in providing a detailed walkthrough. The layout, gated community, amenities, and surroundings stood out. Overall, we had a fantastic experience with them!"
-  },
+
+
   {
     "id": 13,
-    "name": "Mr. Parikshita Shetty",
+    "name": "Mr.Parikshita Shetty",
     "rating": 5,
     "comment": "I was drawn to VITU Realty’s beautiful gated community, lush greenery, and modern amenities after seeing their billboard. The team was incredibly supportive, helpful, and transparent throughout the process. A truly great experience!"
   },
@@ -89,5 +79,110 @@
     "name": "Puttu KJ",
     "rating": 5,
     "comment": "I discovered VITU Realty through the internet and had a great experience. The team was very helpful, and the gated community stood out the most. I’m grateful for their support and highly satisfied with my decision."
+  },
+  {
+    "id": 16,
+    "name": "Mr.Anirudh Iyengar",
+    "rating": 5,
+    "comment": "We found VITU Realty through hoardings and were impressed by their efficient service. The top-notch amenities and ambience stood out, making our experience truly 5-star. We highly recommend VITU Realty to anyone looking for their perfect property!"
+  },
+ 
+  {
+    "id": 18,
+    "name": "Mrs. Anu",
+    "rating": 5,
+    "comment": "We came across VITU Realty on Instagram and loved their professional approach. The amenities stood out, making it an easy choice. The process was seamless, and we’re glad we made the right decision. We highly encourage others to consider it!"
+  },
+  {
+    "id": 19,
+    "name": "Mr.Ram",
+    "rating": 5,
+    "comment": "We found VITU Realty through Facebook and were impressed by their professionalism. The gated community stood out, offering security and comfort. It was an excellent experience, and we highly recommend it to anyone seeking the right property!"
+  },
+  
+  {
+    "id": 21,
+    "name": "Mr.Navinchandra Pai",
+    "rating": 5,
+    "comment": "We learned about VITU Realty through billboards, print, and electronic media. The team was extremely helpful, maintaining rigorous follow-ups. The well-planned layout, prime location, and beautiful surroundings stood out. An excellent experience!"
+  },
+
+  {
+    "id": 22,
+    "name": "Ms. Sneha Harishchandra Shetty",
+    "rating": 5,
+    "comment": "We came across VITU Realty through banners and hoardings in Mangalore. The team was very supportive throughout the process. The Oxygen Park stood out, adding a unique touch to the community. A great experience overall!"
+  },
+  {
+    "id": 23,
+    "name": "Mr.Chetan Shenoy",
+    "rating": 5,
+    "comment": "We found VITU Realty through YouTube. The layout, amenities and paved roads stood out. The entire team provided timely assistance, making it a great experience. We highly recommend it!"
+  },
+  {
+    "id": 24,
+    "name": "Mr.Harish Bhat",
+    "rating": 5,
+    "comment": "We discovered VITU Realty through social media and were impressed by their excellent communication. The transparency, prime location and top-notch facilities stood out. Overall, it was a fantastic experience, and we highly recommend it!"
+  },
+  {
+    "id": 25,
+    "name": "Mr.Guruprasad",
+    "rating": 5,
+    "comment": "We got to know about VITU Realty through a relative and had a hassle-free experience. The location, amenities, and service stood out. We look forward to the clubhouse being ready and encourage others to consider it!"
+  },
+  {
+    "id": 26,
+    "name": "Mr.Yashaswi HR",
+    "rating": 4,
+    "comment": "We found VITU Realty on Instagram and had a great experience. The team assisted us well in finding the right property. The prime location and excellent amenities stood out. We highly recommend VITU Realty to others!"
+  },
+  {
+    "id": 27,
+    "name": "Mr.Prasanna Shetty",
+    "rating": 5,
+    "comment": "We discovered VITU Realty on Instagram and had a seamless experience. The location, amenities and overall service stood out. The team was helpful, making the process smooth. We’d happily recommend it to others!"
+  },
+  {
+    "id": 28,
+    "name": "Mr.Hariprasad",
+    "rating": 5,
+    "comment": "We discovered VITU Realty through Instagram reels and loved how the team explained the project. The well-planned layout stood out the most. Overall, it was a great experience, and we strongly recommend it!"
+  },
+  {
+    "id": 29,
+    "name": "Mr.Rajesh Kotekar",
+    "rating": 5,
+    "comment": "We found VITU Realty through a social media ad and had a good experience. The sales team clearly explained the community features. The greenery and well-planned layout stood out. We’d absolutely recommend it to others!"
+  },
+  {
+    "id": 30,
+    "name": "Ms. Divya H K",
+    "rating": 4,
+    "comment": "We found VITU Realty through an advertisement and had a great experience. The team was helpful in finding the right property. The features and amenities stood out the most, making it a solid choice."
+  },
+  {
+    "id": 31,
+    "name": "Mr.M Sandeep Nayak",
+    "rating": 4,
+    "comment": "We discovered VITU Realty through advertising hoardings and had a smooth experience. The team was helpful, and the well-spread layout with good roads stood out. A good option for buyers!"
+  },
+  {
+    "id": 32,
+    "name": "Mr.Praveen Pai",
+    "rating": 5,
+    "comment": "We learned about VITU Realty through a friend and had a positive experience. The gated community and great amenities stood out. Since the property was pre-decided, the process was smooth. A great investment!"
+  },
+  {
+    "id": 33,
+    "name": "Miss. Poornima Bhagwat",
+    "rating": 5,
+    "comment": "A friend introduced us to VITU Realty, and the experience was fantastic. The team was approachable, quick to respond and very helpful. The serene surroundings truly stood out. We highly recommend it!"
+  },
+  {
+    "id": 34,
+    "name": "Mrs. Bindiya Shridhara Shetty",
+    "rating": 4,
+    "comment": "We found VITU Realty through a newspaper ad during Akshaya Tritiya. The sales team helped us shortlist options. The serene ambiance, well-planned layout and essential amenities stood out. Legal documentation took time but was smooth."
   }
 ]

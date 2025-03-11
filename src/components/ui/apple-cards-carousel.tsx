@@ -34,7 +34,7 @@ type Card = {
   url?: string;
   title?: string;
   description?: string;
-  category?: string;
+  // category?: string;
   content?: React.ReactNode;
   type?: string;
   id?: number;
@@ -351,12 +351,12 @@ export const Card = ({
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
-          <motion.p
+          {/* <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"
           >
             {card.category}
-          </motion.p>
+          </motion.p> */}
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
