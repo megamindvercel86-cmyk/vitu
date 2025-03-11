@@ -194,6 +194,8 @@ export default function ProjectNavbar({
   return (
     <div>
         {/* max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px] */}
+
+        
         <header className="absolute top-0 left-0 right-0 flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-[1497px]">
 
         <nav className="flex flex-col items-center lg:flex-row w-full">
