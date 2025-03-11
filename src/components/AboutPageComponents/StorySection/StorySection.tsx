@@ -10,6 +10,7 @@ import FHD from "../../../../public/svgs/LineAnimations/fhd";
 import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
+import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -255,6 +256,8 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
     return <FHDLAPTOP />; // Full HD
   else if (width >= 1500)
     return <HDPLUSLAPTOP />; // HD+
+  else if (width >= 1024)
+    return <SvgWave1024 />
   else if (width >= 100) return <FULLHDMOBILE />;
   return null;
 };
@@ -291,10 +294,21 @@ export default function Gallery() {
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
     else if (windowWidth > 1400)
       return `translate(-${progress * 11280}px, -50%)`;
-    else if (windowWidth > 100) return `translate(-${progress * 2300}px, -50%)`;
+    else if (windowWidth > 1024) return `translate(-${progress * 2300}px, -50%)`;
+    else if (windowWidth > 100) return `translate(-${progress * 7500}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
-
+  const getTopValue = () => {
+    const gallery = galleryRef.current;
+    if (!gallery) return 
+    const totalWidth = gallery.scrollWidth;
+    const visibleWidth = windowWidth;
+  
+    // Adjust transform based on viewport width
+    if (windowWidth >= 1900) return `46%`;
+    else if (windowWidth >= 1024) return `45%`;
+    else return `38%`;
+  };
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
     const imageIndex = Math.min(
@@ -376,9 +390,10 @@ export default function Gallery() {
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
         <div
-          className="absolute md:top-[46%] top-[38%] z-50"
+          className="absolute z-50"
           ref={svgPathRef}
           style={{
+            top: getTopValue(),
             clipPath: `polygon(0% 0%, ${progress * 100}% 0%, ${progress * 100}% 100%, 0% 100%)`,
             transform: getTransformStyle(),
           }}
