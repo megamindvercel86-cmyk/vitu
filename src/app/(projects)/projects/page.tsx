@@ -6,7 +6,7 @@ import Lenis from "@studio-freight/lenis";
 
 import Layout from "@/components/Layout/Layout";
 import ProjectHeroSection from "@/components/ProjectsPageComponents/ProjectHeroSection/ProjectHeroSection";
-import { plots } from "../../data/plotsData";
+import { plots } from "../../../data/plotsData";
 import Plot from "@/components/ProjectsPageComponents/Plots/Plots";
 
 import LocationAdvantage from "@/components/ProjectsPageComponents/ProjectLocationAdvantage/ProjectLocationAdvantage";
@@ -103,12 +103,12 @@ export default function ProjectPage({}: ProjectPageProps) {
   return (
     <div className="bg-[#e4dcd6]">
       {/* Layout section */}
-      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
+      {/* <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}> */}
         {/* Hero Section (Should contain an <h1> inside the component) */}
-        <section>
-          <ProjectHeroSection />
-        </section>
-
+     
+<section className="relative"> {/* Add relative positioning context */}
+  <ProjectHeroSection />
+</section>
         <section className="bg-[#ffffff]">
           <LocationAdvantage />
         </section>
@@ -130,7 +130,7 @@ export default function ProjectPage({}: ProjectPageProps) {
         <section className="pt-28">
           <ProjectBottomSection />
         </section>
-      </Layout>
+      {/* </Layout> */}
     </div>
   );
 }

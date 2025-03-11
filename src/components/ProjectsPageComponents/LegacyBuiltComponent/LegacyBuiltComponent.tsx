@@ -43,7 +43,7 @@ const LegacyBuiltComponent = () => {
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>
           <p className="mt-8 text-[24px]  text-[#4F3737] text-justify text-sm font-FreightNeoProNormal">
-            Founded in 1956, our team brings years of cross-industry expertise
+            Founded in <span className="font-CandideCondensedNormal">1965</span>, our team brings years of cross-industry expertise
             on average, delivering exceptional skill & knowledge in every field.
           </p>
         </div>

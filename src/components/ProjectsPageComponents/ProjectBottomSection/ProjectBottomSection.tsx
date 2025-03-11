@@ -20,11 +20,11 @@ interface AboutHeroConfig {
 // ============= Constants =============
 const ABOUT_HERO_CONFIG: AboutHeroConfig = {
   titles: {
-    main: "Embrace the Serenity",
-    sub: "of Coastal Living",
+    main: "Affordable luxury meets",
+    sub: "coastal living",
   },
   cta: {
-    text: "Discover our Vision",
+    text: "Enquire Now",
   },
 };
 
@@ -77,7 +77,7 @@ const ProjectBottomSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative w-full h-[200vh] overflow-hidden bg-black"
+      className="relative w-full h-[100vh] overflow-hidden bg-black"
     >
       {/* Parallax Layers */}
       <div className="layer absolute inset-0 z-0 h-[120vh] -top-[10vh]">
@@ -122,22 +122,13 @@ const ProjectBottomSection: React.FC = () => {
         <h2 className="font-freightNeoSemibold text-4xl md:text-6xl lg:text-8xl 2xl:text-9xl text-center leading-tight mb-8">
           {ABOUT_HERO_CONFIG.titles.sub}
         </h2>
-        <p className="font-freightNeoMedium text-lg md:text-xl lg:text-2xl text-center mb-12">
-          Discover <span className="font-CandideCondensedMedium">21,587</span> SqM 
-          of Luxuriously Affordable Coastal Bliss
-        </p>
-
-        {/* CTA Button */}
         <button
           type="button"
-          className="group relative flex items-center gap-2 px-6 py-3 rounded-full overflow-hidden transition-all duration-300"
+          className="group relative flex items-center bg-white text-[#2B847D]  gap-2 px-6 py-3 rounded-full overflow-hidden transition-all duration-300"
         >
-          <div className="absolute inset-0 bg-[#A0BCAE] rounded-full transition-transform duration-300"></div>
-          <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
-          <span className="relative z-10 font-freightNeoMedium">
-            Scroll to Learn More
+          <span className="relative z-10 font-FreightNeoProBold">
+          Enquire Now
           </span>
-          <CTAButtonIcon fill="#4B9480" />
         </button>
       </div>
     </section>
