@@ -26,7 +26,7 @@ const LegacyBuiltComponent = () => {
         </div>
 
         {/* Center Image */}
-        <div className="flex justify-center">
+        <div className="flex justify-center h-[50vh] sm:h-[60vh] md:h-[70vh] object-fill">
           <Image
             src={projectPageBg}
             alt="Green Leaves"
@@ -42,7 +42,7 @@ const LegacyBuiltComponent = () => {
           <div className="flex justify-center  md:justify-start mt-5">
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>
-          <p className="mt-12 text-[#4F3737] text-justify text-sm">
+          <p className="mt-8 text-[24px]  text-[#4F3737] text-justify text-sm font-FreightNeoProNormal">
             Founded in 1956, our team brings years of cross-industry expertise
             on average, delivering exceptional skill & knowledge in every field.
           </p>

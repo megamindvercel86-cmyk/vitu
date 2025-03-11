@@ -2,6 +2,7 @@
 
 import React from "react";
 import { InfiniteMovingCards } from "@/components/ui/infinite-carousel-card";
+import Link from "next/link";
 
 // Dummy data for ProjectCarousel
 const desktopDataRight = [
@@ -23,15 +24,15 @@ export default function ProjectCarousel(): React.ReactElement {
     <section className="pb-24 bg-gradient-to-b from-[#e4dcd6] to-[#FBFAF8]">
       {/* Desktop Project Carousel - Right Direction */}
       <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-        <InfiniteMovingCards
-          items={desktopDataRight}
-          direction="left"
-          speed="slow"
-        />
+        <div id="carousal">
+          <InfiniteMovingCards items={desktopDataRight} direction="left" speed="slow" />
+        </div>
       </div>
-      <button className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
-        Contact Us for a Visit
-      </button>
+      <Link href="/general-enquire">
+        <button className="px-8 py-3  border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
+          Contact Us for a Visit
+        </button>
+      </Link>
     </section>
   );
 }

@@ -11,7 +11,6 @@ import StorySection from "@/components/AboutPageComponents/StorySection/StorySec
 import { useRef } from "react";
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
-interface AboutPageProps {}
 
 // ============= Constants =============
 const NAVBAR_CONFIG = {
@@ -65,19 +64,9 @@ const NAVBAR_CONFIG = {
 //   };
 // }
 
-export default function AboutPage({}: AboutPageProps) {
-  const storySectionRef = useRef<HTMLElement | null>(null);
-  const scrollToStory = () => {
-    if (storySectionRef.current) {
-      const header = document.querySelector(
-        ".absolute.top-10.left-0.right-0.z-10.w-full",
-      ) as HTMLElement | null;
-      const headerHeight = header ? header.offsetHeight : 0;
-      const sectionTop = storySectionRef.current.offsetTop;
-      const targetScroll = sectionTop - headerHeight;
-      window.scrollTo({ top: targetScroll, behavior: "smooth" });
-    }
-  };
+export default function AboutPage() {
+  
+  
   return (
     <>
       <Layout
@@ -85,13 +74,13 @@ export default function AboutPage({}: AboutPageProps) {
         navbarProps={NAVBAR_CONFIG.props}
       >
         {/* Hero Section with <h1> for SEO */}
-        <AboutHeroSection onScrollToStory={scrollToStory} />
+        <AboutHeroSection  />
 
         {/* Company Story Section */}
         <section>
           <StoryHeader />
         </section>
-        <section ref={storySectionRef}>
+        <section id="storysection">
           <StorySection />
         </section>
 

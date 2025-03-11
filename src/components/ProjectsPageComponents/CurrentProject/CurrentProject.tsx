@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
 // ============= Constants =============
 const PROJECT_DATA = {
@@ -77,6 +78,7 @@ const CurrentProject: React.FC = () => {
   );
 
   return (
+    <>
     <section
       className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]"
       aria-labelledby="project-title"
@@ -144,6 +146,8 @@ const CurrentProject: React.FC = () => {
         </div>
       </Link>
     </section>
+  
+            </>
   );
 };
 

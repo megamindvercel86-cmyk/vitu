@@ -3,6 +3,8 @@ import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import React from "react";
 import backgroundImage from "../../../../public/images/backgroundImages/aboutPageBackgroundImageDesktop.webp";
+import { Link } from "react-scroll";
+
 // ============= Types =============
 interface AboutHeroConfig {
   backgroundImage: string;
@@ -37,11 +39,9 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
  * 3. CTA button with icon
  * 4. Responsive design for all screen sizes
  */
-interface AboutHeroSectionProps {
-  onScrollToStory: () => void;
-}
 
-const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ onScrollToStory }) => {
+const AboutHeroSection: React.FC = () => {
+
   return (
     <section className="relative w-full">
       {/* Hero Background Section */}
@@ -91,7 +91,7 @@ const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ onScrollToStory }) 
             </h1>
 
             {/* CTA Button */}
-            <div className="relative group cursor-pointer">
+           <Link to="storysection" smooth={true} duration={700}> <div className="relative group cursor-pointer">
               <button
                 type="button"
                 className={`
@@ -105,7 +105,7 @@ const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ onScrollToStory }) 
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
     `}
-                onClick={onScrollToStory}
+               
               >
                 {/* Default background */}
                 <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
@@ -120,7 +120,7 @@ const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ onScrollToStory }) 
                 <CTAButtonIcon />
                 <span className="relative z-[9]">{ABOUT_HERO_CONFIG.cta.text}</span>
               </button>
-            </div>
+            </div></Link>
           </div>
         </div>
       </div>

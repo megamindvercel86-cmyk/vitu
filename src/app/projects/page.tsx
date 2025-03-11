@@ -12,9 +12,9 @@ import Plot from "@/components/ProjectsPageComponents/Plots/Plots";
 import LocationAdvantage from "@/components/ProjectsPageComponents/ProjectLocationAdvantage/ProjectLocationAdvantage";
 import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
 
-import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
 import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
+import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
@@ -108,16 +108,17 @@ export default function ProjectPage({}: ProjectPageProps) {
         <section>
           <ProjectHeroSection />
         </section>
+
         <section className="bg-[#ffffff]">
           <LocationAdvantage />
         </section>
         <section className="bg-[#FBFAF8] pt-36">
           <CurrentProject />
         </section>
-        <section className="bg-[#FBFAF8] pt-80">
-          <ExploreProjectsWrapper />
-        </section>
-        <section ref={container} className="bg-[#FBFAF8] ">
+        <section className="bg-[#FBFAF8] pt-36">
+              <ExploreProjectsWrapper />
+            </section>
+        <section ref={container} className="bg-[#FBFAF8] pt-24">
           {plots.map((project, i) => {
             const targetScale = 1 - (plots.length - i) * 0.05;
             return <Plot key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * 0.25, 1]} targetScale={targetScale} />;
@@ -127,9 +128,9 @@ export default function ProjectPage({}: ProjectPageProps) {
           <LegacyBuiltComponent />
         </section>
         <section className="pt-28">
-          <ProjectBottomSection/>
+          <ProjectBottomSection />
         </section>
       </Layout>
-      </div>
+    </div>
   );
 }
