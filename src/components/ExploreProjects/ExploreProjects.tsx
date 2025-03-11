@@ -29,7 +29,7 @@ const CARDS_DATA: Card[] = [
     isViewMore: true,
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
   },
   {
     id: 4,
