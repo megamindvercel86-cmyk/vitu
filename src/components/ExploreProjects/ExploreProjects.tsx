@@ -28,8 +28,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg:w-[298px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
   },
   {
     id: 4,
@@ -38,8 +38,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg:w-[298px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
   },
   {
     id: 2,
@@ -49,8 +49,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg:w-[298px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
   },
   {
     id: 3,
@@ -59,8 +59,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-     width: "md:w-[220px] lg:w-[298px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] xl:h-[350px] 2xl:h-[505px]",
+     width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
   },
   {
     id: 1,
@@ -70,8 +70,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg:w-[298px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg:h-[385px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px]  xl:w-[247px] 2xl:w-[418px]",
+    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px]   xl:h-[350px] 2xl:h-[505px]",
   },
 ];
 
@@ -101,7 +101,7 @@ const ExploreProjects: React.FC = () => {
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
           <Typography
             variant="custom"
-            className="text-2xl lg:text-[] text-customBrown font-freightNeoSemibold"
+            className="text-xl lg:text-[] text-customBrown font-freightNeoSemibold"
           >
             A New Home,
           </Typography>

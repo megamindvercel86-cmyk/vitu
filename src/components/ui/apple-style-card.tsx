@@ -183,7 +183,7 @@ export default function AppleStyleCard({
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
             variant="custom"
-            className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-5xl  text-xl"
+            className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl   text-xl"
           >
             {bottomTitle}
           </Typography>
