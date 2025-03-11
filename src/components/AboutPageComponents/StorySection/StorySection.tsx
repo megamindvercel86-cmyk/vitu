@@ -11,6 +11,7 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
+import SvgWave1024x768 from "../../../../public/svgs/LineAnimations/SvgWave1024x768";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -245,7 +246,7 @@ function ScrollController({
   );
 }
 
-const getSvgPath = (width: number): React.JSX.Element | null => {
+const getSvgPath = (width: number,height:number): React.JSX.Element | null => {
   if (width >= 5120)
     return <FHD />; // 5K
   else if (width >= 3840)
@@ -256,6 +257,8 @@ const getSvgPath = (width: number): React.JSX.Element | null => {
     return <FHDLAPTOP />; // Full HD
   else if (width >= 1500)
     return <HDPLUSLAPTOP />; // HD+
+  else if (width >= 1024 && height >= 768)
+    return  <FULLHDMOBILE />
   else if (width >= 1024)
     return <SvgWave1024 />
   else if (width >= 100) return <FULLHDMOBILE />;
@@ -272,12 +275,14 @@ export default function Gallery() {
   const [isFixed, setIsFixed] = useState(false);
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
-
+  const [windowHeight, setWindowHeight] = useState(0);
   // Update windowWidth on resize
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight)
       const handleResize = () => setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight)
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
@@ -294,7 +299,8 @@ export default function Gallery() {
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
     else if (windowWidth > 1400)
       return `translate(-${progress * 11280}px, -50%)`;
-    else if (windowWidth > 1024) return `translate(-${progress * 2300}px, -50%)`;
+    else if (windowWidth >= 1024 && windowHeight >= 768) return `translate(-${progress * 500}px, -50%)`;
+    else if (windowWidth >= 1024) return `translate(-${progress * 7500}px, -50%)`;
     else if (windowWidth > 100) return `translate(-${progress * 7500}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
@@ -372,14 +378,14 @@ export default function Gallery() {
   // Set the SVG path based on window width
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setSvg(getSvgPath(window.innerWidth));
+      setSvg(getSvgPath(window.innerWidth,window.innerHeight));
     }
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        setSvg(getSvgPath(window.innerWidth));
+        setSvg(getSvgPath(window.innerWidth,window.innerHeight));
       }
     };
     window.addEventListener("resize", handleResize);
@@ -388,7 +394,7 @@ export default function Gallery() {
 
   return (
     <div className="relative overflow-hidden">
-      <div ref={containerRef} className="h-[100vh] w-full bg-black/5 relative">
+      <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
         <div
           className="absolute z-50"
           ref={svgPathRef}
@@ -413,7 +419,7 @@ export default function Gallery() {
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative flex-none w-[100vw] h-[100vh] overflow-hidden shadow-xl"
+              className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl"
             >
               <div className="absolute inset-0 gallery-image z-10">
                 <div className="h-[100vh]">
@@ -422,7 +428,7 @@ export default function Gallery() {
                     height={904}
                     src={image.src}
                     alt={`Landscape ${image.year}`}
-                    className="w-[100vw] h-full object-cover hidden md:flex"
+                    className="w-[100vw]  h-full object-cover hidden md:flex"
                     loading="lazy"
                   />
                   <Image
