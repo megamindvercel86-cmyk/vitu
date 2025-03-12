@@ -55,7 +55,7 @@ const DEFAULT_BUTTON_CONFIG = {
 
 // ============= Navigation Links =============
 const PROJECT_LINKS = [
-  { href: "/projects/vaikuntam-city", label: "Vaikuntam City" },
+  { href: "/vaikuntamcity", label: "Vaikuntam City" },
   { href: "/projects/mithila", label: "Mithila" },
   { href: "/projects/vibgam", label: "Vilasam" },
 ];
