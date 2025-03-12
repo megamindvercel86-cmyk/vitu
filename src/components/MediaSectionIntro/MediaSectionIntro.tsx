@@ -7,7 +7,7 @@ function MediaSectionIntro() {
   return (
     <>
       <div
-        className="hidden lg:block relative mx-4 md:mx-[40px] lg:mx-[133px] xl:mx-[210px] 
+        className="hidden lg:block relative mx-4 md:mx-[40px] lg2:mx-[133px] lg:mx-[70px] xl:mx-[210px] 
         mt-16 md:mt-[137px] xl:mt-[200px] 
         mb-[168px] xl:mb-[223px]"
       >
@@ -16,8 +16,8 @@ function MediaSectionIntro() {
         <Image
           src={"/images/mediakit.png"}
           className="absolute right-0 lg:right-[101px] rounded-[24px] z-10
-            w-[280px] md:w-[300px] lg:w-[480px] xl:w-[584px]
-            h-[450px] md:h-[550px] lg:h-[724px] xl:h-[724px]
+            w-[280px] md:w-[300px] lg2:w-[480px] lg:w-[400px] xl:w-[584px]
+            h-[450px] md:h-[550px] lg2:h-[724px] lg:h-[624px] xl:h-[724px]
             top-[-40px] md:top-[-60px] lg:top-[-99px]"
           alt="new"
           width={584}
@@ -28,18 +28,18 @@ function MediaSectionIntro() {
           className="relative w-full bg-[#AE8566] rounded-[24px] z-0
           h
         xl:px-[105px] md:px-16
-          py-8 md:py-[40px] lg:py-[106px]"
+          py-8 md:py-[40px] lg2:py-[106px] lg:py-[60px]"
         >
           <div className="w-[50%]">
             <Typography
               variant="custom"
-              className="text-[32px] md:text-[45px] lg:max-w-[100%] lg:text-[60px] font-freightNeoMedium text-white leading-[1]"
+              className="text-[32px] md:text-[45px] lg:max-w-[70%] lg2:max-w-[85%] lg2:text-[60px]  lg:[40px] font-freightNeoMedium text-white leading-[1]"
             >
               Need our logo or a quick intro to who we are?
             </Typography>
             <Typography
               variant="custom"
-              className="text-lg md:text-xl lg:text-2xl font-freightNeoMedium text-white mt-4"
+              className="text-lg md:text-xl lg2:text-2xl lg:max-w-[80%] lg:text-xl font-freightNeoMedium text-white mt-4"
             >
               Grab our brand assets & get to know us <br /> in just a few
               clicks!

@@ -139,7 +139,7 @@ export default function MediaSection(): React.ReactElement {
   };
   
   return (
-    <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
+    <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1000px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}
       <div className="text-left md:text-center mb-8 sm:mb-12">
         <SubHeading className="text-customTextGray 2xl:text-[1.5rem] lg:text-base xl:text-xl text-xs xl:pb-[10px] lg:pb-[12px] pb-[10px] text-left md:text-center">
@@ -185,8 +185,8 @@ export default function MediaSection(): React.ReactElement {
         </div>
 
         {/* Navigation Controls - Moved inside flex container */}
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-          {/* <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+        <div className="flex items-center justify-between gap-4 lg:mt-[54px] px-3 xl:mt-[75px] mt-[36px]">
+          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
             Explore More
           </span>
           <div className="flex gap-2">
@@ -204,7 +204,7 @@ export default function MediaSection(): React.ReactElement {
             >
               <IconArrowNarrowRight />
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

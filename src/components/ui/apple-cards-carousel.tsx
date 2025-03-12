@@ -134,7 +134,7 @@ export const Carousel = ({
           {/* Updated container for cards */}
           <div
             className={cn(
-              "flex flex-row gap-8 xl:gap-4 rounded-3xl", // Added gap and padding
+              "flex flex-row gap-8 lg:gap-2 xl:gap-4  rounded-3xl", // Added gap and padding
               "min-w-max", // Ensures container grows with content
             )}
           >
@@ -158,8 +158,10 @@ export const Carousel = ({
                 className={cn(
                   "rounded-3xl flex-shrink-0", // Added flex-shrink-0
                   "w-[280px] h-[350px]",
-                  "md:w-[350px] md:h-[350px]",
-                  "lg:w-[370px] lg:h-[500px]",
+                  "md:w-[320px] md:h-[320px]",
+                  "lg:w-[300px] lg:h-[400px]",
+                  "lg2:w-[370px] lg2:h-[500px]",
+
                   "xl:w-[432px] xl:h-[540px]",
                   "2xl:w-[632px] 2xl:h-[640px]",
                   "transition-all duration-300",
