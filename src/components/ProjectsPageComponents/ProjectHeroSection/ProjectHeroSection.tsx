@@ -67,7 +67,8 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="herosection w-full h-[170vh]  overflow-hidden">
+    <section id="hero" className="herosection w-full   overflow-hidden">
+      
       {/* Parallax Layers */}
       <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
         <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
@@ -150,7 +151,7 @@ const ProjectHeroSection: React.FC = () => {
           </div>
         </Link>
       </div>
-      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[33rem]  text-center px-6">
+      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[30rem]  text-center px-6">
         <ProjectHeader />
       </div>
       <div className="absolute  inset-0 flex flex-col items-center lg2:top-[88rem]  md:top-[70rem] top-[100vh] text-center  px-6">

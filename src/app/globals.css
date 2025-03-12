@@ -154,12 +154,17 @@ option {
 }
 @media (min-width: 1920px) and (min-height: 1080px) {
   .herosection {
-    height: 230vh;
+    height: 300vh;
   }
 }
 @media (min-width: 1920px) and (min-height: 1200px) {
   .herosection {
     height: 215vh;
+  }
+}
+@media (min-width: 2560px) and (min-height: 1440px) {
+  .herosection {
+    height: 193vh;
   }
 }
 @media (min-width: 3840px) and (min-height: 2160px) {
@@ -178,6 +183,106 @@ option {
     height: 135vh;
   }
 }
+
+/* Default (Mobile First) */
+.herosection {
+  height: 170vh; /* Default height for small screens */
+}
+
+/* 641px - 767px */
+@media (min-width: 641px) and (max-width: 767px) {
+  .herosection {
+    height: 172vh;
+  }
+}
+
+/* 768px - 799px */
+@media (min-width: 768px) and (max-width: 799px) {
+  .herosection {
+    height: 200vh;
+  }
+}
+
+/* 800px - 1023px */
+@media (min-width: 800px) and (max-width: 1023px) {
+  .herosection {
+    height: 173vh;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1024px) and (min-height: 600px) {
+  .herosection {
+    height: 300vh;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  .herosection {
+    height: 250vh;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 800px) {
+  .herosection {
+    height: 280vh;
+  }
+}
+
+@media (min-width: 1366px) and (min-height: 768px) {
+  .herosection {
+    height: 290vh;
+  }
+}
+
+@media (min-width: 1440px) and (min-height: 900px) {
+  .herosection {
+    height: 260vh;
+  }
+}
+
+@media (min-width: 1680px) and (min-height: 1050px) {
+  .herosection {
+    height: 10vh;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1080px) {
+  .herosection {
+    height: 300vh;
+  }
+}
+
+@media (min-width: 1920px) and (min-height: 1200px) {
+  .herosection {
+    height: 215vh;
+  }
+}
+
+@media (min-width: 2560px) and (min-height: 1440px) {
+  .herosection {
+    height: 193vh;
+  }
+}
+
+@media (min-width: 3840px) and (min-height: 2160px) {
+  .herosection {
+    height: 155vh;
+  }
+}
+
+@media (min-width: 4096px) and (min-height: 2304px) {
+  .herosection {
+    height: 150vh;
+  }
+}
+
+@media (min-width: 5120px) and (min-height: 2880px) {
+  .herosection {
+    height: 135vh;
+  }
+}
+
 
 
 /* relative w-full h-[170vh] md:h-[200vh] lg:h-[253vh] lg2:h-[280vh] xl:h-[225vh] */

@@ -5,20 +5,21 @@ import Image from "next/image";
 
 const LocationAdvantage = () => {
   return (
-    <div className="relative w-full  h-screen">
+    <div className="relative w-full hidden lg:block  h-screen">
+      
       <Image
         src={beachBgImage}
         alt="Background"
         className="absolute object-cover w-full h-full"
       />
-      <div className="absolute bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
-        <h4 className="text-lg text-[#4F6B94] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
+      <div className="absolute bottom-[350px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+        <h4 className="text-lg md:text-lg text-[#4F6B94] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
           Location Advantage
         </h4>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#4F6B94] font-[400] max-w-xl font-FreightNeoProNormal leading-tight">
+        <h1 className=" text-sm md:text-5xl text-[#4F6B94] font-[400] max-w-xl font-FreightNeoProNormal leading-tight">
           Built for Life’s Moments
         </h1>
-        <p className="mt-1 inline-block text-lg sm:text-xl text-[#4F6B9499] max-w-md font-FreightNeoProNormal font-[400]">
+        <p className="mt-1 inline-block md:text-lg text-sm text-[#4F6B9499] max-w-md font-FreightNeoProNormal font-[400]">
           Enjoy the soothing sounds of the waves & the convenience of a
           beachside retreat right at your doorstep.
         </p>
