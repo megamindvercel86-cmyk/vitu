@@ -59,7 +59,7 @@ const ProjectFooter: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
             <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
@@ -68,39 +68,8 @@ const ProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <FooterLink href="#">Recognized by</FooterLink>
-              <Link href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
-                {" "}
-                <Image src={chieverslog} alt="chieverslog" width={148} height={82} className="mt-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-      
-
-          {/* Resources */}
-          <FooterSection
-            title="Resources"
-            links={[
-              { href: "/resources/media-kit", label: "Media" },
-              { href: "#", label: "Insights" },
-            ]}
-          />
-
-          {/* Contact Information */}
-          <div>
-            <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">Get in Touch</SubHeading>
-            <ul className="space-y-4 text-gray-300">
-              <FooterContactItem
-                icon={<Share />}
-                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
-                link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
-              />
-              <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
-              {/* Social Media Links */}
-              <li className="flex gap-2 justify-center md:justify-start">
+             <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
+              <li className="flex gap-2 pt-[122px] justify-center md:justify-start">
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
                   <Instgram />
                 </NavLink>
@@ -114,6 +83,36 @@ const ProjectFooter: FC = () => {
                   <Youtube />
                 </NavLink>
               </li>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+      
+
+          {/* Resources */}
+          <FooterSection
+         
+            links={[
+              { href: "/resources/media-kit", label: "Sustainability" },
+              { href: "/resources/media-k", label: "Amenities" },
+              { href: "legacy", label: "Legacy" },
+              { href: "#", label: "Plots" },
+            ]}
+          />
+
+          {/* Contact Information */}
+          <div>
+            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
+            <ul className="space-y-4 text-gray-300">
+              <FooterContactItem
+                icon={<Share />}
+                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
+                link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
+              />
+              <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
+              <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              {/* Social Media Links */}
+             
             </ul>
             <form onSubmit={submitHandler}>
                 <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
@@ -149,17 +148,17 @@ const DropdownArrow = () => (
  * - Handles quick links and resource sections with collapsible mobile support
  */
 const FooterSection: FC<{
-  title: string;
+  title?: string;
   links: { href: string; label: string }[];
 }> = ({ title, links }) => (
   <div>
     {/* Mobile View */}
     <details className="lg:hidden border-b border-gray-700 pb-2">
-      <summary className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
+      <summary className="flex items-center justify-between text-lg text-[#EADFD1] font-freightNeoSemibold cursor-pointer">
         {title}
         <DropdownArrow />
       </summary>
-      <ul className="space-y-4 mt-4 text-gray-300 cursor-pointer">
+      <ul className="space-y-4 mt-4 text-[#EADFD1] cursor-pointer">
         {links.map((link) => (
           <li key={link.href}>
             <FooterLink href={link.href}>{link.label}</FooterLink>
@@ -170,8 +169,8 @@ const FooterSection: FC<{
 
     {/* Desktop View */}
     <div className="hidden lg:block">
-      <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">{title}</SubHeading>
-      <ul className="space-y-4 text-gray-300">
+      <SubHeading className="text-xl md:text-xl text-[#EADFD1]  font-freightNeoSemibold mb-4">{title}</SubHeading>
+      <ul className="space-y-4 text-[#EADFD1] font-freightNeoSemibold">
         {links.map((link) => (
           <li key={link.href}>
             <FooterLink href={link.href}>{link.label}</FooterLink>
@@ -196,7 +195,6 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
     <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start"} items-center md:gap-0 gap-3 `}>
       {icon}
       <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-        {/* Apply the custom font for phone number and pincode */}
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
       </Link>
     </li>

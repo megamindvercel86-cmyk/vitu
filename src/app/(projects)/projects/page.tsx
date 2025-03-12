@@ -32,7 +32,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#FBFAF8] pt-36">
         <ExploreProjectsWrapper />
       </section>
-      <section  className="bg-[#FBFAF8]  pt-24">
+      <section  className="bg-[#FBFAF8]">
        <PlotWrapper/>
       </section>
       <section className="bg-[#fbfaf8] ">
