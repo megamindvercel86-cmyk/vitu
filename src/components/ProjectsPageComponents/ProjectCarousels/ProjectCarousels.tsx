@@ -29,7 +29,7 @@ export default function ProjectCarousel(): React.ReactElement {
         </div>
       </div>
       <Link href="/general-enquire">
-        <button className="px-8 py-3  border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
+        <button className="px-8 py-3   border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors mt-16">
           Contact Us for a Visit
         </button>
       </Link>

@@ -23,7 +23,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="relative">
         <ProjectHeroSection />
       </section>
-      <section className="bg-[#ffffff]">
+      <section className="bg-[#f9f7f5]">
         <LocationAdvantage />
       </section>
       <section className="bg-[#FBFAF8] pt-36">
