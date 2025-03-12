@@ -19,7 +19,7 @@ export default function ProjectPage({}: ProjectPageProps) {
 
 
   return (
-    <div className="bg-[#e4dcd6]">
+    <div className="bg-[#fbfaf8]">
       <section className="relative">
         <ProjectHeroSection />
       </section>

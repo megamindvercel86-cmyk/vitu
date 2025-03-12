@@ -2,14 +2,15 @@ import Image from "next/image";
 import React from "react";
 import darkLogo from "../../../../public/images/logos/logoDark.svg";
 import projectPageBg from "../../../../public/images/backgroundImages/projectPagebg-3.png";
+import Link from "next/link";
 
 const LegacyBuiltComponent = () => {
   return (
-    <section className="flex items-center justify-center   mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
+    <section className="flex items-center justify-center  xl:mt-0 mt-32 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0 lg:mb-[260px] ">
-          <h1 className="text-6xl font-semibold font-FreightNeoProNormal text-[#4F3737]">
+          <h1 className="lg:text-6xl text-3xl font-semibold font-FreightNeoProNormal text-[#4F3737]">
             A Legacy Built on Trust
           </h1>
           <p className="mt-4  lg:w-[240px]  text-[#4F373799] font-[400] font-FreightNeoProNormal">
@@ -17,16 +18,16 @@ const LegacyBuiltComponent = () => {
             Thoughtfully designed homes with abundant natural light, smart
             spaces, & premium amenities.
           </p>
-          <a
+          <Link
             href="#"
             className="mt-4 font-[700] font-FreightNeoProNormal inline-block  text-[#4F3737] hover:underline"
           >
             Discover Our Story →
-          </a>
+          </Link>
         </div>
 
         {/* Center Image */}
-        <div className="flex justify-center h-[50vh] sm:h-[60vh] md:h-[70vh] object-fill">
+        <div className="flex justify-center h-[50vh] sm:h-[60vh] md:h-[40vh] lg:h-[70vh] object-fill">
           <Image
             src={projectPageBg}
             alt="Green Leaves"
