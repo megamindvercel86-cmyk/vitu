@@ -34,10 +34,6 @@ type RouteConfig = {
 };
 
 // ============= Constants =============
-/**
- * Configuration for button colors based on routes
- * Each route can specify its own button color
- */
 const ROUTE_CONFIG: RouteConfig = {
   "/": {
     buttonColor: "text-[#877D62]",
@@ -58,18 +54,44 @@ const DEFAULT_BUTTON_CONFIG = {
 };
 
 // ============= Navigation Links =============
-const NAV_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/resources", label: "Resources" },
+const PROJECT_LINKS = [
+  { href: "/projects/vaikuntam-city", label: "Vaikuntam City" },
+  { href: "/projects/mithila", label: "Mithila" },
+  { href: "/projects/vibgam", label: "Vilasam" },
 ];
 
-export default function Navbar({
-  showGetInTouch = true,
-  navbar = "secondary",
-}: NavbarProps) {
+const NAV_LINKS = [
+  { href: "/about", label: "About" },
+  {
+    href: "/projects",
+    label: "Projects",
+    hasDropdown: true,
+    dropdownItems: PROJECT_LINKS,
+  },
+  { href: "/resources", label: "Resources" },
+];
+const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <motion.svg
+    className="inline-block ml-2 w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    initial={false} // Prevents animation on mount
+    animate={{ rotate: isOpen ? 180 : 0 }} // Rotates 180° when open
+    transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 9l-7 7-7-7" // Base position (pointing down)
+    />
+  </motion.svg>
+);
+export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: NavbarProps) {
   // ============= State =============
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   // ============= Computed Values =============
@@ -77,13 +99,10 @@ export default function Navbar({
   const isNavbarPrimary = navbar === "primary";
 
   // ============= Helper Functions =============
-  /**
-   * Generates className for navigation links based on current path and navbar type
-   */
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
 
-    return ` 2xl:text-4xl ${
+    return `2xl:text-4xl ${
       isActive
         ? isNavbarPrimary
           ? "text-white border-b-2 border-white"
@@ -131,23 +150,43 @@ export default function Navbar({
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS.map(({ href, label }) => (
-                <NavLink
-                  key={href}
-                  href={href}
-                  className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {label}
-                </NavLink>
+              {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
+                <div key={href} className="group mb-6 last:mb-0 relative">
+                  {" "}
+                  {/* Reduced mb */}
+                  <NavLink
+                    href={href}
+                    className="text-2xl font-FreightNeoProBold hover:text-gray-600 transition-colors"
+                    onClick={() => {
+                      if (!hasDropdown) setIsMenuOpen(false);
+                      setActiveDropdown(activeDropdown === href ? null : href);
+                    }}
+                  >
+                    {/* Add dropdown indicator */}
+                    {label}
+                    {hasDropdown && <span className="ml-2 text-sm">{activeDropdown === href ? "▲" : "▼"}</span>}
+                  </NavLink>
+                  {hasDropdown && activeDropdown === href && (
+                    <div className="mt-2 pl-4 flex flex-col items-start">
+                      {" "}
+                      {/* Left alignment */}
+                      {dropdownItems?.map((item) => (
+                        <NavLink
+                          key={item.href}
+                          href={item.href}
+                          className="text-xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               {showGetInTouch && (
-                <Link
-                  href="/project-enquire"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="w-full px-7"
-                >
-                  <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">
+                  <button className="w-full h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
                 </Link>
@@ -156,28 +195,16 @@ export default function Navbar({
 
             {/* Social Links - Updated for center alignment */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryInstgramIcon />
               </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryMetaIcon />
               </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryLinkedInIcon />
               </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryYoutubeIcon />
               </Link>
             </div>
@@ -201,32 +228,59 @@ export default function Navbar({
               />
             </Link>
             {/* Mobile Menu Button */}
-            <div
-              className="flex items-center cursor-pointer ml-auto lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
             </div>
           </div>
 
           {/* Navigation Links - Right 50% */}
           <div
-            className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"} items-center justify-between`}
+            className={`hidden lg:flex lg:w-1/2 ${
+              showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+            } items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
-              {NAV_LINKS.map(({ href, label }) => (
-                <NavLink
+              {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
+                <div
                   key={href}
-                  href={href}
-                  className={getLinkClassName(href)}
+                  className="relative group"
+                 
                 >
-                  {label}
-                </NavLink>
+                  <div
+                   onMouseEnter={() => hasDropdown && setActiveDropdown(href)}
+                   onMouseLeave={() => setActiveDropdown(null)}
+                  >
+
+                  <NavLink href={href} className={getLinkClassName(href)}>
+                    {label}
+                    {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
+                  </NavLink>
+                  {hasDropdown && activeDropdown === href && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-[-4] mt-2 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
+                    >
+                      {dropdownItems?.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block px-4 py-2 text-sm text-gray-800 font-freightNeoMedium hover:bg-gray-100"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                  </div>
+                </div>
               ))}
               {showGetInTouch && (
                 <Link href="/general-enquire">
                   <Button
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={`w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}
@@ -236,8 +290,6 @@ export default function Navbar({
                 </Link>
               )}
             </div>
-
-            {/* CTA Button */}
           </div>
         </nav>
       </header>
