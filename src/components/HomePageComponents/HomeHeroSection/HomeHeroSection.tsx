@@ -29,7 +29,7 @@ export default function HomeHeroSection() {
     <section>
       {/* Hero Background Section */}
       <div
-        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-screen 2xl:h-screen"
+        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen"
         role="img"
         aria-label="Modern real estate background"
       >
@@ -51,10 +51,10 @@ export default function HomeHeroSection() {
         {/* Hero Content */}
         <div className="relative flex h-full justify-center top-[12.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[34.375rem]">
           <div className="flex flex-col items-center text-center text-white">
-            <h1 className="font-freightNeoSemibold leading-relaxed md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg:text-[6.25rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]">
+            <h1 className="font-freightNeoSemibold leading-relaxed md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]">
               {HERO_CONFIG.titles.main}
             </h1>
-            <h2 className="font-freightNeoSemibold leading-none text-[2.3rem] pt-0 sm:text-[2rem] md:pt-[1.75rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]">
+            <h2 className="font-freightNeoSemibold leading-none text-[2.3rem] pt-0 sm:text-[2rem]  md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]">
               {HERO_CONFIG.titles.sub}
             </h2>
           </div>

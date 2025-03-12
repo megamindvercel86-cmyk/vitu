@@ -48,7 +48,7 @@ const AboutHeroSection: React.FC = () => {
       <div
         className={`
         relative
-        h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[100vh] 2xl:h-screen
+        h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen
       `}
       >
         <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover" placeholder="blur" />
@@ -72,7 +72,7 @@ const AboutHeroSection: React.FC = () => {
               className={`
               font-freightNeoSemibold
               leading-none
-              text-[2rem]  sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+              text-[2rem]  sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
             `}
             >
               {ABOUT_HERO_CONFIG.titles.main}
@@ -83,8 +83,8 @@ const AboutHeroSection: React.FC = () => {
               className={`
               font-freightNeoSemibold
               leading-none
-              pt-0 md:pt-[1.75rem]
-             text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+              pt-0 
+             text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
             `}
             >
               {ABOUT_HERO_CONFIG.titles.sub}

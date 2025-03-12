@@ -41,19 +41,19 @@ export default function HeroBanner(): React.ReactElement {
       <div>
         <Typography
           variant="custom"
-          className="text-white lg:text-2xl sm:text-xs 2xl:text-[2.5rem]"
+          className="text-white lg2:text-2xl md:text-xl sm:text-xs 2xl:text-[2.5rem]"
         >
           {CONTENT.badge}
         </Typography>
         <Typography
           variant="custom"
-          className="text-white font-freightNeoMedium md:text-[4rem] sm:text-[2rem] text-[2rem] 2xl:text-[7.375rem]"
+          className="text-white font-freightNeoMedium lg2:text-[4rem] md:text-[2.5rem] sm:text-[2rem] xl:text- text-[2rem] 2xl:text-[7.375rem]"
         >
           {CONTENT.title}
         </Typography>
         <Typography
           variant="custom"
-          className="text-white md:text-2xl sm:text-sm text-sm font-freightNeoMedium md:w-[38.688rem] 2xl:w-[50rem] w-full 2xl:text-[2rem]"
+          className="text-white lg2:text-2xl md:text-xl sm:text-sm text-sm font-freightNeoMedium lg2:max-w-2xl md:max-w-sm xl:w-[38.688rem] 2xl:w-[50rem] w-full 2xl:text-[2rem]"
         >
           {CONTENT.description}
         </Typography>
@@ -63,7 +63,7 @@ export default function HeroBanner(): React.ReactElement {
       <div className="w-full lg:w-auto md:w-full lg:block xl:hidden">
         <Button
           onClick={() => {}}
-          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
+          className="rounded-[2rem] bg-transparent border-2 w-full lg2:w-[15.688rem] lg2:h-[4.5rem] md:w-[11.688rem] md:h-[3.5rem] sm:text-base md:text-[1.5rem] lg2:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
         >
           {CONTENT.cta}
         </Button>
@@ -82,7 +82,7 @@ export default function HeroBanner(): React.ReactElement {
   );
 
   return (
-    <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[64.125rem] xl:h-[100vh] 2xl:h-screen">
+    <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -90,7 +90,7 @@ export default function HeroBanner(): React.ReactElement {
       />
 
       {/* Content Container */}
-      <div className="relative h-full flex items-end pb-8 md:pb-24">
+      <div className="relative h-full flex items-end pb-8 lg2:pb-24">
         <div className="w-full">
           <div className="xl:px-[13.125rem] lg:px-[4.875rem] sm:px-[1.625rem] px-[1.625rem]">
             {renderContent()}
