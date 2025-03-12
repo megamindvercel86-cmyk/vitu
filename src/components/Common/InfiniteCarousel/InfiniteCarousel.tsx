@@ -172,7 +172,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
               bottomTitle={card.bottomTitle}
               isViewMoreType={card.type}
               title={card.title}
-              subtitle={card.subtitle}
+              subtitle={card.description}
               category={card.category}
               isViewMore={card.isViewMore}
               content={data && <CardContent cardId={card.id} data={data} />}

@@ -137,7 +137,7 @@ export default function MediaSection(): React.ReactElement {
       </div>
     );
   };
-  
+  const isNavigationDisabled = news.length <= 3;
   return (
     <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1000px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}
@@ -191,14 +191,16 @@ export default function MediaSection(): React.ReactElement {
           </span>
           <div className="flex gap-2">
             <button
-              onClick={handlePrev}
+              onClick={() => swiperRef.current?.slidePrev()}
+              disabled={isNavigationDisabled}
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Previous slide"
             >
               <IconArrowNarrowLeft />
             </button>
             <button
-              onClick={handleNext}
+              onClick={() => swiperRef.current?.slideNext()}
+              disabled={isNavigationDisabled}
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Next slide"
             >

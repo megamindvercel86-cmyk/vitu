@@ -145,8 +145,8 @@ export default function AppleStyleCard({
           cardClassName,
         )}
       >
-        <div className="relative z-40 p-4">
-          <motion.p
+       <div className="relative z-40 p-8">
+          {/* <motion.p
             layoutId={`card-category-${id}`}
             className={cn(
               "text-sm md:text-base font-freightNeoMedium text-white text-left pt-4",
@@ -154,11 +154,11 @@ export default function AppleStyleCard({
             )}
           >
             {category}
-          </motion.p>
+          </motion.p> */}
           <motion.p
             layoutId={`card-title-${id}`}
             className={cn(
-              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
+              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
               titleClassName,
             )}
           >
@@ -167,7 +167,7 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-subtitle-${id}`}
             className={cn(
-              "text-base md:text-xl xl:text-2xl font-FreightNeoProNormal text-white text-left [text-wrap:balance] mt-1 line-clamp-2",
+              "text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl",
               titleClassName,
             )}
           >

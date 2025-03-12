@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     </div>
   );
 };
-let project;
+
 // Update the CardContent component to accept props
 const CardContent = ({ cardId }: { cardId: number }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
