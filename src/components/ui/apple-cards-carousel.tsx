@@ -120,58 +120,44 @@ export const Carousel = ({
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
       <div className="relative w-full">
-        <div
-          className={`flex justify-center flex-wrap overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] ${height}`}
-          ref={carouselRef}
-          onScroll={checkScrollability}
-        >
-          <div
-            className={cn(
-              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
-            )}
-          ></div>
+      <div
+  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-2 xl:gap-4 min-w-max ${height}`}
+  ref={carouselRef}
+  onScroll={checkScrollability}
+>
+  {items.map((item, index) => (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.5,
+          delay: 0.2 * index,
+          ease: "easeOut",
+        },
+      }}
+      key={"card" + index}
+      className={cn(
+        "rounded-3xl flex-shrink-0",
+        "w-[280px] h-[350px]",
+        "md:w-[320px] md:h-[320px]",
+        "lg:w-[300px] lg:h-[400px]",
+        "lg2:w-[370px] lg2:h-[500px]",
+        "xl:w-[432px] xl:h-[540px]",
+        "2xl:w-[632px] 2xl:h-[640px]",
+        "transition-all duration-300 pb-9"
+      )}
+    >
+      {item}
+    </motion.div>
+  ))}
+</div>
 
-          {/* Updated container for cards */}
-          <div
-            className={cn(
-              "flex flex-row gap-8 lg:gap-2 xl:gap-4  rounded-3xl", // Added gap and padding
-              "min-w-max", // Ensures container grows with content
-            )}
-          >
-            {items.map((item, index) => (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.2 * index,
-                    ease: "easeOut",
-                    once: true,
-                  },
-                }}
-                key={"card" + index}
-                className={cn(
-                  "rounded-3xl flex-shrink-0", // Added flex-shrink-0
-                  "w-[280px] h-[350px]",
-                  "md:w-[320px] md:h-[320px]",
-                  "lg:w-[300px] lg:h-[400px]",
-                  "lg2:w-[370px] lg2:h-[500px]",
 
-                  "xl:w-[432px] xl:h-[540px]",
-                  "2xl:w-[632px] 2xl:h-[640px]",
-                  "transition-all duration-300",
-                )}
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        </div>
         {exploreMore && (
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
             {/* <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
@@ -363,6 +349,7 @@ export const Card = ({
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
           >
+            
             {card.title}
           </motion.p>
           <motion.p

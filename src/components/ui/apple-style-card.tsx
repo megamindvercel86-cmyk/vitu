@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
 import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
 import Typography from "../Typography/Typography";
+import Link from "next/link";
 
 interface CardProps {
   id: number; // Added id prop for unique layoutId
@@ -28,6 +29,7 @@ interface CardProps {
   bottomTitle?: string;
   isExpanded?: boolean;
   subtitle?: string;
+  href:string;
 }
 
 export default function AppleStyleCard({
@@ -49,6 +51,7 @@ export default function AppleStyleCard({
   isViewMoreType = "secondary",
   bottomTitle = "",
   isExpanded = true,
+  href="",
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -136,7 +139,7 @@ export default function AppleStyleCard({
 
   return (
     <>
-      <motion.button
+      <Link href={href}><motion.button
         layoutId={`expandable-card-${id}`}
         onClick={() => setIsOpen(isExpanded)}
         className={cn(
@@ -206,8 +209,9 @@ export default function AppleStyleCard({
           className={cn("object-cover absolute z-10 inset-0", imageClassName)}
         /> */}
       </motion.button>
+      </Link>
 
-      {isMounted && createPortal(modalContent, document.body)}
+      {/* {isMounted && createPortal(modalContent, document.body)} */}
     </>
   );
 }

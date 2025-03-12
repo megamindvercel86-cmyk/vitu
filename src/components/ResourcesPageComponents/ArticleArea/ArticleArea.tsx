@@ -62,6 +62,7 @@ const ARTICLES: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
+
   // {
   //   id: 4,
   //   category: "BLOG",
@@ -70,6 +71,7 @@ const ARTICLES: Article[] = [
   //   type: "secondary",
   //   url: "/images/articleImages/articleImage3.jpg",
   // },
+
 ];
 
 const ARTICLES_MOBILE: Article[] = [
