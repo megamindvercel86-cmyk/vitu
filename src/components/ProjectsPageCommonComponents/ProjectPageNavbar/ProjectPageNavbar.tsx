@@ -16,7 +16,7 @@ import {
   SecondaryYoutubeIcon,
 } from "@/components/Icons/Icons";
 
-import logo from "../../../../public/images/logos/vaikuntamCity.png";
+import logo from "../../../../public/images/logos/vaikuntamCity.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
@@ -62,11 +62,15 @@ const DEFAULT_BUTTON_CONFIG = {
 };
 
 // ============= Navigation Links =============
+// ============= Navigation Links =============
 const NAV_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/resources", label: "Resources" },
+  { href: "/amenities", label: "Amenities" },
+  { href: "/sustainability", label: "Sustainability" },
+  { href: "/location", label: "Location" },
+  { href: "/plots", label: "Plots" },
+  
 ];
+
 
 export default function ProjectNavbar({
   showGetInTouch = true,
@@ -87,7 +91,7 @@ export default function ProjectNavbar({
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
 
-    return ` 2xl:text-4xl ${
+    return ` 2xl:text-4xl  ${
       isActive
         ? isProjectNavbarPrimary
           ? "text-white border-b-2 border-white"
@@ -196,7 +200,7 @@ export default function ProjectNavbar({
         {/* max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px] */}
 
         
-        <header className="absolute top-0 left-0 right-0 flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-[1497px]">
+        <header className="absolute  xl:pt-[98px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
 
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
@@ -219,7 +223,7 @@ export default function ProjectNavbar({
 
           {/* Navigation Links - Right 50% */}
           <div
-            className={`hidden lg:flex lg:w-1/2 ${showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"} items-center justify-between`}
+            className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
@@ -239,7 +243,7 @@ export default function ProjectNavbar({
                     }`}
                     defaultTextColor={buttonColor}
                   >
-                    Get in Touch
+                    Enquire Now
                   </Button>
                 </Link>
               )}

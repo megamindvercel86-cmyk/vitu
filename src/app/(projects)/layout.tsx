@@ -1,4 +1,5 @@
 // RootLayout.tsx
+import ProjectFooter from "@/components/ProjectsPageCommonComponents/ProjectPageFoooter/ProjectPageFooter";
 import ProjectNavbar from "@/components/ProjectsPageCommonComponents/ProjectPageNavbar/ProjectPageNavbar";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
        
         <ProjectNavbar   />
         {children}
+        <ProjectFooter/>
       </body>
     </html>
   );

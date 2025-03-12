@@ -67,53 +67,26 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-[170vh] lg:h-[300vh] xl:h-[240vh] overflow-hidden">
+    <section id="hero" className="relative w-full h-[170vh] md:h-[320vh] lg2:h-[300vh] xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
-      <div
-        className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }}
-        data-depth="0.50"
-      >
-        <Image
-          src={backgroundImage}
-          alt="Background Layer"
-          fill
-          className="object-contain"
-          placeholder="blur"
-        />
+      <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
+        <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
       </div>
-      <div
-        className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }}
-        data-depth="0.70"
-      >
-        <Image
-          src={backgroundImage}
-          alt="Midground Layer"
-          fill
-          className="object-cover"
-          placeholder="blur"
-        />
+      <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
+        <Image src={backgroundImage} alt="Midground Layer" fill className="object-cover" placeholder="blur" />
       </div>
-      <div
-        className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }}
-        data-depth="0.70"
-      >
-        <Image
-          src={backgroundImage}
-          alt="Foreground Layer"
-          fill
-          className="object-cover"
-          placeholder="blur"
-        />
+      <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
+        <Image src={backgroundImage} alt="Foreground Layer" fill className="object-cover" placeholder="blur" />
       </div>
 
       {/* Hero Content */}
-      <div className="absolute inset-0 flex flex-col items-center top-[20rem]  text-white">
+      <div className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[50vh]  text-white">
         {/* Main Title */}
         <h1
           className={`
             font-freightNeoSemibold
             leading-none
-            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
           `}
         >
           {ABOUT_HERO_CONFIG.titles.main}
@@ -125,7 +98,7 @@ const ProjectHeroSection: React.FC = () => {
             font-freightNeoSemibold
             leading-none
             pt-0
-            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg:text-[6.25rem] 2xl:text-[9.375rem]
+            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
           `}
         >
           {ABOUT_HERO_CONFIG.titles.sub}
@@ -135,22 +108,23 @@ const ProjectHeroSection: React.FC = () => {
     font-freightNeoMedium
     leading-none
     pt-0 md:pt-[1rem]
-    lg:text-2xl
+    lg2:text-2xl
     text-md
     px-10
     
     text-center
   `}
         >
-          Discover <span className="font-CandideCondensedMedium">21,587</span>{" "}
-          SqM of Luxuriously Affordable Coastal Bliss
+          Discover <span className="font-CandideCondensedMedium">21,587</span> SqM of Luxuriously Affordable Coastal Bliss
         </h1>
 
         {/* CTA Button */}
-        <Link to="carousal" smooth={true} duration={700}> <div className="relative group cursor-pointer">
-          <button
-            type="button"
-            className={`
+        <Link to="carousal" smooth={true} duration={700}>
+          {" "}
+          <div className="relative group cursor-pointer">
+            <button
+              type="button"
+              className={`
       relative group
       mt-8
       flex items-center justify-center
@@ -161,25 +135,25 @@ const ProjectHeroSection: React.FC = () => {
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
     `}
-            // onClick={onScrollToStory}
-          >
-            {/* Default background */}
-            <div className="absolute inset-0 bg-[#A0BCAE] rounded-full"></div>
+              // onClick={onScrollToStory}
+            >
+              {/* Default background */}
+              <div className="absolute inset-0 bg-[#A0BCAE] rounded-full"></div>
 
-            {/* Hover background with transform from right */}
+              {/* Hover background with transform from right */}
 
-            {/* Button content */}
-            <span className="relative z-10">Scroll to Learn More</span>
-            <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 "></div>
-            <CTAButtonIcon fill="#4B9480" />
-          </button>
-        </div>
+              {/* Button content */}
+              <span className="relative z-10">Scroll to Learn More</span>
+              <div className="absolute inset-0 bg-[#4B9480] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 "></div>
+              <CTAButtonIcon fill="#4B9480" />
+            </button>
+          </div>
         </Link>
       </div>
-      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg:top-[55rem] top-[33rem]  text-center px-6">
+      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[33rem]  text-center px-6">
         <ProjectHeader />
       </div>
-      <div  className="absolute  inset-0 flex flex-col items-center lg:top-[88rem] top-[100vh] text-center px-6">
+      <div className="absolute  inset-0 flex flex-col items-center lg2:top-[88rem]  md:top-[70rem] top-[100vh] text-center px-6">
         <ProjectCarousel />
       </div>
     </section>
