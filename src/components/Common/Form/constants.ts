@@ -1,9 +1,10 @@
 export const JOB_OPTIONS = [
-  { value: "Real Estate Agent", label: "Real Estate Agent" },
-  { value: "Property Manager", label: "Property Manager" },
+  { value: "HR Executive", label: "HR Executive" },
+  { value: "Legal Executive", label: "Legal Executive" },
   { value: "Sales Executive", label: "Sales Executive" },
-  { value: "Marketing Specialist", label: "Marketing Specialist" },
-
+  { value: "Sales Manager", label: "Sales Manager" },
+  { value: "Customer Relationship Manager", label: "Customer Relationship Manager" },
+  { value: "Marketing Executive", label: "Marketing Executive" },
 ] as const;
 
 export const PROJECT_ENQUIRIES = [
