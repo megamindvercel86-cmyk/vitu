@@ -52,7 +52,7 @@ const ROUTE_CONFIG: RouteConfig = {
   "/resources": {
     buttonColor: "text-[#6F8AAF]",
   },
-  "/projects": {
+  "/vaikuntamcity": {
     buttonColor: "text-[#2B847D]",
   },
 };
