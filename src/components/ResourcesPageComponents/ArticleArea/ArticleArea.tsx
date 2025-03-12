@@ -7,12 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from 'swiper';
 // Import Swiper styles
 import "swiper/css";
-import AppleStyleCard from "@/components/ui/apple-style-card";
+
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
 import { useRef, useState } from "react";
 import articleArea from "@/data/articleArea.json";
+import AppleStyleCard from "@/components/ui/apple-style-card";
 // ============= Types & Interfaces =============
 interface Article {
   id: number;
@@ -62,7 +63,6 @@ const ARTICLES: Article[] = [
     type: "secondary",
     url: "/images/articleImages/articleImage3.jpg",
   },
-
   // {
   //   id: 4,
   //   category: "BLOG",
@@ -71,7 +71,6 @@ const ARTICLES: Article[] = [
   //   type: "secondary",
   //   url: "/images/articleImages/articleImage3.jpg",
   // },
-
 ];
 
 const ARTICLES_MOBILE: Article[] = [
