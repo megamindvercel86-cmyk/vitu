@@ -126,10 +126,10 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
             </div>
           )}
           {page === "Project Enquire" && (
-            <div className="relative mt-8 z-[999] bg-white">
+            <div className="relative mt-8 z-[999] ">
               {/* Dropdown Button */}
               <div
-                className="bg-white text-customTextGray font-freightNeoMedium text-xl   py-3 rounded-md flex justify-between items-center cursor-pointer"
+                className=" text-customTextGray font-freightNeoMedium text-xl   py-3 rounded-md flex justify-between items-center cursor-pointer"
                 onClick={() => setOpen(!open)}
               >
                 <span>{formik.values.option || "Intresed In"}</span>
@@ -139,7 +139,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
 
               {/* Dropdown Menu */}
               {open && (
-                <div className="absolute w-full bg-white font-freightNeoMedium  rounded-md ">
+                <div className="absolute w-full bg-[#F8F6F5] font-freightNeoMedium  rounded-md ">
                   {PROJECT_ENQUIRIES.map((option) => (
                     <div
                       key={option.value}
@@ -158,10 +158,10 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
           )}
           {page === FORM_TYPES.CAREER && (
             <>
-                <div className="relative mt-8 z-[999] bg-white">
+                <div className="relative mt-8 z-[999] ">
                 {/* Dropdown Button */}
                 <div
-                  className="bg-white text-customTextGray font-freightNeoMedium text-lg py-3 rounded-md flex justify-between items-center cursor-pointer"
+                  className=" text-customTextGray font-freightNeoMedium text-lg py-3 rounded-md flex justify-between items-center cursor-pointer"
                   onClick={() => setOpen(!open)}
                 >
                   <span>{formik.values.option || "Position Being Applied For"}</span>
@@ -171,7 +171,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
 
                 {/* Dropdown Menu */}
                 {open && (
-                  <div className="absolute w-full bg-white rounded-md">
+                  <div className="absolute w-full bg-[#F8F6F5] rounded-md">
                   {JOB_OPTIONS.map((option) => (
                     <div
                     key={option.value}
