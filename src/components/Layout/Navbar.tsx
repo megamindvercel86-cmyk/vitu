@@ -64,7 +64,7 @@ const PROJECT_LINKS = [
 const NAV_LINKS = [
   { href: "/about", label: "About" },
   {
-    href: "/project-filter",
+    href: "/projects",
     label: "Projects",
     hasDropdown: true,
     dropdownItems: PROJECT_LINKS,

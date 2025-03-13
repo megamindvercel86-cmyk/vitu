@@ -8,7 +8,6 @@ import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/J
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
 import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
-import { useRef } from "react";
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
 
@@ -80,9 +79,9 @@ export default function AboutPage() {
         <section>
           <StoryHeader />
         </section>
-        <section id="storysection">
+        {/* <section id="storysection">
           <StorySection />
-        </section>
+        </section> */}
 
         {/* Founder's Message Section */}
         <section>

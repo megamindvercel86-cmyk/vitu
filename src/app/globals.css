@@ -283,6 +283,19 @@ option {
   }
 }
 
+lite-youtube {
+  max-width: none !important;
+}
 
+/* Option 2: More specific selector for better specificity */
+.your-container-class lite-youtube {
+  max-width: none;
+}
+
+/* Option 3: If you want a specific width instead */
+lite-youtube {
+  max-width: 100% !important; /* or any specific value you want */
+  border-radius: 20px;
+}
 
 /* relative w-full h-[170vh] md:h-[200vh] lg:h-[253vh] lg2:h-[280vh] xl:h-[225vh] */

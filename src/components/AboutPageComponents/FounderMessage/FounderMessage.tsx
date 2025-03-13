@@ -1,27 +1,11 @@
 "use client";
 
 // ============= Library Imports =============
-import YouTube from "react-youtube";
+// import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
-
+import { YouTubeEmbed } from "@next/third-parties/google";
 // ============= Component Imports =============
 import { PlayIcon } from "@/components/Icons/Icons";
-
-// ============= Types & Interfaces =============
-interface YouTubeOptions {
-  playerVars: {
-    iv_load_policy: number;
-    rel: number;
-    modestbranding: number;
-    playsinline: number;
-    autoplay: number;
-    controls: number;        // Added
-    showinfo?: number;       // Added (optional since it's deprecated)
-    fs: number;              // Added
-    cc_load_policy: number;  // Added
-    disablekb: number;       // Added
-  };
-}
 
 interface VideoData {
   id?: string;
@@ -46,22 +30,6 @@ export default function FounderMessage(): React.ReactElement {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // ============= YouTube Options =============
-  const opts: YouTubeOptions = {
-    playerVars: {
-      iv_load_policy: 3,
-      rel: 0,
-      modestbranding: 1,
-      playsinline: 1,
-      autoplay: 0,
-      controls: 0,           // Hide all controls
-      showinfo: 0,           // Attempt to hide title (deprecated)
-      fs: 0,                 // No fullscreen button
-      cc_load_policy: 0,     // No captions
-      disablekb: 1,          // No keyboard controls
-    },
-  };
-
   // ============= Fetch Video URL =============
   useEffect(() => {
     async function fetchVideo() {
@@ -83,49 +51,31 @@ export default function FounderMessage(): React.ReactElement {
 
   // ============= Extract Video ID from URL =============
   const getVideoId = (url: string): string | null => {
-    const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
   };
 
   // ============= Render =============
   return (
-    <div className="flex flex-col items-center justify-center pt-8 pb-10 lg:pt-48 lg:pb-40 xl:pt-40 xl:pb-40 2xl:h-screen">
+    <div className="flex flex-col items-center justify-center pt-8 pb-10  lg:pb-40  xl:pb-40 2xl:h-screen">
       {/* Video Wrapper */}
       <div className="w-[90vw] h-[324px] lg:w-[90vw]md:h-[600px] lg:w-[90vw] lg:h-[657px] xl:w-[1355px] xl:h-[775px] 2xl:w-[90%] 2xl:h-screen rounded-2xl overflow-hidden">
         {loading ? (
-          <div className="w-full h-full flex items-center justify-center">
-            Loading...
-          </div>
+          <div className="w-full h-full flex items-center justify-center">Loading...</div>
         ) : error ? (
-          <div className="w-full h-full flex items-center justify-center text-red-500">
-            {error}
-          </div>
+          <div className="w-full h-full flex items-center justify-center text-red-500">{error}</div>
         ) : videoData && getVideoId(videoData.videoUrl) ? (
-          <YouTube
-            videoId={getVideoId(videoData.videoUrl) as string} // Type assertion since we check for null
-            opts={{
-              width: "100%",
-              height: "100%",
-              ...opts,
-            }}
-            className="w-full h-full"
-          />
+          <YouTubeEmbed videoid={getVideoId(videoData.videoUrl) as string} />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            No video available
-          </div>
+          <div className="w-full h-full flex items-center justify-center">No video available</div>
         )}
       </div>
 
       {/* Play Button */}
       <button
         className="mt-10 flex items-center justify-center gap-3 bg-[#815C46] text-white text-base font-medium rounded-full px-6 py-2 2xl:px-8 2xl:py-4 2xl:text-2xl"
-        onClick={() =>
-          videoData &&
-          window.open(videoData.videoUrl, "_blank", "noopener,noreferrer")
-        }
+        onClick={() => videoData && window.open(videoData.videoUrl, "_blank", "noopener,noreferrer")}
       >
         Watch the Full Video
         <PlayIcon />
