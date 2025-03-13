@@ -11,6 +11,7 @@
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.12.3",
     "@next/bundle-analyzer": "^15.1.6",
+    "@next/third-parties": "^15.2.2",
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.28.1",
     "classnames": "^2.5.1",
@@ -20,7 +21,7 @@
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
     "lottie-react": "^2.4.1",
-    "next": "^15.1.4",
+    "next": "^15.2.2",
     "nodemailer": "^6.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
