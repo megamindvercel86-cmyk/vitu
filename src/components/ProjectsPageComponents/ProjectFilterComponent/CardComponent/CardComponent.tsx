@@ -1,7 +1,7 @@
 "use client";
 
 import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
-import ProjectListing from "@/components/ProjectsPageCommonComponents/ProjectListing/ProjectListing";
+import ProjectListing from "@/components/ProjectsPageComponents/ProjectsPageCommonComponents/ProjectListing/ProjectListing";
 import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
 import React from "react";
 import PojectInfiniteCarousel from "../ProjectFilterInfiniteCarousel/ProjectFilterInfiniteCarousel";

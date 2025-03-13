@@ -1,5 +1,5 @@
-import ProjectFooter from "@/components/ProjectsPageCommonComponents/ProjectPageFoooter/ProjectPageFooter";
-import ProjectNavbar from "@/components/ProjectsPageCommonComponents/ProjectPageNavbar/ProjectPageNavbar";
+import ProjectFooter from "@/components/ProjectsPageComponents/ProjectsPageCommonComponents/ProjectPageFoooter/ProjectPageFooter";
+import ProjectNavbar from "@/components/ProjectsPageComponents/ProjectsPageCommonComponents/ProjectPageNavbar/ProjectPageNavbar";
 
 export default function RootLayout({
   children,

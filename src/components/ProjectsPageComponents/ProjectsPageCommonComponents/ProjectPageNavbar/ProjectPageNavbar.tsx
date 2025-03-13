@@ -16,7 +16,7 @@ import {
   SecondaryYoutubeIcon,
 } from "@/components/Icons/Icons";
 
-import logo from "../../../../public/images/logos/vaikuntamCity.svg";
+import logo from "../../../../../public/images/logos/vaikuntamCity.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
@@ -84,23 +84,6 @@ export default function ProjectNavbar({
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
   const isProjectNavbarPrimary = ProjectNavbar === "secondary";
 
-  // ============= Helper Functions =============
-  /**
-   * Generates className for navigation links based on current path and ProjectNavbar type
-   */
-  const getLinkClassName = (path: string) => {
-    const isActive = pathname === path;
-
-    return ` 2xl:text-4xl  ${
-      isActive
-        ? isProjectNavbarPrimary
-          ? "text-white border-b-2 border-white"
-          : "text-black border-b-2 border-black"
-        : isProjectNavbarPrimary
-          ? "text-white"
-          : "text-black"
-    }`;
-  };
 
   // Add useEffect to control body scroll
   useEffect(() => {
@@ -206,7 +189,7 @@ export default function ProjectNavbar({
 
   return (
     <div>
-        {/* max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px] */}
+   
 
         
         <header className="absolute  xl:pt-[98px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
@@ -238,7 +221,7 @@ export default function ProjectNavbar({
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href}  to={href} smooth={true} duration={700}>
                   
-                <div className="2xl:text-4xl text-white text-2xl cursor-pointer ">{label}</div>
+                <div className="2xl:text-4xl text-white text-2xl cursor-pointer font-freightNeoMedium">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (
@@ -254,8 +237,6 @@ export default function ProjectNavbar({
                 </NavLink>
               )}
             </div>
-
-            {/* CTA Button */}
           </div>
         </nav>
       </header>
