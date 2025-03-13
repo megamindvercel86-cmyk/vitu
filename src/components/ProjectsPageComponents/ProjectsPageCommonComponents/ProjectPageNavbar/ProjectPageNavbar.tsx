@@ -123,14 +123,6 @@ export default function ProjectNavbar({
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
               {NAV_LINKS.map(({ href, label }) => (
-                // <NavLink
-                //   key={href}
-                //   href={href}
-                //   className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
-                //   onClick={() => setIsMenuOpen(false)}
-                // >
-                //   {label}
-                // </NavLink>
                 <Link
                   key={href}
                   to={href}
