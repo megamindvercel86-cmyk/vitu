@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { FC, JSX, useRef } from "react";
 import logo from "../../../../public/images/logos/vaikuntamCityFooter.svg";
 import chieverslog from "../../../../public/images/logos/chieverslog.svg";
+import { Link } from "react-scroll";
 
 
 import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "@/components/Icons/Icons";
-import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { db } from "@/firebase/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
@@ -93,22 +93,29 @@ const ProjectFooter: FC = () => {
           <FooterSection
          
             links={[
-              { href: "/resources/media-kit", label: "Sustainability" },
-              { href: "/resources/media-k", label: "Amenities" },
-              { href: "legacy", label: "Legacy" },
-              { href: "#", label: "Plots" },
+              { href: "sustainability", label: "Sustainability" },
+              { href: "carousal", label: "Amenities" },
+              { href: "location", label: "Location" },
+              { href: "plots", label: "Plots" },
             ]}
           />
 
           {/* Contact Information */}
           <div>
-            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
             <ul className="space-y-4 text-gray-300">
+            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
+
               <FooterContactItem
                 icon={<Share />}
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
+               {/* Social Media Links */}
+             
+            </ul>
+            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
+            <ul className="space-y-4 text-gray-300">
+              
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
@@ -172,8 +179,8 @@ const FooterSection: FC<{
       <SubHeading className="text-xl md:text-xl text-[#EADFD1]  font-freightNeoSemibold mb-4">{title}</SubHeading>
       <ul className="space-y-4 text-[#EADFD1] font-freightNeoSemibold">
         {links.map((link) => (
-          <li key={link.href}>
-            <FooterLink href={link.href}>{link.label}</FooterLink>
+          <li key={link.href} className="cursor-pointer">
+            <Link to={link.href} duration={700} smooth={true}>{link.label}</Link>
           </li>
         ))}
       </ul>
@@ -194,9 +201,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
   return (
     <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start"} items-center md:gap-0 gap-3 `}>
       {icon}
-      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+      <FooterLink href={link} className="pl-4 text-center lg:text-left">
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </Link>
+      </FooterLink>
     </li>
   );
 };

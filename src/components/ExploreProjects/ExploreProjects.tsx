@@ -91,12 +91,12 @@ const ExploreProjects: React.FC = () => {
   return (
     <>
       {/* Desktop Version */}
-      <div className="md:block hidden relative z-0 overflow-hidden">
+      <div className="md:block hidden relative z-0 overflow-hidden" id="sustainability">
         <ExpandableCards cards={CARDS_DATA} />
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden block mb-12">
+      <div className="md:hidden block mb-12" id="sustainability">
         {/* Mobile Title Section */}
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
           <Typography

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-scroll";
 
 
 import {
@@ -64,10 +64,10 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 // ============= Navigation Links =============
 const NAV_LINKS = [
-  { href: "/amenities", label: "Amenities" },
-  { href: "/sustainability", label: "Sustainability" },
-  { href: "/location", label: "Location" },
-  { href: "/plots", label: "Plots" },
+  { href: "carousal", label: "Amenities" },
+  { href: "sustainability", label: "Sustainability" },
+  { href: "location", label: "Location" },
+  { href: "plots", label: "Plots" },
   
 ];
 
@@ -129,9 +129,9 @@ export default function ProjectNavbar({
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-              <Link href="/">
+              <NavLink href="/">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
-              </Link>
+              </NavLink>
               <button onClick={() => setIsMenuOpen(false)}>
                 <CloseIcon />
               </button>
@@ -140,17 +140,26 @@ export default function ProjectNavbar({
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
               {NAV_LINKS.map(({ href, label }) => (
-                <NavLink
+                // <NavLink
+                //   key={href}
+                //   href={href}
+                //   className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
+                //   onClick={() => setIsMenuOpen(false)}
+                // >
+                //   {label}
+                // </NavLink>
+                <Link
                   key={href}
-                  href={href}
+                  to={href}
+                  smooth={true} duration={700}
                   className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {label}
-                </NavLink>
+                 <div className="font-FreightNeoProBold cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0"> {label}</div>
+                </Link>
               ))}
               {showGetInTouch && (
-                <Link
+                <NavLink
                   href="/project-enquire"
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full px-7"
@@ -158,36 +167,36 @@ export default function ProjectNavbar({
                   <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
-                </Link>
+                </NavLink>
               )}
             </div>
 
             {/* Social Links - Updated for center alignment */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <Link
+              <NavLink
                 href="#"
                 className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
               >
                 <SecondaryInstgramIcon />
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 href="#"
                 className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
               >
                 <SecondaryMetaIcon />
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 href="#"
                 className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
               >
                 <SecondaryLinkedInIcon />
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 href="#"
                 className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
               >
                 <SecondaryYoutubeIcon />
-              </Link>
+              </NavLink>
             </div>
           </div>
         </motion.div>
@@ -205,13 +214,13 @@ export default function ProjectNavbar({
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <Link href="/">
+            <NavLink href="/">
               <Image
                 src={logo}
                 alt="Logo"
                 className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
               />
-            </Link>
+            </NavLink>
             {/* Mobile Menu Button */}
             <div
               className="flex items-center cursor-pointer ml-auto lg:hidden"
@@ -227,16 +236,13 @@ export default function ProjectNavbar({
           >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                <NavLink
-                  key={href}
-                  href={href}
-                  className={getLinkClassName(href)}
-                >
-                  {label}
-                </NavLink>
+                <Link key={href}  to={href} smooth={true} duration={700}>
+                  
+                <div className="2xl:text-4xl text-white text-2xl cursor-pointer ">{label}</div>
+                </Link>
               ))}
               {showGetInTouch && (
-                <Link href="/general-enquire">
+                <NavLink href="/general-enquire">
                   <Button
                     className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isProjectNavbarPrimary ? "bg-white" : ""
@@ -245,7 +251,7 @@ export default function ProjectNavbar({
                   >
                     Enquire Now
                   </Button>
-                </Link>
+                </NavLink>
               )}
             </div>
 
