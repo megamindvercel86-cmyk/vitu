@@ -5,17 +5,7 @@ import path from "path";
 
 export async function POST(req: Request) {
   try {
-    const {
-      fullName,
-      email,
-      phone,
-      comments,
-      whatsapp,
-      interestedIn,
-      postionApplyingfor,
-      page,
-      resumeUrl,
-    } = await req.json();
+    const { fullName, email, phone, comments, whatsapp, interstedIn, postionAppliedFor, page, resumeUrl } = await req.json();
     // Define the path to the HTML template
     let templateFile = "";
     switch (page) {
@@ -33,11 +23,7 @@ export async function POST(req: Request) {
     }
 
     // Define the path to the HTML template
-    const templatePath = path.join(
-      process.cwd(),
-      "emailTemplates",
-      templateFile,
-    );
+    const templatePath = path.join(process.cwd(), "emailTemplates", templateFile);
 
     // Read the selected HTML template file
     let emailTemplate = await fs.readFile(templatePath, "utf-8");
@@ -51,19 +37,17 @@ export async function POST(req: Request) {
       .replace("[Name from Project Enquiry Form]", fullName)
       .replace("[Email from Project Enquiry Form]", email)
       .replace("[Phone from Project Enquiry Form]", phone)
-      .replace("[Field selected from Project Enquiry Form]", interestedIn || "")
+      .replace("[Field selected from Project Enquiry Form]", interstedIn || "")
       .replace("[Name from Career Application Form]", fullName)
       .replace("[Email from Career ApplicationForm]", email)
       .replace("[Phone from Career Application Form]", phone)
-      .replace(
-        "[Role selected from Career Application Form]",
-        postionApplyingfor || "",
-      );
+      .replace("[Role selected from Career Application Form]", postionAppliedFor)
+      .replace("[resumeLink]", resumeUrl);
 
     // Add resume link for Career Application emails
-    if (page === "Career Application" && resumeUrl) {
-      emailTemplate += `<p><strong>Resume:</strong> <a href="${resumeUrl}" target="_blank" style="color: #007bff;">View Resume</a></p>`;
-    }
+    // if (page === "Career Application" && resumeUrl) {
+    //   emailTemplate += `<p><strong>Resume:</strong> <a href="${resumeUrl}" target="_blank" style="color: #007bff;">View Resume</a></p>`;
+    // }
 
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -77,29 +61,6 @@ export async function POST(req: Request) {
     // Define the email subject based on the form type
     const subject = `You got a ${page}`;
 
-    // Define the email message in a standardized format
-    const message = `
-    <p><strong>You got a:</strong> ${page}</p>
-      <p><strong>Full Name:</strong> ${fullName}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      ${
-        page === "General Enquire"
-          ? `
-        <p><strong>WhatsApp:</strong> ${whatsapp ? "Yes" : "No"}</p>
-        <p><strong>Comments:</strong> ${comments}</p>
-      `
-          : page === "Project Enquire"
-            ? `
-        <p><strong>Interested In:</strong> ${interestedIn}</p>
-      `
-            : `
-        <p><strong>Position Applying For:</strong> ${postionApplyingfor}</p>
-        <p><strong>Resume:</strong> <a href="${resumeUrl}" target="_blank" style="color: #007bff;">View Resume</a></p>
-      `
-      }
-    `;
-
     // Send email
     await transporter.sendMail({
       from: `${email}`,
@@ -108,15 +69,9 @@ export async function POST(req: Request) {
       html: emailTemplate,
     });
 
-    return NextResponse.json(
-      { message: "Email sent successfully" },
-      { status: 200 },
-    );
+    return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
     console.error("Email send error:", error);
-    return NextResponse.json(
-      { message: "Failed to send email", error },
-      { status: 500 },
-    );
+    return NextResponse.json({ message: "Failed to send email", error }, { status: 500 });
   }
 }
