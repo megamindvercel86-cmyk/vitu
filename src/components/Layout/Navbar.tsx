@@ -18,6 +18,7 @@ import {
 import logo from "../../../public/images/logos/logo.svg";
 import logoWhite from "../../../public/images/logos/logoWhite.svg";
 import { motion, AnimatePresence } from "framer-motion";
+import NavbarResponsiveComponent from "../NavbarResponsiveComponent/NavbarResponsiveComponent";
 
 // ============= Types & Interfaces =============
 type NavbarType = "primary" | "secondary";
@@ -91,8 +92,12 @@ const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
 export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: NavbarProps) {
   // ============= State =============
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropDownOpen, setIsDropDownMenuOpen] = useState(false);
+
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+
+  
 
   // ============= Computed Values =============
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
@@ -131,13 +136,15 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     <AnimatePresence>
       {isMenuOpen && (
         <motion.div
-          initial={{ x: "100%" }}
+          initial={{ x: window.innerWidth }}
           animate={{ x: 0 }}
-          exit={{ x: "100%" }}
+          exit={{ x: window.innerWidth }}
           transition={{ type: "tween", duration: 0.3 }}
-          className="fixed inset-0 z-50 overflow-y-auto bg-white"
+          className="fixed inset-0 z-50 overflow-y-auto h-full bg-white"
+          onClick={() => setIsMenuOpen(false)}
         >
-          <div className="flex flex-col h-full">
+          {/* Rest of the component remains exactly the same */}
+          <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
               <Link href="/">
@@ -148,33 +155,25 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
               </button>
             </div>
 
-            {/* Navigation Links - Updated for center alignment */}
-            <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
-                <div key={href} className="group mb-6 last:mb-0 relative">
-                  {" "}
-                  {/* Reduced mb */}
+            {/* Navigation Links */}
+            <div className="flex flex-col items-center justify-center flex-grow space-y-6">
+              {NAV_LINKS.map(({ href, label, dropdownItems }) => (
+                <div key={href} className="flex flex-col items-center">
                   <NavLink
                     href={href}
-                    className="text-2xl font-FreightNeoProBold hover:text-gray-600 transition-colors"
-                    onClick={() => {
-                      if (!hasDropdown) setIsMenuOpen(false);
-                      setActiveDropdown(activeDropdown === href ? null : href);
-                    }}
+                    className="text-2xl font-FreightNeoProBold text-center hover:text-gray-600 transition-colors"
                   >
-                    {/* Add dropdown indicator */}
-                    {label}
-                    {hasDropdown && <span className="ml-2 text-sm">{activeDropdown === href ? "▲" : "▼"}</span>}
+                    {label} {dropdownItems&&<button onClick={()=>setIsDropDownMenuOpen(!isDropDownOpen)}>dfsgsdfg</button>}
                   </NavLink>
-                  {hasDropdown && activeDropdown === href && (
-                    <div className="mt-2 pl-4 flex flex-col items-start">
-                      {" "}
-                      {/* Left alignment */}
-                      {dropdownItems?.map((item) => (
+
+                  {/* Always show sub-menu items below the parent */}
+                  {isDropDownOpen&&dropdownItems && (
+                    <div className="mt-2  flex flex-col items-center space-y-2">
+                      {dropdownItems.map((item) => (
                         <NavLink
                           key={item.href}
                           href={item.href}
-                          className="text-xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
+                          className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.label}
@@ -184,16 +183,17 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                   )}
                 </div>
               ))}
+
               {showGetInTouch && (
-                <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">
-                  <button className="w-full h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
+                  <button className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
                 </Link>
               )}
             </div>
 
-            {/* Social Links - Updated for center alignment */}
+            {/* Social Links */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
               <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryInstgramIcon />
@@ -241,39 +241,25 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
           >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
-                <div
-                  key={href}
-                  className="relative group"
-                 
-                >
-                  <div
-                   onMouseEnter={() => hasDropdown && setActiveDropdown(href)}
-                   onMouseLeave={() => setActiveDropdown(null)}
-                  >
-
-                  <NavLink href={href} className={getLinkClassName(href)}>
-                    {label}
-                    {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
-                  </NavLink>
-                  {hasDropdown && activeDropdown === href && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-[-4] mt-2 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
-                    >
-                      {dropdownItems?.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-800 font-freightNeoMedium hover:bg-gray-100"
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
+                <div key={href} className="relative group">
+                  <div onMouseEnter={() => hasDropdown && setActiveDropdown(href)} onMouseLeave={() => setActiveDropdown(null)}>
+                    <NavLink href={href} className={getLinkClassName(href)}>
+                      {label}
+                      {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
+                    </NavLink>
+                    {hasDropdown && activeDropdown === href && (
+                      <div className="group">
+                        <div className="absolute left-0 w-40 mt-1 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+                          {dropdownItems?.map((item) => (
+                            <div className="py-1" key={item.href}>
+                              <Link href={item.href} key={item.href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                {item.label}
+                              </Link>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -293,7 +279,13 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
           </div>
         </nav>
       </header>
-      <SidebarMenu />
+      {/* <SidebarMenu /> */}
+      {isMenuOpen&&<NavbarResponsiveComponent 
+  setIsMenuOpen={setIsMenuOpen} 
+  setIsDropDownMenuOpen={setIsDropDownMenuOpen} 
+  isDropDownOpen={isDropDownOpen} 
+  showGetInTouch={showGetInTouch} 
+/>}
     </div>
   );
 }

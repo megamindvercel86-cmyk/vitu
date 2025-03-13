@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FC, JSX, useRef } from "react";
+import React, { FC, JSX, useRef, useState } from "react";
 import logo from "../../../public/images/logos/logolight.svg";
 import chieverslog from "../../../public/images/logos/chieverslog.svg";
 import SubHeading from "../Common/SubHeding";
@@ -29,14 +29,13 @@ const Footer: FC = () => {
     </svg>
   );
 
-  const email = useRef<HTMLInputElement>(null);
+  const [email, setEmail] = useState<string>("");
   console.log(email);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email.current) {
-      const emailValue = email.current.value;
-      console.log(emailValue);
+    if (email) {
+      const emailValue = email;
 
       const collectionRef = collection(db, "newsLetter");
       await addDoc(collectionRef, { email: emailValue });
@@ -48,7 +47,7 @@ const Footer: FC = () => {
       // });
       toast.success("Thank You For The Newsletter SignUp");
 
-      email.current.value = "";
+      setEmail("");
     }
   };
 
@@ -119,19 +118,20 @@ const Footer: FC = () => {
               </li>
             </ul>
             <form onSubmit={submitHandler}>
-                <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
+              <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
                 <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input
-                  type="email"
-                  ref={email}
-                  className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
-                  placeholder="Sign Up for Our Newsletter"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
+                    placeholder="Sign Up for Our Newsletter"
                   />
                   <button type="submit">
-                  <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
+                    <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>
-                </div>
+              </div>
             </form>
           </div>
         </div>

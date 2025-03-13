@@ -16,6 +16,7 @@ import {
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import ProjectFilterAppleStyleCard from "../AppleStyleCard/AppleStyleCard";
 // Define a type for the card object
 interface Card {
   id: number;
@@ -165,7 +166,7 @@ const PojectInfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index + 5} className="swiper-slide">
-            <AppleStyleCard
+            <ProjectFilterAppleStyleCard
               key={card.id + 5}
               id={card.id + 5}
               imageSrc={card.url}

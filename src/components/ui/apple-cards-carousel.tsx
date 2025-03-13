@@ -121,7 +121,7 @@ export const Carousel = ({
     >
       <div className="relative w-full">
       <div
-  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-2 xl:gap-4 min-w-max ${height}`}
+  className={`grid grid-cols-1 place-items-center sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-2 xl:gap-4 min-w-max ${height}`}
   ref={carouselRef}
   onScroll={checkScrollability}
 >
