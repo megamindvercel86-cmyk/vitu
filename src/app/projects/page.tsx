@@ -2,7 +2,8 @@
 
 
 import Layout from '@/components/Layout/Layout';
-import PrjectFilter from '@/components/ProjectFilterComponent/CardComponent/CardComponent';
+import ProjectFilter from '@/components/ProjectsPageComponents/ProjectFilterComponent/CardComponent/CardComponent';
+
 import React from 'react'
 const NAVBAR_CONFIG = {
   props: {
@@ -13,7 +14,7 @@ const NAVBAR_CONFIG = {
 const page = () => {
   return (
     <Layout navbarProps={NAVBAR_CONFIG.props}>
-    <PrjectFilter/>
+    <ProjectFilter/>
     </Layout>
   )
 }

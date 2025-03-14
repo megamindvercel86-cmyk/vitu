@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
-import "../../Common/InfiniteCarousel/InfiniteCarousel.css";
+import "../../../Common/InfiniteCarousel/InfiniteCarousel.css";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import {
   ArrowRightIcon,

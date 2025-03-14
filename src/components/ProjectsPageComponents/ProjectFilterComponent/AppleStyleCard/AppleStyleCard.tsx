@@ -5,9 +5,9 @@ import Image, { ImageProps } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "../../Icons/Icons";
-import Typography from "../../Typography/Typography";
 import Link from "next/link";
+import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "@/components/Icons/Icons";
+import Typography from "@/components/Typography/Typography";
 
 interface CardProps {
   id: number; // Added id prop for unique layoutId
