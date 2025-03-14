@@ -10,7 +10,7 @@ import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/J
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
 // ============= Types & Interfaces =============
-interface HomePageProps {}
+
 
 // ============= Constants =========
 const NAVBAR_CONFIG = {
@@ -70,7 +70,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function HomePage({}: HomePageProps) {
+export default function HomePage() {
   return (
     <>
       {/* <layout */}
