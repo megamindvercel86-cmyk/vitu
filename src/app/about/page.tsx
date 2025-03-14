@@ -79,9 +79,9 @@ export default function AboutPage() {
         <section>
           <StoryHeader />
         </section>
-        {/* <section id="storysection">
+        <section id="storysection">
           <StorySection />
-        </section> */}
+        </section>
 
         {/* Founder's Message Section */}
         <section>

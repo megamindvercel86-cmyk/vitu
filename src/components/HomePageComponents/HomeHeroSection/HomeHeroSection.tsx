@@ -29,7 +29,6 @@ export default function HomeHeroSection() {
           className="object-cover"
           placeholder="blur"
           priority
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
           quality={85}
         />
         {/* Hero Content */}

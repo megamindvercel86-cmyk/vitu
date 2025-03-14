@@ -73,7 +73,6 @@ export async function generateMetadata() {
 export default function HomePage() {
   return (
     <>
-      {/* <layout */}
       <Layout
         navbarClassName={NAVBAR_CONFIG.className}
         navbarProps={NAVBAR_CONFIG.props}
