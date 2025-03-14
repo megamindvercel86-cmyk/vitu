@@ -92,11 +92,11 @@ function YearDisplay({
     <div
       className={`${
         isFixed
-          ? "fixed md:bottom-28 bottom-52 md:left-20 left-5"
+          ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 md:left-20 left-5"
           : "absolute bottom-28 left-36"
       } pointer-events-none z-50`}
     >
-      <span className="md:text-[80px] text-[40px] text-white font-CandideCondensedMedium">
+      <span className="lg2:text-[80px] lg:text-7xl text-[40px] text-white font-CandideCondensedMedium">
         {number.split("").map((digit, index) => (
           <span key={index} className="inline-block w-[1ch]">
             {digit}
@@ -130,12 +130,12 @@ function MessageDisplay({
     <div
       className={`${
         isFixed
-          ? "fixed md:bottom-56 bottom-32 md:right-[59px]"
+          ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]"
           : "absolute bottom-56 right-10"
-      } pointer-events-none z-50 md:max-w-[560px] max-w-[300px]`}
+      } pointer-events-none z-50 lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
-        <span className="lg:text-2xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
+        <span className="lg2:text-2xl lg:text-xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
           {message.split("").map((char, index) => (
             <span
               key={index}
@@ -219,7 +219,7 @@ function ScrollController({
 
   return (
     <div
-      className={`${isFixed ? "fixed" : "absolute"} bottom-12 md:bottom-36 right-5 z-50 w-[90%] max-w-[550px]`}
+      className={`${isFixed ? "fixed" : "absolute"} bottom-12 lg:bottom-16 lg2:bottom-36 right-5 z-50 w-[90%] lg:w-[40%] lg2:max-w-[550px]`}
     >
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
@@ -301,7 +301,7 @@ export default function Gallery() {
       return `translate(-${progress * 11280}px, -50%)`;
     else if (windowWidth >= 1024 && windowHeight >= 768) return `translate(-${progress * 500}px, -50%)`;
     else if (windowWidth >= 1024) return `translate(-${progress * 7500}px, -50%)`;
-    else if (windowWidth > 100) return `translate(-${progress * 7500}px, -50%)`;
+    else if (windowWidth > 100) return `translate(-${progress * 2320}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
   const getTopValue = () => {
