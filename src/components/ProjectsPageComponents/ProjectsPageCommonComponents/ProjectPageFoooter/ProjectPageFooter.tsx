@@ -87,7 +87,7 @@ const ProjectFooter: FC = () => {
           {/* Quick Links */}
 
           {/* Resources */}
-          <div>
+          <div className="hidden lg:block">
             <FooterSection
               links={[
                 { href: "sustainability", label: "Sustainability" },
@@ -100,7 +100,7 @@ const ProjectFooter: FC = () => {
 
           {/* Contact Information */}
           <div>
-            <ul className="space-y-4 text-gray-300 ">
+            <ul className="space-y-4 text-gray-300 hidden lg:block ">
               <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
 
               <FooterContactItem
@@ -114,6 +114,17 @@ const ProjectFooter: FC = () => {
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
             </ul>
+            <SubHeading className="text-lg md:text-xl text-footerTextColor lg:hidden font-freightNeoSemibold mb-4">Get in Touch</SubHeading>
+            <ul className="space-y-4 text-gray-300 lg:hidden">
+              <FooterContactItem
+                icon={<Share />}
+                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
+                link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
+              />
+              <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
+              <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              {/* Social Media Links */}
+              </ul>
             <div className="pt-16 w-[100%]  cursor-pointer relative">
               {/* <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input

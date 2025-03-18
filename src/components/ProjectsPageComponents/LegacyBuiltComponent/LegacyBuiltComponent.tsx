@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LegacyBuiltComponent = () => {
   return (
-    <section className="flex items-center justify-center  xl:mt-0 mt-32 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
+    <section className="flex items-center justify-center  xl:mt-0 py-32 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0 lg:mb-[260px] ">

@@ -19,7 +19,7 @@ export default function ProjectPage({}: ProjectPageProps) {
 
 
   return (
-    <div className="bg-[#fbfaf8]">
+    <div className="bg-[#e5ddd8] lg2:bg-[#fbfaf8]  ">
       <section className="relative">
         <ProjectHeroSection />
       </section>
@@ -38,7 +38,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#fbfaf8] ">
         <LegacyBuiltComponent />
       </section>
-      <section className="pt-28">
+      <section className="">
         <ProjectBottomSection />
       </section>
     </div>

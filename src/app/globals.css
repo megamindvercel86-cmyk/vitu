@@ -121,12 +121,17 @@ option {
 
 @media (min-width: 1024px) and (min-height: 600px) {
   .herosection {
-    height: 300vh;
+    height: 10vh;
   }
 }
 @media (min-width: 1024px) and (min-height: 768px) {
   .herosection {
     height: 250vh;
+  }
+}
+@media (min-width: 1024px) and (min-height: 1366px) {
+  .herosection {
+    height: 175vh !important;
   }
 }
 
@@ -159,17 +164,17 @@ option {
 }
 @media (min-width: 1920px) and (min-height: 1200px) {
   .herosection {
-    height: 215vh;
+    height: 215vh !important;
   }
 }
 @media (min-width: 2560px) and (min-height: 1440px) {
   .herosection {
-    height: 193vh;
+    height: 190vh !important;
   }
 }
 @media (min-width: 3840px) and (min-height: 2160px) {
   .herosection {
-    height: 155vh;
+    height: 155vh !important;
   }
 }
 

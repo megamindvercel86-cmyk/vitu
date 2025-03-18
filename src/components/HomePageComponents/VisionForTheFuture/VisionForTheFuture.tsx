@@ -209,9 +209,11 @@ export default function VisionForTheFuture() {
           </div>
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
+            <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full   ">
+              
             <Link href="/about">
               <button
-                className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
+                className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
                 aria-label="See What's Next"
               >
                 See What&apos;s Next
@@ -245,6 +247,7 @@ export default function VisionForTheFuture() {
                   </button>
                 </foreignObject>
               </svg>
+            </div>
             </div>
             <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
               {CAROUSEL_DATA.map((_, dotIndex) => (
