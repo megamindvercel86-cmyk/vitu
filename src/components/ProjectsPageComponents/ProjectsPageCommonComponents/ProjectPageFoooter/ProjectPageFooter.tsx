@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { FC, JSX, useRef } from "react";
 import logo from "../../../../../public/images/logos/vaikuntamCityFooter.svg";
+import logo2 from "../../../../../public/images/logos/projectfooter.svg";
 import { Link } from "react-scroll";
 
-
-import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "@/components/Icons/Icons";
+import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Share1, Youtube } from "@/components/Icons/Icons";
 import { BsArrowRight } from "react-icons/bs";
 import { db } from "@/firebase/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 import SubHeading from "@/components/Common/SubHeding";
 import NavLink from "@/components/Common/NavLink";
 import FooterLink from "@/components/Common/FooterLinks";
-
 
 /**
  * Footer Component
@@ -32,43 +31,43 @@ const ProjectFooter: FC = () => {
     </svg>
   );
 
-  const email = useRef<HTMLInputElement>(null);
-  console.log(email);
+  // const email = useRef<HTMLInputElement>(null);
+  // console.log(email);
 
-  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (email.current) {
-      const emailValue = email.current.value;
-      console.log(emailValue);
+  // const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (email.current) {
+  //     const emailValue = email.current.value;
+  //     console.log(emailValue);
 
-      const collectionRef = collection(db, "newsLetter");
-      await addDoc(collectionRef, { email: emailValue });
+  //     const collectionRef = collection(db, "newsLetter");
+  //     await addDoc(collectionRef, { email: emailValue });
 
-      // await fetch("/api/sendEmail", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(emailValue),
-      // });
-      toast.success("Thank You For The Newsletter SignUp");
+  //     // await fetch("/api/sendEmail", {
+  //     //   method: "POST",
+  //     //   headers: { "Content-Type": "application/json" },
+  //     //   body: JSON.stringify(emailValue),
+  //     // });
+  //     toast.success("Thank You For The Newsletter SignUp");
 
-      email.current.value = "";
-    }
-  };
+  //     email.current.value = "";
+  //   }
+  // };
 
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid  grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col  items-center lg:items-start">
             <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
-            Premium Plotted Development
+              Premium Plotted Development
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-             <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
-              <li className="flex gap-2 pt-[122px] justify-center md:justify-start">
+              <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
+              <li className="flex gap-2 pt-[170px] justify-center md:justify-start">
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
                   <Instgram />
                 </NavLink>
@@ -86,43 +85,37 @@ const ProjectFooter: FC = () => {
           </div>
 
           {/* Quick Links */}
-      
 
           {/* Resources */}
-          <FooterSection
-         
-            links={[
-              { href: "sustainability", label: "Sustainability" },
-              { href: "carousal", label: "Amenities" },
-              { href: "location", label: "Location" },
-              { href: "plots", label: "Plots" },
-            ]}
-          />
+          <div>
+            <FooterSection
+              links={[
+                { href: "sustainability", label: "Sustainability" },
+                { href: "carousal", label: "Amenities" },
+                { href: "location", label: "Location" },
+                { href: "plots", label: "Plots" },
+              ]}
+            />
+          </div>
 
           {/* Contact Information */}
           <div>
-            <ul className="space-y-4 text-gray-300">
-            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
+            <ul className="space-y-4 text-gray-300 ">
+              <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
 
               <FooterContactItem
-                icon={<Share />}
+                icon={<Share1 />}
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
-               {/* Social Media Links */}
-             
-            </ul>
-            <SubHeading className="text-lg md:text-xl text-[#EADFD1] font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
-            <ul className="space-y-4 text-gray-300">
-              
+              {/* Social Media Links */}
+            <SubHeading className="text-lg lg:pt-10 md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
-             
             </ul>
-            <form onSubmit={submitHandler}>
-                <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
-                <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
+            <div className="pt-16 w-[100%]  cursor-pointer relative">
+              {/* <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input
                   type="email"
                   ref={email}
@@ -132,9 +125,14 @@ const ProjectFooter: FC = () => {
                   <button type="submit">
                   <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
-                </div>
-                </div>
-            </form>
+                </div> */}
+              <div className="flex justify-center md:justify-start lg:justify-end   pb-4 text-footerTextColor">
+                <h1 className="font-FreightNeoProNormal   text-[16px]">Porject By</h1>
+              </div>
+              <div className="flex justify-center md:justify-start  lg:justify-end">
+                <Image alt="logo" src={logo2} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -164,9 +162,9 @@ const FooterSection: FC<{
         {title}
         <DropdownArrow />
       </summary>
-      <ul className="space-y-4 mt-4 text-[#EADFD1] cursor-pointer">
+      <ul className="space-y-4 mt-4 text-[#EADFD1] ">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.href} className="cursor-pointer">
             <FooterLink href={link.href}>{link.label}</FooterLink>
           </li>
         ))}
@@ -179,7 +177,9 @@ const FooterSection: FC<{
       <ul className="space-y-4 text-[#EADFD1] font-freightNeoSemibold">
         {links.map((link) => (
           <li key={link.href} className="cursor-pointer">
-            <Link to={link.href} duration={700} smooth={true}>{link.label}</Link>
+            <Link to={link.href} duration={700} smooth={true}>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>
@@ -198,9 +198,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
   const email = text.includes("info@viturealty.com");
 
   return (
-    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start"} items-center md:gap-0 gap-3 `}>
+    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}>
       {icon}
-      <FooterLink href={link} className="pl-4 text-center lg:text-left">
+      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-center lg:text-left">
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
       </FooterLink>
     </li>
@@ -215,7 +215,7 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2024</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">

@@ -104,6 +104,31 @@ export function Share() {
     </svg>
   );
 }
+export function Share1() {
+  return (
+    <svg
+      className="w-[18px] h-[18px] lg:w-[55px] lg:h-[55px] lg2:w-[29px] lg2:h-[29] xl:w-[23px] xl:h-[24px] 2xl:w-[24px] 2xl:h-[20px] "
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.5 8.66406L16.5333 0.630719"
+        stroke="#EADFD1"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.49791 8.66225C8.49791 8.66225 3.98553 7.373 2.19159 6.86044C1.76372 6.73819 1.46875 6.34716 1.46875 5.90213V5.90187C1.46875 5.45422 1.76237 5.05956 2.19119 4.93094C5.19378 4.03016 16.5312 0.628906 16.5312 0.628906C16.5312 0.628906 13.13 11.9664 12.2292 14.969C12.1006 15.3978 11.7059 15.6914 11.2583 15.6914H11.258C10.813 15.6914 10.422 15.3964 10.2997 14.9686C9.78716 13.1746 8.49791 8.66225 8.49791 8.66225Z"
+        stroke="#EADFD1"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 export function Phone() {
   return (
     <svg

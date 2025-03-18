@@ -6,12 +6,15 @@ interface FooterLinkProps {
   children: React.ReactNode;
   className?: string;
   type?: "string" | "number";
+  target?:string;
 }
 
 const FooterLink = ({
   href,
   children,
   className,
+  target,
+  
   type = "string",
 }: FooterLinkProps) => {
   const combinedClassName = classNames(
@@ -20,7 +23,7 @@ const FooterLink = ({
   );
 
   return (
-    <Link href={href} className={combinedClassName}>
+    <Link href={href} target={target ? "_blank" : ""} className={combinedClassName}>
       {children}
     </Link>
   );

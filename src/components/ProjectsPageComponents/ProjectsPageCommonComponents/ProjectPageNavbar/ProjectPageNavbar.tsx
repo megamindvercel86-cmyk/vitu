@@ -213,7 +213,7 @@ export default function ProjectNavbar({
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href}  to={href} smooth={true} duration={700}>
                   
-                <div className="2xl:text-4xl text-white text-2xl cursor-pointer font-freightNeoMedium">{label}</div>
+                <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (

@@ -196,7 +196,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
   const email = text.includes("info@viturealty.com");
 
   return (
-    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start"} items-center md:gap-0 gap-3 `}>
+    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}>
       {icon}
       <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}
