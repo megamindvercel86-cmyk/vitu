@@ -5,6 +5,7 @@ import styles from "./Plot.module.scss";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import { MotionValue } from "framer-motion";
+import Link from "next/link";
 
 interface PlotProps {
   title: string;
@@ -17,16 +18,7 @@ interface PlotProps {
   targetScale: number; // Add this
 }
 
-const Plot = ({
-  title,
-  description,
-  src,
-  color = "#f5f5f5",
-  i = 0,
-  progress,
-  range,
-  targetScale,
-}: PlotProps) => {
+const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, range, targetScale }: PlotProps) => {
   const container = useRef(null);
   // const { scrollYProgress } = useScroll({
   //   target: container,
@@ -47,17 +39,16 @@ const Plot = ({
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2 className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-4xl">
-              {title}
-            </h2>
-            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base">
-              {description}
-            </p>
-            <div >
-            <button className="px-5 border py-2 rounded-3xl font-FreightNeoProNormal bg-[#4F3737] text-white mt-4 lg:mt-[40%]">Get the Best Quote</button>
+            <h2 className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-4xl">{title}</h2>
+            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base">{description}</p>
+            <div>
+              <Link href="project-enquire">
+                <button className="px-5 border py-2 rounded-3xl font-FreightNeoProNormal bg-[#4F3737] text-white mt-4 lg:mt-[40%]">
+                  Get the Best Quote
+                </button>
+              </Link>
+            </div>
           </div>
-          </div>
-          
 
           <div className={styles.imageContainer}>
             <motion.div className={styles.inner}>
@@ -67,7 +58,6 @@ const Plot = ({
         </div>
       </motion.div>
     </div>
-    
   );
 };
 

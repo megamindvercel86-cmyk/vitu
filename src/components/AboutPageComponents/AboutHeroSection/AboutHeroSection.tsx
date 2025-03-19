@@ -2,7 +2,7 @@
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import React from "react";
-import backgroundImage from "../../../../public/images/backgroundImages/aboutPageBackgroundImageDesktop.webp";
+import backgroundImage from "../../../../public/images/backgroundImages/aboutHeroImg.jpg";
 import { Link } from "react-scroll";
 
 // ============= Types =============
@@ -51,13 +51,13 @@ const AboutHeroSection: React.FC = () => {
         h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen
       `}
       >
-        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover" placeholder="blur" />
+        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-fill" placeholder="blur" />
         {/* Hero Content */}
         <div
           className={`
           relative
           flex h-full justify-center
-          top-[9.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[34.375rem]
+          top-[9.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[22.375rem]
         `}
         >
           {/* Text and CTA Container */}
@@ -91,36 +91,48 @@ const AboutHeroSection: React.FC = () => {
             </h1>
 
             {/* CTA Button */}
-           <Link to="storysection" smooth={true} duration={700}> <div className="relative group cursor-pointer">
-              <button
-                type="button"
-                className={`
+           <Link to="storysection" smooth={true} duration={700}>
+          
+            <div className="relative group cursor-pointer">
+  <button
+    type="button"
+    className="
       relative group
       mt-8
       flex items-center justify-center
       gap-[0.6875rem]
       rounded-full
-      pl-[0.5rem] pr-[1.125rem] py-[0.1875rem]
+      pl-[0.5rem] 2xl:pl-[1rem] pr-[0.125rem] py-[0.1875rem]
       text-base font-freightNeoMedium text-white
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
-    `}
-               
-              >
-                {/* Default background */}
-                <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
+    "
+  >
+    {/* Default background */}
+    <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
 
-                {/* Hover background with transform from left */}
-                <div className="absolute inset-0 bg-[#614130] rounded-full transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300">
+    {/* Hover effect starts from the icon */}
+    <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+      {/* Expanding hover background from icon */}
+      <div
+        className="
+          absolute w-0 h-0 bg-[#614130] rounded-full
+          group-hover:w-[30rem] group-hover:h-[30rem]
+          transition-all duration-[600ms] ease-out
+        "
+      ></div>
 
-                  
-                </div>
+      {/* Icon stays above the expanding background */}
+      <div className="relative z-20">
+        <CTAButtonIcon />
+      </div>
+    </div>
 
-                {/* Button content: Icon on left */}
-                <CTAButtonIcon />
-                <span className="relative z-[9]">{ABOUT_HERO_CONFIG.cta.text}</span>
-              </button>
-            </div></Link>
+    {/* Button text (z-20 to keep it visible above the hover effect) */}
+    <span className="relative z-20 mr-4">{ABOUT_HERO_CONFIG.cta.text}</span>
+  </button>
+</div>
+</Link>
           </div>
         </div>
       </div>

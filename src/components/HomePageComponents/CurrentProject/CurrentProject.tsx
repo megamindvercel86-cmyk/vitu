@@ -52,7 +52,7 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <div
-      className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]"
+      className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]"
       aria-label="Project Statistics"
     >
       {STATS_DATA.map((stat, index) => (
@@ -62,7 +62,7 @@ const CurrentProject: React.FC = () => {
         >
           <Typography
             variant="custom"
-            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] text-[#503637]"
+            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
           >
             {stat.value}
           </Typography>
@@ -134,13 +134,13 @@ const CurrentProject: React.FC = () => {
 
       {/* Right Column - Project Image */}
       <figure
-        className="flex items-center h-[70vh] justify-center w-full lg:w-1/2"
+        className="flex items-center h-[70vh] lg2:h-[90vh]  justify-center w-full lg:w-1/2"
         aria-labelledby="project-title"
       >
         <Image
           src={PROJECT_DATA.image}
-          width={708}
-          height={300}
+          width={600}
+          height={170}
           alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
           className=" object-cover"
         />

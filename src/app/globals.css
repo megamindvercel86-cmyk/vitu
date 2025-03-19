@@ -211,7 +211,7 @@ option {
 /* 800px - 1023px */
 @media (min-width: 800px) and (max-width: 1023px) {
   .herosection {
-    height: 173vh;
+    height: 176vh;
   }
 }
 

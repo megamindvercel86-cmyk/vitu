@@ -1,5 +1,5 @@
 import Typography from "@/components/Typography/Typography";
-import bgImage from "../../../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
+import bgImage from "../../../../public/images/backgroundImages/homeHeroImg.jpg";
 import Image from "next/image";
 
 // ============= Constants =============
@@ -32,7 +32,7 @@ export default function HomeHeroSection() {
           quality={85}
         />
         {/* Hero Content */}
-        <div className="relative flex h-full justify-center top-[12.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[34.375rem]">
+        <div className="relative flex h-full justify-center top-[12.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
           <div className="flex flex-col items-center text-center text-white">
             <h1 
               id="hero-heading"

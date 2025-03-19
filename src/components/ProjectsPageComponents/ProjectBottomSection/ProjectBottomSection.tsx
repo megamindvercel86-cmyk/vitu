@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import backround from "../../../../public/images/backgroundImages/projectpageBg4.png";
+import Link from "next/link";
 
 // ============= Types =============
 interface AboutHeroConfig {
@@ -111,12 +112,12 @@ const ProjectBottomSection: React.FC = () => {
         <h2 className="font-freightNeoSemibold text-4xl md:text-6xl lg:text-6xl lg2:text-8xl 2xl:text-9xl text-center leading-tight mb-8">
           {ABOUT_HERO_CONFIG.titles.sub}
         </h2>
-        <button
+        <Link href='/general-enquire'><button
           type="button"
           className="group relative flex items-center bg-white text-[#2B847D] gap-2 px-6 py-3 rounded-full overflow-hidden transition-all duration-300"
         >
           <span className="relative z-10 font-FreightNeoProBold">{ABOUT_HERO_CONFIG.cta.text}</span>
-        </button>
+        </button></Link>
       </div>
     </section>
   );

@@ -37,10 +37,10 @@ type RouteConfig = {
 // ============= Constants =============
 const ROUTE_CONFIG: RouteConfig = {
   "/": {
-    buttonColor: "text-[#877D62]",
+    buttonColor: "text-[#298BBB]",
   },
   "/about": {
-    buttonColor: "text-[#877D62]",
+    buttonColor: "text-[#6F8AAF]",
   },
   "/resources": {
     buttonColor: "text-[#6F8AAF]",
@@ -266,7 +266,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
               {showGetInTouch && (
                 <Link href="/general-enquire">
                   <Button
-                    className={`w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={`w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10  lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}

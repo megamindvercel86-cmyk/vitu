@@ -96,7 +96,7 @@ const ExploreProjects: React.FC = () => {
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden block mb-12" id="sustainability">
+      <div className="md:hidden block pb-5 " id="sustainability">
         {/* Mobile Title Section */}
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
           <Typography
