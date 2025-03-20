@@ -60,27 +60,40 @@ const ProjectFooter: FC = () => {
         <div className="grid  grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col  items-center lg:items-start">
-            <FooterLink href="/"><Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" /></FooterLink>
+            <FooterLink href="/">
+              <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
+            </FooterLink>
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Premium Plotted Development
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
-              <li className="flex gap-2 pt-[170px] justify-center md:justify-start">
-                <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
-                  <Instgram />
-                </NavLink>
-                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}>
-                  <Meta />
-                </NavLink>
-                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}>
-                  <LinkedIn />
-                </NavLink>
-                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}>
-                  <Youtube />
-                </NavLink>
-              </li>
+              <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
+                <li>
+                  <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
+                    <Instgram aria-hidden="true" />
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
+                    <Meta aria-hidden="true" />
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
+                    <LinkedIn aria-hidden="true" />
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
+                    <Youtube aria-hidden="true" />
+                  </NavLink>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -109,12 +122,14 @@ const ProjectFooter: FC = () => {
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
               {/* Social Media Links */}
-            <SubHeading className="text-lg lg:pt-10 md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
+              <SubHeading className="text-lg lg:pt-10 md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
             </ul>
-            <SubHeading className="text-lg md:text-xl text-footerTextColor lg:hidden font-freightNeoSemibold mb-4">Get in Touch</SubHeading>
+            <SubHeading className="text-lg text-center md:text-start md:text-xl text-footerTextColor lg:hidden font-freightNeoSemibold mb-4">
+              Get in Touch
+            </SubHeading>
             <ul className="space-y-4 text-gray-300 lg:hidden">
               <FooterContactItem
                 icon={<Share />}
@@ -124,7 +139,7 @@ const ProjectFooter: FC = () => {
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
-              </ul>
+            </ul>
             <div className="pt-16 w-[100%]  cursor-pointer relative">
               {/* <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input
@@ -141,7 +156,9 @@ const ProjectFooter: FC = () => {
                 <h1 className="font-FreightNeoProNormal   text-[16px]">Porject By</h1>
               </div>
               <div className="flex justify-center md:justify-start  lg:justify-end">
-                <FooterLink href="/"><Image alt="logo" src={logo2} /></FooterLink>
+                <FooterLink href="/">
+                  <Image alt="logo" src={logo2} />
+                </FooterLink>
               </div>
             </div>
           </div>
@@ -209,7 +226,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
   const email = text.includes("info@viturealty.com");
 
   return (
-    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}>
+    <li
+      className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}
+    >
       {icon}
       <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-center lg:text-left">
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}

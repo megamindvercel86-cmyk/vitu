@@ -1,4 +1,3 @@
-"use client";
 
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
@@ -30,38 +29,38 @@ const NAVBAR_CONFIG = {
  * - Optimized performance with lazy loading.
  */
 
-// export async function generateMetadata() {
-//   const pageTitle = "About Us | Vitu-Realty - Your Trusted Real Estate Partner in Mangalore";
-//   const pageDescription =
-//     "Learn more about Vitu-Realty, a trusted real estate partner in Mangalore. Discover our story, vision, mission, leadership team, and commitment to creating premium plotted developments.";
-//   const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg"
+export async function generateMetadata() {
+  const pageTitle = "About Us | Vitu-Realty - Your Trusted Real Estate Partner in Mangalore";
+  const pageDescription =
+    "Learn more about Vitu-Realty, a trusted real estate partner in Mangalore. Discover our story, vision, mission, leadership team, and commitment to creating premium plotted developments.";
+  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg"
 
-//   return {
-//     title: pageTitle,
-//     description: pageDescription,
-//     openGraph: {
-//       title: pageTitle,
-//       description: pageDescription,
-//       url: "https://yourwebsite.com/about",
-//       siteName: "Vitu-Realty",
-//       images: [
-//         {
-//           url: imageUrl,
-//           width: 1200,
-//           height: 630,
-//           alt: "About Us - Vitu-Realty, Your Trusted Real Estate Partner in Mangalore",
-//         },
-//       ],
-//       type: "website",
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: pageTitle,
-//       description: pageDescription,
-//       images: [imageUrl],
-//     },
-//   };
-// }
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: "https://yourwebsite.com/about",
+      siteName: "Vitu-Realty",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "About Us - Vitu-Realty, Your Trusted Real Estate Partner in Mangalore",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
+  };
+}
 
 export default function AboutPage() {
   

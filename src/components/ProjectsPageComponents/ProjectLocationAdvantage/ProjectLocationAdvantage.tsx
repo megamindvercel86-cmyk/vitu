@@ -13,9 +13,9 @@ const LocationAdvantage = () => {
         className="absolute object-cover w-full h-full"
       />
       <div className="absolute bottom-[390px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
-        <h4 className="text-lg md:text-lg text-[#4F6B94] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
+        <h1 className="text-lg md:text-lg text-[#4F6B94] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
           Location Advantage
-        </h4>
+        </h1>
         <h1 className=" text-sm md:text-5xl text-[#4F6B94] font-[400] max-w-xl font-FreightNeoProNormal leading-tight">
           Built for Life’s Moments
         </h1>

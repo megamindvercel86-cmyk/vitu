@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
-import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
 // ============= Constants =============
 const PROJECT_DATA = {

@@ -30,7 +30,6 @@ const Footer: FC = () => {
   );
 
   const [email, setEmail] = useState<string>("");
-  console.log(email);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

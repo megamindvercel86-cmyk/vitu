@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./Plot.module.scss";
-import { useTransform, motion, useScroll } from "framer-motion";
+import { useTransform, motion} from "framer-motion";
 import { useRef } from "react";
 import { MotionValue } from "framer-motion";
 import Link from "next/link";
