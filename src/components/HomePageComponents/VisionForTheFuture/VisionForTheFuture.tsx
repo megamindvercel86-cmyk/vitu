@@ -210,44 +210,43 @@ export default function VisionForTheFuture() {
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
             <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full   ">
-              
-            <Link href="/about">
-              <button
-                className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
-                aria-label="See What's Next"
-              >
-                See What&apos;s Next
-                <CTAButtonIcon direction="right" />
-              </button>
-            </Link>
-            <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
-              <svg width="50" height="50" viewBox="0 0 50 50">
-                {/* Background Circle */}
-                <circle cx="25" cy="25" r="22" stroke="#dbc9bc" strokeWidth="2" fill="none" opacity="0.3" />
-                
-                {/* Progress Circle */}
-                <circle
-                  cx="25"
-                  cy="25"
-                  r="22"
-                  stroke="#dbc9bc"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeDasharray={138} // 2 * π * r (full circle length)
-                  strokeDashoffset={(1 - progress / 100) * 138} // Adjust offset to show progress
-                  strokeLinecap="round"
-                  className="transition-all duration-100"
-                  transform="rotate(-90 25 25)" // Rotate the circle to start from the top
-                />
+              <Link href="/about">
+                <button
+                  className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
+                  aria-label="See What's Next"
+                >
+                  See What&apos;s Next
+                  <CTAButtonIcon direction="right" />
+                </button>
+              </Link>
+              <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                  {/* Background Circle */}
+                  <circle cx="25" cy="25" r="22" stroke="#dbc9bc" strokeWidth="2" fill="none" opacity="0.3" />
 
-                {/* Play/Pause Icon */}
-                <foreignObject x="14" y="14" width="22" height="22">
-                  <button className="w-full h-full flex items-center justify-center">
-                    {isPlay ? <CiPause1 className="text-2xl text-[#dbc9bc]" /> : <CiPlay1 className="text-2xl  text-[#dbc9bc]" />}
-                  </button>
-                </foreignObject>
-              </svg>
-            </div>
+                  {/* Progress Circle */}
+                  <circle
+                    cx="25"
+                    cy="25"
+                    r="22"
+                    stroke="#dbc9bc"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray={138} // 2 * π * r (full circle length)
+                    strokeDashoffset={(1 - progress / 100) * 138} // Adjust offset to show progress
+                    strokeLinecap="round"
+                    className="transition-all duration-100"
+                    transform="rotate(-90 25 25)" // Rotate the circle to start from the top
+                  />
+
+                  {/* Play/Pause Icon */}
+                  <foreignObject x="14" y="14" width="22" height="22">
+                    <button className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
+                      {isPlay ? <CiPause1 className="text-2xl text-[#dbc9bc]" /> : <CiPlay1 className="text-2xl text-[#dbc9bc]" />}
+                    </button>
+                  </foreignObject>
+                </svg>
+              </div>
             </div>
             <div className="flex space-x-3 py-4 px-6 rounded-[2rem] bg-[#AE856666]" role="group" aria-label="Carousel Navigation Dots">
               {CAROUSEL_DATA.map((_, dotIndex) => (
@@ -260,12 +259,14 @@ export default function VisionForTheFuture() {
                       handleTransition(direction);
                     }
                   }}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    dotIndex === currentIndex ? "bg-white md:w-8 w-9" : "bg-[#FFFFFF99]"
-                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  className={`min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 flex items-center justify-center
+      ${dotIndex === currentIndex ? "bg-white w-9 md:w-10 h-9 md:h-10" : "bg-[#FFFFFF99]"}
+      ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
                   aria-current={dotIndex === currentIndex}
-                />
+                >
+                  <span className="w-2 h-2 md:w-3 md:h-3 bg-current rounded-full" />
+                </button>
               ))}
             </div>
           </div>

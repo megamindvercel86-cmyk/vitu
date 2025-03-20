@@ -7,6 +7,7 @@ interface NavLinkProps {
   className?: string;
   target?: boolean;
   onClick?: () => void;
+  ariaLabel?: string;
 }
 
 const NavLink = ({
@@ -15,6 +16,7 @@ const NavLink = ({
   className,
   target = false,
   onClick,
+  ariaLabel,
 }: NavLinkProps) => {
   const combinedClassName = classNames(
     "lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer",
@@ -30,6 +32,8 @@ const NavLink = ({
       target={linkTarget}
       rel="noopener noreferrer"
       onClick={onClick}
+      aria-label={ariaLabel || (typeof children === "string" ? children : undefined)}
+      title={ariaLabel || (typeof children === "string" ? children : undefined)}
     >
       {children}
     </Link>

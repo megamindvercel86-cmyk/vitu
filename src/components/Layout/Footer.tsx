@@ -57,7 +57,9 @@ const Footer: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
-            <Link href="/"><Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" /></Link>
+            <Link href="/">
+              <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
+            </Link>
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Building Wholesome <br /> Living Spaces
             </p>
@@ -103,17 +105,20 @@ const Footer: FC = () => {
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
               <li className="flex gap-2 justify-center md:justify-start">
-                <NavLink href="https://www.instagram.com/vitu.realty" target={true}>
-                  <Instgram />
+                <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
+                  <Instgram aria-hidden="true" />
                 </NavLink>
-                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true}>
-                  <Meta />
+
+                <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
+                  <Meta aria-hidden="true" />
                 </NavLink>
-                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true}>
-                  <LinkedIn />
+
+                <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
+                  <LinkedIn aria-hidden="true" />
                 </NavLink>
-                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true}>
-                  <Youtube />
+
+                <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
+                  <Youtube aria-hidden="true" />
                 </NavLink>
               </li>
             </ul>
@@ -196,7 +201,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
   const email = text.includes("info@viturealty.com");
 
   return (
-    <li className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}>
+    <li
+      className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
+    >
       {icon}
       <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}
