@@ -168,7 +168,7 @@ const ProjectHeroSection: React.FC = () => {
     </div>
 
     {/* Button text (added margin-right for spacing) */}
-    <span className="relative z-20 ">Scroll to Learn More</span>
+    <span className="relative z-20 mt-[2px] md:mt-0 ">Scroll to Learn More</span>
   </button>
 </div>
 

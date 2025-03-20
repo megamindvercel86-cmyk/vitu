@@ -33,7 +33,7 @@ const ARTICLES: Article[] = [
     description: "Protect the planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image2.png",
-    href:"/vaikuntamcity"
+    href:""
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const ARTICLES: Article[] = [
     description: "Build a healthier planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image3.png",
-    href:"/vaikuntamcity"
+    href:""
   },
   
 ];
@@ -64,7 +64,7 @@ const ARTICLES_MOBAIL: Article[] = [
     description: "Protect the planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image2.png",
-    href:"/vaikuntamcity"
+    href:""
   },
   {
     id: 3,
@@ -73,7 +73,7 @@ const ARTICLES_MOBAIL: Article[] = [
     description: "Build a healthier planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image3.png",
-    href:"/vaikuntamcity"
+    href:""
   },
   {
     id: 4,
@@ -91,7 +91,7 @@ const ARTICLES_MOBAIL: Article[] = [
     description: "Protect the planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image2.png",
-    href:"/vaikuntamcity"
+    href:""
   },
   {
     id: 6,
@@ -100,7 +100,7 @@ const ARTICLES_MOBAIL: Article[] = [
     description: "Build a healthier planet with sustainable choices.",
     type: "secondary",
     url: "/images/projectFilter/image3.png",
-    href:"/vaikuntamcity"
+    href:""
   },
 ];
 

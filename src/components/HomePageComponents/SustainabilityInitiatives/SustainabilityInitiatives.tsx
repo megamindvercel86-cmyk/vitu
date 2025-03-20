@@ -96,7 +96,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
         </Typography>
         <Typography
           variant="custom"
-          className="md:text-[#4F373799] text-[#04070799] max-w-full pr-48 xl:max-w-[500px] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
+          className="md:text-[#4F373799] text-[#04070799] max-w-full lg:pr-48 xl:max-w-[500px] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
         >
           {CONTENT.description}
         </Typography>

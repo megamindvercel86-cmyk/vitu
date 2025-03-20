@@ -58,7 +58,7 @@ export default function FounderMessage(): React.ReactElement {
 
   // ============= Render =============
   return (
-    <div className="flex flex-col items-center justify-center pt-8 pb-10  lg:pb-40  xl:pb-40 2xl:h-screen">
+    <div className="flex flex-col items-center justify-center pt-10 pb-10     2xl:h-screen">
       {/* Video Wrapper */}
       <div className="w-[90vw] h-[324px] lg:w-[90vw]md:h-[600px] lg:w-[90vw] lg:h-[657px] xl:w-[1355px] xl:h-[775px] 2xl:w-[90%] 2xl:h-screen rounded-2xl overflow-hidden">
         {loading ? (

@@ -26,7 +26,7 @@ const ProjectListing = ( {card,
   layout?: boolean;
 }) => {
   return (
-   <Link href={card.href}> <motion.button
+   <Link href={card.href || ""}> <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         className="md:rounded-[20px] overflow-hidden rounded-[30px] bg-gray-100 dark:bg-neutral-900 
           flex flex-col items-start justify-start relative z-10 w-full h-full"
@@ -46,6 +46,13 @@ const ProjectListing = ( {card,
             
             {card.title}
           </motion.p>
+          {!card.href&&<motion.p
+            layoutId={layout ? `title-${card.title}` : undefined}
+            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
+          >
+            
+            Coming Soon...
+          </motion.p>}
           {/* <motion.p
             layoutId={layout ? `subtitle-${card.description}` : undefined}
             className="text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl"
@@ -60,13 +67,13 @@ const ProjectListing = ( {card,
           className="object-cover absolute z-10 inset-0"
         />
         {/* Plus icon at the bottom right */}
-        <div className="absolute bottom-4 right-4 z-50">
+        {card.href&&<div className="absolute bottom-4 right-4 z-50">
           {card.type === "primary" ? (
             <PrimaryViewMoreButton />
           ) : (
             <SecondaryViewMoreButton />
           )}
-        </div>
+        </div>}
       </motion.button>
       </Link>
   )

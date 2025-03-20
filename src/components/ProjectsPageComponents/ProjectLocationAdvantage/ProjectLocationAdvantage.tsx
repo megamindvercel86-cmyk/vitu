@@ -79,7 +79,7 @@ const LocationAdvantage = () => {
     </div>
 
     {/* Button text (added margin-right for spacing) */}
-    <span className="relative z-20 ">More about the Location</span>
+    <span className="relative z-20 mt-[3px] md:mt-0 ">More about the Location</span>
   </button>
 </div>
 

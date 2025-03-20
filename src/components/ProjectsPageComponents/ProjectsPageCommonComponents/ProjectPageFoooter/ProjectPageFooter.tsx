@@ -141,7 +141,7 @@ const ProjectFooter: FC = () => {
                 <h1 className="font-FreightNeoProNormal   text-[16px]">Porject By</h1>
               </div>
               <div className="flex justify-center md:justify-start  lg:justify-end">
-                <Image alt="logo" src={logo2} />
+                <FooterLink href="/"><Image alt="logo" src={logo2} /></FooterLink>
               </div>
             </div>
           </div>

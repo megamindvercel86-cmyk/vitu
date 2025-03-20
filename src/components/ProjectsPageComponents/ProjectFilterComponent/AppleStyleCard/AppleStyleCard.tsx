@@ -167,6 +167,15 @@ export default function ProjectFilterAppleStyleCard({
           >
             {title}
           </motion.p>
+          {!href&&<motion.p
+            layoutId={`card-title-${id}`}
+            className={cn(
+              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
+              titleClassName,
+            )}
+          >
+            Coming Soon...
+          </motion.p>}
           {/* <motion.p
             layoutId={`card-subtitle-${id}`}
             className={cn(
@@ -191,7 +200,7 @@ export default function ProjectFilterAppleStyleCard({
             {bottomTitle}
           </Typography>
         </div>
-        <div
+       {href&& <div
           className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
         >
           {isViewMore === true &&
@@ -200,7 +209,7 @@ export default function ProjectFilterAppleStyleCard({
             ) : (
               <SecondaryViewMoreButton />
             ))}
-        </div>
+        </div>}
 
         {/* <Image
           src={imageSrc || "/placeholder.svg"}

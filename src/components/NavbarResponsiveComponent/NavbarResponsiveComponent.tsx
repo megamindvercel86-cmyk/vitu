@@ -66,8 +66,8 @@ const NavbarResponsiveComponent = ({
             {NAV_LINKS.map(({ href, label, dropdownItems }) => (
               <div key={href} className="flex flex-col items-center">
                 <NavLink href={href} className="text-2xl font-FreightNeoProBold text-center hover:text-gray-600 transition-colors">
-                  <div className="flex gap-2">
-                    <div onClick={()=>pathname===href&&setIsMenuOpen(false)}>{label}</div>
+                  <div className={`flex gap-2 ${dropdownItems&&"pl-6"}`}>
+                    <div onClick={()=>pathname===href&&setIsMenuOpen(false)} >{label}</div>
                     {dropdownItems && (
                       <button onClick={() => setIsDropDownMenuOpen(!isDropDownOpen)}>
                         {!isDropDownOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
@@ -79,9 +79,9 @@ const NavbarResponsiveComponent = ({
                 {/* Always show sub-menu items below the parent */}
                 {isDropDownOpen && dropdownItems && (
                   <div className="mt-2  flex flex-col items-center space-y-2">
-                    {dropdownItems.map((item) => (
+                    {dropdownItems.map((item,index) => (
                       <NavLink
-                        key={item.href}
+                        key={index}
                         href={item.href}
                         className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
                         onClick={() => setIsMenuOpen(false)}

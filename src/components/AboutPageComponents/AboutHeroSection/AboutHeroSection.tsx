@@ -51,7 +51,7 @@ const AboutHeroSection: React.FC = () => {
         h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen
       `}
       >
-        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-fill" placeholder="blur" />
+        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover" placeholder="blur" />
         {/* Hero Content */}
         <div
           className={`
@@ -112,7 +112,7 @@ const AboutHeroSection: React.FC = () => {
     <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
 
     {/* Hover effect starts from the icon */}
-    <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+    <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
       {/* Expanding hover background from icon */}
       <div
         className="
@@ -123,13 +123,13 @@ const AboutHeroSection: React.FC = () => {
       ></div>
 
       {/* Icon stays above the expanding background */}
-      <div className="relative z-20">
+      <div className="relative ">
         <CTAButtonIcon />
       </div>
     </div>
 
     {/* Button text (z-20 to keep it visible above the hover effect) */}
-    <span className="relative z-20 mr-4">{ABOUT_HERO_CONFIG.cta.text}</span>
+    <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
   </button>
 </div>
 </Link>

@@ -57,7 +57,7 @@ const Footer: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
-            <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
+            <Link href="/"><Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" /></Link>
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Building Wholesome <br /> Living Spaces
             </p>
