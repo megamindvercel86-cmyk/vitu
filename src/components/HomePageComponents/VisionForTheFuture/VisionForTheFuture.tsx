@@ -259,14 +259,12 @@ export default function VisionForTheFuture() {
                       handleTransition(direction);
                     }
                   }}
-                  className={`min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 flex items-center justify-center
-      ${dotIndex === currentIndex ? "bg-white w-9 md:w-10 h-9 md:h-10" : "bg-[#FFFFFF99]"}
-      ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    dotIndex === currentIndex ? "bg-white md:w-8 w-9" : "bg-[#FFFFFF99]"
+                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
                   aria-current={dotIndex === currentIndex}
-                >
-                  <span className="w-2 h-2 md:w-3 md:h-3 bg-current rounded-full" />
-                </button>
+                />
               ))}
             </div>
           </div>

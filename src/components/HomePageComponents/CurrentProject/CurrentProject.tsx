@@ -10,8 +10,7 @@ const PROJECT_DATA = {
   description: {
     prefix: "Just ",
     number: "5",
-    suffix:
-      " minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.",
+    suffix: " minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.",
   },
   cta: "Explore the Project Now",
   image: "/images/visionAndFutureImages/image5.png",
@@ -51,25 +50,16 @@ const STATS_DATA = [
 const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div
-      className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]"
-      aria-label="Project Statistics"
-    >
+    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]" aria-label="Project Statistics">
       {STATS_DATA.map((stat, index) => (
-        <div
-          key={index}
-          className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}
-        >
+        <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
           <Typography
             variant="custom"
             className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
           >
             {stat.value}
           </Typography>
-          <Typography
-            variant="custom"
-            className="font-FreightNeoProNormal text-[24px] text-[#503637]"
-          >
+          <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
             {stat.label}
           </Typography>
         </div>
@@ -90,10 +80,7 @@ const CurrentProject: React.FC = () => {
             className="flex items-center justify-center w-[166px] h-[34px] pt-1 rounded-md bg-[#AE856614] 2xl:w-[280px] 2xl:text-[1.5rem]"
             aria-label="Project Availability"
           >
-            <Typography
-              variant="custom"
-              className="font-FreightNeoProNormal text-customBrown"
-            >
+            <Typography variant="custom" className="font-FreightNeoProNormal text-customBrown">
               {PROJECT_DATA.badge}
             </Typography>
           </div>
@@ -113,9 +100,7 @@ const CurrentProject: React.FC = () => {
             className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
           >
             {PROJECT_DATA.description.prefix}
-            <span className="font-CandideCondensedMedium">
-              {PROJECT_DATA.description.number}
-            </span>
+            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span>
             {PROJECT_DATA.description.suffix}
           </Typography>
         </div>
@@ -134,7 +119,7 @@ const CurrentProject: React.FC = () => {
 
       {/* Right Column - Project Image */}
       <figure
-        className="flex items-center h-[70vh] lg2:h-[90vh]  justify-center w-full lg:w-1/2"
+        className="lg:flex hidden xl:hidden items-center  h-[70vh] lg2:h-[90vh]  justify-center w-full lg:w-1/2"
         aria-labelledby="project-title"
       >
         <Image
@@ -143,6 +128,15 @@ const CurrentProject: React.FC = () => {
           height={170}
           alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
           className=" object-cover"
+        />
+      </figure>
+      <figure className="hidden items-center xl:flex md:flex lg:hidden justify-center w-full lg:w-1/2" aria-labelledby="project-title">
+        <Image
+          src={PROJECT_DATA.image}
+          width={708}
+          height={400}
+          alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
+          className="w-full h-full object-contain"
         />
       </figure>
 

@@ -220,7 +220,7 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2024</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">

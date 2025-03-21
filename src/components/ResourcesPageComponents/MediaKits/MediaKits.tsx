@@ -21,7 +21,7 @@ const MediaKits: React.FC = () => {
         "Take the first step towards the home of your dreams. Fill in the form and begin your journey.",
       buttonText: "Download Bio",
       variant: "white",
-      location: "/downloadingFiles/AboutUs.pdf",
+      location: "/downloadingFiles/VITU Realty - About Us.pdf",
     },
     {
       title: "VITU REALTY",
