@@ -12,7 +12,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "firebasestorage.googleapis.com",
-        pathname: "/v0/b/viturealty.appspot.com/**",
+        pathname: "/v0/b/**", // Allows any Firebase Storage bucket
       },
       {
         protocol: "https",
@@ -21,7 +21,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
-      }
+      },
     ],
     deviceSizes: [320, 420, 768, 1024, 1200],
     imageSizes: [16, 32, 48, 64, 96],
@@ -55,9 +55,7 @@ const nextConfig = {
   ],
 
   experimental: {
-    // serverActions: true,
     optimizePackageImports: ["framer-motion", "swiper"],
-    // turbo: true, // Enable Turbopack optionally
   },
 };
 

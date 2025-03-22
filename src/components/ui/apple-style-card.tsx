@@ -158,7 +158,7 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-title-${id}`}
             className={cn(
-              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
+              "text-xl md:text-2xl lg:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
               titleClassName,
             )}
           >

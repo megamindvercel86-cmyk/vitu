@@ -21,7 +21,7 @@ interface Article {
   title: string;
   description: string;
   type: "primary" | "secondary" |string;
-  url: string;
+  fileUrl: string;
   subtitle:string;
 }
 
@@ -69,22 +69,49 @@ export default function ArticleArea(): React.ReactElement {
 
   const CardContent = ({ cardId }: { cardId: number }) => {
     const [currentCardId, setCurrentCardId] = useState(cardId);
+    const [card,setCard]= useState<Article[]>([]);
+
    
 
 
     let project:
       | {
           id: number;
-          url: string;
+          fileUrl: string;
           title: string;
           description?: string;
         }
       | undefined;
 
-    project = articleArea.find((project) => project.id === currentCardId);
+
+      const fetchBlogs=async()=> {
+        try {
+          const response = await fetch("/api/blogs");
+          if (!response.ok) {
+            throw new Error("Failed to fetch users");
+          }
+          const res = await response.json();
+          const data = res.data;
+    
+    
+         
+          setCard(data)
+    
+         
+          
+        } catch (error) {
+          console.error("Failed to fetch team members", error);
+        }
+      }
+        
+    useEffect(() => {
+      fetchBlogs()
+    }, []);
+
+    project = card.find((project) => project.id === currentCardId);
 
     const handleFooterClick = () => {
-      const nextProject = articleArea.find((project) => {
+      const nextProject = card.find((project) => {
         if (project.id === 3) {
           return 1 === currentCardId;
         } else {
@@ -97,7 +124,7 @@ export default function ArticleArea(): React.ReactElement {
       }
     };
 
-    const nextProject = articleArea.find((project) => {
+    const nextProject = card.find((project) => {
       if (project.id === 3) {
         return 1 === currentCardId;
       } else {
@@ -110,7 +137,7 @@ export default function ArticleArea(): React.ReactElement {
         {project && (
           <div key={"dummy-content"}>
             <Image
-              src={project.url || "/placeholder.svg"}
+              src={project.fileUrl || "/placeholder.svg"}
               alt={nextProject?.title || "Card image"}
               width={1042}
               height={45}
@@ -167,17 +194,51 @@ export default function ArticleArea(): React.ReactElement {
   );
   const swiperRef = useRef<SwiperType | null>(null);
   const isNavigationDisabled = articleArea.length <= 3;
+  const [card,setCard]= useState<Article[]>([]);
+  console.log(card,"card");
+  
+
   const [mobailCard,setMobilCard]= useState<Article[]>();
+  
 
-  const data=articleArea.map((item,index)=>{
-    return {...item, id:index+5}
-  })
+  
+
+
+
+
+  const fetchBlogs=async()=> {
+    try {
+      const response = await fetch("/api/blogs");
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      const res = await response.json();
+      const data = res.data;
+
+
+     
+      setCard(data)
+
+      const dummyDtata = data.map((item: Article, index: number): Article => {
+        return { ...item, id: index + 5 };
+      });
+      setMobilCard([...data,...dummyDtata])
+      
+    } catch (error) {
+      console.error("Failed to fetch team members", error);
+    }
+  }
     
-  useEffect(()=>{
-  setMobilCard([...articleArea,...data])
+useEffect(() => {
+  fetchBlogs()
+}, []);
 
-  },[])
-  console.log(mobailCard,"jijfe");
+
+
+
+
+
+
   return (
     <div className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
@@ -194,14 +255,14 @@ export default function ArticleArea(): React.ReactElement {
               swiperRef.current = swiper;
             }}
           >
-            {articleArea.map((card) => (
+            {card.map((card) => (
               <SwiperSlide key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] !rounded-[20px]">
                 {/* Use h-full to inherit height from Swiper */}
                 <AppleStyleCard
                   id={card.id}
                   title={card.title}
                   subtitle={card.subtitle}
-                  imageSrc={card.url}
+                  imageSrc={card.fileUrl}
                   expandedImageClassName="object-center"
                   content={<CardContent cardId={card.id} />}
                   isViewMoreType={card.type}
@@ -231,7 +292,7 @@ export default function ArticleArea(): React.ReactElement {
         </div>
         {/* Mobile Carousel */}
         <div className="relative md:block lg:hidden">
-          <InfiniteCarousel cards={mobailCard} data={mobailCard} />
+          {mobailCard&&<InfiniteCarousel cards={mobailCard} data={mobailCard} />}
         </div>
       </main>
     </div>

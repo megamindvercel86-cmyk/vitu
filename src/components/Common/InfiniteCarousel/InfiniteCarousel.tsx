@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 // Define a type for the card object
 interface Card {
   id: number;
-  url: string;
+  fileUrl: string;
   className?: string;
   startPosition?: { x?: number; y?: number };
   isViewMore?: boolean;
@@ -94,7 +94,7 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
       {project && (
         <div key={"dummy-content"}>
           <Image
-            src={project.url || "/placeholder.svg"}
+            src={project.fileUrl || "/placeholder.svg"}
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}
@@ -168,7 +168,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
             <AppleStyleCard
               key={card.id + 5}
               id={card.id + 5}
-              imageSrc={card.url}
+              imageSrc={card.fileUrl}
               expandedImageClassName="object-center"
               bottomTitle={card.bottomTitle}
               isViewMoreType={card.type}
