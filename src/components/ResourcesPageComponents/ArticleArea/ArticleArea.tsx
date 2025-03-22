@@ -11,7 +11,7 @@ import "swiper/css";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import articleArea from "@/data/articleArea.json";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 // ============= Types & Interfaces =============
@@ -20,8 +20,9 @@ interface Article {
   category: string;
   title: string;
   description: string;
-  type: "primary" | "secondary";
+  type: "primary" | "secondary" |string;
   url: string;
+  subtitle:string;
 }
 
 interface CarouselCard extends Article {
@@ -38,91 +39,10 @@ const CONTENT = {
   },
 };
 
-const ARTICLES: Article[] = [
-  {
-    id: 1,
-    category: "BLOG",
-    title: "Commit to Clean Practices",
-    description: "A cleaner environment starts with us.",
-    type: "primary",
-    url: "/images/articleImages/articleImage1.jpg",
-  },
-  {
-    id: 2,
-    category: "NEWS",
-    title: "Choose an Eco-Friendly Future",
-    description: "Protect the planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage2.jpg",
-  },
-  {
-    id: 3,
-    category: "BLOG",
-    title: "Invest in Green Living",
-    description: "Build a healthier planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage3.jpg",
-  },
-  // {
-  //   id: 4,
-  //   category: "BLOG",
-  //   title: "Invest in Green Living",
-  //   description: "Build a healthier planet with sustainable choices.",
-  //   type: "secondary",
-  //   url: "/images/articleImages/articleImage3.jpg",
-  // },
-];
 
-const ARTICLES_MOBILE: Article[] = [
-  {
-    id: 1,
-    category: "BLOG",
-    title: "Commit to Clean Practices",
-    description: "A cleaner environment starts with us.",
-    type: "primary",
-    url: "/images/articleImages/articleImage1.jpg",
-  },
-  {
-    id: 2,
-    category: "NEWS",
-    title: "Choose an Eco-Friendly Future",
-    description: "Protect the planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage2.jpg",
-  },
-  {
-    id: 3,
-    category: "BLOG",
-    title: "Invest in Green Living",
-    description: "Build a healthier planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage3.jpg",
-  },
-  {
-    id: 4,
-    category: "BLOG",
-    title: "Commit to Clean Practices",
-    description: "A cleaner environment starts with us.",
-    type: "primary",
-    url: "/images/articleImages/articleImage1.jpg",
-  },
-  {
-    id: 5,
-    category: "NEWS",
-    title: "Choose an Eco-Friendly Future",
-    description: "Protect the planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage2.jpg",
-  },
-  {
-    id: 6,
-    category: "BLOG",
-    title: "Invest in Green Living",
-    description: "Build a healthier planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/articleImages/articleImage3.jpg",
-  },
-];
+
+
+
 
 /**
  * Article Area Component
@@ -140,19 +60,7 @@ const ARTICLES_MOBILE: Article[] = [
  * @returns {React.ReactElement} The ArticleArea component
  */
 export default function ArticleArea(): React.ReactElement {
-  // ============= Data Transformers =============
-  // const getCarouselCards = (): CarouselCard[] =>
-  //   ARTICLES.map(article => ({
-  //     ...article,
-  //     src: article.url,
-
-  //     content: (
-  //       <div className="text-neutral-700 p-4">
-  //         <p>{article.subtitle || "Discover more insights in this article."}</p>
-  //       </div>
-
-  //     ),
-  //   }));
+  
 
   interface FooterProps {
     onFooterClick?: () => void;
@@ -161,6 +69,8 @@ export default function ArticleArea(): React.ReactElement {
 
   const CardContent = ({ cardId }: { cardId: number }) => {
     const [currentCardId, setCurrentCardId] = useState(cardId);
+   
+
 
     let project:
       | {
@@ -256,7 +166,18 @@ export default function ArticleArea(): React.ReactElement {
     </div>
   );
   const swiperRef = useRef<SwiperType | null>(null);
-  const isNavigationDisabled = ARTICLES.length <= 3;
+  const isNavigationDisabled = articleArea.length <= 3;
+  const [mobailCard,setMobilCard]= useState<Article[]>();
+
+  const data=articleArea.map((item,index)=>{
+    return {...item, id:index+5}
+  })
+    
+  useEffect(()=>{
+  setMobilCard([...articleArea,...data])
+
+  },[])
+  console.log(mobailCard,"jijfe");
   return (
     <div className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
@@ -273,13 +194,13 @@ export default function ArticleArea(): React.ReactElement {
               swiperRef.current = swiper;
             }}
           >
-            {ARTICLES.map((card) => (
+            {articleArea.map((card) => (
               <SwiperSlide key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] !rounded-[20px]">
                 {/* Use h-full to inherit height from Swiper */}
                 <AppleStyleCard
                   id={card.id}
                   title={card.title}
-                  subtitle={card.description}
+                  subtitle={card.subtitle}
                   imageSrc={card.url}
                   expandedImageClassName="object-center"
                   content={<CardContent cardId={card.id} />}
@@ -310,7 +231,7 @@ export default function ArticleArea(): React.ReactElement {
         </div>
         {/* Mobile Carousel */}
         <div className="relative md:block lg:hidden">
-          <InfiniteCarousel cards={ARTICLES_MOBILE} data={ARTICLES_MOBILE} />
+          <InfiniteCarousel cards={mobailCard} data={mobailCard} />
         </div>
       </main>
     </div>

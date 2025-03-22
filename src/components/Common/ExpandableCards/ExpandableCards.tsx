@@ -87,7 +87,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}
-            className={cn("object-   h-[652px] w-full")}
+            className={cn("object-cover   h-[652px] w-full")}
           />
           <div className="p-4 md:p-10">
             <Typography variant="h1" className="text-customBrown">
@@ -298,7 +298,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               A New Way of Life
             </motion.h2>
             <motion.button
-              className="lg:px-8 lg:py-3 md:px-5 md:py-2   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
+              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}

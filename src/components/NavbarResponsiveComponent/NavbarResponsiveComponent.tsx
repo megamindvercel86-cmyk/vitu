@@ -29,7 +29,7 @@ const NavbarResponsiveComponent = ({
   const NAV_LINKS = [
     { href: "/about", label: "About" },
     {
-      href: "/projects",
+      href: "#",
       label: "Projects",
       hasDropdown: true,
       dropdownItems: PROJECT_LINKS,

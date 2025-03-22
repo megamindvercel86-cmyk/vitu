@@ -119,10 +119,10 @@ export default function MediaSection(): React.ReactElement {
   
           {/* Content */}
           <div className="relative pt-[20px] lg:pt-[31px] xl:pt-[51px] z-10 h-full">
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
-              <SubHeading className="text-customTextGray font-medium 2xl:text-[1.5rem]">{item.title}</SubHeading>
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-[#21191999] mb-2">
+              <SubHeading className="text-[#21191999] font-medium 2xl:text-[1.5rem]">{item.title}</SubHeading>
             </div>
-            <SubHeading className="text-customTextGray font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
+            <SubHeading className="text-[#040707CC] font-medium line-clamp-2 mb-4 2xl:text-[1.5rem]">
               {item.description}
             </SubHeading>
             {/* Read More Link - Inside the main link but separate */}

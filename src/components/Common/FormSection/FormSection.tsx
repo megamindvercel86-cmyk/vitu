@@ -132,7 +132,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 className=" text-customTextGray font-freightNeoMedium text-xl   py-3 rounded-md flex justify-between items-center cursor-pointer"
                 onClick={() => setOpen(!open)}
               >
-                <span>{formik.values.option || "Intresed In"}</span>
+                <span>{formik.values.option || "Interested In"}</span>
                 <Dropdown />
               </div>
               <hr className="border-black border-opacity-20"/>
@@ -311,7 +311,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                     ); // Stop loading after submission
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${
+                  className={`lg:hidden block text-[26px] pb-[0.5px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
@@ -320,17 +320,21 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               )}
 
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
-                <div className="relative">
-                  <input type="checkbox" {...formik.getFieldProps("whatsapp")} className="sr-only peer" />
+              <div className="relative">
+                  <input
+                    type="checkbox"
+                    {...formik.getFieldProps("whatsapp")}
+                    checked={formik.values.whatsapp} // Ensure controlled behavior
+                    onChange={formik.handleChange} // Ensure the change is handled properly
+                    className="sr-only peer"
+                  />
 
-                  <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors">
-                    {formik.values.whatsapp && (
-                      <FaCheck className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    )}
+                  <div className="w-5 h-5 border border-[#A17F5F] rounded-full peer-checked:bg-[#A17F5F] transition-colors relative flex items-center justify-center">
+                    {formik.values.whatsapp && <FaCheck className="w-3 h-3 text-white" />}
                   </div>
                 </div>
                 <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">Receive Updates on WhatsApp</span>
-              </label>
+             </label>
               {isLoading ? (
                 <span className="lg:block hidden items-center justify-center">
                   <Loader />
@@ -352,7 +356,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                     ); // Stop loading after submission
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:block hidden text-[26px] w-full lg:w-[146px] ${
+                  className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >

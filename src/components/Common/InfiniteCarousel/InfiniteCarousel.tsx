@@ -25,7 +25,7 @@ interface Card {
   isViewMore?: boolean;
   position?: "left" | "right";
   bottomTitle?: string;
-  type?: "primary" | "secondary";
+  type?: "primary" | "secondary" | string;
   title?: string;
   subtitle?: string;
   category?: string;
@@ -33,10 +33,11 @@ interface Card {
   role2?: string;
   name?: string;
   description?: string;
+
 }
 
 interface InfiniteCarouselProps {
-  cards: Card[];
+  cards?: Card[];
   isSustainable?: boolean;
   data?: Card[];
 }
@@ -162,7 +163,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
         }}
         className="mySwiper"
       >
-        {cards.map((card, index) => (
+        {cards?.map((card, index) => (
           <SwiperSlide key={index + 5} className="swiper-slide">
             <AppleStyleCard
               key={card.id + 5}
@@ -172,7 +173,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
               bottomTitle={card.bottomTitle}
               isViewMoreType={card.type}
               title={card.title}
-              subtitle={card.description}
+              subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
               content={data && <CardContent cardId={card.id} data={data} />}

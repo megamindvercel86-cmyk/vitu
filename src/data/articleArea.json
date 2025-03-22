@@ -3,15 +3,17 @@
     "id": 1,
     "category": "BLOG",
     "title": "Commit to Clean Practices",
+    "subtitle": "A cleaner environment starts with us.",
+
     "description": "Sustainable cleaning goes beyond our homes, it’s about caring for our surroundings. Participating in beach cleanups, reducing litter and properly disposing of waste help protect ecosystems and marine life. Choosing biodegradable products and minimizing plastic waste keeps our environment cleaner and healthier.",
     "type": "primary",
     "url": "/images/articleImages/articleImage1.jpg"
-    
   },
   {
     "id": 2,
     "category": "NEWS",
     "title": "Choose an Eco-Friendly Future",
+    "subtitle": "A cleaner environment starts with us.",
     "description": "Embracing eco-friendly choices helps reduce waste, conserve resources and protect the environment. Simple actions today, like saving water and minimizing plastic use, contribute to a cleaner and more sustainable planet for future generations.",
     "type": "secondary",
     "url": "/images/articleImages/articleImage2.jpg"
@@ -20,31 +22,7 @@
     "id": 3,
     "category": "BLOG",
     "title": "Invest in Green Living",
-    "description": "Investing in Green Living means investing in the future of our planet. Every small step toward sustainability contributes to a healthier, more resilient earth for generations to come.",
-    "type": "secondary",
-    "url": "/images/articleImages/articleImage3.jpg"
-  },
-  {
-    "id": 4,
-    "category": "BLOG",
-    "title": "Commit to Clean Practices",
-    "description": "Sustainable cleaning goes beyond our homes, it’s about caring for our surroundings. Participating in beach cleanups, reducing litter and properly disposing of waste help protect ecosystems and marine life. Choosing biodegradable products and minimizing plastic waste keeps our environment cleaner and healthier.",
-    "type": "primary",
-    "url": "/images/articleImages/articleImage1.jpg"
-    
-  },
-  {
-    "id": 5,
-    "category": "NEWS",
-    "title": "Choose an Eco-Friendly Future",
-    "description": "Embracing eco-friendly choices helps reduce waste, conserve resources and protect the environment. Simple actions today, like saving water and minimizing plastic use, contribute to a cleaner and more sustainable planet for future generations.",
-    "type": "secondary",
-    "url": "/images/articleImages/articleImage2.jpg"
-  },
-  {
-    "id": 6,
-    "category": "BLOG",
-    "title": "Invest in Green Living",
+    "subtitle": "A cleaner environment starts with us.",
     "description": "Investing in Green Living means investing in the future of our planet. Every small step toward sustainability contributes to a healthier, more resilient earth for generations to come.",
     "type": "secondary",
     "url": "/images/articleImages/articleImage3.jpg"

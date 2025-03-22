@@ -219,7 +219,7 @@ export default function ProjectNavbar({
               {showGetInTouch && (
                 <NavLink href="/general-enquire">
                   <Button
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={` w-full pb-1 text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}

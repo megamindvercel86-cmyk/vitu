@@ -147,7 +147,7 @@ export default function VisionForTheFuture() {
           </Typography>
           <Typography
             variant="custom"
-            className="pt-1 font-freightNeoMedium font-light text-base leading-[1.1875rem] text-[#040707CC] md:text-[1.25rem] md:leading-relaxed 2xl:text-[2.125rem]"
+            className="pt-1 font-freightNeoMedium font-light text-base  text-[#040707CC] md:text-[1.25rem]  2xl:text-[2.125rem]"
           >
             Rooted in our vision for bold growth and dedication to evolving our portfolio.
           </Typography>

@@ -20,10 +20,19 @@ interface PlotProps {
 
 const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, range, targetScale }: PlotProps) => {
   const container = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-  //   offset: ["start end", "start start"],
-  // });
+
+  const highlightNumbers = (text: string) => {
+    return text.split(/(\d+)/).map((part, index) =>
+      /\d+/.test(part) ? (
+        <span key={index} className="font-CandideCondensedNormal ">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+  
 
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
 
@@ -39,7 +48,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2 className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-4xl">{title}</h2>
+            <h2  className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-4xl">{highlightNumbers(title)}</h2>
             <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base">{description}</p>
             <div>
               <Link href="project-enquire">

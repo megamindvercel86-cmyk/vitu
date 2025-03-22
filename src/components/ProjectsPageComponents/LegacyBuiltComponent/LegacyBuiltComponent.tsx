@@ -10,10 +10,10 @@ const LegacyBuiltComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0 lg:mb-[260px] ">
-          <h1 className="lg:text-6xl text-3xl font-semibold font-FreightNeoProNormal text-[#4F3737]">
+          <h1 className="lg:text-6xl text-3xl  font-freightNeoSemibold text-[#4F3737]">
             A Legacy Built on Trust
           </h1>
-          <p className="mt-4  lg:w-[240px]  text-[#4F373799] font-[400] font-FreightNeoProNormal">
+          <p className="mt-4  lg:w-[240px]  text-[#4F373799]  font-FreightNeoProNormal">
             Every Vitu Realty property embodies our Client centric philosophy.
             Thoughtfully designed homes with abundant natural light, smart
             spaces, & premium amenities.
@@ -31,7 +31,7 @@ const LegacyBuiltComponent = () => {
           <Image
             src={projectPageBg}
             alt="Green Leaves"
-            width={300}
+            width={400}
             height={500}
             className="rounded-xl shadow-lg object-cover"
           />
@@ -39,7 +39,7 @@ const LegacyBuiltComponent = () => {
 
         {/* Right Recognition Section */}
         <div className="text-gray-700 text-center lg:mt-64 md:text-left">
-          <p className="text-sm text-[24px]">Recognized by</p>
+          <p className="text-sm text-[24px] font-FreightNeoProNormal">Recognized by</p>
           <div className="flex justify-center  md:justify-start mt-5">
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>

@@ -51,7 +51,7 @@ const CardContent = ({ id }: { id: number }) => {
           alt={project?.title || "Card image"}
           width={1042}
           height={45}
-          className={cn("h-[652px] w-full")}
+          className={cn("h-[652px] w-full object-cover")}
         />
         <div className="p-4 md:p-10">
           <Typography variant="h1" className="text-customBrown">

@@ -24,7 +24,7 @@ interface CardProps {
   expandedImageClassName?: string;
   isViewMore?: boolean;
   position?: "left" | "right";
-  isViewMoreType?: "primary" | "secondary";
+  isViewMoreType?: "primary" | "secondary" | string;
   bottomTitle?: string;
   isExpanded?: boolean;
   subtitle?: string;
