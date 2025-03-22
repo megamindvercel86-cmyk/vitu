@@ -1,7 +1,10 @@
 import { useFormik } from "formik";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { formValidationSchema } from "./validations";
+import { GeneralFormValidationSchema } from "./validations";
+import { ProjectFormValidationSchema } from "./validations";
+import { CareerFormValidationSchema } from "./validations";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
@@ -31,7 +34,6 @@ export interface FormValues {
   resume: File | null;
 }
 
-
 export const useFormSubmission = (page: string, callback?: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -42,15 +44,9 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
-
       }
 
-      const collectionName =
-        page === "General Enquire"
-          ? "generalEnquiries"
-          : page === "Project Enquire"
-            ? "projectEnquiries"
-            : "careerApplications";
+      const collectionName = page === "General Enquire" ? "generalEnquiries" : page === "Project Enquire" ? "projectEnquiries" : "careerApplications";
 
       const filteredValues =
         page === "General Enquire"
@@ -109,7 +105,13 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       option: "",
       resume: null,
     },
-    validationSchema: formValidationSchema,
+    validationSchema:
+      page === "General Enquire"
+        ? GeneralFormValidationSchema
+        : page === "Project Enquire"
+          ? ProjectFormValidationSchema
+          : CareerFormValidationSchema,
+
     onSubmit: async (values, { resetForm }): Promise<void> => {
       return handleFormSubmission(values)
         .then(() => {

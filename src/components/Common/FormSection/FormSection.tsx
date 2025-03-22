@@ -50,18 +50,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
   // Loading animation (you can style this further or use an SVG spinner)
-  const LoadingSpinner = () => (
-    <div className="flex items-center justify-center">
-      <svg className="animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
-      </svg>
-    </div>
-  );
+ 
   // Rest of your component (JSX) remains exactly the same
   return (
     <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
@@ -136,7 +125,6 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 <Dropdown />
               </div>
               <hr className="border-black border-opacity-20"/>
-
               {/* Dropdown Menu */}
               {open && (
                 <div className="absolute w-full bg-[#F8F6F5] font-freightNeoMedium  rounded-md ">
@@ -150,9 +138,13 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                       }}
                     >
                       {option.label}
+
                     </div>
+                    
                   ))}
+
                 </div>
+                
               )}
             </div>
           )}
