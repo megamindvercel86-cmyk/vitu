@@ -11,9 +11,10 @@ const CardContent = ({ id }: { id: number }) => {
   let project:
     | {
         id: number;
-        url: string;
+        url?: string;
         title: string;
         description: string;
+        fileUrl?:string
       }
     | undefined;
 
