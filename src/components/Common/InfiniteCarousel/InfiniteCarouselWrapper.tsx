@@ -19,6 +19,7 @@ interface InfiniteCarouselWrapperProps {
     role?: string;
     role2?: string;
     name?: string;
+    fileUrl?: string
   }[]; // Define the cards prop type
   // Add any other props that InfiniteCarousel accepts
 }
