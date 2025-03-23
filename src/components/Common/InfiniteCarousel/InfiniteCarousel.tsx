@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 // Define a type for the card object
 interface Card {
   id: number;
-  fileUrl: string;
+  fileUrl?: string;
   className?: string;
   startPosition?: { x?: number; y?: number };
   isViewMore?: boolean;
@@ -33,7 +33,6 @@ interface Card {
   role2?: string;
   name?: string;
   description?: string;
-
 }
 
 interface InfiniteCarouselProps {
