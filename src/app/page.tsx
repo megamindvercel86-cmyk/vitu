@@ -8,7 +8,7 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
-
+import bgImage from "../../../../public/images/backgroundImages/homeHeroImg.jpg";
 // ============= Types & Interfaces =============
 
 
@@ -40,8 +40,7 @@ export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
     "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
-  const imageUrl =
-    "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
+  const imageUrl = bgImage;
 
   return {
     title: pageTitle,
