@@ -41,6 +41,9 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
     let resumeUrl: string | null = null;
     setIsLoading(true);
 
+
+    
+
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
@@ -55,7 +58,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               email: values.email,
               phone: values.phone,
               comments: values.comments,
-              whatsapp: values.whatsapp,
+              whatsapp:values.whatsapp,
             }
           : page === "Project Enquire"
             ? {
