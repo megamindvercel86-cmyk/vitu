@@ -11,7 +11,7 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
-import SvgWave1024x768 from "../../../../public/svgs/LineAnimations/SvgWave1024x768";
+
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 

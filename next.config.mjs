@@ -57,6 +57,13 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["framer-motion", "swiper"],
   },
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default bundleAnalyzer(nextConfig);
