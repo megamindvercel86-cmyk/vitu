@@ -93,7 +93,7 @@ function YearDisplay({
       className={`${
         isFixed
           ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 md:left-20 left-5"
-          : "absolute bottom-28 left-36"
+          : "absolute lg2:bottom-28 md:left-36 bottom-52 left-5"
       } pointer-events-none z-50`}
     >
       <span className="lg2:text-[80px] lg:text-7xl text-[40px] text-white font-CandideCondensedMedium">
@@ -131,7 +131,7 @@ function MessageDisplay({
       className={`${
         isFixed
           ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]"
-          : "absolute bottom-56 right-10"
+          : "absolute md:bottom-56 md:right-10 bottom-32"
       } pointer-events-none z-50 lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
@@ -301,7 +301,7 @@ export default function Gallery() {
       return `translate(-${progress * 11280}px, -50%)`;
     else if (windowWidth >= 1024 && windowHeight >= 768) return `translate(-${progress * 500}px, -50%)`;
     else if (windowWidth >= 1024) return `translate(-${progress * 7500}px, -50%)`;
-    else if (windowWidth > 100) return `translate(-${progress * 2320}px, -50%)`;
+    else if (windowWidth > 100) return `translate(-${progress * 2335}px, -50%)`;
     else return `translate(-${progress * 13450}px, -50%)`;
   };
   const getTopValue = () => {
