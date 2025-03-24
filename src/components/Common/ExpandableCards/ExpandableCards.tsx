@@ -83,7 +83,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
       {project && (
         <div key={"dummy-content"}>
           <Image
-            src={project.url || "/placeholder.svg"}
+            src={project.fileUrl || "/placeholder.svg"}
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}

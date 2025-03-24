@@ -48,7 +48,7 @@ const CardContent = ({ id }: { id: number }) => {
     <>
       <div key={"dummy-content"}>
         <Image
-          src={project?.url || "/placeholder.svg"}
+          src={project?.fileUrl || "/placeholder.svg"}
           alt={project?.title || "Card image"}
           width={1042}
           height={45}

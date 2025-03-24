@@ -4,7 +4,7 @@
 import Typography from "@/components/Typography/Typography";
 import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 
@@ -20,9 +20,9 @@ interface Article {
   category: string;
   title: string;
   description: string;
-  type: "primary" | "secondary" |string;
+  type: "primary" | "secondary" | string;
   fileUrl: string;
-  subtitle:string;
+  subtitle: string;
 }
 
 interface CarouselCard extends Article {
@@ -38,11 +38,6 @@ const CONTENT = {
     description: "Delve into all things Realty through our insights - uncover articles, tips, and stories inspiring your dream home journey.",
   },
 };
-
-
-
-
-
 
 /**
  * Article Area Component
@@ -60,19 +55,14 @@ const CONTENT = {
  * @returns {React.ReactElement} The ArticleArea component
  */
 export default function ArticleArea(): React.ReactElement {
-  
-
   interface FooterProps {
     onFooterClick?: () => void;
     nextProjectTitle: string;
   }
 
-  const CardContent = ({ cardId }: { cardId: number }) => {
+  const CardContent = ({ cardId, data }: { cardId: number; data: Article[] }) => {
     const [currentCardId, setCurrentCardId] = useState(cardId);
-    const [card,setCard]= useState<Article[]>([]);
-
-   
-
+    const [card, setCard] = useState<Article[]>([]);
 
     let project:
       | {
@@ -80,57 +70,38 @@ export default function ArticleArea(): React.ReactElement {
           fileUrl: string;
           title: string;
           description?: string;
+          subtitle?: string;
         }
       | undefined;
 
-
-      const fetchBlogs=async()=> {
-        try {
-          const response = await fetch("/api/blogs");
-          if (!response.ok) {
-            throw new Error("Failed to fetch users");
-          }
-          const res = await response.json();
-          const data = res.data;
-    
-    
-         
-          setCard(data)
-    
-         
-          
-        } catch (error) {
-          console.error("Failed to fetch team members", error);
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
         }
-      }
-        
-    useEffect(() => {
-      fetchBlogs()
-    }, []);
+        const res = await response.json();
+        const data = res.data;
 
-    project = card.find((project) => project.id === currentCardId);
-
-    const handleFooterClick = () => {
-      const nextProject = card.find((project) => {
-        if (project.id === 3) {
-          return 1 === currentCardId;
-        } else {
-          return project.id + 1 === currentCardId;
-        }
-      });
-
-      if (nextProject) {
-        setCurrentCardId(nextProject.id); // Update state to trigger re-render
+        setCard(data);
+      } catch (error) {
+        console.error("Failed to fetch team members", error);
       }
     };
 
-    const nextProject = card.find((project) => {
-      if (project.id === 3) {
-        return 1 === currentCardId;
-      } else {
-        return project.id + 1 === currentCardId;
-      }
-    });
+    useEffect(() => {
+      fetchBlogs();
+    }, []);
+
+    project = data.find((project) => project.id === currentCardId);
+
+    const handleFooterClick = () => {
+      const currentIndex = data.findIndex((project) => project.id === currentCardId);
+      const nextProject = data[(currentIndex + 1) % data.length];
+      setCurrentCardId(nextProject.id);
+    };
+
+    const nextProject = data[(data.findIndex((project) => project.id === currentCardId) + 1) % data.length];
 
     return (
       <>
@@ -194,19 +165,11 @@ export default function ArticleArea(): React.ReactElement {
   );
   const swiperRef = useRef<SwiperType | null>(null);
   const isNavigationDisabled = articleArea.length <= 3;
-  const [card,setCard]= useState<Article[]>([]);
-  console.log(card,"card");
-  
+  const [desktopCard, setDesktopCardCard] = useState<Article[]>([]);
 
-  const [mobailCard,setMobilCard]= useState<Article[]>();
-  
+  const [mobailCard, setMobilCard] = useState<Article[]>();
 
-  
-
-
-
-
-  const fetchBlogs=async()=> {
+  const fetchBlogs = async () => {
     try {
       const response = await fetch("/api/blogs");
       if (!response.ok) {
@@ -215,29 +178,20 @@ export default function ArticleArea(): React.ReactElement {
       const res = await response.json();
       const data = res.data;
 
-
-     
-      setCard(data)
+      setDesktopCardCard(data);
 
       const dummyDtata = data.map((item: Article, index: number): Article => {
         return { ...item, id: index + 5 };
       });
-      setMobilCard([...data,...dummyDtata])
-      
+      setMobilCard([...data, ...dummyDtata]);
     } catch (error) {
       console.error("Failed to fetch team members", error);
     }
-  }
-    
-useEffect(() => {
-  fetchBlogs()
-}, []);
+  };
 
-
-
-
-
-
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   return (
     <div className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
@@ -255,7 +209,7 @@ useEffect(() => {
               swiperRef.current = swiper;
             }}
           >
-            {card.map((card) => (
+            {desktopCard.map((card) => (
               <SwiperSlide key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] !rounded-[20px]">
                 {/* Use h-full to inherit height from Swiper */}
                 <AppleStyleCard
@@ -264,7 +218,7 @@ useEffect(() => {
                   subtitle={card.subtitle}
                   imageSrc={card.fileUrl}
                   expandedImageClassName="object-center"
-                  content={<CardContent cardId={card.id} />}
+                  content={<CardContent cardId={card.id} data={desktopCard} />}
                   isViewMoreType={card.type}
                 />
               </SwiperSlide>
@@ -291,9 +245,7 @@ useEffect(() => {
           </div>
         </div>
         {/* Mobile Carousel */}
-        <div className="relative md:block lg:hidden">
-          {mobailCard&&<InfiniteCarousel cards={mobailCard} data={mobailCard} />}
-        </div>
+        <div className="relative md:block lg:hidden">{mobailCard && <InfiniteCarousel cards={mobailCard} data={mobailCard} />}</div>
       </main>
     </div>
   );

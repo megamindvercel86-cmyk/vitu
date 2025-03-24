@@ -115,7 +115,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
             </div>
           )}
           {page === "Project Enquire" && (
-            <div className="relative mt-8 z-[999] ">
+            <div className="relative mt-8 z-10 ">
               {/* Dropdown Button */}
               <div
                 className=" text-customTextGray font-freightNeoMedium text-xl   py-3 rounded-md flex justify-between items-center cursor-pointer"
@@ -150,7 +150,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
           )}
           {page === FORM_TYPES.CAREER && (
             <>
-                <div className="relative mt-8 z-[999] ">
+                <div className="relative mt-8 z-10 ">
                 {/* Dropdown Button */}
                 <div
                   className=" text-customTextGray font-freightNeoMedium text-lg py-3 rounded-md flex justify-between items-center cursor-pointer"

@@ -123,11 +123,11 @@ const ExploreProjects: React.FC = () => {
         <InfiniteCarousel cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
-        <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">
+        {/* <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">
           <button className="items-center pb-1 w-full h-[56px] rounded-[36px] border-[2px] border-customBrown text-customBrown text-[22px] font-FreightNeoProBold hover:bg-customBrown hover:text-white transition-colors duration-300">
             Explore the Project Now
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

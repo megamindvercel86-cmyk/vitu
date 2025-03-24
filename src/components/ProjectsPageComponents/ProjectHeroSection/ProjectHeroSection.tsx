@@ -66,10 +66,6 @@ const ProjectHeroSection: React.FC = () => {
     });
   }, []);
 
-
-
- 
-
   return (
     <section id="hero" className="herosection w-full   xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
@@ -124,18 +120,12 @@ const ProjectHeroSection: React.FC = () => {
 
         {/* CTA Button */}
         <Link to="carousal" smooth={true} duration={700}>
-          {" "}
-        
           {/* ================================================== */}
 
-
-
-
-
-<div className="relative group cursor-pointer">
-  <button
-    type="button"
-    className="
+          <div className="relative group cursor-pointer">
+            <button
+              type="button"
+              className="
       relative group
       mt-8
       flex items-center justify-center
@@ -146,38 +136,33 @@ const ProjectHeroSection: React.FC = () => {
       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]  /* Adjusted for larger screens */
       overflow-hidden
     "
-  >
-    {/* Default background */}
-    <div className="absolute inset-0 bg-[#A0BCAE] rounded-full"></div>
+            >
+              {/* Default background */}
+              <div className="absolute inset-0 bg-[#A0BCAE] rounded-full"></div>
 
-    {/* Hover effect starts from the icon */}
-    <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
-      {/* Expanding hover background */}
-      <div
-        className="
+              {/* Hover effect starts from the icon */}
+              <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+                {/* Expanding hover background */}
+                <div
+                  className="
           absolute w-0 h-0 bg-[#4B9480] rounded-full
           group-hover:w-[30rem] group-hover:h-[30rem]
           transition-all duration-500 ease-out
         "
-      ></div>
+                ></div>
 
-      {/* Icon stays above the expanding background */}
-      <div className="relative z-20">
-        <CTAButtonIcon fill="#4B9480" />
-      </div>
-    </div>
+                {/* Icon stays above the expanding background */}
+                <div className="relative z-20">
+                  <CTAButtonIcon fill="#4B9480" />
+                </div>
+              </div>
 
-    {/* Button text (added margin-right for spacing) */}
-    <span className="relative z-20 mt-[2px] md:mt-0 ">Scroll to Learn More</span>
-  </button>
-</div>
-
-
+              {/* Button text (added margin-right for spacing) */}
+              <span className="relative z-20 mt-[2px] md:mt-0 ">Scroll to Learn More</span>
+            </button>
+          </div>
 
           {/* ============================================================ */}
-
-
-
         </Link>
       </div>
       <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[30rem]  text-center px-6">

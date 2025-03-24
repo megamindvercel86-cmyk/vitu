@@ -34,7 +34,7 @@ const Footer: FC = () => {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email) {
-      const emailValue = email;
+      const emailValue = email.trim();
 
       const collectionRef = collection(db, "newsLetter");
       await addDoc(collectionRef, { email: emailValue });
@@ -77,7 +77,7 @@ const Footer: FC = () => {
             title="Quick Links"
             links={[
               { href: "/about", label: "About Us" },
-              { href: "/projects", label: "Our Projects" },
+              { href: "/", label: "Our Projects" },
               { href: "/career-application", label: "Careers" },
             ]}
           />

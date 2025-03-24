@@ -130,7 +130,7 @@ const CurrentProject: React.FC = () => {
           className=" object-cover"
         />
       </figure>
-      <figure className="hidden items-center xl:flex md:flex lg:hidden justify-center w-full lg:w-1/2" aria-labelledby="project-title">
+      <figure className=" items-center xl:flex md:flex lg:hidden justify-center w-full lg:w-1/2" aria-labelledby="project-title">
         <Image
           src={PROJECT_DATA.image}
           width={708}
