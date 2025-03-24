@@ -8,7 +8,7 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
-import bgImage from "../../../../public/images/backgroundImages/homeHeroImg.jpg";
+import bgImage from "../../public/images/backgroundImages/homeHeroImg.jpg";
 // ============= Types & Interfaces =============
 
 
