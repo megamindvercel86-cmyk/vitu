@@ -2,7 +2,7 @@
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import React from "react";
-import backgroundImage from "../../../../public/images/backgroundImages/aboutHeroImg.jpg";
+import backgroundImage from "../../../../public/images/backgroundImages/aboutHeroImage.png";
 import { Link } from "react-scroll";
 
 // ============= Types =============
