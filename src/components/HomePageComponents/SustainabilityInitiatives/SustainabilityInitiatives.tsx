@@ -97,13 +97,13 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       <div className="lg:max-w-none mx-auto lg:mx-0">
         <Typography
           variant="custom"
-          className="text-customBrown max-w-full xl:max-w-[500px] text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
+          className="text-customBrown max-w-full xl:max-w-[600px] text-2xl md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] font-freightNeoMedium mb-4 md:mb-6"
         >
           {CONTENT.title}
         </Typography>
         <Typography
           variant="custom"
-          className="md:text-[#4F373799] text-[#04070799] max-w-full lg:pr-48 xl:max-w-[500px] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
+          className="md:text-[#4F373799] text-[#04070799] max-w-full lg:pr-48 xl:max-w-[600px] text-base md:text-xl xl:text-2xl font-freightNeoMedium md:mb-12"
         >
           {CONTENT.description}
         </Typography>
