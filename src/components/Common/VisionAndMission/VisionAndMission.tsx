@@ -29,9 +29,9 @@ const IMAGES = {
     "/images/visionAndMissionImages/3.png",
   ],
   mobile: [
-    "/images/visionAndMissionImages/mobile1.png",
-    "/images/visionAndMissionImages/mobile2.png",
-    "/images/visionAndMissionImages/mobile3.png",
+    "/images/visionAndMissionImages/1.png",
+    "/images/visionAndMissionImages/2.png",
+    "/images/visionAndMissionImages/3.png",
   ],
 };
 
@@ -226,7 +226,7 @@ export default function VisionAndMission() {
             alt={`Slide ${currentIndex + 1}`}
             width={CAROUSEL_CONFIG.dimensions.mobile.width}
             height={CAROUSEL_CONFIG.dimensions.mobile.height}
-            className="w-full h-[679px] transition-all duration-500"
+            className="w-full h-[679px] transition-all object-cover duration-500"
             loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
