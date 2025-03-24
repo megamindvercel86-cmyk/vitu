@@ -41,7 +41,7 @@ const LocationAdvantage = () => {
               <div
                 className="
           absolute w-0 h-0 bg-[#AE856666] rounded-full
-          group-hover:w-[30rem] group-hover:h-[30rem] z-20
+          group-hover:w-[30rem] group-hover:h-[30rem] 
           transition-all duration-500 ease-out
         "
               ></div>
