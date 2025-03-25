@@ -16,7 +16,6 @@ const LocationAdvantage = () => {
           Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.
         </p>
 
-
         <div className="relative group cursor-pointer ">
           <button
             type="button"
@@ -29,7 +28,7 @@ const LocationAdvantage = () => {
       pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]  /* Increased right padding */
       text-base font-freightNeoMedium text-white
       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]  /* Adjusted for larger screens */
-      overflow-hidden
+      overflow-hidden  z-100
     "
           >
             {/* Default background */}
