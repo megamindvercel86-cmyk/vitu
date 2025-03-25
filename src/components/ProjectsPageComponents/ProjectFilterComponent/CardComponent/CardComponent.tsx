@@ -75,38 +75,12 @@ const ARTICLES_MOBAIL: Article[] = [
     url: "/images/projectFilter/image3.png",
     href:""
   },
-  {
-    id: 4,
-    category: "Project #1",
-    title: "Vaikuntam City",
-    description: "A cleaner environment starts with us.",
-    type: "secondary",
-    url: "/images/projectFilter/image1.png",
-    href:"/vaikuntamcity"
-  },
-  {
-    id: 5,
-    category: "Project #2",
-    title: "Mithila",
-    description: "Protect the planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/projectFilter/image2.png",
-    href:""
-  },
-  {
-    id: 6,
-    category: "Project #3",
-    title: "Vilasam",
-    description: "Build a healthier planet with sustainable choices.",
-    type: "secondary",
-    url: "/images/projectFilter/image3.png",
-    href:""
-  },
+ 
 ];
 
 const ProjectFilter = () => {
   return (
-    <div className=" 2xl:w-full xl:max-w-[1380px] justify-center 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px] mb-10  lg:mx-auto lg:px-2">
+    <div className=" 2xl:w-full py-28 xl:max-w-[1380px] justify-center 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px] mb-10  lg:mx-auto lg:px-2">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
 

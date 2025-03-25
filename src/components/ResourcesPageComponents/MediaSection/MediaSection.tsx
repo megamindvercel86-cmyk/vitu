@@ -129,7 +129,7 @@ export default function MediaSection(): React.ReactElement {
       </div>
     );
   };
-  const isNavigationDisabled = news.length < 3;
+  const isNavigationDisabled = news.length <= 3;
   return (
     <div className=" 2xl:max-w-[2000px] xl:max-w-[1380px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto mx-7 py-8 sm:py-12">
       {/* Header */}

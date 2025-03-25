@@ -164,8 +164,9 @@ export default function ArticleArea(): React.ReactElement {
     </div>
   );
   const swiperRef = useRef<SwiperType | null>(null);
-  const isNavigationDisabled = articleArea.length <= 3;
   const [desktopCard, setDesktopCardCard] = useState<Article[]>([]);
+
+  const isNavigationDisabled = desktopCard.length <= 3;
 
   const [mobailCard, setMobilCard] = useState<Article[]>();
 

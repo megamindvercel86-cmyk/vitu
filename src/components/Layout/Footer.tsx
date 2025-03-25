@@ -87,7 +87,7 @@ const Footer: FC = () => {
             title="Resources"
             links={[
               { href: "/resources/media-kit", label: "Media" },
-              { href: "#", label: "Insights" },
+              { href: "insights", label: "Insights" },
             ]}
           />
 
