@@ -72,12 +72,17 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map(({ src, alt }, idx) => (
-          <li
-            className="w-[80vw] h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] max-w-full relative rounded-xl overflow-hidden flex-shrink-0"
+            <li
+            className="w-[60vw] h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[70vh] max-w-full relative rounded-xl overflow-hidden flex-shrink-0"
             key={idx}
-          >
-            <Image src={src} alt={alt} fill className="object-cover" />
-          </li>
+            >
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover transition-transform duration-1000 hover:scale-110"
+            />
+            </li>
         ))}
       </ul>
     </div>

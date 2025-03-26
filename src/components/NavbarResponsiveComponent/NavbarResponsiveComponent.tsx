@@ -23,8 +23,8 @@ const NavbarResponsiveComponent = ({
 }) => {
   const PROJECT_LINKS = [
     { href: "/vaikuntamcity", label: "Vaikuntam City" },
-    { href: "/projects/mithila", label: "Mithila" },
-    { href: "/projects/vibgam", label: "Vilasam" },
+    { href: "/mithila", label: "Mithila" },
+    { href: "/vilasam", label: "Vilasam" },
   ];
   const NAV_LINKS = [
     { href: "/about", label: "About" },
@@ -84,7 +84,7 @@ const NavbarResponsiveComponent = ({
                         key={index}
                         href={item.href}
                         className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
+                        
                       >
                         {item.label}
                       </NavLink>

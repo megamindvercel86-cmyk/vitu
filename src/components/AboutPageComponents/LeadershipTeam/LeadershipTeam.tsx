@@ -27,9 +27,7 @@ interface TeamMember {
 export default function LeadershipTeam() {
   // ============= Constants =============
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>(
-    [],
-  );
+  const [teamMembersCarousal, setTeamMembersCarousal] = useState<TeamMember[]>([]);
 
   async function fetchTeamMembers() {
     try {
@@ -39,9 +37,7 @@ export default function LeadershipTeam() {
       }
       const data = await response.json();
 
-      const filteredData = data.data.filter(
-        (member: TeamMember) => member.development !== true,
-      );
+      const filteredData = data.data.filter((member: TeamMember) => member.development !== true);
 
       setTeamMembersCarousal([
         ...filteredData,
@@ -52,13 +48,11 @@ export default function LeadershipTeam() {
         })),
       ]);
 
-      const updatedData = filteredData.map(
-        (member: TeamMember, index: number) => ({
-          ...member,
+      const updatedData = filteredData.map((member: TeamMember, index: number) => ({
+        ...member,
 
-          id: index + 5,
-        }),
-      );
+        id: index + 5,
+      }));
 
       // Update states in a single batch to ensure consistency
       setTeamMembers(filteredData);
@@ -76,7 +70,7 @@ export default function LeadershipTeam() {
   console.log(teamMembersCarousal);
   return (
     <div className="lg:pt-[153px] py-16 lg:py-0 lg:pb-[198px] xl:pt-[160px] xl:pb-[191px]">
-      <div className="mx-auto xl:mx-[284px] lg:mx-[78px]">
+      <div className="mx-auto xl:mx-[284px] lg:mx-[180px]">
         {/* Section Heading */}
         <Typography
           variant="custom"
@@ -86,8 +80,7 @@ export default function LeadershipTeam() {
         </Typography>
 
         {/* Desktop Carousel */}
-        <div className="hidden lg:flex mx-72 gap-10">
-         
+        <div className={`hidden lg:grid ${teamMembers.length == 2 ? `grid-cols-2 mx-52` : `grid-cols-3`} auto-rows-[1fr]    gap-10`}>
           {teamMembers.map((member, index) => (
             <TeamMemberCard member={member} key={index} />
           ))}
@@ -118,11 +111,8 @@ export default function LeadershipTeam() {
               className="mySwiper md:h-[700px] h-[450px]"
             >
               {teamMembersCarousal.map((member, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="swiper-slide !overflow-visible"
-                >
-                  <div className="text-center">
+                <SwiperSlide key={index} className="swiper-slide !overflow-visible">
+                  <div className="text-center h-full">
                     <Image
                       src={member.fileUrl}
                       alt={member.name}
@@ -130,16 +120,10 @@ export default function LeadershipTeam() {
                       height={500}
                       className="w-full h-full object-cover rounded-[10px] shadow-lg"
                     />
-                    <Typography
-                      variant="custom"
-                      className="text-xl text-[#04070799] font-freightNeoMedium mt-4"
-                    >
+                    <Typography variant="custom" className="text-xl text-[#04070799] font-freightNeoMedium mt-4">
                       {member.name}
                     </Typography>
-                    <Typography
-                      variant="custom"
-                      className="text-xl text-[#04070799] font-FreightNeoProNormal"
-                    >
+                    <Typography variant="custom" className="text-xl text-[#04070799] font-FreightNeoProNormal">
                       {member.role}
                     </Typography>
                   </div>
@@ -155,26 +139,14 @@ export default function LeadershipTeam() {
 
 // ============= Sub Components =============
 const TeamMemberCard = ({ member }: { member: TeamMember }) => (
-  <div className="text-center w-[100%]  ">
-    <div className="aspect-auto lg:mb-[34px] w-full">
-      <Image
-        width={400}
-        height={500}
-        src={member.fileUrl}
-        alt={member.name}
-        className="w-full h-full object-cover rounded-[20px] shadow-lg"
-      />
+  <div className="text-center w-[100%] pb-1  ">
+    <div className="aspect-auto lg:mb-[34px] w-full h-[70%]">
+      <Image width={400} height={500} src={member.fileUrl} alt={member.name} className="w-full h-full object-cover rounded-[20px] shadow-lg" />
     </div>
-    <Typography
-      variant="custom"
-      className="text-xl sm:text-xl md:text-4xl 2xl:text-5xl text-customTextGray font-freightNeoMedium"
-    >
+    <Typography variant="custom" className="text-xl sm:text-xl md:text-4xl 2xl:text-5xl text-customTextGray font-freightNeoMedium">
       {member.name}
     </Typography>
-    <Typography
-      variant="custom"
-      className="text-customTextGray font-FreightNeoProNormal px-20 lg:text-2xl 2xl:text-3xl"
-    >
+    <Typography variant="custom" className="text-customTextGray font-FreightNeoProNormal px-20 lg:text-2xl 2xl:text-3xl">
       {member.role}
     </Typography>
   </div>

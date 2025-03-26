@@ -142,19 +142,20 @@ export default function InsightHeroSection(): React.ReactElement {
         {/* Desktop Grid Layout */}
         <div className="relative lg:block hidden ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {desktopCard&&desktopCard.map((card) => (
-              <div key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] !rounded-[20px]">
-                <AppleStyleCardInsight
-                  id={card.id}
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  imageSrc={card.fileUrl}
-                  expandedImageClassName="object-center"
-                  content={<CardContent cardId={card.id} data={desktopCard} />}
-                  isViewMoreType={card.type}
-                />
-              </div>
-            ))}
+            {desktopCard &&
+              desktopCard.map((card) => (
+                <div key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] overflow-hidden !rounded-[20px]">
+                  <AppleStyleCardInsight
+                    id={card.id}
+                    title={card.title}
+                    subtitle={card.subtitle}
+                    imageSrc={card.fileUrl}
+                    expandedImageClassName="object-center"
+                    content={<CardContent cardId={card.id} data={desktopCard} />}
+                    isViewMoreType={card.type}
+                  />
+                </div>
+              ))}
           </div>
         </div>
 

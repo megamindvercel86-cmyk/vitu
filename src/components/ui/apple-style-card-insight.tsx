@@ -136,7 +136,7 @@ export default function AppleStyleCardInsight({
       <motion.button
         layoutId={`expandable-card-${id}`}
         onClick={() => setIsOpen(isExpanded)}
-        className={cn("bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative ", className, cardClassName)}
+        className={cn(" overflow-hidden flex flex-col items-start justify-start relative ", className, cardClassName)}
       >
         <div className="relative z-40 p-8">
           {/* <motion.p
@@ -167,7 +167,7 @@ export default function AppleStyleCardInsight({
             {subtitle}
           </motion.p>
         </div>
-        <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute  rounded-xl inset-0" />
+        <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute overflow-hidden  rounded-xl inset-0" />
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
             variant="custom"

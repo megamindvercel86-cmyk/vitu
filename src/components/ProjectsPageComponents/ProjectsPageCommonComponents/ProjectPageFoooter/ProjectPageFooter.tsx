@@ -13,6 +13,10 @@ import { toast } from "react-toastify";
 import SubHeading from "@/components/Common/SubHeding";
 import NavLink from "@/components/Common/NavLink";
 import FooterLink from "@/components/Common/FooterLinks";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { IoMdHome } from "react-icons/io";
 
 /**
  * Footer Component
@@ -24,12 +28,17 @@ import FooterLink from "@/components/Common/FooterLinks";
  */
 
 const ProjectFooter: FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [mainPage, subPage] = pathname.split("/").filter(Boolean);
+
   // SVG Arrow for collapsible sections in mobile view
-  const DropdownArrow: FC = () => (
-    <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </svg>
-  );
+  // const DropdownArrow: FC = () => (
+  //   <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  //     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  //   </svg>
+  // );
 
   // const email = useRef<HTMLInputElement>(null);
   // console.log(email);
@@ -57,6 +66,31 @@ const ProjectFooter: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
+      <div className="flex items-center  space-x-2 pb-3">
+          <FooterLink href="/"><IoMdHome className="text-footerTextColor mb-[3px]  text-lg" /></FooterLink>
+          <FooterLink href="/">Home</FooterLink>
+          {mainPage && (
+            <>
+              <RiArrowRightSLine />
+              <span className="text-footerTextColor">
+                {!subPage ? (
+                   <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</span> 
+                ) : (
+                  // <button onClick={() => router.back()}>{mainPage}</button>
+                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</FooterLink>
+                )}
+              </span>
+            </>
+          )}
+          {subPage && (
+            <>
+              <RiArrowRightSLine />
+              <span className="text-footerTextColor font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+              {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+              </span>
+            </>
+          )}
+        </div>
         <div className="grid  grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col  items-center lg:items-start">
