@@ -46,7 +46,7 @@ const CardContent = ({ id }: { id: number }) => {
 
   return (
     <>
-      <div key={"dummy-content"} data-lenis-prevent>
+      <div key={"dummy-content"} data-lenis-prevent >
         <Image
           src={project?.fileUrl || "/placeholder.svg"}
           alt={project?.title || "Card image"}
@@ -56,10 +56,24 @@ const CardContent = ({ id }: { id: number }) => {
         />
         <div className="p-4 md:p-10">
           <Typography variant="h1" className="text-customBrown">
-            {project?.title}
+            {project?.title?.split('').map((char, index) => (
+              <span 
+                key={index} 
+                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+              >
+                {char}
+              </span>
+            ))}
           </Typography>
           <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-            {project?.description}
+          {project?.description?.split('').map((char, index) => (
+              <span 
+                key={index} 
+                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+              >
+                {char}
+              </span>
+            ))}
           </Typography>
           <Footer
             onFooterClick={handleFooterClick}
