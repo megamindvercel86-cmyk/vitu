@@ -46,7 +46,7 @@ const CardContent = ({ id }: { id: number }) => {
 
   return (
     <>
-      <div key={"dummy-content"}>
+      <div key={"dummy-content"} data-lenis-prevent>
         <Image
           src={project?.fileUrl || "/placeholder.svg"}
           alt={project?.title || "Card image"}

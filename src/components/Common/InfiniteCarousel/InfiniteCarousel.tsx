@@ -91,7 +91,7 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
   return (
     <>
       {project && (
-        <div key={"dummy-content"}>
+        <div key={"dummy-content"} data-lenis-prevent>
           <Image
             src={project.fileUrl || "/placeholder.svg"}
             alt={nextProject?.title || "Card image"}
