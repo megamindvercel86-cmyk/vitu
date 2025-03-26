@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
@@ -33,22 +33,19 @@ const STATS_DATA = [
   },
 ];
 
-
 const Counter = ({ value }: { value: number }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value - 5); // Start from value - 5
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true }); // Runs only once when visible
+  const inView = useInView(ref);
 
   useEffect(() => {
     if (inView) {
-      let start = 0;
-      const end = parseInt(value.toString().replace(/\D/g, ""), 10);
-      if (isNaN(end)) return;
-
-      const duration = 2000; // 2 seconds
-      const incrementTime = 30;
+      let start = value - 5; // Start 5 less than actual value
+      const end = value;
+      const duration = 20000; // 2 seconds
+      const incrementTime = 200;
       const steps = duration / incrementTime;
-      const stepSize = Math.ceil(end / steps);
+      const stepSize = Math.ceil((end - start) / steps);
 
       const timer = setInterval(() => {
         start += stepSize;
@@ -65,13 +62,7 @@ const Counter = ({ value }: { value: number }) => {
   }, [inView, value]);
 
   return (
-    <motion.span
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 1 }}
-      className="inline-block"
-    >
+    <motion.span ref={ref} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="inline-block">
       {count}
     </motion.span>
   );
@@ -96,23 +87,38 @@ const Counter = ({ value }: { value: number }) => {
 const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]" aria-label="Project Statistics">
-     {STATS_DATA.map((stat, index) => (
-  <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
-    <Typography
-      variant="custom"
-      className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+    <motion.div 
+      className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]"
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      aria-label="Project Statistics"
     >
-      <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
-      {stat.value.replace(/\d+/g, "")}
-    </Typography>
-    <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
-      {stat.label}
-    </Typography>
-  </div>
-))}
-
-    </div>
+      {STATS_DATA.map((stat, index) => (
+        <motion.div
+          key={index}
+          className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Typography
+            variant="custom"
+            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+          >
+            <span className="font-CandideCondensedNormal">
+              <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
+            </span>
+            <span className="font-FreightNeoProNormal">
+              {stat.value.replace(/\d+/g, "")}
+            </span>
+          </Typography>
+          <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
+            {stat.label}
+          </Typography>
+        </motion.div>
+      ))}
+    </motion.div>
   );
 
   return (

@@ -49,6 +49,32 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
     content:
       "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
   },
+  // Duplicate cards for infinite scroll
+
+  {
+    id: 17,
+    url: "/images/SustainabilityInitiativesImages/1.png",
+    fileUrl: "/images/SustainabilityInitiativesImages/1.png",
+    bottomTitle: "Beach cleaning",
+    content:
+      "We are actively preserving coastal ecosystems through regular beach cleanups, consciously contributing to cleaner shores and healthier marine life.",
+  },
+  {
+    id: 18,
+    url: "/images/SustainabilityInitiativesImages/2.png",
+    fileUrl: "/images/SustainabilityInitiativesImages/2.png",
+    bottomTitle: "500+ Tree Cover",
+    content:
+      "With over 500 trees, we are prioritizing tree cover expansion within and around developments to enhance biodiversity, improve air quality, and create shaded, vibrant spaces.",
+  },
+  {
+    id: 19,
+    url: "/images/SustainabilityInitiativesImages/3.png",
+    fileUrl: "/images/SustainabilityInitiativesImages/3.png",
+    bottomTitle: "Emission control",
+    content:
+      "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
+  },
 ];
 
 /**
