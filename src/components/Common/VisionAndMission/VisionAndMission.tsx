@@ -2,6 +2,7 @@
 // ============= Component Imports =============
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Typography from "@/components/Typography/Typography";
 
 // ============= Types & Interfaces =============
@@ -23,16 +24,8 @@ const CAROUSEL_CONFIG = {
 };
 
 const IMAGES = {
-  desktop: [
-    "/images/visionAndMissionImages/1.png",
-    "/images/visionAndMissionImages/2.png",
-    "/images/visionAndMissionImages/3.png",
-  ],
-  mobile: [
-    "/images/visionAndMissionImages/1.png",
-    "/images/visionAndMissionImages/2.png",
-    "/images/visionAndMissionImages/3.png",
-  ],
+  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
+  mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
 };
 
 const CONTENT = {
@@ -40,70 +33,58 @@ const CONTENT = {
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
         title: "Trusted Experience",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
         title: "Trusted Experience ",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
       },
       {
         title: "Trusted Experience ",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
   ],
   mobile: [
     {
       title: "Prime Locations",
-      description:
-        "Strategically located properties offering convenience, connectivity, and high investment value.",
+      description: "Strategically located properties offering convenience, connectivity, and high investment value.",
     },
     {
       title: "Accessible Luxury",
-      description:
-        "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
     },
     {
       title: "Trusted Experience ",
-      description:
-        "Delivering homes where families thrive, backed by years of trust and excellence.",
+      description: "Delivering homes where families thrive, backed by years of trust and excellence.",
     },
   ],
 };
@@ -135,23 +116,16 @@ export default function VisionAndMission() {
       const nextIndex =
         newDirection === "right"
           ? (currentIndex + 1) % CAROUSEL_CONFIG.totalSlides
-          : (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) %
-            CAROUSEL_CONFIG.totalSlides;
+          : (currentIndex - 1 + CAROUSEL_CONFIG.totalSlides) % CAROUSEL_CONFIG.totalSlides;
       setCurrentIndex(nextIndex);
-      setTimeout(
-        () => setIsAnimating(false),
-        CAROUSEL_CONFIG.transitionDuration,
-      );
+      setTimeout(() => setIsAnimating(false), CAROUSEL_CONFIG.transitionDuration);
     },
-    [currentIndex, isAnimating],
+    [currentIndex, isAnimating]
   );
 
   // ============= Effects =============
   useEffect(() => {
-    const timer = setInterval(
-      () => handleTransition("right"),
-      CAROUSEL_CONFIG.autoplayInterval,
-    );
+    const timer = setInterval(() => handleTransition("right"), CAROUSEL_CONFIG.autoplayInterval);
     return () => clearInterval(timer);
   }, [handleTransition]);
 
@@ -160,7 +134,7 @@ export default function VisionAndMission() {
     <div key={index} className="flex-1 group/section relative">
       {/* Hover overlay - moved up in DOM order and given lower z-index */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 z-10" />
-      
+
       {/* Section content - given higher z-index */}
       <div className="absolute inset-x-0 bottom-0 p-6 text-white z-20">
         <Typography
@@ -172,11 +146,7 @@ export default function VisionAndMission() {
         </Typography>
         {/* Hover description */}
         <div className="overflow-hidden h-0 group-hover/section:h-24 transition-all duration-300">
-          <Typography
-            variant="h3"
-            fontWeight="font-normal"
-            className="font-FreightNeoProNormal mt-[5px] text-white text-center"
-          >
+          <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[5px] text-white text-center">
             {section.description}
           </Typography>
         </div>
@@ -187,89 +157,82 @@ export default function VisionAndMission() {
   return (
     <>
       {/* Main Carousel */}
-      <div className="bg-gray-100 sm:p-0 md:p-[1px]">
-        {/* Desktop Version */}
-        <div className="overflow-hidden hidden md:block shadow-xl xl:h-[100vh] w-[100%] aspect-[2/1] relative">
-          {/* Image container */}
-          <div
-            className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-              direction === "right" ? "translate-x-0" : "-translate-x-full"
-            }`}
-          >
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <div className="bg-gray-100 sm:p-0 md:p-[1px]">
+          {/* Desktop Version */}
+          <div className="overflow-hidden hidden md:block shadow-xl xl:h-[100vh] w-[100%] aspect-[2/1] relative">
+            {/* Image container */}
+            <div
+              className={`absolute inset-0 transition-all duration-500 ease-in-out ${direction === "right" ? "translate-x-0" : "-translate-x-full"}`}
+            >
+              <Image
+                src={IMAGES.desktop[currentIndex]}
+                alt={`Slide ${currentIndex + 1}`}
+                width={CAROUSEL_CONFIG.dimensions.desktop.width}
+                height={CAROUSEL_CONFIG.dimensions.desktop.height}
+                className="w-full  object-contain"
+                loading="lazy"
+              />
+            </div>
+            {/* Vertical dividing lines */}
+            <div className="absolute inset-0 flex">
+              <div className="flex-1 border-r border-white"></div>
+              <div className="flex-1 border-r border-white"></div>
+              <div className="flex-1"></div>
+            </div>
+            {/* Sections with titles and hover descriptions */}
+            <div className="absolute inset-0 flex">{CONTENT.desktop[currentIndex].map((section, index) => renderDesktopSection(section, index))}</div>
+          </div>
+
+          {/* Mobile Version */}
+          <div className="block md:hidden relative overflow-hidden shadow-xl">
             <Image
-              src={IMAGES.desktop[currentIndex]}
+              src={IMAGES.mobile[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
-              width={CAROUSEL_CONFIG.dimensions.desktop.width}
-              height={CAROUSEL_CONFIG.dimensions.desktop.height}
-              className="w-full  object-contain"
+              width={CAROUSEL_CONFIG.dimensions.mobile.width}
+              height={CAROUSEL_CONFIG.dimensions.mobile.height}
+              className="w-full h-[679px] transition-all object-cover duration-500"
               loading="lazy"
             />
-          </div>
-          {/* Vertical dividing lines */}
-          <div className="absolute inset-0 flex">
-            <div className="flex-1 border-r border-white"></div>
-            <div className="flex-1 border-r border-white"></div>
-            <div className="flex-1"></div>
-          </div>
-          {/* Sections with titles and hover descriptions */}
-          <div className="absolute inset-0 flex">
-            {CONTENT.desktop[currentIndex].map((section, index) =>
-              renderDesktopSection(section, index),
-            )}
-          </div>
-        </div>
-
-        {/* Mobile Version */}
-        <div className="block md:hidden relative overflow-hidden shadow-xl">
-          <Image
-            src={IMAGES.mobile[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            width={CAROUSEL_CONFIG.dimensions.mobile.width}
-            height={CAROUSEL_CONFIG.dimensions.mobile.height}
-            className="w-full h-[679px] transition-all object-cover duration-500"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
-            <Typography
-              variant="custom"
-              className="font-freightNeoMedium text-white text-2xl"
-              aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
-            >
-              {CONTENT.mobile[currentIndex].title}
-            </Typography>
-            <div
-              className={`overflow-hidden transition-all duration-300 ${"h-16"}`}
-            >
+            <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
               <Typography
-                variant="h3"
-                fontWeight="font-normal"
-                className="font-FreightNeoProNormal mt-[0px] text-white"
+                variant="custom"
+                className="font-freightNeoMedium text-white text-2xl"
+                aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
               >
-                {CONTENT.mobile[currentIndex].description}
+                {CONTENT.mobile[currentIndex].title}
               </Typography>
-            </div>
-            <div className="flex space-x-5 rounded-[32px] py-4 px-6">
-              {CONTENT.mobile.map((_, dotIndex) => (
-                <button
-                  key={dotIndex}
-                  disabled={isAnimating}
-                  onClick={() => {
-                    if (dotIndex !== currentIndex) {
-                      handleTransition(
-                        dotIndex > currentIndex ? "right" : "left",
-                      );
-                    }
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    dotIndex === currentIndex ? "bg-white" : "bg-[#FFFFFF99]"
-                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
-                  aria-label={`Go to slide ${dotIndex + 1}`}
-                />
-              ))}
+              <div className={`overflow-hidden transition-all duration-300 ${"h-16"}`}>
+                <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[0px] text-white">
+                  {CONTENT.mobile[currentIndex].description}
+                </Typography>
+              </div>
+              <div className="flex space-x-5 rounded-[32px] py-4 px-6">
+                {CONTENT.mobile.map((_, dotIndex) => (
+                  <button
+                    key={dotIndex}
+                    disabled={isAnimating}
+                    onClick={() => {
+                      if (dotIndex !== currentIndex) {
+                        handleTransition(dotIndex > currentIndex ? "right" : "left");
+                      }
+                    }}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      dotIndex === currentIndex ? "bg-white" : "bg-[#FFFFFF99]"
+                    } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                    aria-label={`Go to slide ${dotIndex + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

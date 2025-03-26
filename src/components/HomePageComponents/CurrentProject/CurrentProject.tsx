@@ -1,7 +1,9 @@
-import React from "react";
+"use client"
+import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 // ============= Constants =============
 const PROJECT_DATA = {
@@ -31,6 +33,50 @@ const STATS_DATA = [
   },
 ];
 
+
+const Counter = ({ value }: { value: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true }); // Runs only once when visible
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const end = parseInt(value.toString().replace(/\D/g, ""), 10);
+      if (isNaN(end)) return;
+
+      const duration = 2000; // 2 seconds
+      const incrementTime = 30;
+      const steps = duration / incrementTime;
+      const stepSize = Math.ceil(end / steps);
+
+      const timer = setInterval(() => {
+        start += stepSize;
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(start);
+        }
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, value]);
+
+  return (
+    <motion.span
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 1 }}
+      className="inline-block"
+    >
+      {count}
+    </motion.span>
+  );
+};
+
 /**
  * Current Project Component
  * Displays information about the current featured project
@@ -51,19 +97,21 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]" aria-label="Project Statistics">
-      {STATS_DATA.map((stat, index) => (
-        <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
-          <Typography
-            variant="custom"
-            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
-          >
-            {stat.value}
-          </Typography>
-          <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
-            {stat.label}
-          </Typography>
-        </div>
-      ))}
+     {STATS_DATA.map((stat, index) => (
+  <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
+    <Typography
+      variant="custom"
+      className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+    >
+      <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
+      {stat.value.replace(/\d+/g, "")}
+    </Typography>
+    <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
+      {stat.label}
+    </Typography>
+  </div>
+))}
+
     </div>
   );
 

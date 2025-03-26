@@ -1,18 +1,20 @@
 "use client";
 
-// ============= Component Imports =============
+// ============= Imports =============
+import { motion } from "framer-motion";
 import Typography from "@/components/Typography/Typography";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import InfiniteCarousel from "@/components/Common/InfiniteCarousel/InfiniteCarousel";
 import CardContent from "@/components/Common/CardContents/CardContents";
 import sustainabilityInitiatives from "@/data/sustainabilityInitiatives.json";
+
 // ============= Types & Interfaces =============
 interface InitiativeCard {
   id: number;
   url: string;
   bottomTitle: string;
   content?: string;
-  fileUrl?:string;
+  fileUrl?: string;
 }
 
 // ============= Constants =============
@@ -47,53 +49,38 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
     content:
       "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
   },
-  // Duplicate cards for infinite scroll
-
-  {
-    id: 17,
-    url: "/images/SustainabilityInitiativesImages/1.png",
-    fileUrl: "/images/SustainabilityInitiativesImages/1.png",
-    bottomTitle: "Beach cleaning",
-    content:
-      "We are actively preserving coastal ecosystems through regular beach cleanups, consciously contributing to cleaner shores and healthier marine life.",
-  },
-  {
-    id: 18,
-    url: "/images/SustainabilityInitiativesImages/2.png",
-    fileUrl: "/images/SustainabilityInitiativesImages/2.png",
-    bottomTitle: "500+ Tree Cover",
-    content:
-      "With over 500 trees, we are prioritizing tree cover expansion within and around developments to enhance biodiversity, improve air quality, and create shaded, vibrant spaces.",
-  },
-  {
-    id: 19,
-    url: "/images/SustainabilityInitiativesImages/3.png",
-    fileUrl: "/images/SustainabilityInitiativesImages/3.png",
-    bottomTitle: "Emission control",
-    content:
-      "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
-  },
 ];
 
 /**
  * Sustainability Initiatives Component
  * Showcases company's environmental and sustainability efforts
- *
- * Features:
- * 1. Title and description section
- * 2. Desktop: Grid layout with large images
- * 3. Mobile: Carousel of initiatives
- *
- * Layout:
- * - Desktop: Two-column with staggered images
- * - Mobile: Single column with carousel
- *
- * @returns {React.ReactElement} The SustainabilityInitiatives component
  */
 export default function SustainabilityInitiatives(): React.ReactElement {
+  // ============= Framer Motion Variants =============
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   // ============= Render Helpers =============
   const renderLeftColumn = () => (
-    <div className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0">
+    <motion.div
+      variants={fadeInLeft}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0"
+    >
       <div className="lg:max-w-none mx-auto lg:mx-0">
         <Typography
           variant="custom"
@@ -119,11 +106,17 @@ export default function SustainabilityInitiatives(): React.ReactElement {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const renderRightColumn = () => (
-    <div className="hidden mb-40 md:w-1/2 md:flex md:mt-0">
+    <motion.div
+      variants={fadeInRight}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="hidden mb-40 md:w-1/2 md:flex md:mt-0"
+    >
       <div className="flex flex-col items-end w-full gap-8 lg:gap-12 xl:gap-16">
         <AppleStyleCard
           key={12}
@@ -138,13 +131,13 @@ export default function SustainabilityInitiatives(): React.ReactElement {
           key={13}
           id={13}
           imageSrc={INITIATIVE_CARDS[2].url}
-          className="md:max-w-[593px]   md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
+          className="md:max-w-[593px] md:h-[260px] 2xl:max-w-[80%] lg:h-[256px] w-full"
           cardClassName="rounded-[20px]"
           bottomTitle={INITIATIVE_CARDS[2].bottomTitle}
           content={<CardContent id={INITIATIVE_CARDS[2].id} />}
         />
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
@@ -156,12 +149,18 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       {renderRightColumn()}
 
       {/* Mobile Carousel */}
-      <div className="block mb-12 md:hidden">
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="block mb-12 md:hidden"
+      >
         <InfiniteCarousel
           cards={INITIATIVE_CARDS}
           data={sustainabilityInitiatives}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

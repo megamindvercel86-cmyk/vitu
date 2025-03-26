@@ -6,7 +6,7 @@ import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 import { CiPlay1 } from "react-icons/ci";
 import { CiPause1 } from "react-icons/ci";
 
@@ -138,20 +138,22 @@ export default function VisionForTheFuture() {
     <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
       <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
-        <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
-          <Typography
-            variant="custom"
-            className="w-[14rem] md:w-full 2xl:w-full font-freightNeoMedium leading-none text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] md:px-0"
-          >
-            Embracing new Horizons in Living
-          </Typography>
-          <Typography
-            variant="custom"
-            className="pt-1 font-freightNeoMedium font-light text-base  text-[#040707CC] md:text-[1.25rem]  2xl:text-[2.125rem]"
-          >
-            Rooted in our vision for bold growth and dedication to evolving our portfolio.
-          </Typography>
-        </header>
+        <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
+          <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
+            <Typography
+              variant="custom"
+              className="w-[14rem] md:w-full 2xl:w-full font-freightNeoMedium leading-none text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] md:px-0"
+            >
+              Embracing new Horizons in Living
+            </Typography>
+            <Typography
+              variant="custom"
+              className="pt-1 font-freightNeoMedium font-light text-base  text-[#040707CC] md:text-[1.25rem]  2xl:text-[2.125rem]"
+            >
+              Rooted in our vision for bold growth and dedication to evolving our portfolio.
+            </Typography>
+          </header>
+        </motion.span>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
           <Link href="/about">
             <button
@@ -166,6 +168,12 @@ export default function VisionForTheFuture() {
             {CAROUSEL_DATA[currentIndex].residentialType}
           </Typography>
         </div>
+        <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+       >
         <div className="relative pt-6 overflow-hidden">
           <div className="flex w-full h-[12.75rem] transition-transform duration-500 ease-in-out md:h-[33.125rem] xl:h-[37.875rem] 2xl:h-[62.5rem]">
             {CAROUSEL_DATA.map((item, index) => (
@@ -197,7 +205,7 @@ export default function VisionForTheFuture() {
             ))}
           </div>
         </div>
-
+        </motion.div>
         <Typography variant="custom" className="block mx-[1.8125rem] mt-6 font-FreightNeoProBold text-lg text-[#04070799] md:hidden">
           {CAROUSEL_DATA[currentIndex].residentialType}
         </Typography>
