@@ -6,6 +6,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
+import image1 from "../../../../public/images/imageLayers/eg1.png";
+import image2 from "../../../../public/images/imageLayers/eg2.png";
+import image3 from "../../../../public/images/imageLayers/eg3.png";
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -46,13 +49,13 @@ export default function HomeHeroSection() {
 
     // Create parallax effect
     gsap.to(background, {
-      yPercent: 80,
+      yPercent: 10,
       ease: "none",
       scrollTrigger: {
         trigger: container,
         start: "top top",
         end: "bottom top",
-        scrub: 1
+        scrub: 0
       }
     });
 
@@ -68,7 +71,7 @@ export default function HomeHeroSection() {
     });
 
     gsap.to(foreground, {
-      yPercent: 10,
+      yPercent: 1,
       ease: "none",
       scrollTrigger: {
         trigger: container,
@@ -88,12 +91,12 @@ export default function HomeHeroSection() {
       {/* Hero Background Section */}
       <div 
         ref={containerRef}
-        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen overflow-hidden"
+        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen overflow-hidden"
       >
         {/* Background Layer */}
         <div ref={backgroundRef} className="absolute inset-0 scale-1">
           <Image
-            src={HERO_CONFIG.images.background}
+            src={image1}
             alt="Background scenery"
             fill
             className="object-cover"
@@ -105,7 +108,7 @@ export default function HomeHeroSection() {
         {/* Middle Layer */}
         <div ref={middleRef} className="absolute inset-0 scale-">
           <Image
-            src={HERO_CONFIG.images.middle}
+            src={image2}
             alt="Middle layer elements"
             fill
             className="object-cover"
@@ -117,7 +120,7 @@ export default function HomeHeroSection() {
         {/* Foreground Layer */}
         <div ref={foregroundRef} className="absolute inset-0 scale">
           <Image
-            src={HERO_CONFIG.images.foreground}
+            src={image3}
             alt="Foreground elements"
             fill
             className="object-cover"
@@ -127,7 +130,7 @@ export default function HomeHeroSection() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative flex h-full justify-center top-[12.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
+        <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
           <div className="flex flex-col items-center text-center text-white">
             <h1 
               id="hero-heading"
