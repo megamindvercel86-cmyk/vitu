@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
-import {motion,AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * Footer Component
@@ -26,12 +26,8 @@ import {motion,AnimatePresence} from "framer-motion";
  */
 
 const Footer: FC = () => {
-
-
-
   const [quickIsOpen, setQuickIsOpen] = useState<boolean>(false);
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
-
 
   // SVG Arrow for collapsible sections in mobile view
   const DropdownArrow: FC = () => (
@@ -44,7 +40,6 @@ const Footer: FC = () => {
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
 
   const [email, setEmail] = useState<string>("");
-
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,24 +60,25 @@ const Footer: FC = () => {
     }
   };
 
-
- 
-
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16  w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="flex items-center  space-x-2 pb-3">
-          <FooterLink href="/"><IoMdHome className="text-footerTextColor mb-[2px] xl:mb-0  text-lg" /></FooterLink>
+          <FooterLink href="/">
+            <IoMdHome className="text-footerTextColor mb-[2px] xl:mb-0  text-lg" />
+          </FooterLink>
           <FooterLink href="/">Home</FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
               <span className="text-footerTextColor">
                 {!subPage ? (
-                   <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</span> 
+                  <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </span>
                 ) : (
                   // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</FooterLink>
+                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
                 )}
               </span>
             </>
@@ -91,7 +87,7 @@ const Footer: FC = () => {
             <>
               <RiArrowRightSLine />
               <span className="text-footerTextColor font-FreightNeoProLight font-light text-base 2xl:text-2xl">
-              {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
@@ -116,26 +112,28 @@ const Footer: FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div onClick={()=>setQuickIsOpen(!quickIsOpen )}><FooterSection
-          isOpen={quickIsOpen}
-            title="Quick Links"
-            links={[
-              { href: "/about", label: "About Us" },
-              { href: "/", label: "Our Projects" },
-              { href: "/career-application", label: "Careers" },
-            ]}
-          />
+          <div onClick={() => setQuickIsOpen(!quickIsOpen)}>
+            <FooterSection
+              isOpen={quickIsOpen}
+              title="Quick Links"
+              links={[
+                { href: "/about", label: "About Us" },
+                { href: "/", label: "Our Projects" },
+                { href: "/career-application", label: "Careers" },
+              ]}
+            />
           </div>
 
           {/* Resources */}
-          <div onClick={()=>setResourcesIsOpen(!resourcesIsOpen)}><FooterSection
-          isOpen={resourcesIsOpen}
-            title="Resources"
-            links={[
-              { href: "/resources/media-kit", label: "Media" },
-              { href: "insights", label: "Insights" },
-            ]}
-          />
+          <div onClick={() => setResourcesIsOpen(!resourcesIsOpen)}>
+            <FooterSection
+              isOpen={resourcesIsOpen}
+              title="Resources"
+              links={[
+                { href: "/resources/media-kit", label: "Media" },
+                { href: "/insights", label: "Insights" },
+              ]}
+            />
           </div>
 
           {/* Contact Information */}
@@ -199,7 +197,6 @@ const DropdownArrow = () => (
   </svg>
 );
 
-
 const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
   <motion.svg
     className="inline-block ml-2 w-4 h-4"
@@ -226,21 +223,23 @@ const FooterSection: FC<{
   title: string;
   links: { href: string; label: string }[];
   isOpen: boolean;
-}> = ({ title, links,isOpen }) => (
+}> = ({ title, links, isOpen }) => (
   <div>
     {/* Mobile View */}
     <div className="lg:hidden border-b border-gray-700 pb-2">
       <div className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
         {title}
-        <ArrowIcon isOpen={isOpen}  />
+        <ArrowIcon isOpen={isOpen} />
       </div>
-      {isOpen&&<ul className="space-y-4 mt-4 text-gray-300 cursor-pointer">
-        {links.map((link) => (
-          <li key={link.href}>
-            <FooterLink href={link.href}>{link.label}</FooterLink>
-          </li>
-        ))}
-      </ul>}
+      {isOpen && (
+        <ul className="space-y-4 mt-4 text-gray-300 cursor-pointer">
+          {links.map((link) => (
+            <li key={link.href}>
+              <FooterLink href={link.href}>{link.label}</FooterLink>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
 
     {/* Desktop View */}

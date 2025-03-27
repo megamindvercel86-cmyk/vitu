@@ -183,7 +183,7 @@ export default function MediaSection(): React.ReactElement {
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               disabled={isNavigationDisabled}
-              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              className="relative  lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Previous slide"
             >
               <IconArrowNarrowLeft />
@@ -191,7 +191,7 @@ export default function MediaSection(): React.ReactElement {
             <button
               onClick={() => swiperRef.current?.slideNext()}
               disabled={isNavigationDisabled}
-              className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              className="relative  lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Next slide"
             >
               <IconArrowNarrowRight />
