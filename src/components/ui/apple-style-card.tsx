@@ -140,7 +140,7 @@ export default function AppleStyleCard({
         layoutId={`expandable-card-${id}`}
         onClick={() => setIsOpen(isExpanded)}
         className={cn(
-          "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative ",
+          "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
           className,
           cardClassName,
         )}
@@ -178,9 +178,9 @@ export default function AppleStyleCard({
           src={imageSrc || "/placeholder.svg"}
           alt={title || "Card image"}
           fill
-          className="object-cover absolute  inset-0"
+          className="object-cover absolute z-10 inset-0"
         />
-        <div className="absolute bottom-4 md:left-8 left-4 ">
+        <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
             variant="custom"
             className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl text-xl"
@@ -196,7 +196,7 @@ export default function AppleStyleCard({
           </Typography>
         </div>
         <div
-          className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-[1]`}
+          className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
         >
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (

@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -27,11 +24,6 @@
     --background: #f8f6f5;
     --foreground: #ededed;
   }
-}
-
-
-.navabar{
-  z-index: 1000 !important;
 }
 
 body {

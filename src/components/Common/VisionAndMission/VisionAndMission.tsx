@@ -133,10 +133,10 @@ export default function VisionAndMission() {
   const renderDesktopSection = (section: ContentItem, index: number) => (
     <div key={index} className="flex-1 group/section relative">
       {/* Hover overlay - moved up in DOM order and given lower z-index */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 " />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 z-10" />
 
       {/* Section content - given higher z-index */}
-      <div className="absolute inset-x-0 bottom-0 p-6 text-white z-[1]">
+      <div className="absolute inset-x-0 bottom-0 p-6 text-white z-20">
         <Typography
           variant="h2"
           className="font-freightNeoMedium text-white text-center"
