@@ -94,7 +94,7 @@ function YearDisplay({
         isFixed
           ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 md:left-20 left-5"
           : "absolute lg2:bottom-28 md:left-36 bottom-52 left-5"
-      } pointer-events-none z-50`}
+      } pointer-events-none z[1]`}
     >
       <span className="lg2:text-[80px] lg:text-7xl text-[40px] text-white font-CandideCondensedMedium">
         {number.split("").map((digit, index) => (
@@ -132,7 +132,7 @@ function MessageDisplay({
         isFixed
           ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]"
           : "absolute md:bottom-56 md:right-10 bottom-32"
-      } pointer-events-none z-50 lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
+      } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
         <span className="lg2:text-2xl lg:text-xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
@@ -219,7 +219,7 @@ function ScrollController({
 
   return (
     <div
-      className={`${isFixed ? "fixed" : "absolute"} bottom-12 lg:bottom-16 lg2:bottom-36 right-5 z-50 w-[90%] lg:w-[40%] lg2:max-w-[550px]`}
+      className={`${isFixed ? "fixed" : "absolute"} bottom-12 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[40%] lg2:max-w-[550px]`}
     >
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg

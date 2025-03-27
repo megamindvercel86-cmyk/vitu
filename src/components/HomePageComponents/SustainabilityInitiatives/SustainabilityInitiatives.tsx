@@ -105,7 +105,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="md:w-1/2 md:flex md:flex-col mx-[28px] sm:mx-[28px] md:mx-0"
+      className="md:w-1/2 md:flex overflow-hidden md:flex-col mx-[28px] sm:mx-[28px] md:mx-0"
     >
       <div className="lg:max-w-none mx-auto lg:mx-0">
         <Typography
@@ -141,7 +141,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="hidden mb-40 md:w-1/2 md:flex md:mt-0"
+      className="hidden overflow-hidden mb-40 md:w-1/2 md:flex md:mt-0"
     >
       <div className="flex flex-col items-end w-full gap-8 lg:gap-12 xl:gap-16">
         <AppleStyleCard
@@ -167,7 +167,7 @@ export default function SustainabilityInitiatives(): React.ReactElement {
   );
 
   return (
-    <div className="flex flex-col md:flex-row lg:gap-8 md:gap-6 mx-0 sm:mx-0 md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
+    <div className="flex overflow-hidden flex-col md:flex-row lg:gap-8 md:gap-6 mx-0 sm:mx-0 md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]">
       {/* Left Column - Content and First Image */}
       {renderLeftColumn()}
 
