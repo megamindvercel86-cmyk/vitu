@@ -58,8 +58,16 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
           <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
             UP NEXT
           </p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
-            {nextProjectTitle}
+          
+          <h4 className="font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
+          {nextProjectTitle?.split('').map((char, index) => (
+              <span 
+                key={index} 
+                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+              >
+                {char}
+              </span>
+            ))}
           </h4>
         </div>
         <ArrowRightIcon />
@@ -100,12 +108,27 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
             className={cn("h-[300px] w-full")}
           />
           <div className="p-4 md:p-10">
-            <Typography variant="h1" className="text-customBrown">
-              {project.title}
-            </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-              {project.description}
-            </Typography>
+            
+          <Typography variant="h1" className="text-customBrown">
+            {project?.title?.split('').map((char, index) => (
+              <span 
+                key={index} 
+                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+              >
+                {char}
+              </span>
+            ))}
+          </Typography>
+          <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+          {project?.description?.split('').map((char, index) => (
+              <span 
+                key={index} 
+                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+              >
+                {char}
+              </span>
+            ))}
+          </Typography>
             <Footer
               onFooterClick={handleFooterClick}
               nextProjectTitle={nextProject?.title || ""}

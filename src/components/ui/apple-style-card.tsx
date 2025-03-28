@@ -99,7 +99,8 @@ export default function AppleStyleCard({
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 h-screen mx-auto  z-50 overflow-auto">
+     <div className="fixed inset-0 h-screen md:mx-auto mx-4 z-50 overflow-auto pb-16 scrollbar-hide" data-lenis-prevent>
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -158,7 +159,7 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-title-${id}`}
             className={cn(
-              "text-xl md:text-2xl lg:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
+              "text-xl md:text-2xl lg:text-3xl font-freightNeoSemibold text-white text-left leading-[1.5rem] line-clamp-2",
               titleClassName,
             )}
           >
@@ -167,7 +168,7 @@ export default function AppleStyleCard({
           <motion.p
             layoutId={`card-subtitle-${id}`}
             className={cn(
-              "text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl",
+              "text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-full text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl",
               titleClassName,
             )}
           >

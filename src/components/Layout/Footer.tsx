@@ -29,12 +29,6 @@ const Footer: FC = () => {
   const [quickIsOpen, setQuickIsOpen] = useState<boolean>(false);
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
 
-  // SVG Arrow for collapsible sections in mobile view
-  const DropdownArrow: FC = () => (
-    <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </svg>
-  );
   const pathname = usePathname();
 
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
@@ -44,19 +38,80 @@ const Footer: FC = () => {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email) {
-      const emailValue = email.trim();
+      try {
+        const emailValue = email.trim();
+        const collectionRef = collection(db, "newsLetter");
+        await addDoc(collectionRef, { email: emailValue });
 
-      const collectionRef = collection(db, "newsLetter");
-      await addDoc(collectionRef, { email: emailValue });
+        toast.success(
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            {/* Icon Wrapper */}
+            <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+            </div>
+      
+            {/* Text Content */}
+            <div>
+              <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Woo-Hoo</h2>
+              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>You have Successfully Signed Up to our Newsletter</p>
+            </div>
+          </div>,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            icon: false,
+            progress: undefined,
+            style: {
+              background: "#f0fdf4",
+              borderRadius: "10px",
+              padding: "16px",
+              boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+              display: "flex",
+              alignItems: "center",
+            },
+          }
+        );
 
-      // await fetch("/api/sendEmail", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(emailValue),
-      // });
-      toast.success("Thank You For The Newsletter SignUp");
-
-      setEmail("");
+        setEmail("");
+      } catch (error) {
+        toast.error(
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            {/* Icon Wrapper */}
+            <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src="/error.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+            </div>
+      
+            {/* Text Content */}
+            <div>
+              <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Uh oh.</h2>
+              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>Something went wrong. 
+              Give it a Minute and Try Again</p>
+            </div>
+          </div>,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            icon: false,
+            progress: undefined,
+            style: {
+              background: "#FFF3F3",
+              borderRadius: "10px",
+              padding: "16px",
+              boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+              display: "flex",
+              alignItems: "center",
+            },
+          }
+        );
+      }
     }
   };
 
@@ -190,11 +245,6 @@ const Footer: FC = () => {
     </footer>
   );
 };
-const DropdownArrow = () => (
-  <svg className="w-5 h-5 text-footerTextColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-  </svg>
-);
 
 const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
   <motion.svg
