@@ -42,8 +42,8 @@ const Counter = ({ value }: { value: number }) => {
     if (inView) {
       let start = value - 5; // Start 5 less than actual value
       const end = value;
-      const duration = 20000; // 2 seconds
-      const incrementTime = 200;
+      const duration = 2000; // 2 seconds
+      const incrementTime = 50;
       const steps = duration / incrementTime;
       const stepSize = Math.ceil((end - start) / steps);
 
@@ -63,10 +63,12 @@ const Counter = ({ value }: { value: number }) => {
 
   return (
     <motion.span ref={ref} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="inline-block">
-      {count}
+      {count.toLocaleString()} {/* Format with commas */}
     </motion.span>
   );
 };
+
+
 
 /**
  * Current Project Component
