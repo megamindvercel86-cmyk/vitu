@@ -112,29 +112,28 @@ const Footer: FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div onClick={() => setQuickIsOpen(!quickIsOpen)}>
-            <FooterSection
-              isOpen={quickIsOpen}
-              title="Quick Links"
-              links={[
-                { href: "/about", label: "About Us" },
-                { href: "/", label: "Our Projects" },
-                { href: "/career-application", label: "Careers" },
-              ]}
-            />
-          </div>
+          <FooterSection
+            isOpen={quickIsOpen}
+            title="Quick Links"
+            links={[
+              { href: "/about", label: "About Us" },
+              { href: "/", label: "Our Projects" },
+              { href: "/career-application", label: "Careers" },
+            ]}
+            setQuickIsOpen={setQuickIsOpen}
+          />
 
           {/* Resources */}
-          <div onClick={() => setResourcesIsOpen(!resourcesIsOpen)}>
-            <FooterSection
-              isOpen={resourcesIsOpen}
-              title="Resources"
-              links={[
-                { href: "/resources/media-kit", label: "Media" },
-                { href: "/insights", label: "Insights" },
-              ]}
-            />
-          </div>
+
+          <FooterSection
+            isOpen={resourcesIsOpen}
+            title="Resources"
+            links={[
+              { href: "/resources/media-kit", label: "Media" },
+              { href: "/insights", label: "Insights" },
+            ]}
+            setQuickIsOpen={setResourcesIsOpen}
+          />
 
           {/* Contact Information */}
           <div>
@@ -223,12 +222,16 @@ const FooterSection: FC<{
   title: string;
   links: { href: string; label: string }[];
   isOpen: boolean;
-}> = ({ title, links, isOpen }) => (
+  setQuickIsOpen: (isOpen: boolean) => void;
+}> = ({ title, links, isOpen, setQuickIsOpen }) => (
   <div>
     {/* Mobile View */}
     <div className="lg:hidden border-b border-gray-700 pb-2">
-      <div className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer">
-        {title}
+      <div
+        onClick={() => setQuickIsOpen(!isOpen)}
+        className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer"
+      >
+        {title}fes
         <ArrowIcon isOpen={isOpen} />
       </div>
       {isOpen && (
