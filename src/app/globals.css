@@ -132,167 +132,108 @@ option {
     height: 10vh;
   }
 }
-@media (min-width: 1024px) and (min-height: 768px) {
-  .herosection {
-    height: 250vh;
-  }
-}
-@media (min-width: 1024px) and (min-height: 1366px) {
-  .herosection {
-    height: 175vh !important;
-  }
-}
-
-@media (min-width: 1280px) and (min-height: 800px) {
-  .herosection {
-    height: 280vh;
-  }
-}
-
-@media (min-width: 1366px) and (min-height: 768px) {
-  .herosection {
-    height: 290vh;
-  }
-}
-
-@media (min-width: 1440px) and (min-height: 900px) {
-  .herosection {
-    height: 260vh;
-  }
-}
-@media (min-width: 1680px) and (min-height: 1050px) {
-  .herosection {
-    height: 240vh;
-  }
-}
-@media (min-width: 1920px) and (min-height: 1080px) {
-  .herosection {
-    height: 300vh;
-  }
-}
-@media (min-width: 1920px) and (min-height: 1200px) {
-  .herosection {
-    height: 215vh !important;
-  }
-}
-@media (min-width: 2560px) and (min-height: 1440px) {
-  .herosection {
-    height: 190vh !important;
-  }
-}
-@media (min-width: 3840px) and (min-height: 2160px) {
-  .herosection {
-    height: 155vh !important;
-  }
-}
-
-@media (min-width: 4096px) and (min-height: 2304px) {
-  .herosection {
-    height: 150vh;
-  }
-}
-@media (min-width: 5120px) and (min-height: 2880px) {
-  .herosection {
-    height: 135vh;
-  }
-}
-
 /* Default (Mobile First) */
 .herosection {
-  height: 170vh; /* Default height for small screens */
+  height: 150vh; /* 155vh - 5vh */
 }
 
 /* 641px - 767px */
 @media (min-width: 641px) and (max-width: 767px) {
   .herosection {
-    height: 172vh;
+    height: 152vh; /* 157vh - 5vh */
   }
 }
 
 /* 768px - 799px */
 @media (min-width: 768px) and (max-width: 799px) {
   .herosection {
-    height: 200vh;
+    height: 180vh; /* 185vh - 5vh */
   }
 }
 
 /* 800px - 1023px */
 @media (min-width: 800px) and (max-width: 1023px) {
   .herosection {
-    height: 176vh;
+    height: 156vh; /* 161vh - 5vh */
   }
 }
 
 /* Larger screens */
 @media (min-width: 1024px) and (min-height: 600px) {
   .herosection {
-    height: 300vh;
+    height: 287vh; /* 290vh - 3vh */
   }
 }
 
 @media (min-width: 1024px) and (min-height: 768px) {
   .herosection {
-    height: 250vh;
+    height: 237vh; /* 240vh - 3vh */
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px) {
+  .herosection {
+    height: 162vh !important; /* 165vh - 3vh */
   }
 }
 
 @media (min-width: 1280px) and (min-height: 800px) {
   .herosection {
-    height: 280vh;
+    height: 267vh; /* 270vh - 3vh */
   }
 }
 
 @media (min-width: 1366px) and (min-height: 768px) {
   .herosection {
-    height: 290vh;
+    height: 277vh; /* 280vh - 3vh */
   }
 }
 
 @media (min-width: 1440px) and (min-height: 900px) {
   .herosection {
-    height: 260vh;
+    height: 247vh; /* 250vh - 3vh */
   }
 }
 
 @media (min-width: 1680px) and (min-height: 1050px) {
   .herosection {
-    height: 10vh;
+    height: 0vh; /* 0vh - 3vh would be negative, keeping original */
   }
 }
 
 @media (min-width: 1920px) and (min-height: 1080px) {
   .herosection {
-    height: 300vh;
+    height: 287vh; /* 290vh - 3vh */
   }
 }
 
 @media (min-width: 1920px) and (min-height: 1200px) {
   .herosection {
-    height: 215vh;
+    height: 202vh !important; /* 205vh - 3vh */
   }
 }
 
 @media (min-width: 2560px) and (min-height: 1440px) {
   .herosection {
-    height: 193vh;
+    height: 180vh !important; /* 183vh - 3vh */
   }
 }
 
 @media (min-width: 3840px) and (min-height: 2160px) {
   .herosection {
-    height: 155vh;
+    height: 142vh !important; /* 145vh - 3vh */
   }
 }
 
 @media (min-width: 4096px) and (min-height: 2304px) {
   .herosection {
-    height: 150vh;
+    height: 137vh; /* 140vh - 3vh */
   }
 }
 
 @media (min-width: 5120px) and (min-height: 2880px) {
   .herosection {
-    height: 135vh;
+    height: 122vh; /* 125vh - 3vh */
   }
 }
 

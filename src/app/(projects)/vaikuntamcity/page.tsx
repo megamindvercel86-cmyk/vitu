@@ -53,28 +53,28 @@ export default function ProjectPage({}: ProjectPageProps) {
 
 
   return (
-    <div className="bg-[#e5ddd8] lg2:bg-[#fbfaf8]  ">
-      <section className="relative">
-        <ProjectHeroSection />
-      </section>
-      <section id="location" className="bg-[#f9f7f5]">
-        <LocationAdvantage />
-      </section>
-      <section className="bg-[#FBFAF8] pt-36">
-        <CurrentProject />
-      </section>
-      <section id="sustainability"  className="bg-[#FBFAF8] pt-36">
-        <ExploreProjectsWrapper />
-      </section>
-      <section id="plots"  className="bg-[#FBFAF8]">
-       <PlotWrapper/>
-      </section>
-      <section className="bg-[#fbfaf8] ">
-        <LegacyBuiltComponent />
-      </section>
-      <section className="">
-        <ProjectBottomSection />
-      </section>
-    </div>
+    <div className="bg-[#e7dfda]  ">
+    <section className="relative">
+      <ProjectHeroSection />
+    </section>
+    <section id="location" className="bg-[#f9f7f5]">
+      <LocationAdvantage />
+    </section>
+    <section className="bg-[#FBFAF8] pt-36">
+      <CurrentProject />
+    </section>
+    <section id="sustainability"  className="bg-[#FBFAF8] pt-36">
+      <ExploreProjectsWrapper />
+    </section>
+    <section id="plots"  className="bg-[#FBFAF8]">
+     <PlotWrapper/>
+    </section>
+    <section className="bg-[#fbfaf8] ">
+      <LegacyBuiltComponent />
+    </section>
+    <section className="">
+      <ProjectBottomSection />
+    </section>
+  </div>
   );
 }
