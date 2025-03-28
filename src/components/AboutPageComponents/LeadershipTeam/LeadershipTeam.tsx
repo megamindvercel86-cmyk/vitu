@@ -6,13 +6,13 @@ import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Navigation } from "swiper/modules";
-
+import { motion } from "framer-motion";
 // ============= Style Imports =============
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "../../Common/InfiniteCarousel/InfiniteCarousel.css";
-import dummy from "@/data/dummy.json";
+
 
 // ============= Types & Interfaces =============
 interface TeamMember {
@@ -67,7 +67,8 @@ export default function LeadershipTeam() {
   useEffect(() => {
     fetchTeamMembers();
   }, []);
-  console.log(teamMembersCarousal);
+ 
+
   return (
     <div className="lg:pt-[153px] py-16 lg:py-0 lg:pb-[198px] xl:pt-[160px] xl:pb-[191px]">
       <div className="mx-auto xl:mx-[284px] lg:mx-[180px]">
@@ -136,9 +137,22 @@ export default function LeadershipTeam() {
     </div>
   );
 }
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
+const fadeInRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
 // ============= Sub Components =============
 const TeamMemberCard = ({ member }: { member: TeamMember }) => (
+  <motion.div
+  variants={fadeInLeft}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}>
   <div className="text-center w-[100%] pb-1  ">
     <div className="aspect-auto lg:mb-[34px] w-full h-[70%]">
       <Image width={400} height={500} src={member.fileUrl} alt={member.name} className="w-full h-full object-cover rounded-[20px] shadow-lg" />
@@ -150,4 +164,5 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => (
       {member.role}
     </Typography>
   </div>
+  </motion.div>
 );

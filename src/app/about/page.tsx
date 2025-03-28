@@ -72,8 +72,7 @@ export default function AboutPage() {
         navbarProps={NAVBAR_CONFIG.props}
       >
         {/* Hero Section with <h1> for SEO */}
-        <AboutHeroSection  />
-
+        <AboutHeroSection/>
         {/* Company Story Section */}
         <section>
           <StoryHeader />
@@ -86,17 +85,14 @@ export default function AboutPage() {
         <section>
           <FounderMessage />
         </section>
-
         {/* Vision and Mission Section */}
         <section>
           <VisionAndMission />
         </section>
-
         {/* Leadership Team Section (Lazy Loaded for Performance) */}
         <section>
           <LeadershipTeam />
         </section>
-
         {/* Join Our Team Section */}
         <section>
           <JoinOurTeamHeroSection />

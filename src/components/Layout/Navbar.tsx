@@ -62,6 +62,7 @@ const PROJECT_LINKS = [
 ];
 
 const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   {
     href: "#",
@@ -97,8 +98,6 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
-  
-
   // ============= Computed Values =============
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
   const isNavbarPrimary = navbar === "primary";
@@ -131,89 +130,6 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     };
   }, [isMenuOpen]);
 
-  // Add sidebar menu component
-  const SidebarMenu = () => (
-    <AnimatePresence>
-      {isMenuOpen && (
-        <motion.div
-          initial={{ x: window.innerWidth }}
-          animate={{ x: 0 }}
-          exit={{ x: window.innerWidth }}
-          transition={{ type: "tween", duration: 0.3 }}
-          className="fixed inset-0 z-50 overflow-y-auto h-full bg-white"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {/* Rest of the component remains exactly the same */}
-          <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
-            {/* Header */}
-            <div className="flex justify-between items-center px-7 pt-[34px]">
-              <Link href="/">
-                <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
-              </Link>
-              <button onClick={() => setIsMenuOpen(false)}>
-                <CloseIcon />
-              </button>
-            </div>
-
-            {/* Navigation Links */}
-            <div className="flex flex-col items-center justify-center flex-grow space-y-6">
-              {NAV_LINKS.map(({ href, label, dropdownItems }) => (
-                <div key={href} className="flex flex-col items-center">
-                  <NavLink
-                    href={href}
-                    className="text-2xl font-FreightNeoProBold text-center hover:text-gray-600 transition-colors"
-                  >
-                    {label} {dropdownItems&&<button onClick={()=>setIsDropDownMenuOpen(!isDropDownOpen)}>dfsgsdfg</button>}
-                  </NavLink>
-
-                  {/* Always show sub-menu items below the parent */}
-                  {isDropDownOpen&&dropdownItems && (
-                    <div className="mt-2  flex flex-col items-center space-y-2">
-                      {dropdownItems.map((item) => (
-                        <NavLink
-                          key={item.href}
-                          href={item.href}
-                          className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {item.label}
-                        </NavLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {showGetInTouch && (
-                <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
-                  <button className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
-                    Get in Touch
-                  </button>
-                </Link>
-              )}
-            </div>
-
-            {/* Social Links */}
-            <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryInstgramIcon />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryMetaIcon />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryLinkedInIcon />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryYoutubeIcon />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-
   return (
     <div>
       <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
@@ -236,7 +152,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
           {/* Navigation Links - Right 50% */}
           <div
             className={`hidden lg:flex lg:w-1/2 ${
-              showGetInTouch ? "ml-28 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+              showGetInTouch ? "ml-2 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
             } items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
@@ -249,10 +165,14 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                     </NavLink>
                     {hasDropdown && activeDropdown === href && (
                       <div className="group">
-                        <div className="absolute left-0 w-40 mt-1 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+                        <div className="absolute left-0 w-40 mt-1 origin-top-left  backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
                           {dropdownItems?.map((item) => (
                             <div className="py-1" key={item.href}>
-                              <Link href={item.href} key={item.href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                              <Link
+                                href={item.href}
+                                key={item.href}
+                                className={`block px-4 py-2 font-freightNeoMedium  text-xl ${pathname === "/" || pathname === "/about" ? "text-white" : "text-black"}`}
+                              >
                                 {item.label}
                               </Link>
                             </div>
@@ -280,12 +200,14 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
         </nav>
       </header>
       {/* <SidebarMenu /> */}
-      {isMenuOpen&&<NavbarResponsiveComponent 
-  setIsMenuOpen={setIsMenuOpen} 
-  setIsDropDownMenuOpen={setIsDropDownMenuOpen} 
-  isDropDownOpen={isDropDownOpen} 
-  showGetInTouch={showGetInTouch} 
-/>}
+      {isMenuOpen && (
+        <NavbarResponsiveComponent
+          setIsMenuOpen={setIsMenuOpen}
+          setIsDropDownMenuOpen={setIsDropDownMenuOpen}
+          isDropDownOpen={isDropDownOpen}
+          showGetInTouch={showGetInTouch}
+        />
+      )}
     </div>
   );
 }

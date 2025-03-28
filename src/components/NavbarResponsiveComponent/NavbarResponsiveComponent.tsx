@@ -42,23 +42,37 @@ const NavbarResponsiveComponent = ({
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ x: window.innerWidth }}
-        animate={{ x: 0 }}
-        exit={{ x: window.innerWidth }}
-        transition={{ type: "tween", duration: 0.3 }}
+        initial={{ x: window.innerWidth, scale: 0.95 }}
+        animate={{ x: 0, scale: 1 }}
+        exit={{ x: window.innerWidth, scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="fixed inset-0 z-50 overflow-y-auto h-full bg-white"
         onClick={() => setIsMenuOpen(false)}
       >
         {/* Rest of the component remains exactly the same */}
+        <motion.div
+          initial={{ x: window.innerWidth, scale: 0.95 }}
+          animate={{ x: 0, scale: 1 }}
+          exit={{ x: window.innerWidth, scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="fixed inset-0 z-50 overflow-y-auto h-full bg-white"
+          onClick={() => setIsMenuOpen(false)}
+        >
         <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
           {/* Header */}
           <div className="flex justify-between items-center px-7 pt-[34px]">
             <Link href="/">
               <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
             </Link>
-            <button onClick={() => setIsMenuOpen(false)}>
+            <motion.button
+              whileHover={{ rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="focus:outline-none"
+            >
               <CloseIcon />
-            </button>
+            </motion.button>
           </div>
 
           {/* Navigation Links */}
@@ -66,8 +80,8 @@ const NavbarResponsiveComponent = ({
             {NAV_LINKS.map(({ href, label, dropdownItems }) => (
               <div key={href} className="flex flex-col items-center">
                 <NavLink href={href} className="text-2xl font-FreightNeoProBold text-center hover:text-gray-600 transition-colors">
-                  <div className={`flex gap-2 ${dropdownItems&&"pl-6"}`}>
-                    <div onClick={()=>pathname===href&&setIsMenuOpen(false)} >{label}</div>
+                  <div className={`flex gap-2 ${dropdownItems && "pl-6"}`}>
+                    <div onClick={() => pathname === href && setIsMenuOpen(false)}>{label}</div>
                     {dropdownItems && (
                       <button onClick={() => setIsDropDownMenuOpen(!isDropDownOpen)}>
                         {!isDropDownOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
@@ -79,13 +93,8 @@ const NavbarResponsiveComponent = ({
                 {/* Always show sub-menu items below the parent */}
                 {isDropDownOpen && dropdownItems && (
                   <div className="mt-2  flex flex-col items-center space-y-2">
-                    {dropdownItems.map((item,index) => (
-                      <NavLink
-                        key={index}
-                        href={item.href}
-                        className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
-                        
-                      >
+                    {dropdownItems.map((item, index) => (
+                      <NavLink key={index} href={item.href} className="text-sm font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors">
                         {item.label}
                       </NavLink>
                     ))}
@@ -119,6 +128,7 @@ const NavbarResponsiveComponent = ({
             </Link>
           </div>
         </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );

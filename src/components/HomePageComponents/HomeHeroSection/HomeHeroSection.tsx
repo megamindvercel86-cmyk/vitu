@@ -5,7 +5,6 @@ import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
 import image1 from "../../../../public/images/imageLayers/eg1.png";
 import image2 from "../../../../public/images/imageLayers/eg2.png";
 import image3 from "../../../../public/images/imageLayers/eg3.png";
@@ -66,7 +65,7 @@ export default function HomeHeroSection() {
         trigger: container,
         start: "top top",
         end: "bottom top",
-        scrub: 0.8
+        scrub: 0
       }
     });
 
@@ -77,7 +76,7 @@ export default function HomeHeroSection() {
         trigger: container,
         start: "top top",
         end: "bottom top",
-        scrub: 0.5
+        scrub: 0
       }
     });
 
@@ -91,7 +90,7 @@ export default function HomeHeroSection() {
       {/* Hero Background Section */}
       <div 
         ref={containerRef}
-        className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen overflow-hidden"
+        className="relative h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen overflow-hidden"
       >
         {/* Background Layer */}
         <div ref={backgroundRef} className="absolute inset-0 scale-1">
