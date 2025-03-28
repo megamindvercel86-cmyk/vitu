@@ -179,7 +179,7 @@ export default function MediaSection(): React.ReactElement {
         {/* Navigation Controls - Moved inside flex container */}
         <div className="flex items-center justify-between gap-4 lg:mt-[54px] px-3 xl:mt-[75px] mt-[36px]">
           <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
-          <div className="flex gap-2">
+          <div className=" gap-2 hidden lg:flex">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               disabled={isNavigationDisabled}
@@ -191,6 +191,22 @@ export default function MediaSection(): React.ReactElement {
             <button
               onClick={() => swiperRef.current?.slideNext()}
               disabled={isNavigationDisabled}
+              className="relative  lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              aria-label="Next slide"
+            >
+              <IconArrowNarrowRight />
+            </button>
+          </div>
+          <div className="flex lg:hidden gap-2">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="relative  lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
+              aria-label="Previous slide"
+            >
+              <IconArrowNarrowLeft />
+            </button>
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
               className="relative  lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
               aria-label="Next slide"
             >

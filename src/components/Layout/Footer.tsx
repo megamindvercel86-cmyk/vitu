@@ -28,6 +28,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const Footer: FC = () => {
   const [quickIsOpen, setQuickIsOpen] = useState<boolean>(false);
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
+  const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
+
 
   const pathname = usePathname();
 
@@ -116,38 +118,39 @@ const Footer: FC = () => {
   };
 
   return (
-    <footer className="bg-black text-white pt-8 lg:pt-16  w-full">
+    <footer className="bg-black text-white pt-8 lg:pt-10  w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-        <div className="flex items-center  space-x-2 pb-3">
+        <div className="flex items-center space-x-2 pb-6">
           <FooterLink href="/">
-            <IoMdHome className="text-footerTextColor mb-[2px] xl:mb-0  text-lg" />
+            <IoMdHome className="text-footerTextColor mb-[8px] lg:mb-0 xl:mb-0 text-lg" />
           </FooterLink>
-          <FooterLink href="/">Home</FooterLink>
+          <FooterLink className="!text-lg" href="/">Home</FooterLink>
           {mainPage && (
             <>
-              <RiArrowRightSLine />
+              <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
               <span className="text-footerTextColor">
-                {!subPage ? (
-                  <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">
-                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-                  </span>
-                ) : (
-                  // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
-                )}
+          {!subPage ? (
+            <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
+              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+            </span>
+          ) : (
+            <FooterLink className="!text-lg" href={`/${mainPage}`}>
+              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+            </FooterLink>
+          )}
               </span>
             </>
           )}
           {subPage && (
             <>
-              <RiArrowRightSLine />
-              <span className="text-footerTextColor font-FreightNeoProLight font-light text-base 2xl:text-2xl">
-                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+              <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
+              <span className="text-footerTextColor font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
+          {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
             <Link href="/">
@@ -172,7 +175,6 @@ const Footer: FC = () => {
             title="Quick Links"
             links={[
               { href: "/about", label: "About Us" },
-              { href: "/", label: "Our Projects" },
               { href: "/career-application", label: "Careers" },
             ]}
             setQuickIsOpen={setQuickIsOpen}
@@ -188,6 +190,16 @@ const Footer: FC = () => {
               { href: "/insights", label: "Insights" },
             ]}
             setQuickIsOpen={setResourcesIsOpen}
+          />
+           <FooterSection
+            isOpen={projectIsOpen}
+            title="Projects"
+            links={[
+              { href: "/vaikuntamcity", label: "Vaikuntamcity" },
+              { href: "/mithila", label: "Mithila" },
+              { href: "/vilasam", label: "Vilasam" },
+            ]}
+            setQuickIsOpen={setProjectIsOpenIsOpen}
           />
 
           {/* Contact Information */}
@@ -227,7 +239,7 @@ const Footer: FC = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
+                    className="lg:text-[13px] lg2:text-[18px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
                     placeholder="Sign Up for Our Newsletter"
                   />
                   <button type="submit">
@@ -281,7 +293,7 @@ const FooterSection: FC<{
         onClick={() => setQuickIsOpen(!isOpen)}
         className="flex items-center justify-between text-lg text-footerTextColor font-freightNeoSemibold cursor-pointer"
       >
-        {title}fes
+        {title}
         <ArrowIcon isOpen={isOpen} />
       </div>
       {isOpen && (

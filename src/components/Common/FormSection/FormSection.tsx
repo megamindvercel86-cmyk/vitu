@@ -358,9 +358,9 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
-            <div className="flex items-center justify-end  flex-en gap-2 pt-[45px] md:mb-[145px]">
+            <div className="flex items-center lg:justify-end justify-center  gap-2 pt-[45px] md:mb-[145px]">
               {isLoading ? (
-                <span className="flex items-center justify-center">
+                <span className="flex  items-center justify-center">
                   <Loader />
                 </span>
               ) : (
