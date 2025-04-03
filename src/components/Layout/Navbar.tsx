@@ -151,8 +151,8 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
 
           {/* Navigation Links - Right 50% */}
           <div
-            className={`hidden lg:flex lg:w-1/2 ${
-              showGetInTouch ? "ml-2 2xl:ml-96" : "xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+            className={`hidden lg:flex  ${
+              showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
             } items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
