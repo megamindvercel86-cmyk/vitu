@@ -41,7 +41,6 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
  */
 
 const AboutHeroSection: React.FC = () => {
-
   return (
     <section className="relative w-full">
       {/* Hero Background Section */}
@@ -91,12 +90,11 @@ const AboutHeroSection: React.FC = () => {
             </h1>
 
             {/* CTA Button */}
-           <Link to="storysection" smooth={true} duration={700}>
-          
-            <div className="relative group cursor-pointer">
-  <button
-    type="button"
-    className="
+            <Link to="storysection" smooth={true} duration={700}>
+              <div className="relative group cursor-pointer">
+                <button
+                  type="button"
+                  className="
       relative group
       mt-8
       flex items-center justify-center
@@ -107,32 +105,32 @@ const AboutHeroSection: React.FC = () => {
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
     "
-  >
-    {/* Default background */}
-    <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
+                >
+                  {/* Default background */}
+                  <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
 
-    {/* Hover effect starts from the icon */}
-    <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
-      {/* Expanding hover background from icon */}
-      <div
-        className="
+                  {/* Hover effect starts from the icon */}
+                  <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
+                    {/* Expanding hover background from icon */}
+                    <div
+                      className="
           absolute w-0 h-0 bg-[#614130] rounded-full
           group-hover:w-[30rem] group-hover:h-[30rem]
           transition-all duration-[600ms] ease-out
         "
-      ></div>
+                    ></div>
 
-      {/* Icon stays above the expanding background */}
-      <div className="relative ">
-        <CTAButtonIcon />
-      </div>
-    </div>
+                    {/* Icon stays above the expanding background */}
+                    <div className="relative ">
+                      <CTAButtonIcon />
+                    </div>
+                  </div>
 
-    {/* Button text (z-20 to keep it visible above the hover effect) */}
-    <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
-  </button>
-</div>
-</Link>
+                  {/* Button text (z-20 to keep it visible above the hover effect) */}
+                  <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
