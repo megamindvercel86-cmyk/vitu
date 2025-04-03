@@ -25,6 +25,22 @@ interface NewsItem {
   description: string;
 }
 
+
+
+// * Media Section Component
+//  * Displays news items in a responsive carousel layout
+//  *
+//  * Features:
+//  * 1. Responsive grid layout
+//  * 2. Dynamic slides per view
+//  * 3. Navigation controls
+//  * 4. Infinite loop
+//  *
+//  * Breakpoints:
+//  * - Mobile: 1 slide
+//  * - Tablet: 2 slides
+//  * - Desktop: 3 slides
+
 export default function MediaSection(): React.ReactElement {
   // ============= Refs =============
   const swiperRef = useRef<SwiperType | null>(null);
