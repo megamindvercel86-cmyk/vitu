@@ -168,7 +168,7 @@ const ProjectHeroSection: React.FC = () => {
       <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[30rem]  text-center px-6">
         <ProjectHeader />
       </div>
-      <div className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[88rem] xl:top-[100rem]   md:top-[70rem] top-[100vh] text-center  px-6">
+      <div id="carousal" className="lg:pt-20 absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[83rem] xl:top-[100rem]  md:top-[70rem] top-[100vh] text-center  px-6">
         <ProjectCarousel />
       </div>
     </section>

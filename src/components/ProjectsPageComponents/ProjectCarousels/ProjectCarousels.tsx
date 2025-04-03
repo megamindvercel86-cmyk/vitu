@@ -21,7 +21,7 @@ const desktopDataRight = [
  */
 export default function ProjectCarousel(): React.ReactElement {
   return (
-    <section id="carousal" className=" bg-gradient-to-b ">
+    <section  className=" bg-gradient-to-b ">
       {/* Desktop Project Carousel - Right Direction */}
       <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
         <div >
