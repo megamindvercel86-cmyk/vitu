@@ -14,6 +14,7 @@ import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/com
 import { useEffect, useRef, useState } from "react";
 import articleArea from "@/data/articleArea.json";
 import AppleStyleCard from "@/components/ui/apple-style-card";
+
 // ============= Types & Interfaces =============
 interface Article {
   id: number;
@@ -23,6 +24,12 @@ interface Article {
   type: "primary" | "secondary" | string;
   fileUrl: string;
   subtitle: string;
+  topTitle?: string; // Added missing properties
+  topDescription?: string;
+  middleTitle?: string;
+  middlePoints?: string[];
+  middleTitle2?: string;
+  middlePoints2?: string[];
 }
 
 interface CarouselCard extends Article {
@@ -71,6 +78,12 @@ export default function ArticleArea(): React.ReactElement {
           title: string;
           description?: string;
           subtitle?: string;
+          topTitle?: string;
+          topDescription?: string;
+          middleTitle?: string;
+          middlePoints?: string[];
+          middleTitle2?: string;
+          middlePoints2?: string[];
         }
       | undefined;
 
@@ -107,25 +120,58 @@ export default function ArticleArea(): React.ReactElement {
       <>
         {project && (
           <div key={"dummy-content"} data-lenis-prevent>
-            <Image
-              src={project.fileUrl || "/placeholder.svg"}
-              alt={nextProject?.title || "Card image"}
-              width={1042}
-              height={45}
-              className={cn("object-   h-[652px] w-full")}
-            />
-            <div className="p-4 md:p-10">
-              <Typography variant="h1" className="text-customBrown">
-                {project.title}
-              </Typography>
-              <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
-              <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
-            </div>
+          <Image
+            src={project.fileUrl || "/placeholder.svg"}
+            alt={nextProject?.title || "Card image"}
+            width={1042}
+            height={45}
+            className={cn("object-cover   h-[652px] w-full")}
+          />
+          <div className="p-4 md:p-10">
+            <Typography variant="h1" className="text-customBrown font-freightNeoMedium">
+              {project.title}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-3xl">
+              {project.subtitle}
+            </Typography>
+            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.topTitle}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl">
+              {project.topDescription}
+            </Typography>
+            {project.middlePoints&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.middleTitle}
+            </Typography>}
+            {project.middlePoints&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6 leading-10">
+              {project.middlePoints?.map((point, index) => (
+                <li key={index} className="pb-4">{point}</li>
+              ))}
+            </ul>}
+            {project.middleTitle2&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.middleTitle2}
+            </Typography>}
+            {project.middleTitle2&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6">
+              {project.middlePoints2?.map((point, index) => (
+                <li key={index} className="pb-4">{point}</li>
+              ))}
+            </ul>}
+            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.topTitle}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] !text-xl">
+              {project.topDescription}
+            </Typography>
+      
+            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
+        </div>
+      
         )}
       </>
     );
   };
+
   const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     return (
       <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
@@ -163,12 +209,11 @@ export default function ArticleArea(): React.ReactElement {
       </Typography>
     </div>
   );
+
   const swiperRef = useRef<SwiperType | null>(null);
-  const [desktopCard, setDesktopCardCard] = useState<Article[]>([]);
-
+  const [desktopCard, setDesktopCard] = useState<Article[]>([]);
   const isNavigationDisabled = desktopCard.length <= 3;
-
-  const [mobailCard, setMobilCard] = useState<Article[]>();
+  const [mobileCard, setMobileCard] = useState<Article[]>([]); // Fixed typo and initialized as empty array
 
   const fetchBlogs = async () => {
     try {
@@ -179,12 +224,12 @@ export default function ArticleArea(): React.ReactElement {
       const res = await response.json();
       const data = res.data;
 
-      setDesktopCardCard(data);
+      setDesktopCard(data);
 
-      const dummyDtata = data.map((item: Article, index: number): Article => {
+      const dummyData = data.map((item: Article, index: number): Article => {
         return { ...item, id: index + 5 };
       });
-      setMobilCard([...data, ...dummyDtata]);
+      setMobileCard([...data, ...dummyData]);
     } catch (error) {
       console.error("Failed to fetch team members", error);
     }
@@ -246,7 +291,7 @@ export default function ArticleArea(): React.ReactElement {
           </div>
         </div>
         {/* Mobile Carousel */}
-        <div className="relative md:block lg:hidden">{mobailCard && <InfiniteCarousel cards={mobailCard} data={mobailCard} />}</div>
+        <div className="relative md:block lg:hidden">{mobileCard && <InfiniteCarousel cards={mobileCard} data={mobileCard} />}</div>
       </main>
     </div>
   );
