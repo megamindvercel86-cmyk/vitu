@@ -292,10 +292,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsExpanded(false);
-                }}
+                
               >
                 Explore the Project Now
               </motion.button>
