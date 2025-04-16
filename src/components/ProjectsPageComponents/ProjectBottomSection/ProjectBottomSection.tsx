@@ -111,7 +111,7 @@ const ProjectBottomSection: React.FC = () => {
         <h2 className="font-freightNeoSemibold text-4xl md:text-6xl lg:text-6xl lg2:text-8xl 2xl:text-9xl text-center leading-tight mb-8">
           {ABOUT_HERO_CONFIG.titles.sub}
         </h2>
-        <Link href='/general-enquire'><button
+        <Link href='/project-enquire'><button
           type="button"
           className="group relative flex items-center bg-white text-[#2B847D] gap-2 px-6 py-3 rounded-full overflow-hidden transition-all duration-300"
         >

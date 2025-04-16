@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useInView } from "framer-motion";
 
 // ============= Constants =============
 const PROJECT_DATA = {
@@ -32,6 +34,60 @@ const STATS_DATA = [
 ];
 
 /**
+ * Counter Component
+ * Animates a number from a starting point to the target value
+ * Handles formats like "500+", "20,000 sq.ft.", "3,400+ sq.m."
+ */
+interface CounterProps {
+  value: string;
+}
+
+const Counter: React.FC<CounterProps> = ({ value }) => {
+  // Extract numeric part from value (e.g., "500+" -> 500, "20,000 sq.ft." -> 20000)
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10);
+  const [count, setCount] = useState(numericValue - 5 >= 0 ? numericValue - 5 : 0); // Start from value - 5 or 0
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
+  useEffect(() => {
+    if (inView && count < numericValue) {
+      const start = count;
+      const end = numericValue;
+      const duration = 2000; // 2 seconds
+      const incrementTime = 150;
+      const steps = duration / incrementTime;
+      const stepSize = Math.max(1, Math.ceil((end - start) / steps)); // Ensure stepSize is at least 1
+
+      const timer = setInterval(() => {
+        setCount((prev) => {
+          const next = prev + stepSize;
+          if (next >= end) {
+            clearInterval(timer);
+            return end;
+          }
+          return next;
+        });
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, numericValue, count]);
+
+  // Format display value to match original format (e.g., "500+" or "20,000 sq.ft.")
+  const displayValue = value.includes("+")
+    ? `${count.toLocaleString()}+`
+    : value.includes("sq.ft.") || value.includes("sq.m.")
+      ? `${count.toLocaleString()} ${value.match(/sq\.\w+\.?/)?.[0] || ""}`
+      : count.toLocaleString();
+
+  return (
+    <motion.span ref={ref} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="inline-block">
+      {displayValue}
+    </motion.span>
+  );
+};
+
+/**
  * Current Project Component
  * Displays information about the current featured project
  *
@@ -50,25 +106,16 @@ const STATS_DATA = [
 const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div
-      className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]"
-      aria-label="Project Statistics"
-    >
+    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]" aria-label="Project Statistics">
       {STATS_DATA.map((stat, index) => (
-        <div
-          key={index}
-          className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}
-        >
+        <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
           <Typography
             variant="custom"
             className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] text-[#503637]"
           >
-            {stat.value}
+            <Counter value={stat.value} />
           </Typography>
-          <Typography
-            variant="custom"
-            className="font-FreightNeoProNormal text-[24px] text-[#503637]"
-          >
+          <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
             {stat.label}
           </Typography>
         </div>
@@ -77,7 +124,6 @@ const CurrentProject: React.FC = () => {
   );
 
   return (
-    <>
     <section
       className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]"
       aria-labelledby="project-title"
@@ -85,12 +131,10 @@ const CurrentProject: React.FC = () => {
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2">
         <header>
-          {/* Project Badge */}
-
           {/* Project Title */}
           <h1
             id="project-title"
-            className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
+            className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[60px] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
           >
             {PROJECT_DATA.title}
           </h1>
@@ -100,12 +144,10 @@ const CurrentProject: React.FC = () => {
         <div className="flex items-center">
           <Typography
             variant="custom"
-            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
+            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl lg2:text-[24px] 2xl:leading-[40px] text-[#4F373799]"
           >
             {PROJECT_DATA.description.prefix}
-            <span className="font-CandideCondensedMedium">
-              {PROJECT_DATA.description.number}
-            </span>
+            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span>
             {PROJECT_DATA.description.suffix}
           </Typography>
         </div>
@@ -123,10 +165,7 @@ const CurrentProject: React.FC = () => {
       </article>
 
       {/* Right Column - Project Image */}
-      <figure
-        className="flex items-center justify-center w-full lg:w-1/2"
-        aria-labelledby="project-title"
-      >
+      <figure className="flex items-center justify-center w-full lg:w-1/2" aria-labelledby="project-title">
         <Image
           src={PROJECT_DATA.image}
           width={708}
@@ -145,8 +184,6 @@ const CurrentProject: React.FC = () => {
         </div>
       </Link>
     </section>
-  
-            </>
   );
 };
 

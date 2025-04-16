@@ -48,8 +48,8 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2  className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-4xl">{highlightNumbers(title)}</h2>
-            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base">{description}</p>
+            <h2  className="text-customBrown font-FreightNeoProNormal text-2xl lg:text-[60px]">{highlightNumbers(title)}</h2>
+            <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base lg2:text-[24px]">{description}</p>
             <div>
               <Link href="project-enquire">
                 <button className="px-5 border py-2 rounded-3xl font-FreightNeoProNormal bg-[#4F3737] text-white mt-4 lg:mt-[40%]">

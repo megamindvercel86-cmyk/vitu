@@ -8,11 +8,11 @@ const LocationAdvantage = () => {
     <div className="relative w-full  h-screen">
       <Image src={beachBgImage} alt="Background" className="absolute object-cover w-full h-full md:object-center object-[-720px]" />
       <div className="absolute bottom-[390px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
-        <h1 className="text-lg md:text-lg text-[#4F3737] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
+        <h1 className="text-lg md:text-lg lg:text-[24px] text-[#4F3737] font-medium text-center uppercase tracking-wide font-FreightNeoProNormal">
           Location Advantage
         </h1>
-        <h1 className=" text-sm md:text-5xl text-[#4F3737] font-[400] max-w-xl font-FreightNeoProNormal leading-tight">Built for Life's Moments</h1>
-        <p className="mt-1 inline-block md:text-lg text-sm text-[#4F373799] max-w-md font-FreightNeoProNormal font-[400]">
+        <h1 className=" text-sm md:text-5xl lg2:text-[60px] text-[#4F3737] font-[400] max-w-2xl font-FreightNeoProNormal leading-tight">Built for Life's Moments</h1>
+        <p className="mt-1 inline-block md:text-lg text-sm text-[#4F373799] lg2:text-[24px] max-w-xl font-FreightNeoProNormal font-[400]">
           Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.
         </p>
 

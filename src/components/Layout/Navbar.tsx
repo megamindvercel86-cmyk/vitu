@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -72,30 +70,32 @@ const NAV_LINKS = [
   },
   { href: "/resources", label: "Resources" },
 ];
+
 const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
   <motion.svg
     className="inline-block ml-2 w-4 h-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
-    initial={false} // Prevents animation on mount
-    animate={{ rotate: isOpen ? 180 : 0 }} // Rotates 180° when open
-    transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+    initial={false}
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M19 9l-7 7-7-7" // Base position (pointing down)
+      d="M19 9l-7 7-7-7"
     />
   </motion.svg>
 );
+
 export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: NavbarProps) {
   // ============= State =============
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropDownOpen, setIsDropDownMenuOpen] = useState(false);
-
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   // ============= Computed Values =============
@@ -105,7 +105,6 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
   // ============= Helper Functions =============
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
-
     return `2xl:text-4xl ${
       isActive
         ? isNavbarPrimary
@@ -124,11 +123,26 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     } else {
       document.body.style.overflow = "unset";
     }
-
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
+
+  // Handle mouse enter for dropdown
+  const handleMouseEnter = (href: string) => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout); // Clear any pending close timeout
+    }
+    setActiveDropdown(href);
+  };
+
+  // Handle mouse leave for dropdown
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null); // Close dropdown after delay
+    }, 200); // 200ms delay
+    setDropdownTimeout(timeout);
+  };
 
   return (
     <div>
@@ -151,33 +165,39 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
 
           {/* Navigation Links - Right 50% */}
           <div
-            className={`hidden lg:flex  ${
+            className={`hidden lg:flex ${
               showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
             } items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
                 <div key={href} className="relative group">
-                  <div onMouseEnter={() => hasDropdown && setActiveDropdown(href)} onMouseLeave={() => setActiveDropdown(null)}>
+                  <div
+                    onMouseEnter={() => hasDropdown && handleMouseEnter(href)}
+                    onMouseLeave={() => hasDropdown && handleMouseLeave()}
+                  >
                     <NavLink href={href} className={getLinkClassName(href)}>
                       {label}
                       {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
                     </NavLink>
                     {hasDropdown && activeDropdown === href && (
-                      <div className="group">
-                        <div className="absolute left-0 w-40 mt-1 origin-top-left  backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
-                          {dropdownItems?.map((item) => (
-                            <div className="py-1" key={item.href}>
-                              <Link
-                                href={item.href}
-                                key={item.href}
-                                className={`block px-4 py-2 font-freightNeoMedium  text-xl ${pathname === "/" || pathname === "/about" ? "text-white" : "text-black"}`}
-                              >
-                                {item.label}
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
+                      <div
+                        className="absolute left-0 w-40 mt-0 origin-top-left backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
+                        onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
+                        // onMouseLeave={handleMouseLeave} // Close dropdown after delay
+                      >
+                        {dropdownItems?.map((item) => (
+                          <div className="py-1" key={item.href}>
+                            <Link
+                              href={item.href}
+                              className={`block px-4 py-2 font-freightNeoMedium text-xl ${
+                                pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
+                              } `}
+                            >
+                              {item.label}
+                            </Link>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -186,7 +206,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
               {showGetInTouch && (
                 <Link href="/general-enquire">
                   <Button
-                    className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10  lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}
@@ -199,7 +219,6 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
           </div>
         </nav>
       </header>
-      {/* <SidebarMenu /> */}
       {isMenuOpen && (
         <NavbarResponsiveComponent
           setIsMenuOpen={setIsMenuOpen}
