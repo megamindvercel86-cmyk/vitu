@@ -88,7 +88,7 @@ export default function MediaSection(): React.ReactElement {
       return () => {
         window.removeEventListener("resize", handleResize);
         if (swiperRef.current) {
-          swiperRef.current.autoplay.stop(); // Stop autoplay on unmount
+          swiperRef.current.autoplay?.stop(); // Stop autoplay on unmount
         }
       };
     }
