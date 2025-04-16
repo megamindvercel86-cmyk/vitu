@@ -96,7 +96,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Link>
         {/* Mobile CTA */}
         <div className="mx-6 mt-44">
-          <Link href="/general-enquire">
+          <Link href="/project-enquire">
             <button className="md:hidden w-full block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]">
               {CONTENT.cta}
             </button>

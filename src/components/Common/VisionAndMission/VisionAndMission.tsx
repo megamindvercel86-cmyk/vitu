@@ -24,7 +24,7 @@ const CAROUSEL_CONFIG = {
 };
 
 const IMAGES = {
-  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
+  desktop: ["/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/3.png"],
   mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
 };
 
@@ -106,6 +106,7 @@ export default function VisionAndMission() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState<Direction>("right");
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // ============= Handlers =============
   const handleTransition = useCallback(
@@ -131,7 +132,7 @@ export default function VisionAndMission() {
 
   // ============= Render Helpers =============
   const renderDesktopSection = (section: ContentItem, index: number) => (
-    <div key={index} className="flex-1 group/section relative">
+    <div key={index} className="flex-1 group/section relative" onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
       {/* Hover overlay - moved up in DOM order and given lower z-index */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/section:opacity-100 transition-all duration-300 " />
 
@@ -167,18 +168,27 @@ export default function VisionAndMission() {
           {/* Desktop Version */}
           <div className="overflow-hidden hidden md:block shadow-xl xl:h-[100vh] w-[100%] aspect-[2/1] relative">
             {/* Image container */}
-            <div
-              className={`absolute inset-0 transition-all duration-500 ease-in-out ${direction === "right" ? "translate-x-0" : "-translate-x-full"}`}
-            >
-              <Image
-                src={IMAGES.desktop[currentIndex]}
-                alt={`Slide ${currentIndex + 1}`}
-                width={CAROUSEL_CONFIG.dimensions.desktop.width}
-                height={CAROUSEL_CONFIG.dimensions.desktop.height}
-                className="w-full  object-contain"
-                loading="lazy"
-              />
+            <div className="absolute inset-0">
+              {IMAGES.desktop.map((src, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex !== null ? (hoveredIndex === index ? 1 : 0) : currentIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    width={CAROUSEL_CONFIG.dimensions.desktop.width}
+                    height={CAROUSEL_CONFIG.dimensions.desktop.height}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
             </div>
+
             {/* Vertical dividing lines */}
             <div className="absolute inset-0 flex">
               <div className="flex-1 border-r border-white"></div>

@@ -9,6 +9,7 @@ import exploreProjects from "@/data/exploreProjects.json";
 import { ArrowRightIcon } from "@/components/Icons/Icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -35,12 +36,8 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
       <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
         <div>
-          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">
-            UP NEXT
-          </p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">
-            {nextProjectTitle}
-          </h4>
+          <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">UP NEXT</p>
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
         </div>
         <div onClick={onFooterClick} className="cursor-pointer">
           <ArrowRightIcon />
@@ -93,13 +90,8 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             <Typography variant="h1" className="text-customBrown">
               {project.title}
             </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-              {project.description}
-            </Typography>
-            <Footer
-              onFooterClick={handleFooterClick}
-              nextProjectTitle={nextProject?.title || ""}
-            />
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
+            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
       )}
@@ -240,8 +232,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
         const element = containerRef.current;
         if (element) {
           const yOffset = 300;
-          const y =
-            element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
           gsap.to(window, {
             duration: 1.5,
@@ -259,9 +250,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   return (
     <div className="h-auto flex items-center justify-center">
       {/* Only render cursor when not expanded */}
-      {!isExpanded && (
-        <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />
-      )}
+      {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh] md:h-[150vh]" : "h-[100vh]"}`}
@@ -297,30 +286,28 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             >
               A New Way of Life
             </motion.h2>
-            <motion.button
-              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsExpanded(false);
-              }}
-            >
-              Explore the Project Now
-            </motion.button>
+            <Link href="/vaikuntamcity">
+              <motion.button
+                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsExpanded(false);
+                }}
+              >
+                Explore the Project Now
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
         {/* Images */}
         <AnimatePresence>
           {cards.map((card, index) => {
             const position = isExpanded
-              ? expandedPositions[
-                  currentBreakpoint as keyof typeof expandedPositions
-                ][index]
-              : notExpandedPositions[
-                  currentBreakpoint as keyof typeof notExpandedPositions
-                ][index];
+              ? expandedPositions[currentBreakpoint as keyof typeof expandedPositions][index]
+              : notExpandedPositions[currentBreakpoint as keyof typeof notExpandedPositions][index];
 
             return (
               <motion.div

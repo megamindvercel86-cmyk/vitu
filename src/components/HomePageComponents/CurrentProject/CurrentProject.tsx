@@ -160,7 +160,7 @@ const CurrentProject: React.FC = () => {
         </div>
 
         {/* Desktop CTA */}
-        <Link href="/project-enquire">
+        <Link href="/vaikuntamcity">
           <div className="mt-[29px]">
             <button className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
               {PROJECT_DATA.cta}
