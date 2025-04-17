@@ -13,7 +13,38 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+export async function generateMetadata() {
+  const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
+  const pageDescription =
+    "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
+  const imageUrl = "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vitu%20images%2Ffreepik__the-style-is-candid-image-photography-with-natural__99072%202%20(1)-min.png?alt=media&token=f88fb378-f2bf-4986-8cc2-b6135b000edb";
 
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: "https://viturealty.vercel.app/",
+      siteName: "Vitu-Realty",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "Vitu-Realty - Premium Plotted Developments in Mangalore",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
+  };
+}
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">

@@ -24,7 +24,7 @@ const CAROUSEL_CONFIG = {
 };
 
 const IMAGES = {
-  desktop: ["/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/3.png"],
+  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
   mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
 };
 

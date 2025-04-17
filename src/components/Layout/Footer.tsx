@@ -120,7 +120,7 @@ const Footer: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-10  w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-        <div className="flex items-center space-x-2 pb-6">
+        <div className="flex items-center space-x-2 pb-8">
           <FooterLink href="/">
             <IoMdHome className="text-footerTextColor mb-[8px] lg:mb-0 xl:mb-0 text-lg" />
           </FooterLink>

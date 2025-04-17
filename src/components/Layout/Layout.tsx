@@ -3,6 +3,7 @@
 import { ToastContainer } from "react-toastify";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import WhatsappChatWidget from "../Common/WhatsappChatWidget";
 
 // ============= Types & Interfaces =============
 type NavbarType = "primary" | "secondary";
@@ -37,7 +38,7 @@ export default function Layout({
 
       {/* Main Content */}
       <main>{children}</main>
-
+<WhatsappChatWidget/>
       {/* Footer Section */}
       <Footer />
     </>

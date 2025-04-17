@@ -143,9 +143,36 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     }, 200); // 200ms delay
     setDropdownTimeout(timeout);
   };
+// Add this at the top of the Navbar component (within function scope)
+const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+const [lastScrollY, setLastScrollY] = useState(0);
+
+// Handle scroll direction
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down and past some threshold
+      setIsNavbarVisible(false);
+    } else {
+      // Scrolling up
+      setIsNavbarVisible(true);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [lastScrollY]);
 
   return (
     <div>
+      
       <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}

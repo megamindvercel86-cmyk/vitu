@@ -14,6 +14,7 @@ import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/com
 import { useEffect, useRef, useState } from "react";
 import articleArea from "@/data/articleArea.json";
 import AppleStyleCard from "@/components/ui/apple-style-card";
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 interface Article {
@@ -271,7 +272,10 @@ export default function ArticleArea(): React.ReactElement {
             ))}
           </Swiper>
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
+            <Link href="/insights">
+            
             <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
+            </Link>
             <div className="flex gap-2">
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
