@@ -64,7 +64,7 @@ export async function POST(req: Request) {
     // Send email
     await transporter.sendMail({
       from: `${email}`,
-      to: "developer.megamind@gmail.com", // Replace with the recipient's email
+      to: "mmstudio.presentation@gmail.com", // Replace with the recipient's email
       subject,
       html: emailTemplate,
     });
