@@ -81,12 +81,7 @@ const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
     animate={{ rotate: isOpen ? 180 : 0 }}
     transition={{ duration: 0.3, ease: "easeInOut" }}
   >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 9l-7 7-7-7"
-    />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </motion.svg>
 );
 
@@ -99,23 +94,21 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
   const pathname = usePathname();
 
   // ============= Computed Values =============
-  const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
-  const isNavbarPrimary = navbar === "primary";
-
+  
   // ============= Helper Functions =============
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
     return `2xl:text-4xl ${
       isActive
-        ? isNavbarPrimary
-          ? "text-white border-b-2 border-white"
-          : "text-black border-b-2 border-black"
-        : isNavbarPrimary
-          ? "text-white"
-          : "text-black"
+      ? isNavbarPrimary
+      ? "text-white border-b-2 border-white"
+      : "text-black border-b-2 border-black"
+      : isNavbarPrimary
+      ? "text-white"
+      : "text-black"
     }`;
   };
-
+  
   // Add useEffect to control body scroll
   useEffect(() => {
     if (isMenuOpen) {
@@ -127,7 +120,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
-
+  
   // Handle mouse enter for dropdown
   const handleMouseEnter = (href: string) => {
     if (dropdownTimeout) {
@@ -135,7 +128,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     }
     setActiveDropdown(href);
   };
-
+  
   // Handle mouse leave for dropdown
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
@@ -143,109 +136,205 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     }, 200); // 200ms delay
     setDropdownTimeout(timeout);
   };
-// Add this at the top of the Navbar component (within function scope)
-const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-const [lastScrollY, setLastScrollY] = useState(0);
+  // Add this at the top of the Navbar component (within function scope)
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
+  
+  // Define pages where the scroll effect is enabled
+  const SCROLL_NAVBAR_PATHS = ["/about", "/resources", "/projects", "/"];
+  const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
+  const enableScrollNavbar = SCROLL_NAVBAR_PATHS.includes(pathname);
+  // Handle scroll direction
+  useEffect(() => {
+    if (!enableScrollNavbar) return;
 
-// Handle scroll direction
-useEffect(() => {
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      // Scrolling down and past some threshold
-      setIsNavbarVisible(false);
-    } else {
-      // Scrolling up
-      setIsNavbarVisible(true);
-    }
+      setIsAtTop(currentScrollY <= 10); // consider as top if within 10px
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsNavbarVisible(false); // Scrolling down
+      } else {
+        setIsNavbarVisible(true); // Scrolling up
+      }
 
-    setLastScrollY(currentScrollY);
-  };
+      setLastScrollY(currentScrollY);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [lastScrollY]);
-
+  const isNavbarPrimary = navbar === "primary" && isAtTop;
   return (
     <div>
-      
-      <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
-        <nav className="flex flex-col items-center lg:flex-row w-full">
-          {/* Logo Section - Left 50% */}
-          <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <Link href="/">
-              <Image
-                src={isNavbarPrimary ? logoWhite : logo}
-                alt="Logo"
-                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
-              />
-            </Link>
-            {/* Mobile Menu Button */}
-            <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
-            </div>
-          </div>
-
-          {/* Navigation Links - Right 50% */}
-          <div
-            className={`hidden lg:flex ${
-              showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
-            } items-center justify-between`}
-          >
-            <div className="flex items-center justify-between w-full">
-              {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
-                <div key={href} className="relative group">
-                  <div
-                    onMouseEnter={() => hasDropdown && handleMouseEnter(href)}
-                    onMouseLeave={() => hasDropdown && handleMouseLeave()}
-                  >
-                    <NavLink href={href} className={getLinkClassName(href)}>
-                      {label}
-                      {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
-                    </NavLink>
-                    {hasDropdown && activeDropdown === href && (
-                      <div
-                        className="absolute left-0 w-40 mt-0 origin-top-left backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
-                        onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
-                        // onMouseLeave={handleMouseLeave} // Close dropdown after delay
-                      >
-                        {dropdownItems?.map((item) => (
-                          <div className="py-1" key={item.href}>
-                            <Link
-                              href={item.href}
-                              className={`block px-4 py-2 font-freightNeoMedium text-xl ${
-                                pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
-                              } `}
-                            >
-                              {item.label}
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-              {showGetInTouch && (
-                <Link href="/general-enquire">
-                  <Button
-                    className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
-                      isNavbarPrimary ? "bg-white" : ""
-                    }`}
-                    defaultTextColor={buttonColor}
-                  >
-                    Get in Touch
-                  </Button>
+      {enableScrollNavbar ? (
+        <motion.header
+          initial={{ y: 0 }}
+          animate={{ y: enableScrollNavbar && !isNavbarVisible ? -200 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`fixed top-0 left-0 right-0 z-100 transition-all duration-300 ${
+            isAtTop ? "bg-transparent" : "bg-white backdrop-blur-md shadow-md"
+          }`}
+        >
+          <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
+            <nav className="flex flex-col items-center lg:flex-row w-full">
+              {/* Logo Section - Left 50% */}
+              <div className="w-full lg:w-1/2 flex items-center justify-start">
+                <Link href="/">
+                  <Image
+                    src={isNavbarPrimary ? logoWhite : logo}
+                    alt="Logo"
+                    className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+                  />
                 </Link>
-              )}
+                {/* Mobile Menu Button */}
+                <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                  {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
+                </div>
+              </div>
+
+              {/* Navigation Links - Right 50% */}
+              <div
+                className={`hidden lg:flex ${
+                  showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+                } items-center justify-between`}
+              >
+                <div className="flex items-center justify-between w-full">
+                  {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
+                    <div key={href} className="relative group">
+                      <div onMouseEnter={() => hasDropdown && handleMouseEnter(href)} onMouseLeave={() => hasDropdown && handleMouseLeave()}>
+                        <NavLink href={href} className={getLinkClassName(href)}>
+                          {label}
+                          {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
+                        </NavLink>
+                        {hasDropdown && activeDropdown === href && (
+                          <div
+                            className="absolute left-0 w-40 mt-0 origin-top-left backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
+                            onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
+                            // onMouseLeave={handleMouseLeave} // Close dropdown after delay
+                          >
+                            {dropdownItems?.map((item) => (
+                              <div className="py-1" key={item.href}>
+                                <Link
+                                  href={item.href}
+                                  className={`block px-4 py-2 font-freightNeoMedium text-xl ${
+                                    pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
+                                  } `}
+                                >
+                                  {item.label}
+                                </Link>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                  {showGetInTouch && isAtTop && (
+                    <Link href="/general-enquire">
+                      <Button
+                        className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                          isNavbarPrimary ? "bg-white" : ""
+                        }`}
+                        defaultTextColor={buttonColor}
+                      >
+                        Get in Touch
+                      </Button>
+                    </Link>
+                  )}
+                   {showGetInTouch && !isAtTop && (
+                    <Link href="/general-enquire">
+                      <Button
+                        className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                          isNavbarPrimary ? "bg-white" : ""
+                        }`}
+                        defaultTextColor={buttonColor}
+                      >
+                        Get in Touch
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </nav>
+          </header>
+        </motion.header>
+      ) : (
+        <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
+          <nav className="flex flex-col items-center lg:flex-row w-full">
+            {/* Logo Section - Left 50% */}
+            <div className="w-full lg:w-1/2 flex items-center justify-start">
+              <Link href="/">
+                <Image
+                  src={isNavbarPrimary ? logoWhite : logo}
+                  alt="Logo"
+                  className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+                />
+              </Link>
+              {/* Mobile Menu Button */}
+              <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
+              </div>
             </div>
-          </div>
-        </nav>
-      </header>
+
+            {/* Navigation Links - Right 50% */}
+            <div
+              className={`hidden lg:flex ${
+                showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+              } items-center justify-between`}
+            >
+              <div className="flex items-center justify-between w-full">
+                {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
+                  <div key={href} className="relative group">
+                    <div onMouseEnter={() => hasDropdown && handleMouseEnter(href)} onMouseLeave={() => hasDropdown && handleMouseLeave()}>
+                      <NavLink href={href} className={getLinkClassName(href)}>
+                        {label}
+                        {hasDropdown && <ArrowIcon isOpen={activeDropdown === href} />}
+                      </NavLink>
+                      {hasDropdown && activeDropdown === href && (
+                        <div
+                          className="absolute left-0 w-40 mt-0 origin-top-left backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
+                          onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
+                          // onMouseLeave={handleMouseLeave} // Close dropdown after delay
+                        >
+                          {dropdownItems?.map((item) => (
+                            <div className="py-1" key={item.href}>
+                              <Link
+                                href={item.href}
+                                className={`block px-4 py-2 font-freightNeoMedium text-xl ${
+                                  pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
+                                } `}
+                              >
+                                {item.label}
+                              </Link>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {showGetInTouch && (
+                  <Link href="/general-enquire">
+                    <Button
+                      className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                        isNavbarPrimary ? "bg-white" : ""
+                      }`}
+                      defaultTextColor={buttonColor}
+                    >
+                      Get in Touch
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </nav>
+        </header>
+      )}
       {isMenuOpen && (
         <NavbarResponsiveComponent
           setIsMenuOpen={setIsMenuOpen}
