@@ -11,7 +11,7 @@ import SustainabilityInitiatives from "@/components/HomePageComponents/Sustainab
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import { useEffect, useState } from "react";
-import Loader from "@/components/Common/Loader";
+
 
 // ============= Types & Interfaces =============
 
@@ -65,7 +65,6 @@ export default function HomePage() {
 
   return (
     <>
-     {showLoader && <Loader fadeOut={fadeOut} />}
       <Layout
         navbarClassName={NAVBAR_CONFIG.className}
         navbarProps={NAVBAR_CONFIG.props}

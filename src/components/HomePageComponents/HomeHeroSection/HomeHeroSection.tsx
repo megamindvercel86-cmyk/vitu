@@ -1,25 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import image1 from "../../../../public/images/imageLayers/eg1.png";
-import image2 from "../../../../public/images/imageLayers/eg2.png";
-import image3 from "../../../../public/images/imageLayers/eg3.png";
-// Register ScrollTrigger
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import image1 from "../../../../public/images/backgroundImages/homePagebanner.png";
+import { useEffect, useState } from "react";
 
 // Update hero config with layered images
 const HERO_CONFIG = {
-  images: {
-    background: "/images/imageLayers/layer.png",
-    middle: "/images/imageLayers/layer.png",
-    foreground: "/images/imageLayers/layer.png",
-  },
+  
   titles: {
     main: "Building Wholesome",
     sub: "Living Spaces",
@@ -33,105 +21,29 @@ const HERO_CONFIG = {
  * Optimized for SEO and Core Web Vitals
  */
 export default function HomeHeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const backgroundRef = useRef<HTMLDivElement>(null);
-  const middleRef = useRef<HTMLDivElement>(null);
-  const foregroundRef = useRef<HTMLDivElement>(null);
+  const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
-    const container = containerRef.current;
-    const background = backgroundRef.current;
-    const middle = middleRef.current;
-    const foreground = foregroundRef.current;
-
-    if (!container || !background || !middle || !foreground) return;
-
-    // Create parallax effect
-    gsap.to(background, {
-      yPercent: 10,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0
-      }
-    });
-
-    gsap.to(middle, {
-      yPercent: 50,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0
-      }
-    });
-
-    gsap.to(foreground, {
-      yPercent: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom top",
-        scrub: 0
-      }
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    const timer = setTimeout(() => {
+      setShowPopup(false);
+    }, 5000); // 5 seconds
+  
+    return () => clearTimeout(timer);
   }, []);
+  
 
   return (
     <section aria-labelledby="hero-heading">
       {/* Hero Background Section */}
-      <div 
-        ref={containerRef}
-        className="relative h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen overflow-hidden"
-      >
-        {/* Background Layer */}
-        <div ref={backgroundRef} className="absolute inset-0 scale-1">
-          <Image
-            src={image1}
-            alt="Background scenery"
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-          />
-        </div>
-
-        {/* Middle Layer */}
-        <div ref={middleRef} className="absolute inset-0 scale-">
-          <Image
-            src={image2}
-            alt="Middle layer elements"
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-          />
-        </div>
-
-        {/* Foreground Layer */}
-        <div ref={foregroundRef} className="absolute inset-0 scale">
-          <Image
-            src={image3}
-            alt="Foreground elements"
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-          />
+      <div className="relative h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen overflow-hidden">
+        <div className="absolute inset-0 scale-1">
+          <Image src={image1} alt="Background scenery" fill className="object-cover" priority quality={100} />
         </div>
 
         {/* Hero Content */}
         <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
           <div className="flex flex-col items-center text-center text-white">
-            <h1 
+            <h1
               id="hero-heading"
               className="font-freightNeoSemibold leading-relaxed md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]"
             >

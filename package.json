@@ -34,7 +34,7 @@
     "react-toastify": "^11.0.3",
     "sass": "^1.85.1",
     "smooth-scrollbar": "^8.8.4",
-    "swiper": "^11.2.1",
+    "swiper": "^11.2.6",
     "tailwind-merge": "^2.6.0",
     "yup": "^1.6.1"
   },
