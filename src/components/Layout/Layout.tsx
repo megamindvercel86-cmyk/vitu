@@ -23,14 +23,10 @@ interface LayoutProps {
  * Layout component that wraps the entire application
  * Provides consistent layout structure with Navbar and Footer
  */
-export default function Layout({
-  children,
-  navbarProps,
-  navbarClassName,
-}: LayoutProps) {
+export default function Layout({ children, navbarProps, navbarClassName }: LayoutProps) {
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       {/* Navbar Section */}
       <div className={navbarClassName || ""}>
         <Navbar {...navbarProps} />
@@ -38,7 +34,7 @@ export default function Layout({
 
       {/* Main Content */}
       <main>{children}</main>
-<WhatsappChatWidget/>
+      <WhatsappChatWidget />
       {/* Footer Section */}
       <Footer />
     </>
