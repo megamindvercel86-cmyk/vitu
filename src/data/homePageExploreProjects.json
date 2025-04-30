@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "title": "Celebrate Together",
+      "description": "Host gatherings with ease in thoughtfully designed party areas and event spaces. Whether it’s a birthday, festival, or casual weekend hangout, these versatile venues provide the perfect backdrop for meaningful moments with loved ones.",
+      "fileUrl": "/images/homePageExploreProjectImage/1.png"
+    },
+    {
+      "id": 2,
+      "title": "Family Friendly Living",
+      "description": "A space where kids can run, play, and let their imaginations roam freely. Designed with safety and creativity in mind, these areas offer plenty of room to climb, explore, and make new friends — turning everyday moments into lasting memories.",
+      "fileUrl": "/images/exploreProjectImages/2.png"
+    },
+    {
+      "id": 3,
+      "title": "Relax & Recharge",
+      "description": "Pools designed for refreshing morning swims or a soothing dip to unwind after a long day. Lush green spaces invite you to take peaceful strolls, offering a serene connection to nature right outside your door.",
+      "fileUrl": "/images/homePageExploreProjectImage/3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Stay Active",
+      "description": "Keep moving in a well-equipped gym designed to support your fitness journey. Whether you're looking to build strength, boost endurance, or simply stay flexible, the space is consciously designed to help you feel your best.",
+      "fileUrl": "/images/exploreProjectImages/5.png"
+    },
+    {
+      "id": 5,
+      "title": "Game On",
+      "description": "Shoot hoops on the basketball court, gather friends for a game at the multi-sport complex, or unwind in outdoor activity zones built for every skill level. Whether you're playing for fun or pushing your limits, these spaces add energy and joy to your day.",
+      "fileUrl": "/images/homePageExploreProjectImage/4.jpg"
+    }
+  ]
+  

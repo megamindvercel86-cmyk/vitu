@@ -7,22 +7,21 @@ import { motion, useAnimation, useInView } from "framer-motion";
 
 // ============= Constants =============
 const PROJECT_DATA = {
-  title: "Vaikuntam City",
+  title: "Vitu Vilasam",
   badge: "Limited Plots Available",
   description: {
-    prefix: "Just ",
-    number: "5",
-    suffix: " minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.",
+    
+    suffix: " Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
   image: "/images/visionAndFutureImages/image5.png",
 };
 
 const STATS_DATA = [
-  {
-    value: "500+",
-    label: "Tree Cover",
-  },
+  // {
+  //   value: "500+",
+  //   label: "Tree Cover",
+  // },
   {
     value: "20,000 sq.ft.",
     label: "Spacious Clubhouse",
@@ -130,14 +129,14 @@ const CurrentProject: React.FC = () => {
       <article className="w-full lg:w-1/2">
         <header>
           {/* Project Badge */}
-          <div
+          {/* <div
             className="flex items-center justify-center w-[166px] h-[34px] pt-1 rounded-md bg-[#AE856614] 2xl:w-[280px] 2xl:text-[1.5rem]"
             aria-label="Project Availability"
           >
             <Typography variant="custom" className="font-FreightNeoProNormal text-customBrown">
               {PROJECT_DATA.badge}
             </Typography>
-          </div>
+          </div> */}
           {/* Project Title */}
           <h1
             id="project-title"
@@ -153,8 +152,8 @@ const CurrentProject: React.FC = () => {
             variant="custom"
             className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
           >
-            {PROJECT_DATA.description.prefix}
-            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span>
+            {/* {PROJECT_DATA.description.prefix} */}
+            {/* <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span> */}
             {PROJECT_DATA.description.suffix}
           </Typography>
         </div>

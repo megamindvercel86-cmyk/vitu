@@ -7,8 +7,8 @@ import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/C
 
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
 import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
-import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import PlotWrapper from "@/components/ProjectsPageComponents/Plots/PlotsWrapper";
+import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
 
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}

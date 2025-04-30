@@ -5,7 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import CustomCursor from "../CustomCursor";
 import Typography from "@/components/Typography/Typography";
-import exploreProjects from "@/data/exploreProjects.json";
+import exploreProjects from "../../../data/homePageExploreProjects.json";
 import { ArrowRightIcon } from "@/components/Icons/Icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -253,14 +253,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
       <div
         ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh] md:h-[150vh]" : "h-[100vh]"}`}
+        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[180vh] md:h-[150vh]" : "h-[100vh]"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleExpand}
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem] lg2:top-[28rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem] lg2:top-[20rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,

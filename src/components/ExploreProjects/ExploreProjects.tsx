@@ -6,7 +6,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Typography from "../Typography/Typography";
 import InfiniteCarousel from "../Common/InfiniteCarousel/InfiniteCarousel";
 import ExpandableCards from "../Common/ExpandableCards/ExpandableCards";
-import exploreProjects from "@/data/exploreProjects.json";
+import exploreProjects from "../../data/homePageExploreProjects.json";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface Card {
@@ -24,8 +24,8 @@ interface Card {
 const CARDS_DATA: Card[] = [
   {
     id: 5,
-    url: "/images/exploreProjectImages/4.png",
-    fileUrl: "/images/exploreProjectImages/4.png",
+    url: "/images/homePageExploreProjectImage/4.jpg",
+    fileUrl: "/images/homePageExploreProjectImage/4.jpg",
     className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
@@ -58,8 +58,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 3,
-    url: "/images/exploreProjectImages/3.png",
-    fileUrl: "/images/exploreProjectImages/3.png",
+    url: "/images/homePageExploreProjectImage/3.jpg",
+    fileUrl: "/images/homePageExploreProjectImage/3.jpg",
     className: "absolute left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
@@ -69,8 +69,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 1,
-    url: "/images/exploreProjectImages/1.png",
-    fileUrl: "/images/exploreProjectImages/1.png",
+    url: "/images/homePageExploreProjectImage/1.png",
+    fileUrl: "/images/homePageExploreProjectImage/1.png",
     className:
       "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
