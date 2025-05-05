@@ -10,6 +10,73 @@ import StorySection from "@/components/AboutPageComponents/StorySection/StorySec
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
 
+
+
+const IMAGES = {
+  desktop: ["/images/aboutPageVisionAndMission/1.png", "/images/aboutPageVisionAndMission/2.png", "/images/aboutPageVisionAndMission/3.png"],
+  mobile: ["/images/aboutPageVisionAndMission/1.png", "/images/aboutPageVisionAndMission/2.png", "/images/aboutPageVisionAndMission/3.png"],
+};
+
+const CONTENT = {
+  desktop: [
+    [
+      {
+        title: "Diversity in Balance",
+        description: "We maintain a near 50:50 women-to-men ratio, fostering equal opportunity and inclusive growth",
+      },
+      {
+        title: "Accountability & Ownership",
+        description: "We take ownership of our work, our impact and the collective success of our team.",
+      },
+      {
+        title: "Trusted Experience",
+        description: "We nurture a culture of trust, where collaboration and growth go hand-in-hand.",
+      },
+    ],
+    [
+      {
+        title: "Diversity in Balance",
+        description: "We maintain a near 50:50 women-to-men ratio, fostering equal opportunity and inclusive growth",
+      },
+      {
+        title: "Accountability & Ownership",
+        description: "We take ownership of our work, our impact and the collective success of our team.",
+      },
+      {
+        title: "Trust & Collaboration",
+        description: "We nurture a culture of trust, where collaboration and growth go hand-in-hand.",
+      },
+    ],
+    [
+      {
+        title: "Diversity in Balance",
+        description: "We maintain a near 50:50 women-to-men ratio, fostering equal opportunity and inclusive growth",
+      },
+      {
+        title: "Accountability & Ownership",
+        description: "We take ownership of our work, our impact and the collective success of our team.",
+      },
+      {
+        title: "Trust & Collaboration",
+        description: "We nurture a culture of trust, where collaboration and growth go hand-in-hand.",
+      },
+    ],
+  ],
+  mobile: [
+    {
+      title: "Diversity in Balance",
+      description: "We maintain a near 50:50 women-to-men ratio, fostering equal opportunity and inclusive growth",
+    },
+    {
+      title: "Accountability & Ownership",
+      description: "We take ownership of our work, our impact and the collective success of our team.",
+    },
+    {
+      title: "Trust & Collaboration",
+      description: "We nurture a culture of trust, where collaboration and growth go hand-in-hand.",
+    },
+  ],
+};
 // ============= Constants =============
 const NAVBAR_CONFIG = {
   className: "absolute top-0 left-0 right-0 z-10 w-full",
@@ -87,7 +154,7 @@ export default function AboutPage() {
         </section>
         {/* Vision and Mission Section */}
         <section>
-          <VisionAndMission />
+          <VisionAndMission images={IMAGES} content={CONTENT}/>
         </section>
         {/* Leadership Team Section (Lazy Loaded for Performance) */}
         <section>

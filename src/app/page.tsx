@@ -14,6 +14,71 @@ import { useEffect, useState } from "react";
 
 
 // ============= Types & Interfaces =============
+const IMAGES = {
+  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
+  mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
+};
+
+const CONTENT = {
+  desktop: [
+    [
+      {
+        title: "Prime Locations",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
+      },
+      {
+        title: "Accessible Luxury",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      },
+      {
+        title: "Trusted Experience",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
+      },
+    ],
+    [
+      {
+        title: "Prime Locations",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
+      },
+      {
+        title: "Accessible Luxury",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      },
+      {
+        title: "Trusted Experience ",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
+      },
+    ],
+    [
+      {
+        title: "Prime Locations",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
+      },
+      {
+        title: "Accessible Luxury",
+        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      },
+      {
+        title: "Trusted Experience ",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
+      },
+    ],
+  ],
+  mobile: [
+    {
+      title: "Prime Locations",
+      description: "Strategically located properties offering convenience, connectivity, and high investment value.",
+    },
+    {
+      title: "Accessible Luxury",
+      description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+    },
+    {
+      title: "Trusted Experience ",
+      description: "Delivering homes where families thrive, backed by years of trust and excellence.",
+    },
+  ],
+};
 
 
 // ============= Constants =========
@@ -73,7 +138,7 @@ export default function HomePage() {
         <HomeHeroSection />
 
         {/* Vision and Mission Section */}
-        <VisionAndMission />
+        <VisionAndMission images={IMAGES} content={CONTENT}/>
 
         {/* Future Vision Section */}
         <VisionForTheFuture />

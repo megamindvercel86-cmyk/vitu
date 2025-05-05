@@ -1,4 +1,5 @@
 "use client";
+
 // ============= Component Imports =============
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -12,6 +13,19 @@ type ContentItem = {
   description: string;
 };
 
+interface Images {
+  desktop: string[];
+  mobile: string[];
+}
+
+interface Props {
+  images: Images;
+  content: {
+    desktop: ContentItem[][];
+    mobile: ContentItem[];
+  };
+}
+
 // ============= Constants =============
 const CAROUSEL_CONFIG = {
   totalSlides: 3,
@@ -21,72 +35,6 @@ const CAROUSEL_CONFIG = {
     desktop: { width: 1932, height: 1088 },
     mobile: { width: 326, height: 568 },
   },
-};
-
-const IMAGES = {
-  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
-  mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
-};
-
-const CONTENT = {
-  desktop: [
-    [
-      {
-        title: "Prime Locations",
-        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
-      },
-      {
-        title: "Accessible Luxury",
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
-      },
-      {
-        title: "Trusted Experience",
-        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
-      },
-    ],
-    [
-      {
-        title: "Prime Locations",
-        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
-      },
-      {
-        title: "Accessible Luxury",
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
-      },
-      {
-        title: "Trusted Experience ",
-        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
-      },
-    ],
-    [
-      {
-        title: "Prime Locations",
-        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
-      },
-      {
-        title: "Accessible Luxury",
-        description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
-      },
-      {
-        title: "Trusted Experience ",
-        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
-      },
-    ],
-  ],
-  mobile: [
-    {
-      title: "Prime Locations",
-      description: "Strategically located properties offering convenience, connectivity, and high investment value.",
-    },
-    {
-      title: "Accessible Luxury",
-      description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
-    },
-    {
-      title: "Trusted Experience ",
-      description: "Delivering homes where families thrive, backed by years of trust and excellence.",
-    },
-  ],
 };
 
 /**
@@ -101,7 +49,11 @@ const CONTENT = {
  *
  * @component
  */
-export default function VisionAndMission() {
+export default function VisionAndMission({ images, content }: Props) {
+
+console.log(images,content);
+
+
   // ============= State =============
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -141,7 +93,7 @@ export default function VisionAndMission() {
         <Typography
           variant="h2"
           className="font-freightNeoMedium text-white text-center"
-          aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
+          aria-label={`Mobile Title: ${content.mobile[currentIndex].title}`}
         >
           {section.title}
         </Typography>
@@ -169,7 +121,7 @@ export default function VisionAndMission() {
           <div className="overflow-hidden hidden md:block shadow-xl xl:h-[100vh] w-[100%] aspect-[2/1] relative">
             {/* Image container */}
             <div className="absolute inset-0">
-              {IMAGES.desktop.map((src, index) => (
+              {images.desktop.map((src, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0 }}
@@ -196,13 +148,13 @@ export default function VisionAndMission() {
               <div className="flex-1"></div>
             </div>
             {/* Sections with titles and hover descriptions */}
-            <div className="absolute inset-0 flex">{CONTENT.desktop[currentIndex].map((section, index) => renderDesktopSection(section, index))}</div>
+            <div className="absolute inset-0 flex">{content.desktop[currentIndex].map((section, index) => renderDesktopSection(section, index))}</div>
           </div>
 
           {/* Mobile Version */}
           <div className="block md:hidden relative overflow-hidden shadow-xl">
             <Image
-              src={IMAGES.mobile[currentIndex]}
+              src={images.mobile[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
               width={CAROUSEL_CONFIG.dimensions.mobile.width}
               height={CAROUSEL_CONFIG.dimensions.mobile.height}
@@ -213,17 +165,17 @@ export default function VisionAndMission() {
               <Typography
                 variant="custom"
                 className="font-freightNeoMedium text-white text-2xl"
-                aria-label={`Mobile Title: ${CONTENT.mobile[currentIndex].title}`}
+                aria-label={`Mobile Title: ${content.mobile[currentIndex].title}`}
               >
-                {CONTENT.mobile[currentIndex].title}
+                {content.mobile[currentIndex].title}
               </Typography>
               <div className={`overflow-hidden transition-all duration-300 ${"h-16"}`}>
                 <Typography variant="h3" fontWeight="font-normal" className="font-FreightNeoProNormal mt-[0px] text-white">
-                  {CONTENT.mobile[currentIndex].description}
+                  {content.mobile[currentIndex].description}
                 </Typography>
               </div>
               <div className="flex space-x-5 rounded-[32px] py-4 px-6">
-                {CONTENT.mobile.map((_, dotIndex) => (
+                {content.mobile.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
                     disabled={isAnimating}
