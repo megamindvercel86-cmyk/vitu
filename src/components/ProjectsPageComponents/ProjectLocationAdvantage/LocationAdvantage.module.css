@@ -1,0 +1,17 @@
+.locationAdvantageSwiper {
+    width: 100% !important;
+    height: 100vh !important;
+    padding: 0 !important;
+  }
+  
+  .locationAdvantageSwiper .swiper-slide {
+    width: 100% !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+  
+  .locationAdvantageSwiper .swiper-slide img {
+    width: 100% !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+  }

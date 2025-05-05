@@ -67,7 +67,7 @@ const ProjectHeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="herosection w-full   xl:h-[240vh] overflow-hidden">
+    <section id="hero" className=" w-full h-[240vh] lg:h-[320vh]   xl:h-[240vh] overflow-hidden">
       {/* Parallax Layers */}
       <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
         <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
@@ -168,7 +168,7 @@ const ProjectHeroSection: React.FC = () => {
       <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[30rem]  text-center px-6">
         <ProjectHeader />
       </div>
-      <div id="carousal" className="lg:pt-20 absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[83rem] xl:top-[100rem]  md:top-[70rem] top-[100vh] text-center  px-6">
+      <div id="carousal" className="lg:pt-20  absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[100rem]  md:top-[70rem] top-[100vh] text-center  px-6">
         <ProjectCarousel />
       </div>
     </section>

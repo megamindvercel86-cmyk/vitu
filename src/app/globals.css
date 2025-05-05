@@ -103,24 +103,7 @@ body {
   font-display: swap;
 }
 
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 231px;
-  height: 289px;
-  border-radius: 10px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-}
 
 option {
   border: none;

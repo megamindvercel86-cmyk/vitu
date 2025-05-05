@@ -391,7 +391,7 @@ interface CTAButtonIconProps {
 
 const CTAButtonIcon: React.FC<CTAButtonIconProps> = ({
   direction = "down",
-  fill = "#614130",
+  fill,
 }) => {
   const transformMap: Record<string, string> = {
     left: "rotate(90deg)",
