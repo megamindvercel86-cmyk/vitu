@@ -51,7 +51,6 @@ const CAROUSEL_CONFIG = {
  */
 export default function VisionAndMission({ images, content }: Props) {
 
-console.log(images,content);
 
 
   // ============= State =============

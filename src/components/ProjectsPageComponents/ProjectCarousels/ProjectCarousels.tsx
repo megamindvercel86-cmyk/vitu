@@ -66,7 +66,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           <div className="hidden md:block"></div>
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
-              <foreignObject x="9" y="8" width="32" height="32">
                 <button
                   className="w-full h-full cursor-pointer flex items-center justify-center"
                   aria-label={isMuted ? "Unmute" : "Mute"}
@@ -153,7 +152,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                     </svg>
                   )}
                 </button>
-              </foreignObject>
             </div>
           </div>
         </div>
