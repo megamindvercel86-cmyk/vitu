@@ -1,10 +1,11 @@
 import VilasamCarousel from "@/components/VilasamProjectPage/carousel/page";
-import VilasamHeroSection from "@/components/VilasamProjectPage/VilasamHeroBanner/page";
+
 import VilasamLegacyBuiltComponent from "@/components/VilasamProjectPage/LegacyComponent/page";
 import PlotWrapper from "@/components/VilasamProjectPage/Plots/page";
 import UrbanAccessSection from "@/components/VilasamProjectPage/UrbanAccessSection/UrbanAccessSection";
 import ElevatesLiving from "@/components/VilasamProjectPage/VilasamDetails/page";
 import VilasamExploreProjects from "@/components/VilasamProjectPage/VilasamExploreProject/page";
+import VilasamHeroSection from "@/components/VilasamProjectPage/VilasamHeroBanner/page";
 import LocationAdvantage from "@/components/VilasamProjectPage/VilasamLocation/page";
 
 // ============= Types & Interfaces =============
