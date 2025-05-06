@@ -1,5 +1,5 @@
 import VilasamCarousel from "@/components/VilasamProjectPage/carousel/page";
-import VilasamHeroSection from "@/components/VilasamProjectPage/HeroBanner/page";
+import VilasamHeroSection from "@/components/VilasamProjectPage/VilasamHeroBanner/page";
 import VilasamLegacyBuiltComponent from "@/components/VilasamProjectPage/LegacyComponent/page";
 import PlotWrapper from "@/components/VilasamProjectPage/Plots/page";
 import UrbanAccessSection from "@/components/VilasamProjectPage/UrbanAccessSection/UrbanAccessSection";
