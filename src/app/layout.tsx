@@ -1,5 +1,5 @@
 // RootLayout.tsx
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono,Noto_Serif,Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
@@ -13,6 +13,18 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const notoSerif = Noto_Serif({
+  variable: "--font-geist-serif",
+  subsets: ['latin'],
+});
+
+const sourceSans3 = Source_Sans_3({
+  variable: "--font-source-sans-3",
+  subsets: ["latin"],
+});
+
+
 export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
@@ -56,7 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* Robots Meta Tag for Indexing */}
         <meta name="robots" content="index, follow" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} antialiased`}>
         <SmoothScroll>{children}</SmoothScroll>
         <GoogleAnalytics gaId="G-B662JPJ850" />
       </body>

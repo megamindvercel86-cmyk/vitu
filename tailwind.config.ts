@@ -30,6 +30,8 @@ export default {
         CandideCondensedNormal: ["Candide-CondensedNormal", "sans-serif"],
         FreightNeoProLight: ["Freight Neo Pro Light", "sans-serif"],
         FreightNeoProNormal: ["Freight Neo Pro Normal", "sans-serif"],
+        geistSerif: 'var(--font-geist-serif)',
+        sourceSans3: 'var(--font-source-sans-3)',
       },
       screens: {
         sm: "640px",

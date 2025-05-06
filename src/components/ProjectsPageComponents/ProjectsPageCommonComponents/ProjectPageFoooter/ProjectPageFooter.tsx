@@ -6,10 +6,6 @@ import logo2 from "../../../../../public/images/logos/projectfooter.svg";
 import { Link } from "react-scroll";
 
 import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Share1, Youtube } from "@/components/Icons/Icons";
-import { BsArrowRight } from "react-icons/bs";
-import { db } from "@/firebase/firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
-import { toast } from "react-toastify";
 import SubHeading from "@/components/Common/SubHeding";
 import NavLink from "@/components/Common/NavLink";
 import FooterLink from "@/components/Common/FooterLinks";

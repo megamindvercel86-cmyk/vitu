@@ -98,7 +98,7 @@ const CardContent = ({
   slideImage: string;
 }) => (
   <div className="">
-    <div className="relative w-full h-64 lg:h-[100vh] mb-6 rounded-t-xl overflow-hidden">
+    <div className="relative w-full h-64 lg:h-[70vh] mb-6 rounded-t-xl overflow-hidden">
       <Image src={slideImage} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
     </div>
     <div className=" px-6 lg:px-20">
@@ -287,7 +287,7 @@ const LocationAdvantage = () => {
       description: "30+ Amenities",
       text: "From sunrise workouts to sunset strolls, enjoy 30+ ways to relax, recharge & reconnect - every single day.",
       buttonText: "More about the Amenities",
-      image: "/images/locationAdvantagesImages/4.png",
+      image: "/images/locationAdvantagesImages/5.png",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-white bg-[#78a5c1]",
@@ -350,8 +350,9 @@ const LocationAdvantage = () => {
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
+        loop={true}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
