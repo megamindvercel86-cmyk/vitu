@@ -49,10 +49,10 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
         <div className={styles.body}>
           <div className={styles.description}>
             <h2  className="text-[#0C3E49]  text-2xl lg:text-[48px] xl:text-[60px] font-geistSerif md:pb-5">{highlightNumbers(title)}</h2>
-            <p className="text-[#0C3E49] font-geistSerif pt-6 text-base font-light  lg:text-[24px] ">{description}</p>
+            <p className="text-[#0C3E49] md:leading-7 font-geistSerif pt-6 text-base font-light  lg:text-[24px] ">{description}</p>
             <div>
               <Link href="project-enquire">
-                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] text-white mt-4 lg:mt-[35%]">
+                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] text-white mt-4 lg:mt-[30%]">
                   Get the Best Quote
                 </button>
               </Link>

@@ -11,6 +11,7 @@ import SustainabilityInitiatives from "@/components/HomePageComponents/Sustainab
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import { useEffect, useState } from "react";
+import VilasamExploreProjects from "@/components/VilasamProjectPage/VilasamExploreProject/page";
 
 
 // ============= Types & Interfaces =============
@@ -144,7 +145,7 @@ export default function HomePage() {
         <VisionForTheFuture />
 
         {/* Project Explorer Section */}
-        <ExploreProjectsWrapper />
+        <VilasamExploreProjects />
 
         {/* Current Projects Section */}
         <CurrentProject />

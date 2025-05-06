@@ -21,18 +21,18 @@ const VilasamHeroSection = () => {
         <div className="font-medium text-[#0C3E49] text-xs lg2:text-[32px] font-sourceSans3">Bookings Open Soon</div>
         <button
           // onClick={onCtaClick}
-          className="px-4 py-2 text-xs lg2:text-[32px] bg-[#0C3E49] font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
+          className="px-4 py-2 text-xs lg2:text-[32px] lg:py-5 bg-[#0C3E49] font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
         >
           Show your Interest
         </button>
       </div>
       {/* Main Content */}
       <div className="absolute top-28 md:top-60  mx-auto text-white px-4 z-10">
-        <h1 className="text-xl  md:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
+        <h1 className="text-2xl  md:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
           Homes that <br />
           Breathe with you
         </h1>
-        <p className="text-2xl md:text-2xl font-medium mt-5 font-geistSerif">Unwind Across 169 Cents of Coastal Charm, Made Affordable</p>
+        <p className="t md:text-2xl font-medium mt-5 font-geistSerif">Unwind Across 169 Cents of Coastal Charm, Made Affordable</p>
       </div>
     </section>
   );

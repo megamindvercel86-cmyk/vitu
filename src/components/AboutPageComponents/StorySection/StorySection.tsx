@@ -11,7 +11,7 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
-
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -44,22 +44,19 @@ const images = [
     mobileSrc: "/images/timelineImages/timelineImageMobile5.png",
     src: "/images/timelineImages/timelineImage5.png",
     year: "1990",
-    message:
-      "Expanded into wholesale distribution of WeTwo Fireworks under Mr K Ananth Kamath's ledership",
+    message: "Expanded into wholesale distribution of WeTwo Fireworks under Mr K Ananth Kamath's ledership",
   },
   {
     mobileSrc: "/images/timelineImages/timelineImageMobile6.png",
     src: "/images/timelineImages/timelineImage6.png",
     year: "2003-2012",
-    message:
-      "Expanded into real-estate by trading land, partnering with MUDA on a 75-Acre development",
+    message: "Expanded into real-estate by trading land, partnering with MUDA on a 75-Acre development",
   },
   {
     mobileSrc: "/images/timelineImages/timelineImageMobile7.png",
     src: "/images/timelineImages/timelineImage7.png",
     year: "2023",
-    message:
-      "Mr Laxman Kamath made a significant entry and established Vitu Realty",
+    message: "Mr Laxman Kamath made a significant entry and established Vitu Realty",
   },
   {
     mobileSrc: "/images/timelineImages/timelineImageMobile8.png",
@@ -69,32 +66,20 @@ const images = [
   },
 ];
 
-function YearDisplay({
-  number,
-  isFixed,
-}: {
-  number: string;
-  isFixed: boolean;
-}) {
+function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) {
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (messageRef.current) {
-      gsap.fromTo(
-        messageRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0 },
-      );
+      gsap.fromTo(messageRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0 });
     }
   }, [number]);
 
   return (
     <div
       className={`${
-        isFixed
-          ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 md:left-20 left-5"
-          : "absolute lg2:bottom-28 md:left-36 bottom-52 left-5"
-      } pointer-events-none z[1]`}
+        isFixed ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]" : "absolute md:bottom-56 md:right-10 bottom-32"
+      } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <span className="lg2:text-[80px] lg:text-7xl text-[40px] text-white font-CandideCondensedMedium">
         {number.split("").map((digit, index) => (
@@ -107,40 +92,25 @@ function YearDisplay({
   );
 }
 
-function MessageDisplay({
-  message,
-  isFixed,
-}: {
-  message: string;
-  isFixed: boolean;
-}) {
+function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolean }) {
   const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (messageRef.current) {
-      gsap.fromTo(
-        messageRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0 },
-      );
+      gsap.fromTo(messageRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0 });
     }
   }, [message]);
 
   return (
     <div
       className={`${
-        isFixed
-          ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]"
-          : "absolute md:bottom-56 md:right-10 bottom-32"
+        isFixed ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]" : "absolute md:bottom-56 md:right-10 bottom-32"
       } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
         <span className="lg2:text-2xl lg:text-xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
           {message.split("").map((char, index) => (
-            <span
-              key={index}
-              className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}
-            >
+            <span key={index} className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}>
               {char}
             </span>
           ))}
@@ -150,23 +120,14 @@ function MessageDisplay({
   );
 }
 
-function ScrollController({
-  progress,
-  onDrag,
-  isFixed,
-}: {
-  progress: number;
-  isFixed: boolean;
-  onDrag: (newProgress: number) => void;
-}) {
+function ScrollController({ progress, onDrag, isFixed }: { progress: number; isFixed: boolean; onDrag: (newProgress: number) => void }) {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const controllerRef = useRef<HTMLDivElement | null>(null);
   const [draggable, setDraggable] = useState<Draggable | null>(null);
 
   const updateDraggableBounds = () => {
     if (trackRef.current && controllerRef.current && draggable) {
-      const trackWidth =
-        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       draggable.applyBounds(trackRef.current);
       gsap.set(controllerRef.current, { x: progress * trackWidth });
     }
@@ -174,8 +135,7 @@ function ScrollController({
 
   useEffect(() => {
     if (controllerRef.current && trackRef.current) {
-      const trackWidth =
-        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       // Create the draggable instance
       const newDraggable = Draggable.create(controllerRef.current, {
         type: "x",
@@ -211,22 +171,19 @@ function ScrollController({
 
   useEffect(() => {
     if (trackRef.current && controllerRef.current) {
-      const trackWidth =
-        trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
+      const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       gsap.to(controllerRef.current, { x: progress * trackWidth });
     }
   }, [progress]);
 
   return (
-    <div
-      className={`${isFixed ? "fixed" : "absolute"} bottom-12 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[40%] lg2:max-w-[550px]`}
-    >
+    <div className={`${isFixed ? "fixed" : "absolute"} bottom-12 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[40%] lg2:max-w-[550px]`}>
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg
           viewBox="0 0 430 45"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-[90%] absolute top-1/2 -translate-y-1/2 pointer-events-none"
+          className="w-[90%] absolute top-1/2 -translate-y-1/2 "
         >
           <path
             d="M0.367188 24.2744H5.48583C8.50671 22.218 10.4811 21.5307 14.3329 20.9567L15.028 18.8714C12.631 14.5194 12.9542 13.6462 13.4482 10.3403C13.8414 7.70824 14.3909 6.29441 16.5446 3.8946C20.3088 1.37 23.629 1.66446 27.2243 3.8946C29.6677 7.07496 30.3207 9.45557 30.3207 11.7305C30.3207 14.0055 29.6268 16.9223 28.4249 19.5665C32.4176 20.6054 34.4576 21.4818 37.7143 23.6108H42.0746M39.6719 23.612H44.9169V19.5044L85.2341 3.83252L96.6088 23.612L118.347 35.745M97.2422 24.0552L125.553 39.6007V38.9056H126.817L127.701 34.8612H132.883V34.0397H137.559L144.447 34.8612V35.8723H148.934V34.8612H152.157V33.5341H156.138V31.2592H157.528V27.4676H165.428V33.5341H172M166.945 33.568H173.644C173.485 36.6907 174.138 37.9122 176.298 39.3818C178.186 42.9119 179.825 43.151 183.376 41.6568C186.423 43.8133 188.105 44.0279 190.895 40.5825C193.519 40.8817 194.755 40.3324 196.709 38.6235C202.794 37.0102 203.097 34.7804 201.07 29.7133C203.434 27.3903 202.475 25.6249 201.322 22.0669H212.318M209.094 22.1292H213.77L215.35 21.3077C214.188 16.9107 214.319 13.0751 217.246 9.93296C220.008 6.9674 221.745 7.24383 226.093 9.04825C227.732 7.28123 228.927 6.55813 231.464 5.8886C235.096 5.26624 237.734 5.37426 239.932 8.03712C241.315 9.71316 241.383 10.7863 241.638 12.7135C242.095 16.1615 240.756 18.1481 239.3 21.3077C242.438 23.6145 243.894 25.1623 245.872 28.4485H252.002M314.753 25.7969H310.961L286.568 14.8013L275.573 19.9199L271.844 19.288L252.065 28.451H248.273M312.984 25.7603H316.144C317.29 22.7738 319.155 21.0154 325.497 17.6716C325.051 14.9181 323.97 11.6285 326.255 9.51961C328.847 7.1274 332.633 6.46928 334.723 8.76135C336.813 11.0534 335.969 16.1867 334.723 20.1993C337.079 22.1441 338.254 23.3036 339.525 25.7603H342.053C343.447 23.4767 344.42 22.4027 346.477 20.9577C342.695 16.2076 342.737 11.8227 346.477 9.07735C349.222 7.06212 351.256 7.26314 353.807 9.51961C356.691 12.0704 356.095 16.3479 355.324 20.1993C358.79 21.2112 360.475 22.3005 363.16 25.002H366.572M364.797 24.974H368.146V13.8521H426.031V24.974H429.317"
@@ -235,10 +192,7 @@ function ScrollController({
             className="transition-all duration-100"
           />
         </svg>
-        <div
-          ref={controllerRef}
-          className="absolute top-0 left-0 w-[100px] h-full cursor-grab active:cursor-grabbing"
-        >
+        <div ref={controllerRef} className="absolute top-0 left-0 w-[100px] h-full cursor-grab active:cursor-grabbing">
           <div className="w-[60px] h-full border-[#CFA484] border-[2.5px] rounded-lg opacity-80" />
         </div>
       </div>
@@ -246,7 +200,7 @@ function ScrollController({
   );
 }
 
-const getSvgPath = (width: number,height:number): React.JSX.Element | null => {
+const getSvgPath = (width: number, height: number): React.JSX.Element | null => {
   if (width >= 5120)
     return <FHD />; // 5K
   else if (width >= 3840)
@@ -257,10 +211,8 @@ const getSvgPath = (width: number,height:number): React.JSX.Element | null => {
     return <FHDLAPTOP />; // Full HD
   else if (width >= 1500)
     return <HDPLUSLAPTOP />; // HD+
-  else if (width >= 1024 && height >= 768)
-    return  <FULLHDMOBILE />
-  else if (width >= 1024)
-    return <SvgWave1024 />
+  else if (width >= 1024 && height >= 768) return <FULLHDMOBILE />;
+  else if (width >= 1024) return <SvgWave1024 />;
   else if (width >= 100) return <FULLHDMOBILE />;
   return null;
 };
@@ -276,13 +228,14 @@ export default function Gallery() {
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
+  const [skipWalkthrough, setSkipWalkthrough] = useState(false);
   // Update windowWidth on resize
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight)
+      setWindowHeight(window.innerHeight);
       const handleResize = () => setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight)
+      setWindowHeight(window.innerHeight);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
@@ -297,8 +250,7 @@ export default function Gallery() {
     const maxTranslateX = totalWidth - visibleWidth;
     // Adjust transform based on viewport width
     if (windowWidth >= 1900) return `translate(-${progress * 13600}px, -50%)`;
-    else if (windowWidth > 1400)
-      return `translate(-${progress * 11280}px, -50%)`;
+    else if (windowWidth > 1400) return `translate(-${progress * 11280}px, -50%)`;
     else if (windowWidth >= 1024 && windowHeight >= 768) return `translate(-${progress * 500}px, -50%)`;
     else if (windowWidth >= 1024) return `translate(-${progress * 7500}px, -50%)`;
     else if (windowWidth > 100) return `translate(-${progress * 2335}px, -50%)`;
@@ -306,10 +258,10 @@ export default function Gallery() {
   };
   const getTopValue = () => {
     const gallery = galleryRef.current;
-    if (!gallery) return 
+    if (!gallery) return;
     const totalWidth = gallery.scrollWidth;
     const visibleWidth = windowWidth;
-  
+
     // Adjust transform based on viewport width
     if (windowWidth >= 1900) return `46%`;
     else if (windowWidth >= 1024) return `45%`;
@@ -317,10 +269,7 @@ export default function Gallery() {
   };
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
-    const imageIndex = Math.min(
-      Math.floor(progress * images.length),
-      images.length - 1,
-    );
+    const imageIndex = Math.min(Math.floor(progress * images.length), images.length - 1);
     setCurrentYear(images[imageIndex].year);
     setCurrentMessage(images[imageIndex].message);
 
@@ -335,6 +284,7 @@ export default function Gallery() {
 
   // ScrollTrigger for the gallery scroll (if you want both scroll and drag to work together)
   useEffect(() => {
+    if (skipWalkthrough) return;
     const container = containerRef.current;
     const gallery = galleryRef.current;
     const path = svgPathRef.current;
@@ -378,20 +328,26 @@ export default function Gallery() {
   // Set the SVG path based on window width
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setSvg(getSvgPath(window.innerWidth,window.innerHeight));
+      setSvg(getSvgPath(window.innerWidth, window.innerHeight));
     }
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        setSvg(getSvgPath(window.innerWidth,window.innerHeight));
+        setSvg(getSvgPath(window.innerWidth, window.innerHeight));
       }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  const handleSkip = () => {
+    setSkipWalkthrough(!skipWalkthrough);
+    // OPTIONAL: Kill all ScrollTriggers
+    setIsFixed(!isFixed)
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    // OPTIONAL: Kill any gsap timelines if you want
+  };
   return (
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
@@ -407,20 +363,11 @@ export default function Gallery() {
           {svg}
         </div>
         <div className="fixed top-0 left-0 w-full h-1 bg-gray-200">
-          <div
-            className="h-full bg-primary transition-all duration-300 ease-out"
-            style={{ width: `${progress * 100}%` }}
-          />
+          <div className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${progress * 100}%` }} />
         </div>
-        <div
-          ref={galleryRef}
-          className="flex absolute top-1/2 -translate-y-1/2 will-change-transform"
-        >
+        <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
           {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl"
-            >
+            <div key={index} className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl">
               <div className="absolute inset-0 gallery-image z-10">
                 <div className="h-[100vh]">
                   <Image
@@ -448,14 +395,26 @@ export default function Gallery() {
           ))}
         </div>
       </div>
-
+      <div
+        className={`${
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 md:left-20 left-5" : "absolute lg2:bottom-28 md:left-36 bottom-52 left-5"
+        } cursor-pointer z[1] text-[22px] font-bold font-FreightNeoProBold`}
+      >
+        <Link href={"/explore"}>
+        
+        <button className="border rounded-full px-6 py-2">Explore More</button>
+        </Link>
+      </div>
+      <div
+        className={`${
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-52 " : "absolute lg2:bottom-28  bottom-52 mx-auto"
+        }  z[1] text-[22px] font-bold text-center  font-FreightNeoProBold flex w-full justify-center`}
+      >
+        <button onClick={handleSkip} className="underline cursor-pointer">Skip Legacy Walkthrough</button>
+      </div>
       <YearDisplay number={currentYear} isFixed={isFixed} />
-      <MessageDisplay message={currentMessage} isFixed={isFixed} />
-      <ScrollController
-        progress={progress}
-        onDrag={setProgress}
-        isFixed={isFixed}
-      />
+      {/* <MessageDisplay message={currentMessage} isFixed={isFixed} /> */}
+      <ScrollController progress={progress} onDrag={setProgress} isFixed={isFixed} />
     </div>
   );
 }
