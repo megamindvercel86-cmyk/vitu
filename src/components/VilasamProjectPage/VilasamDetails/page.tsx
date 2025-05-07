@@ -7,14 +7,17 @@ interface PulsePoint {
   id: number;
   top: string;
   left: string;
-  detail: string;
+  detail: {
+    title: string;
+    description: string;
+  };
 }
-
 const pulsePoints: PulsePoint[] = [
-  { id: 1, top: "30%", left: "25%", detail: "Tree-lined footpaths" },
-  { id: 2, top: "20%", left: "65%", detail: "Solar-lit streets" },
-  { id: 3, top: "50%", left: "50%", detail: "30ft wide cobblestone roads" },
-  { id: 4, top: "70%", left: "20%", detail: "Over 100 trees & open spaces" },
+  { id: 1, top: "80%", left: "36%", detail: { title: "solar powred lights", description: "Solar lights save energy, reducing our carbon- footprint." } },
+  { id: 2, top: "20%", left: "85%", detail: { title: "solar powred lights", description: "Solar lights save energy, reducing our carbon- footprint." } },
+  { id: 3, top: "48%", left: "32%", detail: { title: "solar powred lights", description: "Solar lights save energy, reducing our carbon- footprint." } },
+  { id: 4, top: "80%", left: "50%", detail: { title: "solar powred lights", description: "Solar lights save energy, reducing our carbon- footprint." } },
+  { id: 5, top: "80%", left: "71%", detail: { title: "solar powred lights", description: "Solar lights save energy, reducing our carbon- footprint." } },
 ];
 
 const ElevatesLiving: React.FC = () => {
@@ -31,7 +34,7 @@ const ElevatesLiving: React.FC = () => {
       </div>
 
       <div className="relative ">
-        <Image src={img} alt="Elevates Living" className="object-cover rounded-lg" />
+        <Image src={img} alt="Elevates Living" className=" h-[100vh] object-cover rounded-lg" />
 
         {pulsePoints.map((point) => (
           <div
@@ -42,14 +45,15 @@ const ElevatesLiving: React.FC = () => {
             onMouseLeave={() => setHoveredPoint(null)}
           >
             <motion.div
-              className="w-4 h-4 bg-white rounded-full border-2 border-gray-300 shadow-lg cursor-pointer"
+              className="w-5 h-5 bg-white rounded-full border-[5px] border-gray-100 shadow-lg cursor-pointer"
               animate={{ scale: [1, 1.5, 1] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
             />
 
             {hoveredPoint === point.id && (
-              <div className="absolute top-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-gray-700 text-sm px-2 py-1 rounded shadow-lg whitespace-nowrap">
-                {point.detail}
+              <div className="absolute top-[-99px] font-sourceSans3 text-base left-1/2  transform -translate-x-1/2 px-4 py-4 backdrop-blur-md border border-white/30 text-white  rounded-lg shadow-xl w-max">
+                <div className="font-semibold">{point.detail.title}</div>
+                <div className="font-normal max-w-64">{point.detail.description}</div>
               </div>
             )}
           </div>
