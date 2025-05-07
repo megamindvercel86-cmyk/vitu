@@ -20,14 +20,14 @@ const desktopDataRight = [
  */
 export default function VilasamCarousel(): React.ReactElement {
   return (
-    <section className="bg-gradient-to-b md:py-32  pb-32">
+    <section className="bg-gradient-to-b md:py-28  pb-32">
       {/* Desktop Project Carousel - Right Direction */}
       <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-        <div className="pb-[130px] text-center">
-          <p className="md:text-2xl text-[#0C3E49CC] max-w-2xl mx-auto font-geistSerif">
-            A space that blends serenity with timeless luxury, because the best moments unfold where it truly feels like home.
+        <div className="md:pb-[130px] pb-20 text-center">
+          <p className="md:text-2xl text-[#0C3E49CC] mx-auto font-sourceSans3 pb-8 text-lg px-4">
+            A space that blends serenity with timeless luxury, <br className="hidden md:block"/> because the best moments unfold where it truly feels like home.
           </p>
-          <h2 className="md:text-6xl text-xl text-[#0C3E49] max-w-4xl mx-auto font-medium font-geistSerif">
+          <h2 className="md:text-6xl text-xl text-[#0C3E49] max-w-4xl mx-auto font-medium font-geistSerif ">
             Every Visit, a Quiet Reminder of Why You Chose It
           </h2>
         </div>
@@ -37,7 +37,7 @@ export default function VilasamCarousel(): React.ReactElement {
       </div>
       <Link href="/general-enquire">
         <div className="flex justify-center mt-16 md-2">
-          <button className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors">
+          <button className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full md:text-2xl font-geistSerif transition-colors">
             Contact Us for a Visit
           </button>
         </div>

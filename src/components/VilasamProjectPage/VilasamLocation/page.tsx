@@ -24,6 +24,7 @@ interface LocationAdvantageProps {
   carousalClassName?: string;
   paragraphClassName?: string;
   fill?: string;
+  mobileImage: string;
   buttonTextColor?: string;
   buttonFillBg?: string;
   amenitiesDetails?: {
@@ -36,6 +37,7 @@ interface LocationAdvantageProps {
     middleBottomDescription?: string;
     bottomTitle?: string;
     bottomDescription?: string;
+    image: string;
   }[];
 }
 
@@ -93,13 +95,20 @@ const CardContent = ({
     middleBottomDescription?: string;
     bottomTitle?: string;
     bottomDescription?: string;
-    image?: string;
+    image: string;
   };
   slideImage: string;
 }) => (
   <div className="">
     <div className="relative w-full h-64 lg:h-[70vh] mb-6 rounded-t-xl overflow-hidden">
-      <Image src={slideImage} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
+      <Image
+        src={description.image}
+        alt={description.title}
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover object-[100%_center]"
+        priority
+      />
     </div>
     <div className=" px-6 lg:px-20">
       <h2 className="text-[48px] leading-[1.3] font-semibold max-w-lg font-geistSerif text-[#0C3E49]">{description.title}</h2>
@@ -148,16 +157,18 @@ const LocationAdvantage = () => {
       description: "Shaped Around You,A Place to Live Fully",
       text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
       buttonText: "More about the Location",
-      image: "/images/vilasamPageImages/locationAdvantageImages/1.png",
+      image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#AE856666]",
       fill: "#9CC3CB",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage1.webp",
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
+          image: "/images/vilasamPageImages/locationAdvantageImages/5.webp",
           title: "Shaped Around You, A Place to Live Fully",
           description:
             "At VITU Vilasam, location isn’t just a pin on the map—it’s a lifestyle by design. Tucked behind NITK, Surathkal & moments away from the coastline, this is where the rhythm of the waves becomes part of your everyday.",
@@ -172,7 +183,8 @@ const LocationAdvantage = () => {
       description: "Invest in Land, Invest in Legacy",
       text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
       buttonText: "More about the Location",
-      image: "/images/vilasamPageImages/locationAdvantageImages/2.png",
+      image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
@@ -182,6 +194,7 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
+          image: "/images/vilasamPageImages/locationAdvantageImages/6.webp",
           title: "Invest in Land, Invest in Legacy",
           description:
             "VITU Vilasam is more than a place to live—it’s a smart decision that appreciates with time. Located just behind NITK, Surathkal & minutes from the coastline, this address blends lifestyle with long-term potential.",
@@ -197,16 +210,18 @@ const LocationAdvantage = () => {
       description: "A Greener Way to Live",
       text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
       buttonText: "More about our Sustainability Initiatives",
-      image: "/images/vilasamPageImages/locationAdvantageImages/3.png",
+      image: "/images/vilasamPageImages/locationAdvantageImages/3.webp",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage3.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
-      buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
+      buttonClassName: "text-[#4F373799] bg-[#AB352533]",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#AE856666]",
-      fill: "#9CC3CB",
-      buttonFillBg: "bg-[#9CC3CB]",
+      fill: "#6E1F14",
+      buttonFillBg: "bg-[#6E1F14]",
       amenitiesDetails: [
         {
+          image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
           title: "A Greener Way to Live",
           description:
             "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
@@ -221,16 +236,18 @@ const LocationAdvantage = () => {
       description: "Built today for the needs of tomorrow",
       text: "Breathe easy in a sanctuary of greenery, where every stroll through the Oxygen Park is a step toward calm & clarity.",
       buttonText: "More about the Oxygen Park",
-      image: "/images/vilasamPageImages/locationAdvantageImages/4.png",
+      image: "/images/vilasamPageImages/locationAdvantageImages/4.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
-      buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
+      buttonClassName: "text-[#4F373799] bg-[#A4C9D366]",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage4.webp",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#AE856666]",
-      fill: "#9CC3CB",
-      buttonFillBg: "bg-[#9CC3CB]",
+      fill: "#469060",
+      buttonFillBg: "bg-[#469060]",
       amenitiesDetails: [
         {
+          image: "/images/vilasamPageImages/locationAdvantageImages/8.webp",
           title: "Built today for the needs of tomorrow",
           description:
             "Vilasam combines elegance with efficiency through modern infrastructure that anticipates future needs. From underground electrical cabling and high-quality drainage systems to well-structured roadways and smart layout planning, every detail has been considered with foresight and functionality. This meticulous planning ensures not just visual appeal, but also long-term reliability and ease of maintenance.",
@@ -278,8 +295,7 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 30300, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
@@ -289,22 +305,34 @@ const LocationAdvantage = () => {
                 alt={item.description}
                 fill
                 sizes="100vw"
-                className="absolute object-cover w-full h-full md:object-center"
+                className="absolute hidden md:block object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />
-              <div className="absolute bottom-[390px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+              <Image
+                src={item.mobileImage}
+                alt={item.description}
+                fill
+                sizes="100vw"
+                className="absolute md:hidden object-cover w-full h-full md:object-center"
+                priority={index === 0}
+              />
+              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1
-                  className={`text-lg md:text-lg lg:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-geistSerif`}
+                  className={`text-lg md:text-lg lg:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-sourceSans3`}
                 >
                   {item.title}
                 </h1>
-                <h1 className={`text-sm md:text-5xl lg2:text-[60px] ${item.textClassName} font-[400] max-w-2xl font-geistSerif leading-tight`}>
+                <h1
+                  className={`text-2xl md:text-5xl lg2:text-[60px]  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
+                >
                   {item.description}
                 </h1>
-                <p className={`mt-4 inline-block md:text-lg text-sm ${item.paragraphClassName} lg2:text-[24px] max-w-2xl font-geistSerif font-[400]`}>
+                <p
+                  className={`mt-4 inline-block md:text-lg text-sm ${item.paragraphClassName} lg2:text-[24px] max-w-2xl font-sourceSans3 font-[400]`}
+                >
                   {item.text}
                 </p>
-                <div className="relative group cursor-pointer">
+                <div className="relative group cursor-pointer bottom-0">
                   <button
                     type="button"
                     onClick={() => openCard(0)}
@@ -333,7 +361,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} relative z-20 mt-[3px] md:mt-0 `}>{item.buttonText}</span>
+                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
                   </button>
                 </div>
               </div>
@@ -341,10 +369,12 @@ const LocationAdvantage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute w-36 !rounded-[300px] bottom-[90] left-32 z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[90] left-32 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-
+      <div className="md:hidden  absolute w-36 !rounded-[300px] bottom-[10] left-32 z-20">
+        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick}  />
+      </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
