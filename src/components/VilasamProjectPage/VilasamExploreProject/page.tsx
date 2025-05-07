@@ -48,8 +48,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 4,
-    url: "/images/vilasamPageImages/broucherImages/3.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/3.jpg",
+    url: "/images/vilasamPageImages/broucherImages/4.jpg",
+    fileUrl: "/images/vilasamPageImages/broucherImages/4.jpg",
     className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
@@ -59,8 +59,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 3,
-    url: "/images/vilasamPageImages/broucherImages/4.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/4.jpg",
+    url: "/images/vilasamPageImages/broucherImages/3.jpg",
+    fileUrl: "/images/vilasamPageImages/broucherImages/3.jpg",
     className: "absolute right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,

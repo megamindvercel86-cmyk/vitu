@@ -53,7 +53,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -67,7 +67,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -81,7 +81,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -95,7 +95,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -109,7 +109,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -123,7 +123,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -137,7 +137,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -151,7 +151,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -165,7 +165,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -179,7 +179,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -193,7 +193,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -208,7 +208,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -222,7 +222,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -236,7 +236,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -251,7 +251,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -266,7 +266,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -281,7 +281,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -296,7 +296,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -311,7 +311,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -326,7 +326,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -340,7 +340,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -354,7 +354,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -368,7 +368,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -382,7 +382,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -396,7 +396,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },    ],
   },
   {
@@ -410,7 +410,7 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-          "Middle Row Plots offer efficient land use, better community integration, & consistent frontage—ideal for cohesive design, cost-effective construction, & a strong neighborhood character.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -555,7 +555,7 @@ const CurrentProject: React.FC = () => {
           </Typography>
         </div>
 
-        <Link href="/vaikuntamcity">
+        <Link href="/vilasam">
           <div className="mt-[29px]">
             <button className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
               {PROJECT_DATA.cta}
@@ -624,6 +624,7 @@ const CurrentProject: React.FC = () => {
             </motion.div>
           ))}
     </motion.div>
+    
   
       <Link href="/project-enquire">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">

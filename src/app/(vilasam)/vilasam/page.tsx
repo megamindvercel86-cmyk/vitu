@@ -1,5 +1,5 @@
 import VilasamCarousel from "@/components/VilasamProjectPage/carousel/page";
-
+import CurrentProject from "@/components/VilasamProjectPage/CurrentProject/CurrentProject";
 import VilasamLegacyBuiltComponent from "@/components/VilasamProjectPage/LegacyComponent/page";
 import PlotWrapper from "@/components/VilasamProjectPage/Plots/page";
 import UrbanAccessSection from "@/components/VilasamProjectPage/UrbanAccessSection/UrbanAccessSection";
@@ -58,6 +58,9 @@ export default function ProjectPage({}: ProjectPageProps) {
       </section>
       <section className="bg-[#FAFFFD]">
         <ElevatesLiving />
+      </section>
+      <section className="bg-[#FAFFFD] pb-36">
+        <CurrentProject />
       </section>
       <section className="bg-[#FAFFFD]">
         <VilasamExploreProjects />
