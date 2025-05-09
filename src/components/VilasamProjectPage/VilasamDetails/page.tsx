@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import img from "../../../../public/images/vilasamPageImages/carouselmages/3.png";
+import img from "../../../../public/images/vilasamPageImages/carouselmages/3.webp";
 interface PulsePoint {
   id: number;
   style: string;
@@ -25,7 +25,7 @@ const ElevatesLiving: React.FC = () => {
   
 
   return (
-    <section className="p-8 lg:p-16 grid grid-cols-1 py-20 md:py-32 lg2:py-40 gap-8 items-center px-0  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem]">
+    <section className="p-8  lg:p-16 grid grid-cols-1 py-20 md:py-32 lg2:py-40 gap-8 items-center !px-0  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[9rem]">
       <div className="flex justify-between flex-col md:flex-row items-start w-full gap-8 md:pb-16">
         <h2 className="md:text-6xl text-2xl  text-[#0C3E49] text-center lg:text-start font-medium font-geistSerif md:max-w-[40%]">Where Every Detail Elevates Living</h2>
         <p className="md:text-2xl text-lg text-[#0C3E49CC] max-w-2xl  font-geistSeriftext-right">
@@ -53,7 +53,7 @@ const ElevatesLiving: React.FC = () => {
             />
 
             {hoveredPoint === point.id && (
-              <div className="absolute style-[-99px] font-sourceSans3 text-base left-1/2  transform -translate-x-1/2 px-4 py-4 backdrop-blur-md border border-white/30 text-white  rounded-lg shadow-xl w-max">
+              <div className="absolute style-[-99px] font-sourceSans3 text-base left-1/2  transform -translate-x-1/2 px-4 py-4 backdrop-blur-md border  border-white/30 text-white  rounded-lg shadow-xl w-max">
                 <div className="font-semibold">{point.detail.title}</div>
                 <div className="font-normal max-w-64">{point.detail.description}</div>
               </div>

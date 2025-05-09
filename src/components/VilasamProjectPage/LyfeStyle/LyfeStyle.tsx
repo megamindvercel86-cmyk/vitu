@@ -6,7 +6,7 @@ const LyfeStyle = () => {
   return (
     <section>
       <div className='relative'>
-        <div className=' lg:absolute  lg:top-16 grid grid-cols-1 lg:grid-cols-12  lg:gap-14 mx-[1.8125rem] lg:mx-20'>
+        <div className=' lg:absolute  lg:top-16 grid grid-cols-1 lg:grid-cols-12  lg:gap-14 mx-[1.8125rem] lg:mx-20 xl:mx-[9rem]'>
           <div className='lg:col-span-5 '>
             <h1 className='text-2xl leading-[1.3] lg:text-[60px] font-geistSerif font-[500] text-[#0C3E49]'>
               Where Leisure Meets Lifestyle
@@ -45,10 +45,10 @@ const LyfeStyle = () => {
               </button>
             </div>
           </div>
-          <div className='col-span-0 xl:col-span-3'>
+          <div className='col-span-0 xl:col-span-2'>
 
           </div>
-          <div className='lg:col-span-7 xl:col-span-4'>
+          <div className='lg:col-span-7 xl:col-span-5'>
             <p className='text-[#0C3E4999] text-lg lg:text-right mt-8  lg:text-[24px] font-[500] font-sourceSans3 '>
               Experience leisure and lifestyle come together at The Club. As part of your Vilasam journey, enjoy exclusive membership to the Vaikuntam City Clubhouse, an elegant space designed for relaxation, connection, and recreation.
             </p>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "../../ProjectsPageComponents/Plots/Plot.module.scss";
-import { useTransform, motion} from "framer-motion";
+import { useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import { MotionValue } from "framer-motion";
 import Link from "next/link";
@@ -21,19 +21,6 @@ interface PlotProps {
 const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, range, targetScale }: PlotProps) => {
   const container = useRef(null);
 
-  const highlightNumbers = (text: string) => {
-    return text.split(/(\d+)/).map((part, index) =>
-      /\d+/.test(part) ? (
-        <span key={index} className="font-CandideCondensedNormal ">
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
-  
-
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
 
   return (
@@ -47,14 +34,14 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
         className={styles.card}
       >
         <div className={styles.body}>
-          <div className={styles.description}>
-            <h2  className="text-[#0C3E49]  text-2xl lg:text-[48px] xl:text-[60px] font-geistSerif md:pb-5">{highlightNumbers(title)}</h2>
-            <p className="text-[#0C3E49] md:leading-7 font-geistSerif pt-6 text-base font-light  lg:text-[24px] ">{description}</p>
+          <div className="w-1/2 p-10 flex flex-col justify-between">
+            <div>
+              <h2 className="text-[#0C3E49] text-2xl lg:text-5xl  font-geistSerif">{title}</h2>
+              <p className="text-[#0C3E49] md:leading-7 font-geistSerif pt-6 text-base font-light  lg:text-[24px] ">{description}</p>
+            </div>
             <div>
               <Link href="project-enquire">
-                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] text-white mt-4 lg:mt-[30%]">
-                  Get the Best Quote
-                </button>
+                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] text-white mt-4 ">Get the Best Quote</button>
               </Link>
             </div>
           </div>

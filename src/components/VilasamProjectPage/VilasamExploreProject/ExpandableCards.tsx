@@ -289,6 +289,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
           <div>
+          <motion.p
+              className=" font-sourceSans3 uppercase mb-4 text-[#0C3E49]"
+              initial={{ y: 0 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              amenities
+            </motion.p>
             <motion.h1
               className="xl:text-[100px] lg:text-5xl lg2:text-7xl  md:text-5xl  font-geistSerif mb-4 text-[#0C3E49]"
               initial={{ y: 0 }}

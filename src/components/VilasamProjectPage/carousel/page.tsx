@@ -6,11 +6,11 @@ import Link from "next/link";
 
 // Dummy data for ProjectCarousel
 const desktopDataRight = [
-  { src: "/images/vilasamPageImages/carouselmages/1.png", alt: "Project 1" },
-  { src: "/images/vilasamPageImages/carouselmages/2.png", alt: "Project 2" },
-  { src: "/images/vilasamPageImages/carouselmages/4.png", alt: "Project 4" },
-  { src: "/images/vilasamPageImages/carouselmages/5.png", alt: "Project 5" },
-  { src: "/images/vilasamPageImages/carouselmages/6.png", alt: "Project 6" },
+  { src: "/images/vilasamPageImages/carouselmages/1.webp", alt: "Project 1" },
+  { src: "/images/vilasamPageImages/carouselmages/2.webp", alt: "Project 2" },
+  { src: "/images/vilasamPageImages/carouselmages/3.webp", alt: "Project 4" },
+  { src: "/images/vilasamPageImages/carouselmages/4.webp", alt: "Project 5" },
+  { src: "/images/vilasamPageImages/carouselmages/5.webp", alt: "Project 6" },
 ];
 
 /**
