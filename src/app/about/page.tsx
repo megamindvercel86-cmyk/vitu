@@ -130,7 +130,9 @@ export default function AboutPage() {
     <>
       <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
         {/* Hero Section with <h1> for SEO */}
-        <AboutHeroSection />
+        <section id="hero">
+          <AboutHeroSection />
+        </section>
         {/* Company Story Section */}
         <section>
           <StoryHeader />

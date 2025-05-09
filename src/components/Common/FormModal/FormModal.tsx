@@ -167,7 +167,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+        <motion.div className="fixed inset-0 flex h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
           {/* Backdrop */}
           <motion.div
             variants={backdropVariants}
@@ -181,7 +181,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
           <motion.div
             variants={cardVariants}
             ref={containerRef}
-            className={`${maxWidth} mx-auto bg-white h-fit z-[60] my-10 pb-10 rounded-3xl font-sans relative shadow-2xl ${className}`}
+            className={`${maxWidth} mx-auto bg-white h-fit z-[60] my-auto pb-10 rounded-3xl font-sans relative shadow-2xl ${className}`}
           >
             {/* Close Button */}
             <motion.button
@@ -199,11 +199,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
             {/* Form Content */}
             <motion.div
               variants={contentVariants}
-              className="flex flex-col lg:flex-row px-6 md:px-8 lg:px-32 pt-16 lg:pt-24 xl:pt-24 xl:px-64 gap-8 lg:gap-12"
+              className="flex flex-col lg:flex-row px-6 md:px-8 lg:px-32 xl:px-16 pt-16 lg:pt-24 xl:pt-24  gap-8 lg:gap-12"
             >
               {/* Left Side Content */}
               <div className="flex-1">
-                <h1 className="text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
+                <h1 className="text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
                 <h1 className="text-center mt-7 lg:hidden font-geistSerif !leading-[1.3]  lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">

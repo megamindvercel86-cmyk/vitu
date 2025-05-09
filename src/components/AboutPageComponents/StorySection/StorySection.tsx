@@ -12,7 +12,7 @@ import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
 import Link from "next/link";
-import { scroller } from 'react-scroll';
+import { scroller } from "react-scroll";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -338,13 +338,22 @@ export default function Gallery() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const handleSkip = () => {
-    scroller.scrollTo('video', {
-      duration: 1800,
-      delay: 0,
-      smooth: 'easeInOutQuart'
-    });
+    if (skipWalkthrough) {
+      scroller.scrollTo("hero", {
+        duration: 1800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    } else {
+      scroller.scrollTo("video", {
+        duration: 1800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    }
+    setSkipWalkthrough(!skipWalkthrough);
   };
-  
+
   return (
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">

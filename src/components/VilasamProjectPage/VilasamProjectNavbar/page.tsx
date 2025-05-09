@@ -124,7 +124,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <div className="font-FreightNeoProBold cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
+                  <div className=" cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black  font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
                     {" "}
                     {label}
                   </div>
@@ -184,7 +184,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href} to={href} smooth={true} duration={700}>
-                  <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
+                  <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-geistSerif">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (

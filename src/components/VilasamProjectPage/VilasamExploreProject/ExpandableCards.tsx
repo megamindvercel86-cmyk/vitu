@@ -11,6 +11,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import CustomCursor from "@/components/Common/CustomCursor";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -198,7 +199,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [cursorText, setCursorText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentBreakpoint, setCurrentBreakpoint] = useState(getBreakpoint());
-
+  const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
   // Add scroll listener to detect when user scrolls away
   useEffect(() => {
     const handleScroll = () => {
@@ -304,16 +305,17 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             >
               Room to Grow
             </motion.h2>
-            <a href="/downloadingFiles/Vilasam Broucher - v 0.1.pdf" download target="_blank" rel="noopener noreferrer">
+          
               <motion.button
                 className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full lg2:text-[22px] font-geistSerif transition-colors mt-6"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
+                onClick={()=>setIsGetInTouchOpen(true)}
               >
                 Download Brochure
               </motion.button>
-            </a>
+          
           </div>
         </motion.div>
         {/* Images */}
@@ -357,6 +359,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           })}
         </AnimatePresence>
       </div>
+      <ContactFormModal isOpen={isGetInTouchOpen} onClose={setIsGetInTouchOpen} />
     </div>
   );
 };

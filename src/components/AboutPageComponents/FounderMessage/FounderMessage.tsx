@@ -37,7 +37,7 @@ export default function FounderMessage(): React.ReactElement {
          <VideoPlayer
             videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1746688204/fjfhm5y8jzcsjpccwxbd.mp4"
             youtubeUrl="https://youtu.be/PS3l9zTvLgI?si=6NMZo9kPJLBk6sPo"
-            thumbnail="https://res.cloudinary.com/dvandhsai/image/upload/v1746687928/duofamyi5ruy7q2siuua.png"
+            thumbnail="https://res.cloudinary.com/dvandhsai/image/upload/v1746771292/sy6cbijjnks8v018xurj.png"
             titleClassname="font-bold"
           />
       </div>

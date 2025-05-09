@@ -28,7 +28,7 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu%20Web.mp4?alt=media&token=47b69d83-cce9-4cb7-93ea-6794c0fc4318"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance.mp4?alt=media&token=9becc670-7fbe-43b2-b99d-900dc34db0a7"
             type="video/mp4"
           />
           
