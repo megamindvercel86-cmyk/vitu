@@ -28,14 +28,14 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance.mp4?alt=media&token=9becc670-7fbe-43b2-b99d-900dc34db0a7"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu%20Web.mp4?alt=media&token=47b69d83-cce9-4cb7-93ea-6794c0fc4318"
             type="video/mp4"
           />
           
         </video>
         <div className="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-black/20 to-transparent z-10" />
         <div className="absolute bottom-0 left-0 right-0 h-[200px] md:h-[100px] bg-gradient-to-t from-white via-white/85 via-50% to-transparent z-[10] md:hidden" />
-        {/* <div className="absolute bottom-0 left-0 right-0 h-[00px] md:h-[100px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" /> */}
+        <div className="absolute bottom-0 left-0 right-0 h-[00px] md:h-[100px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
 
         <div className="absolute bottom-0 left-0 right-0 h-2/4 lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
         <div className="absolute bottom-0 right-0 lg:bottom-20 lg:right-10 w-full p-4 flex flex-row justify-end">

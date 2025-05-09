@@ -17,7 +17,7 @@ export async function generateMetadata() {
   const pageTitle = "Vilasam – Premium Living in Mangaluru | Vitu Realty";
   const pageDescription =
     "Discover Vilasam City, a premium residential development in Mangaluru, strategically located near major industries and top educational institutions. Developed by the KMK Group, a legacy of over six decades in excellence. Explore modern living today!";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
+  const imageUrl = "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8";
 
   return {
     title: pageTitle,
