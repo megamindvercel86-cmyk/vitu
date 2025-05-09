@@ -24,7 +24,6 @@ const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
 });
 
-
 export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
