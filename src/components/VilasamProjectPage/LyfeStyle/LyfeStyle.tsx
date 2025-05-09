@@ -45,7 +45,10 @@ const LyfeStyle = () => {
               </button>
             </div>
           </div>
-          <div className='lg:col-span-7'>
+          <div className='col-span-0 xl:col-span-3'>
+
+          </div>
+          <div className='lg:col-span-7 xl:col-span-4'>
             <p className='text-[#0C3E4999] text-lg lg:text-right mt-8  lg:text-[24px] font-[500] font-sourceSans3 '>
               Experience leisure and lifestyle come together at The Club. As part of your Vilasam journey, enjoy exclusive membership to the Vaikuntam City Clubhouse, an elegant space designed for relaxation, connection, and recreation.
             </p>
@@ -59,9 +62,11 @@ const LyfeStyle = () => {
             alt='vilasam'
             height={1000}
             width={1000}
-            className='w-full   '
+            className='w-full  object-cover '
           />
-          <div className="absolute bottom-0 left-0 w-full h-[100px] lg:h-[170px] bg-gradient-to-t from-white to-transparent" />
+                    <div className="absolute bottom-0 left-0 w-full h-[100px] lg:h-[170px] xl:h-[200px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
+                    <div className="absolute bottom-0 left-0 w-full h-[100px] lg:h-[170px] xl:h-[200px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-[100px] lg:h-[170px] xl:h-[400px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
         </div>
       </div>
     </section>

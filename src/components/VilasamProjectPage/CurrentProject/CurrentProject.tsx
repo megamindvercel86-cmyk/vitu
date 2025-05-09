@@ -484,10 +484,6 @@ const CurrentProject: React.FC = () => {
     setSelectedLocation(location);
   };
 
-  // Debug state changes
-  useEffect(() => {
-    console.log("Selected location updated:", selectedLocation.name);
-  }, [selectedLocation]);
 
   // ============= Render Helpers =============
   const renderStats = () => (
@@ -565,7 +561,7 @@ const CurrentProject: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col sm:flex-col  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]"
+      className="flex flex-col sm:flex-col  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] "
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
@@ -693,8 +689,6 @@ const CurrentProject: React.FC = () => {
           </button>
         </div>
       </motion.div>
-
-     
     </section>
   );
 };
