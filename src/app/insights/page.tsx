@@ -1,6 +1,5 @@
 import InsightHeroSection from "@/components/InsightPageComponents/HeroSection/InsightHeroSection";
 import Layout from "@/components/Layout/Layout";
-import HeroComponent from "@/components/VilasamPageComponents/HeroComponent/HeroComponent";
 import React from "react";
 
 const NAVBAR_CONFIG = {

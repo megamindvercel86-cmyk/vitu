@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
 
@@ -76,8 +76,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
     }
   };
 
-  // Validate entire form and update isFormValid state
-  const validateForm = (): boolean => {
+  // Memoize validateForm function
+  const validateForm = useCallback((): boolean => {
     const newErrors = {
       fullName: validateField("fullName", formData.fullName),
       email: validateField("email", formData.email),
@@ -88,12 +88,12 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
     const isValid = !Object.values(newErrors).some((error) => error !== "");
     setIsFormValid(isValid);
     return isValid;
-  };
+  }, [formData]);
 
   // Update form validity whenever formData changes
   useEffect(() => {
     validateForm();
-  }, [formData]);
+  }, [validateForm]);
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -210,7 +210,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                   Your dream  home is closer  than you think!
                 </h1>
                 <p className="text-center font-geistSerif lg:text-left text-[#040707] text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4">
-                  Begin your journey to a new home—fill out the form & let’s get started.{" "}
+                  Begin your journey to a new home—fill out the form &amp; let&apos;s get started.{" "}
                 </p>
                 <div className="hidden lg:block">
                   <hr className="w-full md:w-[392px] mt-12 lg:mt-8 border-black border-opacity-20" />

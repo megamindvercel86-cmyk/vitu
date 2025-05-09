@@ -18,13 +18,11 @@ gsap.registerPlugin(ScrollToPlugin);
 
 // Update the getBreakpoint function to match your tailwind config
 const getBreakpoint = () => {
-  if (typeof window !== "undefined") {
-    if (window.innerWidth >= 2000) return "2xl";
-    if (window.innerWidth >= 1580) return "xl";
-    if (window.innerWidth >= 1024) return "lg";
-    return "md"; // default fallback
-  }
-  return "lg"; // default fallback for SSR
+  if (typeof window === "undefined") return "md"; // Default for SSR
+  if (window.innerWidth >= 2000) return "2xl";
+  if (window.innerWidth >= 1580) return "xl";
+  if (window.innerWidth >= 1024) return "lg";
+  return "md";
 };
 
 interface FooterProps {
@@ -198,8 +196,16 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentBreakpoint, setCurrentBreakpoint] = useState(getBreakpoint());
+  const [currentBreakpoint, setCurrentBreakpoint] = useState("md"); // Set default to md for SSR
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Add mounted state
+  useEffect(() => {
+    setIsMounted(true);
+    setCurrentBreakpoint(getBreakpoint());
+  }, []);
+
   // Add scroll listener to detect when user scrolls away
   useEffect(() => {
     const handleScroll = () => {
@@ -268,8 +274,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
 
   return (
     <div className="h-auto flex items-center justify-center">
-      {/* Only render cursor when not expanded */}
-      {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
+      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[200vh] md:h-[150vh]" : "h-[100vh]"}`}
@@ -339,20 +344,15 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                 className={`${card.width} ${card.height} absolute overflow-hidden`}
                 initial={false}
                 animate={{
-                  // scale: isExpanded ? 1 : 1 - index * 0.05,
                   top: position.top,
                   left: position.left,
                   right: "right" in position ? position.right : "auto",
                   zIndex: isExpanded ? 1 : cards.length - index,
-                  // width: card.width || "200px",
-                  // height: card.height || "300px",
                   borderRadius: "16px",
                 }}
-                // transition={{
-                //   type: "tween",
-                //   duration: 0.8,
-                //   ease: [0.43, 0.13, 0.23, 0.96],
-                // }}
+                style={{
+                  borderRadius: "16px",
+                }}
               >
                 <AppleStyleCard
                   id={card.id}

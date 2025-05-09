@@ -49,7 +49,7 @@ const Footer: FC = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             {/* Icon Wrapper */}
             <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+              <Image fill src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
             </div>
       
             {/* Text Content */}
@@ -84,7 +84,7 @@ const Footer: FC = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             {/* Icon Wrapper */}
             <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src="/error.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+              <Image fill src="/error.png" alt="Success" style={{ width: "40px", height: "24px" }} />
             </div>
       
             {/* Text Content */}

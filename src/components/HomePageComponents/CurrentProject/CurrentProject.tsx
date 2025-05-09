@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 // ============= Interfaces =============
 
@@ -577,7 +578,7 @@ const CurrentProject: React.FC = () => {
       {/* Right Column - Interactive Project Map (Desktop) */}
       <figure className="lg:flex   items-center h-[70vh] lg2:h-[90vh] justify-center w-full lg:w-1/2 relative" aria-labelledby="project-title">
         <div className="relative w-full h-full">
-          <img src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
+          <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
           <div className="absolute inset-0 z-10">
             {LOCATIONS.map((location) => (
               <button
