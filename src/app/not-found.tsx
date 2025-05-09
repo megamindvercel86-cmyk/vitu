@@ -1,7 +1,7 @@
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import Image from "next/image";
-import bgImage from "../../public/images/backgroundImages/homePageBackgroundImageDesktop.webp";
+import bgImage from "../../public/images/backgroundImages/homePagebanner.png";
 import Link from "next/link";
 ``;
 // ============= Constants =========

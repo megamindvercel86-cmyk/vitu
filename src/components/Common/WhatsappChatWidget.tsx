@@ -13,7 +13,7 @@ const WhatsappChatWidget = () => {
     () => ({
       enabled: true,
       chatButtonSetting: {
-        backgroundColor: "#25D366",
+        backgroundColor: "#1FAD33",
         ctaText: "",
         borderRadius: "25",
         marginLeft: "0",

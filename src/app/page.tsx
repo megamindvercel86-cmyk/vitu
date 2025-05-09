@@ -9,15 +9,13 @@ import CurrentProject from "@/components/HomePageComponents/CurrentProject/Curre
 import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonial";
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
-import ExploreProjectsWrapper from "@/components/ExploreProjectsWrapper/ExploreProjectsWrapper";
-import { useEffect, useState } from "react";
 import VilasamExploreProjects from "@/components/VilasamProjectPage/VilasamExploreProject/page";
 
 
 // ============= Types & Interfaces =============
 const IMAGES = {
-  desktop: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
-  mobile: ["/images/visionAndMissionImages/1.png", "/images/visionAndMissionImages/2.png", "/images/visionAndMissionImages/3.png"],
+  desktop: ["/images/visionAndMissionImages/1.webp", "/images/visionAndMissionImages/2.webp", "/images/visionAndMissionImages/3.webp"],
+  mobile: ["/images/visionAndMissionImages/mobile2.webp", "/images/visionAndMissionImages/mobile1.webp", "/images/visionAndMissionImages/mobile3.webp"],
 };
 
 const CONTENT = {
@@ -109,25 +107,6 @@ const NAVBAR_CONFIG = {
 
 
 export default function HomePage() {
-
-  const [showLoader, setShowLoader] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setFadeOut(true); // Start fade out
-    }, 7000); // Start fade out at 7s
-
-    const hideTimer = setTimeout(() => {
-      setShowLoader(false); // Hide loader fully
-    }, 9000); // Fully hide at 9s
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(hideTimer);
-    };
-  }, []);
-
 
   return (
     <>

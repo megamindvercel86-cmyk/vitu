@@ -397,7 +397,8 @@ const LOCATIONS: Location[] = [
         value: "",
         label:
           "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },    ],
+      },
+    ],
   },
   {
     id: 26,
@@ -509,7 +510,10 @@ const CurrentProject: React.FC = () => {
                 </span>
                 <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
               </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
+              <Typography
+                variant="custom"
+                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"}  text-[24px] text-[#503637]`}
+              >
                 {stat.label}
               </Typography>
             </motion.div>
@@ -522,7 +526,10 @@ const CurrentProject: React.FC = () => {
               >
                 <span className="font-CandideCondensedNormal">{stat.value}</span>
               </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
+              <Typography
+                variant="custom"
+                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px]  text-[#503637]`}
+              >
                 {stat.label}
               </Typography>
             </motion.div>
@@ -536,34 +543,35 @@ const CurrentProject: React.FC = () => {
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2">
-        <header>
-          <h1
-            id="project-title"
-            className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
-          >
-            {PROJECT_DATA.title} 
-          </h1>
-        </header>
+      <article className="w-full lg:w-1/2 flex flex-col justify-between md:pb-32">
+        <div>
+          <header>
+            <h1
+              id="project-title"
+              className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
+            >
+              {PROJECT_DATA.title}
+            </h1>
+          </header>
 
-        <div className="flex items-center">
-          <Typography
-            variant="custom"
-            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
-          >
-            {PROJECT_DATA.description.suffix}
-          </Typography>
-        </div>
-
-        <Link href="/vilasam">
-          <div className="mt-[29px]">
-            <button className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
-              {PROJECT_DATA.cta}
-            </button>
+          <div className="flex items-center">
+            <Typography
+              variant="custom"
+              className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
+            >
+              {PROJECT_DATA.description.suffix}
+            </Typography>
           </div>
-        </Link>
 
-        {renderStats()}
+          <Link href="/vilasam">
+            <div className="mt-[29px]">
+              <button className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
+                {PROJECT_DATA.cta}
+              </button>
+            </div>
+          </Link>
+        </div>
+        <div>{renderStats()}</div>
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
@@ -584,52 +592,53 @@ const CurrentProject: React.FC = () => {
         </div>
       </figure>
 
-     
       <motion.div
-      className="  lg:hidden "
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      aria-label="Project Statistics"
-    >
-      {selectedLocation.description === STATS_DATA
-        ? selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
-              <Typography
-                variant="custom"
-                className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
-              >
-                <span className="font-CandideCondensedNormal">
-                  <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
-                </span>
-                <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
-              </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
-                {stat.label}
-              </Typography>
-            </motion.div>
-          ))
-        : selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
-              <Typography
-                variant="custom"
-                className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
-              >
-                <span className="font-CandideCondensedNormal">{stat.value}</span>
-              </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
-                {stat.label}
-              </Typography>
-            </motion.div>
-          ))}
-    </motion.div>
-    
-  
+        className="  lg:hidden "
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        aria-label="Project Statistics"
+      >
+        {selectedLocation.description === STATS_DATA
+          ? selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+                <Typography
+                  variant="custom"
+                  className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[24px] text-[#503637]`}
+                >
+                  <span className="font-CandideCondensedNormal">
+                    <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
+                  </span>
+                  <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
+                </Typography>
+                <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
+                  {stat.label}
+                </Typography>
+              </motion.div>
+            ))
+          : selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+                <Typography
+                  variant="custom"
+                  className="font-FreightNeoProNormal l text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                >
+                  {stat.value}
+                </Typography>
+                <Typography
+                  variant="custom"
+                  className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
+                >
+                  {stat.label}
+                </Typography>
+              </motion.div>
+            ))}
+      </motion.div>
+
       <Link href="/project-enquire">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">
           <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
-            {PROJECT_DATA.cta} 
+            {PROJECT_DATA.cta}
           </button>
         </div>
       </Link>

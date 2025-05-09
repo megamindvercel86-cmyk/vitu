@@ -1,4 +1,3 @@
-
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
 import AboutHeroSection from "@/components/AboutPageComponents/AboutHeroSection/AboutHeroSection";
@@ -9,12 +8,9 @@ import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/Lead
 import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
 
-
-
-
 const IMAGES = {
-  desktop: ["/images/aboutPageVisionAndMission/1.png", "/images/aboutPageVisionAndMission/2.png", "/images/aboutPageVisionAndMission/3.png"],
-  mobile: ["/images/aboutPageVisionAndMission/1.png", "/images/aboutPageVisionAndMission/2.png", "/images/aboutPageVisionAndMission/3.png"],
+  desktop: ["/images/aboutPageVisionAndMission/1.webp", "/images/aboutPageVisionAndMission/2.webp", "/images/aboutPageVisionAndMission/3.webp"],
+  mobile: ["/images/aboutPageVisionAndMission/1.webp", "/images/aboutPageVisionAndMission/2.webp", "/images/aboutPageVisionAndMission/3.webp"],
 };
 
 const CONTENT = {
@@ -100,7 +96,7 @@ export async function generateMetadata() {
   const pageTitle = "About Us | Vitu-Realty - Your Trusted Real Estate Partner in Mangalore";
   const pageDescription =
     "Learn more about Vitu-Realty, a trusted real estate partner in Mangalore. Discover our story, vision, mission, leadership team, and commitment to creating premium plotted developments.";
-  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg"
+  const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
 
   return {
     title: pageTitle,
@@ -130,16 +126,11 @@ export async function generateMetadata() {
 }
 
 export default function AboutPage() {
-  
-  
   return (
     <>
-      <Layout
-        navbarClassName={NAVBAR_CONFIG.className}
-        navbarProps={NAVBAR_CONFIG.props}
-      >
+      <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
         {/* Hero Section with <h1> for SEO */}
-        <AboutHeroSection/>
+        <AboutHeroSection />
         {/* Company Story Section */}
         <section>
           <StoryHeader />
@@ -147,14 +138,13 @@ export default function AboutPage() {
         <section id="storysection">
           <StorySection />
         </section>
-
         {/* Founder's Message Section */}
-        <section>
+        <section id="video">
           <FounderMessage />
         </section>
         {/* Vision and Mission Section */}
         <section>
-          <VisionAndMission images={IMAGES} content={CONTENT}/>
+          <VisionAndMission images={IMAGES} content={CONTENT} />
         </section>
         {/* Leadership Team Section (Lazy Loaded for Performance) */}
         <section>

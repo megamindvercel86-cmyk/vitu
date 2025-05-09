@@ -1,3 +1,4 @@
+import ScrollToTopButton from "@/components/Common/ScrollToTopButton";
 import WhatsappChatWidget from "@/components/Common/WhatsappChatWidget";
 import ProjectFooter from "@/components/ProjectsPageComponents/ProjectsPageCommonComponents/ProjectPageFoooter/ProjectPageFooter";
 import ProjectNavbar from "@/components/ProjectsPageComponents/ProjectsPageCommonComponents/ProjectPageNavbar/ProjectPageNavbar";
@@ -9,6 +10,7 @@ export default function RootLayout({
     <div className="min-h-screen flex flex-col"> 
       <ProjectNavbar />
       <main className="flex-1">{children}</main>
+      <ScrollToTopButton/>
       <WhatsappChatWidget/>
       <ProjectFooter />
     </div>

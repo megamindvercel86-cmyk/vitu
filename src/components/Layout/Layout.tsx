@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import WhatsappChatWidget from "../Common/WhatsappChatWidget";
+import ScrollToTopButton from "../Common/ScrollToTopButton";
 
 // ============= Types & Interfaces =============
 type NavbarType = "primary" | "secondary";
@@ -34,6 +35,7 @@ export default function Layout({ children, navbarProps, navbarClassName }: Layou
 
       {/* Main Content */}
       <main>{children}</main>
+      <ScrollToTopButton/>
       <WhatsappChatWidget />
       {/* Footer Section */}
       <Footer />
