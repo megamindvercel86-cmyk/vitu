@@ -13,8 +13,8 @@ const PlotWrapper = () => {
   });
 
   return (
-    <section ref={container} className="pt-24">
-      <h2 className="text-[#0C3E49] text-2xl md:pb-10 lg2:text-[60px] font-medium text-center font-geistSerif pb-20">Begin Where It Feels Right</h2>
+    <section id="plots" ref={container} className="pt-24">
+      <h2 className="text-[#0C3E49] text-2xl md:pb-20 xl:pb-10 lg2:text-[60px] font-medium text-center font-geistSerif pb-20">Begin Where It Feels Right</h2>
       {plots.map((project, i) => {
         const targetScale = 1 - (plots.length - i) * 0.05;
         return <Plot key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * 0.25, 1]} targetScale={targetScale} />;

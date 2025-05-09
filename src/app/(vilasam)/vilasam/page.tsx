@@ -1,6 +1,8 @@
 import VilasamCarousel from "@/components/VilasamProjectPage/carousel/page";
 import CurrentProject from "@/components/VilasamProjectPage/CurrentProject/CurrentProject";
 import VilasamLegacyBuiltComponent from "@/components/VilasamProjectPage/LegacyComponent/page";
+import LyfeStyle from "@/components/VilasamProjectPage/LyfeStyle/LyfeStyle";
+import PropertyCard from "@/components/VilasamProjectPage/PlotCarousal/PlotCarousal";
 import PlotWrapper from "@/components/VilasamProjectPage/Plots/page";
 import UrbanAccessSection from "@/components/VilasamProjectPage/UrbanAccessSection/UrbanAccessSection";
 import ElevatesLiving from "@/components/VilasamProjectPage/VilasamDetails/page";
@@ -50,10 +52,10 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="relative">
         <VilasamHeroSection />
       </section>
-      <section id="location" className="bg-white">
+      <section className="bg-white">
         <VilasamCarousel />
       </section>
-      <section>
+      <section id="location">
         <LocationAdvantage />
       </section>
       <section className="bg-[#FAFFFD]">
@@ -62,11 +64,17 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#FAFFFD] pb-36">
         <CurrentProject />
       </section>
-      <section className="bg-[#FAFFFD]">
+      <section className="bg-[#FAFFFD] pb-14 lg:pb-36">
+        <LyfeStyle />
+      </section>
+      <section id="sustainability" className="bg-[#FAFFFD]">
         <VilasamExploreProjects />
       </section>
-      <section className="bg-[#FAFFFD]">
+      <section  className="bg-[#FAFFFD] hidden md:block">
         <PlotWrapper/>
+      </section>
+      <section className="bg-[#FAFFFD] mx-6 md:hidden">
+      <PropertyCard/>
       </section>
       <section>
         <VilasamLegacyBuiltComponent/>

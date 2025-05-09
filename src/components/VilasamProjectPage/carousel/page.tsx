@@ -22,13 +22,14 @@ export default function VilasamCarousel(): React.ReactElement {
   return (
     <section className="bg-gradient-to-b md:py-28  pb-32">
       {/* Desktop Project Carousel - Right Direction */}
-      <div className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
+      <div id="carousal" className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
         <div className="md:pb-[130px] pb-20 text-center">
           <p className="md:text-2xl text-[#0C3E49CC] mx-auto font-sourceSans3 pb-8 text-lg px-4">
-            A space that blends serenity with timeless luxury, <br className="hidden md:block"/> because the best moments unfold where it truly feels like home.
+          Discover how our thoughtfully designed spaces offer a perfect
+          <br className="hidden md:block"/>blend of luxury, sustainability and a calming sense of belonging.
           </p>
-          <h2 className="md:text-6xl text-xl text-[#0C3E49] max-w-4xl mx-auto font-medium font-geistSerif ">
-            Every Visit, a Quiet Reminder of Why You Chose It
+          <h2 className="md:text-6xl text-xl text-[#0C3E49] max-w-5xl mx-3 lg:mx-auto font-medium font-geistSerif ">
+          Where You Arrive to Thoughtful Living and Comfort
           </h2>
         </div>
         <div>

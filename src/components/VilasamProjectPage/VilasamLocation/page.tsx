@@ -111,7 +111,7 @@ const CardContent = ({
       />
     </div>
     <div className=" px-6 lg:px-20">
-      <h2 className="text-[48px] leading-[1.3] font-semibold max-w-lg font-geistSerif text-[#0C3E49]">{description.title}</h2>
+      <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-lg font-geistSerif text-[#0C3E49]">{description.title}</h2>
       <h3 className="text-[28px] leading-[1.2] font-geistSerif mt-2 text-[#040707CC] ">{description.subtitle}</h3>
       <p className="mt-8 text-gray-600 text-base font-geistSerif lg:text-lg">{description.description}</p>
       <h4 className="text-[28px] leading-[1.2] font-geistSerif text-[#040707CC] mt-10">{description.middleTitle}</h4>
@@ -183,8 +183,8 @@ const LocationAdvantage = () => {
       description: "Invest in Land, Invest in Legacy",
       text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
       buttonText: "More about the Location",
-      image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
-      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
+      image: "/images/vilasamPageImages/locationAdvantageImages/2.png",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.png",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
@@ -194,7 +194,7 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
-          image: "/images/vilasamPageImages/locationAdvantageImages/6.webp",
+          image: "/images/vilasamPageImages/locationAdvantageImages/2.png",
           title: "Invest in Land, Invest in Legacy",
           description:
             "VITU Vilasam is more than a place to live—it’s a smart decision that appreciates with time. Located just behind NITK, Surathkal & minutes from the coastline, this address blends lifestyle with long-term potential.",

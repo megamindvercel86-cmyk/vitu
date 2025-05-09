@@ -1,0 +1,100 @@
+"use client"; // (if using app directory)
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import Image from "next/image";
+import { plots } from "@/data/vilasamPlotData";
+import { cn } from "@/lib/utils"; // Verify this utility exists
+import { useState, useRef } from "react";
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
+
+const CarouselDots = ({ total, active, onDotClick, className }: {
+  total: number;
+  active: number;
+  onDotClick?: (index: number) => void;
+  className?: string;
+}) => {
+  return (
+    <div
+      style={{ borderRadius: "50px" }}
+      className={cn(
+        "flex items-center justify-center gap-2 py-2",
+        className
+      )}
+    >
+      {Array.from({ length: total }).map((_, index) => (
+        <button
+          key={index}
+          onClick={() => onDotClick?.(index)}
+          className={cn(
+            "transition-all duration-300",
+            active === index
+              ? "w-6 bg-white rounded-xl h-2"
+              : "w-2 h-2 bg-gray-300 rounded-full"
+          )}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default function PropertyCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | undefined>(undefined); // Use SwiperType for ref
+
+  return (
+    <div className="relative">
+    <Swiper
+      spaceBetween={20}
+      slidesPerView={1}
+      loop={true}
+      // modules={[Autoplay]}
+      autoplay={{ delay: 2000, disableOnInteraction: false }}
+      onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+      onSwiper={(swiper) => (swiperRef.current = swiper)}
+    >
+        {plots.map((property, index) => (
+          <SwiperSlide className="!h-[80vh]" key={index}>
+            <div className="max-w-sm mx-auto h-[76vh]  rounded-2xl overflow-hidden pb-10 bg-white">
+              <div className="relative w-full h-64">
+                <Image
+                  src={property.src}
+                  alt={property.title}
+                  fill
+                  className="object-cover rounded-2xl"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between h-[350px]">
+                <div>
+                <h2 className="text-2xl font-semibold text-[#0C3E49] mb-3">
+                  {property.title}
+                </h2>
+                <p className="text-[#0C3E4999] leading-[1.6] text-sm mb-5">
+                  {property.description}
+                </p>
+                </div>
+                <div>
+                <button className="w-full bg-[#0C3E49] text-white font-semibold py-3 rounded-full">
+                  Get the Best Quote
+                </button>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="absolute bottom-[14%] left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
+        <CarouselDots
+          total={plots.length}
+          active={activeIndex}
+          onDotClick={(index) => {
+            swiperRef.current?.slideToLoop(index);
+          }}
+        />
+      </div>
+    </div>
+  );
+}

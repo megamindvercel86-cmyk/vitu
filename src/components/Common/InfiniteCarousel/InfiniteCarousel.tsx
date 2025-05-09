@@ -33,6 +33,8 @@ interface Card {
   role2?: string;
   name?: string;
   description?: string;
+  description1?: string;
+  description2?: string;
 }
 
 interface InfiniteCarouselProps {
@@ -129,6 +131,8 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
               </span>
             ))}
           </Typography>
+          <Typography className="text-[#04070799] font-geistSerif  !text-base">{project?.description1}</Typography>
+                      <Typography className="text-[#04070799] font-geistSerif pt-[20px] !text-base">{project?.description2}</Typography>
             <Footer
               onFooterClick={handleFooterClick}
               nextProjectTitle={nextProject?.title || ""}

@@ -50,13 +50,11 @@ const LOCATIONS: Location[] = [
     position: "lg:left-[24%]  lg:top-[40%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/3.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -66,13 +64,11 @@ const LOCATIONS: Location[] = [
     position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[51%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/4.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "4.20 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -82,13 +78,11 @@ const LOCATIONS: Location[] = [
     position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[62%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/5.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "4.80 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -98,13 +92,11 @@ const LOCATIONS: Location[] = [
     position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[19.5%] lg:top-[72%]  lg:w-24  lg:h-[68px]",
     imagePath: "/images/vilsamPageCurrentProjects/6.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "6.60 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -114,13 +106,11 @@ const LOCATIONS: Location[] = [
     position: "left-[14.5%] top-[74%] lg:left-[14.5%] lg:top-[82.5%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/7.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "7.80 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -130,13 +120,11 @@ const LOCATIONS: Location[] = [
     position: "left-[34%] top-[74%] lg:left-[34%] lg:top-[82.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/8.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -146,13 +134,11 @@ const LOCATIONS: Location[] = [
     position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[72%]  lg:w-[70px]  lg:h-[68px]",
     imagePath: "/images/vilsamPageCurrentProjects/9.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -162,13 +148,11 @@ const LOCATIONS: Location[] = [
     position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[61%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/10.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -178,13 +162,11 @@ const LOCATIONS: Location[] = [
     position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[51%]   lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/vilsamPageCurrentProjects/11.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -194,13 +176,11 @@ const LOCATIONS: Location[] = [
     position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[36%]  lg:w-[70px]  lg:h-[97px]",
     imagePath: "/images/vilsamPageCurrentProjects/12.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "5.45 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -210,13 +190,11 @@ const LOCATIONS: Location[] = [
     position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[34%] lg:top-[24%]  lg:w-[70px]  lg:h-[78px]",
     imagePath: "/images/vilsamPageCurrentProjects/13.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "5.00 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -226,13 +204,12 @@ const LOCATIONS: Location[] = [
     position: "left-[88%] top-[27%] lg:left-[80%] md:top-[17%] lg:top-[13%]  lg:w-[60px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/14.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "6.57 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -242,13 +219,11 @@ const LOCATIONS: Location[] = [
     position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[79.5%] lg:top-[27%]  lg:w-10  lg:h-16",
     imagePath: "/images/vilsamPageCurrentProjects/15.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "Tech Hub", label: "Co-working Spaces" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -258,13 +233,11 @@ const LOCATIONS: Location[] = [
     position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[55%]  lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/vilsamPageCurrentProjects/16.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "Corner Plots", label: "3.65 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -274,13 +247,12 @@ const LOCATIONS: Location[] = [
     position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilsamPageCurrentProjects/17.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "3.90 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -290,13 +262,12 @@ const LOCATIONS: Location[] = [
     position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[61.9%] lg:top-[35%] lg:w-[70px]  lg:h-[74px]",
     imagePath: "/images/vilsamPageCurrentProjects/18.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "4.50 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -306,13 +277,12 @@ const LOCATIONS: Location[] = [
     position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[62%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
     imagePath: "/images/vilsamPageCurrentProjects/19.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "5.00 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -322,13 +292,12 @@ const LOCATIONS: Location[] = [
     position: "left-[66%] top-[25%] md:left-[67%] md:top-[15%] lg:left-[62%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
     imagePath: "/images/vilsamPageCurrentProjects/20.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "5.80 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -338,13 +307,12 @@ const LOCATIONS: Location[] = [
     position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[51%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
     imagePath: "/images/vilsamPageCurrentProjects/21.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "3.35 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -354,13 +322,12 @@ const LOCATIONS: Location[] = [
     position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[13.6%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/22.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "4.50 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -370,13 +337,11 @@ const LOCATIONS: Location[] = [
     position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[51%]  lg:top-[24.8%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/23.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.50 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -386,13 +351,11 @@ const LOCATIONS: Location[] = [
     position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilsamPageCurrentProjects/24.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "4.50 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -402,13 +365,11 @@ const LOCATIONS: Location[] = [
     position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[80%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
     imagePath: "/images/vilsamPageCurrentProjects/25.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "Corner Plots", label: "7.60 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -418,13 +379,11 @@ const LOCATIONS: Location[] = [
     position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilsamPageCurrentProjects/26.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "3.60 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -434,13 +393,11 @@ const LOCATIONS: Location[] = [
     position: "lg:left-[24.9%] lg:top-[25%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
     imagePath: "/images/vilsamPageCurrentProjects/28.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "West Facing Plots", label: "5.40 Cents" },
       {
         value: "",
-        label: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -450,13 +407,12 @@ const LOCATIONS: Location[] = [
     position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[55%]    lg:w-[70px]  lg:h-[55px]",
     imagePath: "/images/vilsamPageCurrentProjects/29.png",
     description: [
-      {
-        value: "50+ Lush Tree Cover",
-        label: "Spanning the Community",
-      },
+      { value: "East Facing Plots", label: "3.55 Cents" },
+
       {
         value: "",
-        label: "",
+        label:
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -536,7 +492,7 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className="hidden lg:block  mt-[50px] lg2:mt-[170px] 2xl:mt-[400px]"
+      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "lg:mt-[170px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -548,27 +504,27 @@ const CurrentProject: React.FC = () => {
             <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
               <Typography
                 variant="custom"
-                className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
               >
                 <span className="font-CandideCondensedNormal">
                   <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
                 </span>
-                <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
+                <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
               </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#0C3E49]">
+              <Typography variant="custom" className="font-geistSerif text-[24px] text-[#0C3E49]">
                 {stat.label}
               </Typography>
             </motion.div>
           ))
         : selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
+            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-3" : ""}`}>
               <Typography
                 variant="custom"
-                className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
               >
                 <span className="font-CandideCondensedNormal">{stat.value}</span>
               </Typography>
-              <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#0C3E49]">
+              <Typography variant="custom" className="font-sourceSans3 leading-[1.4]  font-normal text-[24px] text-[#0C3E49]">
                 {stat.label}
               </Typography>
             </motion.div>
@@ -617,16 +573,22 @@ const CurrentProject: React.FC = () => {
         <header>
           <h1
             id="project-title"
-            className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+            className="w-[224px] hidden md:block mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your <br /> Future Home
+          </h1>
+          <h1
+            id="project-title"
+            className=" md:hidden  !font-medium  text-center mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+          >
+            Explore your Future Home
           </h1>
         </header>
 
         <div className="flex items-center">
           <Typography
             variant="custom"
-            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#0C3E4999]"
+            className="font-freightNeoMedium text-lg md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#0C3E4999]"
           >
             {PROJECT_DATA.description.suffix}
           </Typography>
@@ -674,14 +636,14 @@ const CurrentProject: React.FC = () => {
               <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
                 <Typography
                   variant="custom"
-                  className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
                 >
                   <span className="font-CandideCondensedNormal">
                     <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
                   </span>
-                  <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
+                  <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
                 </Typography>
-                <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#0C3E49]">
+                <Typography variant="custom" className="font-geistSerif text-[24px] text-[#0C3E49]">
                   {stat.label}
                 </Typography>
               </motion.div>
@@ -690,11 +652,11 @@ const CurrentProject: React.FC = () => {
               <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
                 <Typography
                   variant="custom"
-                  className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
                 >
                   <span className="font-CandideCondensedNormal">{stat.value}</span>
                 </Typography>
-                <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#0C3E49]">
+                <Typography variant="custom" className="font-sourceSans3 leading-[1.5] text-lg  lg:text-[24px] text-[#0C3E49]">
                   {stat.label}
                 </Typography>
               </motion.div>
@@ -732,13 +694,7 @@ const CurrentProject: React.FC = () => {
         </div>
       </motion.div>
 
-      <Link href="/project-enquire">
-        <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-          <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
-            {PROJECT_DATA.cta}
-          </button>
-        </div>
-      </Link>
+     
     </section>
   );
 };

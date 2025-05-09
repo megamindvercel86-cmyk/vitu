@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link } from "react-scroll";
 
-
 import {
   MenuIcon,
   MenuIconWhite,
@@ -20,8 +19,7 @@ import logo from "../../../../public/images/logos/vilasam.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
-
-
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 // ============= Types & Interfaces =============
 type VilasamProjectNavbarType = "primary" | "secondary";
@@ -68,22 +66,17 @@ const NAV_LINKS = [
   { href: "sustainability", label: "Sustainability" },
   { href: "location", label: "Location" },
   { href: "plots", label: "Plots" },
-  
 ];
 
-
-export default function VilasamProjectNavbar({
-  showGetInTouch = true,
-  VilasamProjectNavbar = "secondary",
-}: VilasamProjectNavbarProps) {
+export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamProjectNavbar = "secondary" }: VilasamProjectNavbarProps) {
   // ============= State =============
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
   const pathname = usePathname();
 
   // ============= Computed Values =============
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
   const isVilasamProjectNavbarPrimary = VilasamProjectNavbar === "secondary";
-
 
   // Add useEffect to control body scroll
   useEffect(() => {
@@ -126,19 +119,19 @@ export default function VilasamProjectNavbar({
                 <Link
                   key={href}
                   to={href}
-                  smooth={true} duration={700}
+                  smooth={true}
+                  duration={700}
                   className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                 <div className="font-FreightNeoProBold cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0"> {label}</div>
+                  <div className="font-FreightNeoProBold cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
+                    {" "}
+                    {label}
+                  </div>
                 </Link>
               ))}
               {showGetInTouch && (
-                <NavLink
-                  href="/project-enquire"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="w-full px-7"
-                >
+                <NavLink href="" onClick={() => {setIsMenuOpen(false);setIsGetInTouchOpen(true)}} className="w-full px-7">
                   <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
@@ -148,28 +141,16 @@ export default function VilasamProjectNavbar({
 
             {/* Social Links - Updated for center alignment */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <NavLink
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryInstgramIcon />
               </NavLink>
-              <NavLink
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryMetaIcon />
               </NavLink>
-              <NavLink
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryLinkedInIcon />
               </NavLink>
-              <NavLink
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
-              >
+              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
                 <SecondaryYoutubeIcon />
               </NavLink>
             </div>
@@ -181,11 +162,7 @@ export default function VilasamProjectNavbar({
 
   return (
     <div>
-   
-
-        
-        <header className="absolute  xl:pt-[98px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
-
+      <header className="absolute  xl:pt-[98px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
@@ -197,34 +174,28 @@ export default function VilasamProjectNavbar({
               />
             </NavLink>
             {/* Mobile Menu Button */}
-            <div
-              className="flex items-center cursor-pointer ml-auto lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isVilasamProjectNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
             </div>
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div
-            className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center justify-between`}
-          >
+          <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center justify-between`}>
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                <Link key={href}  to={href} smooth={true} duration={700}>
-                  
-                <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
+                <Link key={href} to={href} smooth={true} duration={700}>
+                  <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (
-                <NavLink href="/general-enquire">
-                  <Button
+                <NavLink href="">
+                  <Button onClick={()=>setIsGetInTouchOpen(true)}
                     className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor="text-[#4074A8]"
                   >
-                    Enquire Now
+                    Download E-Brochure
                   </Button>
                 </NavLink>
               )}
@@ -233,6 +204,7 @@ export default function VilasamProjectNavbar({
         </nav>
       </header>
       <SidebarMenu />
+      <ContactFormModal isOpen={isGetInTouchOpen} onClose={setIsGetInTouchOpen} />
     </div>
   );
 }

@@ -67,7 +67,7 @@ export default function HomeHeroSection() {
             <source src={HERO_CONFIG.videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute bottom-0 right-0 lg:bottom-20 lg:right-10 w-full p-4 z-10 flex flex-row justify-end">
+          <div className="absolute bottom-0 right-0 lg:bottom-20 lg:right-10 w-full p-4 flex flex-row justify-end">
             <div className="flex gap-4">
               <div className="cursor-pointer" onClick={toggleMute}>
                   <button

@@ -4,7 +4,7 @@ import React, { FC, JSX } from "react";
 import logo2 from "../../../../public/images/logos/projectfooter.svg";
 import logo from "../../../../public/images/logos/vilasamWhiteLogo.svg";
 import { Link } from "react-scroll";
-import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Share1, Youtube } from "@/components/Icons/Icons";
+import { Instgram, LinkedIn, Mail, MailVilasam, Meta, Phone, PhoneVilasam, Share, Share1, ShareVilasam, Youtube } from "@/components/Icons/Icons";
 import SubHeading from "@/components/Common/SubHeding";
 import NavLink from "@/components/Common/NavLink";
 import FooterLink from "@/components/Common/FooterLinks";
@@ -62,8 +62,8 @@ const VilasamProjectFooter: FC = () => {
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
       <div className="flex items-center  space-x-2 pb-3">
-          <FooterLink href="/"><IoMdHome className="mb-[3px]  text-lg" /></FooterLink>
-          <FooterLink href="/">Home</FooterLink>
+          <FooterLink href="/"><IoMdHome className="mb-[3px] text-white  text-lg" /></FooterLink>
+          <FooterLink className="text-white" href="/">Home</FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
@@ -92,34 +92,34 @@ const VilasamProjectFooter: FC = () => {
             <FooterLink href="/">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </FooterLink>
-            <p className="text-white font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
-              Premium Plotted Development
+            <p className="text-[#cdcdcd] font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
+            Homes that Breathe with you
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
+              <button className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "> Download E-Brochure</button>
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
                   <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
-                    <Instgram aria-hidden="true" />
+                    <Instgram color="#cdcdcd"  aria-hidden="true" />
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
-                    <Meta aria-hidden="true" />
+                    <Meta color="#cdcdcd" aria-hidden="true" />
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
-                    <LinkedIn aria-hidden="true" />
+                    <LinkedIn color="#cdcdcd" aria-hidden="true" />
                   </NavLink>
                 </li>
 
                 <li>
                   <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
-                    <Youtube aria-hidden="true" />
+                    <Youtube color="#cdcdcd" aria-hidden="true" />
                   </NavLink>
                 </li>
               </ul>
@@ -146,14 +146,14 @@ const VilasamProjectFooter: FC = () => {
               <SubHeading className="text-lg md:text-xl text-white font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
 
               <FooterContactItem
-                icon={<Share1 />}
+                icon={<ShareVilasam />}
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
               {/* Social Media Links */}
               <SubHeading className="text-lg lg:pt-10 md:text-xl text-white font-freightNeoSemibold mb-4">For Enquiries</SubHeading>
-              <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              <FooterContactItem icon={<PhoneVilasam />} text="+91 89046 88886" link="tel:+91 89046 88886" />
+              <FooterContactItem icon={<MailVilasam />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
             </ul>
             <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-freightNeoSemibold mb-4">
@@ -182,7 +182,7 @@ const VilasamProjectFooter: FC = () => {
                   </button>
                 </div> */}
               <div className="flex justify-center md:justify-start lg:justify-end   pb-4 text-white">
-                <h1 className="font-FreightNeoProNormal   text-[16px]">Porject By</h1>
+                <h1 className="font-FreightNeoProNormal text-[#808080]   text-[16px]">Porject By</h1>
               </div>
               <div className="flex justify-center md:justify-start  lg:justify-end">
                 <FooterLink href="/">
@@ -259,7 +259,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
       className={`flex md:flex-row flex-col text-white  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}
     >
       {icon}
-      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white text-center lg:text-left">
+      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-[#808080] text-center lg:text-left">
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
       </FooterLink>
     </li>
@@ -273,15 +273,15 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
 const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
-      <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
+      <p className="text-[#808080] text-xs text-center 2xl:text-xl md:text-left">
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium ">
           Legal Disclaimer
         </a>
-        <span className="text-[#FFFFFF66] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+        <span className="text-[#808080] text-xs">|</span>
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium">
           Terms of Service
         </a>
       </div>

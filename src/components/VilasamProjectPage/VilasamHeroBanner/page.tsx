@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import img from "../../../../public/images/vilasamPageImages/bannerImages/image.png";
+import Link from "next/link";
 
 const VilasamHeroSection = () => {
   return (
@@ -19,12 +20,12 @@ const VilasamHeroSection = () => {
         className={`absolute flex bottom-44  items-center justify-center sm:justify-between gap-3 px-8 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
       >
         <div className="font-medium text-[#0C3E49] text-sm lg2:text-[32px] font-sourceSans3">Bookings Open Soon</div>
-        <button
+        <Link href="/project-enquire"><button
           // onClick={onCtaClick}
           className="px-6 md:px-10 py-2 text-sm lg2:text-[32px] lg:py-5 bg-[#0C3E49] font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
         >
           Show your Interest
-        </button>
+        </button></Link>
       </div>
       {/* Main Content */}
       <div className="absolute top-28 md:top-60  mx-auto text-white px-4 z-10">
