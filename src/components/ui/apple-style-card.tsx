@@ -114,7 +114,7 @@ export default function AppleStyleCard({
             ref={containerRef}
             layoutId={`expandable-card-${id}`}
             className={cn(
-              "max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 sm:mx-5 md:mx-auto rounded-3xl font-sans relative overflow-hidden",
+              "lg:mx-16 lg2:mx-auto lg2:max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 sm:mx-5 md:mx-auto rounded-3xl font-sans relative overflow-hidden",
               expandedClassName,
             )}
           >
@@ -197,7 +197,7 @@ export default function AppleStyleCard({
           </Typography>
         </div>
         <div
-          className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-[1]`}
+          className={`absolute bottom-4 md:right-8 lg2:right-8 lg:right-4 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-[1]`}
         >
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (

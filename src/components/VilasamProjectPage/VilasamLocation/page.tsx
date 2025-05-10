@@ -181,7 +181,7 @@ const LocationAdvantage = () => {
     {
       title: "Location Advantage",
       description: "Invest in Land, Invest in Legacy",
-      text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
+      text: "An address of quiet comfort & lasting promise where every day feels right, & every year adds value.",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
@@ -316,19 +316,19 @@ const LocationAdvantage = () => {
                 className="absolute md:hidden object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />
-              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1
-                  className={`text-lg md:text-lg lg:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-sourceSans3`}
+                  className={`text-lg md:text-lg lg2:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-sourceSans3`}
                 >
                   {item.title}
                 </h1>
                 <h1
-                  className={`text-2xl md:text-5xl lg2:text-[60px]  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
                 >
                   {item.description}
                 </h1>
                 <p
-                  className={`mt-4 inline-block md:text-lg text-sm ${item.paragraphClassName} lg2:text-[24px] max-w-2xl font-sourceSans3 font-[400]`}
+                  className={`mt-4 inline-block  ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-sourceSans3 font-[400]`}
                 >
                   {item.text}
                 </p>
@@ -369,7 +369,7 @@ const LocationAdvantage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[90] left-32 z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[90] left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
       <div className="md:hidden  absolute w-36 !rounded-[300px] bottom-[10] left-32 z-20">

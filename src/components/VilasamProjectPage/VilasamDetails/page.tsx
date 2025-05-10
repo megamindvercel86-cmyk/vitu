@@ -25,10 +25,10 @@ const ElevatesLiving: React.FC = () => {
   
 
   return (
-    <section className="p-8  lg:p-16 grid grid-cols-1 py-20 md:py-32 lg2:py-40 gap-8 items-center !px-0  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[9rem]">
-      <div className="flex justify-between flex-col md:flex-row items-start w-full gap-8 md:pb-16">
-        <h2 className="md:text-6xl text-2xl  text-[#0C3E49] text-center lg:text-start font-medium font-geistSerif md:max-w-[40%]">Where Every Detail Elevates Living</h2>
-        <p className="md:text-2xl text-lg text-[#0C3E49CC] max-w-2xl  font-geistSeriftext-right">
+    <section className="p-8 lg:p-16 py-20 md:py-32 lg2:py-40  grid grid-cols-1 gap-8 items-center !px-0  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]">
+      <div className="flex lg:flex-row flex-col  items-start w-full gap-8 md:pb-16">
+        <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] lg:w-1/2 font-medium font-geistSerif">Where Every Detail Elevates Living</h2>
+        <p className="lg:w-1/2 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
           At Vilasam, 30ft wide cobblestone roads set the tone for a thoughtfully designed community — complete with tree-lined footpaths, solar-lit
           streets & landscapes that breathe with over 100 trees & open green spaces.
         </p>

@@ -13,12 +13,12 @@ const UrbanAccessSection: React.FC = () => {
         <div className="container mx-auto  flex flex-col md:flex-row items-center">
           {/* Text Block */}
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-            <h2 className="md:text-6xl text-xl text-white max-w-4xl font-normal mb-6 font-geistSerif">Open Spaces. Urban Access. One Address.</h2>
-            <p className="mb-6 text-lg text-[#BFD6D1] max-w-lg  xl:max-w-2xl font-geistSerif">
-              At Vilasam, you get the best of both worlds — expansive plots to shape your dream home & seamless access to Mangaluru’s coastal living
+            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-white max-w-4xl font-normal mb-6 font-geistSerif">Open Spaces. Urban Access. One Address.</h2>
+            <p className="mb-6  lg:w-[300px] lg2:w-[500px] lg2:text-[24px]  md:text-lg text-sm text-white/60 max-w-lg  xl:max-w-2xl font-geistSerif">
+              At Vilasam, you get the best of both worlds expansive plots to shape your dream home & seamless access to Mangaluru’s coastal living
               opportunities.
             </p>
-            <button className="bg-white text-[#1F4A46]  rounded-full font-semibold px-4 py-2 hover:bg-[#E6F3F1] transition">Enquire Now</button>
+            <button className="bg-white text-[#2B847D] font-sourceSans3 font-bold  rounded-full text-[22px] px-4 py-2 hover:bg-[#E6F3F1] transition">Get the Best Quote</button>
           </div>
 
           {/* Image Block */}

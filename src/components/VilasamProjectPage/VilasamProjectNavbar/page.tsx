@@ -65,7 +65,6 @@ const NAV_LINKS = [
   { href: "carousal", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
   { href: "location", label: "Location" },
-  { href: "plots", label: "Plots" },
 ];
 
 export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamProjectNavbar = "secondary" }: VilasamProjectNavbarProps) {
@@ -121,7 +120,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   to={href}
                   smooth={true}
                   duration={700}
-                  className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
+                  className="mb-8 text-2xl font-geistSerif last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <div className=" cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black  font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
@@ -132,7 +131,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
               ))}
               {showGetInTouch && (
                 <NavLink href="" onClick={() => {setIsMenuOpen(false);setIsGetInTouchOpen(true)}} className="w-full px-7">
-                  <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                  <button className="w-full h-[58px] text-xl  font-geistSerif text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
                 </NavLink>
@@ -170,7 +169,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
               <Image
                 src={logo}
                 alt="Logo"
-                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[360px] xl:h-[83px]"
               />
             </NavLink>
             {/* Mobile Menu Button */}
@@ -184,13 +183,21 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href} to={href} smooth={true} duration={700}>
-                  <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-geistSerif">{label}</div>
+                  <div className="2xl:text-4xl text-white text-sm  lg2:text-[23px] cursor-pointer font-geistSerif">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (
                 <NavLink href="">
                   <Button onClick={()=>setIsGetInTouchOpen(true)}
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={` w-full text-sm hidden lg2:block lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px]  xl:text-[26px] 2xl:text-4xl  ${
+                      isVilasamProjectNavbarPrimary ? "bg-white" : ""
+                    }`}
+                    defaultTextColor="text-[#4074A8]"
+                  >
+                    Download E-Brochure
+                  </Button>
+                  <Button onClick={()=>setIsGetInTouchOpen(true)}
+                    className={` w-full text-sm lg2:hidden lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] !h-10 xl:text-[26px] 2xl:text-4xl  ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor="text-[#4074A8]"

@@ -90,8 +90,8 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             <Typography variant="h1" className="text-[#0C3E49]  font-geistSerif">
               {project.title}
             </Typography>
-            <Typography className="text-[#04070799] font-geistSerif pt-[20px] !text-xl">{project?.description1}</Typography>
-            <Typography className="text-[#04070799] font-geistSerif pt-[20px] !text-xl">{project?.description2}</Typography>
+            <Typography className="text-[#040707]/60 font-sourceSans3 pt-[20px] !text-xl">{project?.description1}</Typography>
+            <Typography className="text-[#04070799] font-sourceSans3 pt-[20px] !text-xl">{project?.description2}</Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
@@ -121,13 +121,13 @@ const expandedPositions = {
     { top: "65%", left: "53%", right: "auto" },
   ],
   lg: [
-    { top: "65%", left: "30%", right: "auto" },
-    { top: "50%", right: "-10%", left: "auto" },
+    { top: "60%", left: "30%", right: "auto" },
+    { top: "32%", right: "-3%", left: "auto" },
     { top: "0%", right: "-3%", left: "auto" },
     { top: "45%", left: "-5%", right: "auto" },
     { top: "5%", left: "-1%", right: "auto" },
-    { top: "60%", left: "60%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "55%", left: "60%", right: "auto" },
+    { top: "5%", left: "43%", right: "auto" },
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
@@ -284,7 +284,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem] lg2:top-[35rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem] lg2:top-[35rem] lg:top-[25rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -303,7 +303,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               amenities
             </motion.p>
             <motion.h1
-              className="xl:text-[100px] lg:text-5xl lg2:text-7xl  md:text-5xl  font-geistSerif mb-4 text-[#0C3E49]"
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl  font-geistSerif lg2:mb-4 text-[#0C3E49]"
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -311,7 +311,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               Space to Settle,
             </motion.h1>
             <motion.h2
-              className="xl:text-[100px] lg:text-5xl lg2:text-7xl  md:text-5xl font-geistSerif mb-4 text-[#0C3E49]"
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl font-geistSerif lg2:mb-4 text-[#0C3E49]"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -320,7 +320,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             </motion.h2>
           
               <motion.button
-                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full lg2:text-[22px] font-geistSerif transition-colors mt-6"
+                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-geistSerif transition-colors mt-6"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}

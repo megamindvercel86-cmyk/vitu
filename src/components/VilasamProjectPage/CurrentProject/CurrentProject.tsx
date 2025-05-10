@@ -27,7 +27,7 @@ const PROJECT_DATA = {
   badge: "Limited Plots Available",
   description: {
     suffix:
-      " Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
+      "Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
   image: "/images/vilsamPageCurrentProjects/27.png",
@@ -508,7 +508,7 @@ const CurrentProject: React.FC = () => {
                 </span>
                 <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
               </Typography>
-              <Typography variant="custom" className="font-geistSerif text-[24px] text-[#0C3E49]">
+              <Typography variant="custom" className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
                 {stat.label}
               </Typography>
             </motion.div>
@@ -521,7 +521,7 @@ const CurrentProject: React.FC = () => {
               >
                 <span className="font-CandideCondensedNormal">{stat.value}</span>
               </Typography>
-              <Typography variant="custom" className="font-sourceSans3 leading-[1.4]  font-normal text-[24px] text-[#0C3E49]">
+              <Typography variant="custom" className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
                 {stat.label}
               </Typography>
             </motion.div>
@@ -562,21 +562,22 @@ const CurrentProject: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col sm:flex-col  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[9rem]"
+    
+      className="flex flex-col sm:flex-col  lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2 py-32">
+      <article className="w-full lg:w-1/2 lg2:py-32">
         <header>
           <h1
             id="project-title"
-            className="w-[224px] hidden md:block mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+            className="w-[224px] hidden md:block mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your <br /> Future Home
           </h1>
           <h1
             id="project-title"
-            className=" md:hidden  !font-medium  text-center mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+            className=" md:hidden  !font-medium   mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your Future Home
           </h1>
@@ -585,7 +586,7 @@ const CurrentProject: React.FC = () => {
         <div className="flex items-center">
           <Typography
             variant="custom"
-            className="font-freightNeoMedium text-lg md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#0C3E4999]"
+            className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60"
           >
             {PROJECT_DATA.description.suffix}
           </Typography>
@@ -603,7 +604,7 @@ const CurrentProject: React.FC = () => {
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
-      <figure className="lg:flex   items-center h-[70vh] lg2:h-[90vh] justify-center w-full lg:w-1/2 relative" aria-labelledby="project-title">
+      <figure className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[90vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative" aria-labelledby="project-title">
         <div className="relative w-full h-full">
           <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
           <div className="absolute inset-0 z-10">
@@ -640,7 +641,7 @@ const CurrentProject: React.FC = () => {
                   </span>
                   <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
                 </Typography>
-                <Typography variant="custom" className="font-geistSerif text-[24px] text-[#0C3E49]">
+                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
                   {stat.label}
                 </Typography>
               </motion.div>
@@ -653,7 +654,7 @@ const CurrentProject: React.FC = () => {
                 >
                   <span className="font-CandideCondensedNormal">{stat.value}</span>
                 </Typography>
-                <Typography variant="custom" className="font-sourceSans3 leading-[1.5] text-lg  lg:text-[24px] text-[#0C3E49]">
+                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
                   {stat.label}
                 </Typography>
               </motion.div>
