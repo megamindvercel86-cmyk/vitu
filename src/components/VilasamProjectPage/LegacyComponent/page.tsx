@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const VilasamLegacyBuiltComponent = () => {
   return (
-    <section className="flex items-center justify-center overflow-hidden  xl:mt-0 py-32 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]">
+    <section className="flex items-center justify-center overflow-hidden  xl:mt-0 mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0  h-full">

@@ -8,7 +8,8 @@ import CTAButtonIcon from "@/components/Icons/Icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CiPlay1 } from "react-icons/ci";
-import { CiPause1 } from "react-icons/ci";
+import { FaPause, FaPlay } from "react-icons/fa";
+
 
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
@@ -250,7 +251,7 @@ export default function VisionForTheFuture() {
                   {/* Play/Pause Icon */}
                   <foreignObject x="14" y="14" width="22" height="22">
                     <button className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
-                      {isPlay ? <CiPause1 className="text-2xl text-[#dbc9bc]" /> : <CiPlay1 className="text-2xl text-[#dbc9bc]" />}
+                      {isPlay ? <FaPause  className="text-lg text-[#dbc9bc]" /> : <FaPlay className="text-lg text-[#dbc9bc]" />}
                     </button>
                   </foreignObject>
                 </svg>

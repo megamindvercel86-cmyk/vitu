@@ -210,7 +210,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
       </Swiper>
       <div className="flex items-center justify-between gap-4 px-7">
         <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
-          Explore More
+          {/* Explore More */}
         </span>
         <div className="flex gap-2">
           <button

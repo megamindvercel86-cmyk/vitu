@@ -30,8 +30,8 @@ const CarouselDots = ({ total, active, onDotClick, className }: {
           className={cn(
             "transition-all duration-300",
             active === index
-              ? "w-6 bg-white rounded-xl h-2"
-              : "w-2 h-2 bg-gray-300 rounded-full"
+              ? "w-8 bg-white rounded-xl h-[6px]"
+              : "w-[6px] h-[6px] bg-gray-300 rounded-full"
           )}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -57,7 +57,7 @@ export default function PropertyCarousel() {
     >
         {plots.map((property, index) => (
           <SwiperSlide className="!h-[80vh]" key={index}>
-            <div className="max-w-sm mx-auto h-[76vh]  rounded-2xl overflow-hidden pb-10 bg-white">
+            <div className="max-w-sm mx-auto h-[76vh]  rounded-2xl overflow-hidden  bg-white">
               <div className="relative w-full h-64">
                 <Image
                   src={property.src}
@@ -86,7 +86,7 @@ export default function PropertyCarousel() {
         ))}
       </Swiper>
 
-      <div className="absolute bottom-[14%] left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
+      <div className="absolute  left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
         <CarouselDots
           total={plots.length}
           active={activeIndex}

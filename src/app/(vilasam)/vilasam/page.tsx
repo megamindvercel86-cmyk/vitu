@@ -17,7 +17,8 @@ export async function generateMetadata() {
   const pageTitle = "Vilasam – Premium Living in Mangaluru | Vitu Realty";
   const pageDescription =
     "Discover Vilasam City, a premium residential development in Mangaluru, strategically located near major industries and top educational institutions. Developed by the KMK Group, a legacy of over six decades in excellence. Explore modern living today!";
-  const imageUrl = "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8";
+  const imageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8";
 
   return {
     title: pageTitle,
@@ -48,7 +49,7 @@ export async function generateMetadata() {
 
 export default function ProjectPage({}: ProjectPageProps) {
   return (
-    <div className="bg-[#FAFFFD]">
+    <div className="bg-[#FAFFFD] flex flex-col gap-20 lg2:gap-36 ">
       <section className="relative">
         <VilasamHeroSection />
       </section>
@@ -61,26 +62,26 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#FAFFFD]">
         <ElevatesLiving />
       </section>
-      <section className="bg-[#FAFFFD] pb-36">
+      <section className="bg-[#FAFFFD] ">
         <CurrentProject />
       </section>
-      <section className="bg-[#FAFFFD] pb-14 lg:pb-36">
+      <section className="bg-[#FAFFFD]">
         <LyfeStyle />
       </section>
       <section id="sustainability" className="bg-[#FAFFFD]">
         <VilasamExploreProjects />
       </section>
-      <section  className="bg-[#FAFFFD] hidden md:block">
-        <PlotWrapper/>
+      <section className="bg-[#FAFFFD] hidden md:block">
+        <PlotWrapper />
       </section>
-      <section className="bg-[#FAFFFD] mx-6 md:hidden">
-      <PropertyCard/>
-      </section>
-      <section>
-        <VilasamLegacyBuiltComponent/>
+      <section className="bg-[#FAFFFD] mx-[1rem] md:hidden">
+        <PropertyCard />
       </section>
       <section>
-        <UrbanAccessSection/>
+        <VilasamLegacyBuiltComponent />
+      </section>
+      <section>
+        <UrbanAccessSection />
       </section>
     </div>
   );

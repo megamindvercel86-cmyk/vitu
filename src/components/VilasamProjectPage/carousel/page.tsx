@@ -20,7 +20,7 @@ const desktopDataRight = [
  */
 export default function VilasamCarousel(): React.ReactElement {
   return (
-    <section className="bg-gradient-to-b md:py-28  pb-32">
+    <section className="bg-gradient-to-b">
       {/* Desktop Project Carousel - Right Direction */}
       <div id="carousal" className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
         <div className="md:pb-[130px] pb-20 text-center">

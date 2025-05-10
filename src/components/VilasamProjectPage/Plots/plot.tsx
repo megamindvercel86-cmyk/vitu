@@ -34,7 +34,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
         className={styles.card}
       >
         <div className={styles.body}>
-          <div className="w-1/2 p-10 flex flex-col justify-between">
+          <div className="w-1/2 lg2:p-10 flex flex-col justify-between">
             <div>
               <h2 className="text-[#0C3E49] text-2xl lg:text-3xl lg2:text-5xl  font-geistSerif">{title}</h2>
               <p className="text-[#0C3E49] md:leading-7 flg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 pt-6  ">{description}</p>

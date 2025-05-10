@@ -126,11 +126,11 @@ const VilasamExploreProjects: React.FC = () => {
       {/* Mobile Version */}
       <div className="md:hidden block pb-5 " id="sustainability">
         {/* Mobile Title Section */}
-        <div className="w-full flex flex-col items-center justify-center text-center pt-10">
-          <Typography variant="custom" className="text-xl lg:text-[] text-[#0C3E49] font-freightNeoSemibold">
+        <div className="w-full flex flex-col items-center justify-center text-center ">
+          <Typography variant="custom" className="text-xl lg:text-[] text-[#0C3E49] font-geistSerif">
           Space to Settle,
           </Typography>
-          <Typography variant="custom" className="text-2xl text-[#0C3E49] font-freightNeoSemibold">
+          <Typography variant="custom" className="text-2xl text-[#0C3E49] font-geistSerif">
           Room to Grow
           </Typography>
         </div>
