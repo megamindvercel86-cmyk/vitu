@@ -10,6 +10,7 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import VilasamExploreProjects from "@/components/VilasamProjectPage/VilasamExploreProject/page";
+import Typography from "@/components/Typography/Typography";
 
 
 // ============= Types & Interfaces =============
@@ -116,7 +117,21 @@ export default function HomePage() {
       >
         {/* Hero Section (Should contain an <h1> inside the component) */}
         <HomeHeroSection />
-
+        <article className="px-[1.875rem] pb-[3.75rem] pt-[4rem] text-center sm:px-[1.875rem] sm:pt-[4rem] md:pb-[6.9375rem] md:pt-[5.25rem] lg:pt-[6.5rem] xl:px-[24.125rem] xl:pt-[8rem]">
+        <Typography
+          variant="custom"
+          className="font-freightNeoMedium text-[#040707CC] text-[1rem] px-7 pb-6 sm:text-[1.375rem] md:px-0 md:text-[1.3rem] 2xl:text-[2.125rem]"
+        >
+        We create thoughtfully designed spaces that blend modern aesthetics with lasting quality in Mangalore.
+        </Typography>
+        <Typography
+          variant="custom"
+          className="font-freightNeoMedium text-customBrown text-[1.5rem] px-7 sm:text-[1.5rem] md:px-0 md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem]"
+          aria-level={3}
+        >
+        Where Modern Design Meets Enduring Quality
+        </Typography>
+      </article>
         {/* Vision and Mission Section */}
         <VisionAndMission images={IMAGES} content={CONTENT}/>
 

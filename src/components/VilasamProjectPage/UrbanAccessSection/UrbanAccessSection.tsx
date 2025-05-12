@@ -5,7 +5,7 @@ const UrbanAccessSection: React.FC = () => {
   return (
     <section>
       <div
-        className="bg-[#1F4A46] hidden lg:block text-white bg-cover bg-center bg-no-repeat py-32 lg:py-60"
+        className="bg-[#1F4A46] hidden lg:block text-white bg-cover bg-center bg-no-repeat py-36 lg:py-60"
         style={{
           backgroundImage: "url('/images/vilasamPageImages/family/image.png')",
         }}
@@ -25,7 +25,7 @@ const UrbanAccessSection: React.FC = () => {
           <div className="md:w-1/2"></div>
         </div>
       </div>
-      <div className=" lg:hidden   h-[76vh]  overflow-hidden bg-white">
+      <div className=" lg:hidden   overflow-hidden bg-white">
         <div className="relative w-full h-72">
           <Image src="/images/vilasamPageImages/family/image2.png" alt="/images/articleImages/articleImage1.jpg" fill className="object-cover " />
         </div>

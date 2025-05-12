@@ -52,6 +52,7 @@ export default function ProjectPage({}: ProjectPageProps) {
     <div className="bg-[#FAFFFD] flex flex-col gap-20 lg2:gap-36 ">
       <section className="relative">
         <VilasamHeroSection />
+        
       </section>
       <section className="bg-white">
         <VilasamCarousel />

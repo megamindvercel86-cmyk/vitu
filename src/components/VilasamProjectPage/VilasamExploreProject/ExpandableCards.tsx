@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import CustomCursor from "@/components/Common/CustomCursor";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -32,18 +33,24 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
-    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
-      <hr className="w-full h-[2px] bg-[#BDBEC2]" />
-      <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
-        <div>
-          <p className="text-sm font-geistSerif font-bold text-[#8E8E93] ">UP NEXT</p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
-        </div>
-        <div onClick={onFooterClick} className="cursor-pointer">
-          <ArrowRightIcon />
+    <>
+      <hr className="border-t-gray-200 border-[1px]" />
+      <div className="lg:px-44 px-12">
+        <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
+        <div className="flex pb-16 justify-between ">
+          <button
+            onClick={onFooterClick}
+            className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold text-[18px] "
+          >
+            {nextProjectTitle}
+          </button>
+          <MdKeyboardArrowRight
+            onClick={onFooterClick}
+            className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+          />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -86,12 +93,10 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             height={45}
             className={cn("object-cover   h-[652px] w-full")}
           />
-          <div className="p-4 md:p-10">
-            <Typography variant="h1" className="text-[#0C3E49]  font-geistSerif">
-              {project.title}
-            </Typography>
-            <Typography className="text-[#040707]/60 font-sourceSans3 pt-[20px] !text-xl">{project?.description1}</Typography>
-            <Typography className="text-[#04070799] font-sourceSans3 pt-[20px] !text-xl">{project?.description2}</Typography>
+          <div className="flex flex-col gap-flex  gap-12 py-12 ">
+            <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold  font-geistSerif px-6 lg:px-20  text-[#0C3E49]">{project.title}</h2>
+            <Typography className="text-[#040707]/60 font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description1}</Typography>
+            <Typography className="text-[#04070799] font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description2}</Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
@@ -294,12 +299,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
           <div>
-          <motion.p
-              className=" font-sourceSans3 uppercase mb-4 text-[#0C3E49]"
-              initial={{ y: 0 }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
+            <motion.p className=" font-sourceSans3 uppercase mb-4 text-[#0C3E49]" initial={{ y: 0 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
               amenities
             </motion.p>
             <motion.h1
@@ -318,17 +318,16 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             >
               Room to Grow
             </motion.h2>
-          
-              <motion.button
-                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-geistSerif transition-colors mt-6"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                onClick={()=>setIsGetInTouchOpen(true)}
-              >
-                Download Brochure
-              </motion.button>
-          
+
+            <motion.button
+              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-geistSerif transition-colors mt-6"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              onClick={() => setIsGetInTouchOpen(true)}
+            >
+              Download Brochure
+            </motion.button>
           </div>
         </motion.div>
         {/* Images */}

@@ -99,8 +99,8 @@ const CardContent = ({
   };
   slideImage: string;
 }) => (
-  <div className="">
-    <div className="relative w-full h-64 lg:h-[70vh] mb-6 rounded-t-xl overflow-hidden">
+  <div className="flex flex-col ">
+    <div className="relative w-full h-64 lg:h-[70vh]  rounded-t-xl overflow-hidden">
       <Image
         src={description.image}
         alt={description.title}
@@ -110,16 +110,16 @@ const CardContent = ({
         priority
       />
     </div>
-    <div className=" px-6 lg:px-20">
+    <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
       <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-lg font-geistSerif text-[#0C3E49]">{description.title}</h2>
-      <h3 className="text-[28px] leading-[1.2] font-geistSerif mt-2 text-[#040707CC] ">{description.subtitle}</h3>
-      <p className="mt-8 text-gray-600 text-base font-geistSerif lg:text-lg">{description.description}</p>
-      <h4 className="text-[28px] leading-[1.2] font-geistSerif text-[#040707CC] mt-10">{description.middleTitle}</h4>
-      <p className=" text-gray-600 text-base font-geistSerif lg:text-lg">{description.middleDescription}</p>
-      <h4 className="text-[28px] leading-[1.2] font-geistSerif text-[#040707CC] mt-10">{description.bottomTitle}</h4>
-      <p className=" text-gray-600 text-base font-geistSerif lg:text-lg">{description.bottomDescription}</p>
+      <h3 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.subtitle}</h3>
+      <p className=" text-[#040707]/60 font-sourceSans3  !text-xl">{description.description}</p>
+      <h4 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleTitle}</h4>
+      <p className=" text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleDescription}</p>
+      <h4 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.bottomTitle}</h4>
+      {/* <p className=" text-gray-600 text-base font-geistSerif lg:text-lg">{description.bottomDescription}</p> */}
 
-      <ul className="mt-6 space-y-6" aria-label="List of key points">
+      {/* <ul className=" space-y-6" aria-label="List of key points">
         {description?.bottomPoints?.map((point, index) => (
           <li key={index} className="flex items-start">
             <span className="text-[#656666] mr-2 font-geistSerif text-start text-[18px]" aria-hidden="true">
@@ -128,8 +128,8 @@ const CardContent = ({
             <p className="text-gray-600 text-base font-geistSerif lg:text-lg">{point}</p>
           </li>
         ))}
-      </ul>
-      <p className="mt-10 text-gray-600 text-base font-geistSerif lg:text-lg">{description.middleBottomDescription}</p>
+      </ul> */}
+      <p className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleBottomDescription}</p>
     </div>
   </div>
 );
@@ -373,7 +373,7 @@ const LocationAdvantage = () => {
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
       <div className="md:hidden  absolute w-36 !rounded-[300px] bottom-[10] left-32 z-20">
-        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick}  />
+        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
       </div>
       <AnimatePresence>
         {isOpen && (
@@ -382,7 +382,7 @@ const LocationAdvantage = () => {
             <motion.div
               variants={cardVariants}
               ref={containerRef}
-              className="max-w-6xl mx-auto bg-white h-fit z-[60] my-10 pb-10 rounded-3xl font-sans relative shadow-2xl"
+              className="max-w-6xl mx-auto bg-white h-fit z-[60] my-10  rounded-3xl font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}
@@ -396,19 +396,22 @@ const LocationAdvantage = () => {
               <motion.div variants={contentVariants}>
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
-              <motion.div variants={contentVariants} className="p-4 lg:px-20 mt-10">
-                <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-geistSerif text-[#8E8E93] border-t-gray-200">NextUp</h1>
-                <div className="flex  justify-between ">
-                  <button
-                    onClick={goToNextCard}
-                    className="text-[#1D1D1F] flex font-FreightNeoProBold justify-between items-center cursor-pointer font-bold text-[18px] "
-                  >
-                    {data[(activeIndex + 1) % data.length].description}
-                  </button>
-                  <MdKeyboardArrowRight
-                    onClick={goToNextCard}
-                    className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
-                  />
+              <motion.div variants={contentVariants} className="">
+                <hr className="border-t-gray-200 border-[1px]" />
+                <div className="lg:px-44 px-12">
+                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
+                  <div className="flex pb-16 justify-between ">
+                    <button
+                      onClick={goToNextCard}
+                      className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold text-[18px] "
+                    >
+                      {data[(activeIndex + 1) % data.length].description}
+                    </button>
+                    <MdKeyboardArrowRight
+                      onClick={goToNextCard}
+                      className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

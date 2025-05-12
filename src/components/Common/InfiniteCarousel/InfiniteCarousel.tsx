@@ -41,6 +41,7 @@ interface InfiniteCarouselProps {
   cards?: Card[];
   isSustainable?: boolean;
   data?: Card[];
+  textStyle?:"";
 }
 
 interface FooterProps {
@@ -79,7 +80,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 };
 
 // Update the CardContent component to accept props
-const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
+const CardContent = ({ cardId, data, textStyle }: { cardId: number; data: Card[]; textStyle:string; }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
   let project = data.find((project) => project.id === currentCardId);
@@ -144,7 +145,7 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
   );
 };
 
-const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
+const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textStyle="text-customBrown" }) => {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
 
   const handlePrev = () => {
@@ -202,14 +203,14 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }) => {
               subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
-              content={data && <CardContent cardId={card.id} data={data} />}
+              content={data && <CardContent cardId={card.id} data={data} textStyle={textStyle} />}
             />
             <Typography variant="custom"> {card.name}</Typography>
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="flex items-center justify-between gap-4 px-7">
-        <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">
+        <span className=" lg:text-2xl sm:text-base text-customBrown font-FreightNeoProBold xl:text-[28px]">
           {/* Explore More */}
         </span>
         <div className="flex gap-2">

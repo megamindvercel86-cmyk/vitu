@@ -44,16 +44,16 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile.mp4?alt=media&token=9d801128-09d3-4789-b57c-4e517e96cbfe"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile_2.mp4?alt=media&token=27bb8595-8700-4384-9189-f5f117f6052d"
             type="video/mp4"
           />
         </video>
         <div className="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-black/20 to-transparent z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-[200px] md:h-[200px] bg-gradient-to-t from-white via-white/85 via-50% to-transparent z-[10] md:hidden" />
-        <div className="absolute bottom-0 left-0 right-0 h-[100px] md:h-[200px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
+        <div className="absolute bottom-0 left-0 right-0 h-[40px] md:h-[200px] bg-gradient-to-t from-white via-white/85 via-50% to-transparent z-[10] md:hidden" />
+        <div className="absolute bottom-0 left-0 right-0 h-[50px] md:h-[200px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
 
-        <div className="absolute bottom-0 left-0 right-0 h-1/4 lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
-        <div className="absolute bottom-64  right-0 lg:bottom-20 xl:bottom-80  lg2:right-10 w-full p-4 flex flex-row justify-end">
+        <div className="absolute bottom-0 left-0 right-0 h-[50px] lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
+        <div className="absolute bottom-36  right-0 lg:bottom-20 xl:bottom-80  lg2:right-10 w-full p-4 flex flex-row justify-end">
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <button
@@ -68,7 +68,7 @@ const VilasamHeroSection = () => {
         </div>
       </div>
       <div
-        className={`absolute flex bottom-48   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 px-8 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
+        className={`absolute flex bottom-20   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 px-8 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
       >
         <div className="font-medium text-[#0C3E49] text-sm lg2:text-[32px] font-sourceSans3">Bookings Open Soon</div>
         <Link href="/project-enquire">
