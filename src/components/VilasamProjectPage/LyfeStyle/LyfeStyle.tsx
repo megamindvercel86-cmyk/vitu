@@ -8,7 +8,7 @@ const LyfeStyle = () => {
       <div className="relative">
         <div className=" lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full  md:pb-16  lg:gap-14  ">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif">Where Leisure Meets Lifestyle</h2>
+            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif pb-10 ">Where Leisure Meets Lifestyle</h2>
             <div className="relative group cursor-pointer">
               <button
                 type="button"

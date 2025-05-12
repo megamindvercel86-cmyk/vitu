@@ -26,12 +26,15 @@ const ElevatesLiving: React.FC = () => {
 
   return (
     <section className="grid grid-cols-1 gap-8 items-center !px-0  lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]">
-      <div className="flex lg:flex-row flex-col  items-start w-full gap-8 md:pb-16">
+      <div className="flex lg:flex-row flex-col   items-start w-full ">
+        <div className="flex lg:flex-row flex-col gap-12 pb-0 lg:pb-32">
+
         <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] lg:w-1/2 font-medium font-geistSerif">Where Every Detail Elevates Living</h2>
         <p className="lg:w-1/2 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
           At Vilasam, 30ft wide cobblestone roads set the tone for a thoughtfully designed community — complete with tree-lined footpaths, solar-lit
           streets & landscapes that breathe with over 100 trees & open green spaces.
         </p>
+        </div>
         {hoveredPoint}
       </div>
 

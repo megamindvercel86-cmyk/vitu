@@ -568,16 +568,16 @@ const CurrentProject: React.FC = () => {
     >
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2 lg2:py-32">
-        <header>
+        <header className="pb-10">
           <h1
             id="project-title"
-            className="w-[224px] hidden md:block mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+            className="w-[224px] hidden md:block  md:w-full   text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your <br /> Future Home
           </h1>
           <h1
             id="project-title"
-            className=" md:hidden  !font-medium   mb-3 lg:mb-0 md:w-full pt-3 md:pt-0 text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
+            className=" md:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your Future Home
           </h1>

@@ -23,8 +23,8 @@ export default function VilasamCarousel(): React.ReactElement {
     <section className="bg-gradient-to-b">
       {/* Desktop Project Carousel - Right Direction */}
       <div id="carousal" className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
-        <div className="md:pb-[130px] pb-20 text-center">
-          <p className=" text-[#0C3E49CC] mx-auto font-sourceSans3 pb-8 lg2:text-2xl lg:text-xl text-base px-4">
+        <div className="flex flex-col gap-12 pb-20 lg:pb-32 text-center">
+          <p className=" text-[#0C3E49CC] mx-auto font-sourceSans3  lg2:text-2xl lg:text-xl text-base px-4">
             Discover how our thoughtfully designed spaces offer a perfect
             <br className="hidden md:block" />
             blend of luxury, sustainability and a calming sense of belonging.

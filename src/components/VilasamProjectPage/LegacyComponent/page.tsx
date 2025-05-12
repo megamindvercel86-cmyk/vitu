@@ -10,10 +10,10 @@ const VilasamLegacyBuiltComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0  h-full">
-          <h1 className="font-geistSerif text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49]">
+          <h1 className="font-geistSerif text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] pb-10 lg2:pb-0">
             Trust You <br /> Can Build On
           </h1>
-          <p className="mt-4   lg:w-[300px] lg2:w-[500px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
+          <p className=" lg2:mt-4   lg:w-[300px] lg2:w-[500px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
             Every Vitu Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
             & premium amenities.
           </p>
