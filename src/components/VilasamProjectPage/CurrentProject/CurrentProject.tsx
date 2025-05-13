@@ -571,7 +571,7 @@ const CurrentProject: React.FC = () => {
     >
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2 lg2:py-32">
-        <header className="pb-10">
+        <header className="md:pb-10 pb-4">
           <h1
             id="project-title"
             className="w-[224px] hidden md:block  md:w-full   text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
@@ -653,7 +653,7 @@ const CurrentProject: React.FC = () => {
               </motion.div>
             ))
           : selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-4" : ""}`}>
                 <Typography
                   variant="custom"
                   className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"

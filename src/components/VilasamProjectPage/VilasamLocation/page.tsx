@@ -295,7 +295,7 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 303300, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
@@ -332,7 +332,7 @@ const LocationAdvantage = () => {
                 >
                   {item.text}
                 </p>
-                <div className="relative group cursor-pointer bottom-0">
+                <div className=" group cursor-pointer bottom-0 md:relative hidden">
                   <button
                     type="button"
                     onClick={() => openCard(0)}
@@ -365,6 +365,38 @@ const LocationAdvantage = () => {
                   </button>
                 </div>
               </div>
+              <div className="absolute group cursor-pointer bottom-14 md:hidden w-full flex items-center justify-center">
+                  <button
+                    type="button"
+                    onClick={() => openCard(0)}
+                    className="
+                       relative group
+                      mt-4
+                      flex items-center justify-center
+                      gap-[0.6875rem]
+                      rounded-full 
+                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
+                      text-base font-freightNeoMedium text-white
+                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                      overflow-hidden z-100
+                    "
+                  >
+                    <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>
+                    <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+                      <div
+                        className={`
+                          absolute w-0 h-0 ${item.buttonFillBg} rounded-full
+                          group-hover:w-[40rem] group-hover:h-[30rem]
+                          transition-all duration-500 ease-out
+                        `}
+                      ></div>
+                      <div className="relative z-20">
+                        <CTAButtonIcon fill={item.fill} direction="right" />
+                      </div>
+                    </div>
+                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                  </button>
+                </div>
             </div>
           </SwiperSlide>
         ))}

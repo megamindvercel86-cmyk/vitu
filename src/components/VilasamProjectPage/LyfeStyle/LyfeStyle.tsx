@@ -8,8 +8,8 @@ const LyfeStyle = () => {
       <div className="relative">
         <div className=" lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full  md:pb-16  lg:gap-14  ">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif pb-10 ">Where Leisure Meets Lifestyle</h2>
-            <div className=" relative group cursor-pointer">
+            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif md:pb-10 pb-4">Where Leisure Meets Lifestyle</h2>
+            <div className=" group cursor-pointer md:relative hidden">
         <button
           type="button"
           className="
@@ -60,15 +60,15 @@ const LyfeStyle = () => {
         <button
           type="button"
           className="
-                  relative group
-                  mt-4
-                  flex items-center justify-center
-                  gap-[0.6875rem]
-                  rounded-full
-                  pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]
-                  text-base font-freightNeoMedium text-white
-                  2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                  overflow-hidden z-100 mx-auto md:hidden
+                relative group
+                      mt-4
+                   flex items-center justify-center mx-auto md:hidden
+                      gap-[0.6875rem]
+                      rounded-full
+                    pl-[4px] md:pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
+                      text-base font-freightNeoMedium text-white
+                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                      overflow-hidden z-100
                 "
         >
           <div className={`absolute inset-0 bg-[#e0f2ec] rounded-full`}></div>
