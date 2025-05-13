@@ -1,7 +1,7 @@
 "use client";
-import CTAButtonIcon from "@/components/Icons/Icons";
+import CTAButtonIcon, { Mute, UnMute } from "@/components/Icons/Icons";
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState } from "react";
 import backgroundImage from "../../../../public/images/backgroundImages/aboutHeroImage.webp";
 import { Link } from "react-scroll";
 
@@ -41,60 +41,63 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
  */
 
 const AboutHeroSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
   return (
-    <section className="relative w-full">
-      {/* Hero Background Section */}
-      <div
-        className={`
-        relative
-        h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh] 2xl:h-screen
-      `}
+    <section className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    {/* Background Swiper with Overlay */}
+    <div className="absolute inset-0 scale-1">
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        loop
+        playsInline
+        // onTimeUpdate={handleTimeUpdate}
+        autoPlay
+        muted={isMuted}
+        // priority
       >
-        <Image src={backgroundImage} alt="Home Hero Background" fill className="object-cover" placeholder="blur" />
-        {/* Hero Content */}
-        <div
-          className={`
-          relative
-          flex h-full justify-center
-          top-[9.8125rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[22.375rem]
-        `}
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark_1.mp4?alt=media&token=bc3a294b-a25c-4f28-b662-6f2202c0b1b9"
+          type="video/mp4"
+        />
+      </video>
+     
+      <div className="absolute bottom-3  right-0 lg:bottom-8 xl:bottom-8  lg2:right-10 w-full p-4 flex flex-row justify-end">
+        <div className="flex gap-4">
+          <div className="cursor-pointer" onClick={toggleMute}>
+            <button
+              className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
+              aria-label={isMuted ? "Unmute" : "Mute"}
+            >
+              {!isMuted ? <Mute /> : <UnMute />}
+              <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* Main Content */}
+    <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
+      <div className="flex flex-col items-center text-center text-white">
+        <h1
+          id="hero-heading"
+          className="font-freightNeoSemibold leading-relaxed md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]"
         >
-          {/* Text and CTA Container */}
-          <div
-            className={`
-            flex flex-col items-center
-            text-center text-white
-          `}
-          >
-            {/* Main Title */}
-            <h1
-              className={`
-              font-freightNeoSemibold
-              leading-none
-              text-[2rem]  sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
-            `}
-            >
-              {ABOUT_HERO_CONFIG.titles.main}
-            </h1>
-
-            {/* Sub Title */}
-            <h1
-              className={`
-              font-freightNeoSemibold
-              leading-none
-              pt-0 
-             text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
-            `}
-            >
-              {ABOUT_HERO_CONFIG.titles.sub}
-            </h1>
-
-            {/* CTA Button */}
-            <Link to="storysection" smooth={true} duration={700}>
-              <div className="relative group cursor-pointer">
-                <button
-                  type="button"
-                  className="
+          Building Wholesome <br />
+          Living Spaces
+        </h1>
+        <Link to="storysection" smooth={true} duration={700}>
+            <div className="relative group cursor-pointer">
+              <button
+                type="button"
+                className="
       relative group
       mt-8
       flex items-center justify-center
@@ -105,36 +108,35 @@ const AboutHeroSection: React.FC = () => {
       2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
       overflow-hidden
     "
-                >
-                  {/* Default background */}
-                  <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
+              >
+                {/* Default background */}
+                <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
 
-                  {/* Hover effect starts from the icon */}
-                  <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
-                    {/* Expanding hover background from icon */}
-                    <div
-                      className="
+                {/* Hover effect starts from the icon */}
+                <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
+                  {/* Expanding hover background from icon */}
+                  <div
+                    className="
           absolute w-0 h-0 bg-[#614130] rounded-full
           group-hover:w-[30rem] group-hover:h-[30rem]
-          transition-all duration-[600ms] ease-out
+          transition-all duration-[1000ms] ease-out
         "
-                    ></div>
+                  ></div>
 
-                    {/* Icon stays above the expanding background */}
-                    <div className="relative ">
-                      <CTAButtonIcon fill="#614130"/>
-                    </div>
+                  {/* Icon stays above the expanding background */}
+                  <div className="relative ">
+                    <CTAButtonIcon fill="#614130" />
                   </div>
+                </div>
 
-                  {/* Button text (z-20 to keep it visible above the hover effect) */}
-                  <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
-                </button>
-              </div>
-            </Link>
-          </div>
-        </div>
+                {/* Button text (z-20 to keep it visible above the hover effect) */}
+                <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
+              </button>
+            </div>
+          </Link>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
