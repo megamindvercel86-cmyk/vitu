@@ -369,7 +369,7 @@ const LocationAdvantage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[90] left-24 z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
       <div className="md:hidden  absolute w-36 !rounded-[300px] bottom-[10] left-32 z-20">
