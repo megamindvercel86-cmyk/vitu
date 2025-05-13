@@ -162,7 +162,7 @@ export default function VisionForTheFuture() {
               aria-label="See What's Next"
             >
               See What&apos;s Next
-              <CTAButtonIcon direction="right" />
+              <CTAButtonIcon fill="#4F3737" direction="right" />
             </button>
           </Link>
           <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">

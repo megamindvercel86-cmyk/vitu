@@ -122,7 +122,7 @@ const AboutHeroSection: React.FC = () => {
 
                     {/* Icon stays above the expanding background */}
                     <div className="relative ">
-                      <CTAButtonIcon />
+                      <CTAButtonIcon fill="#614130"/>
                     </div>
                   </div>
 

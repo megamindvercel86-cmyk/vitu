@@ -234,6 +234,7 @@ export default function ProjectCarousel(): React.ReactElement {
             spaceBetween={24}
             slidesPerView={3}
             loop={true}
+            modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="!w-full h-[100vh] !pt-0 !pb-0"
             onSwiper={setSwiperInstance}
@@ -285,6 +286,7 @@ export default function ProjectCarousel(): React.ReactElement {
             direction="vertical"
             spaceBetween={24}
             slidesPerView={3}
+            loop={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="!w-full !h-[50vh] !lg:h-[100vh] !pt-0 !pb-0"
             onSwiper={setSwiperInstance}

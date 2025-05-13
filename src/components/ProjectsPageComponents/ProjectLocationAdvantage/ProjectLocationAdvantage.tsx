@@ -3,15 +3,14 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
-import styles from "./LocationAdvantage.module.css"; // Verify this file exists
-import { cn } from "@/lib/utils"; // Verify this utility exists
+import styles from "./LocationAdvantage.module.css";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IconX } from "@tabler/icons-react";
-// Adjust the import path for CTAButtonIcon based on your project structure
-import CTAButtonIcon from "@/components/Icons/Icons"; // Verify this component exists
+import CTAButtonIcon from "@/components/Icons/Icons";
 
 interface LocationAdvantageProps {
   title: string;
@@ -71,7 +70,10 @@ const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProp
         <button
           key={index}
           onClick={() => onDotClick?.(index)}
-          className={cn("transition-all duration-300", active === index ? `w-6 bg-white rounded-xl h-2` : "w-2 h-2 bg-gray-300 rounded-full")}
+          className={cn(
+            "transition-all duration-300",
+            active === index ? `w-6 bg-white rounded-xl h-2` : "w-2 h-2 bg-gray-300 rounded-full"
+          )}
           aria-label={`Go to slide ${index + 1}`}
         />
       ))}
@@ -109,12 +111,11 @@ const CardContent = ({
       <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{description.middleDescription}</p>
       <h4 className="text-[28px] leading-[1.2] font-FreightNeoProNormal text-[#040707CC] mt-10">{description.bottomTitle}</h4>
       <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{description.bottomDescription}</p>
-      
       <ul className="mt-6 space-y-6" aria-label="List of key points">
         {description.bottomPoints.map((point, index) => (
           <li key={index} className="flex items-start">
-        <span className="text-[#656666] mr-2 font-FreightNeoProNormal text-start text-[18px]" aria-hidden="true">•</span>
-        <p className="text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{point}</p>
+            <span className="text-[#656666] mr-2 font-FreightNeoProNormal text-start text-[18px]" aria-hidden="true">•</span>
+            <p className="text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{point}</p>
           </li>
         ))}
       </ul>
@@ -171,10 +172,9 @@ const LocationAdvantage = () => {
           ],
           middleBottomDescription:
             "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-            bottomTitle: "The Core Principles of Sustainable Building",
-            bottomDescription:"At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
-          },
-        
+          bottomTitle: "The Core Principles of Sustainable Building",
+          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+        },
       ],
     },
     {
@@ -200,8 +200,8 @@ const LocationAdvantage = () => {
           middleDescription:
             "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
           bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription:"At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
-            bottomPoints: [
+          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+          bottomPoints: [
             "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
             "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
             "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
@@ -242,9 +242,9 @@ const LocationAdvantage = () => {
           ],
           middleBottomDescription:
             "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-            bottomTitle: "The Core Principles of Sustainable Building",
-            bottomDescription:"At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
-          },
+          bottomTitle: "The Core Principles of Sustainable Building",
+          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+        },
       ],
     },
     {
@@ -277,9 +277,9 @@ const LocationAdvantage = () => {
           ],
           middleBottomDescription:
             "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-            bottomTitle: "The Core Principles of Sustainable Building",
-            bottomDescription:"At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
-          },
+          bottomTitle: "The Core Principles of Sustainable Building",
+          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+        },
       ],
     },
     {
@@ -312,16 +312,17 @@ const LocationAdvantage = () => {
           ],
           middleBottomDescription:
             "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-            bottomTitle: "The Core Principles of Sustainable Building",
-            bottomDescription:"At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
-          },
+          bottomTitle: "The Core Principles of Sustainable Building",
+          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+        },
       ],
     },
   ];
 
   const handleDotClick = (index: number) => {
     if (swiperInstance) {
-      swiperInstance.slideTo(index);
+      swiperInstance.slideToLoop(index); // Use slideToLoop for looped Swiper
+      setActiveIndex(index); // Update activeIndex manually
     }
   };
 
@@ -339,7 +340,7 @@ const LocationAdvantage = () => {
     setActiveIndex(nextIndex);
     setCurrentIndex(0);
     if (swiperInstance) {
-      swiperInstance.slideTo(nextIndex);
+      swiperInstance.slideToLoop(nextIndex);
     }
   };
 
@@ -351,7 +352,7 @@ const LocationAdvantage = () => {
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
         loop={true}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Use realIndex for looped Swiper
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
@@ -419,13 +420,28 @@ const LocationAdvantage = () => {
         ))}
       </Swiper>
       <div className="absolute w-36 !rounded-[300px] bottom-[90] left-32 z-20">
-        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
+        <CarouselDots
+          total={data.length}
+          active={activeIndex}
+          onDotClick={handleDotClick}
+          className={data[activeIndex]?.carousalClassName}
+        />
       </div>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
-            <motion.div variants={backdropVariants} className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
+          <motion.div
+            className="fixed inset-0 h-screen z-50 overflow-auto"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            data-lenis-prevent
+          >
+            <motion.div
+              variants={backdropVariants}
+              className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
+              onClick={closeCard}
+            />
             <motion.div
               variants={cardVariants}
               ref={containerRef}
@@ -444,16 +460,20 @@ const LocationAdvantage = () => {
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
               <motion.div variants={contentVariants} className="p-4 lg:px-20 mt-10">
-                <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-FreightNeoProNormal text-[#8E8E93] border-t-gray-200">NextUp</h1>
-                <div className="flex  justify-between ">
-                <button
-                  onClick={goToNextCard}
-                  className="text-[#1D1D1F] flex font-FreightNeoProBold justify-between items-center cursor-pointer font-bold text-[18px] "
-                >
-                  {data[(activeIndex + 1) % data.length].description}
-                </button>
-                <MdKeyboardArrowRight onClick={goToNextCard} className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]" />
-
+                <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-FreightNeoProNormal text-[#8E8E93] border-t-gray-200">
+                  NextUp
+                </h1>
+                <div className="flex justify-between">
+                  <button
+                    onClick={goToNextCard}
+                    className="text-[#1D1D1F] flex font-FreightNeoProBold justify-between items-center cursor-pointer font-bold text-[18px]"
+                  >
+                    {data[(activeIndex + 1) % data.length].description}
+                  </button>
+                  <MdKeyboardArrowRight
+                    onClick={goToNextCard}
+                    className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+                  />
                 </div>
               </motion.div>
             </motion.div>

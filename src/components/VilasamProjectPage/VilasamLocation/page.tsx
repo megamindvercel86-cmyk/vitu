@@ -194,7 +194,7 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
-          image: "/images/vilasamPageImages/locationAdvantageImages/6.webp",
+          image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
           title: "Invest in Land, Invest in Legacy",
           description:
             "VITU Vilasam is more than a place to live—it’s a smart decision that appreciates with time. Located just behind NITK, Surathkal & minutes from the coastline, this address blends lifestyle with long-term potential.",
