@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CTAButtonIcon from "@/components/Icons/Icons";
+import CTAButtonIcon, { Mute, UnMute } from "@/components/Icons/Icons";
 import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
@@ -65,10 +65,27 @@ const ProjectHeroSection: React.FC = () => {
       tl.to(layer, { y: movement, ease: "none" }, 0); // Animate y position
     });
   }, []);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.muted = false;
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+        audioRef.current.muted = true;
+      }
+      setIsMuted(!isMuted);
+    }
+  };
 
   return (
     <section id="hero" className=" w-full h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
       {/* Parallax Layers */}
+      <audio ref={audioRef} src="/Beach.mp3" loop  />
+
       <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
         <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
       </div>
@@ -174,6 +191,19 @@ const ProjectHeroSection: React.FC = () => {
       >
         <ProjectCarousel />
       </div>
+      <div className="absolute top-1/3  lg2:right-10 w-full p-4 flex flex-row justify-end">
+          <div className="flex gap-4">
+            <div className="cursor-pointer" onClick={toggleMute}>
+              <button
+                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {!isMuted ? <Mute /> : <UnMute />}
+                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
+              </button>
+            </div>
+          </div>
+        </div>
     </section>
   );
 };
