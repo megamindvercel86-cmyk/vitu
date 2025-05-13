@@ -295,7 +295,7 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 30300, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
@@ -337,12 +337,12 @@ const LocationAdvantage = () => {
                     type="button"
                     onClick={() => openCard(0)}
                     className="
-                      relative group
+                       relative group
                       mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
                       rounded-full
-                      pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]
+                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
                       text-base font-freightNeoMedium text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                       overflow-hidden z-100

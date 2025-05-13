@@ -279,7 +279,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
 
   return (
     <div className="h-auto flex items-center justify-center">
-      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
+      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} cursorBackground="bg-[#0C3E49]" />}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[200vh] md:h-[150vh]" : "h-[100vh]"}`}

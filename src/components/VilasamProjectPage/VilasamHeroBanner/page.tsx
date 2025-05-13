@@ -61,14 +61,14 @@ const VilasamHeroSection = () => {
                 aria-label={isMuted ? "Unmute" : "Mute"}
               >
                 {!isMuted ? <Mute /> : <UnMute />}
-                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
+                <span className="ml-2 hidden text-sm lg:text-xl lg:block">Site contains Audio Elements</span>
               </button>
             </div>
           </div>
         </div>
       </div>
       <div
-        className={`absolute flex bottom-20   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 px-8 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
+        className={`absolute flex bottom-20   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 pl-8 pr-3 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
       >
         <div className="font-medium text-[#0C3E49] text-sm lg2:text-[32px] font-sourceSans3">Bookings Open Soon</div>
         <Link href="/project-enquire">

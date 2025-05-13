@@ -481,10 +481,8 @@ const CurrentProject: React.FC = () => {
 
   // Debug click events
   const handleLocationClick = (location: Location) => {
-    console.log("Clicked location:", location.name);
     setSelectedLocation(location);
   };
-
 
   // ============= Render Helpers =============
   const renderStats = () => (
@@ -508,7 +506,10 @@ const CurrentProject: React.FC = () => {
                 </span>
                 <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
               </Typography>
-              <Typography variant="custom" className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
+              <Typography
+                variant="custom"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3"
+              >
                 {stat.label}
               </Typography>
             </motion.div>
@@ -521,7 +522,10 @@ const CurrentProject: React.FC = () => {
               >
                 <span className="font-CandideCondensedNormal">{stat.value}</span>
               </Typography>
-              <Typography variant="custom" className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
+              <Typography
+                variant="custom"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3"
+              >
                 {stat.label}
               </Typography>
             </motion.div>
@@ -535,7 +539,7 @@ const CurrentProject: React.FC = () => {
                       flex items-center justify-center
                       gap-[0.6875rem]
                       rounded-full
-                      pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]
+                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
                       text-base font-freightNeoMedium text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                       overflow-hidden z-100
@@ -562,7 +566,6 @@ const CurrentProject: React.FC = () => {
 
   return (
     <section
-    
       className="flex flex-col sm:flex-col  lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
       aria-labelledby="project-title"
     >
@@ -604,7 +607,10 @@ const CurrentProject: React.FC = () => {
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
-      <figure className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[90vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative" aria-labelledby="project-title">
+      <figure
+        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[90vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
+        aria-labelledby="project-title"
+      >
         <div className="relative w-full h-full">
           <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
           <div className="absolute inset-0 z-10">

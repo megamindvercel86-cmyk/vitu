@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 interface CustomCursorProps {
   cursorVariant: string;
   cursorText: string;
+  cursorBackground?: string;
 }
 
-const CustomCursor = ({ cursorVariant, cursorText }: CustomCursorProps) => {
+const CustomCursor = ({ cursorVariant, cursorText , cursorBackground= "bg-customBrown" }: CustomCursorProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const CustomCursor = ({ cursorVariant, cursorText }: CustomCursorProps) => {
 
   return (
     <motion.div
-      className="fixed pointer-events-none flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl bg-customBrown text-white font-bold"
+      className={`fixed pointer-events-none flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl ${cursorBackground} text-white font-bold`}
       variants={{
         default: {
           opacity: 1,

@@ -259,7 +259,7 @@ export function MenuIconWhite() {
 export function PrimaryViewMoreButton() {
   return (
     <svg
-      className="md:w-[44px]  md:h-[44px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
+      className="md:w-[44px]  md:h-[44px] xl:w-[40px] xl:h-[40px] w-[26px] h-[26px]"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +278,7 @@ export function PrimaryViewMoreButton() {
 export function SecondaryViewMoreButton() {
   return (
     <svg
-      className="md:w-[44px] md:h-[44px] lg:w-[30px] lg:h-[30px] xl:w-[48px] xl:h-[48px] w-[26px] h-[26px]"
+      className="md:w-[44px] md:h-[44px] lg:w-[30px] lg:h-[30px] xl:w-[40px] xl:h-[40px] w-[26px] h-[26px]"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -491,7 +491,7 @@ export function ArrowRightIcon() {
 
 export function Mute() {
   return (
-    <svg  className="lg2:w-[48px] lg2:h-[40px] lg:w-[28px] w-[30px]" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg  className="lg2:w-[38px] lg2:h-[30px] lg:w-[28px] w-[30px]" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M9.2875 14.2671C9.00286 14.4949 8.86472 14.8595 8.92698 15.2187L10.1807 22.4514L11.4345 29.6841C11.4967 30.0433 11.7495 30.3402 12.0942 30.4589L27.0793 35.6183C27.8844 35.8955 28.6918 35.2079 28.5464 34.3691L26.005 19.7083L23.4637 5.04769C23.3183 4.20877 22.3266 3.83311 21.6618 4.365L9.2875 14.2671Z"
         fill="#0C3E49"
@@ -530,7 +530,7 @@ export function Mute() {
 
 export function UnMute() {
   return (
-    <svg className="lg2:w-[48px] lg2:h-[40px] lg:w-[28px] w-[30px]" viewBox="0 0 45 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="lg2:w-[38px] lg2:h-[30px] lg:w-[28px] w-[30px]" viewBox="0 0 45 39" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M9.29689 13.267C9.01226 13.4947 8.87412 13.8594 8.93638 14.2186L10.1901 21.4513L11.4439 28.684C11.5061 29.0432 11.7589 29.3401 12.1036 29.4588L27.0887 34.6182C27.8938 34.8954 28.7012 34.2078 28.5558 33.3689L26.0144 18.7082L23.4731 4.04758C23.3277 3.20867 22.336 2.83301 21.6712 3.3649L9.29689 13.267Z"
         fill="#0C3E49"

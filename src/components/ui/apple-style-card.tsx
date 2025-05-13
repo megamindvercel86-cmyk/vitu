@@ -197,7 +197,7 @@ export default function AppleStyleCard({
           </Typography>
         </div>
         <div
-          className={`absolute bottom-4 md:right-8 lg2:right-8 lg:right-4 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-[1]`}
+          className={`absolute bottom-3 right-3 ${position === "right" ? "right-3" : "left-3"} position z-[1]`}
         >
           {isViewMore === true &&
             (isViewMoreType === "primary" ? (

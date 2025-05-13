@@ -48,7 +48,7 @@ export default function PropertyCarousel() {
     <div className="relative">
     <Swiper
       spaceBetween={20}
-      slidesPerView={1}
+      slidesPerView={1.1}
       loop={true}
       // modules={[Autoplay]}
       autoplay={{ delay: 2000, disableOnInteraction: false }}
@@ -56,8 +56,8 @@ export default function PropertyCarousel() {
       onSwiper={(swiper) => (swiperRef.current = swiper)}
     >
         {plots.map((property, index) => (
-          <SwiperSlide className="!h-[80vh]" key={index}>
-            <div className="max-w-sm mx-auto h-[76vh]  rounded-2xl overflow-hidden  bg-white">
+          <SwiperSlide  className="!h-[80vh]" key={index}>
+            <div className="max-w-sm mx-auto h-[78vh]  rounded-2xl overflow-hidden  bg-white">
               <div className="relative w-full h-64">
                 <Image
                   src={property.src}

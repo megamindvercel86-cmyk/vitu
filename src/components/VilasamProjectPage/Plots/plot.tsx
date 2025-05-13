@@ -41,7 +41,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
             </div>
             <div>
               <Link href="project-enquire">
-                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] text-white mt-4 ">Get the Best Quote</button>
+                <button className="px-5 border py-2 rounded-3xl font-geistSerif bg-[#0C3E49] font-semibold text-white mt-4 ">Get the Best Quote</button>
               </Link>
             </div>
           </div>
