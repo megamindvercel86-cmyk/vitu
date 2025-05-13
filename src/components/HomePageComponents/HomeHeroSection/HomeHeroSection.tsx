@@ -1,35 +1,49 @@
 "use client";
 
 import { Mute, UnMute } from "@/components/Icons/Icons";
-import Typography from "@/components/Typography/Typography";
-import Link from "next/link";
-import { useRef, useState } from "react";
-
-// Update hero config with video
-const HERO_CONFIG = {
-  titles: {
-    main: "Building Wholesome",
-    sub: "Living Spaces",
-  },
-  description: "We create thoughtfully designed spaces that blend modern aesthetics with lasting quality in Mangalore.",
-  tagline: "Where Modern Design Meets Enduring Quality",
-  videoUrl:
-    "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu%20Web.mp4?alt=media&token=47b69d83-cce9-4cb7-93ea-6794c0fc4318",
-  thumbnail: "/images/backgroundImages/homePageBanner.png", // Fallback thumbnail
-};
+import { useRef, useState, useEffect } from "react";
 
 const VilasamHeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
-    }
-  };
+  
+    const toggleMute = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = !videoRef.current.muted;
+        setIsMuted(!isMuted);
+      }
+    };
+  const [isFixed, setIsFixed] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        // Change to absolute when the section is about to leave the viewport
+        setIsFixed(rect.bottom > windowHeight);
+      }
+    };
+
+    // Add throttling to improve performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
 
   return (
-    <section className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video
@@ -37,10 +51,8 @@ const VilasamHeroSection = () => {
           className="w-full h-full object-cover hidden md:block"
           loop
           playsInline
-          // onTimeUpdate={handleTimeUpdate}
           autoPlay
           muted={isMuted}
-          // priority
         >
           <source
             src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu%20Web.mp4?alt=media&token=47b69d83-cce9-4cb7-93ea-6794c0fc4318"
@@ -52,21 +64,19 @@ const VilasamHeroSection = () => {
           className="w-full h-full object-cover md:hidden block"
           loop
           playsInline
-          // onTimeUpdate={handleTimeUpdate}
           autoPlay
           muted={isMuted}
-          // priority
         >
           <source
             src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu%20Web.mp4?alt=media&token=47b69d83-cce9-4cb7-93ea-6794c0fc4318"
             type="video/mp4"
           />
         </video>
-        <div className="absolute bottom-3  right-0 lg:bottom-20 xl:bottom-80  lg2:right-10 w-full p-4 flex flex-row justify-end">
+        <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-3 right-0 lg:bottom-2  lg2:right-20 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <button
-                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
+                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center transition-all duration-300`}
                 aria-label={isMuted ? "Unmute" : "Mute"}
               >
                 {!isMuted ? <Mute /> : <UnMute />}

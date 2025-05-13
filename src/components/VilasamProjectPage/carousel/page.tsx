@@ -39,7 +39,7 @@ export default function VilasamCarousel(): React.ReactElement {
       </div>
       <Link href="/general-enquire">
         <div className="flex justify-center mt-16 md-2">
-          <button className="px-8 py-3 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full lg2:text-2xl font-geistSerif transition-colors">
+          <button className="px-8 py-3 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full lg2:text-2xl font-sourceSans3 transition-colors">
             Contact Us for a Visit
           </button>
         </div>

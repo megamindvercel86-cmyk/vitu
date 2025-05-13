@@ -558,7 +558,7 @@ const CurrentProject: React.FC = () => {
               <CTAButtonIcon fill="#0C3E49" direction="right" />
             </div>
           </div>
-          <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 `}>More about our sustainability centric approach </span>
+          <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach </span>
         </button>
       </div>
     </motion.div>
@@ -693,7 +693,7 @@ const CurrentProject: React.FC = () => {
                 <CTAButtonIcon fill="#0C3E49" direction="right" />
               </div>
             </div>
-            <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 `}>More about our sustainability centric approach </span>
+            <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach </span>
           </button>
         </div>
       </motion.div>

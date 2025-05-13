@@ -1,8 +1,6 @@
 "use client";
 import CTAButtonIcon, { Mute, UnMute } from "@/components/Icons/Icons";
-import Image from "next/image";
-import React, { useRef, useState } from "react";
-import backgroundImage from "../../../../public/images/backgroundImages/aboutHeroImage.webp";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
 
 // ============= Types =============
@@ -49,8 +47,36 @@ const AboutHeroSection: React.FC = () => {
       setIsMuted(!isMuted);
     }
   };
+  const [isFixed, setIsFixed] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        // Change to absolute when the section is about to leave the viewport
+        setIsFixed(rect.bottom > windowHeight);
+      }
+    };
+
+    // Add throttling to improve performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
   return (
-    <section className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
     {/* Background Swiper with Overlay */}
     <div className="absolute inset-0 scale-1">
       <video
@@ -69,19 +95,19 @@ const AboutHeroSection: React.FC = () => {
         />
       </video>
      
-      <div className="absolute bottom-3  right-0 lg:bottom-8 xl:bottom-8  lg2:right-10 w-full p-4 flex flex-row justify-end">
-        <div className="flex gap-4">
-          <div className="cursor-pointer" onClick={toggleMute}>
-            <button
-              className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
-              aria-label={isMuted ? "Unmute" : "Mute"}
-            >
-              {!isMuted ? <Mute /> : <UnMute />}
-              <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
-            </button>
+      <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-3 right-0 lg:bottom-2  lg2:right-20 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
+          <div className="flex gap-4">
+            <div className="cursor-pointer" onClick={toggleMute}>
+              <button
+                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center transition-all duration-300`}
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {!isMuted ? <Mute /> : <UnMute />}
+                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
     </div>
     {/* Main Content */}
     <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">

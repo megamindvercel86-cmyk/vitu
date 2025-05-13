@@ -320,7 +320,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             </motion.h2>
 
             <motion.button
-              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-geistSerif transition-colors mt-6"
+              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-sourceSans3 transition-colors mt-6"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
