@@ -405,7 +405,7 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-      <div className="md:hidden  absolute w-36 !rounded-[300px] bottom-10 left-1/2 z-20">
+      <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
       </div>
       <AnimatePresence>
