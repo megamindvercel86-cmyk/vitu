@@ -9,6 +9,7 @@ import ElevatesLiving from "@/components/VilasamProjectPage/VilasamDetails/page"
 import VilasamExploreProjects from "@/components/VilasamProjectPage/VilasamExploreProject/page";
 import VilasamHeroSection from "@/components/VilasamProjectPage/VilasamHeroBanner/page";
 import LocationAdvantage from "@/components/VilasamProjectPage/VilasamLocation/page";
+import PlotConnection from "@/components/VilasamProjectPage/VilasamPlotConnection/PlotConnection";
 
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
@@ -67,6 +68,9 @@ export default function ProjectPage({}: ProjectPageProps) {
       </section>
       <section className="bg-[#FAFFFD]">
         <LyfeStyle />
+      </section>
+      <section className="bg-[#FAFFFD]">
+        <PlotConnection/>
       </section>
       <section id="sustainability" className="bg-[#FAFFFD]">
         <VilasamExploreProjects />
