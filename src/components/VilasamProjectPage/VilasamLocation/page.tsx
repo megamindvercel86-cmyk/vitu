@@ -111,7 +111,7 @@ const CardContent = ({
       />
     </div>
     <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-      <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-lg font-geistSerif text-[#0C3E49]">{description.title}</h2>
+      <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{description.title}</h2>
       <h3 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.subtitle}</h3>
       <p className=" text-[#040707]/60 font-sourceSans3  !text-xl">{description.description}</p>
       <h4 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleTitle}</h4>
@@ -154,8 +154,8 @@ const LocationAdvantage = () => {
   const data: LocationAdvantageProps[] = [
     {
       title: "Location Advantage",
-      description: "Shaped Around You,A Place to Live Fully",
-      text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
+      description: "Serene Living",
+      text: "Peacefully Tucked Away from the City’s Rush",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
       textClassName: "text-white",
@@ -169,19 +169,18 @@ const LocationAdvantage = () => {
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/5.webp",
-          title: "Shaped Around You, A Place to Live Fully",
+          title: "Peacefully Tucked Away from the City’s Rush",
           description:
-            "At VITU Vilasam, location isn’t just a pin on the map—it’s a lifestyle by design. Tucked behind NITK, Surathkal & moments away from the coastline, this is where the rhythm of the waves becomes part of your everyday.",
+            "Discover a life where calm is your closest neighbor. At Vilasam, every element from tree-lined avenues to open green corners is thoughtfully planned to offer a peaceful lifestyle away from the city's chaos. It's a place where mornings begin with birdsong and evenings wind down with golden skies and gentle breezes.",
           middleDescription:
-            "Wake up to the sea breeze, unwind to the sound of waves, & embrace the ease of a beachside retreat—all just steps from your doorstep. Whether it’s a morning walk along the shore or a quick drive to the city, life here is effortlessly balanced between calm & convenience.",
-          middleBottomDescription: "This is your space to live fully—rooted in nature, yet always connected.",
+            "Here, serene living isn’t just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
         },
       ],
     },
     {
       title: "Location Advantage",
-      description: "Invest in Land, Invest in Legacy",
-      text: "An address of quiet comfort & lasting promise where every day feels right, & every year adds value.",
+      description: "Investment Potential",
+      text: " A Wise Step Toward Long-Term Value",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
@@ -195,20 +194,18 @@ const LocationAdvantage = () => {
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
-          title: "Invest in Land, Invest in Legacy",
+          title: "Investment Potential",
           description:
-            "VITU Vilasam is more than a place to live—it’s a smart decision that appreciates with time. Located just behind NITK, Surathkal & minutes from the coastline, this address blends lifestyle with long-term potential.",
-          middleDescription:
-            "Proximity to major institutions, upcoming infrastructure, & natural beauty makes it a rare opportunity—one that offers both peace of mind today & financial confidence for the future.",
-          bottomDescription:
-            "Here, land isn’t just property. It’s a stable, future-ready investment that grows with you, becoming a legacy you can proudly pass on.",
+            "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
+            middleDescription:
+            "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
         },
       ],
     },
     {
       title: "Location Advantage",
-      description: "A Greener Way to Live",
-      text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
+      description: "Sustainability",
+      text: "A Greener Approach to Modern Living.",
       buttonText: "More about our Sustainability Initiatives",
       image: "/images/vilasamPageImages/locationAdvantageImages/3.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage3.webp",
@@ -224,17 +221,17 @@ const LocationAdvantage = () => {
           image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
           title: "A Greener Way to Live",
           description:
-            "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
+            "At Vilasam, sustainability isn’t an afterthought. It's part of our core philosophy. Every element of the layout has been crafted with a commitment to reducing environmental impact while enhancing the quality of life. From energy-efficient street lighting to eco-sensitive landscaping and water management systems, we’ve taken conscious steps to build a community that respects nature.",
           middleDescription:
-            "Enjoy the quiet luxury of living in harmony with nature, where rainwater harvesting, open green spaces, & mindful infrastructure make every choice a conscious one. It’s comfort without compromise—where doing good feels as natural as living well.",
-          bottomDescription: "Welcome to a community that cares. For today, & for generations to come.",
+            "Living sustainably at Vilasam doesn’t mean sacrificing comfort. Instead, it means being part of a thoughtful ecosystem where natural resources are valued and preserved. It’s a choice to live smarter, greener and more responsibly where every action today contributes to a better tomorrow for you and the generations to come.",
+        
         },
       ],
     },
     {
-      title: "Modern Infrastructure",
-      description: "Built today for the needs of tomorrow",
-      text: "Breathe easy in a sanctuary of greenery, where every stroll through the Oxygen Park is a step toward calm & clarity.",
+      title: "Location Advantage",
+      description: "Modern Infrastructure",
+      text: "Built Today for the Needs of Tomorrow ",
       buttonText: "More about the Oxygen Park",
       image: "/images/vilasamPageImages/locationAdvantageImages/4.webp",
       textClassName: "text-white",
@@ -332,7 +329,7 @@ const LocationAdvantage = () => {
                 >
                   {item.text}
                 </p>
-                <div className=" group cursor-pointer bottom-0 md:relative hidden">
+                <div className=" group cursor-pointer bottom-0 md:block relative hidden">
                   <button
                     type="button"
                     onClick={() => openCard(0)}
@@ -397,7 +394,6 @@ const LocationAdvantage = () => {
                   <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
                 </button>
               </div>
-              
             </div>
           </SwiperSlide>
         ))}

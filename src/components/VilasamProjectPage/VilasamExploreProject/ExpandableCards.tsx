@@ -34,7 +34,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
     <>
-      <hr className="border-t-gray-200 border-[1px]" />
+      <hr className="border-t-gray-200 border-[1px] mt-12" />
       <div className="lg:px-44 px-12">
         <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
         <div className="flex pb-16 justify-between ">
@@ -93,8 +93,9 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             height={45}
             className={cn("object-cover   h-[652px] w-full")}
           />
-          <div className="flex flex-col gap-flex  gap-12 py-12 ">
-            <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold  font-geistSerif px-6 lg:px-20  text-[#0C3E49]">{project.title}</h2>
+            <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 font-geistSerif px-6 lg:px-20  text-[#0C3E49]">{project.title}</h2>
+            <h3 className="text-[20px] lg:text-[28px] leading-[1.3] font-medium  font-sourceSans3 px-6 lg:px-20 pb-6  text-[#040707CC]">{project.subtitle}</h3>
+          <div className="flex flex-col gap-flex  gap-6 ">
             <Typography className="text-[#040707]/60 font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description1}</Typography>
             <Typography className="text-[#04070799] font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description2}</Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />

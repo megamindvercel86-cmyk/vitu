@@ -8,11 +8,13 @@ const LyfeStyle = () => {
       <div className="relative">
         <div className=" lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full  md:pb-16  lg:gap-14  ">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif md:pb-10 pb-4">Where Leisure Meets Lifestyle</h2>
+            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  md:pb-10 pb-4">
+              20,000 sq.ft  of Everyday Luxury
+            </h2>
             <div className=" group cursor-pointer md:relative hidden">
-        <button
-          type="button"
-          className="
+              <button
+                type="button"
+                className="
                       relative group
                       mt-4
                       flex items-center justify-center
@@ -23,29 +25,31 @@ const LyfeStyle = () => {
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                       overflow-hidden z-100
                     "
-        >
-          <div className={`absolute inset-0 bg-[#e0f2ec]  rounded-full`}></div>
-          <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
-            <div
-              className={`
+              >
+                <div className={`absolute inset-0 bg-[#e0f2ec]  rounded-full`}></div>
+                <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+                  <div
+                    className={`
                           absolute w-0 h-0   rounded-full
                           group-hover:w-[47rem] group-hover:h-[30rem]
                           transition-all duration-500 ease-out
                         `}
-            ></div>
-            <div className="relative z-20">
-              <CTAButtonIcon fill="#0C3E49" direction="right" />
+                  ></div>
+                  <div className="relative z-20">
+                    <CTAButtonIcon fill="#0C3E49" direction="right" />
+                  </div>
+                </div>
+                <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3`}>
+                  More about our sustainability centric approach{" "}
+                </span>
+              </button>
             </div>
-          </div>
-          <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach </span>
-        </button>
-      </div>
           </div>
 
           <div className="lg:w-1/2 flex justify-end">
             <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 ">
               Experience leisure and lifestyle come together at The Club. As part of your Vilasam journey, enjoy exclusive membership to the Vaikuntam
-              City Clubhouse, an elegant space designed for relaxation, connection, and recreation.
+              City Clubhouse, an elegant space designed for relaxation, connection and recreation.
             </p>
           </div>
         </div>
@@ -84,7 +88,9 @@ const LyfeStyle = () => {
               <CTAButtonIcon fill="#0C3E49" direction="right" />
             </div>
           </div>
-          <span className={`relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach</span>
+          <span className={`relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>
+            More about our sustainability centric approach
+          </span>
         </button>
       </div>
     </section>

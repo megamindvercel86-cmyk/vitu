@@ -2,7 +2,7 @@
 
 import { Mute, UnMute } from "@/components/Icons/Icons";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const VilasamHeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -13,9 +13,37 @@ const VilasamHeroSection = () => {
       setIsMuted(!isMuted);
     }
   };
+  const [isFixed, setIsFixed] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        // Change to absolute when the section is about to leave the viewport
+        setIsFixed(rect.bottom > windowHeight);
+      }
+    };
+
+    // Add throttling to improve performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
 
   return (
-    <section className="relative w-full h-[100vh] md:h-[120vh] lg:h-[150vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-[100vh] md:h-[120vh] lg:h-[150vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video
@@ -29,7 +57,7 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20(1).mp4?alt=media&token=928c29e2-5d83-48db-956b-898a0a5f3460https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance.mp4?alt=media&token=9becc670-7fbe-43b2-b99d-900dc34db0a7"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20(3).mp4?alt=media&token=508f3b6c-e030-4c31-8aa8-8d2a8a2a1835"
             type="video/mp4"
           />
         </video>
@@ -44,7 +72,7 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile_2.mp4?alt=media&token=27bb8595-8700-4384-9189-f5f117f6052d"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile%20(2).mp4?alt=media&token=603afa8c-f62d-473e-abcc-b4c20a00ceab"
             type="video/mp4"
           />
         </video>
@@ -53,15 +81,15 @@ const VilasamHeroSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[50px] md:h-[200px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
 
         <div className="absolute bottom-0 left-0 right-0 h-[50px] lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
-        <div className="absolute bottom-36  right-0 lg:bottom-20 xl:bottom-80  lg2:right-10 w-full p-4 flex flex-row justify-end">
+        <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-3 right-0 lg:bottom-20  lg2:right-2 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <button
-                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
+                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center transition-all duration-300`}
                 aria-label={isMuted ? "Unmute" : "Mute"}
               >
                 {!isMuted ? <Mute /> : <UnMute />}
-                <span className="ml-2 hidden text-sm lg:text-xl lg:block">Site contains Audio Elements</span>
+                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
               </button>
             </div>
           </div>

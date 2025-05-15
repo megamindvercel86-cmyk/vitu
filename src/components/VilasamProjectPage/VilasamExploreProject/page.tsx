@@ -26,8 +26,8 @@ interface Card {
 const CARDS_DATA: Card[] = [
   {
     id: 1,
-    url: "/images/vilasamPageImages/broucherImages/1.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/1.jpg",
+    url: "/images/vilasamPageImages/broucherImages/1.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/1.webp",
     className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
@@ -37,8 +37,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 2,
-    url: "/images/vilasamPageImages/broucherImages/2.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/2.jpg",
+    url: "/images/vilasamPageImages/broucherImages/2.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/2.webp",
     className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
@@ -48,8 +48,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 4,
-    url: "/images/vilasamPageImages/broucherImages/4.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/4.jpg",
+    url: "/images/vilasamPageImages/broucherImages/4.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/4.webp",
     className: "absolute left-[323px] rounded-[20px] z-20",
     startPosition: { y: 100 },
     isViewMore: true,
@@ -59,8 +59,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 3,
-    url: "/images/vilasamPageImages/broucherImages/3.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/3.jpg",
+    url: "/images/vilasamPageImages/broucherImages/3.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/3.webp",
     className: "absolute right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
@@ -70,8 +70,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 5,
-    url: "/images/vilasamPageImages/broucherImages/5.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/5.jpg",
+    url: "/images/vilasamPageImages/broucherImages/5.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/5.webp",
     className: "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
@@ -81,8 +81,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 30,
-    url: "/images/vilasamPageImages/broucherImages/6.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/6.jpg",
+    url: "/images/vilasamPageImages/broucherImages/6.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/6.webp",
     className: "absolute left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
@@ -92,8 +92,8 @@ const CARDS_DATA: Card[] = [
   },
   {
     id: 31,
-    url: "/images/vilasamPageImages/broucherImages/7.jpg",
-    fileUrl: "/images/vilasamPageImages/broucherImages/7.jpg",
+    url: "/images/vilasamPageImages/broucherImages/7.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/7.webp",
     className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
