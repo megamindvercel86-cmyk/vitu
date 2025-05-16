@@ -110,13 +110,13 @@ const CardContent = ({
         priority
       />
     </div>
-    <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-      <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{description.title}</h2>
-      <h3 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.subtitle}</h3>
-      <p className=" text-[#040707]/60 font-sourceSans3  !text-xl">{description.description}</p>
-      <h4 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleTitle}</h4>
-      <p className=" text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleDescription}</p>
-      <h4 className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.bottomTitle}</h4>
+    <div className="flex flex-col md:gap-4 gap-2 py-12 px-6 lg:px-20">
+      <h2 className="text-[24px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{description.title}</h2>
+      <h3 className="text-[#040707]/60 font-sourceSans3  md:!text-xl">{description.subtitle}</h3>
+      <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.description}</p>
+      <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleTitle}</h4>
+      <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleDescription}</p>
+      <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.bottomTitle}</h4>
       {/* <p className=" text-gray-600 text-base font-geistSerif lg:text-lg">{description.bottomDescription}</p> */}
 
       {/* <ul className=" space-y-6" aria-label="List of key points">
@@ -155,7 +155,7 @@ const LocationAdvantage = () => {
     {
       title: "Location Advantage",
       description: "Shaped Around You,A Place to Live Fully",
-      text: "Peacefully Tucked Away from the City’s Rush",
+      text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
       textClassName: "text-white",
@@ -169,7 +169,7 @@ const LocationAdvantage = () => {
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/5.webp",
-          title: "Peacefully Tucked Away from the City’s Rush",
+          title: "Shaped Around You,A Place to Live Fully",
           description:
             "Discover a life where calm is your closest neighbor. At Vilasam, every element from tree-lined avenues to open green corners is thoughtfully planned to offer a peaceful lifestyle away from the city's chaos. It's a place where mornings begin with birdsong and evenings wind down with golden skies and gentle breezes.",
           middleDescription:
@@ -179,8 +179,8 @@ const LocationAdvantage = () => {
     },
     {
       title: "Location Advantage",
-      description: "Investment Potential",
-      text: " A Wise Step Toward Long-Term Value",
+      description: "Invest in Land, Invest in Legacy",
+      text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
@@ -193,8 +193,8 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
-          image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
-          title: "Investment Potential",
+          image: "/images/vilasamPageImages/locationAdvantageImages/9.webp",
+          title: "Invest in Land, Invest in Legacy",
           description:
             "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
           middleDescription:
@@ -204,8 +204,8 @@ const LocationAdvantage = () => {
     },
     {
       title: "Location Advantage",
-      description: "Sustainability",
-      text: "A Greener Approach to Modern Living.",
+      description: "A Greener Way to Live",
+      text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
       buttonText: "More about our Sustainability Initiatives",
       image: "/images/vilasamPageImages/locationAdvantageImages/3.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage3.webp",
@@ -229,8 +229,8 @@ const LocationAdvantage = () => {
     },
     {
       title: "Location Advantage",
-      description: "Modern Infrastructure",
-      text: "Built Today for the Needs of Tomorrow ",
+      description: "Designed for Today, Ready for Tomorrow ",
+      text: "Smartly planned, future-ready infrastructure that makes everyday living seamless.",
       buttonText: "More about the Oxygen Park",
       image: "/images/vilasamPageImages/locationAdvantageImages/4.webp",
       textClassName: "text-white",
@@ -244,7 +244,7 @@ const LocationAdvantage = () => {
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/8.webp",
-          title: "Built today for the needs of tomorrow",
+          title: "Designed for Today, Ready for Tomorrow ",
           description:
             "Vilasam combines elegance with efficiency through modern infrastructure that anticipates future needs. From underground electrical cabling and high-quality drainage systems to well-structured roadways and smart layout planning, every detail has been considered with foresight and functionality. This meticulous planning ensures not just visual appeal, but also long-term reliability and ease of maintenance.",
           middleDescription:
@@ -291,7 +291,7 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 333000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !w-[100%] !rounded-none">
@@ -426,18 +426,18 @@ const LocationAdvantage = () => {
               </motion.div>
               <motion.div variants={contentVariants} className="">
                 <hr className="border-t-gray-200 border-[1px]" />
-                <div className="lg:px-44 px-12">
+                <div className="lg:px-44 md:px-12 px-6">
                   <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
                   <div className="flex pb-16 justify-between ">
                     <button
                       onClick={goToNextCard}
-                      className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold text-[18px] "
+                      className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold md:text-[18px]text-base"
                     >
                       {data[(activeIndex + 1) % data.length].description}
                     </button>
                     <MdKeyboardArrowRight
                       onClick={goToNextCard}
-                      className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+                      className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#2B847D33] text-[#0C3E49] rounded-full md:text-[25px]"
                     />
                   </div>
                 </div>
