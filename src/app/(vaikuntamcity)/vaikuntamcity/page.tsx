@@ -66,9 +66,9 @@ export default function ProjectPage({}: ProjectPageProps) {
     <section id="sustainability"  className="bg-[#FBFAF8] pt-36">
       <ExploreProjectsWrapper />
     </section>
-    <section id="plots"  className="bg-[#FBFAF8]">
+    {/* <section id="plots"  className="bg-[#FBFAF8]">
      <PlotWrapper/>
-    </section>
+    </section> */}
     <section className="bg-[#fbfaf8] ">
       <LegacyBuiltComponent />
     </section>
