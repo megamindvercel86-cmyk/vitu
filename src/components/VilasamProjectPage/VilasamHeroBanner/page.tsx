@@ -81,6 +81,7 @@ const VilasamHeroSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[50px] md:h-[200px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
 
         <div className="absolute bottom-0 left-0 right-0 h-[50px] lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
+
         <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-24 right-0 md:right-4 md:bottom-16 lg:bottom-20  lg2:right-2 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
