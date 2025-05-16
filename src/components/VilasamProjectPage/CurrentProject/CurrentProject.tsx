@@ -473,9 +473,7 @@ const CurrentProject: React.FC = () => {
     description: STATS_DATA,
   });
 
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
 
   const handleMouseLeave = () => {
     setSelectedLocation({

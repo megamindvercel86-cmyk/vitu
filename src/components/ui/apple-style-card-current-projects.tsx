@@ -24,8 +24,8 @@ interface CurrentProjectCardProps {
 
 interface CardContentProps {
   data: CurrentProjectCardProps;
- setCurrentIndex: (index: number) => void;
- currentIndex:number
+  setCurrentIndex: (index: number) => void;
+  currentIndex: number;
 }
 
 const backdropVariants = {
@@ -46,7 +46,7 @@ const contentVariants = {
   exit: { opacity: 0 },
 };
 
-const CardContent = ({ data, setCurrentIndex,currentIndex }: CardContentProps) => {
+const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const handleButtonClick = (index: number) => {
@@ -69,41 +69,46 @@ const CardContent = ({ data, setCurrentIndex,currentIndex }: CardContentProps) =
       <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
         <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{data.title}</h2>
         <p className="text-[#040707]/60 font-sourceSans3 !text-xl">{data.description}</p>
-        <h2 className="font-bold text-[#04070799] text-[24px]">See Our Sustainable Practices at work</h2>
+        <div className="md:m-12">
+          <h2 className="font-bold text-[#04070799] text-[24px] font-sourceSans3 pb-6">See Our Sustainable Practices at work</h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="text-start">
-            <div className="flex flex-col gap-4">
-              {[
-                { icon: <Chromotherapy />, label: "Chromotherapy Park" },
-                { icon: <Tree />, label: "Tree Cover" },
-                { icon: <Groundwater />, label: "Groundwater Recharge Pits" },
-                { icon: <RainWater />, label: "Rainwater Harvesting Tank" },
-                { icon: <Solar />, label: "Solar-powered Streetlights" },
-              ].map((item, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => handleButtonClick(index)}
-                  className={`flex lg:w-[70%] rounded-2xl py-3 px-5 text-[20px] font-sourceSans3 items-center h-16 gap-4 ${
-                    currentIndex === index ? "bg-[#0C3E491A]" : ""
-                  }`}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  animate={currentIndex === index ? { scale: 1.05 } : { scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <div className="flex-shrink-0">{item.icon}</div>
-                  <span className="truncate text-[#04070799]">{item.label}</span>
-                </motion.button>
-              ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="text-start">
+              <div className="flex flex-col gap-4">
+                {[
+                  { icon: <Chromotherapy />, label: "Chromotherapy Park" },
+                  { icon: <Tree />, label: "Tree Cover" },
+                  { icon: <Groundwater />, label: "Groundwater Recharge Pits" },
+                  { icon: <RainWater />, label: "Rainwater Harvesting Tank" },
+                  { icon: <Solar />, label: "Solar-powered Streetlights" },
+                ].map((item, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => handleButtonClick(index)}
+                    className={`flex lg:w-[70%] rounded-2xl py-3 px-5 text-[20px] font-sourceSans3 items-center h-16 gap-4 ${
+                      currentIndex === index ? "bg-[#0C3E491A]" : ""
+                    }`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    animate={currentIndex === index ? { scale: 1.05 } : { scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div className="flex-shrink-0">{item.icon}</div>
+                    <span className="truncate text-[#04070799]">{item.label}</span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-start mt-10">
+              <Image src={data.mapImage ?? "/images/placeholder.png"} alt="" width={1000} height={1000} />
             </div>
           </div>
-
-          <div className="text-start mt-10">
-            <Image src={data.mapImage ?? "/images/placeholder.png"} alt="" width={1000} height={1000}  />
-          </div>
         </div>
-        <p className="text-[#040707]/60 mt-10 font-sourceSans3 !text-xl">Enjoy the quiet luxury of living in harmony with nature, where rainwater harvesting, open green spaces, & mindful infrastructure make every choice a conscious one. It’s comfort without compromise—where doing good feels as natural as living well.</p>
+        <p className="text-[#040707]/60 mt-10 font-sourceSans3 !text-xl">
+          Enjoy the quiet luxury of living in harmony with nature, where rainwater harvesting, open green spaces, & mindful infrastructure make every
+          choice a conscious one. It’s comfort without compromise—where doing good feels as natural as living well.
+        </p>
         <p className="text-[#040707]/60 font-sourceSans3 !text-xl">Welcome to a community that cares. For today, & for generations to come.</p>
       </div>
     </div>
