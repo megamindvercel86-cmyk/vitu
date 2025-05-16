@@ -2,6 +2,8 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebase/firebaseConfig";
 
 // Animation variants
 const backdropVariants = {
@@ -30,25 +32,26 @@ interface ContactFormModalProps {
 
 const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    interestedIn: "",
+    interstedIn: "",
     whatsapp: true,
   });
   const [errors, setErrors] = useState({
     fullName: "",
     email: "",
     phone: "",
-    interestedIn: "",
+    interstedIn: "",
   });
   const [touched, setTouched] = useState({
     fullName: false,
     email: false,
     phone: false,
-    interestedIn: false,
+    interstedIn: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -68,7 +71,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
         if (!value.trim()) return "Phone number is required";
         if (!/^\+?\d{10,15}$/.test(value.replace(/\s/g, ""))) return "Invalid phone number (10-15 digits)";
         return "";
-      case "interestedIn":
+      case "interstedIn":
         if (!value.trim()) return "Please select an option";
         return "";
       default:
@@ -82,7 +85,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
       fullName: validateField("fullName", formData.fullName),
       email: validateField("email", formData.email),
       phone: validateField("phone", formData.phone),
-      interestedIn: validateField("interestedIn", formData.interestedIn),
+      interstedIn: validateField("interstedIn", formData.interstedIn),
     };
     setErrors(newErrors);
     const isValid = !Object.values(newErrors).some((error) => error !== "");
@@ -114,12 +117,15 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
   };
 
   // Handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      console.log("Form data:", formData);
-      setFormData({ fullName: "", email: "", phone: "", interestedIn: "", whatsapp: false });
-      setTouched({ fullName: false, email: false, phone: false, interestedIn: false });
-      setErrors({ fullName: "", email: "", phone: "", interestedIn: "" });
+      setIsLoading(true)
+      const collectionRef = collection(db, "projectEnquiries");
+      await addDoc(collectionRef, formData);
+      setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
+      setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
+      setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
+setIsLoading(false)
       setOpen(false);
       onClose(false);
     } else {
@@ -158,10 +164,10 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
 
   // Dropdown options
   const projectEnquiries = [
-    { value: "Buying Property", label: "Buying Property" },
-    { value: "Selling Property", label: "Selling Property" },
+    { value: "Investing in Land", label: "Investing in Land" },
+    { value: "Buying a Home", label: "Buying a Home" },
     { value: "Property Management", label: "Property Management" },
-    { value: "Real Estate Investment", label: "Real Estate Investment" },
+    { value: "Just Exploring", label: "Just Exploring" },
   ];
 
   return (
@@ -207,7 +213,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
                 <h1 className="text-center mt-7 lg:hidden font-geistSerif !leading-[1.3]  lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
-                  Your dream  home is closer  than you think!
+                  Your dream home is closer than you think!
                 </h1>
                 <p className="text-center font-geistSerif lg:text-left text-[#040707] text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4">
                   Begin your journey to a new home—fill out the form &amp; let&apos;s get started.{" "}
@@ -277,20 +283,20 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                       className="text-[#04070799] text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer"
                       onClick={() => setOpen(!open)}
                     >
-                      <span>{formData.interestedIn || "Interested In"}</span>
+                      <span>{formData.interstedIn || "Interested In"}</span>
                       <IconChevronDown className="h-5 w-5 text-[#04070799]" />
                     </div>
                     <hr className="border-black border-opacity-20" />
                     {open && (
-                      <div className="absolute w-full bg-[#F8F6F5] rounded-md">
+                      <div className="absolute w-full bg-white rounded-md">
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
                             className="px-4 py-2 text-[#04070799] text-xl font-medium hover:bg-gray-200 cursor-pointer"
                             onClick={() => {
-                              setFormData((prev) => ({ ...prev, interestedIn: option.label }));
-                              setTouched((prev) => ({ ...prev, interestedIn: true }));
-                              setErrors((prev) => ({ ...prev, interestedIn: validateField("interestedIn", option.label) }));
+                              setFormData((prev) => ({ ...prev, interstedIn: option.label }));
+                              setTouched((prev) => ({ ...prev, interstedIn: true }));
+                              setErrors((prev) => ({ ...prev, interstedIn: validateField("interstedIn", option.label) }));
                               setOpen(false);
                             }}
                           >
@@ -299,17 +305,17 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                         ))}
                       </div>
                     )}
-                    {touched.interestedIn && errors.interestedIn && <p className="text-red-500 text-sm mt-1">{errors.interestedIn}</p>}
+                    {touched.interstedIn && errors.interstedIn && <p className="text-red-500 text-sm mt-1">{errors.interstedIn}</p>}
                   </div>
                   {/* WhatsApp Checkbox and Submit Button */}
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-10 pb-12">
                     <button
                       type="button"
                       className={`lg:hidden block text-[26px] w-full py-2 bg-[#0C3E49] text-white  rounded-full font-medium ${
-                        !isFormValid ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
+                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
                       onClick={handleSubmit}
-                      disabled={!isFormValid}
+                      disabled={!isFormValid || isLoading}
                     >
                       Submit
                     </button>
@@ -336,10 +342,10 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                     <button
                       type="button"
                       className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2 bg-[#0C3E49] text-white rounded-full font-medium ${
-                        !isFormValid ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
+                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
                       onClick={handleSubmit}
-                      disabled={!isFormValid}
+                      disabled={!isFormValid || isLoading}
                     >
                       Submit
                     </button>
