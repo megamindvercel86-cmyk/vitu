@@ -479,8 +479,7 @@ const CurrentProject: React.FC = () => {
     description: STATS_DATA,
   });
 
-
-    const handleMouseLeave = () => {
+  const handleMouseLeave = () => {
     setSelectedLocation({
       id: 0,
       name: "Project Overview",
@@ -538,7 +537,6 @@ const CurrentProject: React.FC = () => {
                 className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3"
               >
                 {stat.label}
-                
               </Typography>
             </motion.div>
           ))}
@@ -595,7 +593,6 @@ const CurrentProject: React.FC = () => {
             className=" md:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
             Explore your Future Home
-          
           </h1>
         </header>
 
@@ -604,7 +601,7 @@ const CurrentProject: React.FC = () => {
             variant="custom"
             className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60"
           >
-            {PROJECT_DATA.description.suffix} 
+            {PROJECT_DATA.description.suffix}
           </Typography>
         </div>
 
@@ -707,7 +704,9 @@ const CurrentProject: React.FC = () => {
                 <CTAButtonIcon fill="#0C3E49" direction="right" />
               </div>
             </div>
-            <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach </span>
+            <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>
+              More about our sustainability centric approach{" "}
+            </span>
           </button>
         </div>
       </motion.div>

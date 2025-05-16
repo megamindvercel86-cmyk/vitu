@@ -24,12 +24,12 @@ export default function VilasamCarousel(): React.ReactElement {
       {/* Desktop Project Carousel - Right Direction */}
       <div id="carousal" className="rounded-md flex-col antialiased items-center justify-center relative overflow-hidden">
         <div className="flex flex-col md:gap-12 gap-4 pb-20 lg:pb-32 text-center">
-          <p className=" text-[#0C3E49CC] mx-auto font-sourceSans3  lg2:text-2xl lg:text-xl text-base px-4">
+          <p className=" text-[#0C3E49CC] mx-auto font-sourceSans3 md:text-xl  lg2:text-2xl lg:text-xl text-base px-4">
             Discover how our thoughtfully designed spaces offer a perfect
             <br className="hidden md:block" />
             blend of luxury, sustainability and a calming sense of belonging.
           </p>
-          <h2 className="text-xl lg:text-5xl lg2:text-6xl text-[#0C3E49] md:max-w-5xl md:mx-3 lg:mx-auto font-medium font-geistSerif ">
+          <h2 className="text-xl md:text-3xl lg:text-5xl lg2:text-6xl text-[#0C3E49] md:max-w-5xl md:mx-3 lg:mx-auto font-medium font-geistSerif ">
             Where You Arrive to Thoughtful Living and Comfort
           </h2>
         </div>

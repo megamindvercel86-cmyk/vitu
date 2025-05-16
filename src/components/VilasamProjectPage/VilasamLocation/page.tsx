@@ -154,7 +154,7 @@ const LocationAdvantage = () => {
   const data: LocationAdvantageProps[] = [
     {
       title: "Location Advantage",
-      description: "Serene Living",
+      description: "Shaped Around You,A Place to Live Fully",
       text: "Peacefully Tucked Away from the City’s Rush",
       buttonText: "More about the Location",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
@@ -292,10 +292,10 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 303300, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
+          <SwiperSlide key={index} className="!h-[100vh] !w-[100%] !rounded-none">
             <div className="relative w-full h-screen">
               <Image
                 src={item.image}
