@@ -29,7 +29,7 @@ const PROJECT_DATA = {
       " Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
-  image: "/images/homePageCurrentProjects/27.png",
+  image: "/images/currentProjectImageUpdated/27.png",
 };
 
 const STATS_DATA = [
@@ -48,7 +48,7 @@ const LOCATIONS: Location[] = [
     id: 1,
     name: "Section 1",
     position: "lg:left-[24%]  lg:top-[40%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/3.png",
+    imagePath: "/images/currentProjectImageUpdated/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -62,7 +62,7 @@ const LOCATIONS: Location[] = [
     id: 2,
     name: "Section 2",
     position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[51%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/4.png",
+    imagePath: "/images/currentProjectImageUpdated/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
       {
@@ -76,7 +76,7 @@ const LOCATIONS: Location[] = [
     id: 3,
     name: "Section 3",
     position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[62%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/5.png",
+    imagePath: "/images/currentProjectImageUpdated/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
       {
@@ -90,7 +90,7 @@ const LOCATIONS: Location[] = [
     id: 4,
     name: "Section 4",
     position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[19.5%] lg:top-[72%]  lg:w-24  lg:h-[68px]",
-    imagePath: "/images/homePageCurrentProjects/6.png",
+    imagePath: "/images/currentProjectImageUpdated/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
       {
@@ -104,7 +104,7 @@ const LOCATIONS: Location[] = [
     id: 5,
     name: "Section 5",
     position: "left-[14.5%] top-[74%] lg:left-[14.5%] lg:top-[82.5%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/7.png",
+    imagePath: "/images/currentProjectImageUpdated/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
       {
@@ -118,7 +118,7 @@ const LOCATIONS: Location[] = [
     id: 6,
     name: "Section 6",
     position: "left-[34%] top-[74%] lg:left-[34%] lg:top-[82.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/8.png",
+    imagePath: "/images/currentProjectImageUpdated/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -132,7 +132,7 @@ const LOCATIONS: Location[] = [
     id: 7,
     name: "Section 7",
     position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[72%]  lg:w-[70px]  lg:h-[68px]",
-    imagePath: "/images/homePageCurrentProjects/9.png",
+    imagePath: "/images/currentProjectImageUpdated/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -146,7 +146,7 @@ const LOCATIONS: Location[] = [
     id: 8,
     name: "Section 8",
     position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[61%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/10.png",
+    imagePath: "/images/currentProjectImageUpdated/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -160,7 +160,7 @@ const LOCATIONS: Location[] = [
     id: 9,
     name: "Section 9",
     position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[51%]   lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/homePageCurrentProjects/11.png",
+    imagePath: "/images/currentProjectImageUpdated/11.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -174,7 +174,7 @@ const LOCATIONS: Location[] = [
     id: 10,
     name: "Section 10",
     position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[36%]  lg:w-[70px]  lg:h-[97px]",
-    imagePath: "/images/homePageCurrentProjects/12.png",
+    imagePath: "/images/currentProjectImageUpdated/12.png",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
       {
@@ -188,7 +188,7 @@ const LOCATIONS: Location[] = [
     id: 11,
     name: "Section 11",
     position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[34%] lg:top-[24%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/homePageCurrentProjects/13.png",
+    imagePath: "/images/currentProjectImageUpdated/13.png",
     description: [
       { value: "West Facing Plots", label: "5.00 Cents" },
       {
@@ -202,10 +202,9 @@ const LOCATIONS: Location[] = [
     id: 12,
     name: "Section 12",
     position: "left-[88%] top-[27%] lg:left-[80%] md:top-[17%] lg:top-[13%]  lg:w-[60px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/14.png",
+    imagePath: "/images/currentProjectImageUpdated/27.png",
     description: [
       { value: "East Facing Plots", label: "6.57 Cents" },
-
       {
         value: "",
         label:
@@ -217,7 +216,7 @@ const LOCATIONS: Location[] = [
     id: 13,
     name: "Section 13",
     position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[79.5%] lg:top-[27%]  lg:w-10  lg:h-16",
-    imagePath: "/images/homePageCurrentProjects/15.png",
+    imagePath: "/images/currentProjectImageUpdated/27.png",
     description: [
       { value: "Tech Hub", label: "Co-working Spaces" },
       {
@@ -231,7 +230,7 @@ const LOCATIONS: Location[] = [
     id: 14,
     name: "Section 14",
     position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[55%]  lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/homePageCurrentProjects/16.png",
+    imagePath: "/images/currentProjectImageUpdated/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
       {
@@ -245,10 +244,9 @@ const LOCATIONS: Location[] = [
     id: 15,
     name: "Section 15",
     position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/homePageCurrentProjects/17.png",
+    imagePath: "/images/currentProjectImageUpdated/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
-
       {
         value: "",
         label:
@@ -260,10 +258,9 @@ const LOCATIONS: Location[] = [
     id: 16,
     name: "Section 16",
     position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[61.9%] lg:top-[35%] lg:w-[70px]  lg:h-[74px]",
-    imagePath: "/images/homePageCurrentProjects/18.png",
+    imagePath: "/images/currentProjectImageUpdated/18.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
-
       {
         value: "",
         label:
@@ -275,10 +272,9 @@ const LOCATIONS: Location[] = [
     id: 17,
     name: "Section 17",
     position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[62%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/homePageCurrentProjects/19.png",
+    imagePath: "/images/currentProjectImageUpdated/19.png",
     description: [
       { value: "East Facing Plots", label: "5.00 Cents" },
-
       {
         value: "",
         label:
@@ -290,10 +286,9 @@ const LOCATIONS: Location[] = [
     id: 18,
     name: "Section 18",
     position: "left-[66%] top-[25%] md:left-[67%] md:top-[15%] lg:left-[62%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
-    imagePath: "/images/homePageCurrentProjects/20.png",
+    imagePath: "/images/currentProjectImageUpdated/20.png",
     description: [
       { value: "East Facing Plots", label: "5.80 Cents" },
-
       {
         value: "",
         label:
@@ -305,10 +300,9 @@ const LOCATIONS: Location[] = [
     id: 19,
     name: "Section 19",
     position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[51%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
-    imagePath: "/images/homePageCurrentProjects/21.png",
+    imagePath: "/images/currentProjectImageUpdated/21.png",
     description: [
       { value: "East Facing Plots", label: "3.35 Cents" },
-
       {
         value: "",
         label:
@@ -320,10 +314,9 @@ const LOCATIONS: Location[] = [
     id: 20,
     name: "Section 20",
     position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[13.6%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/22.png",
+    imagePath: "/images/currentProjectImageUpdated/22.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
-
       {
         value: "",
         label:
@@ -335,7 +328,7 @@ const LOCATIONS: Location[] = [
     id: 21,
     name: "Section 21",
     position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[51%]  lg:top-[24.8%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/23.png",
+    imagePath: "/images/currentProjectImageUpdated/23.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -349,7 +342,7 @@ const LOCATIONS: Location[] = [
     id: 22,
     name: "Section 22",
     position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/homePageCurrentProjects/24.png",
+    imagePath: "/images/currentProjectImageUpdated/24.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -363,7 +356,7 @@ const LOCATIONS: Location[] = [
     id: 23,
     name: "Section 23",
     position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[80%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
-    imagePath: "/images/homePageCurrentProjects/25.png",
+    imagePath: "/images/currentProjectImageUpdated/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
       {
@@ -377,7 +370,7 @@ const LOCATIONS: Location[] = [
     id: 24,
     name: "Section 24",
     position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/homePageCurrentProjects/26.png",
+    imagePath: "/images/currentProjectImageUpdated/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
       {
@@ -391,7 +384,7 @@ const LOCATIONS: Location[] = [
     id: 25,
     name: "Section 25",
     position: "lg:left-[24.9%] lg:top-[25%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
-    imagePath: "/images/homePageCurrentProjects/28.png",
+    imagePath: "/images/currentProjectImageUpdated/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
       {
@@ -405,10 +398,9 @@ const LOCATIONS: Location[] = [
     id: 26,
     name: "Section 26",
     position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[55%]    lg:w-[70px]  lg:h-[55px]",
-    imagePath: "/images/homePageCurrentProjects/29.png",
+    imagePath: "/images/currentProjectImageUpdated/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
-
       {
         value: "",
         label:
@@ -417,6 +409,7 @@ const LOCATIONS: Location[] = [
     ],
   },
 ];
+
 // ============= Components =============
 const Counter = ({ value }: { value: number }) => {
   const [count, setCount] = useState(value - 5);
@@ -484,6 +477,17 @@ const CurrentProject: React.FC = () => {
     setSelectedLocation(location);
   };
 
+  // Reset to initial image on mouse leave
+  const handleMouseLeave = () => {
+    setSelectedLocation({
+      id: 0,
+      name: "Project Overview",
+      position: "left-[50%] top-[60%]",
+      imagePath: PROJECT_DATA.image,
+      description: STATS_DATA,
+    });
+  };
+
   // Debug state changes
   useEffect(() => {
     console.log("Selected location updated:", selectedLocation.name);
@@ -492,7 +496,7 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className="hidden lg:block  mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]"
+      className="hidden lg:block mt-[50px] lg2:mt-[90px] 2xl:mt-[400px]"
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -501,7 +505,7 @@ const CurrentProject: React.FC = () => {
     >
       {selectedLocation.description === STATS_DATA
         ? selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
+            <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
               <Typography
                 variant="custom"
                 className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
@@ -513,14 +517,14 @@ const CurrentProject: React.FC = () => {
               </Typography>
               <Typography
                 variant="custom"
-                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"}  text-[24px] text-[#503637]`}
+                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} text-[24px] text-[#503637]`}
               >
                 {stat.label}
               </Typography>
             </motion.div>
           ))
         : selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
+            <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
               <Typography
                 variant="custom"
                 className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
@@ -529,7 +533,7 @@ const CurrentProject: React.FC = () => {
               </Typography>
               <Typography
                 variant="custom"
-                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px]  text-[#503637]`}
+                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#503637]`}
               >
                 {stat.label}
               </Typography>
@@ -576,17 +580,22 @@ const CurrentProject: React.FC = () => {
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
-      <figure className="lg:flex   items-center h-[70vh] lg2:h-[90vh] justify-center w-full lg:w-1/2 relative" aria-labelledby="project-title">
+      <figure
+        className="lg:flex items-center h-[70vh] lg2:h-[90vh] justify-center w-full lg:w-1/2 relative"
+        aria-labelledby="project-title"
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="relative w-full h-full">
           <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
           <div className="absolute inset-0 z-10">
             {LOCATIONS.map((location) => (
               <button
                 key={location.id}
-                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0  bg-[#503637] ${location.position}`}
+                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0 bg-[#503637] ${location.position}`}
                 onClick={() => handleLocationClick(location)}
                 onMouseEnter={() => handleLocationClick(location)}
                 aria-label={location.name}
+                
               />
             ))}
           </div>
@@ -594,7 +603,7 @@ const CurrentProject: React.FC = () => {
       </figure>
 
       <motion.div
-        className="  lg:hidden "
+        className="lg:hidden"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -603,7 +612,7 @@ const CurrentProject: React.FC = () => {
       >
         {selectedLocation.description === STATS_DATA
           ? selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+              <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "my-10" : ""}`}>
                 <Typography
                   variant="custom"
                   className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[24px] text-[#503637]`}
@@ -619,10 +628,10 @@ const CurrentProject: React.FC = () => {
               </motion.div>
             ))
           : selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+              <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "my-10" : ""}`}>
                 <Typography
                   variant="custom"
-                  className="font-FreightNeoProNormal l text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                  className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
                 >
                   {stat.value}
                 </Typography>
@@ -638,7 +647,7 @@ const CurrentProject: React.FC = () => {
 
       <Link href="/project-enquire">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-          <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
+          <button className="flex items-center justify-center w-full h-[56  rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
             {PROJECT_DATA.cta}
           </button>
         </div>
