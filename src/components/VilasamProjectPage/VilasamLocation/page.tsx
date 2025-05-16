@@ -291,7 +291,7 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 333000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !w-[100%] !rounded-none">
