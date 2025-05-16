@@ -197,7 +197,7 @@ const LocationAdvantage = () => {
           title: "Investment Potential",
           description:
             "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
-            middleDescription:
+          middleDescription:
             "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
         },
       ],
@@ -224,7 +224,6 @@ const LocationAdvantage = () => {
             "At Vilasam, sustainability isn’t an afterthought. It's part of our core philosophy. Every element of the layout has been crafted with a commitment to reducing environmental impact while enhancing the quality of life. From energy-efficient street lighting to eco-sensitive landscaping and water management systems, we’ve taken conscious steps to build a community that respects nature.",
           middleDescription:
             "Living sustainably at Vilasam doesn’t mean sacrificing comfort. Instead, it means being part of a thoughtful ecosystem where natural resources are valued and preserved. It’s a choice to live smarter, greener and more responsibly where every action today contributes to a better tomorrow for you and the generations to come.",
-        
         },
       ],
     },

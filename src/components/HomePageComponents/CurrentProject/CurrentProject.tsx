@@ -47,7 +47,7 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[24%]  lg:top-[40%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
+    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -61,7 +61,7 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[51%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
@@ -75,7 +75,7 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[62%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
@@ -89,7 +89,7 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[19.5%] lg:top-[72%]  lg:w-24  lg:h-[68px]",
+    position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
     imagePath: "/images/currentProjectImageUpdated/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
@@ -103,7 +103,7 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[14.5%] top-[74%] lg:left-[14.5%] lg:top-[82.5%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
+    position: "left-[14.5%] top-[74%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
@@ -117,7 +117,7 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[34%] top-[74%] lg:left-[34%] lg:top-[82.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
+    position: "left-[34%] top-[74%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -131,7 +131,7 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[72%]  lg:w-[70px]  lg:h-[68px]",
+    position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
     imagePath: "/images/currentProjectImageUpdated/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -145,7 +145,7 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[61%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -159,7 +159,7 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[51%]   lg:w-[70px]  lg:h-[65px]",
+    position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/currentProjectImageUpdated/11.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -173,7 +173,7 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[36%]  lg:w-[70px]  lg:h-[97px]",
+    position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
     imagePath: "/images/currentProjectImageUpdated/12.png",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
@@ -187,7 +187,7 @@ const LOCATIONS: Location[] = [
   {
     id: 11,
     name: "Section 11",
-    position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[34%] lg:top-[24%]  lg:w-[70px]  lg:h-[78px]",
+    position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[34%] lg:top-[27%]  lg:w-[70px]  lg:h-[78px]",
     imagePath: "/images/currentProjectImageUpdated/13.png",
     description: [
       { value: "West Facing Plots", label: "5.00 Cents" },
@@ -229,7 +229,7 @@ const LOCATIONS: Location[] = [
   {
     id: 14,
     name: "Section 14",
-    position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[55%]  lg:w-[70px]  lg:h-[65px]",
+    position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/currentProjectImageUpdated/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
@@ -243,7 +243,7 @@ const LOCATIONS: Location[] = [
   {
     id: 15,
     name: "Section 15",
-    position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/currentProjectImageUpdated/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
@@ -257,7 +257,7 @@ const LOCATIONS: Location[] = [
   {
     id: 16,
     name: "Section 16",
-    position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[61.9%] lg:top-[35%] lg:w-[70px]  lg:h-[74px]",
+    position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[61.9%] lg:top-[39%] lg:w-[70px]  lg:h-[74px]",
     imagePath: "/images/currentProjectImageUpdated/18.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
@@ -271,7 +271,7 @@ const LOCATIONS: Location[] = [
   {
     id: 17,
     name: "Section 17",
-    position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[62%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[62%] lg:top-[26%]  lg:w-[70px]  lg:h-[78px]",
     imagePath: "/images/currentProjectImageUpdated/19.png",
     description: [
       { value: "East Facing Plots", label: "5.00 Cents" },
@@ -299,7 +299,7 @@ const LOCATIONS: Location[] = [
   {
     id: 19,
     name: "Section 19",
-    position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[51%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
+    position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[51%] lg:top-[7%]  lg:w-[70px]  lg:h-[54px]",
     imagePath: "/images/currentProjectImageUpdated/21.png",
     description: [
       { value: "East Facing Plots", label: "3.35 Cents" },
@@ -313,7 +313,7 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[13.6%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/22.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
@@ -327,7 +327,7 @@ const LOCATIONS: Location[] = [
   {
     id: 21,
     name: "Section 21",
-    position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[51%]  lg:top-[24.8%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[51%]  lg:top-[28.8%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/23.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
@@ -341,7 +341,7 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/24.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
@@ -355,7 +355,7 @@ const LOCATIONS: Location[] = [
   {
     id: 23,
     name: "Section 23",
-    position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[80%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
+    position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
     imagePath: "/images/currentProjectImageUpdated/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
@@ -369,7 +369,7 @@ const LOCATIONS: Location[] = [
   {
     id: 24,
     name: "Section 24",
-    position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[45.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/currentProjectImageUpdated/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
@@ -383,7 +383,7 @@ const LOCATIONS: Location[] = [
   {
     id: 25,
     name: "Section 25",
-    position: "lg:left-[24.9%] lg:top-[25%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
+    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
     imagePath: "/images/currentProjectImageUpdated/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
@@ -397,7 +397,7 @@ const LOCATIONS: Location[] = [
   {
     id: 26,
     name: "Section 26",
-    position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[55%]    lg:w-[70px]  lg:h-[55px]",
+    position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
     imagePath: "/images/currentProjectImageUpdated/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
@@ -555,7 +555,7 @@ const CurrentProject: React.FC = () => {
               id="project-title"
               className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
             >
-              {PROJECT_DATA.title}
+              {PROJECT_DATA.title} {selectedLocation.id}
             </h1>
           </header>
 
