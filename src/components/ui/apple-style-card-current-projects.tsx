@@ -223,7 +223,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
                   </button>
                   <MdKeyboardArrowRight
                     onClick={goToNextCard}
-                    className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+                    className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#2B847D33] text-[#0C3E49] rounded-full md:text-[25px]"
                   />
                 </div>
               </div>

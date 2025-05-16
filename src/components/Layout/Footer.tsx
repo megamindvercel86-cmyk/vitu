@@ -208,11 +208,12 @@ const Footer: FC = () => {
             <ul className="space-y-4 text-gray-300">
               <FooterContactItem
                 icon={<Share />}
+                name="Location"
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
-              <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              <FooterContactItem icon={<Phone />} name="Phone" text="+91 89046 88886" link="tel:+91 89046 88886" />
+              <FooterContactItem icon={<Mail />} name="Mail" text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
               <li className="flex gap-2 justify-center md:justify-start">
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
@@ -325,22 +326,34 @@ const FooterSection: FC<{
  * FooterContactItem Component
  * - Renders contact details with icons
  */
-const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> = ({ icon, text, link }) => {
+const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name:string }> = ({ icon, text, link,name }) => {
   // Check if the text contains the phone number or pincode and apply the custom font
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
+    <>
     <li
-      className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
+      className={`flex lg:hidden md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
     >
-      {icon}
+     
+      <span className="flex items-center lg:hidden gap-3">{icon}<span className="lg:hidden text-[14px] font-freightNeoSemibold ">{name}</span></span>
       <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
         {/* Apply the custom font for phone number and pincode */}
         {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
       </Link>
     </li>
+      <li
+      className={`lg:flex hidden  md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
+    >
+     {icon}
+      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+        {/* Apply the custom font for phone number and pincode */}
+        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
+      </Link>
+    </li>
+    </>
   );
 };
 
