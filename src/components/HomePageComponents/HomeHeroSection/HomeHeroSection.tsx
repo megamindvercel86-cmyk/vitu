@@ -72,7 +72,7 @@ const VilasamHeroSection = () => {
             type="video/mp4"
           />
         </video>
-        <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-3 right-0 lg:bottom-2  lg2:right-20 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
+        <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-3 right-0 lg:bottom-2  lg2:right-20 w-full p-4 flex flex-row justify-end z-[1] transition-all duration-300`}>
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <button

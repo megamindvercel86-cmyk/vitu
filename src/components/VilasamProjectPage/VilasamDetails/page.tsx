@@ -59,8 +59,8 @@ const ElevatesLiving: React.FC = () => {
               <div className={`absolute z-10 font-sourceSans3 text-xs sm:text-sm md:text-base px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-4 backdrop-blur-md border border-white/30 text-white rounded-lg shadow-xl w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] ${
                 point.id === 1 || point.id === 5 
                   ? 'bottom-full mb-1 sm:mb-2 left-1/2 -translate-x-1/2' 
-                  : point.id === 2 || point.id === 4
-                    ? 'right-0 top-0 ml-1 sm:ml-2' 
+                  : point.id === 2 
+                    ? 'right-0 top-0 ml-1 sm:ml-2' : point.id===4 ? `xl:right-0 xl:top-0  left-[-50] top-[-140] lg:top-[-170] ml-1 sm:ml-2`
                     : 'left-0 top-1/2 -translate-y-1/2 ml-1 sm:ml-2'
               }`}>
                 <div className="font-semibold mb-0.5 sm:mb-1">{point.detail.title}</div>

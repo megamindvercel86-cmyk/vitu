@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { cn } from "@/lib/utils";
+import './projectCarousal.css';
 
 import "swiper/css";
 
@@ -282,7 +283,7 @@ export default function ProjectCarousel(): React.ReactElement {
 
         <div className="col-span-12 lg:hidden lg:col-span-5 relative">
           <Swiper
-            modules={[Autoplay]}
+            // modules={[Autoplay]}
             direction="vertical"
             spaceBetween={24}
             slidesPerView={3}
@@ -318,10 +319,10 @@ export default function ProjectCarousel(): React.ReactElement {
           </Swiper>
 
           {/* Gradient at bottom */}
-          <div className="pointer-events-none absolute rounded-sm bottom-0 left-0 w-[80%] h-[8%] bg-gradient-to-t from-white to-transparent z-10" />
+          <div className="pointer-events-none absolute rounded-sm bottom-0 right-0 w-[80%] h-[8%] bg-gradient-to-t from-white to-transparent z-10" />
 
           {/* Carousel Dots */}
-          <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[450px] rotate-90">
+          <div className="absolute bottom-48 left-[40px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[450px] rotate-90">
             <CarouselDots
               total={desktopDataRight.length}
               active={activeIndex}

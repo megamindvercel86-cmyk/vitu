@@ -42,12 +42,11 @@ const STATS_DATA = [
     label: "Parks & Open Spaces",
   },
 ];
-
 const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
+    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[48%]  lg:w-[65px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -61,7 +60,7 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[22%] top-[54%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
@@ -75,7 +74,7 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[21%] top-[63%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
@@ -89,7 +88,7 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
+    position: "left-[19.5%] top-[71%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
     imagePath: "/images/currentProjectImageUpdated/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
@@ -103,7 +102,7 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[14.5%] top-[74%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
+    position: "left-[14.5%] top-[77%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
@@ -117,7 +116,7 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[34%] top-[74%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
+    position: "left-[34%] top-[77%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -131,7 +130,7 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
+    position: "left-[34%] top-[71%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
     imagePath: "/images/currentProjectImageUpdated/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -145,7 +144,7 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[34%] top-[63%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -159,7 +158,7 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
+    position: "left-[33.9%] top-[55%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/currentProjectImageUpdated/11.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -173,7 +172,7 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
+    position: "left-[34%] top-[45%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
     imagePath: "/images/currentProjectImageUpdated/12.png",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
@@ -229,7 +228,7 @@ const LOCATIONS: Location[] = [
   {
     id: 14,
     name: "Section 14",
-    position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
+    position: "left-[66%] top-[58%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/currentProjectImageUpdated/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
@@ -243,7 +242,7 @@ const LOCATIONS: Location[] = [
   {
     id: 15,
     name: "Section 15",
-    position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[67%] top-[51%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/currentProjectImageUpdated/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
@@ -313,7 +312,7 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[55%] top-[29%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/22.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
@@ -341,7 +340,7 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[53%] top-[44%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/currentProjectImageUpdated/24.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
@@ -355,7 +354,7 @@ const LOCATIONS: Location[] = [
   {
     id: 23,
     name: "Section 23",
-    position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
+    position: "left-[55%] top-[77%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
     imagePath: "/images/currentProjectImageUpdated/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
@@ -369,7 +368,7 @@ const LOCATIONS: Location[] = [
   {
     id: 24,
     name: "Section 24",
-    position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[54%] top-[51%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/currentProjectImageUpdated/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
@@ -383,7 +382,7 @@ const LOCATIONS: Location[] = [
   {
     id: 25,
     name: "Section 25",
-    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
+    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[36%]   lg:w-[60px]  lg:h-[100px]",
     imagePath: "/images/currentProjectImageUpdated/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
@@ -397,7 +396,7 @@ const LOCATIONS: Location[] = [
   {
     id: 26,
     name: "Section 26",
-    position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
+    position: "left-[54%] top-[58%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
     imagePath: "/images/currentProjectImageUpdated/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
@@ -595,7 +594,6 @@ const CurrentProject: React.FC = () => {
                 onClick={() => handleLocationClick(location)}
                 onMouseEnter={() => handleLocationClick(location)}
                 aria-label={location.name}
-                
               />
             ))}
           </div>

@@ -49,7 +49,7 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[45%]  lg:w-[65px]  lg:h-[70px]",
+    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[48%]  lg:w-[65px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -63,7 +63,7 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[22%] top-[52%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[22%] top-[54%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
@@ -77,7 +77,7 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[21%] top-[59%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[21%] top-[63%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
@@ -91,7 +91,7 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[19.5%] top-[67%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
+    position: "left-[19.5%] top-[71%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
     imagePath: "/images/vilasamCurrentProjectImages/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
@@ -105,7 +105,7 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[14.5%] top-[74%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
+    position: "left-[14.5%] top-[77%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
@@ -119,7 +119,7 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[34%] top-[74%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
+    position: "left-[34%] top-[77%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -133,7 +133,7 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[34%] top-[67%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
+    position: "left-[34%] top-[71%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
     imagePath: "/images/vilasamCurrentProjectImages/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -147,7 +147,7 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[34%] top-[59%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[34%] top-[63%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -161,7 +161,7 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[33.9%] top-[52%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
+    position: "left-[33.9%] top-[55%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/vilasamCurrentProjectImages/11.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
@@ -175,7 +175,7 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[34%] top-[43%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
+    position: "left-[34%] top-[45%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
     imagePath: "/images/vilasamCurrentProjectImages/12.png",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
@@ -231,7 +231,7 @@ const LOCATIONS: Location[] = [
   {
     id: 14,
     name: "Section 14",
-    position: "left-[66%] top-[55%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
+    position: "left-[66%] top-[58%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
     imagePath: "/images/vilasamCurrentProjectImages/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
@@ -245,7 +245,7 @@ const LOCATIONS: Location[] = [
   {
     id: 15,
     name: "Section 15",
-    position: "left-[67%] top-[48%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[67%] top-[51%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilasamCurrentProjectImages/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
@@ -315,7 +315,7 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[55%] top-[26%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[55%] top-[29%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/22.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
@@ -343,7 +343,7 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[53%] top-[42%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
+    position: "left-[53%] top-[44%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProjectImages/24.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
@@ -357,7 +357,7 @@ const LOCATIONS: Location[] = [
   {
     id: 23,
     name: "Section 23",
-    position: "left-[55%] top-[73%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
+    position: "left-[55%] top-[77%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
     imagePath: "/images/vilasamCurrentProjectImages/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
@@ -371,7 +371,7 @@ const LOCATIONS: Location[] = [
   {
     id: 24,
     name: "Section 24",
-    position: "left-[54%] top-[48%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
+    position: "left-[54%] top-[51%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilasamCurrentProjectImages/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
@@ -385,7 +385,7 @@ const LOCATIONS: Location[] = [
   {
     id: 25,
     name: "Section 25",
-    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[35%]   lg:w-[60px]  lg:h-[100px]",
+    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[36%]   lg:w-[60px]  lg:h-[100px]",
     imagePath: "/images/vilasamCurrentProjectImages/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
@@ -399,7 +399,7 @@ const LOCATIONS: Location[] = [
   {
     id: 26,
     name: "Section 26",
-    position: "left-[54%] top-[55%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
+    position: "left-[54%] top-[58%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
     imagePath: "/images/vilasamCurrentProjectImages/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
@@ -493,7 +493,7 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "lg:mt-[170px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
+      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "xl:mt-[170px] lg:mt-[100px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -589,7 +589,7 @@ const CurrentProject: React.FC = () => {
             id="project-title"
             className=" md:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
-            Explore your Future Home
+            Explore your Future Home {selectedLocation.id}
           </h1>
         </header>
 
@@ -617,6 +617,7 @@ const CurrentProject: React.FC = () => {
       <figure
         className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[90vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
         aria-labelledby="project-title"
+        onMouseLeave={handleMouseLeave}
       >
         <div className="relative w-full h-full">
           <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
@@ -627,7 +628,6 @@ const CurrentProject: React.FC = () => {
                 className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0  bg-[#0C3E49] ${location.position}`}
                 onClick={() => handleLocationClick(location)}
                 onMouseEnter={() => handleLocationClick(location)}
-                onMouseLeave={handleMouseLeave}
                 aria-label={location.name}
               />
             ))}
@@ -703,7 +703,7 @@ const CurrentProject: React.FC = () => {
               </div>
             </div>
             <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>
-              More about our sustainability centric approach{" "}
+              More about our sustainability centric approach
             </span>
           </button>
         </div>
