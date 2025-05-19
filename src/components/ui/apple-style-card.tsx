@@ -75,10 +75,7 @@ export default function AppleStyleCard({
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -99,8 +96,11 @@ export default function AppleStyleCard({
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
-     <div className="fixed inset-0 h-screen md:mx-auto mx-4 z-50 overflow-auto pb-16 scrollbar-hide" data-lenis-prevent>
-
+        <div
+          className="fixed inset-0 h-screen w-screen overflow-auto scrollbar-hide"
+          style={{ zIndex: 2147483648 }} // Higher than the WhatsApp widget
+          data-lenis-prevent
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -114,14 +114,14 @@ export default function AppleStyleCard({
             ref={containerRef}
             layoutId={`expandable-card-${id}`}
             className={cn(
-              "lg:mx-16 lg2:mx-auto lg2:max-w-5xl  bg-white dark:bg-bg-[#F8F6F5] h-auto z-[60] my-10 sm:mx-5 md:mx-auto rounded-3xl font-sans relative overflow-hidden",
-              expandedClassName,
+              "lg:mx-16 lg2:mx-auto lg2:max-w-5xl  bg-white z-[9999] dark:bg-bg-[#F8F6F5]  h-auto  md:my-10 sm:mx-5 md:mx-auto md:rounded-[32px] font-sans relative overflow-hidden",
+              expandedClassName
             )}
           >
             <div className="relative h-auto "></div>
             <div className="">
               <button
-                className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF]  z-[9999] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <IconX className="h-5 w-5 text-black" />
@@ -140,13 +140,9 @@ export default function AppleStyleCard({
       <motion.button
         layoutId={`expandable-card-${id}`}
         onClick={() => setIsOpen(isExpanded)}
-        className={cn(
-          "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative ",
-          className,
-          cardClassName,
-        )}
+        className={cn("bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative ", className, cardClassName)}
       >
-       <div className="relative z-40 p-8">
+        <div className="relative z-40 p-8">
           {/* <motion.p
             layoutId={`card-category-${id}`}
             className={cn(
@@ -160,7 +156,7 @@ export default function AppleStyleCard({
             layoutId={`card-title-${id}`}
             className={cn(
               "text-xl md:text-2xl lg:text-3xl font-freightNeoSemibold text-white text-left leading-[1.5rem] line-clamp-2",
-              titleClassName,
+              titleClassName
             )}
           >
             {title}
@@ -169,42 +165,27 @@ export default function AppleStyleCard({
             layoutId={`card-subtitle-${id}`}
             className={cn(
               "text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-full text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl",
-              titleClassName,
+              titleClassName
             )}
           >
             {subtitle}
           </motion.p>
         </div>
-        <BlurImage
-          src={imageSrc || "/placeholder.svg"}
-          alt={title || "Card image"}
-          fill
-          className="object-cover absolute  inset-0"
-        />
+        <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute  inset-0" />
         <div className="absolute bottom-4 md:left-8 left-4 ">
           <Typography
             variant="custom"
             className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl text-xl"
           >
-            {bottomTitle.split('').map((char, index) => (
-              <span 
-                key={index} 
-                className={`${/\d/.test(char) ? 'font-CandideCondensedNormal' : 'font-FreightNeoProNormal'}`}
-              >
+            {bottomTitle.split("").map((char, index) => (
+              <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
                 {char}
               </span>
             ))}
           </Typography>
         </div>
-        <div
-          className={`absolute bottom-3 right-3 ${position === "right" ? "right-3" : "left-3"} position z-[1]`}
-        >
-          {isViewMore === true &&
-            (isViewMoreType === "primary" ? (
-              <PrimaryViewMoreButton />
-            ) : (
-              <SecondaryViewMoreButton />
-            ))}
+        <div className={`absolute bottom-3 right-3 ${position === "right" ? "right-3" : "left-3"} position z-[1]`}>
+          {isViewMore === true && (isViewMoreType === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />)}
         </div>
 
         {/* <Image
@@ -220,22 +201,11 @@ export default function AppleStyleCard({
   );
 }
 
-export const BlurImage = ({
-  height,
-  width,
-  src,
-  className,
-  alt,
-  ...rest
-}: ImageProps) => {
+export const BlurImage = ({ height, width, src, className, alt, ...rest }: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
-      className={cn(
-        "transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
-        className,
-      )}
+      className={cn("transition duration-300", isLoading ? "blur-sm" : "blur-0", className)}
       onLoad={() => setLoading(false)}
       src={src}
       width={width}
@@ -247,7 +217,4 @@ export const BlurImage = ({
       {...rest}
     />
   );
-  
 };
-
-

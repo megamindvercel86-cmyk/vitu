@@ -136,7 +136,7 @@ const VilasamExploreProjects: React.FC = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <InfiniteCarousel cards={CARDS_DATA} data={exploreProjects} />
+        <InfiniteCarousel iconColor="#0C3E49" controlButtonBg="#2B847D33" cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
         {/* <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">

@@ -6,8 +6,8 @@ import Image from "next/image";
 import { plots } from "@/data/vilasamPlotData";
 import { cn } from "@/lib/utils"; // Verify this utility exists
 import { useState, useRef } from "react";
-import { Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
+import { Autoplay } from "swiper/modules";
 
 const CarouselDots = ({ total, active, onDotClick, className }: {
   total: number;
@@ -43,19 +43,22 @@ const CarouselDots = ({ total, active, onDotClick, className }: {
 export default function PropertyCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | undefined>(undefined); // Use SwiperType for ref
+  const duplicatedPlots = plots.length < 5 ? [...plots, ...plots] : plots;
 
   return (
     <div className="relative">
     <Swiper
       spaceBetween={20}
-      slidesPerView={1.1}
+      slidesPerView={1.2}
       loop={true}
-      // modules={[Autoplay]}
+      speed={1000}
+      modules={[Autoplay]}
+      centeredSlides={true}
       autoplay={{ delay: 2000, disableOnInteraction: false }}
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       onSwiper={(swiper) => (swiperRef.current = swiper)}
     >
-        {plots.map((property, index) => (
+        {duplicatedPlots.map((property, index) => (
           <SwiperSlide  className="!h-[80vh]" key={index}>
             <div className="max-w-sm mx-auto h-[78vh]  rounded-2xl overflow-hidden  bg-white">
               <div className="relative w-full h-64">
@@ -66,7 +69,7 @@ export default function PropertyCarousel() {
                   className="object-cover rounded-2xl"
                 />
               </div>
-              <div className="p-6 flex flex-col justify-between h-[350px]">
+              <div className="py-6 flex flex-col justify-between h-[350px]">
                 <div>
                 <h2 className="text-2xl font-semibold text-[#0C3E49] mb-3">
                   {property.title}
@@ -87,13 +90,14 @@ export default function PropertyCarousel() {
       </Swiper>
 
       <div className="absolute  left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
-        <CarouselDots
-          total={plots.length}
-          active={activeIndex}
-          onDotClick={(index) => {
-            swiperRef.current?.slideToLoop(index);
-          }}
-        />
+      <CarouselDots
+  total={plots.length}
+  active={activeIndex % plots.length}
+  onDotClick={(index) => {
+    swiperRef.current?.slideToLoop(index);
+  }}
+/>
+
       </div>
     </div>
   );

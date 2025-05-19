@@ -82,7 +82,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#FAFFFD] hidden md:block">
         <PlotWrapper />
       </section>
-      <section className="bg-[#FAFFFD] mx-[1rem] md:hidden">
+      <section className="bg-[#FAFFFD]  md:hidden">
         <PropertyCard />
       </section>
       <section>

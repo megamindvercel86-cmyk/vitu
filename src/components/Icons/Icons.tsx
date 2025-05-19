@@ -293,14 +293,14 @@ export function SecondaryViewMoreButton() {
   );
 }
 
-export function IconArrowNarrowLeft() {
+export function IconArrowNarrowLeft({fill="#EADFD1",color="#AE8566"}) {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_415_472)">
-        <rect width="35.99" height="35.99" rx="17.995" fill="#EADFD1" fillOpacity="0.8" />
+        <rect width="35.99" height="35.99" rx="17.995" fill={fill} fillOpacity="0.8" />
         <path
           d="M21.5561 12.0613L15.6169 17.9815L21.5193 23.9398C22.102 24.5287 22.0991 25.4774 21.5103 26.0602C21.2183 26.3501 20.8365 26.4951 20.4546 26.4951C20.0687 26.4951 19.6828 26.3471 19.3899 26.0512L12.4349 19.0312C11.853 18.4434 11.855 17.4977 12.4409 16.9139L19.4389 9.93787C20.0237 9.35304 20.9754 9.35404 21.5592 9.94087C22.1441 10.5277 22.142 11.4774 21.5561 12.0613Z"
-          fill="#AE8566"
+          fill={color}
           fillOpacity="0.56"
         />
       </g>
@@ -313,14 +313,14 @@ export function IconArrowNarrowLeft() {
   );
 }
 
-export function IconArrowNarrowRight() {
+export function IconArrowNarrowRight({fill="#EADFD1",color="#AE8566"}) {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_415_476)">
-        <rect x="-0.00976562" width="35.99" height="35.99" rx="17.995" fill="#EADFD1" />
+        <rect x="-0.00976562" width="35.99" height="35.99" rx="17.995" fill={fill} />
         <path
           d="M23.5382 16.9139C24.124 17.4977 24.126 18.4434 23.5442 19.0312L16.5892 26.0512C16.2963 26.3471 15.9104 26.4951 15.5245 26.4951C15.1426 26.4951 14.7607 26.3501 14.4688 26.0602C13.88 25.4774 13.877 24.5287 14.4598 23.9398L20.3622 17.9815L14.4229 12.0613C13.8371 11.4774 13.8351 10.5276 14.4199 9.94087C15.0038 9.35404 15.9555 9.35304 16.5403 9.93787L23.5382 16.9139Z"
-          fill="#AE8566"
+          fill={color}
           fillOpacity="0.56"
         />
       </g>
@@ -469,14 +469,14 @@ export function SecondaryYoutubeIcon() {
   );
 }
 
-export function ArrowRightIcon() {
+export function ArrowRightIcon({rextFill="#EADFD1",pathFill="#AE8566"}) {
   return (
     <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_407_517)">
-        <rect x="0.367188" y="0.558594" width="24" height="24" rx="12" fill="#EADFD1" />
+        <rect x="0.367188" y="0.558594" width="24" height="24" rx="12" fill={rextFill} />
         <path
           d="M17.0119 12.2297C17.4807 12.6762 17.4823 13.3997 17.0167 13.8493L11.4509 19.2191C11.2165 19.4454 10.9076 19.5586 10.5988 19.5586C10.2932 19.5586 9.9876 19.4477 9.75399 19.2259C9.28276 18.7801 9.28036 18.0544 9.74679 17.604L14.4703 13.0464L9.71726 8.51777C9.24844 8.07118 9.24684 7.34464 9.71486 6.89583C10.1821 6.44695 10.9437 6.44618 11.4117 6.89354L17.0119 12.2297Z"
-          fill="#AE8566"
+          fill={pathFill}
           fillOpacity="0.56"
         />
       </g>
