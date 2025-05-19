@@ -9,9 +9,8 @@ import styles from "../../ProjectsPageComponents/ProjectLocationAdvantage/Locati
 import { cn } from "@/lib/utils"; // Verify this utility exists
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { IconX } from "@tabler/icons-react";
 // Adjust the import path for CTAButtonIcon based on your project structure
-import CTAButtonIcon from "@/components/Icons/Icons"; // Verify this component exists
+import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
 
 interface LocationAdvantageProps {
   title: string;
@@ -27,6 +26,7 @@ interface LocationAdvantageProps {
   mobileImage: string;
   buttonTextColor?: string;
   buttonFillBg?: string;
+  closeIconFIll?:string;
   amenitiesDetails?: {
     title: string;
     subtitle?: string;
@@ -99,14 +99,14 @@ const CardContent = ({
   };
   slideImage: string;
 }) => (
-  <div className="flex flex-col ">
-    <div className="relative w-full h-64 lg:h-[70vh]  rounded-t-xl overflow-hidden">
+  <div className="flex flex-col roun">
+    <div className="relative w-full h-64 lg:h-[70vh] md:rounded-t-[32]  overflow-hidden">
       <Image
         src={description.image}
         alt={description.title}
         fill
         sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover object-[100%_center]"
+        className="object-cover"
         priority
       />
     </div>
@@ -216,6 +216,7 @@ const LocationAdvantage = () => {
       carousalClassName: "bg-[#AE856666]",
       fill: "#6E1F14",
       buttonFillBg: "bg-[#6E1F14]",
+      closeIconFIll:"#a1a1a1",
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
@@ -410,28 +411,32 @@ const LocationAdvantage = () => {
             <motion.div
               variants={cardVariants}
               ref={containerRef}
-              className="max-w-6xl mx-auto bg-white h-fit z-[60] my-10  rounded-3xl font-sans relative shadow-2xl"
+              className="lg2:max-w-6xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12  md:!rounded-[32px] font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}
-                className="absolute top-6 z-50 me-4 lg:me-8 h-8 w-8 right-0 cursor-pointer ml-auto bg-white rounded-full flex items-center justify-center"
+                className="absolute  top-6 z-50 me-5 lg:me-6 h-8 w-8 right-0 cursor-pointer ml-auto  rounded-full flex items-center justify-center"
                 onClick={closeCard}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-              >
-                <IconX className="h-6 w-6 text-[#7a6d3c]" />
-              </motion.button>
+              > 
+                {/* <IconX className="h-6 w-6 text-[#7a6d3c]" /> */}
+              <CloseTabIcon fill={data[activeIndex].closeIconFIll}/>
+             </motion.button>
+              <div className="absolute">
+
+              </div>
               <motion.div variants={contentVariants}>
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
               <motion.div variants={contentVariants} className="">
                 <hr className="border-t-gray-200 border-[1px]" />
                 <div className="lg:px-44 md:px-12 px-6">
-                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
+                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP MEXT</h1>
                   <div className="flex pb-16 justify-between ">
                     <button
                       onClick={goToNextCard}
-                      className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold md:text-[18px]text-base"
+                      className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px]text-base"
                     >
                       {data[(activeIndex + 1) % data.length].description}
                     </button>

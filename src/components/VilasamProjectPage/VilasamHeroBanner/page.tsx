@@ -43,7 +43,7 @@ const VilasamHeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-[100vh] md:h-[120vh] lg:h-[150vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-[100vh] md:h-[120vh] lg:h-[120vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video
