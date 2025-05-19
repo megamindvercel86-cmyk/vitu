@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { cn } from "@/lib/utils";
-import './projectCarousal.css';
 
 import "swiper/css";
 
@@ -267,10 +266,10 @@ export default function ProjectCarousel(): React.ReactElement {
           </Swiper>
 
           {/* Gradient at bottom */}
-          <div className="pointer-events-none absolute rounded-xl bottom-0 left-0 w-[80%] h-[8%] bg-gradient-to-t from-white to-transparent z-10" />
+<div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[8%] bg-gradient-to-t from-[#e7dfda] via-[#e7dfda] to-transparent z-10" />
 
           {/* Carousel Dots */}
-          <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[450px] rotate-90">
+          <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[490px] rotate-90">
             <CarouselDots
               total={desktopDataRight.length}
               active={activeIndex}
@@ -281,56 +280,55 @@ export default function ProjectCarousel(): React.ReactElement {
         </div>
 
 
-        <div className="col-span-12 lg:hidden lg:col-span-5 relative">
-          <Swiper
-            // modules={[Autoplay]}
-            direction="vertical"
-            spaceBetween={24}
-            slidesPerView={3}
-            loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="!w-full !h-[50vh] !lg:h-[100vh] !pt-0 !pb-0"
-            onSwiper={setSwiperInstance}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-            }}
-          >
-            {desktopDataRight.map(({ src, alt }, idx) => (
-              <SwiperSlide style={{ width: "80%" }} key={idx}>
-                <div className="w-full h-full relative rounded-xl overflow-hidden">
-                  <Image
-                    src={src}
-                    alt={alt}
-                    fill
-                    className="object-cover transition-transform duration-1000 hover:scale-110"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Gradient at bottom */}
-          <div className="pointer-events-none absolute rounded-sm bottom-0 right-0 w-[80%] h-[8%] bg-gradient-to-t from-white to-transparent z-10" />
-
-          {/* Carousel Dots */}
-          <div className="absolute bottom-48 left-[40px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[450px] rotate-90">
-            <CarouselDots
-              total={desktopDataRight.length}
-              active={activeIndex}
-              onDotClick={handleDotClick}
-              className="rounded-full px-4"
-            />
-          </div>
+     <div className="col-span-12 lg:hidden lg:col-span-5 relative">
+  <Swiper
+    modules={[Autoplay]}
+    spaceBetween={24}
+    slidesPerView={1}
+    loop={true}
+    autoplay={{ delay: 3000, disableOnInteraction: false }}
+    className="!w-full  !pt-0 !pb-0"
+    onSwiper={setSwiperInstance}
+    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+    breakpoints={{
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    }}
+  >
+    {desktopDataRight.map(({ src, alt }, idx) => (
+      <SwiperSlide key={idx}>
+        <div className="w-full h-full relative rounded-xl overflow-hidden">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover transition-transform duration-1000 hover:scale-110"
+          />
         </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+
+  {/* Gradient at bottom (optional if needed) */}
+
+  {/* Carousel Dots */}
+  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+    <CarouselDots
+      total={desktopDataRight.length}
+      active={activeIndex}
+      onDotClick={handleDotClick}
+      className="rounded-full px-4"
+    />
+  </div>
+</div>
+  
       </div>
 
       {/* Centered Button */}

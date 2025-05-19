@@ -61,7 +61,7 @@ const VilasamProjectFooter: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-      <div className="flex items-center  space-x-2 pb-3">
+      <div className="flex items-center  space-x-2 pb-6">
           <FooterLink href="/"><IoMdHome className="mb-[3px] text-white  text-lg" /></FooterLink>
           <FooterLink className="text-white" href="/">Home</FooterLink>
           {mainPage && (
@@ -162,28 +162,28 @@ const VilasamProjectFooter: FC = () => {
             <ul className="space-y-4 text-gray-300 lg:hidden">
               <FooterContactItem 
               name="Location"
-                icon={<Share />}
+                icon={<ShareVilasam />}
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                 link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
               />
-              <FooterContactItem icon={<Phone />} name="Phone" text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<Mail />} name="Mail" text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              <FooterContactItem icon={<PhoneVilasam />} name="Phone" text="+91 89046 88886" link="tel:+91 89046 88886" />
+              <FooterContactItem icon={<MailVilasam />} name="Mail" text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
                <li className="flex gap-2 justify-center md:hidden">
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
-                  <Instgram aria-hidden="true" />
+                  <Instgram  color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
 
                 <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
-                  <Meta aria-hidden="true" />
+                  <Meta color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
 
                 <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
-                  <LinkedIn aria-hidden="true" />
+                  <LinkedIn color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
 
                 <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
-                  <Youtube aria-hidden="true" />
+                  <Youtube color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
               </li>
             </ul>

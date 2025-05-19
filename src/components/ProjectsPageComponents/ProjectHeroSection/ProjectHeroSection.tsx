@@ -82,7 +82,7 @@ const ProjectHeroSection: React.FC = () => {
   };
 
   return (
-    <section id="hero" className=" w-full h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
+    <section id="hero" className=" w-full h-[220vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
       {/* Parallax Layers */}
       <audio ref={audioRef} src="/Beach.mp3" loop  />
 
