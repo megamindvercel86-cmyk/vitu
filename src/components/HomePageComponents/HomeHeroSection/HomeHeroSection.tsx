@@ -4,21 +4,15 @@ import { Mute, UnMute } from "@/components/Icons/Icons";
 import { useRef, useState, useEffect } from "react";
 
 const VilasamHeroSection = () => {
-  const desktopVideoRef = useRef<HTMLVideoElement | null>(null);
-const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
-
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   
-  const toggleMute = () => {
-    if (desktopVideoRef.current) {
-      desktopVideoRef.current.muted = !desktopVideoRef.current.muted;
-    }
-    if (mobileVideoRef.current) {
-      mobileVideoRef.current.muted = !mobileVideoRef.current.muted;
-    }
-    setIsMuted(prev => !prev);
-  };
-  
+    const toggleMute = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = !videoRef.current.muted;
+        setIsMuted(!isMuted);
+      }
+    };
   const [isFixed, setIsFixed] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +47,7 @@ const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video
-          ref={desktopVideoRef}
+          ref={videoRef}
           className="w-full h-full object-cover hidden md:block"
           loop
           playsInline
@@ -66,7 +60,7 @@ const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
           />
         </video>
         <video
-          ref={mobileVideoRef}
+          ref={videoRef}
           className="w-full h-full object-cover md:hidden block"
           loop
           playsInline
@@ -74,7 +68,7 @@ const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
           muted={isMuted}
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile%20(3).mp4?alt=media&token=d5f28502-85c0-4ff1-99f2-17e20db00f80"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FFinal%20Mobile%20(2).mp4?alt=media&token=8c1c80df-cbc0-4abd-bf1b-ef929bef9b2e"
             type="video/mp4"
           />
         </video>
