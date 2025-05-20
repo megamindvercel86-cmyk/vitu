@@ -13,6 +13,10 @@ import {
   SecondaryLinkedInIcon,
   SecondaryMetaIcon,
   SecondaryYoutubeIcon,
+  Instgram,
+  Meta,
+  LinkedIn,
+  Youtube,
 } from "@/components/Icons/Icons";
 
 import logo from "../../../../public/images/logos/vilasam.svg";
@@ -71,10 +75,8 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
   // ============= State =============
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
-  const pathname = usePathname();
 
   // ============= Computed Values =============
-  const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
   const isVilasamProjectNavbarPrimary = VilasamProjectNavbar === "secondary";
 
   // Add useEffect to control body scroll
@@ -100,8 +102,9 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           exit={{ x: "100%" }}
           transition={{ type: "tween", duration: 0.3 }}
           className="fixed inset-0 z-50 overflow-y-auto bg-white"
+          style={{ zIndex: 2147483648 }}
         >
-          <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full" >
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
               <NavLink href="/">
@@ -119,7 +122,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   key={href}
                   to={href}
                   smooth={true}
-                  duration={700}
+                  duration={1200}
                   className="mb-8 text-2xl font-geistSerif last:mb-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -130,27 +133,34 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                 </Link>
               ))}
               {showGetInTouch && (
-                <NavLink href="" onClick={() => {setIsMenuOpen(false);setIsGetInTouchOpen(true)}} className="w-full px-7">
-                  <button className="w-full h-[58px] text-xl  font-geistSerif text-white bg-cusomButtonColor rounded-[34px] mt-8">
-                    Get in Touch
-                  </button>
+                <NavLink
+                  href=""
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsGetInTouchOpen(true);
+                  }}
+                  className="w-full px-7"
+                >
+                  <button className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8">Download Brochure</button>
                 </NavLink>
               )}
             </div>
-
             {/* Social Links - Updated for center alignment */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryInstgramIcon />
+              <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
+                <Instgram color="#cdcdcd" aria-hidden="true" />
               </NavLink>
-              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryMetaIcon />
+
+              <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
+                <Meta color="#cdcdcd" aria-hidden="true" />
               </NavLink>
-              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryLinkedInIcon />
+
+              <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
+                <LinkedIn color="#cdcdcd" aria-hidden="true" />
               </NavLink>
-              <NavLink href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
-                <SecondaryYoutubeIcon />
+
+              <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
+                <Youtube color="#cdcdcd" aria-hidden="true" />
               </NavLink>
             </div>
           </div>
@@ -161,7 +171,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
 
   return (
     <div>
-      <header className="absolute  xl:pt-[98px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
+      <header className="absolute  xl:pt-[80px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
@@ -188,7 +198,8 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
               ))}
               {showGetInTouch && (
                 <NavLink href="">
-                  <Button onClick={()=>setIsGetInTouchOpen(true)}
+                  <Button
+                    onClick={() => setIsGetInTouchOpen(true)}
                     className={` w-full text-sm hidden lg2:block lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px]  xl:text-[26px] 2xl:text-4xl  ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}
@@ -196,7 +207,8 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   >
                     Download E-Brochure
                   </Button>
-                  <Button onClick={()=>setIsGetInTouchOpen(true)}
+                  <Button
+                    onClick={() => setIsGetInTouchOpen(true)}
                     className={` w-full text-sm lg2:hidden lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] !h-10 xl:text-[26px] 2xl:text-4xl  ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}

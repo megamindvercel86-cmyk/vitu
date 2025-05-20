@@ -164,11 +164,11 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <NavLink href="/">
+            <NavLink href="/vaikuntamcity">
               <Image
                 src={logo}
                 alt="Logo"
-                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+                className="w-[135px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
               />
             </NavLink>
             {/* Mobile Menu Button */}

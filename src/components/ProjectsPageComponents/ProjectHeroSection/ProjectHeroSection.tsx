@@ -82,9 +82,9 @@ const ProjectHeroSection: React.FC = () => {
   };
 
   return (
-    <section id="hero" className=" w-full h-[220vh] md:h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
+    <section id="hero" className=" w-full h-[250vh] md:h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
       {/* Parallax Layers */}
-      <audio ref={audioRef} src="/Beach.mp3" loop  />
+      <audio ref={audioRef} src="/Beach.mp3" loop />
 
       <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
         <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
@@ -103,7 +103,7 @@ const ProjectHeroSection: React.FC = () => {
           className={`
             font-freightNeoSemibold
             leading-none
-            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
+            text-[2.2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
           `}
         >
           {ABOUT_HERO_CONFIG.titles.main}
@@ -115,7 +115,7 @@ const ProjectHeroSection: React.FC = () => {
             font-freightNeoSemibold
             leading-none
             pt-0
-            text-[2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
+            text-[2.2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
           `}
         >
           {ABOUT_HERO_CONFIG.titles.sub}
@@ -124,10 +124,10 @@ const ProjectHeroSection: React.FC = () => {
           className={`
     font-freightNeoMedium
     leading-none
-    pt-0 md:pt-[1rem]
+    pt-4 md:pt-[1rem]
     lg2:text-2xl
-    text-md
-    px-10
+    text-xl
+    md:px-10
     
     text-center
   `}
@@ -182,28 +182,28 @@ const ProjectHeroSection: React.FC = () => {
           {/* ============================================================ */}
         </Link>
       </div>
-      <div className="absolute   inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[30rem]  text-center px-6">
+      <div className="absolute inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[100vh]  text-center px-6">
         <ProjectHeader />
       </div>
       <div
         id="carousal"
-        className="lg:pt-20  absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[100rem]  md:top-[70rem] top-[100vh] text-center  px-6"
+        className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[100rem]  md:top-[70rem] top-[130vh] text-center  px-6"
       >
         <ProjectCarousel />
       </div>
-      <div className="absolute top-1/3  lg2:right-10 w-full p-4 flex flex-row justify-end">
-          <div className="flex gap-4">
-            <div className="cursor-pointer" onClick={toggleMute}>
-              <button
-                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
-                aria-label={isMuted ? "Unmute" : "Mute"}
-              >
-                {!isMuted ? <Mute /> : <UnMute />}
-                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
-              </button>
-            </div>
+      <div className="absolute top-1/3  lg2:right-10 righ w-full p-4 flex flex-row md:justify-end justify-center">
+        <div className="flex gap-4">
+          <div className="cursor-pointer" onClick={toggleMute}>
+            <button
+              className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
+              aria-label={isMuted ? "Unmute" : "Mute"}
+            >
+              {!isMuted ? <Mute /> : <UnMute />}
+              <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
+            </button>
           </div>
         </div>
+      </div>
     </section>
   );
 };

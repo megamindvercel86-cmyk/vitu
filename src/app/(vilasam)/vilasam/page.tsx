@@ -58,25 +58,25 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-white">
         <VilasamCarousel />
       </section>
-      <section id="location">
+      <section>
         <LocationAdvantage />
       </section>
       <section className="bg-[#FAFFFD]">
         <ElevatesLiving />
       </section>
-      <section className="bg-[#FAFFFD] ">
+      <section id="sustainability" className="bg-[#FAFFFD] ">
         <CurrentProject />
       </section>
       <section className="bg-[#FAFFFD]">
         <LyfeStyle />
       </section>
-      <section className="bg-[#FAFFFD] md:block hidden">
+      <section id="location" className="bg-[#FAFFFD] md:block hidden">
         <PlotConnection/>
       </section>
-      <section className="bg-[#FAFFFD] md:hidden block">
+      <section  id="location" className="bg-[#FAFFFD] md:hidden block">
         <PlotConnectionMobile/>
       </section>
-      <section id="sustainability" className="bg-[#FAFFFD]">
+      <section id="carousal" className="bg-[#FAFFFD]">
         <VilasamExploreProjects />
       </section>
       <section className="bg-[#FAFFFD] hidden md:block">

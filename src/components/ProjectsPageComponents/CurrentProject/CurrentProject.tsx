@@ -125,7 +125,7 @@ const CurrentProject: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col sm:flex-col lg:flex-row mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-[13.125rem]"
+      className="flex flex-col sm:flex-col lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}

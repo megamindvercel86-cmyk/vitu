@@ -24,9 +24,11 @@ interface LocationAdvantageProps {
   paragraphClassName?: string;
   fill?: string;
   buttonTextColor?: string;
+  mobileImage:string
   buttonFillBg?: string;
   amenitiesDetails?: {
     title: string;
+    image: string;
     subtitle: string;
     description: string;
     middleTitle: string;
@@ -95,13 +97,13 @@ const CardContent = ({
     middleBottomDescription?: string;
     bottomTitle?: string;
     bottomDescription?: string;
-    image?: string;
+    image: string;
   };
   slideImage: string;
 }) => (
   <div className="">
     <div className="relative w-full h-64 lg:h-[70vh] mb-6 rounded-t-xl overflow-hidden">
-      <Image src={slideImage} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
+      <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
     </div>
     <div className=" px-6 lg:px-20">
       <h2 className="text-[54px] leading-[1] font-FreightNeoProNormal text-[#4F3737]">{description.title}</h2>
@@ -147,17 +149,19 @@ const LocationAdvantage = () => {
       description: "Built for Life's Moments",
       text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
       buttonText: "More about the Location",
-      image: "/images/locationAdvantagesImages/1.png",
+      image: "/images/locationAdvantagesImages/1.webp",
       textClassName: "text-[#4F3737]",
       paragraphClassName: "text-[#998d88]",
       buttonClassName: "text-[#4F373799] bg-[#debf9d]",
       buttonTextColor: "text-[#4F373799]",
       carousalClassName: "bg-[#AE856666]",
+      mobileImage: "/images/locationAdvantagesImages/mobile1.webp",
       fill: "#ccaa8d",
       buttonFillBg: "bg-[#ccaa8d]",
       amenitiesDetails: [
         {
           title: "Foundations for the Future",
+          image: "/images/locationAdvantagesImages/6.webp",
           subtitle: "Building Sustainably for a Better Tomorrow",
           description:
             "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
@@ -182,7 +186,8 @@ const LocationAdvantage = () => {
       description: "Great Investment Potential",
       text: "A smart address that offers comfort now & confidence for what’s ahead—where life & value grow together.",
       buttonText: "More about the Location",
-      image: "/images/locationAdvantagesImages/2.png",
+      image: "/images/locationAdvantagesImages/2.webp",
+      mobileImage: "/images/locationAdvantagesImages/mobile2.webp",
       textClassName: "text-[#4F3737]",
       paragraphClassName: "text-[#998d88]",
       buttonClassName: "text-[#4F373799] bg-[#debf9d]",
@@ -194,6 +199,7 @@ const LocationAdvantage = () => {
         {
           title: "Foundations for the Future",
           subtitle: "Building Sustainably for a Better Tomorrow",
+          image: "/images/locationAdvantagesImages/7.webp",
           description:
             "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
           middleTitle: "Why Sustainable Building Matters",
@@ -217,10 +223,11 @@ const LocationAdvantage = () => {
       description: "Sustainable Living",
       text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
       buttonText: "More about our Sustainability Initiatives",
-      image: "/images/locationAdvantagesImages/3.png",
+      image: "/images/locationAdvantagesImages/3.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-white bg-[#4B948066]",
+      mobileImage: "/images/locationAdvantagesImages/mobile3.webp",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#4B948066]",
       fill: "#2c4f40",
@@ -229,6 +236,7 @@ const LocationAdvantage = () => {
         {
           title: "Foundations for the Future",
           subtitle: "Building Sustainably for a Better Tomorrow",
+          image: "/images/locationAdvantagesImages/8.webp",
           description:
             "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
           middleTitle: "Why Sustainable Building Matters",
@@ -252,10 +260,11 @@ const LocationAdvantage = () => {
       description: "Lush Oxygen Park",
       text: "Breathe easy in a sanctuary of greenery, where every stroll through the Oxygen Park is a step toward calm & clarity.",
       buttonText: "More about the Oxygen Park",
-      image: "/images/locationAdvantagesImages/4.png",
+      image: "/images/locationAdvantagesImages/4.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-white bg-[#78a5c1]",
+      mobileImage: "/images/locationAdvantagesImages/mobile4.webp",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#4B948066]",
       fill: "#4793be",
@@ -264,6 +273,7 @@ const LocationAdvantage = () => {
         {
           title: "Foundations for the Future",
           subtitle: "Building Sustainably for a Better Tomorrow",
+          image: "/images/locationAdvantagesImages/9.webp",
           description:
             "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
           middleTitle: "Why Sustainable Building Matters",
@@ -287,7 +297,8 @@ const LocationAdvantage = () => {
       description: "30+ Amenities",
       text: "From sunrise workouts to sunset strolls, enjoy 30+ ways to relax, recharge & reconnect - every single day.",
       buttonText: "More about the Amenities",
-      image: "/images/locationAdvantagesImages/5.png",
+      image: "/images/locationAdvantagesImages/5.webp",
+      mobileImage: "/images/locationAdvantagesImages/mobile5.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-white bg-[#78a5c1]",
@@ -299,6 +310,7 @@ const LocationAdvantage = () => {
         {
           title: "Foundations for the Future",
           subtitle: "Building Sustainably for a Better Tomorrow",
+          image: "/images/locationAdvantagesImages/10.webp",
           description:
             "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
           middleTitle: "Why Sustainable Building Matters",
@@ -352,47 +364,57 @@ const LocationAdvantage = () => {
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
         loop={true}
+        speed={1000}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Use realIndex for looped Swiper
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
             <div className="relative w-full h-screen">
-              <Image
+            <Image
                 src={item.image}
                 alt={item.description}
                 fill
                 sizes="100vw"
-                className="absolute object-cover w-full h-full md:object-center"
+                className="absolute hidden md:block object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />
-              <div className="absolute bottom-[390px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+              <Image
+                src={item.mobileImage}
+                alt={item.description}
+                fill
+                sizes="100vw"
+                className="absolute md:hidden object-cover w-full h-full md:object-center"
+                priority={index === 0}
+              />
+               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
+              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1
-                  className={`text-lg md:text-lg lg:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-FreightNeoProNormal`}
+                  className={`text-lg md:text-lg lg2:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-freightNeoMedium`}
                 >
                   {item.title}
                 </h1>
                 <h1
-                  className={`text-sm md:text-5xl lg2:text-[60px] ${item.textClassName} font-[400] max-w-2xl font-FreightNeoProNormal leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
                 >
                   {item.description}
                 </h1>
                 <p
-                  className={`mt-1 inline-block md:text-lg text-sm ${item.paragraphClassName} lg2:text-[24px] max-w-xl font-FreightNeoProNormal font-[400]`}
+                  className={`mt-4 inline-block  ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
                 >
                   {item.text}
                 </p>
-                <div className="relative group cursor-pointer">
+                <div className=" group cursor-pointer bottom-0 md:block relative hidden">
                   <button
                     type="button"
                     onClick={() => openCard(0)}
                     className="
-                      relative group
+                       relative group
                       mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
                       rounded-full
-                      pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]
+                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
                       text-base font-freightNeoMedium text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                       overflow-hidden z-100
@@ -411,9 +433,41 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} relative z-20 mt-[3px] md:mt-0 `}>{item.buttonText}</span>
+                    <span className={`${item.buttonTextColor} font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
                   </button>
                 </div>
+              </div>
+              <div className="absolute group cursor-pointer bottom-14 md:hidden w-full flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => openCard(0)}
+                  className="
+                       relative group
+                      mt-4
+                      flex items-center justify-center
+                      gap-[0.6875rem]
+                      rounded-full 
+                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
+                      text-base font-freightNeoMedium text-white
+                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                      overflow-hidden z-100
+                    "
+                >
+                  <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>
+                  <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
+                    <div
+                      className={`
+                          absolute w-0 h-0 ${item.buttonFillBg} rounded-full
+                          group-hover:w-[40rem] group-hover:h-[30rem]
+                          transition-all duration-500 ease-out
+                        `}
+                    ></div>
+                    <div className="relative z-20">
+                      <CTAButtonIcon fill={item.fill} direction="right" />
+                    </div>
+                  </div>
+                  <span className={`${item.buttonTextColor} font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                </button>
               </div>
             </div>
           </SwiperSlide>

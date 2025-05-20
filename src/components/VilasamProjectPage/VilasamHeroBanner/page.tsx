@@ -3,7 +3,7 @@
 import { Mute, UnMute } from "@/components/Icons/Icons";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-
+import { motion, AnimatePresence } from "framer-motion";
 const VilasamHeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -17,16 +17,17 @@ const VilasamHeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Only run scroll logic for medium and larger screens
+    if (window.innerWidth < 768) return;
+
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        // Change to absolute when the section is about to leave the viewport
         setIsFixed(rect.bottom > windowHeight);
       }
     };
 
-    // Add throttling to improve performance
     let ticking = false;
     const scrollHandler = () => {
       if (!ticking) {
@@ -38,12 +39,15 @@ const VilasamHeroSection = () => {
       }
     };
 
-    window.addEventListener('scroll', scrollHandler);
-    return () => window.removeEventListener('scroll', scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-[100vh] md:h-[120vh] lg:h-[120vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative w-full h-[100vh] md:h-[120vh] lg:h-[120vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+    >
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video
@@ -81,17 +85,57 @@ const VilasamHeroSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[50px] md:h-[200px] bg-gradient-to-t from-white via-transparent to-transparent z-[10] hidden md:block" />
 
         <div className="absolute bottom-0 left-0 right-0 h-[50px] lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
-
-        <div className={`${isFixed ? 'fixed' : 'absolute'} bottom-24 right-0 md:right-4 md:bottom-16 lg:bottom-20  lg2:right-2 w-full p-4 flex flex-row justify-end z-50 transition-all duration-300`}>
+        <div
+          className={`${
+            isFixed && typeof window !== "undefined" && window.innerWidth >= 768 ? "fixed" : "absolute"
+          } bottom-36 right-0 lg:bottom-2 lg2:right-20 w-full p-4 flex flex-row lg:justify-end ${
+            isMuted ? "justify-center" : "justify-end"
+          } z-[1] transition-all duration-300`}
+        >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
-              <button
-                className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-2 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center transition-all duration-300`}
+              <motion.button
+                layout
+                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${
+                  isMuted ? "bg-white/60" : "bg-white"
+                } cursor-pointer transition-colors duration-300`}
                 aria-label={isMuted ? "Unmute" : "Mute"}
+                transition={{
+                  layout: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+                }}
               >
-                {!isMuted ? <Mute /> : <UnMute />}
-                <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={isMuted ? "unmute" : "mute"}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {isMuted ? <UnMute /> : <Mute />}
+                  </motion.div>
+                </AnimatePresence>
+
+                <AnimatePresence mode="wait">
+                  {isMuted && (
+                    <motion.span
+                      key="audio-text"
+                      layout
+                      className="ml-2 text-sm whitespace-nowrap"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.25, 0.1, 0.25, 1],
+                      }}
+                    >
+                      Site contains Audio Elements
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -110,12 +154,14 @@ const VilasamHeroSection = () => {
         </Link>
       </div>
       {/* Main Content */}
-      <div className="absolute top-36 md:top-44 lg2:top-60 lg:top-36  mx-auto text-white px-4 z-10">
-        <h1 className="text-3xl md:text-5xl lg:text-5xl lg2:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
+      <div className="absolute top-48 md:top-44 lg2:top-60 lg:top-36  mx-auto text-white px-4 z-10">
+        <h1 className="text-4xl md:text-5xl lg:text-5xl lg2:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
           Homes that <br />
           Breathe with you
         </h1>
-        <p className="lg2:text-2xl lg:text-xl md:text-xl text-l font-medium mt-5 font-sourceSans3">Unwind Across 169 Cents of Coastal Charm, Made Affordable</p>
+        <p className="lg2:text-2xl lg:text-xl md:text-xl text-lg font-medium mt-5 font-sourceSans3">
+          Unwind Across 169 Cents of Coastal Charm, Made Affordable
+        </p>
       </div>
     </section>
   );

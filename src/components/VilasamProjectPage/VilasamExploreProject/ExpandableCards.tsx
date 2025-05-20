@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import AppleStyleCard from "@/components/ui/apple-style-card";
-
 import Typography from "@/components/Typography/Typography";
 import exploreProjects from "@/data/vilasamProject.json";
-import { ArrowRightIcon } from "@/components/Icons/Icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import CustomCursor from "@/components/Common/CustomCursor";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -207,7 +204,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
   const [currentBreakpoint, setCurrentBreakpoint] = useState("md"); // Set default to md for SSR
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState(false);
-
+console.log(borderColor)
   // Add mounted state
   useEffect(() => {
     setIsMounted(true);
@@ -282,7 +279,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
 
   return (
     <div className="h-auto flex items-center justify-center">
-      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} cursorBackground="bg-[#0C3E49]" />}
+      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} cursorBackground={`bg-${borderColor}`} />}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[200vh] md:h-[150vh]" : "h-[100vh]"}`}

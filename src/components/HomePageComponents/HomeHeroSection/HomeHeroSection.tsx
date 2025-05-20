@@ -2,7 +2,6 @@
 
 import { Mute, UnMute } from "@/components/Icons/Icons";
 import { useRef, useState, useEffect } from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
 
 const HeroSection = () => {
