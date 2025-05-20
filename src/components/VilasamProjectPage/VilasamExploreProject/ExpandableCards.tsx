@@ -195,9 +195,11 @@ interface Card {
 
 interface ExpandableCardsProps {
   cards: Card[];
+  textColor?: string;
+  borderColor?: string
 }
 
-const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
+const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = "", borderColor = "" }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
@@ -299,12 +301,12 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           }}
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
-          <div>
-            <motion.p className=" font-sourceSans3 uppercase mb-4 text-[#0C3E49]" initial={{ y: 0 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
+          <div className={`${textColor}`}>
+            <motion.p className=" font-sourceSans3 uppercase mb-4" initial={{ y: 0 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
               amenities
             </motion.p>
             <motion.h1
-              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl  font-geistSerif lg2:mb-4 text-[#0C3E49]"
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl  font-geistSerif lg2:mb-4 "
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -312,7 +314,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               Space to Settle,
             </motion.h1>
             <motion.h2
-              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl font-geistSerif lg2:mb-4 text-[#0C3E49]"
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl font-geistSerif lg2:mb-4"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -321,7 +323,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             </motion.h2>
 
             <motion.button
-              className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-[#0C3E49] border-[2px] text-[#0C3E49] rounded-full text-xs lg2:text-[22px] font-sourceSans3 transition-colors mt-6"
+              className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[22px] font-sourceSans3 transition-colors mt-6`}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}

@@ -554,7 +554,7 @@ const CurrentProject: React.FC = () => {
               id="project-title"
               className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
             >
-              {PROJECT_DATA.title} {selectedLocation.id}
+              {PROJECT_DATA.title}
             </h1>
           </header>
 

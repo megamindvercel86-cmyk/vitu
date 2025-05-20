@@ -7,7 +7,7 @@ import Typography from "../../Typography/Typography";
 import InfiniteCarousel from "../../Common/InfiniteCarousel/InfiniteCarousel";
 import exploreProjects from "@/data/vilasamProject.json";
 import ExpandableCards from "./ExpandableCards";
-
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -115,35 +115,46 @@ const CARDS_DATA: Card[] = [
  *
  * @component
  */
-const VilasamExploreProjects: React.FC = () => {
+interface VilasamExploreProjectsProps {
+  homePage?: boolean;
+}
+
+const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePage = false }) => {
+  const textColor = homePage ? "text-customBrown" : "text-[#0C3E49]";
+  const controlButtonBg = homePage ? "customBrown" : "#2B847D33";
+
   return (
     <>
       {/* Desktop Version */}
       <div className="md:block hidden relative z-0 overflow-hidden" id="sustainability">
-        <ExpandableCards cards={CARDS_DATA} />
+        <ExpandableCards cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg}/>
       </div>
 
       {/* Mobile Version */}
       <div className="md:hidden block pb-5 " id="sustainability">
         {/* Mobile Title Section */}
-        <div className="w-full flex flex-col items-center justify-center text-center ">
-          <Typography variant="custom" className="text-xl lg:text-[] text-[#0C3E49] font-geistSerif">
-          Space to Settle,
+        <div className={`w-full flex flex-col ${textColor} items-center justify-center text-center `}>
+          <Typography variant="custom" className={`text-xl lg:text-[]  font-geistSerif`}>
+            A New Home,
           </Typography>
-          <Typography variant="custom" className="text-2xl text-[#0C3E49] font-geistSerif">
-          Room to Grow
+          <Typography variant="custom" className="text-2xl  font-geistSerif">
+            A New Way of Life
           </Typography>
         </div>
 
         {/* Mobile Carousel */}
-        <InfiniteCarousel iconColor="#0C3E49" controlButtonBg="#2B847D33" cards={CARDS_DATA} data={exploreProjects} />
+        <InfiniteCarousel iconColor="#0C3E49" controlButtonBg={controlButtonBg} cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
-        {/* <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-10">
-          <button className="items-center pb-1 w-full h-[56px] rounded-[36px] border-[2px] border-[#0C3E49] text-[#0C3E49] text-[22px] font-FreightNeoProBold hover:bg-[#0C3E49] hover:text-white transition-colors duration-300">
-            Explore the Project Now
-          </button>
-        </div> */}
+        <Link href="/vilasam">
+          <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-6">
+            <button
+              className={`border-${controlButtonBg} ${textColor}  items-center pb- w-full h-[56px] rounded-[36px] border-[2px] text-[22px] font-FreightNeoProBold hover:bg-[#0C3E49] hover:text-white transition-colors duration-300 `}
+            >
+              Explore the Project Now
+            </button>
+          </div>
+        </Link>
       </div>
     </>
   );

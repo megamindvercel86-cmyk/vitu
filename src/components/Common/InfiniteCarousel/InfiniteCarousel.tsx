@@ -195,8 +195,8 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
         ))}
       </Swiper>
       <div className="flex items-center justify-between gap-4 px-7">
-        <span className=" lg:text-2xl sm:text-base text-customBrown font-FreightNeoProBold xl:text-[28px]">{/* Explore More */}</span>
-        <div className="flex gap-2">
+        {/* <span className=" lg:text-2xl sm:text-base text-customBrown font-FreightNeoProBold xl:text-[28px]">Explore More</span> */}
+        {/* <div className="flex gap-2">
           <button
             onClick={handlePrev}
             className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200"
@@ -211,7 +211,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
           >
             <IconArrowNarrowRight fill={controlButtonBg} color={iconColor} />
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

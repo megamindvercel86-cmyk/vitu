@@ -139,7 +139,7 @@ export default function HomePage() {
         <VisionForTheFuture />
 
         {/* Project Explorer Section */}
-        <VilasamExploreProjects />
+        <VilasamExploreProjects  homePage={true}/>
 
         {/* Current Projects Section */}
         <CurrentProject />
