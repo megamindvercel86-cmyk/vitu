@@ -137,7 +137,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   href=""
                   onClick={() => {
                     setIsMenuOpen(false);
-                    setIsGetInTouchOpen(true);
+                    setIsGetInTouchOpen(true)
                   }}
                   className="w-full px-7"
                 >
@@ -200,7 +200,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                 <NavLink href="">
                   <Button
                     onClick={() => setIsGetInTouchOpen(true)}
-                    className={` w-full text-sm hidden lg2:block lg2:text-[18px] px-4  lg2:px-7 xl:px-10 pt-[2px]  xl:text-[26px] 2xl:text-4xl  ${
+                    className={` w-full text-sm hidden lg2:block lg2:text-[18px] px-4  lg2:px-7 xl:px-10   xl:text-[26px] 2xl:text-4xl  ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor="text-[#4074A8]"
@@ -214,7 +214,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                     }`}
                     defaultTextColor="text-[#4074A8]"
                   >
-                    Download E-Brochure
+                    Download E-Brochure4
                   </Button>
                 </NavLink>
               )}

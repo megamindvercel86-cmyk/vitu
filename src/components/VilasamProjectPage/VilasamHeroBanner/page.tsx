@@ -118,7 +118,7 @@ const VilasamHeroSection = () => {
                 </AnimatePresence>
 
                 <AnimatePresence mode="wait">
-                  {isMuted && (
+                  {isMuted && (isFixed || window.innerWidth < 768) && (
                     <motion.span
                       key="audio-text"
                       layout
@@ -154,7 +154,7 @@ const VilasamHeroSection = () => {
         </Link>
       </div>
       {/* Main Content */}
-      <div className="absolute top-48 md:top-44 lg2:top-60 lg:top-36  mx-auto text-white px-4 z-10">
+      <div className="absolute top-[180px] md:top-44 lg2:top-60 lg:top-36  mx-auto text-white px-4 z-10">
         <h1 className="text-4xl md:text-5xl lg:text-5xl lg2:text-[76px] xl:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
           Homes that <br />
           Breathe with you

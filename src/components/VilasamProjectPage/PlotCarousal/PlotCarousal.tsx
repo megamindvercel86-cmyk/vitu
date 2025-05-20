@@ -63,11 +63,11 @@ export default function PropertyCarousel() {
               </div>
               <div className="py-6 flex flex-col justify-between h-[350px]">
                 <div>
-                  <h2 className="text-2xl font-semibold text-[#0C3E49] mb-3">{property.title}</h2>
-                  <p className="text-[#0C3E4999] leading-[1.6] text-sm mb-5">{property.description}</p>
+                  <h2 className="text-2xl font-semibold font-geistSerif text-[#0C3E49] mb-3">{property.title}</h2>
+                  <p className="text-[#0C3E4999] font-sourceSans3 leading-[1.6] text-sm mb-5">{property.description}</p>
                 </div>
                 <div>
-                  <button className="w-full bg-[#0C3E49] text-white font-semibold py-3 rounded-full">Get the Best Quote</button>
+                  <button className="w-full bg-[#0C3E49] text-white font-semibold py-3 font-sourceSans3 rounded-full" >Get the Best Quote</button>
                 </div>
               </div>
             </div>

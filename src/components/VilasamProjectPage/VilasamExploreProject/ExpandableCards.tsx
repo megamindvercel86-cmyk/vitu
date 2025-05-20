@@ -323,7 +323,7 @@ console.log(borderColor)
               transition={{ delay: 0.6 }}
               onClick={() => setIsGetInTouchOpen(true)}
             >
-              Download Brochure
+              Download E-Brochure
             </motion.button>
           </div>
         </motion.div>
