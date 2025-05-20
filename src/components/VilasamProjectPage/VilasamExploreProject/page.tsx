@@ -146,7 +146,7 @@ const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePag
         <InfiniteCarousel iconColor="#0C3E49" controlButtonBg={controlButtonBg} cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
-        <Link href="/vilasam">
+        {/* <Link href="/vilasam">
           <div className="w-full px-7 flex flex-col items-center justify-center text-center leading-[1] pt-6">
             <button
               className={`border-${controlButtonBg} ${textColor}  items-center pb- w-full h-[56px] rounded-[36px] border-[2px] text-[22px] font-FreightNeoProBold hover:bg-[#0C3E49] hover:text-white transition-colors duration-300 `}
@@ -154,7 +154,7 @@ const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePag
               Explore the Project Now
             </button>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </>
   );
