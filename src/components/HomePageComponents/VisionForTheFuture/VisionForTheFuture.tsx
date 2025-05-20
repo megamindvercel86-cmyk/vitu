@@ -225,7 +225,7 @@ export default function VisionForTheFuture() {
                   aria-label="See What's Next"
                 >
                   See What&apos;s Next
-                  <CTAButtonIcon direction="right" />
+                  <CTAButtonIcon fill="#4F3737" direction="right" />
                 </button>
               </Link>
               <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>

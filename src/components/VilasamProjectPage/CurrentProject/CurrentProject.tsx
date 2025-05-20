@@ -589,7 +589,7 @@ const CurrentProject: React.FC = () => {
             id="project-title"
             className=" md:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
           >
-            Explore your Future Home {selectedLocation.id}
+            Explore your Future Home 
           </h1>
         </header>
 
