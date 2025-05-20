@@ -102,7 +102,7 @@ const CardContent = ({
   slideImage: string;
 }) => (
   <div className="flex flex-col roun">
-    <div className="relative w-full h-64 lg:h-[70vh] md:rounded-t-[32]  overflow-hidden">
+    <div className="relative w-full h-64 lg:h-[70vh] lg2:h-[80vh] md:rounded-t-[32]  overflow-hidden">
       <Image
         src={description.image}
         alt={description.title}
@@ -408,12 +408,12 @@ const LocationAdvantage = () => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+          <motion.div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
             <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
             <motion.div
               variants={cardVariants}
               ref={containerRef}
-              className="lg2:max-w-6xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12  md:!rounded-[32px] font-sans relative shadow-2xl"
+              className="lg2:max-w-4xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12  md:!rounded-[32px] font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}

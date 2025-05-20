@@ -94,7 +94,7 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="flex-shrink-0">{item.icon}</div>
-                    <span className="truncate text-[#04070799]">{item.label}</span>
+                    <span className=" text-left text-[#04070799]">{item.label}</span>
                   </motion.button>
                 ))}
               </div>
@@ -191,12 +191,12 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
   return (
     <AnimatePresence>
       {modalIsOpen && (
-        <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+        <motion.div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
           <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeModal} />
           <motion.div
             variants={cardVariants}
             ref={containerRef}
-            className="max-w-6xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
+            className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
           >
             <motion.button
               variants={contentVariants}
@@ -210,7 +210,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
             <motion.div variants={contentVariants}>
               <CardContent data={data[currentIndex]} setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} />
             </motion.div>
-            <motion.div variants={contentVariants}>
+            {/* <motion.div variants={contentVariants}>
               <hr className="border-t-gray-200 border-[1px]" />
               <div className="lg:px-44 px-12">
                 <h1 className="pt-10 text-[10px] md:text-[12px] font-geistSerif text-[#8E8E93] border-t-gray-200">NextUp</h1>
@@ -227,7 +227,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
                   />
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </motion.div>
       )}

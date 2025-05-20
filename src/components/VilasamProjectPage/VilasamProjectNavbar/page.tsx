@@ -171,7 +171,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
 
   return (
     <div>
-      <header className="absolute  xl:pt-[80px] left-0 right-0   sm:pt-[34px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
+      <header className="absolute  xl:pt-[80px] left-0 right-0   sm:pt-[60px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
@@ -193,14 +193,14 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href} to={href} smooth={true} duration={700}>
-                  <div className="2xl:text-4xl text-white text-sm  lg2:text-[23px] cursor-pointer font-geistSerif">{label}</div>
+                  <div className="2xl:text-4xl text-white text-sm  lg2:text-[18px] cursor-pointer font-geistSerif">{label}</div>
                 </Link>
               ))}
               {showGetInTouch && (
                 <NavLink href="">
                   <Button
                     onClick={() => setIsGetInTouchOpen(true)}
-                    className={` w-full text-sm hidden lg2:block lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px]  xl:text-[26px] 2xl:text-4xl  ${
+                    className={` w-full text-sm hidden lg2:block lg2:text-[18px] px-4  lg2:px-7 xl:px-10 pt-[2px]  xl:text-[26px] 2xl:text-4xl  ${
                       isVilasamProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor="text-[#4074A8]"

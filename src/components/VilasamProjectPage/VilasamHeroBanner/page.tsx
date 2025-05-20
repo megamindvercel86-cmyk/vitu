@@ -46,7 +46,7 @@ const VilasamHeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[100vh] md:h-[120vh] lg:h-[120vh] lg2:h-[200vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+      className="relative w-full h-[100vh] md:h-[120vh] lg:h-[120vh] lg2:h-[150vh] xl:h-[150vh]  flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
@@ -143,11 +143,11 @@ const VilasamHeroSection = () => {
       <div
         className={`absolute flex bottom-20   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 pl-8 pr-3 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
       >
-        <div className="font-medium text-[#0C3E49] text-sm lg2:text-[32px] md:text-lg font-sourceSans3">Bookings Open Soon</div>
+        <div className="font-medium text-[#0C3E49] text-sm lg2:text-[26px] xl:text-[32px] md:text-lg font-sourceSans3">Bookings Open Soon</div>
         <Link href="/project-enquire">
           <button
             // onClick={onCtaClick}
-            className="px-6 lg2:px-10 py-2 text-sm lg2:text-[32px] lg2:py-5 bg-[#0C3E49] md:text-lg font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
+            className="px-6 lg2:px-10 py-2 text-sm lg2:text-[26px] xl:text-[32px] lg2:py-5 bg-[#0C3E49] md:text-lg font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
           >
             Show your Interest
           </button>
@@ -155,7 +155,7 @@ const VilasamHeroSection = () => {
       </div>
       {/* Main Content */}
       <div className="absolute top-48 md:top-44 lg2:top-60 lg:top-36  mx-auto text-white px-4 z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-5xl lg2:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
+        <h1 className="text-4xl md:text-5xl lg:text-5xl lg2:text-[76px] xl:text-[100px] leading-none font-geistSerif text-[#F5F5F7]">
           Homes that <br />
           Breathe with you
         </h1>

@@ -67,7 +67,7 @@ const LyfeStyle = () => {
                   </div>
                 </div>
                 <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3`}>
-                  More about our sustainability centric approach{" "}
+                  More about our Exclusive Membership
                 </span>
               </button>
             </div>
@@ -117,17 +117,17 @@ const LyfeStyle = () => {
             </div>
           </div>
           <span className={`relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>
-            More about our sustainability centric approach
+            More about our Exclusive Membership
           </span>
         </button>
       </div>
       <AnimatePresence>
         {open && (
-          <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+          <motion.div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
             <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeModal} />
             <motion.div
               variants={cardVariants}
-              className="max-w-6xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
+              className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}

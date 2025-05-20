@@ -54,7 +54,7 @@ export const AppleInspiredCard: React.FC<CardProps> = ({
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 h-screen z-50 overflow-auto">
+          <div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

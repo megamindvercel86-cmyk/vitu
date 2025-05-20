@@ -59,9 +59,9 @@ const VilasamProjectFooter: FC = () => {
   // };
 
   return (
-    <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
+    <footer className="bg-black text-white pt-8 lg:pt-12 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-      <div className="flex items-center  space-x-2 pb-6">
+      <div className="flex items-center   space-x-2 pb-6 lg:pb-8">
           <FooterLink href="/"><IoMdHome className="mb-[3px] text-white  text-lg" /></FooterLink>
           <FooterLink className="text-white" href="/">Home</FooterLink>
           {mainPage && (
