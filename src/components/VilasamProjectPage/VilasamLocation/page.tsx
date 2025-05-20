@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 // Adjust the import path for CTAButtonIcon based on your project structure
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
+import "./vilasamLocation.css"
+
 
 interface LocationAdvantageProps {
   title: string;
@@ -282,7 +284,7 @@ const LocationAdvantage = () => {
   return (
     <div className="relative w-full h-screen">
       <Swiper
-        modules={[Autoplay]}
+        // modules={[Autoplay]}
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
@@ -295,7 +297,7 @@ const LocationAdvantage = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} className="!h-[100vh] !w-[100%] !rounded-none">
+          <SwiperSlide key={index} style={{width:"100%",height:"100vh"}} className="!h-[100vh] !w-[100%] !rounded-none">
             <div className="relative w-full h-screen">
               <Image
                 src={item.image}

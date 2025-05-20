@@ -34,7 +34,7 @@ const LyfeStyle = () => {
       <div className="relative">
         <div className=" lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full  md:pb-16  lg:gap-14  ">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  md:pb-10 pb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  lg:pb-10 pb-4">
               20,000 sq.ft of Everyday Luxury
             </h2>
             <div className=" group cursor-pointer hidden md:block">
@@ -169,7 +169,7 @@ const LyfeStyle = () => {
                   </div>
                 </div>
               </motion.div>
-                <motion.div variants={contentVariants}>
+                {/* <motion.div variants={contentVariants}>
                             <hr className="border-t-gray-200 border-[1px]" />
                             <div className="lg:px-44 px-12">
                               <h1 className="pt-10 text-[10px] md:text-[12px] font-geistSerif text-[#8E8E93] border-t-gray-200">NextUp</h1>
@@ -177,7 +177,7 @@ const LyfeStyle = () => {
                                
                               </div>
                             </div>
-                          </motion.div>
+                          </motion.div> */}
             </motion.div>
           </motion.div>
         )}

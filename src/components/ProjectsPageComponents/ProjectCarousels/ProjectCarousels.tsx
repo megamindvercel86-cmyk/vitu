@@ -332,7 +332,7 @@ export default function ProjectCarousel(): React.ReactElement {
       </div>
 
       {/* Centered Button */}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center mt-20">
         <Link href="/general-enquire">
           <button className="px-8 py-3 border-[#AE8567] border-[2px] text-[#AE8567] rounded-full text-2xl font-FreightNeoProBold transition-colors">
             Contact Us for a Visit
