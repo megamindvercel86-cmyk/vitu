@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
-import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";

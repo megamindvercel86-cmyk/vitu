@@ -127,7 +127,7 @@ const LyfeStyle = () => {
             <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeModal} />
             <motion.div
               variants={cardVariants}
-              className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
+              className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] md:my-10 rounded-3xl font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}
@@ -151,17 +151,17 @@ const LyfeStyle = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-                    <h2 className="text-[36px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">
+                    <h2 className="font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold">
                       20,000 sq.ft. Clubhouse
                     </h2>
-                    <h2 className="font-bold text-[#04070799] text-[24px]">A space designed for leisure, wellness and community</h2>
+                    <h2 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 md:pb-6 text-[18px]">A space designed for leisure, wellness and community</h2>
 
-                    <p className="text-[#040707]/60 mt-5 font-sourceSans3 !text-xl">
+                    <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl  ">
                       At the heart of Vilasam lies The Club — a sprawling 20,000 sq.ft. clubhouse designed to enrich everyday living. Whether it’s a
                       quiet moment of reflection or a lively gathering with neighbors, the clubhouse brings together spaces that cater to wellness,
                       connection, and celebration.
                     </p>
-                    <p className="text-[#040707]/60 font-sourceSans3 !text-xl">
+                    <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl ">
                       From indoor activity zones to calm corners for reading or relaxing, every detail has been thoughtfully curated to elevate the
                       way you live. It’s more than just a building — it’s where community comes alive, and where every visit feels like an escape
                       within your own neighborhood.

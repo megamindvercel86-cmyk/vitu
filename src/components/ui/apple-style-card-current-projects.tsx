@@ -3,8 +3,6 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { cn } from "@/lib/utils";
 import { Chromotherapy, Groundwater, RainWater, Solar, Tree } from "@/components/Icons/Icons";
 
 interface CurrentProjectCardProps {
@@ -67,10 +65,10 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
         />
       </div>
       <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-        <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{data.title}</h2>
-        <p className="text-[#040707]/60 font-sourceSans3 !text-xl">{data.description}</p>
+        <h2 className="text-[#0C3E49] text-[24px] lg:text-[48px] font-geistSerif leading-[1.3] font-semibold max-w-3xl ">{data.title}</h2>
+        <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{data.description}</p>
         <div className="md:m-12">
-          <h2 className="font-bold text-[#04070799] text-[24px] font-sourceSans3 pb-6">See Our Sustainable Practices at work</h2>
+          <h2 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 pb-6 text-[18px]">See Our Sustainable Practices at work</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="text-start">
@@ -105,11 +103,11 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
             </div>
           </div>
         </div>
-        <p className="text-[#040707]/60 mt-10 font-sourceSans3 !text-xl">
+        <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl mt-10 ">
           Enjoy the quiet luxury of living in harmony with nature, where rainwater harvesting, open green spaces, & mindful infrastructure make every
           choice a conscious one. It’s comfort without compromise—where doing good feels as natural as living well.
         </p>
-        <p className="text-[#040707]/60 font-sourceSans3 !text-xl">Welcome to a community that cares. For today, & for generations to come.</p>
+        <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl md:mt-10 mb-10">Welcome to a community that cares. For today, & for generations to come.</p>
       </div>
     </div>
   );
@@ -196,7 +194,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
           <motion.div
             variants={cardVariants}
             ref={containerRef}
-            className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] my-10 rounded-3xl font-sans relative shadow-2xl"
+            className="max-w-4xl mx-auto bg-[#f8f6f5] h-fit z-[60] md:my-10 rounded-3xl font-sans relative shadow-2xl"
           >
             <motion.button
               variants={contentVariants}

@@ -113,7 +113,7 @@ const CardContent = ({
       />
     </div>
     <div className="flex flex-col md:gap-4 gap-2 py-12 px-6 lg:px-20">
-      <h2 className="text-[24px] lg:text-[48px] leading-[1.3] font-semibold max-w-3xl font-geistSerif text-[#0C3E49]">{description.title}</h2>
+      <h2 className=" leading-[1.3] max-w-3xl font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold ">{description.title}</h2>
       <h3 className="text-[#040707]/60 font-sourceSans3  md:!text-xl">{description.subtitle}</h3>
       <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.description}</p>
       <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleTitle}</h4>
@@ -435,7 +435,7 @@ const LocationAdvantage = () => {
                 <hr className="border-t-gray-200 border-[1px]" />
                 <div className="lg:px-44 md:px-12 px-6">
                   <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP MEXT</h1>
-                  <div className="flex pb-16 justify-between ">
+                  <div className="flex md:pb-16 pb-32 justify-between ">
                     <button
                       onClick={goToNextCard}
                       className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px]text-base"
