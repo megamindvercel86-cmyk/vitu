@@ -9,29 +9,26 @@ import { useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
 import { Autoplay } from "swiper/modules";
 
-const CarouselDots = ({ total, active, onDotClick, className }: {
+const CarouselDots = ({
+  total,
+  active,
+  onDotClick,
+  className,
+}: {
   total: number;
   active: number;
   onDotClick?: (index: number) => void;
   className?: string;
 }) => {
   return (
-    <div
-      style={{ borderRadius: "50px" }}
-      className={cn(
-        "flex items-center justify-center gap-2 py-2",
-        className
-      )}
-    >
+    <div style={{ borderRadius: "50px" }} className={cn("flex items-center justify-center gap-2 py-2", className)}>
       {Array.from({ length: total }).map((_, index) => (
         <button
           key={index}
           onClick={() => onDotClick?.(index)}
           className={cn(
             "transition-all duration-300",
-            active === index
-              ? "w-8 bg-white rounded-xl h-[6px]"
-              : "w-[6px] h-[6px] bg-gray-300 rounded-full"
+            active === index ? "w-8 bg-white rounded-xl h-[6px]" : "w-[6px] h-[6px] bg-gray-300 rounded-full"
           )}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -47,41 +44,30 @@ export default function PropertyCarousel() {
 
   return (
     <div className="relative">
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={1.2}
-      loop={true}
-      speed={1000}
-      modules={[Autoplay]}
-      centeredSlides={true}
-      autoplay={{ delay: 2000, disableOnInteraction: false }}
-      onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-      onSwiper={(swiper) => (swiperRef.current = swiper)}
-    >
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={1.2}
+        loop={true}
+        speed={1000}
+        modules={[Autoplay]}
+        centeredSlides={true}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+      >
         {duplicatedPlots.map((property, index) => (
-          <SwiperSlide  className="!h-[80vh]" key={index}>
+          <SwiperSlide className="!h-[80vh]" key={index}>
             <div className="max-w-sm mx-auto h-[78vh]  rounded-2xl overflow-hidden  bg-white">
               <div className="relative w-full h-64">
-                <Image
-                  src={property.src}
-                  alt={property.title}
-                  fill
-                  className="object-cover rounded-2xl"
-                />
+                <Image src={property.src} alt={property.title} fill className="object-cover rounded-2xl" />
               </div>
               <div className="py-6 flex flex-col justify-between h-[350px]">
                 <div>
-                <h2 className="text-2xl font-semibold text-[#0C3E49] mb-3">
-                  {property.title}
-                </h2>
-                <p className="text-[#0C3E4999] leading-[1.6] text-sm mb-5">
-                  {property.description}
-                </p>
+                  <h2 className="text-2xl font-semibold text-[#0C3E49] mb-3">{property.title}</h2>
+                  <p className="text-[#0C3E4999] leading-[1.6] text-sm mb-5">{property.description}</p>
                 </div>
                 <div>
-                <button className="w-full bg-[#0C3E49] text-white font-semibold py-3 rounded-full">
-                  Get the Best Quote
-                </button>
+                  <button className="w-full bg-[#0C3E49] text-white font-semibold py-3 rounded-full">Get the Best Quote</button>
                 </div>
               </div>
             </div>
@@ -89,15 +75,14 @@ export default function PropertyCarousel() {
         ))}
       </Swiper>
 
-      <div className="absolute  left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
-      <CarouselDots
-  total={plots.length}
-  active={activeIndex % plots.length}
-  onDotClick={(index) => {
-    swiperRef.current?.slideToLoop(index);
-  }}
-/>
-
+      <div className="absolute bottom-[17] left-1/2 transform -translate-x-1/2 bg-[#0C3E4966] flex justify-center w-[100px] rounded-[300px] z-20">
+        <CarouselDots
+          total={plots.length}
+          active={activeIndex % plots.length}
+          onDotClick={(index) => {
+            swiperRef.current?.slideToLoop(index);
+          }}
+        />
       </div>
     </div>
   );

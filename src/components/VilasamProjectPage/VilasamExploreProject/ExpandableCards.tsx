@@ -55,29 +55,18 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 const CardContent = ({ cardId }: { cardId: number }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
-  let project = exploreProjects.find((project) => project.id === currentCardId);
+  // Get current project dynamically
+  const project = exploreProjects.find((project) => project.id === currentCardId);
+
+  // Get index of the current project
+  const currentIndex = exploreProjects.findIndex((p) => p.id === currentCardId);
+
+  // Get next project using modular logic to loop back
+  const nextProject = exploreProjects[(currentIndex + 1) % exploreProjects.length];
 
   const handleFooterClick = () => {
-    const nextProject = exploreProjects.find((project) => {
-      if (project.id === 5) {
-        return 1 === currentCardId;
-      } else {
-        return project.id + 1 === currentCardId;
-      }
-    });
-
-    if (nextProject) {
-      setCurrentCardId(nextProject.id); // Update state to trigger re-render
-    }
+    setCurrentCardId(nextProject.id);
   };
-
-  const nextProject = exploreProjects.find((project) => {
-    if (project.id === 5) {
-      return 1 === currentCardId;
-    } else {
-      return project.id + 1 === currentCardId;
-    }
-  });
 
   return (
     <>
@@ -88,13 +77,21 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             alt={nextProject?.title || "Card image"}
             width={1042}
             height={45}
-            className={cn("object-cover   h-[652px] w-full")}
+            className={cn("object-cover h-[652px] w-full")}
           />
-            <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 font-geistSerif px-6 lg:px-20  text-[#0C3E49]">{project.title}</h2>
-            <h3 className="text-[20px] lg:text-[28px] leading-[1.3] font-medium  font-sourceSans3 px-6 lg:px-20 pb-6  text-[#040707CC]">{project.subtitle}</h3>
-          <div className="flex flex-col gap-flex  gap-6 ">
-            <Typography className="text-[#040707]/60 font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description1}</Typography>
-            <Typography className="text-[#04070799] font-sourceSans3 px-6 lg:px-20 !text-xl">{project?.description2}</Typography>
+          <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 font-geistSerif px-6 lg:px-20 text-[#0C3E49]">
+            {project.title}
+          </h2>
+          <h3 className="text-[20px] lg:text-[28px] leading-[1.3] font-medium font-sourceSans3 px-6 lg:px-20 pb-6 text-[#040707CC]">
+            {project.subtitle}
+          </h3>
+          <div className="flex flex-col gap-flex gap-6">
+            <Typography className="text-[#040707]/60 font-sourceSans3 px-6 lg:px-20 !text-xl">
+              {project?.description1}
+            </Typography>
+            <Typography className="text-[#04070799] font-sourceSans3 px-6 lg:px-20 !text-xl">
+              {project?.description2}
+            </Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>

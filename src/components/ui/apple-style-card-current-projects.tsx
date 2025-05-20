@@ -134,7 +134,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
         "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
       middleDescription:
         "Here, serene living isn’t just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
-      mapImage: "/images/currentProjectCardImages/1.png",
+      mapImage: "/images/currentProjectCardImages/2.png",
       label: "Chromotherapy Park",
     },
     {
@@ -144,7 +144,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
         "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
       middleDescription:
         "Here, serene living isn’t just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
-      mapImage: "/images/currentProjectCardImages/2.png",
+      mapImage: "/images/currentProjectCardImages/3.png",
       label: "Tree Cover",
     },
     {
@@ -154,7 +154,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
         "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
       middleDescription:
         "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
-      mapImage: "/images/currentProjectCardImages/3.png",
+      mapImage: "/images/currentProjectCardImages/7.png",
       label: "Groundwater Recharge Pits",
     },
     {
@@ -164,7 +164,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
         "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
       middleDescription:
         "Living sustainably at Vilasam doesn’t mean sacrificing comfort. Instead, it means being part of a thoughtful ecosystem where natural resources are valued and preserved. It’s a choice to live smarter, greener and more responsibly where every action today contributes to a better tomorrow for you and the generations to come.",
-      mapImage: "/images/currentProjectCardImages/4.png",
+      mapImage: "/images/currentProjectCardImages/5.png",
       label: "Rainwater Harvesting Tank",
     },
     {
@@ -174,7 +174,7 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
         "At VITU Vilasam, sustainability isn’t an afterthought—it’s a way of life. From eco-conscious planning to green landscapes that breathe, every detail is designed to create a home that’s kind to both you & the environment.",
       middleDescription:
         "Whether it’s seamless utility connections, well-lit streets, or organized community spaces, the infrastructure supports a high standard of living in every aspect. It's an environment where contemporary living meets dependable design ensuring that life at Vilasam is both beautiful and built to last.",
-      mapImage: "/images/currentProjectCardImages/5.png",
+      mapImage: "/images/currentProjectCardImages/4.png",
       label: "Solar-powered Streetlights",
     },
   ];
