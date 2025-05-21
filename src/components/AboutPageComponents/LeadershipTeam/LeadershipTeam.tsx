@@ -36,33 +36,33 @@ export default function LeadershipTeam() {
         throw new Error("Failed to fetch users");
       }
       const data = await response.json();
-
-      const filteredData = data.data.filter((member: TeamMember) => member.development !== true);
-
+  
+      // Filter out development members
+      let filteredData = data.data.filter((member: TeamMember) => member.development !== true);
+  
+      // Move Mr. K. Ananth Kamath to the first position
+      const ananthIndex = filteredData.findIndex((member: TeamMember) =>
+        member.name.toLowerCase().includes("ananth kamath")
+      );
+      if (ananthIndex > -1) {
+        const [ananth] = filteredData.splice(ananthIndex, 1);
+        filteredData = [ananth, ...filteredData];
+      }
+  
+      // Set both desktop and carousel arrays based on the updated order
+      setTeamMembers(filteredData);
       setTeamMembersCarousal([
         ...filteredData,
         ...filteredData.map((member: TeamMember, index: number) => ({
           ...member,
-
-          id: index + 5,
+          id: index + 100, // Ensuring unique ID
         })),
       ]);
-
-      const updatedData = filteredData.map((member: TeamMember, index: number) => ({
-        ...member,
-
-        id: index + 5,
-      }));
-
-      // Update states in a single batch to ensure consistency
-      setTeamMembers(filteredData);
-      // setTeamMembersCarousal([...updatedData, ...filteredData]);
-
-      // setTeamMembersCarousal([...filteredData, { ...filteredData[0], id: 1 }, { ...filteredData[1], id: 2 }]);
     } catch (error) {
       console.error("Error fetching team members:", error);
     }
   }
+  
 
   useEffect(() => {
     fetchTeamMembers();
