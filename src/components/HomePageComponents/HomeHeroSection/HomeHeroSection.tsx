@@ -71,6 +71,7 @@ const HeroSection = () => {
           }  z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
+            
             <div className="cursor-pointer" onClick={toggleMute}>
               <motion.button
                 layout="preserve-aspect"

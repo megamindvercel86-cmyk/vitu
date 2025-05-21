@@ -82,22 +82,18 @@ const AboutHeroSection: React.FC = () => {
     >
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          loop
-          playsInline
-          // onTimeUpdate={handleTimeUpdate}
-          autoPlay
-          muted={isMuted}
-          // priority
-        >
+        <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
           <source
             src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark_1.mp4?alt=media&token=bc3a294b-a25c-4f28-b662-6f2202c0b1b9"
             type="video/mp4"
           />
         </video>
-
+        <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
+          <source
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark%20Mobile.mp4?alt=media&token=c288c43a-a47a-4448-8b0a-6bee532d1fd6"
+            type="video/mp4"
+          />
+        </video>
         <div
           className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
             isMuted ? "justify-center" : "justify-end"
