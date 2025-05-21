@@ -160,24 +160,24 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#ccaa8d]",
       amenitiesDetails: [
         {
-          title: "Foundations for the Future",
+          title: "Embracing Coastal Serenity",
           image: "/images/locationAdvantagesImages/6.webp",
-          subtitle: "Building Sustainably for a Better Tomorrow",
+          subtitle: "Crafting a Beachside Haven",
           description:
-            "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
-          middleTitle: "Why Sustainable Building Matters",
+            "At Vitu Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
+          middleTitle: "Why Coastal Living Matters",
           middleDescription:
-            "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
+            "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
           bottomPoints: [
-            "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
-            "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
-            "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
-            "Indoor Environmental Quality: Sustainability also means improving the health and well-being of occupants. We use low-VOC paints, efficient air filtration systems, and ensure proper ventilation to create spaces that promote clean air and overall wellness.",
+            "Ocean-View Terraces: Spacious outdoor areas designed to maximize views of the sea, perfect for morning coffee or evening sunsets.",
+            "Coastal Design Aesthetics: Interiors inspired by the beach, using natural materials and soothing color palettes to create a serene environment.",
+            "Beach Access: Direct pathways to the shoreline, making beach walks and water activities a seamless part of your daily life.",
+            "Wellness Amenities: On-site yoga studios and meditation spaces that leverage the calming effects of the ocean to promote mental and physical health.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-          bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+            "At Vitu Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
+          bottomTitle: "The Core Principles of Coastal Design",
+          bottomDescription: "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
         },
       ],
     },
@@ -197,24 +197,24 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#ccaa8d]",
       amenitiesDetails: [
         {
-          title: "Foundations for the Future",
-          subtitle: "Building Sustainably for a Better Tomorrow",
+          title: "Investing in Tomorrow",
+          subtitle: "Building Wealth Through Smart Real Estate",
           image: "/images/locationAdvantagesImages/7.webp",
           description:
-            "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
-          middleTitle: "Why Sustainable Building Matters",
+            "At Vitu Realty, we design properties that are not just homes but also smart investments. Located in high-growth areas, our developments offer strong appreciation potential, modern infrastructure, and access to thriving communities, ensuring long-term value for homeowners and investors alike.",
+          middleTitle: "Why Location Drives Value",
           middleDescription:
-            "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
-          bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+            "A property’s value is deeply tied to its location. Our developments are strategically placed in areas with strong economic growth, excellent connectivity, and proximity to essential amenities, making them ideal for those seeking both comfort and financial security.",
+          bottomTitle: "The Core Principles of Investment-Driven Design",
+          bottomDescription: "Our properties are built with features that enhance long-term value and appeal:",
           bottomPoints: [
-            "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
-            "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
-            "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
-            "Indoor Environmental Quality: Sustainability also means improving the health and well-being of occupants. We use low-VOC paints, efficient air filtration systems, and ensure proper ventilation to create spaces that promote clean air and overall wellness.",
+            "Strategic Location: Positioned in areas with high demand and growth potential, ensuring strong market performance.",
+            "Modern Infrastructure: Cutting-edge construction techniques and smart home technologies that increase property desirability.",
+            "Community Growth: Proximity to schools, hospitals, and commercial hubs, fostering a vibrant and connected lifestyle.",
+            "Resale Potential: Designed with timeless aesthetics and durable materials to maintain value over time.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
+            "At Vitu Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
         },
       ],
     },
@@ -234,24 +234,24 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#2c4f40]",
       amenitiesDetails: [
         {
-          title: "Foundations for the Future",
-          subtitle: "Building Sustainably for a Better Tomorrow",
+          title: "Living Green, Made Simple",
+          subtitle: "Sustainable Homes for a Better Planet",
           image: "/images/locationAdvantagesImages/8.webp",
           description:
-            "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
-          middleTitle: "Why Sustainable Building Matters",
+            "At Vitu Realty, sustainability is at the heart of our mission. Our eco-conscious properties are designed to minimize environmental impact while maximizing comfort, integrating green technologies and practices that make sustainable living effortless and rewarding.",
+          middleTitle: "Why Green Living Matters",
           middleDescription:
-            "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
+            "Choosing a sustainable home means contributing to a healthier planet and a better quality of life. Our properties incorporate cutting-edge green technologies to reduce energy consumption, conserve water, and promote eco-friendly lifestyles, all while maintaining modern luxury.",
           bottomPoints: [
-            "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
-            "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
-            "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
-            "Indoor Environmental Quality: Sustainability also means improving the health and well-being of occupants. We use low-VOC paints, efficient air filtration systems, and ensure proper ventilation to create spaces that promote clean air and overall wellness.",
+            "Green Certifications: Our properties meet rigorous standards like LEED, ensuring top-tier sustainability performance.",
+            "Solar Energy Integration: Rooftop solar panels and energy-efficient systems to reduce reliance on non-renewable energy.",
+            "Smart Water Systems: Rainwater harvesting and low-flow fixtures to minimize water waste and promote conservation.",
+            "Eco-Friendly Materials: Use of sustainable, locally sourced materials to reduce environmental impact and support local economies.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-          bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+            "At Vitu Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
+          bottomTitle: "The Core Principles of Green Design",
+          bottomDescription: "Our sustainable properties integrate innovative technologies and practices to promote environmental stewardship:",
         },
       ],
     },
@@ -271,24 +271,24 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#4793be]",
       amenitiesDetails: [
         {
-          title: "Foundations for the Future",
-          subtitle: "Building Sustainably for a Better Tomorrow",
+          title: "A Sanctuary of Green",
+          subtitle: "Nature at the Heart of Your Home",
           image: "/images/locationAdvantagesImages/9.webp",
           description:
-            "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
-          middleTitle: "Why Sustainable Building Matters",
+            "At Vitu Realty, our Oxygen Park is more than just green space—it’s a sanctuary designed to promote wellness, tranquility, and a deep connection to nature. With lush landscapes and thoughtful design, the park offers a serene escape within your community.",
+          middleTitle: "Why Green Spaces Matter",
           middleDescription:
-            "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
+            "Access to green spaces has been shown to improve mental health, reduce stress, and enhance overall well-being. Our Oxygen Park is designed to bring these benefits to your doorstep, creating a natural haven where you can recharge and reconnect with nature.",
           bottomPoints: [
-            "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
-            "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
-            "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
-            "Indoor Environmental Quality: Sustainability also means improving the health and well-being of occupants. We use low-VOC paints, efficient air filtration systems, and ensure proper ventilation to create spaces that promote clean air and overall wellness.",
+            "Biodiverse Landscaping: Native plants and trees that support local ecosystems and enhance air quality.",
+            "Walking and Jogging Trails: Scenic paths designed for exercise and relaxation, winding through the park’s greenery.",
+            "Community Gardens: Spaces for residents to grow their own produce, fostering sustainability and connection.",
+            "Meditation Zones: Quiet areas for yoga, meditation, or simply enjoying the peace of nature.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-          bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+            "At Vitu Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
+          bottomTitle: "The Core Principles of Green Space Design",
+          bottomDescription: "Our Oxygen Park integrates thoughtful landscaping and amenities to create a natural oasis:",
         },
       ],
     },
@@ -308,24 +308,24 @@ const LocationAdvantage = () => {
       buttonFillBg: "bg-[#4793be]",
       amenitiesDetails: [
         {
-          title: "Foundations for the Future",
-          subtitle: "Building Sustainably for a Better Tomorrow",
+          title: "A Lifestyle of Choice",
+          subtitle: "Amenities for Every Moment",
           image: "/images/locationAdvantagesImages/10.webp",
           description:
-            "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
-          middleTitle: "Why Sustainable Building Matters",
+            "At Vitu Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
+          middleTitle: "Why Amenities Enhance Living",
           middleDescription:
-            "Sustainable building practices are essential for reducing our carbon footprint, conserving natural resources, and creating healthier living environments. By prioritizing sustainability, we can help mitigate the effects of climate change and promote a more balanced relationship between urban development and nature.",
+            "A diverse range of amenities creates a community where residents can thrive. Whether you’re seeking active pursuits, quiet relaxation, or social connections, our properties offer spaces that cater to every lifestyle, ensuring every day is enriched.",
           bottomPoints: [
-            "Energy Efficiency: From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.",
-            "Water Conservation: Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.",
-            "Waste Reduction: During construction, we implement strategies to reduce, reuse, and recycle waste. This ensures that less material ends up in landfills, contributing to a more sustainable building process.",
-            "Indoor Environmental Quality: Sustainability also means improving the health and well-being of occupants. We use low-VOC paints, efficient air filtration systems, and ensure proper ventilation to create spaces that promote clean air and overall wellness.",
+            "State-of-the-Art Fitness Center: Equipped with modern gym equipment and spaces for group classes like yoga and pilates.",
+            "Rooftop Lounge: A stylish space for socializing, with stunning views and comfortable seating areas.",
+            "Swimming Pool: A serene pool area for relaxation or exercise, designed for year-round enjoyment.",
+            "Community Event Spaces: Areas for gatherings, events, and workshops to foster a sense of community.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
-          bottomTitle: "The Core Principles of Sustainable Building",
-          bottomDescription: "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+            "At Vitu Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
+          bottomTitle: "The Core Principles of Amenity Design",
+          bottomDescription: "Our amenities are crafted to enhance your daily experience, offering variety and quality:",
         },
       ],
     },
@@ -473,15 +473,12 @@ const LocationAdvantage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute w-36 !rounded-[300px] bottom-[90] left-32 z-20">
-        <CarouselDots
-          total={data.length}
-          active={activeIndex}
-          onDotClick={handleDotClick}
-          className={data[activeIndex]?.carousalClassName}
-        />
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
+        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-
+      <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">
+        <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
+      </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div
