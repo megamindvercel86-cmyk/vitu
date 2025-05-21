@@ -362,7 +362,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name
  * - Displays legal information & copyright
  */
 const FooterBottom: FC = () => (
-  <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
+  <div className="mt-8 border-t border-gray-800 px-6 lg:px-10 lg2:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>

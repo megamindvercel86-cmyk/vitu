@@ -7,7 +7,6 @@ import Typography from "../../Typography/Typography";
 import InfiniteCarousel from "../../Common/InfiniteCarousel/InfiniteCarousel";
 import exploreProjects from "@/data/vilasamProject.json";
 import ExpandableCards from "./ExpandableCards";
-import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 

@@ -66,48 +66,48 @@ const HeroSection = () => {
           />
         </video>
         <div
-          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  lg2:right-20 w-full p-4 flex flex-row lg:justify-end ${
-                  isMuted ? "justify-center" : "justify-end"
-                }  z-[1] transition-all duration-300`}
+          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
+            isMuted ? "justify-center" : "justify-end"
+          }  z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <motion.button
-                layout
+                layout="preserve-aspect"
                 className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${
                   isMuted ? "bg-white/60" : "bg-white"
-                } cursor-pointer transition-colors duration-300`}
+                } cursor-pointer transition-colors duration-300 hover:shadow-md`}
                 aria-label={isMuted ? "Unmute" : "Mute"}
                 transition={{
-                  layout: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+                  layout: {
+                    duration: 0.6,
+                    ease: [0.4, 0, 0.2, 1],
+                  },
                 }}
               >
+                {isMuted ? <UnMute /> : <Mute />}
                 <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isMuted ? "unmute" : "mute"}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    {isMuted ? <UnMute /> : <Mute />}
-                  </motion.div>
-                </AnimatePresence>
-
-                <AnimatePresence mode="wait">
-                  {isMuted && (
+                  {isMuted && isFixed && (
                     <motion.span
                       key="audio-text"
-                      layout
-                      className="ml-2 text-sm whitespace-nowrap"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{
-                        duration: 0.5,
-                        ease: [0.25, 0.1, 0.25, 1],
+                      initial={{ width: 0, opacity: 0 }}
+                      animate={{
+                        width: "auto",
+                        opacity: 1,
+                        transition: {
+                          width: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                          opacity: { duration: 0.3, delay: 0.1 },
+                        },
                       }}
+                      exit={{
+                        width: 0,
+                        opacity: 0,
+                        transition: {
+                          width: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                          opacity: { duration: 0.2 },
+                        },
+                      }}
+                      className="ml-2 text-sm whitespace-nowrap overflow-hidden"
                     >
                       Site contains Audio Elements
                     </motion.span>

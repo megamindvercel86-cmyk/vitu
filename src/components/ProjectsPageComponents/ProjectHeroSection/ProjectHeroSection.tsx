@@ -9,7 +9,7 @@ import backgroundImage from "../../../../public/images/backgroundImages/projectP
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
 import { Link } from "react-scroll";
-
+import { motion, AnimatePresence } from 'framer-motion';
 // ============= Types =============
 interface AboutHeroConfig {
   backgroundImage: string;
@@ -80,7 +80,34 @@ const ProjectHeroSection: React.FC = () => {
       setIsMuted(!isMuted);
     }
   };
+  const [isFixed, setIsFixed] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        // Change to absolute when the section is about to leave the viewport
+        setIsFixed(rect.bottom > windowHeight);
+      }
+    };
+
+    // Add throttling to improve performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
   return (
     <section id="hero" className=" w-full h-[250vh] md:h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
       {/* Parallax Layers */}
@@ -95,9 +122,11 @@ const ProjectHeroSection: React.FC = () => {
       <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
         <Image src={backgroundImage} alt="Foreground Layer" fill className="object-cover" placeholder="blur" />
       </div>
+<div className="absolute h-[100vh]" ref={sectionRef}>
 
+</div>
       {/* Hero Content */}
-      <div className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
+      <div  className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
         {/* Main Title */}
         <h1
           className={`
@@ -192,15 +221,56 @@ const ProjectHeroSection: React.FC = () => {
         <ProjectCarousel />
       </div>
       <div className="absolute top-1/3  lg2:right-10 righ w-full p-4 flex flex-row md:justify-end justify-center">
-        <div className="flex gap-4">
-          <div className="cursor-pointer" onClick={toggleMute}>
-            <button
-              className={`w-full text-[#0C3E49] rounded-full lg:rounded-[30px] text-[19px] py-1.5 px-2 lg:px-5 ${!isMuted ? "bg-white" : "bg-white/60"} h-full cursor-pointer flex items-center justify-center`}
-              aria-label={isMuted ? "Unmute" : "Mute"}
-            >
-              {!isMuted ? <Mute /> : <UnMute />}
-              <span className="ml-2 hidden text-sm lg:block">Site contains Audio Elements</span>
-            </button>
+      <div
+          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
+            isMuted ? "justify-center" : "justify-end"
+          }  z-[1] transition-all duration-300`}
+        >
+          <div className="flex gap-4">
+            <div className="cursor-pointer" onClick={toggleMute}>
+              <motion.button
+                layout="preserve-aspect"
+                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${
+                  isMuted ? "bg-white/60" : "bg-white"
+                } cursor-pointer transition-colors duration-300 hover:shadow-md`}
+                aria-label={isMuted ? "Unmute" : "Mute"}
+                transition={{
+                  layout: {
+                    duration: 0.6,
+                    ease: [0.4, 0, 0.2, 1],
+                  },
+                }}
+              >
+                {isMuted ? <UnMute /> : <Mute />}
+                <AnimatePresence mode="wait">
+                  {isMuted && isFixed && (
+                    <motion.span
+                      key="audio-text"
+                      initial={{ width: 0, opacity: 0 }}
+                      animate={{
+                        width: "auto",
+                        opacity: 1,
+                        transition: {
+                          width: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                          opacity: { duration: 0.3, delay: 0.1 },
+                        },
+                      }}
+                      exit={{
+                        width: 0,
+                        opacity: 0,
+                        transition: {
+                          width: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                          opacity: { duration: 0.2 },
+                        },
+                      }}
+                      className="ml-2 text-sm whitespace-nowrap overflow-hidden"
+                    >
+                      Site contains Audio Elements
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </div>
           </div>
         </div>
       </div>

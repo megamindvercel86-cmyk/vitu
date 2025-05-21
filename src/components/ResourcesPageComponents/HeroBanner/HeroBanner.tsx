@@ -3,7 +3,8 @@
 // ============= Component Imports =============
 import Button from "@/components/Common/Button";
 import Typography from "@/components/Typography/Typography";
-
+import { useState } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
 // ============= Constants =============
 const CONTENT = {
   badge: "BLOG",
@@ -35,6 +36,13 @@ const BACKGROUND = {
  */
 export default function HeroBanner(): React.ReactElement {
   // ============= Render Helpers =============
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [blogData, setBlogData] = useState([]);
+  const [selectedBlogId, setSelectedBlogId] = useState<number>(1); 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
   const renderContent = () => (
     <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0 xl:flex-col xl:items-start">
       {/* Text Content */}
@@ -62,7 +70,7 @@ export default function HeroBanner(): React.ReactElement {
       {/* CTA Button */}
       <div className="w-full lg:w-auto md:w-full lg:block xl:hidden">
         <Button
-          onClick={() => {}}
+        onClick={handleOpenModal}
           className="rounded-[2rem] bg-transparent border-2 w-full lg2:w-[15.688rem] lg2:h-[4.5rem] md:w-[11.688rem] md:h-[3.5rem] sm:text-base md:text-[1.5rem] lg2:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
         >
           {CONTENT.cta}
@@ -82,6 +90,7 @@ export default function HeroBanner(): React.ReactElement {
   );
 
   return (
+    <>
     <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh]">
       {/* Background Image */}
       <div
@@ -98,5 +107,33 @@ export default function HeroBanner(): React.ReactElement {
         </div>
       </div>
     </div>
+    <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white text-black rounded-2xl p-6 w-[90%] max-w-md shadow-lg relative"
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            >
+              <h2 className="text-xl font-bold mb-2">Hi, I’m a Modal 👋</h2>
+              <p className="mb-4 text-sm text-gray-600">This is an example of a modal with smooth animations using Framer Motion.</p>
+              <button
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

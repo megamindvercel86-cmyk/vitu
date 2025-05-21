@@ -19,7 +19,7 @@ const NavLink = ({
   ariaLabel,
 }: NavLinkProps) => {
   const combinedClassName = classNames(
-    "lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer",
+    "lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer",
     className,
   );
 

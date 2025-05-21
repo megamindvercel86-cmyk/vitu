@@ -32,7 +32,7 @@ const LyfeStyle = () => {
   return (
     <section className="grid grid-cols-1 gap-8 items-center !px-0  lg:flex-row ">
       <div className="relative">
-        <div className=" lg:absolte px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full lg:gap-14  ">
+        <div className=" lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col  items-start w-full lg:gap-14  ">
           <div className="lg:w-1/2">
             <h2 className="text-2xl md:text-4xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  lg:pb-10 pb-4">
               20,000 sq.ft of Everyday Luxury
@@ -82,7 +82,7 @@ const LyfeStyle = () => {
         </div>
 
         {/* Image container with gradient */}
-        <div className="relative">
+        <div className="relative pt-52">
           <Image src="/images/vilasamPageImages/image.webp" alt="vilasam" height={1000} width={1000} className="w-full  object-cover " />
           <div className="absolute bottom-0 left-0 w-full h-[30px] lg:h-[170px] xl:h-[200px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
           <div className="absolute bottom-0 left-0 w-full h-[50px] lg:h-[170px] xl:h-[200px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />

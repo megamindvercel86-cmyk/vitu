@@ -195,7 +195,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
               {showGetInTouch && (
                 <Link href="/general-enquire">
                   <Button
-                    className={`w-full pt-[2px] text-base sm:text-lg md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={`w-full pt-[2px] text-base h-auto lg2:h-[50px] sm:text-lg lg:h-[30px] md:text-xl lg2:text-2xl px-4 lg2:px-7 xl:px-10 lg:text-[16px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}

@@ -257,7 +257,7 @@ export default function ArticleArea(): React.ReactElement {
             }}
           >
             {desktopCard.map((card) => (
-              <SwiperSlide key={card.id} className="lg2:!h-[55vh] lg:!h-[50vh] !rounded-[20px]">
+              <SwiperSlide key={card.id} className="lg2:!h-[55vh] lg:!h-[60vh] !rounded-[20px]">
                 {/* Use h-full to inherit height from Swiper */}
                 <AppleStyleCard
                   id={card.id}
