@@ -5,6 +5,9 @@ import Button from "@/components/Common/Button";
 import Typography from "@/components/Typography/Typography";
 import { useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from "next/image";
+import { IconX } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 // ============= Constants =============
 const CONTENT = {
   badge: "BLOG",
@@ -34,6 +37,29 @@ const BACKGROUND = {
  *
  * @returns {React.ReactElement} The HeroBanner component
  */
+
+const project = {
+  fileUrl: "/images/backgroundImages/resourcesPageBackground.png",
+  title: "Is Real Estate Investment Really Worth It?",
+  subtitle: "Breaking down the advantages and pitfalls of investing in property.",
+  topTitle: "Introduction",
+  topDescription:
+    "Real estate has long been considered a stable investment. However, like any investment, it comes with its own set of challenges. In this blog, we analyze whether it’s truly worth putting your money into property.",
+  middleTitle: "Pros of Real Estate Investment",
+  middlePoints: [
+    "Tangible asset that appreciates over time",
+    "Regular income through rentals",
+    "Tax benefits and deductions",
+    "Hedge against inflation",
+  ],
+  middleTitle2: "Cons of Real Estate Investment",
+  middlePoints2: [
+    "Requires significant upfront capital",
+    "Low liquidity compared to stocks or mutual funds",
+    "Property management responsibilities",
+    "Market risks and unexpected expenses",
+  ],
+};
 export default function HeroBanner(): React.ReactElement {
   // ============= Render Helpers =============
 
@@ -42,6 +68,9 @@ export default function HeroBanner(): React.ReactElement {
   const [selectedBlogId, setSelectedBlogId] = useState<number>(1); 
   const handleOpenModal = () => {
     setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
   const renderContent = () => (
     <div className="text-white sm:mb-0 mb-0 md:mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0 xl:flex-col xl:items-start">
@@ -80,8 +109,8 @@ export default function HeroBanner(): React.ReactElement {
       {/* CTA Button for XL screens */}
       <div className="hidden xl:block mt-4">
         <Button
-          onClick={() => {}}
-          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
+           onClick={handleOpenModal}
+          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg2:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
         >
           {CONTENT.cta}
         </Button>
@@ -108,32 +137,91 @@ export default function HeroBanner(): React.ReactElement {
       </div>
     </div>
     <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-white text-black rounded-2xl p-6 w-[90%] max-w-md shadow-lg relative"
-              initial={{ scale: 0.9, y: 50 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 50 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
-              <h2 className="text-xl font-bold mb-2">Hi, I’m a Modal 👋</h2>
-              <p className="mb-4 text-sm text-gray-600">This is an example of a modal with smooth animations using Framer Motion.</p>
-              <button
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+  {isModalOpen && (
+    <div
+    className="fixed inset-0 h-screen w-screen overflow-auto scrollbar-hide"
+    style={{ zIndex: 2147483648 }} // Higher than the WhatsApp widget
+    data-lenis-prevent
+  >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className=" backdrop-blur-lg h-full w-full fixed inset-0"
+    />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      // ref={containerRef}
+      // layoutId={`expandable-card-${id}`}
+      className={cn(
+        "lg:mx-16 lg2:mx-auto lg2:max-w-5xl  bg-white z-[9999] dark:bg-bg-[#F8F6F5]  h-auto  md:my-10 sm:mx-5 md:mx-auto md:rounded-[32px] font-sans relative overflow-hidden",
+        // expandedClassName
+      )}
+    >
+      <div className="relative h-auto "></div>
+      <div className="">
+        <button
+          className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF]  z-[9999] rounded-full flex items-center justify-center transition-colors"
+          onClick={handleCloseModal}
+        >
+          <IconX className="h-5 w-5 text-black" />
+        </button>
+
+        <div><div key={"dummy-content"} data-lenis-prevent>
+          <Image
+            src={project.fileUrl || "/placeholder.svg"}
+            alt={"Card image"}
+            width={1042}
+            height={45}
+            className={cn("object-cover   h-[652px] w-full")}
+          />
+          <div className="p-4 md:p-10">
+            <Typography variant="h1" className="text-customBrown font-freightNeoMedium">
+              {project.title}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-3xl">
+              {project.subtitle}
+            </Typography>
+            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.topTitle}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl">
+              {project.topDescription}
+            </Typography>
+            {project.middlePoints&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.middleTitle}
+            </Typography>}
+            {project.middlePoints&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6 leading-10">
+              {project.middlePoints?.map((point, index) => (
+                <li key={index} className="pb-4">{point}</li>
+              ))}
+            </ul>}
+            {project.middleTitle2&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.middleTitle2}
+            </Typography>}
+            {project.middleTitle2&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6">
+              {project.middlePoints2?.map((point, index) => (
+                <li key={index} className="pb-4">{point}</li>
+              ))}
+            </ul>}
+            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
+              {project.topTitle}
+            </Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] !text-xl">
+              {project.topDescription}
+            </Typography>
+      
+         
+          </div>
+        </div></div>
+      </div>
+    </motion.div>
+  </div>
+  )}
+</AnimatePresence>
+
     </>
   );
 }
