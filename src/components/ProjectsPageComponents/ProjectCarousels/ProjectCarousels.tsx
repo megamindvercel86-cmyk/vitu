@@ -168,7 +168,7 @@ export default function ProjectCarousel(): React.ReactElement {
         {/* Video Column */}
         <div className="col-span-12 lg:col-span-7 mb-12 md:mb-0">
           <VideoPlayer
-            videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1746009855/umxqgb4po2unxuyz3ndw.mp4"
+            videoUrl="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vitu%20prese.mp4?alt=media&token=07e4fe7c-1cd8-4302-8fe8-687469756a5e"
             youtubeUrl="https://www.youtube.com"
             titleClassname="font-bold"
           />

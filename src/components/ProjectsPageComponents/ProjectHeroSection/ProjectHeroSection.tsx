@@ -9,7 +9,7 @@ import backgroundImage from "../../../../public/images/backgroundImages/projectP
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
 import { Link } from "react-scroll";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 // ============= Types =============
 interface AboutHeroConfig {
   backgroundImage: string;
@@ -122,11 +122,9 @@ const ProjectHeroSection: React.FC = () => {
       <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
         <Image src={backgroundImage} alt="Foreground Layer" fill className="object-cover" placeholder="blur" />
       </div>
-<div className="absolute h-[100vh]" ref={sectionRef}>
-
-</div>
+      <div className="absolute h-[100vh]" ref={sectionRef}></div>
       {/* Hero Content */}
-      <div  className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
+      <div className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
         {/* Main Title */}
         <h1
           className={`
@@ -221,7 +219,7 @@ const ProjectHeroSection: React.FC = () => {
         <ProjectCarousel />
       </div>
       <div className="absolute top-1/3  lg2:right-10 righ w-full p-4 flex flex-row md:justify-end justify-center">
-      <div
+        <div
           className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
             isMuted ? "justify-center" : "justify-end"
           }  z-[1] transition-all duration-300`}
