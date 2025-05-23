@@ -142,40 +142,40 @@ const expandedPositions = {
 
 const notExpandedPositions = {
   "2xl": [
-    { top: "41%", left: "40%", right: "auto" },
-    { top: "30%", left: "41.4%", right: "auto" },
-    { top: "20%", left: "45%", right: "auto" },
-    { top: "36%", left: "47%", right: "auto" },
-    { top: "25%", left: "36%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "25%", left: "53%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
   ],
   xl: [
-    { top: "31%", left: "35%", right: "auto" },
-    { top: "34%", left: "55%", right: "auto" },
-    { top: "2%", left: "43%", right: "auto" },
-    { top: "26%", left: "47%", right: "auto" },
-    { top: "7%", left: "31%", right: "auto" },
-    { top: "15%", left: "53%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
   ],
   lg: [
-    { top: "31%", left: "33%", right: "auto" },
-    { top: "14%", left: "37%", right: "auto" },
-    { top: "4%", left: "41%", right: "auto" },
-    { top: "26%", left: "44%", right: "auto" },
-    { top: "9%", left: "29%", right: "auto" },
-    { top: "15%", left: "26%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
   ],
   md: [
-    { top: "31%", left: "30%", right: "auto" },
-    { top: "16%", left: "34%", right: "auto" },
-    { top: "6%", left: "38%", right: "auto" },
-    { top: "26%", left: "41%", right: "auto" },
-    { top: "11%", left: "27%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
+    { top: "30%", left: "45%", right: "auto" },
   ],
 };
 
@@ -353,7 +353,7 @@ console.log(borderColor)
                 <AppleStyleCard
                   id={card.id}
                   position={card.position}
-                  imageSrc={card.url}
+                  imageSrc={isExpanded ? card.url : "https://res.cloudinary.com/dvandhsai/image/upload/v1747976596/xlcmb7f8g2gntfvpmqij.png"}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"
                   content={<CardContent cardId={card.id} />}

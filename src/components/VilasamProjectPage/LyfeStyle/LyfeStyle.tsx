@@ -1,10 +1,9 @@
 "use client";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
-import { MdKeyboardArrowRight } from "react-icons/md";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
