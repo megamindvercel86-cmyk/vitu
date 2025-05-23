@@ -564,7 +564,7 @@ const CurrentProject: React.FC = () => {
               variant="custom"
               className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
             >
-              {PROJECT_DATA.description.suffix} {selectedLocation.id}
+              {PROJECT_DATA.description.suffix} 
             </Typography>
           </div>
 
@@ -632,7 +632,7 @@ const CurrentProject: React.FC = () => {
                   variant="custom"
                   className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
                 >
-                  {stat.value} {selectedLocation.id}
+                  {stat.value} 
                 </Typography>
                 <Typography
                   variant="custom"
