@@ -30,7 +30,7 @@ const PROJECT_DATA = {
       "Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
-  image: "/images/vilasamCurrentProjectImages/27.png",
+  image: "/images/vilasamCurrentProject/27.png",
 };
 
 const STATS_DATA = [
@@ -48,8 +48,8 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[24%]  lg:top-[45%] left-[22%] top-[48%]  lg:w-[65px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/3.png",
+    position: "lg:left-[32%]  lg:top-[40%] left-[33%] top-[45%] md:left-[33%] md:top-[43%]  lg:w-[65px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -62,8 +62,8 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[22%] top-[54%] lg:left-[23.8%] lg:top-[57%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/4.png",
+    position: "left-[33%] top-[51%] lg:left-[32%] lg:top-[50%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
       {
@@ -76,8 +76,8 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[21%] top-[63%] md:left-[23%] md:top-[62%] lg:left-[23%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/5.png",
+    position: "left-[33%] top-[56%] md:left-[33%] md:top-[60%] lg:left-[31%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
       {
@@ -90,8 +90,8 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[19.5%] top-[71%] md:left-[19.5%] md:top-[72%] lg:left-[16.5%] lg:top-[77%]  lg:w-24  lg:h-[68px]",
-    imagePath: "/images/vilasamCurrentProjectImages/6.png",
+    position: "left-[30%] top-[62%] md:left-[31%] md:top-[69%] lg:left-[27%] lg:top-[70%]  lg:w-24  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
       {
@@ -104,8 +104,8 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[14.5%] top-[77%] lg:left-[12.5%] lg:top-[88%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/7.png",
+    position: "left-[30%] top-[68%] lg:left-[23%] lg:top-[78%] md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[130px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
       {
@@ -118,8 +118,8 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[34%] top-[77%] lg:left-[33%] lg:top-[88.7%] md:left-[34%] md:top-[82.7%] lg:w-[70px] lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/8.png",
+    position: "left-[43%] top-[68%] lg:left-[41%] lg:top-[79%] md:left-[44%] md:top-[78%] lg:w-[70px] lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -132,8 +132,8 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[34%] top-[71%] md:left-[34%] md:top-[72%] lg:left-[34%] lg:top-[77%]  lg:w-[70px]  lg:h-[68px]",
-    imagePath: "/images/vilasamCurrentProjectImages/9.png",
+    position: "left-[43%] top-[62%] md:left-[44%] md:top-[70%] lg:left-[41%] lg:top-[69%]  lg:w-[70px]  lg:h-[68px]",
+    imagePath: "/images/vilasamCurrentProject/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -146,8 +146,8 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[34%] top-[63%] md:left-[34%] md:top-[64%] lg:left-[34%] lg:top-[67%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/10.png",
+    position: "left-[43%] top-[56%] md:left-[44%] md:top-[60%] lg:left-[41%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -160,8 +160,8 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[33.9%] top-[55%] lg:left-[33.9%] lg:top-[57%]   lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/vilasamCurrentProjectImages/11.png",
+    position: "left-[43%] top-[51%] lg:left-[41%] lg:top-[50%]   lg:w-[70px]  lg:h-[65px]",
+    imagePath: "/images/vilasamCurrentProject/11.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -174,8 +174,8 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[34%] top-[45%] lg:left-[34%] lg:top-[41%]  lg:w-[70px]  lg:h-[97px]",
-    imagePath: "/images/vilasamCurrentProjectImages/12.png",
+    position: "left-[43%] top-[43%] lg:left-[41%] lg:top-[36%]  lg:w-[65px]  lg:h-[88px]",
+    imagePath: "/images/vilasamCurrentProject/12.png",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
       {
@@ -188,8 +188,8 @@ const LOCATIONS: Location[] = [
   {
     id: 11,
     name: "Section 11",
-    position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[34%] lg:top-[27%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/vilasamCurrentProjectImages/13.png",
+    position: "left-[43%] top-[35%] md:left-[44%] md:top-[27%] lg:left-[40%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/vilasamCurrentProject/13.png",
     description: [
       { value: "West Facing Plots", label: "5.00 Cents" },
       {
@@ -202,8 +202,8 @@ const LOCATIONS: Location[] = [
   {
     id: 12,
     name: "Section 12",
-    position: "left-[88%] top-[27%] lg:left-[80%] md:top-[17%] lg:top-[13%]  lg:w-[60px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/27.png",
+    position: "left-[88%] top-[27%] lg:left-[84%] md:top-[17%] lg:top-[11%]  lg:w-[60px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/27.png",
     description: [
       { value: "East Facing Plots", label: "6.57 Cents" },
       {
@@ -216,8 +216,8 @@ const LOCATIONS: Location[] = [
   {
     id: 13,
     name: "Section 13",
-    position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[79.5%] lg:top-[27%]  lg:w-10  lg:h-16",
-    imagePath: "/images/vilasamCurrentProjectImages/27.png",
+    position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[82%] lg:top-[23%]  lg:w-10  lg:h-16",
+    imagePath: "/images/vilasamCurrentProject/27.png",
     description: [
       { value: "Tech Hub", label: "Co-working Spaces" },
       {
@@ -230,8 +230,8 @@ const LOCATIONS: Location[] = [
   {
     id: 14,
     name: "Section 14",
-    position: "left-[66%] top-[58%] lg:left-[62%] lg:top-[60%]  lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/vilasamCurrentProjectImages/16.png",
+    position: "left-[71%] top-[53%] lg:left-[67%] lg:top-[53%]  lg:w-[70px]  lg:h-[65px]",
+    imagePath: "/images/vilasamCurrentProject/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
       {
@@ -244,8 +244,8 @@ const LOCATIONS: Location[] = [
   {
     id: 15,
     name: "Section 15",
-    position: "left-[67%] top-[51%] lg:left-[61.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/vilasamCurrentProjectImages/17.png",
+    position: "left-[71%] top-[47%] lg:left-[67%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
       {
@@ -258,8 +258,8 @@ const LOCATIONS: Location[] = [
   {
     id: 16,
     name: "Section 16",
-    position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[61.9%] lg:top-[39%] lg:w-[70px]  lg:h-[74px]",
-    imagePath: "/images/vilasamCurrentProjectImages/18.png",
+    position: "left-[71%] top-[42%]  md:top-[39%]  lg:left-[67%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
+    imagePath: "/images/vilasamCurrentProject/18.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
       {
@@ -272,8 +272,8 @@ const LOCATIONS: Location[] = [
   {
     id: 17,
     name: "Section 17",
-    position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[62%] lg:top-[26%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/vilasamCurrentProjectImages/19.png",
+    position: "left-[69%] top-[36%] md:left-[71%] md:top-[30%] lg:left-[67%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/vilasamCurrentProject/19.png",
     description: [
       { value: "East Facing Plots", label: "5.00 Cents" },
       {
@@ -286,8 +286,8 @@ const LOCATIONS: Location[] = [
   {
     id: 18,
     name: "Section 18",
-    position: "left-[66%] top-[25%] md:left-[67%] md:top-[15%] lg:left-[62%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
-    imagePath: "/images/vilasamCurrentProjectImages/20.png",
+    position: "left-[70%] top-[28%] md:left-[70%] md:top-[15%] lg:left-[67%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
+    imagePath: "/images/vilasamCurrentProject/20.png",
     description: [
       { value: "East Facing Plots", label: "5.80 Cents" },
       {
@@ -300,8 +300,8 @@ const LOCATIONS: Location[] = [
   {
     id: 19,
     name: "Section 19",
-    position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[51%] lg:top-[7%]  lg:w-[70px]  lg:h-[54px]",
-    imagePath: "/images/vilasamCurrentProjectImages/21.png",
+    position: "left-[59%] top-[24%] md:left-[60%] md:top-[10%] lg:left-[57%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
+    imagePath: "/images/vilasamCurrentProject/21.png",
     description: [
       { value: "East Facing Plots", label: "3.35 Cents" },
       {
@@ -314,8 +314,8 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[55%] top-[29%] md:left-[53%] md:top-[16%]  lg:left-[51%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/22.png",
+    position: "left-[59%] top-[30%] md:left-[59%] md:top-[20%]  lg:left-[57%] lg:top-[14%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/22.png",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
       {
@@ -328,8 +328,8 @@ const LOCATIONS: Location[] = [
   {
     id: 21,
     name: "Section 21",
-    position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[51%]  lg:top-[28.8%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/23.png",
+    position: "left-[59%]  top-[36%] md:left-[59%]  md:top-[29%] lg:left-[57%]  lg:top-[25%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/23.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -342,8 +342,8 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[53%] top-[44%] lg:left-[51%] md:top-[39%] lg:top-[40%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProjectImages/24.png",
+    position: "left-[59%] top-[42%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/24.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -356,8 +356,8 @@ const LOCATIONS: Location[] = [
   {
     id: 23,
     name: "Section 23",
-    position: "left-[55%] top-[77%] lg:left-[52%] lg:top-[85%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
-    imagePath: "/images/vilasamCurrentProjectImages/25.png",
+    position: "left-[60%] top-[68%] lg:left-[58%] lg:top-[76%] md:left-[60%] md:top-[75%] md:w-[70px]  md:h-[50px]  lg:w-[100px]  lg:h-[80px]",
+    imagePath: "/images/vilasamCurrentProject/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
       {
@@ -370,8 +370,8 @@ const LOCATIONS: Location[] = [
   {
     id: 24,
     name: "Section 24",
-    position: "left-[54%] top-[51%] lg:left-[51%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/vilasamCurrentProjectImages/26.png",
+    position: "left-[59%] top-[47%] lg:left-[57%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
       {
@@ -384,8 +384,8 @@ const LOCATIONS: Location[] = [
   {
     id: 25,
     name: "Section 25",
-    position: "lg:left-[24.9%] lg:top-[28%] left-[22%] top-[36%]   lg:w-[60px]  lg:h-[100px]",
-    imagePath: "/images/vilasamCurrentProjectImages/28.png",
+    position: "lg:left-[33%] lg:top-[23%] left-[33%] top-[36%] md:left-[34%] md:top-[30%]   lg:w-[55px]  lg:h-[100px]",
+    imagePath: "/images/vilasamCurrentProject/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
       {
@@ -398,8 +398,8 @@ const LOCATIONS: Location[] = [
   {
     id: 26,
     name: "Section 26",
-    position: "left-[54%] top-[58%] lg:left-[51%] lg:top-[60%]    lg:w-[70px]  lg:h-[55px]",
-    imagePath: "/images/vilasamCurrentProjectImages/29.png",
+    position: "left-[59%] top-[54%] lg:left-[57%] lg:top-[53%]    lg:w-[70px]  lg:h-[55px]",
+    imagePath: "/images/vilasamCurrentProject/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
       {

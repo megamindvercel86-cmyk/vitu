@@ -29,7 +29,7 @@ const PROJECT_DATA = {
       " Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
-  image: "/images/currentProjectImageUpdated/25.png",
+  image: "/images/currentProjectImages/27.png",
 };
 
 const STATS_DATA = [
@@ -46,8 +46,8 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[30%]  lg:top-[40%] left-[22%] top-[48%]  lg:w-[65px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/3.png",
+    position: "lg:left-[32%]  lg:top-[40%] left-[33%] top-[45%] md:left-[33%] md:top-[43%]  lg:w-[65px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/3.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -60,8 +60,8 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[22%] top-[54%] lg:left-[29.8%] lg:top-[52%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/4.png",
+    position: "left-[33%] top-[51%] lg:left-[32%] lg:top-[50%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/4.png",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
       {
@@ -74,8 +74,8 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[21%] top-[63%] md:left-[23%] md:top-[62%] lg:left-[29%] lg:top-[62%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/5.png",
+    position: "left-[33%] top-[56%] md:left-[33%] md:top-[60%] lg:left-[31%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/5.png",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
       {
@@ -88,8 +88,8 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[19.5%] top-[71%] md:left-[19.5%] md:top-[72%] lg:left-[22.5%] lg:top-[72%]  lg:w-24  lg:h-[68px]",
-    imagePath: "/images/currentProjectImageUpdated/6.png",
+    position: "left-[30%] top-[62%] md:left-[31%] md:top-[69%] lg:left-[27%] lg:top-[70%]  lg:w-24  lg:h-[58px]",
+    imagePath: "/images/currentProjectImages/6.png",
     description: [
       { value: "West Facing Plots", label: "6.60 Cents" },
       {
@@ -102,8 +102,8 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[14.5%] top-[77%] lg:left-[18.5%] lg:top-[83%] md:left-[14.5%] md:top-[82.5%]  lg:w-[130px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/7.png",
+    position: "left-[30%] top-[68%] lg:left-[23%] lg:top-[78%] md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[130px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/7.png",
     description: [
       { value: "West Facing Plots", label: "7.80 Cents" },
       {
@@ -116,8 +116,8 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[34%] top-[71%] md:left-[34%] md:top-[72%] lg:left-[40%] lg:top-[72%]  lg:w-[70px]  lg:h-[68px]",
-    imagePath: "/images/currentProjectImageUpdated/8.png",
+    position: "left-[43%] top-[68%] lg:left-[41%] lg:top-[79%] md:left-[44%] md:top-[78%] lg:w-[70px] lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/8.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -130,8 +130,8 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[34%] top-[63%] md:left-[34%] md:top-[64%] lg:left-[40%] lg:top-[62%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/9.png",
+    position: "left-[43%] top-[62%] md:left-[44%] md:top-[70%] lg:left-[41%] lg:top-[69%]  lg:w-[70px]  lg:h-[68px]",
+    imagePath: "/images/currentProjectImages/9.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -144,8 +144,8 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[33.9%] top-[55%] lg:left-[39.9%] lg:top-[52%]   lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/currentProjectImageUpdated/10.png",
+    position: "left-[43%] top-[56%] md:left-[44%] md:top-[60%] lg:left-[41%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/10.png",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -158,10 +158,10 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[34%] top-[45%] lg:left-[40%] lg:top-[36%]  lg:w-[70px]  lg:h-[97px]",
-    imagePath: "/images/currentProjectImageUpdated/11.png",
+    position: "left-[43%] top-[51%] lg:left-[41%] lg:top-[50%]   lg:w-[70px]  lg:h-[65px]",
+    imagePath: "/images/currentProjectImages/11.png",
     description: [
-      { value: "West Facing Plots", label: "5.45 Cents" },
+      { value: "West Facing Plots", label: "4.00 Cents" },
       {
         value: "",
         label:
@@ -172,10 +172,10 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[34%] top-[34%] md:left-[34%] md:top-[27%] lg:left-[40%] lg:top-[22%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/currentProjectImageUpdated/12.png",
+    position: "left-[43%] top-[43%] lg:left-[41%] lg:top-[36%]  lg:w-[65px]  lg:h-[88px]",
+    imagePath: "/images/currentProjectImages/12.png",
     description: [
-      { value: "West Facing Plots", label: "5.00 Cents" },
+      { value: "West Facing Plots", label: "5.45 Cents" },
       {
         value: "",
         label:
@@ -186,8 +186,22 @@ const LOCATIONS: Location[] = [
   {
     id: 11,
     name: "Section 11",
-    position: "left-[88%] top-[27%] lg:left-[86%] md:top-[17%] lg:top-[8%]  lg:w-[60px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/13.png",
+    position: "left-[43%] top-[35%] md:left-[44%] md:top-[27%] lg:left-[40%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/currentProjectImages/13.png",
+    description: [
+      { value: "West Facing Plots", label: "5.00 Cents" },
+      {
+        value: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Section 12",
+    position: "left-[88%] top-[27%] lg:left-[84%] md:top-[17%] lg:top-[11%]  lg:w-[60px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/27.png",
     description: [
       { value: "East Facing Plots", label: "6.57 Cents" },
       {
@@ -198,10 +212,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 12,
-    name: "Section 12",
-    position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[85.5%] lg:top-[22%]  lg:w-10  lg:h-16",
-    imagePath: "/images/currentProjectImageUpdated/25.png",
+    id: 13,
+    name: "Section 13",
+    position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[82%] lg:top-[23%]  lg:w-10  lg:h-16",
+    imagePath: "/images/currentProjectImages/27.png",
     description: [
       { value: "Tech Hub", label: "Co-working Spaces" },
       {
@@ -212,10 +226,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 13,
-    name: "Section 13",
-    position: "left-[66%] top-[58%] lg:left-[68%] lg:top-[55%]  lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/currentProjectImageUpdated/14.png",
+    id: 14,
+    name: "Section 14",
+    position: "left-[71%] top-[53%] lg:left-[67%] lg:top-[53%]  lg:w-[70px]  lg:h-[65px]",
+    imagePath: "/images/currentProjectImages/16.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
       {
@@ -226,10 +240,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 14,
-    name: "Section 14",
-    position: "left-[67%] top-[51%] lg:left-[67.8%] lg:top-[50.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/currentProjectImageUpdated/15.png",
+    id: 15,
+    name: "Section 15",
+    position: "left-[71%] top-[47%] lg:left-[67%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/currentProjectImages/17.png",
     description: [
       { value: "East Facing Plots", label: "3.90 Cents" },
       {
@@ -240,26 +254,12 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 15,
-    name: "Section 15",
-    position: "left-[67%] top-[42%]  md:top-[39%]  lg:left-[67.9%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
-    imagePath: "/images/currentProjectImageUpdated/16.png",
-    description: [
-      { value: "East Facing Plots", label: "4.50 Cents" },
-      {
-        value: "",
-        label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-      },
-    ],
-  },
-  {
     id: 16,
     name: "Section 16",
-    position: "left-[66%] top-[34%] md:left-[67%] md:top-[27%] lg:left-[68%] lg:top-[21%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/currentProjectImageUpdated/17.png",
+    position: "left-[71%] top-[42%]  md:top-[39%]  lg:left-[67%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
+    imagePath: "/images/currentProjectImages/18.png",
     description: [
-      { value: "East Facing Plots", label: "5.00 Cents" },
+      { value: "East Facing Plots", label: "4.50 Cents" },
       {
         value: "",
         label:
@@ -270,10 +270,10 @@ const LOCATIONS: Location[] = [
   {
     id: 17,
     name: "Section 17",
-    position: "left-[66%] top-[25%] md:left-[67%] md:top-[15%] lg:left-[68%] lg:top-[5%]  lg:w-[70px]  lg:h-[84px]",
-    imagePath: "/images/currentProjectImageUpdated/18.png",
+    position: "left-[69%] top-[36%] md:left-[71%] md:top-[30%] lg:left-[67%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/currentProjectImages/19.png",
     description: [
-      { value: "East Facing Plots", label: "5.80 Cents" },
+      { value: "East Facing Plots", label: "5.00 Cents" },
       {
         value: "",
         label:
@@ -284,10 +284,10 @@ const LOCATIONS: Location[] = [
   {
     id: 18,
     name: "Section 18",
-    position: "left-[55%] top-[20%] md:left-[53%] md:top-[8%] lg:left-[57%] lg:top-[2%]  lg:w-[70px]  lg:h-[54px]",
-    imagePath: "/images/currentProjectImageUpdated/19.png",
+    position: "left-[70%] top-[28%] md:left-[70%] md:top-[15%] lg:left-[67%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
+    imagePath: "/images/currentProjectImages/20.png",
     description: [
-      { value: "East Facing Plots", label: "3.35 Cents" },
+      { value: "East Facing Plots", label: "5.80 Cents" },
       {
         value: "",
         label:
@@ -298,10 +298,10 @@ const LOCATIONS: Location[] = [
   {
     id: 19,
     name: "Section 19",
-    position: "left-[55%] top-[29%] md:left-[53%] md:top-[16%]  lg:left-[57%] lg:top-[16.6%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/20.png",
+    position: "left-[59%] top-[24%] md:left-[60%] md:top-[10%] lg:left-[57%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
+    imagePath: "/images/currentProjectImages/21.png",
     description: [
-      { value: "East Facing Plots", label: "4.50 Cents" },
+      { value: "East Facing Plots", label: "3.35 Cents" },
       {
         value: "",
         label:
@@ -312,22 +312,22 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[54%]  top-[35%] md:left-[54%]  md:top-[27%] lg:left-[57%]  lg:top-[28.8%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/21.png",
+    position: "left-[59%] top-[30%] md:left-[59%] md:top-[20%]  lg:left-[57%] lg:top-[14%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/22.png",
     description: [
-      { value: "West Facing Plots", label: "4.50 Cents" },
+      { value: "East Facing Plots", label: "4.50 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
   {
     id: 21,
     name: "Section 21",
-    position: "left-[53%] top-[44%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/currentProjectImageUpdated/22.png",
+    position: "left-[59%]  top-[36%] md:left-[59%]  md:top-[29%] lg:left-[57%]  lg:top-[25%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/23.png",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -340,8 +340,22 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[55%] top-[77%] lg:left-[58%] lg:top-[80%] md:left-[55%] md:top-[84%]  lg:w-[100px]  lg:h-[80px]",
-    imagePath: "/images/currentProjectImageUpdated/23.png",
+    position: "left-[59%] top-[42%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/currentProjectImages/24.png",
+    description: [
+      { value: "West Facing Plots", label: "4.50 Cents" },
+      {
+        value: "",
+        label:
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+      },
+    ],
+  },
+  {
+    id: 23,
+    name: "Section 23",
+    position: "left-[60%] top-[68%] lg:left-[58%] lg:top-[76%] md:left-[60%] md:top-[75%] md:w-[70px]  md:h-[50px]  lg:w-[100px]  lg:h-[80px]",
+    imagePath: "/images/currentProjectImages/25.png",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
       {
@@ -352,10 +366,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 23,
-    name: "Section 23",
-    position: "left-[54%] top-[51%] lg:left-[57%] lg:top-[49.8%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/currentProjectImageUpdated/24.png",
+    id: 24,
+    name: "Section 24",
+    position: "left-[59%] top-[47%] lg:left-[57%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/currentProjectImages/26.png",
     description: [
       { value: "West Facing Plots", label: "3.60 Cents" },
       {
@@ -366,10 +380,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 24,
-    name: "Section 24",
-    position: "lg:left-[30.9%] lg:top-[23%] left-[22%] top-[36%]   lg:w-[60px]  lg:h-[100px]",
-    imagePath: "/images/currentProjectImageUpdated/2.png",
+    id: 25,
+    name: "Section 25",
+    position: "lg:left-[33%] lg:top-[23%] left-[33%] top-[36%] md:left-[34%] md:top-[30%]   lg:w-[55px]  lg:h-[100px]",
+    imagePath: "/images/currentProjectImages/28.png",
     description: [
       { value: "West Facing Plots", label: "5.40 Cents" },
       {
@@ -380,24 +394,10 @@ const LOCATIONS: Location[] = [
     ],
   },
   {
-    id: 25,
-    name: "Section 25",
-    position: "left-[54%] top-[58%] lg:left-[57%] lg:top-[55%]    lg:w-[70px]  lg:h-[55px]",
-    imagePath: "/images/currentProjectImageUpdated/29.png",
-    description: [
-      { value: "East Facing Plots", label: "3.55 Cents" },
-      {
-        value: "",
-        label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-      },
-    ],
-  },
-  {
     id: 26,
     name: "Section 26",
-    position: "left-[54%] top-[58%] lg:left-[57%] lg:top-[55%]    lg:w-[70px]  lg:h-[55px]",
-    imagePath: "/images/currentProjectImageUpdated/29.png",
+    position: "left-[59%] top-[54%] lg:left-[57%] lg:top-[53%]    lg:w-[70px]  lg:h-[55px]",
+    imagePath: "/images/currentProjectImages/29.png",
     description: [
       { value: "East Facing Plots", label: "3.55 Cents" },
       {
@@ -408,6 +408,7 @@ const LOCATIONS: Location[] = [
     ],
   },
 ];
+
 
 // ============= Components =============
 const Counter = ({ value }: { value: number }) => {
@@ -563,7 +564,7 @@ const CurrentProject: React.FC = () => {
               variant="custom"
               className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
             >
-              {PROJECT_DATA.description.suffix}
+              {PROJECT_DATA.description.suffix} {selectedLocation.id}
             </Typography>
           </div>
 
@@ -590,7 +591,7 @@ const CurrentProject: React.FC = () => {
             {LOCATIONS.map((location) => (
               <button
                 key={location.id}
-                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0 bg-[#503637] ${location.position}`}
+                className={`absolute w-6 h-6 md:h-8 md:w-8 opacity-0 bg-[#503637] ${location.position}`}
                 onClick={() => handleLocationClick(location)}
                 onMouseEnter={() => handleLocationClick(location)}
                 aria-label={location.name}
@@ -631,7 +632,7 @@ const CurrentProject: React.FC = () => {
                   variant="custom"
                   className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
                 >
-                  {stat.value}
+                  {stat.value} {selectedLocation.id}
                 </Typography>
                 <Typography
                   variant="custom"
