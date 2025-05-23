@@ -158,7 +158,7 @@ const LocationAdvantage = () => {
       title: "Location Advantage",
       description: "Shaped Around You,A Place to Live Fully",
       text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
-      buttonText: "More about the Location",
+      buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
@@ -183,7 +183,7 @@ const LocationAdvantage = () => {
       title: "Location Advantage",
       description: "Invest in Land, Invest in Legacy",
       text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
-      buttonText: "More about the Location",
+      buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
       textClassName: "text-white",
@@ -360,7 +360,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More about the Project</span>
                   </button>
                 </div>
               </div>
@@ -393,7 +393,7 @@ const LocationAdvantage = () => {
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                  <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More about the Project</span>
                 </button>
               </div>
             </div>
