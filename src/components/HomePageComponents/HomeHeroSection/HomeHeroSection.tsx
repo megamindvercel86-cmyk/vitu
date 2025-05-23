@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -16,18 +17,28 @@ const HeroSection = () => {
   };
   const [isFixed, setIsFixed] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   useEffect(() => {
+    // Only apply scroll logic on larger screens (e.g., md and above)
+    // if (window.innerWidth < 768) return;
+
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        // Change to absolute when the section is about to leave the viewport
         setIsFixed(rect.bottom > windowHeight);
       }
     };
 
-    // Add throttling to improve performance
     let ticking = false;
     const scrollHandler = () => {
       if (!ticking) {
@@ -42,6 +53,7 @@ const HeroSection = () => {
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
+
   const textVariants = {
     visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
     hidden: { opacity: 0, x: -10, transition: { duration: 0.3 } },
@@ -66,13 +78,12 @@ const HeroSection = () => {
           />
         </video>
         <div
-          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
-            isMuted ? "justify-center" : "justify-end"
-          }  z-[1] transition-all duration-300`}
+          className={`${
+            isDesktop && isFixed ? "fixed" : "absolute"
+          } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row justify-center lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
-            
-            <div className="cursor-pointer" onClick={toggleMute}>
+            <div className="cursor-pointer " onClick={toggleMute}>
               <motion.button
                 layout="preserve-aspect"
                 className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${

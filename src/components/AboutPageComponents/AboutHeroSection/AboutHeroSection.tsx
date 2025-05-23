@@ -41,6 +41,7 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
 const AboutHeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isDesktop, setIsDesktop] = useState(false);
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
@@ -49,8 +50,18 @@ const AboutHeroSection: React.FC = () => {
   };
   const [isFixed, setIsFixed] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   useEffect(() => {
+    // if (window.innerWidth < 768) return;
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
@@ -95,9 +106,9 @@ const AboutHeroSection: React.FC = () => {
           />
         </video>
         <div
-          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
-            isMuted ? "justify-center" : "justify-end"
-          }  z-[1] transition-all duration-300`}
+        className={`${
+          isDesktop && isFixed ? "fixed" : "absolute"
+        } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row justify-center lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>

@@ -7,6 +7,17 @@ import { motion, AnimatePresence } from "framer-motion";
 const VilasamHeroSection = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
@@ -18,7 +29,7 @@ const VilasamHeroSection = () => {
 
   useEffect(() => {
     // Only run scroll logic for medium and larger screens
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
 
     const handleScroll = () => {
       if (sectionRef.current) {
@@ -86,7 +97,7 @@ const VilasamHeroSection = () => {
 
         <div className="absolute bottom-0 left-0 right-0 h-[50px] lg:h-[200px] bg-gradient-to-b from-transparent to-white opacity-2000"></div>
         <div
-          className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
+          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-36 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
             isMuted ? "justify-center" : "justify-end"
           }  z-[1] transition-all duration-300`}
         >

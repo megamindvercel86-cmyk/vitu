@@ -158,8 +158,9 @@ export default function VisionAndMission({ images, content }: Props) {
               width={CAROUSEL_CONFIG.dimensions.mobile.width}
               height={CAROUSEL_CONFIG.dimensions.mobile.height}
               className="w-full h-[679px] transition-all object-cover duration-500"
-              loading="lazy"
+              // loading="lazy"
             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
             <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-6">
               <Typography
                 variant="custom"
