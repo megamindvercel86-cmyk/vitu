@@ -156,6 +156,31 @@ const LocationAdvantage = () => {
   const data: LocationAdvantageProps[] = [
     {
       title: "Location Advantage",
+      description: "Invest in Land, Invest in Legacy",
+      text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
+      buttonText: "More about the Project",
+      image: "/images/vilasamPageImages/locationAdvantageImages/invest.png",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
+      textClassName: "text-white",
+      paragraphClassName: "text-white",
+      buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
+      buttonTextColor: "text-white",
+      carousalClassName: "bg-[#AE856666]",
+      fill: "#9CC3CB",
+      buttonFillBg: "bg-[#9CC3CB]",
+      amenitiesDetails: [
+        {
+          image: "/images/vilasamPageImages/locationAdvantageImages/9.webp",
+          title: "Invest in Land, Invest in Legacy",
+          description:
+            "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
+          middleDescription:
+            "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
+        },
+      ],
+    },
+    {
+      title: "Location Advantage",
       description: "Shaped Around You,A Place to Live Fully",
       text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
       buttonText: "More about the Project",
@@ -176,31 +201,6 @@ const LocationAdvantage = () => {
             "Discover a life where calm is your closest neighbor. At Vilasam, every element from tree-lined avenues to open green corners is thoughtfully planned to offer a peaceful lifestyle away from the city's chaos. It's a place where mornings begin with birdsong and evenings wind down with golden skies and gentle breezes.",
           middleDescription:
             "Here, serene living isn’t just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
-        },
-      ],
-    },
-    {
-      title: "Location Advantage",
-      description: "Invest in Land, Invest in Legacy",
-      text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
-      buttonText: "More about the Project",
-      image: "/images/vilasamPageImages/locationAdvantageImages/2.webp",
-      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
-      textClassName: "text-white",
-      paragraphClassName: "text-white",
-      buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
-      buttonTextColor: "text-white",
-      carousalClassName: "bg-[#AE856666]",
-      fill: "#9CC3CB",
-      buttonFillBg: "bg-[#9CC3CB]",
-      amenitiesDetails: [
-        {
-          image: "/images/vilasamPageImages/locationAdvantageImages/9.webp",
-          title: "Invest in Land, Invest in Legacy",
-          description:
-            "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
-          middleDescription:
-            "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
         },
       ],
     },
@@ -284,12 +284,12 @@ const LocationAdvantage = () => {
   return (
     <div className="relative w-full h-screen">
       <Swiper
-        // modules={[Autoplay]}
+        modules={[Autoplay]}
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
         loop={true}
-        speed={600}
+        speed={1000}
         onSlideChange={(swiper) => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
@@ -303,7 +303,7 @@ const LocationAdvantage = () => {
                 src={item.image}
                 alt={item.description}
                 fill
-                sizes="100vw"
+              
                 className="absolute hidden md:block object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />

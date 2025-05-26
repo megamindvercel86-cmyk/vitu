@@ -353,7 +353,7 @@ console.log(borderColor)
                 <AppleStyleCard
                   id={card.id}
                   position={card.position}
-                  imageSrc={isExpanded ? card.url : "https://res.cloudinary.com/dvandhsai/image/upload/v1747976596/xlcmb7f8g2gntfvpmqij.png"}
+                  imageSrc={card.url}
                   isExpanded={isExpanded}
                   expandedImageClassName="object-center"
                   content={<CardContent cardId={card.id} />}

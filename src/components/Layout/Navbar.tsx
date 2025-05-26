@@ -127,12 +127,8 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     setDropdownTimeout(timeout);
   };
   // Add this at the top of the Navbar component (within function scope)
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true);
 
-  // Define pages where the scroll effect is enabled
-  const SCROLL_NAVBAR_PATHS = ["/about", "/resources", "/projects", "/"];
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
 
   const isNavbarPrimary = navbar === "primary" && isAtTop;
@@ -179,7 +175,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                           <div className="py-1" key={item.href}>
                             <Link
                               href={item.href}
-                              className={`block px-4 py-2 font-freightNeoMedium text-xl ${
+                              className={`block px-4 py-2 font-freightNeoMedium  lg:text-[16px] lg2:text-xl   ${
                                 pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
                               } `}
                             >

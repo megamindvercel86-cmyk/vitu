@@ -79,10 +79,10 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   return (
     <div
       className={`${
-        isFixed ? "fixed lg:bottom-40 lg2:bottom-56 bottom-48 md:right-[59px] right-4" : "absolute md:bottom-56 md:right-10 bottom-48 right-4"
-      } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px] flex justify-end w-full `}
+        isFixed ? "fixed lg:bottom-40 lg2:bottom-56 bottom-40  md:left-20 left-4" : "absolute md:bottom-56 md:left-36  left-0 bottom-48 "
+      } pointer-events-none z-[1]  w-full `}
     >
-      <span className="lg2:text-[80px] lg:text-5xl text-[40px] text-white font-CandideCondensedMedium ">
+      <span className="lg2:text-[80px] lg:text-5xl text-[32px] text-white font-CandideCondensedMedium ">
         {number.split("").map((digit, index) => (
           <span key={index} className="inline-block w-[1ch]">
             {digit}
@@ -105,11 +105,11 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
   return (
     <div
       className={`${
-        isFixed ? "fixed lg2:bottom-56 bottom-32 md:right-[59px]" : "absolute md:bottom-56 md:right-10 bottom-32"
+        isFixed ? "fixed lg2:bottom-56 bottom-28 md:right-[59px]" : "absolute md:bottom-56 md:right-10 bottom-32"
       } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
-        <span className="lg2:text-2xl lg:text-xl ml-6 xl:text-[32px] text-[20px] text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
+        <span className="lg2:text-2xl lg:text-xl ml-6  text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
           {message.split("").map((char, index) => (
             <span key={index} className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}>
               {char}
@@ -178,7 +178,7 @@ function ScrollController({ progress, onDrag, isFixed }: { progress: number; isF
   }, [progress]);
 
   return (
-    <div className={`${isFixed ? "fixed" : "absolute"} bottom-36 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[30%] lg2:max-w-[550px]`}>
+    <div className={`${isFixed ? "fixed" : "absolute"} bottom-48 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[30%] lg2:max-w-[550px]`}>
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg viewBox="0 0 430 45" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[100%] absolute top-1/2 -translate-y-1/2 ">
           <path
@@ -420,7 +420,7 @@ export default function Gallery() {
         </button>
       </div>
       <YearDisplay number={currentYear} isFixed={isFixed} />
-      {/* <MessageDisplay message={currentMessage} isFixed={isFixed} /> */}
+      <MessageDisplay message={currentMessage} isFixed={isFixed} />
       <ScrollController progress={progress} onDrag={setProgress} isFixed={isFixed} />
     </div>
   );

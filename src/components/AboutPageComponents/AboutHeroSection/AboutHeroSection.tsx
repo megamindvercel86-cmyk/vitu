@@ -95,13 +95,13 @@ const AboutHeroSection: React.FC = () => {
       <div className="absolute inset-0 scale-1">
         <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark_1.mp4?alt=media&token=bc3a294b-a25c-4f28-b662-6f2202c0b1b9"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark.mp4?alt=media&token=41182f64-05ff-4ac4-b7b3-5aac2f8a692b"
             type="video/mp4"
           />
         </video>
         <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark%20Mobile.mp4?alt=media&token=c288c43a-a47a-4448-8b0a-6bee532d1fd6"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FPark%20Mobile%20(1).mp4?alt=media&token=efe07032-d57c-41ed-962f-a338472a90d3"
             type="video/mp4"
           />
         </video>

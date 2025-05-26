@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link } from "react-scroll";
 
@@ -9,10 +8,7 @@ import {
   MenuIcon,
   MenuIconWhite,
   CloseIcon,
-  SecondaryInstgramIcon,
-  SecondaryLinkedInIcon,
-  SecondaryMetaIcon,
-  SecondaryYoutubeIcon,
+
   Instgram,
   Meta,
   LinkedIn,
@@ -24,6 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
+import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
 
 // ============= Types & Interfaces =============
 type VilasamProjectNavbarType = "primary" | "secondary";
@@ -75,6 +72,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
   // ============= State =============
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // ============= Computed Values =============
   const isVilasamProjectNavbarPrimary = VilasamProjectNavbar === "secondary";
@@ -118,19 +116,28 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
               {NAV_LINKS.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  to={href}
-                  smooth={true}
-                  duration={1200}
-                  className="mb-8 text-2xl font-geistSerif last:mb-0"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div className=" cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black  font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
-                    {" "}
+                label === "Amenities" ? (
+                  <div 
+                    key={href}
+                    onClick={() => setIsModalOpen(true)} 
+                    className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
+                  >
                     {label}
                   </div>
-                </Link>
+                ) : (
+                  <Link
+                    key={href}
+                    to={href}
+                    smooth={true}
+                    duration={1200}
+                    className="mb-8 text-2xl font-geistSerif last:mb-0"
+                    
+                  >
+                    <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
+                      {label}
+                    </div>
+                  </Link>
+                )
               ))}
               {showGetInTouch && (
                 <NavLink
@@ -189,12 +196,24 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center justify-between`}>
+          <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3 items-center justify-between`}>
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                <Link key={href} to={href} smooth={true} duration={700}>
-                  <div className="2xl:text-4xl text-white text-sm  lg2:text-[18px] cursor-pointer font-geistSerif">{label}</div>
-                </Link>
+                label === "Amenities" ? (
+                  <div 
+                    key={href}
+                    onClick={() => setIsModalOpen(true)} 
+                    className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif"
+                  >
+                    {label}
+                  </div>
+                ) : (
+                  <Link key={href} to={href} smooth={true} duration={700}>
+                    <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">
+                      {label}
+                    </div>
+                  </Link>
+                )
               ))}
               {showGetInTouch && (
                 <NavLink href="">
@@ -224,6 +243,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
       </header>
       <SidebarMenu />
       <ContactFormModal isOpen={isGetInTouchOpen} onClose={setIsGetInTouchOpen} />
+      <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>
   );
 }

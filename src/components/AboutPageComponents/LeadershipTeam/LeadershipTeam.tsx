@@ -98,6 +98,7 @@ export default function LeadershipTeam() {
               slidesPerView={"auto"}
               loop={true}
               spaceBetween={20}
+              speed={1000}
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
