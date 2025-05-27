@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,15 +7,10 @@ import Button from "../Common/Button";
 import {
   MenuIcon,
   MenuIconWhite,
-  CloseIcon,
-  SecondaryInstgramIcon,
-  SecondaryLinkedInIcon,
-  SecondaryMetaIcon,
-  SecondaryYoutubeIcon,
 } from "../Icons/Icons";
 import logo from "../../../public/images/logos/logo.svg";
 import logoWhite from "../../../public/images/logos/logoWhite.svg";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import NavbarResponsiveComponent from "../NavbarResponsiveComponent/NavbarResponsiveComponent";
 
 // ============= Types & Interfaces =============
@@ -127,11 +122,11 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
     setDropdownTimeout(timeout);
   };
   // Add this at the top of the Navbar component (within function scope)
-  const [isAtTop, setIsAtTop] = useState(true);
+
 
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
 
-  const isNavbarPrimary = navbar === "primary" && isAtTop;
+  const isNavbarPrimary = navbar === "primary"
   return (
     <div>
       <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
