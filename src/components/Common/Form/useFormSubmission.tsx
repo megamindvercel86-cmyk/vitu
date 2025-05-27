@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "@/firebase/firebaseConfig";
+import Image from "next/image";
 
 const uploadToFirebaseStorage = async (file: File): Promise<string> => {
   const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`);
@@ -45,12 +46,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
       }
 
-      const collectionName =
-        page === "General Enquire"
-          ? "generalEnquiries"
-          : page === "Project Enquire"
-          ? "projectEnquiries"
-          : "careerApplications";
+      const collectionName = page === "General Enquire" ? "generalEnquiries" : page === "Project Enquire" ? "projectEnquiries" : "careerApplications";
 
       const filteredValues =
         page === "General Enquire"
@@ -62,20 +58,20 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               whatsapp: values.whatsapp,
             }
           : page === "Project Enquire"
-          ? {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              whatsapp: values.whatsapp,
-              interstedIn: values.option,
-            }
-          : {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              postionAppliedFor: values.option,
-              resumeUrl,
-            };
+            ? {
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                whatsapp: values.whatsapp,
+                interstedIn: values.option,
+              }
+            : {
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                postionAppliedFor: values.option,
+                resumeUrl,
+              };
 
       const collectionRef = collection(db, collectionName);
       await addDoc(collectionRef, filteredValues);
@@ -87,16 +83,11 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       });
 
       toast.success(
-        <div className="flex items-center gap-3">
-          <div className="text-2xl">🎉</div>
-          <div>
-            <h2 className="text-xl font-semibold text-brown-800">Woo-Hoo</h2>
-            <p className="text-sm text-gray-600">{page === "General Enquire"
-          ? "generalEnquiries"
-          : page === "Project Enquire"
-          ? "projectEnquiries"
-          : "careerApplications"}</p>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", position: "relative", width: "100%", height: "100px" }}>
+          <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: 0 }}>
+            <Image src="/formsucess.png" alt="toast background" fill style={{ objectFit: "cover" }} className="" />
           </div>
+          {/* Icon Wrapper */}
         </div>,
         {
           position: "top-right",
@@ -106,11 +97,13 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
           pauseOnHover: true,
           draggable: true,
           icon: false,
+          progress: undefined,
           style: {
-            background: "#f0fdf4",
             borderRadius: "10px",
-            padding: "16px",
+            padding: "0px",
             boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+            display: "flex",
+            alignItems: "center",
           },
         }
       );
@@ -140,8 +133,8 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       page === "General Enquire"
         ? GeneralFormValidationSchema
         : page === "Project Enquire"
-        ? ProjectFormValidationSchema
-        : CareerFormValidationSchema,
+          ? ProjectFormValidationSchema
+          : CareerFormValidationSchema,
 
     onSubmit: async (values, { resetForm }): Promise<void> => {
       return handleFormSubmission(values)

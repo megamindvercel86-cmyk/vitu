@@ -30,7 +30,6 @@ const Footer: FC = () => {
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
   const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
 
-
   const pathname = usePathname();
 
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
@@ -46,17 +45,12 @@ const Footer: FC = () => {
         await addDoc(collectionRef, { email: emailValue });
 
         toast.success(
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", position: "relative" , width:"100%", height:"100px" }}>
+            <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: 0 }}>
+              <Image src="/newsLetterSuccess.png" alt="toast background" fill style={{ objectFit: "cover" }} className="" />
+            </div>
             {/* Icon Wrapper */}
-            <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Image fill src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
-            </div>
-      
-            {/* Text Content */}
-            <div>
-              <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Woo-Hoo</h2>
-              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>You have Successfully Signed Up to our Newsletter</p>
-            </div>
+           
           </div>,
           {
             position: "top-right",
@@ -68,9 +62,9 @@ const Footer: FC = () => {
             icon: false,
             progress: undefined,
             style: {
-              background: "#f0fdf4",
+
               borderRadius: "10px",
-              padding: "16px",
+              padding: "0px",
               boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
               display: "flex",
               alignItems: "center",
@@ -81,18 +75,12 @@ const Footer: FC = () => {
         setEmail("");
       } catch (error) {
         toast.error(
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", position: "relative" , width:"100%", height:"100px" }}>
+            <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: 0 }}>
+              <Image src="/newsletterfail.png" alt="toast background" fill style={{ objectFit: "cover" }} className="" />
+            </div>
             {/* Icon Wrapper */}
-            <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Image fill src="/error.png" alt="Success" style={{ width: "40px", height: "24px" }} />
-            </div>
-      
-            {/* Text Content */}
-            <div>
-              <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Uh oh.</h2>
-              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>Something went wrong. 
-              Give it a Minute and Try Again</p>
-            </div>
+           
           </div>,
           {
             position: "top-right",
@@ -104,7 +92,7 @@ const Footer: FC = () => {
             icon: false,
             progress: undefined,
             style: {
-              background: "#FFF3F3",
+            
               borderRadius: "10px",
               padding: "16px",
               boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
@@ -124,20 +112,22 @@ const Footer: FC = () => {
           <FooterLink href="/">
             <IoMdHome className="text-footerTextColor mb-[8px] lg:mb-0 xl:mb-0 text-lg" />
           </FooterLink>
-          <FooterLink className="!text-lg" href="/">Home</FooterLink>
+          <FooterLink className="!text-lg" href="/">
+            Home
+          </FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
               <span className="text-footerTextColor">
-          {!subPage ? (
-            <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
-              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-            </span>
-          ) : (
-            <FooterLink className="!text-lg" href={`/${mainPage}`}>
-              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-            </FooterLink>
-          )}
+                {!subPage ? (
+                  <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </span>
+                ) : (
+                  <FooterLink className="!text-lg" href={`/${mainPage}`}>
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </FooterLink>
+                )}
               </span>
             </>
           )}
@@ -145,7 +135,7 @@ const Footer: FC = () => {
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
               <span className="text-footerTextColor font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
-          {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
@@ -191,7 +181,7 @@ const Footer: FC = () => {
             ]}
             setQuickIsOpen={setResourcesIsOpen}
           />
-           <FooterSection
+          <FooterSection
             isOpen={projectIsOpen}
             title="Projects"
             links={[
@@ -326,7 +316,7 @@ const FooterSection: FC<{
  * FooterContactItem Component
  * - Renders contact details with icons
  */
-const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name:string }> = ({ icon, text, link,name }) => {
+const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name: string }> = ({ icon, text, link, name }) => {
   // Check if the text contains the phone number or pincode and apply the custom font
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
@@ -334,25 +324,27 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name
 
   return (
     <>
-    <li
-      className={`flex lg:hidden md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-    >
-     
-      <span className="flex items-center lg:hidden gap-3">{icon}<span className="lg:hidden text-[14px] font-freightNeoSemibold ">{name}</span></span>
-      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-        {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </Link>
-    </li>
       <li
-      className={`lg:flex hidden  md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-    >
-     {icon}
-      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-        {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </Link>
-    </li>
+        className={`flex lg:hidden md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
+      >
+        <span className="flex items-center lg:hidden gap-3">
+          {icon}
+          <span className="lg:hidden text-[14px] font-freightNeoSemibold ">{name}</span>
+        </span>
+        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+          {/* Apply the custom font for phone number and pincode */}
+          {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
+        </Link>
+      </li>
+      <li
+        className={`lg:flex hidden  md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
+      >
+        {icon}
+        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+          {/* Apply the custom font for phone number and pincode */}
+          {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
+        </Link>
+      </li>
     </>
   );
 };
