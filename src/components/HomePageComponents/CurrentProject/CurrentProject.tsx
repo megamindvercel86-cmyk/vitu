@@ -409,7 +409,6 @@ const LOCATIONS: Location[] = [
   },
 ];
 
-
 // ============= Components =============
 const Counter = ({ value }: { value: number }) => {
   const [count, setCount] = useState(value - 5);
@@ -555,7 +554,7 @@ const CurrentProject: React.FC = () => {
               id="project-title"
               className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
             >
-              {PROJECT_DATA.title} 
+              {PROJECT_DATA.title}
             </h1>
           </header>
 
@@ -564,15 +563,18 @@ const CurrentProject: React.FC = () => {
               variant="custom"
               className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#4F373799]"
             >
-              {PROJECT_DATA.description.suffix} 
+              {PROJECT_DATA.description.suffix}
             </Typography>
           </div>
 
-          <Link href="/vilasam">
+          <Link href="/vilasam" aria-label={PROJECT_DATA.cta}>
             <div className="mt-[29px]">
-                <button aria-label="Explore the Project Now" className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
+              <button
+                aria-label={PROJECT_DATA.cta}
+                className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown focus:outline-none focus:ring-2 focus:ring-customBrown focus:ring-offset-2 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]"
+              >
                 {PROJECT_DATA.cta}
-                </button>
+              </button>
             </div>
           </Link>
         </div>
@@ -632,7 +634,7 @@ const CurrentProject: React.FC = () => {
                   variant="custom"
                   className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
                 >
-                  {stat.value} 
+                  {stat.value}
                 </Typography>
                 <Typography
                   variant="custom"
@@ -644,13 +646,10 @@ const CurrentProject: React.FC = () => {
             ))}
       </motion.div>
 
-      <Link href="/project-enquire">
+      <Link href="/project-enquire" aria-label="Explore the Project Now">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-          <button
-        aria-label="Explore the Project Now"
-        className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
-          >
-        {PROJECT_DATA.cta}
+          <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
+            {PROJECT_DATA.cta}
           </button>
         </div>
       </Link>

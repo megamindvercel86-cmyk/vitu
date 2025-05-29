@@ -50,9 +50,6 @@ const CAROUSEL_CONFIG = {
  * @component
  */
 export default function VisionAndMission({ images, content }: Props) {
-
-
-
   // ============= State =============
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -174,7 +171,7 @@ export default function VisionAndMission({ images, content }: Props) {
                   {content.mobile[currentIndex].description}
                 </Typography>
               </div>
-              <div className="flex space-x-5 rounded-[32px] py-4 px-6">
+              <div className="flex space-x-8 rounded-[32px] py-4 px-6">
                 {content.mobile.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
@@ -184,7 +181,7 @@ export default function VisionAndMission({ images, content }: Props) {
                         handleTransition(dotIndex > currentIndex ? "right" : "left");
                       }
                     }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
                       dotIndex === currentIndex ? "bg-white" : "bg-[#FFFFFF99]"
                     } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                     aria-label={`Go to slide ${dotIndex + 1}`}

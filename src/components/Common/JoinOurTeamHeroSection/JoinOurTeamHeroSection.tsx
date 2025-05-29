@@ -89,19 +89,27 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Typography>
 
         {/* Desktop CTA */}
-     <Link href="/project-enquire">
-          <button aria-label="Project Enquire Page" className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]">
-            Enquire Now
-          </button>
-        </Link>
-        {/* Mobile CTA */}
-        <div className="mx-6 mt-44">
-          <Link href="/project-enquire">
-            <button aria-label="Project Enquire Page" className="md:hidden w-full block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]">
-              Enquire Now
-            </button>
-          </Link>
-        </div>
+     <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
+  <button
+    aria-label="Project Enquire Page"
+    className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]"
+  >
+    Enquire Now
+  </button>
+</Link>
+
+{/* Mobile CTA */}
+<div className="mx-6 mt-44">
+  <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
+    <button
+      aria-label="Project Enquire Page"
+      className="md:hidden w-full block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]"
+    >
+      Enquire Now
+    </button>
+  </Link>
+</div>
+
       </div>
     </div>
   );

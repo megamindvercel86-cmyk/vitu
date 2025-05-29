@@ -214,7 +214,7 @@ export default function VisionForTheFuture() {
           </div>
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
-            <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full   ">
+            <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full lg:w-auto   ">
               <Link
               aria-label="See What Next"
                 href="/about"
