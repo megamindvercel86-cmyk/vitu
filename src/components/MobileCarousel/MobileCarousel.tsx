@@ -210,12 +210,14 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
           </span>
           <div className="flex gap-2">
             <button
+            aria-label="Previous Slide"
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
               onClick={handleManualPrev}
             >
               <IconArrowNarrowLeft />
             </button>
             <button
+            aria-label="Next Slide"
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
               onClick={handleManualNext}
             >
@@ -243,6 +245,7 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
               className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
             >
               <button
+                aria-label="Close Modal"
                 className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
                 onClick={handleCloseModal}
               >

@@ -79,6 +79,7 @@ function MediaSectionIntro() {
               Grab our brand assets & get to know us <br /> in just a few clicks!
             </Typography>
             <button
+            aria-label="Download Media Kit"
               onClick={handleDownload}
               className="flex items-center justify-center gap-4 
               w-full md:w-[272px] h-[58px] 
@@ -111,7 +112,8 @@ function MediaSectionIntro() {
               Grab our brand assets & get to know us <br /> in just a few clicks!
             </Typography>
             <div className="px-7 md:pb-16 pb-0 w-full">
-              <button
+              <button 
+              aria-label="Download Media Kit"
                 onClick={handleDownload}
                 className="flex items-center justify-center gap-4 
                 w-full md:w-[272px] h-[58px] 

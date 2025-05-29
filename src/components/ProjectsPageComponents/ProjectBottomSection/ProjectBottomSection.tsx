@@ -112,6 +112,7 @@ const ProjectBottomSection: React.FC = () => {
           {ABOUT_HERO_CONFIG.titles.sub}
         </h2>
         <Link href='/project-enquire'><button
+          aria-label="Enquire Now"
           type="button"
           className="group relative flex items-center bg-white text-[#2B847D] gap-2 px-6 py-3 rounded-full overflow-hidden transition-all duration-300"
         >

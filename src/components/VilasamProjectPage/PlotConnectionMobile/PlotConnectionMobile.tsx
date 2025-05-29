@@ -314,6 +314,7 @@ const PlotConnectionMobile = () => {
             }
             return (
               <button
+              aria-label="Select Tab"
                 key={item.label}
                 onClick={() => handleTabClick(idx)}
                 className="relative px-5 py-3 rounded-full flex items-center justify-center"

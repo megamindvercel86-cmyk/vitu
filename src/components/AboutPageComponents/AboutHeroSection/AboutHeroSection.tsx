@@ -171,6 +171,7 @@ const AboutHeroSection: React.FC = () => {
           <Link to="storysection" smooth={true} duration={700}>
             <div className="relative group cursor-pointer">
               <button
+              aria-label="Discover our Vision"
                 type="button"
                 className="
       relative group

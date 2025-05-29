@@ -43,7 +43,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
         <p className=" font-medium md:text-2xl text-base text-white/60 max-w-4xl mx-auto">{subTitle}</p>
       </div>
       <div className="relative ">
-        <video poster={thumbnail} ref={videoRef} className="rounded-3xl"  loop playsInline onTimeUpdate={handleTimeUpdate} width="100%">
+        <video poster={thumbnail} ref={videoRef} className="rounded-3xl" loop playsInline onTimeUpdate={handleTimeUpdate} width="100%">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -88,7 +88,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           <div className="flex gap-4">
             <div>
               <Link href={youtubeUrl} target="_blank">
-                <button className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer">
+                <button
+                  aria-label=" Watch The Full Video"
+                  className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"
+                >
                   Watch the Full Video
                 </button>
               </Link>

@@ -18,7 +18,7 @@ const UrbanAccessSection: React.FC = () => {
               At Vilasam, you get the best of both worlds expansive plots to shape your dream home & seamless access to Mangaluru’s coastal living
               opportunities.
             </p>
-            <button className="bg-white text-[#2B847D] font-sourceSans3 font-bold  rounded-full text-[22px] px-4 py-2 hover:bg-[#E6F3F1] transition">Get the Best Quote</button>
+            <button aria-label="Get the Best Quote" className="bg-white text-[#2B847D] font-sourceSans3 font-bold  rounded-full text-[22px] px-4 py-2 hover:bg-[#E6F3F1] transition">Get the Best Quote</button>
           </div>
 
           {/* Image Block */}
@@ -35,7 +35,7 @@ const UrbanAccessSection: React.FC = () => {
             At Vilasam, you get the best of both worlds — expansive plots to shape your dream home & seamless access to Mangaluru’s coastal living
             opportunities.
           </p>
-          <button className="w-full bg-white text-[#2B847D] font-semibold py-3 rounded-full">Get the Best Quote</button>
+          <button aria-label="Get the Best Quote" className="w-full bg-white text-[#2B847D] font-semibold py-3 rounded-full">Get the Best Quote</button>
         </div>
       </div>
     </section>

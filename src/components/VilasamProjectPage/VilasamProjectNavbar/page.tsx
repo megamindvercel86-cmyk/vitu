@@ -108,7 +108,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
               <NavLink href="/">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
-              <button onClick={() => setIsMenuOpen(false)}>
+              <button aria-label="Close Button" onClick={() => setIsMenuOpen(false)}>
                 <CloseIcon />
               </button>
             </div>
@@ -148,7 +148,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   }}
                   className="w-full px-7"
                 >
-                  <button className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8">Download Brochure</button>
+                  <button aria-label="Download Brochure" className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8">Download Brochure</button>
                 </NavLink>
               )}
             </div>

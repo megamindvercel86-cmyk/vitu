@@ -97,7 +97,7 @@ const VilasamProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "> Download E-Brochure</button>
+              <button aria-label="Download" className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "> Download E-Brochure</button>
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
                   <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">

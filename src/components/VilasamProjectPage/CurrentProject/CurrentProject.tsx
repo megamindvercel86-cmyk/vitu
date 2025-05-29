@@ -536,7 +536,8 @@ const CurrentProject: React.FC = () => {
             </motion.div>
           ))}
       <div className=" relative group cursor-pointer">
-        <button
+        <button 
+          aria-label="Learn more about our sustainability approach"
           onClick={() => setIsModalOpen(true)}
           type="button"
           className="

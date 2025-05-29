@@ -122,6 +122,7 @@ export default function ProjectFilterAppleStyleCard({
             <div className="relative h-auto "></div>
             <div className="">
               <button
+              aria-label="Close Modal"
                 className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
               >

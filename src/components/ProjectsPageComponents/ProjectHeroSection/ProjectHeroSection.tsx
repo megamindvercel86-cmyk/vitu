@@ -168,6 +168,7 @@ const ProjectHeroSection: React.FC = () => {
 
           <div className="relative group cursor-pointer">
             <button
+              aria-label="Scroll to Learn More"
               type="button"
               className="
       relative group
