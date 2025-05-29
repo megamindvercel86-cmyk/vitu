@@ -116,21 +116,25 @@ const Footer: FC = () => {
             Home
           </FooterLink>
           {mainPage && (
-            <>
-              <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
-              <span className="text-footerTextColor">
-                {!subPage ? (
-                  <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
-                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-                  </span>
-                ) : (
-                  <FooterLink className="!text-lg" href={`/${mainPage}`}>
-                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-                  </FooterLink>
-                )}
+        <>
+          <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" aria-hidden="true" />
+          <span className="text-footerTextColor">
+            {!subPage ? (
+              <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
+                {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
               </span>
-            </>
-          )}
+            ) : (
+              <FooterLink
+                className="!text-lg"
+                href={`/${mainPage}`}
+                aria-label={`Navigate to ${mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}`}
+              >
+                {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+              </FooterLink>
+            )}
+          </span>
+        </>
+      )}
           {subPage && (
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
@@ -233,7 +237,7 @@ const Footer: FC = () => {
                     className="lg:text-[13px] lg2:text-[18px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
                     placeholder="Sign Up for Our Newsletter"
                   />
-                  <button type="submit">
+                  <button type="submit" aria-label="Subscribe to our newsletter" className="absolute right-0 top-1/2 transform -translate-y-1/2">
                     <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>

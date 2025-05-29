@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import { CiPlay1 } from "react-icons/ci";
 import { FaPause, FaPlay } from "react-icons/fa";
 
-
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
 
@@ -156,56 +155,53 @@ export default function VisionForTheFuture() {
           </header>
         </motion.span>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
-          <Link href="/about">
-            <button
-              className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
-              aria-label="See What's Next"
-            >
+          <Link href="/about" aria-label="See What Next"               className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
+>
+            
               See What&apos;s Next
               <CTAButtonIcon fill="#4F3737" direction="right" />
-            </button>
           </Link>
           <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">
             {CAROUSEL_DATA[currentIndex].residentialType}
           </Typography>
         </div>
         <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        viewport={{ once: true }}
-       >
-        <div className="relative pt-6 overflow-hidden">
-          <div className="flex w-full h-[12.75rem] transition-transform duration-500 ease-in-out md:h-[33.125rem] xl:h-[37.875rem] 2xl:h-[62.5rem]">
-            {CAROUSEL_DATA.map((item, index) => (
-              <figure
-                key={index}
-                className={`absolute inset-0 transition-all duration-500 w-full h-full ease-in-out ${
-                  index === currentIndex
-                    ? "opacity-100 translate-x-0"
-                    : direction === "right"
-                      ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
-                        ? "opacity-0 -translate-x-full"
-                        : "opacity-0 translate-x-full"
-                      : index === (currentIndex + 1) % CAROUSEL_DATA.length
-                        ? "opacity-0 translate-x-full"
-                        : "opacity-0 -translate-x-full"
-                }`}
-                aria-hidden={index !== currentIndex}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.subtitle}
-                  width={CAROUSEL_CONFIG.imageDimensions.width}
-                  height={CAROUSEL_CONFIG.imageDimensions.height}
-                  className={`w-full h-full object-contain ${getImageScale(index)}`}
-                  quality={100}
-                  priority={index === 0} // Prioritize loading the first image
-                />
-              </figure>
-            ))}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative pt-6 overflow-hidden">
+            <div className="flex w-full h-[12.75rem] transition-transform duration-500 ease-in-out md:h-[33.125rem] xl:h-[37.875rem] 2xl:h-[62.5rem]">
+              {CAROUSEL_DATA.map((item, index) => (
+                <figure
+                  key={index}
+                  className={`absolute inset-0 transition-all duration-500 w-full h-full ease-in-out ${
+                    index === currentIndex
+                      ? "opacity-100 translate-x-0"
+                      : direction === "right"
+                        ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
+                          ? "opacity-0 -translate-x-full"
+                          : "opacity-0 translate-x-full"
+                        : index === (currentIndex + 1) % CAROUSEL_DATA.length
+                          ? "opacity-0 translate-x-full"
+                          : "opacity-0 -translate-x-full"
+                  }`}
+                  aria-hidden={index !== currentIndex}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.subtitle}
+                    width={CAROUSEL_CONFIG.imageDimensions.width}
+                    height={CAROUSEL_CONFIG.imageDimensions.height}
+                    className={`w-full h-full object-contain ${getImageScale(index)}`}
+                    quality={100}
+                    priority={index === 0} // Prioritize loading the first image
+                  />
+                </figure>
+              ))}
+            </div>
           </div>
-        </div>
         </motion.div>
         <Typography variant="custom" className="block mx-[1.8125rem] mt-6 font-FreightNeoProBold text-lg text-[#04070799] md:hidden">
           {CAROUSEL_DATA[currentIndex].residentialType}
@@ -219,14 +215,13 @@ export default function VisionForTheFuture() {
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
             <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full   ">
-              <Link href="/about">
-                <button
-                  className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
-                  aria-label="See What's Next"
-                >
-                  See What&apos;s Next
-                  <CTAButtonIcon fill="#4F3737" direction="right" />
-                </button>
+              <Link
+              aria-label="See What Next"
+                href="/about"
+                className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
+              >
+                See What&apos;s Next
+                <CTAButtonIcon fill="#4F3737" direction="right" />
               </Link>
               <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
                 <svg width="50" height="50" viewBox="0 0 50 50">
@@ -251,7 +246,7 @@ export default function VisionForTheFuture() {
                   {/* Play/Pause Icon */}
                   <foreignObject x="14" y="14" width="22" height="22">
                     <button className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
-                      {isPlay ? <FaPause  className="text-lg text-[#dbc9bc]" /> : <FaPlay className="text-lg text-[#dbc9bc]" />}
+                      {isPlay ? <FaPause className="text-lg text-[#dbc9bc]" /> : <FaPlay className="text-lg text-[#dbc9bc]" />}
                     </button>
                   </foreignObject>
                 </svg>

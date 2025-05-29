@@ -646,12 +646,12 @@ const CurrentProject: React.FC = () => {
 
       <Link href="/project-enquire">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-            <button
-            aria-label="Explore the Project Now"
-            className="flex items-center justify-center w-full h-[56]  rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
-            >
-            {PROJECT_DATA.cta}
-            </button>
+          <button
+        aria-label="Explore the Project Now"
+        className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
+          >
+        {PROJECT_DATA.cta}
+          </button>
         </div>
       </Link>
     </section>
