@@ -132,7 +132,7 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Main Content */}
-      <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
+      <div className="relative flex h-full justify-center mt-[9rem] lg:mt-[13rem] xl:mt-[19rem] 2xl:mt-[12rem]">
         <div className="flex flex-col items-center text-center text-white">
           <h1
             id="hero-heading"
