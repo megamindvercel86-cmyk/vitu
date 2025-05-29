@@ -7,6 +7,7 @@ interface FooterLinkProps {
   className?: string;
   type?: "string" | "number";
   target?:string;
+  ariaLabel?:string
 }
 
 const FooterLink = ({
@@ -14,7 +15,7 @@ const FooterLink = ({
   children,
   className,
   target,
-  
+  ariaLabel,
   type = "string",
 }: FooterLinkProps) => {
   const combinedClassName = classNames(
@@ -23,7 +24,7 @@ const FooterLink = ({
   );
 
   return (
-    <Link href={href} target={target ? "_blank" : ""} className={combinedClassName}>
+    <Link href={href} aria-label={ariaLabel} target={target ? "_blank" : ""} className={combinedClassName}>
       {children}
     </Link>
   );

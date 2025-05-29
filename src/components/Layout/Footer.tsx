@@ -317,35 +317,31 @@ const FooterSection: FC<{
  * - Renders contact details with icons
  */
 const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name: string }> = ({ icon, text, link, name }) => {
-  // Check if the text contains the phone number or pincode and apply the custom font
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
-    <>
-      <li
-        className={`flex lg:hidden md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-      >
-        <span className="flex items-center lg:hidden gap-3">
-          {icon}
-          <span className="lg:hidden text-[14px] font-freightNeoSemibold ">{name}</span>
-        </span>
-        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-          {/* Apply the custom font for phone number and pincode */}
-          {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-        </Link>
-      </li>
-      <li
-        className={`lg:flex hidden  md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-      >
+    <li className="flex flex-col md:flex-row text-footerTextColor align-middle items-center md:gap-0 gap-3">
+      {/* Mobile View */}
+      <div className="flex lg:hidden items-center gap-3">
         {icon}
-        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-          {/* Apply the custom font for phone number and pincode */}
-          {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-        </Link>
-      </li>
-    </>
+        <span className="lg:hidden text-[14px] font-freightNeoSemibold">{name}</span>
+      </div>
+      
+      {/* Desktop View */}
+      <div className="hidden lg:flex items-center">
+        {icon}
+      </div>
+
+      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+        {isPhoneNumber || isPincode || email ? (
+          <span className="font-CandideCondensedNormal">{text}</span>
+        ) : (
+          text
+        )}
+      </Link>
+    </li>
   );
 };
 

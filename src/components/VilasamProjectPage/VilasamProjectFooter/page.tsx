@@ -61,18 +61,26 @@ const VilasamProjectFooter: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-12 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-      <div className="flex items-center   space-x-2 pb-6 lg:pb-8">
-          <FooterLink href="/"><IoMdHome className="mb-[3px] text-white  text-lg" /></FooterLink>
-          <FooterLink className="text-white" href="/">Home</FooterLink>
+        <div className="flex items-center   space-x-2 pb-6 lg:pb-8">
+          <FooterLink aria-label={`${mainPage} page`} href="/">
+            <IoMdHome className="mb-[3px] text-white  text-lg" />
+          </FooterLink>
+          <FooterLink aria-label={`${mainPage} page`} className="text-white" href="/">
+            Home
+          </FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
               <span className="text-white">
                 {!subPage ? (
-                   <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</span> 
+                  <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </span>
                 ) : (
                   // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</FooterLink>
+                  <FooterLink aria-label={`${mainPage} page`} href={`/${mainPage}`}>
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </FooterLink>
                 )}
               </span>
             </>
@@ -81,7 +89,7 @@ const VilasamProjectFooter: FC = () => {
             <>
               <RiArrowRightSLine />
               <span className="text-white font-FreightNeoProLight font-light text-base 2xl:text-2xl">
-              {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
@@ -89,19 +97,20 @@ const VilasamProjectFooter: FC = () => {
         <div className="grid  grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col  items-center lg:items-start">
-            <FooterLink href="/">
+            <FooterLink aria-label={`${mainPage} page`} href="/">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </FooterLink>
-            <p className="text-[#cdcdcd] font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
-            Homes that Breathe with you
-            </p>
+            <p className="text-[#cdcdcd] font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">Homes that Breathe with you</p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button aria-label="Download" className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "> Download E-Brochure</button>
+              <button aria-label="Download" className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] ">
+                {" "}
+                Download E-Brochure
+              </button>
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
                   <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
-                    <Instgram color="#cdcdcd"  aria-hidden="true" />
+                    <Instgram color="#cdcdcd" aria-hidden="true" />
                   </NavLink>
                 </li>
 
@@ -142,46 +151,53 @@ const VilasamProjectFooter: FC = () => {
 
           {/* Contact Information */}
           <div>
-            <ul className="space-y-4 text-gray-300 hidden lg:block ">
-              <SubHeading className="text-lg md:text-xl text-white  font-sourceSans3 mb-4">Discover Excellence</SubHeading>
-
-              <FooterContactItem
-                icon={<ShareVilasam />}
-                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
-                link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
-              />
-              {/* Social Media Links */}
-              <SubHeading className="text-lg lg:pt-10 md:text-xl text-white font-sourceSans3 mb-4">For Enquiries</SubHeading>
-              <FooterContactItem icon={<PhoneVilasam />} text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<MailVilasam />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
-              {/* Social Media Links */}
+            <ul className="space-y-4 text-gray-300 hidden lg:block">
+              <li>
+                <SubHeading className="text-lg md:text-xl text-white font-sourceSans3 mb-4">Discover Excellence</SubHeading>
+              </li>
+              <li>
+                <FooterContactItem
+                  icon={<ShareVilasam />}
+                  text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
+                  link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
+                />
+              </li>
+              <li>
+                <SubHeading className="text-lg lg:pt-10 md:text-xl text-white font-sourceSans3 mb-4">For Enquiries</SubHeading>
+              </li>
+              <li>
+                <FooterContactItem icon={<PhoneVilasam />} text="+91 89046 88886" link="tel:+91 89046 88886" />
+              </li>
+              <li>
+                <FooterContactItem icon={<MailVilasam />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              </li>
             </ul>
-            <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-sourceSans3 mb-4">
-              Get in Touch
-            </SubHeading>
+            <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-sourceSans3 mb-4">Get in Touch</SubHeading>
             <ul className="space-y-4 text-gray-300 lg:hidden">
-              <FooterContactItem 
-              name="Location"
-                icon={<ShareVilasam />}
-                text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
-                link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
-              />
-              <FooterContactItem icon={<PhoneVilasam />} name="Phone" text="+91 89046 88886" link="tel:+91 89046 88886" />
-              <FooterContactItem icon={<MailVilasam />} name="Mail" text="info@viturealty.com" link="mailto:info@viturealty.com" />
-              {/* Social Media Links */}
-               <li className="flex gap-2 justify-center md:hidden">
+              <li>
+                <FooterContactItem
+                  name="Location"
+                  icon={<ShareVilasam />}
+                  text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
+                  link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
+                />
+              </li>
+              <li>
+                <FooterContactItem icon={<PhoneVilasam />} name="Phone" text="+91 89046 88886" link="tel:+91 89046 88886" />
+              </li>
+              <li>
+                <FooterContactItem icon={<MailVilasam />} name="Mail" text="info@viturealty.com" link="mailto:info@viturealty.com" />
+              </li>
+              <li className="flex gap-2 justify-center md:hidden">
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
-                  <Instgram  color="#cdcdcd" aria-hidden="true" />
+                  <Instgram color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
                   <Meta color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
                   <LinkedIn color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
                   <Youtube color="#cdcdcd" aria-hidden="true" />
                 </NavLink>
@@ -266,32 +282,21 @@ const FooterSection: FC<{
  * FooterContactItem Component
  * - Renders contact details with icons
  */
-const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name?:string  }> = ({ icon, text, link,name }) => {
-  // Check if the text contains the phone number or pincode and apply the custom font
+const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name?: string }> = ({ icon, text, link, name }) => {
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
-    <>
-    <li
-      className={`flex lg:hidden md:flex-row flex-col text-white  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}
-    >
-            <span className="flex items-center lg:hidden gap-3">{icon}<span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold ">{name}</span></span>
-
+    <div className={`text-white flex flex-col md:flex-row align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}>
+      <div className="flex items-center gap-3">
+        {icon}
+        <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+      </div>
       <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
+        {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
       </FooterLink>
-    </li>
-    <li
-      className={`lg:flex hidden md:flex-row flex-col text-white  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}
-    >
-      {icon}
-      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </FooterLink>
-    </li>
-    </>
+    </div>
   );
 };
 
