@@ -62,10 +62,11 @@ const VilasamProjectFooter: FC = () => {
     <footer className="bg-black text-white pt-8 lg:pt-12 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="flex items-center   space-x-2 pb-6 lg:pb-8">
-          <FooterLink aria-label={`${mainPage} page`} href="/">
+ <FooterLink aria-label={`${mainPage} page`} href="/">
             <IoMdHome className="mb-[3px] text-white  text-lg" />
           </FooterLink>
           <FooterLink aria-label={`${mainPage} page`} className="text-white" href="/">
+
             Home
           </FooterLink>
           {mainPage && (
@@ -174,6 +175,7 @@ const VilasamProjectFooter: FC = () => {
             </ul>
             <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-sourceSans3 mb-4">Get in Touch</SubHeading>
             <ul className="space-y-4 text-gray-300 lg:hidden">
+
               <li>
                 <FooterContactItem
                   name="Location"
@@ -283,11 +285,13 @@ const FooterSection: FC<{
  * - Renders contact details with icons
  */
 const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name?: string }> = ({ icon, text, link, name }) => {
+
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
+
     <div className={`text-white flex flex-col md:flex-row align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}>
       <div className="flex items-center gap-3">
         {icon}
@@ -311,11 +315,13 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium ">
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium" aria-label="Read the legal disclaimer">
           Legal Disclaimer
         </a>
-        <span className="text-[#808080] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium">
+        <span className="text-[#808080] text-xs" aria-hidden="true">
+          |
+        </span>
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium" aria-label="View the terms of service">
           Terms of Service
         </a>
       </div>

@@ -6,7 +6,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "firebasestorage.googleapis.com",
-        pathname: "/v0/b/**", // Allows any Firebase Storage bucket
+        pathname: "/v0/b/**",
       },
       {
         protocol: "https",
@@ -24,7 +24,20 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, 
+    ignoreBuildErrors: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-cache, no-transform', // Replace "no-store" with this
+          },
+        ],
+      },
+    ];
   },
 };
 

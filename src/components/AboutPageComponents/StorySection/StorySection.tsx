@@ -407,7 +407,7 @@ export default function Gallery() {
         } cursor-pointer z[1] lg2:text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
       >
         <Link href={"/explore"}>
-          <button className="border text-white w-full rounded-full px-6 py-2">Explore More</button>
+          <button aria-label="Explore More" className="border text-white w-full rounded-full px-6 py-2">Explore More</button>
         </Link>
       </div>
       <div

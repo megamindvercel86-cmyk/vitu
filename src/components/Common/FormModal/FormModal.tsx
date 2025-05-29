@@ -221,7 +221,7 @@ setIsLoading(false)
                 <div className="hidden lg:block">
                   <hr className="w-full md:w-[392px] mt-12 lg:mt-8 border-black border-opacity-20" />
                   <p className="pt-6 text-[#040707] text-lg">Alternatively, for your queries contact</p>
-                  <a href="tel:+91 89046 88886" className="text-[#040707] font-bold text-lg">
+                  <a aria-label="Call +91 89046 88886" href="tel:+91 89046 88886" className="text-[#040707] font-bold text-lg">
                     +91 89046 88886
                   </a>
                 </div>

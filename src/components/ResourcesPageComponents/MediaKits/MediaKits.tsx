@@ -78,6 +78,7 @@ const MediaKits: React.FC = () => {
                           ? "border-white text-white"
                           : "border-[#AE8566] text-[#AE8566]"
                       } transition-colors duration-200`}
+                      aria-label={`Download ${card.buttonText}`}
                     >
                       <Download 
                         color={card.variant === "dark" ? "white" : "#AE8566"}
@@ -110,6 +111,7 @@ const MediaKits: React.FC = () => {
                         ? "border-white text-white"
                         : "border-[#AE8566] text-[#AE8566]"
                     } transition-colors duration-200`}
+                    aria-label={`Download ${card.buttonText}`}
                   >
                     <Download
                       color={card.variant === "dark" ? "white" : "#AE8566"}

@@ -233,7 +233,7 @@ const Footer: FC = () => {
                     className="lg:text-[13px] lg2:text-[18px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
                     placeholder="Sign Up for Our Newsletter"
                   />
-                  <button aria-label="Submit" type="submit">
+                  <button type="submit">
                     <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>
@@ -356,11 +356,11 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+        <a aria-label="Read the legal disclaimer section of our terms of service" href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
           Legal Disclaimer
         </a>
         <span className="text-[#FFFFFF66] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+        <a aria-label="Read the full terms of service" href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
           Terms of Service
         </a>
       </div>

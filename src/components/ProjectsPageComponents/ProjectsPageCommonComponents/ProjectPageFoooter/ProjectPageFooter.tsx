@@ -62,18 +62,22 @@ const ProjectFooter: FC = () => {
   return (
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
-      <div className="flex items-center  space-x-2 pb-3">
-          <FooterLink href="/"><IoMdHome className="text-footerTextColor mb-[3px]  text-lg" /></FooterLink>
+        <div className="flex items-center  space-x-2 pb-3">
+          <FooterLink href="/">
+            <IoMdHome className="text-footerTextColor mb-[3px]  text-lg" />
+          </FooterLink>
           <FooterLink href="/">Home</FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
               <span className="text-footerTextColor">
                 {!subPage ? (
-                   <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</span> 
+                  <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </span>
                 ) : (
                   // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase()+mainPage.slice(1)}</FooterLink>
+                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
                 )}
               </span>
             </>
@@ -82,7 +86,7 @@ const ProjectFooter: FC = () => {
             <>
               <RiArrowRightSLine />
               <span className="text-footerTextColor font-FreightNeoProLight font-light text-base 2xl:text-2xl">
-              {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
@@ -278,11 +282,17 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+        <a
+          href="/terms-of-service"
+          className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
+          aria-label="Read the legal disclaimer section of our terms of service"
+        >
           Legal Disclaimer
         </a>
-        <span className="text-[#FFFFFF66] text-xs">|</span>
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+        <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
+          |
+        </span>
+        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium" aria-label="Read the full terms of service">
           Terms of Service
         </a>
       </div>
