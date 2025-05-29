@@ -90,6 +90,13 @@ const ProjectHeroSection: React.FC = () => {
         const windowHeight = window.innerHeight;
         // Change to absolute when the section is about to leave the viewport
         setIsFixed(rect.bottom > windowHeight);
+        const isInView = rect.bottom > 0 && rect.top < windowHeight;
+
+        // Mute video when section is not in view
+        if (audioRef.current) {
+          audioRef.current.muted = !isInView;
+          setIsMuted(!isInView);
+        }
       }
     };
 

@@ -68,9 +68,15 @@ const AboutHeroSection: React.FC = () => {
         const windowHeight = window.innerHeight;
         // Change to absolute when the section is about to leave the viewport
         setIsFixed(rect.bottom > windowHeight);
+        const isInView = rect.bottom > 0 && rect.top < windowHeight;
+
+        // Mute video when section is not in view
+        if (videoRef.current && isMuted && !isInView) {
+          videoRef.current.muted = !isInView;
+         setIsMuted(!isInView);
+       }
       }
     };
-
     // Add throttling to improve performance
     let ticking = false;
     const scrollHandler = () => {
@@ -106,9 +112,9 @@ const AboutHeroSection: React.FC = () => {
           />
         </video>
         <div
-        className={`${
-          isDesktop && isFixed ? "fixed" : "absolute"
-        } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row justify-center lg:justify-end z-[1] transition-all duration-300`}
+          className={`${
+            isDesktop && isFixed ? "fixed" : "absolute"
+          } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row justify-center lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>

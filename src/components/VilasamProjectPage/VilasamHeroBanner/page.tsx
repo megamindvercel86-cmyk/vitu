@@ -36,6 +36,14 @@ const VilasamHeroSection = () => {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         setIsFixed(rect.bottom > windowHeight);
+        const isInView = rect.bottom > 0 && rect.top < windowHeight;
+        
+        // Mute video when section is not in view
+        if (videoRef.current && isMuted && !isInView) {
+          videoRef.current.muted = !isInView;
+         setIsMuted(!isInView);
+       }
+        
       }
     };
 

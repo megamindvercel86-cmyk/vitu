@@ -35,6 +35,12 @@ const HeroSection = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
+        const isInView = rect.bottom > 0 && rect.top < windowHeight;
+        if (videoRef.current && isMuted && !isInView) {
+           videoRef.current.muted = !isInView;
+          setIsMuted(!isInView);
+        }
+        
         setIsFixed(rect.bottom > windowHeight);
       }
     };
@@ -53,11 +59,6 @@ const HeroSection = () => {
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
-
-  const textVariants = {
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    hidden: { opacity: 0, x: -10, transition: { duration: 0.3 } },
-  };
   return (
     <section
       ref={sectionRef}
@@ -67,13 +68,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 scale-1">
         <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomePage.mp4?alt=media&token=1ee796b6-3ba1-4928-90ed-b4f6c7fba33d"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Image.mp4?alt=media&token=051f18f4-32b1-4d0a-9234-182e88ecde64"
             type="video/mp4"
           />
         </video>
         <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FFinal%20Mobile%20(2).mp4?alt=media&token=8c1c80df-cbc0-4abd-bf1b-ef929bef9b2e"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Image%20Mobile.mp4?alt=media&token=4a2c622d-4e49-4d77-b28b-9da897928095"
             type="video/mp4"
           />
         </video>
