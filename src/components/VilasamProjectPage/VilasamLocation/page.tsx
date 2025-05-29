@@ -73,11 +73,16 @@ const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProp
     <div style={{ borderRadius: "50px" }} className={cn("flex items-center justify-center gap-2 py-3 ", className)}>
       {Array.from({ length: total }).map((_, index) => (
         <button
-          key={index}
-          onClick={() => onDotClick?.(index)}
-          className={cn("transition-all duration-300", active === index ? `w-6 bg-white rounded-xl h-2` : "w-2 h-2 bg-gray-300 rounded-full")}
-          aria-label={`Go to slide ${index + 1}`}
-        />
+        key={index}
+        onClick={() => onDotClick?.(index)}
+        className={cn(
+          "transition-all duration-300",
+          active === index ? "w-6 bg-white rounded-xl h-2" : "w-2 h-2 bg-gray-300 rounded-full"
+        )}
+        aria-label={`Go to slide ${index + 1}`}
+      >
+        <span className="sr-only">{`Go to slide ${index + 1}`}</span>
+      </button>
       ))}
     </div>
   );
