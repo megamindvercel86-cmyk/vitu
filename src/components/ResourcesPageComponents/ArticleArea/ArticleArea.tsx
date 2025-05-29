@@ -278,6 +278,7 @@ export default function ArticleArea(): React.ReactElement {
             </Link>
             <div className="flex gap-2">
               <button
+              aria-label="Previous Slide"
                 onClick={() => swiperRef.current?.slidePrev()}
                 disabled={isNavigationDisabled}
                 className="relative z-[1] lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -285,6 +286,7 @@ export default function ArticleArea(): React.ReactElement {
                 <IconArrowNarrowLeft />
               </button>
               <button
+              aria-label="Next Slide"
                 onClick={() => swiperRef.current?.slideNext()}
                 disabled={isNavigationDisabled}
                 className="relative z-[1] lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"

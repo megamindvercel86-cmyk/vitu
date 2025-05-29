@@ -28,7 +28,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
         {/* Action Button */}
-        <button className="absolute right-4 bottom-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+        <button aria-label="Increment" className="absolute right-4 bottom-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
           {/* Replace this span with your desired Icon */}
           <span className="w-5 h-5 text-neutral-900">+</span>
         </button>

@@ -311,6 +311,7 @@ setIsLoading(false)
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-10 pb-12">
                     <button
                       type="button"
+                      aria-label="Submit Form"
                       className={`lg:hidden block text-[26px] w-full py-2 bg-[#0C3E49] text-white  rounded-full font-medium ${
                         !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
@@ -341,6 +342,7 @@ setIsLoading(false)
                     </label>
                     <button
                       type="button"
+                      aria-label="Submit Form"
                       className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2 bg-[#0C3E49] text-white rounded-full font-medium ${
                         !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}

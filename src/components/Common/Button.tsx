@@ -23,7 +23,7 @@ const Button = ({
   );
 
   return (
-    <button onClick={onClick} disabled={disabled} className={combinedClassName}>
+    <button aria-label="children" onClick={onClick} disabled={disabled} className={combinedClassName}>
       {children}
     </button>
   );

@@ -38,6 +38,7 @@ const LyfeStyle = () => {
             </h2>
             <div className=" group cursor-pointer hidden md:block">
               <button
+              aria-label="Discover our Vision"
                 onClick={() => setIsOpen(true)}
                 type="button"
                 className="
@@ -88,6 +89,7 @@ const LyfeStyle = () => {
           <div className="absolute bottom-0 left-0 w-full h-[50px] lg:h-[170px] xl:h-[400px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
         </div>
         <button
+        aria-label="Discover our Vision"
           onClick={() => setIsOpen(true)}
           type="button"
           className="

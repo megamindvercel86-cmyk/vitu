@@ -59,6 +59,7 @@ const FAQ = () => {
               className="border-b border-black border-opacity-20 mb-[21px]"
             >
               <button
+              aria-label="Toggle FAQ Item"
                 className={`w-full flex justify-between items-center text-left transition-all ${
                   openIndex === index ? "pb-[12px]" : "pb-[21px]"
                 }`}

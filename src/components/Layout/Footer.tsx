@@ -233,7 +233,7 @@ const Footer: FC = () => {
                     className="lg:text-[13px] lg2:text-[18px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
                     placeholder="Sign Up for Our Newsletter"
                   />
-                  <button type="submit">
+                  <button aria-label="Submit" type="submit">
                     <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>

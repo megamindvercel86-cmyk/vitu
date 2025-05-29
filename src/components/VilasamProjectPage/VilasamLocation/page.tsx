@@ -334,6 +334,7 @@ const LocationAdvantage = () => {
                 <div className=" group cursor-pointer bottom-0 md:block relative hidden">
                   <button
                     type="button"
+                    aria-label="More about the Project"
                     onClick={() => openCard(0)}
                     className="
                        relative group
@@ -367,6 +368,7 @@ const LocationAdvantage = () => {
               <div className="absolute group cursor-pointer bottom-14 md:hidden w-full flex items-center justify-center">
                 <button
                   type="button"
+                  aria-label="More about the Project"
                   onClick={() => openCard(0)}
                   className="
                        relative group
@@ -436,7 +438,8 @@ const LocationAdvantage = () => {
                 <div className="lg:px-44 md:px-12 px-6">
                   <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP MEXT</h1>
                   <div className="flex md:pb-16 pb-32 justify-between ">
-                    <button
+                    <button 
+                    aria-label="Previous Card"
                       onClick={goToNextCard}
                       className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px]text-base"
                     >

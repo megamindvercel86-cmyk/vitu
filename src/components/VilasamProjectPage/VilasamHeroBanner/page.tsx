@@ -162,7 +162,8 @@ const VilasamHeroSection = () => {
       >
         <div className="font-medium text-[#0C3E49] text-sm lg2:text-[26px] xl:text-[32px] md:text-lg font-sourceSans3">Bookings Open Soon</div>
         <Link href="/project-enquire">
-          <button
+          <button 
+            aria-label="Show your Interest"
             // onClick={onCtaClick}
             className="px-6 lg2:px-10 py-2 text-sm lg2:text-[26px] xl:text-[32px] lg2:py-5 bg-[#0C3E49] md:text-lg font-sourceSans3 text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
           >

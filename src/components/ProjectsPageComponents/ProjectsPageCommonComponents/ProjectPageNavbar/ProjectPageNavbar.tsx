@@ -106,7 +106,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
               <NavLink href="/">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
-              <button onClick={() => setIsMenuOpen(false)}>
+              <button aria-label="Close Menu" onClick={() => setIsMenuOpen(false)}>
                 <CloseIcon />
               </button>
             </div>
@@ -130,7 +130,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
               ))}
               {showGetInTouch && (
                 <NavLink href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">
-                  <button className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                  <button aria-label="Get in Touch" className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
                     Get in Touch
                   </button>
                 </NavLink>

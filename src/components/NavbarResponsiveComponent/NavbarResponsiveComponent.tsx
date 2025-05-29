@@ -83,7 +83,10 @@ const NavbarResponsiveComponent = ({
                     <div className={`flex gap-2 ${dropdownItems && "pl-6"}`}>
                       <div onClick={() => pathname === href && setIsMenuOpen(false)}>{label}</div>
                       {dropdownItems && (
-                        <button onClick={() => setIsDropDownMenuOpen(!isDropDownOpen)}>
+                        <button
+                          aria-label={isDropDownOpen ? "Collapse Projects menu" : "Expand Projects menu"}
+                          onClick={() => setIsDropDownMenuOpen(!isDropDownOpen)}
+                        >
                           {!isDropDownOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
                         </button>
                       )}
@@ -105,7 +108,10 @@ const NavbarResponsiveComponent = ({
 
               {showGetInTouch && (
                 <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
-                  <button className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                  <button
+                    aria-label="Get in Touch"
+                    className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8"
+                  >
                     Get in Touch
                   </button>
                 </Link>
