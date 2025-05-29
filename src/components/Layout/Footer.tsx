@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FC, JSX, useRef, useState } from "react";
+import React, { FC, JSX, useState } from "react";
 import logo from "../../../public/images/logos/logolight.svg";
 import chieverslog from "../../../public/images/logos/chieverslog.svg";
 import SubHeading from "../Common/SubHeding";
@@ -24,17 +24,13 @@ import { motion, AnimatePresence } from "framer-motion";
  * - Contact information & newsletter
  * - Copyright and legal links
  */
-
 const Footer: FC = () => {
   const [quickIsOpen, setQuickIsOpen] = useState<boolean>(false);
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
   const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
 
-
   const pathname = usePathname();
-
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
-
   const [email, setEmail] = useState<string>("");
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,11 +47,13 @@ const Footer: FC = () => {
             <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Image fill src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
             </div>
-      
+
             {/* Text Content */}
             <div>
               <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Woo-Hoo</h2>
-              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>You have Successfully Signed Up to our Newsletter</p>
+              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>
+                You have Successfully Signed Up to our Newsletter
+              </p>
             </div>
           </div>,
           {
@@ -84,14 +82,15 @@ const Footer: FC = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             {/* Icon Wrapper */}
             <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Image fill src="/error.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+              <Image fill src="/error.png" alt="Error" style={{ width: "40px", height: "24px" }} />
             </div>
-      
+
             {/* Text Content */}
             <div>
               <h2 className="font-freightNeoSemibold text-2xl text-customBrown ">Uh oh.</h2>
-              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>Something went wrong. 
-              Give it a Minute and Try Again</p>
+              <p className="font-CandideCondensedNormal" style={{ margin: 0, fontSize: "14px", color: "#4F373799" }}>
+                Something went wrong. Give it a Minute and Try Again
+              </p>
             </div>
           </div>,
           {
@@ -118,10 +117,10 @@ const Footer: FC = () => {
   };
 
   return (
-    <footer className="bg-black text-white pt-8 lg:pt-10  w-full">
+    <footer className="bg-black text-white pt-8 lg:pt-10 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="flex items-center space-x-2 pb-8">
-          <FooterLink href="/">
+          <FooterLink href="/" ariaLabel="Go to homepage">
             <IoMdHome className="text-footerTextColor mb-[8px] lg:mb-0 xl:mb-0 text-lg" />
           </FooterLink>
           <FooterLink className="!text-lg" href="/">Home</FooterLink>
@@ -129,15 +128,15 @@ const Footer: FC = () => {
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
               <span className="text-footerTextColor">
-          {!subPage ? (
-            <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
-              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-            </span>
-          ) : (
-            <FooterLink className="!text-lg" href={`/${mainPage}`}>
-              {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
-            </FooterLink>
-          )}
+                {!subPage ? (
+                  <span className="font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </span>
+                ) : (
+                  <FooterLink className="!text-lg" href={`/${mainPage}`}>
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </FooterLink>
+                )}
               </span>
             </>
           )}
@@ -145,7 +144,7 @@ const Footer: FC = () => {
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
               <span className="text-footerTextColor font-FreightNeoProLight font-light text-lg 2xl:text-2xl">
-          {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
+                {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
           )}
@@ -163,7 +162,6 @@ const Footer: FC = () => {
             <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="#">Recognized by</FooterLink>
               <Link href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
-                {" "}
                 <Image src={chieverslog} alt="chieverslog" width={148} height={82} className="mt-4" />
               </Link>
             </div>
@@ -181,7 +179,6 @@ const Footer: FC = () => {
           />
 
           {/* Resources */}
-
           <FooterSection
             isOpen={resourcesIsOpen}
             title="Resources"
@@ -191,7 +188,7 @@ const Footer: FC = () => {
             ]}
             setQuickIsOpen={setResourcesIsOpen}
           />
-           <FooterSection
+          <FooterSection
             isOpen={projectIsOpen}
             title="Projects"
             links={[
@@ -219,15 +216,12 @@ const Footer: FC = () => {
                 <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
                   <Instgram aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target={true} ariaLabel="Visit our Facebook">
                   <Meta aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.linkedin.com/company/vitu-realty/" target={true} ariaLabel="Visit our LinkedIn">
                   <LinkedIn aria-hidden="true" />
                 </NavLink>
-
                 <NavLink href="https://www.youtube.com/@viturealty/featured" target={true} ariaLabel="Visit our YouTube">
                   <Youtube aria-hidden="true" />
                 </NavLink>
@@ -243,8 +237,8 @@ const Footer: FC = () => {
                     className="lg:text-[13px] lg2:text-[18px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
                     placeholder="Sign Up for Our Newsletter"
                   />
-                  <button type="submit">
-                    <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
+                  <button type="submit" aria-label="Subscribe to Newsletter">
+                    <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
                   </button>
                 </div>
               </div>
@@ -265,18 +259,14 @@ const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
-    initial={false} // Prevents animation on mount
-    animate={{ rotate: isOpen ? 180 : 0 }} // Rotates 180° when open
-    transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+    initial={false}
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
   >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 9l-7 7-7-7" // Base position (pointing down)
-    />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </motion.svg>
 );
+
 /**
  * FooterSection Component
  * - Handles quick links and resource sections with collapsible mobile support
@@ -326,33 +316,28 @@ const FooterSection: FC<{
  * FooterContactItem Component
  * - Renders contact details with icons
  */
-const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string;name:string }> = ({ icon, text, link,name }) => {
-  // Check if the text contains the phone number or pincode and apply the custom font
+const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name: string }> = ({ icon, text, link, name }) => {
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
     <>
-    <li
-      className={`flex lg:hidden md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-    >
-     
-      <span className="flex items-center lg:hidden gap-3">{icon}<span className="lg:hidden text-[14px] font-freightNeoSemibold ">{name}</span></span>
-      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-        {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </Link>
-    </li>
-      <li
-      className={`lg:flex hidden  md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3 `}
-    >
-     {icon}
-      <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
-        {/* Apply the custom font for phone number and pincode */}
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
-      </Link>
-    </li>
+      <li className={`flex lg:hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}>
+        <span className="flex items-center lg:hidden gap-3">
+          {icon}
+          <span className="lg:hidden text-[14px] font-freightNeoSemibold">{name}</span>
+        </span>
+        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : "fdtext"}
+        </Link>
+      </li>
+      <li className={`lg:flex hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}>
+        {icon}
+        <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
+          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : "fdtext"}
+        </Link>
+      </li>
     </>
   );
 };
@@ -368,7 +353,7 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium ">
+        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
           Legal Disclaimer
         </a>
         <span className="text-[#FFFFFF66] text-xs">|</span>
