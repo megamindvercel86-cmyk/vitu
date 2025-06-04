@@ -20,6 +20,7 @@ interface Card {
   width?: string;
   height?: string;
   fileUrl?: string;
+  title?:string;
 }
 
 const CARDS_DATA: Card[] = [
@@ -33,6 +34,7 @@ const CARDS_DATA: Card[] = [
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"24x7 Gated Security"
   },
   {
     id: 2,
@@ -44,6 +46,7 @@ const CARDS_DATA: Card[] = [
     position: "left",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"50+ Blooming Trees"
   },
   {
     id: 4,
@@ -55,6 +58,7 @@ const CARDS_DATA: Card[] = [
     position: "left",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"Tiered/Relaxed Seating Zones"
   },
   {
     id: 3,
@@ -66,6 +70,7 @@ const CARDS_DATA: Card[] = [
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"30 ft Wide Cobblestone-paved Roads"
   },
   {
     id: 5,
@@ -77,6 +82,7 @@ const CARDS_DATA: Card[] = [
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"Solar-Powered Street Lights"
   },
   {
     id: 30,
@@ -88,6 +94,7 @@ const CARDS_DATA: Card[] = [
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    title:"Chromotheraphy Garden"
   },
   {
     id: 31,
@@ -99,6 +106,7 @@ const CARDS_DATA: Card[] = [
     position: "right",
     width: "md:w-[220px] lg2:w-[298px] lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]",
     height: "md:h-[270px] lg2:h-[385px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px]",
+    title:"Kids Play Area"
   },
 ];
 

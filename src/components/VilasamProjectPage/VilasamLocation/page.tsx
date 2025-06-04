@@ -9,7 +9,6 @@ import styles from "../../ProjectsPageComponents/ProjectLocationAdvantage/Locati
 import { cn } from "@/lib/utils"; // Verify this utility exists
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
-// Adjust the import path for CTAButtonIcon based on your project structure
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
 import "./vilasamLocation.css"
 
@@ -41,6 +40,7 @@ interface LocationAdvantageProps {
     bottomDescription?: string;
     image: string;
   }[];
+  
 }
 
 interface CarouselDotsProps {
@@ -124,18 +124,16 @@ const CardContent = ({
       <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleTitle}</h4>
       <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleDescription}</p>
       <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.bottomTitle}</h4>
-      {/* <p className=" text-gray-600 text-base font-geistSerif lg:text-lg">{description.bottomDescription}</p> */}
-
-      {/* <ul className=" space-y-6" aria-label="List of key points">
+      <ul className="space-y-4 " aria-label="List of key points">
         {description?.bottomPoints?.map((point, index) => (
           <li key={index} className="flex items-start">
             <span className="text-[#656666] mr-2 font-geistSerif text-start text-[18px]" aria-hidden="true">
               •
             </span>
-            <p className="text-gray-600 text-base font-geistSerif lg:text-lg">{point}</p>
+            <p className="text-[#040707]/60 text-base font-sourceSans3 lg:text-lg">{point}</p>
           </li>
         ))}
-      </ul> */}
+      </ul>
       <p className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleBottomDescription}</p>
     </div>
   </div>
@@ -179,15 +177,30 @@ const LocationAdvantage = () => {
           title: "Invest in Land, Invest in Legacy",
           description:
             "Vilasam is not just a place to live, it's a smart investment in your future. Located in the rapidly developing region of Surathkal, with seamless connectivity to key hubs and essential infrastructure, it offers the perfect blend of growth and stability. The limited number of premium plots adds exclusivity and long-term demand, ensuring that your investment retains and increases in value over time.",
-          middleDescription:
-            "Whether you're building your first home or adding to your portfolio, Vilasam offers clarity, confidence, and returns. Backed by meticulous planning, thoughtful design, and a location that’s on the rise, it’s an opportunity to own land that appreciates both in value and in meaning.",
+          bottomPoints: [
+            "Boutique project = limited supply, higher demand",
+            "Upcoming Karnataka Housing Board Layout",
+            "Ongoing MUDA Township",
+            "National Highways NH-66, NH-75, NH-169 connectivity",
+            "2–3 mins to NITK, Srinivas University, Hospitals & Beaches",
+            "8 mins to MRPL, NMPT industrial zones",
+            "20+ Top Educational Institutions",
+            "10+ Major Hospitals",
+            "High-growth corridor with 2X appreciation in the last 4 years",
+            "Low Capital Entry",
+            "New Mangalore Port Upgradation",
+            "Infrastructure-ready community",
+            "Silicon Beach Programme",
+            "Mangalore International Airport Expansion",
+            "Limited inventory — premium value assured"
+          ]
         },
       ],
     },
     {
       title: "Location Advantage",
       description: "Shaped Around You,A Place to Live Fully",
-      text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
+      text: "Enjoy the soothing sounds of waves & the convenience of a beachside retreat just minutes away from the beach.",
       buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
       textClassName: "text-white",
@@ -205,7 +218,7 @@ const LocationAdvantage = () => {
           description:
             "Discover a life where calm is your closest neighbor. At Vilasam, every element from tree-lined avenues to open green corners is thoughtfully planned to offer a peaceful lifestyle away from the city's chaos. It's a place where mornings begin with birdsong and evenings wind down with golden skies and gentle breezes.",
           middleDescription:
-            "Here, serene living isn’t just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
+            "Here, serene living isn't just a promise. It's woven into the very fabric of the community. With minimal noise, low density and plenty of space to breathe, Vilasam becomes a personal retreat where you can slow down, reconnect, and truly live at your own pace.",
         },
       ],
     },
@@ -229,9 +242,9 @@ const LocationAdvantage = () => {
           image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
           title: "A Greener Way to Live",
           description:
-            "At Vilasam, sustainability isn’t an afterthought. It's part of our core philosophy. Every element of the layout has been crafted with a commitment to reducing environmental impact while enhancing the quality of life. From energy-efficient street lighting to eco-sensitive landscaping and water management systems, we’ve taken conscious steps to build a community that respects nature.",
+            "At Vilasam, sustainability isn't an afterthought. It's part of our core philosophy. Every element of the layout has been crafted with a commitment to reducing environmental impact while enhancing the quality of life. From energy-efficient street lighting to eco-sensitive landscaping and water management systems, we've taken conscious steps to build a community that respects nature.",
           middleDescription:
-            "Living sustainably at Vilasam doesn’t mean sacrificing comfort. Instead, it means being part of a thoughtful ecosystem where natural resources are valued and preserved. It’s a choice to live smarter, greener and more responsibly where every action today contributes to a better tomorrow for you and the generations to come.",
+            "Living sustainably at Vilasam doesn't mean sacrificing comfort. Instead, it means being part of a thoughtful ecosystem where natural resources are valued and preserved. It's a choice to live smarter, greener and more responsibly where every action today contributes to a better tomorrow for you and the generations to come.",
         },
       ],
     },
@@ -256,7 +269,7 @@ const LocationAdvantage = () => {
           description:
             "Vilasam combines elegance with efficiency through modern infrastructure that anticipates future needs. From underground electrical cabling and high-quality drainage systems to well-structured roadways and smart layout planning, every detail has been considered with foresight and functionality. This meticulous planning ensures not just visual appeal, but also long-term reliability and ease of maintenance.",
           middleDescription:
-            "Whether it’s seamless utility connections, well-lit streets, or organized community spaces, the infrastructure supports a high standard of living in every aspect. It's an environment where contemporary living meets dependable design ensuring that life at Vilasam is both beautiful and built to last.",
+            "Whether it's seamless utility connections, well-lit streets, or organized community spaces, the infrastructure supports a high standard of living in every aspect. It's an environment where contemporary living meets dependable design ensuring that life at Vilasam is both beautiful and built to last.",
         },
       ],
     },

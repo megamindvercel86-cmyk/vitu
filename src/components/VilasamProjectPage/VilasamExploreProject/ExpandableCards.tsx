@@ -185,6 +185,7 @@ interface Card {
   url: string;
   width?: string;
   height?: string;
+  title?:string;
   position?: "left" | "right";
 }
 
@@ -338,7 +339,7 @@ console.log(borderColor)
             return (
               <motion.div
                 key={card.id}
-                className={`${card.width} ${card.height} absolute overflow-hidden`}
+                className={`${card.width} ${card.height} absolute overflow-hidden group`}
                 initial={false}
                 animate={{
                   top: position.top,
@@ -351,14 +352,19 @@ console.log(borderColor)
                   borderRadius: "16px",
                 }}
               >
-                <AppleStyleCard
-                  id={card.id}
-                  position={card.position}
-                  imageSrc={card.url}
-                  isExpanded={isExpanded}
-                  expandedImageClassName="object-center"
-                  content={<CardContent cardId={card.id} />}
-                />
+                <div className="relative h-full">
+                  <AppleStyleCard
+                    id={card.id}
+                    position={card.position}
+                    imageSrc={card.url}
+                    isExpanded={isExpanded}
+                    expandedImageClassName="object-center"
+                    content={<CardContent cardId={card.id} />}
+                  />
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white text-sm lg:text-xl text-center font-geistSerif px-4">{card.title}</span>
+                  </div>
+                </div>
               </motion.div>
             );
           })}

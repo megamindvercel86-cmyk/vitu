@@ -165,8 +165,7 @@ setIsLoading(false)
   // Dropdown options
   const projectEnquiries = [
     { value: "Investing in Land", label: "Investing in Land" },
-    { value: "Buying a Home", label: "Buying a Home" },
-    { value: "Property Management", label: "Property Management" },
+    { value: "Building your Dream Home", label: "Building your Dream Home" },
     { value: "Just Exploring", label: "Just Exploring" },
   ];
 

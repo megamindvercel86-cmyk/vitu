@@ -107,11 +107,11 @@ const LOCATIONS: Location[] = [
     position: "left-[30%] top-[68%] lg:left-[23%] lg:top-[78%] md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[130px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProject/7.png",
     description: [
-      { value: "West Facing Plots", label: "7.80 Cents" },
+      { value: "Corner Plots", label: "7.80 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -121,11 +121,11 @@ const LOCATIONS: Location[] = [
     position: "left-[43%] top-[68%] lg:left-[41%] lg:top-[79%] md:left-[44%] md:top-[78%] lg:w-[70px] lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProject/8.png",
     description: [
-      { value: "West Facing Plots", label: "4.00 Cents" },
+      { value: "Corner Plots", label: "4.00 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },
@@ -401,11 +401,11 @@ const LOCATIONS: Location[] = [
     position: "left-[59%] top-[54%] lg:left-[57%] lg:top-[53%]    lg:w-[70px]  lg:h-[55px]",
     imagePath: "/images/vilasamCurrentProject/29.png",
     description: [
-      { value: "East Facing Plots", label: "3.55 Cents" },
+      { value: "Corner Plots", label: "3.55 Cents" },
       {
         value: "",
         label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+          "Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.",
       },
     ],
   },

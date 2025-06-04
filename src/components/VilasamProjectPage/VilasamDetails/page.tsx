@@ -34,20 +34,20 @@ const pulsePoints: PulsePoint[] = [
     style: "xl:top-[48%] xl:left-[32%] lg:top-[46%] lg:left-[34%] top-[48%] left-[20%]",
     detail: {
       title: "Solar-Powered Street Lights",
-      description: "Eco-friendly solar streetlights installed along internal roads, ensuring safety and energy efficiency after dusk.",
+      description: "Timer-enabled solar streetlights installed along internal roads, enhancing safety after dusk while conserving energy efficiently.",
     },
   },
   {
     id: 4,
-    style: "xl:top-[80%] xl:left-[50%] lg:top-[86%] lg:left-[50%] top-[80%] left-[50%]",
+    style: "xl:top-[90%] xl:left-[50%] lg:top-[96%] lg:left-[50%] top-[90%] left-[50%]",
     detail: {
       title: "Cobblestone Driveway",
-      description: "6-meter-wide cobblestone driveways designed to comfortably accommodate two vehicles, combining charm with functionality.",
+      description: "6-meter-wide cobblestone-paved driveways designed to comfortably accommodate two vehicles, combining charm with functionality.",
     },
   },
   {
     id: 5,
-    style: "xl:top-[80%] xl:left-[71%] lg:top-[86%] lg:left-[69%] top-[80%] left-[89%]",
+    style: "xl:top-[74%] xl:left-[46%] lg:top-[73%] lg:left-[45%] top-[74%] left-[40%]",
     detail: {
       title: "Groundwater Recharge Pits",
       description: "Strategically placed recharge pits to support sustainable water conservation and improve groundwater levels.",
@@ -67,7 +67,8 @@ const ElevatesLiving: React.FC = () => {
           </h2>
           <p className="lg:w-1/2 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
             At Vilasam, 30ft wide cobblestone roads set the tone for a thoughtfully designed community — complete with tree-lined footpaths, solar-lit
-            streets & landscapes that breathe with over 100 trees & open green spaces.
+            streets & landscapes that breathe with over 50+ Trees, Cobblestone-paved Roads
+            & open green spaces.
           </p>
         </div>
         {hoveredPoint}
@@ -99,7 +100,7 @@ const ElevatesLiving: React.FC = () => {
                       : point.id === 2
                         ? "right-0 top-0 ml-1 sm:ml-2"
                         : point.id === 4
-                          ? `xl:right-0 xl:top-0  left-[-50] top-[-140] lg:top-[-170] ml-1 sm:ml-2`
+                          ? `bottom-full mb-1 sm:mb-2 left-[-40] -translate-x-1/2`
                           : "left-0 top-1/2 -translate-y-1/2 ml-1 sm:ml-2"
                 }`}
               >

@@ -35,11 +35,11 @@ const PROJECT_DATA = {
 const STATS_DATA = [
   {
     value: "20,000 sq.ft.",
-    label: "Spacious Clubhouse",
+    label: "Clubhouse Amenities",
   },
   {
-    value: "3,400+ sq.m.",
-    label: "Parks & Open Spaces",
+    value: "33%",
+    label: "Parks, Roads & Open Spaces",
   },
 ];
 const LOCATIONS: Location[] = [
