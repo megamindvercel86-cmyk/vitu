@@ -53,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 };
 
 // Update the CardContent component to accept props
-const CardContent = ({ cardId }: { cardId: number }) => {
+const CardContent = ({ cardId, textStyle }: { cardId: number, textStyle?:string }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
   // Get current project dynamically
@@ -72,7 +72,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
   return (
     <>
       {project && (
-        <div key={"dummy-content"} data-lenis-prevent>
+        <div key={"dummy-content"} data-lenis-prevent className={textStyle}>
           <Image
             src={project.fileUrl || "/placeholder.svg"}
             alt={nextProject?.title || "Card image"}
@@ -80,17 +80,17 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             height={45}
             className={cn("object-cover h-[652px] w-full")}
           />
-          <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 font-geistSerif px-6 lg:px-20 text-[#0C3E49]">
+          <h2 className="text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24  px-6 lg:px-20 text-[#0C3E49]">
             {project.title}
           </h2>
-          <h3 className="text-[20px] lg:text-[28px] leading-[1.3] font-medium font-sourceSans3 px-6 lg:px-20 pb-6 text-[#040707CC]">
+          <h3 className="text-[20px] lg:text-[28px] leading-[1.3] font-medium px-6 lg:px-20 pb-6 text-[#040707CC]">
             {project.subtitle}
           </h3>
           <div className="flex flex-col gap-flex gap-6">
-            <Typography className="text-[#040707]/60 font-sourceSans3 px-6 lg:px-20 !text-xl">
+            <Typography className="text-[#040707]/60  px-6 lg:px-20 !text-xl">
               {project?.description1}
             </Typography>
-            <Typography className="text-[#04070799] font-sourceSans3 px-6 lg:px-20 !text-xl">
+            <Typography className="text-[#04070799]  px-6 lg:px-20 !text-xl">
               {project?.description2}
             </Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
@@ -193,9 +193,10 @@ interface ExpandableCardsProps {
   cards: Card[];
   textColor?: string;
   borderColor?: string
+  textStyle?: string;
 }
 
-const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = "", borderColor = "" }) => {
+const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = "", borderColor = "", textStyle = "" }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
@@ -297,12 +298,12 @@ console.log(borderColor)
           }}
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
-          <div className={`${textColor}`}>
-            <motion.p className=" font-sourceSans3 uppercase mb-4" initial={{ y: 0 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
+          <div className={`${textColor} ${textStyle}`}>
+            <motion.p className=" uppercase mb-4" initial={{ y: 0 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
               amenities
             </motion.p>
             <motion.h1
-              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl  font-geistSerif lg2:mb-4 "
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl  lg2:mb-4 "
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -310,7 +311,7 @@ console.log(borderColor)
               Space to Settle,
             </motion.h1>
             <motion.h2
-              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl font-geistSerif lg2:mb-4"
+              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl lg2:mb-4"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -359,10 +360,10 @@ console.log(borderColor)
                     imageSrc={card.url}
                     isExpanded={isExpanded}
                     expandedImageClassName="object-center"
-                    content={<CardContent cardId={card.id} />}
+                    content={<CardContent cardId={card.id} textStyle={textStyle}/>}
                   />
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="text-white text-sm lg:text-xl text-center font-geistSerif px-4">{card.title}</span>
+              <div className={`${!isExpanded ? 'hidden' : 'absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'}`}>
+                    <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
                   </div>
                 </div>
               </motion.div>

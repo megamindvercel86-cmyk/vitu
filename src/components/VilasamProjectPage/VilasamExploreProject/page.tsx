@@ -129,12 +129,12 @@ interface VilasamExploreProjectsProps {
 const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePage = false }) => {
   const textColor = homePage ? "text-customBrown" : "text-[#0C3E49]";
   const controlButtonBg = homePage ? "customBrown" : "[#0C3E49]";
-
+  const textStyle = homePage ? "font-freightNeoMedium" : "font-geistSerif";
   return (
     <>
       {/* Desktop Version */}
       <div className="md:block hidden relative z-0 overflow-hidden" >
-        <ExpandableCards cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg}/>
+        <ExpandableCards  cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg} textStyle={textStyle}/>
       </div>
 
       {/* Mobile Version */}

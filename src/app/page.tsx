@@ -166,7 +166,7 @@ export default function HomePage() {
       <VilasamExploreProjects homePage={true} />
 
       {/* Current Projects (Lazy Loaded) */}
-      <CurrentProject />
+      <CurrentProject homePage={true}/>
 
       {/* Testimonials */}
       <Testimonials />
