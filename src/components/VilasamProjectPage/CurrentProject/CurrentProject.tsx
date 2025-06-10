@@ -51,12 +51,12 @@ const LOCATIONS: Location[] = [
     position: "lg:left-[32%]  lg:top-[40%] left-[33%] top-[45%] md:left-[33%] md:top-[43%]  lg:w-[65px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProject/3.png",
     description: [
-      { value: "West Facing Plots", label: "4.00 Cents" },
+      { value: "East Facing Plots", label: "4.00 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },
+        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+    },
     ],
   },
   {
@@ -93,12 +93,12 @@ const LOCATIONS: Location[] = [
     position: "left-[30%] top-[62%] md:left-[31%] md:top-[69%] lg:left-[27%] lg:top-[70%]  lg:w-24  lg:h-[58px]",
     imagePath: "/images/vilasamCurrentProject/6.png",
     description: [
-      { value: "West Facing Plots", label: "6.60 Cents" },
+      { value: "East Facing Plots", label: "6.60 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },
+        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+    },
     ],
   },
   {
@@ -247,11 +247,11 @@ const LOCATIONS: Location[] = [
     position: "left-[71%] top-[47%] lg:left-[67%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilasamCurrentProject/17.png",
     description: [
-      { value: "East Facing Plots", label: "3.90 Cents" },
+      { value: "West Facing Plots", label: "3.90 Cents" },
       {
         value: "",
         label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
       },
     ],
   },
@@ -261,12 +261,12 @@ const LOCATIONS: Location[] = [
     position: "left-[71%] top-[42%]  md:top-[39%]  lg:left-[67%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
     imagePath: "/images/vilasamCurrentProject/18.png",
     description: [
-      { value: "East Facing Plots", label: "4.50 Cents" },
+      { value: "West Facing Plots", label: "4.50 Cents" },
       {
         value: "",
         label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-      },
+        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+    },
     ],
   },
   {
@@ -275,12 +275,12 @@ const LOCATIONS: Location[] = [
     position: "left-[69%] top-[36%] md:left-[71%] md:top-[30%] lg:left-[67%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
     imagePath: "/images/vilasamCurrentProject/19.png",
     description: [
-      { value: "East Facing Plots", label: "5.00 Cents" },
+      { value: "West Facing Plots", label: "5.00 Cents" },
       {
         value: "",
         label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-      },
+        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+    },
     ],
   },
   {
@@ -289,12 +289,12 @@ const LOCATIONS: Location[] = [
     position: "left-[70%] top-[28%] md:left-[70%] md:top-[15%] lg:left-[67%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
     imagePath: "/images/vilasamCurrentProject/20.png",
     description: [
-      { value: "East Facing Plots", label: "5.80 Cents" },
+      { value: "West Facing Plots", label: "5.80 Cents" },
       {
         value: "",
         label:
-          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-      },
+        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+    },
     ],
   },
   {
@@ -331,11 +331,11 @@ const LOCATIONS: Location[] = [
     position: "left-[59%]  top-[36%] md:left-[59%]  md:top-[29%] lg:left-[57%]  lg:top-[25%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProject/23.png",
     description: [
-      { value: "West Facing Plots", label: "4.50 Cents" },
+      { value: "East Facing Plots", label: "4.50 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
       },
     ],
   },
@@ -345,12 +345,12 @@ const LOCATIONS: Location[] = [
     position: "left-[59%] top-[42%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
     imagePath: "/images/vilasamCurrentProject/24.png",
     description: [
-      { value: "West Facing Plots", label: "4.50 Cents" },
+      { value: "East Facing Plots", label: "4.50 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },
+        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+    },
     ],
   },
   {
@@ -373,12 +373,12 @@ const LOCATIONS: Location[] = [
     position: "left-[59%] top-[47%] lg:left-[57%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
     imagePath: "/images/vilasamCurrentProject/26.png",
     description: [
-      { value: "West Facing Plots", label: "3.60 Cents" },
+      { value: "East Facing Plots", label: "3.60 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },
+        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+    },
     ],
   },
   {
@@ -387,12 +387,12 @@ const LOCATIONS: Location[] = [
     position: "lg:left-[33%] lg:top-[23%] left-[33%] top-[36%] md:left-[34%] md:top-[30%]   lg:w-[55px]  lg:h-[100px]",
     imagePath: "/images/vilasamCurrentProject/28.png",
     description: [
-      { value: "West Facing Plots", label: "5.40 Cents" },
+      { value: "East Facing Plots", label: "5.40 Cents" },
       {
         value: "",
         label:
-          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-      },
+        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+    },
     ],
   },
   {

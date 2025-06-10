@@ -66,8 +66,8 @@ const ElevatesLiving: React.FC = () => {
             Where Every Detail Elevates Living
           </h2>
           <p className="lg:w-1/2 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
-            At Vilasam, 30ft wide cobblestone roads set the tone for a thoughtfully designed community — complete with tree-lined footpaths, solar-lit
-            streets & landscapes that breathe with over 50+ Trees, Cobblestone-paved Roads
+            At Vilasam, 30ft wide cobblestone-paved roads set the tone for a thoughtfully designed community  complete with tree-lined footpaths, solar-lit
+            streets & landscapes that breathe with over 50+ trees
             & open green spaces.
           </p>
         </div>

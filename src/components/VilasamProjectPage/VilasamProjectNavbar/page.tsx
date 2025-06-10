@@ -63,7 +63,7 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 // ============= Navigation Links =============
 const NAV_LINKS = [
-  { href: "carousal", label: "Amenities" },
+  { href: "explore", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
   { href: "location", label: "Location" },
 ];
@@ -116,7 +116,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
               {NAV_LINKS.map(({ href, label }) => (
-                label === "Amenities" ? (
+                label === "Afmenities" ? (
                   <div 
                     key={href}
                     onClick={() => setIsModalOpen(true)} 
@@ -199,7 +199,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3 items-center justify-between`}>
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                label === "Amenities" ? (
+                label === "Amefnities" ? (
                   <div 
                     key={href}
                     onClick={() => setIsModalOpen(true)} 
@@ -208,7 +208,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                     {label}
                   </div>
                 ) : (
-                  <Link key={href} to={href} smooth={true} duration={700}>
+                  <Link key={href} to={href} smooth={true} duration={1200}>
                     <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">
                       {label}
                     </div>

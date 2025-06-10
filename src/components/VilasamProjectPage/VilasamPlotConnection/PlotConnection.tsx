@@ -244,7 +244,7 @@ const PlotConnection = () => {
   const selectedType = activeIndex === null ? null : legendItems[activeIndex].label;
 
   return (
-    <div className="relative inline-block h-[100vh] w-full">
+    <div id="location" className="relative inline-block h-[100vh] w-full">
       {/* Background Image */}
       <Image src={image1} alt="Plot Location Map" quality={100} className="w-full h-[100vh] object-cover" priority />
 

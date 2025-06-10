@@ -275,7 +275,7 @@ const PlotConnectionMobile = () => {
   };
 
   return (
-    <section className="w-full max-w-sm mx-auto space-y-4 bg-white rounded-lg relative">
+    <section id="location" className="w-full max-w-sm mx-auto space-y-4 bg-white rounded-lg relative">
       <div className="px-[1rem] space-y-2">
         <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  md:pb-10 pb-2">Well-Connected Living</h2>
         <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] pb-4 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 ">

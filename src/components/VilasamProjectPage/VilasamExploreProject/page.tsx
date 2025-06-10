@@ -133,7 +133,7 @@ const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePag
   return (
     <>
       {/* Desktop Version */}
-      <div className="md:block hidden relative z-0 overflow-hidden" >
+      <div className="md:block hidden relative z-0 overflow-hidden" id="explore" >
         <ExpandableCards  cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg} textStyle={textStyle}/>
       </div>
 

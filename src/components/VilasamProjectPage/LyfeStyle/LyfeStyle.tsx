@@ -397,17 +397,17 @@ const LyfeStyle = () => {
                     </h2>
 
                     <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl  ">
-                      At the heart of Vilasam lies The Club — a sprawling 20,000 sq.ft. clubhouse designed to enrich everyday living. Whether it's a
+                      At the heart of Vilasam lies The Club,  a sprawling 20,000 sq.ft of clubhouse amenities designed to enrich everyday living. Whether it's a
                       quiet moment of reflection or a lively gathering with neighbors, the clubhouse brings together spaces that cater to wellness,
                       connection, and celebration.
                     </p>
                     <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl ">
                       From indoor activity zones to calm corners for reading or relaxing, every detail has been thoughtfully curated to elevate the
-                      way you live. It's more than just a building — it's where community comes alive, and where every visit feels like an escape
+                      way you live. It's more than just a building, it's where community comes alive, and where every visit feels like an escape
                       within your own neighborhood.
                     </p>
                     <div className="mt-8">
-                      <h3 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 pb-6 text-[18px]">World-Class Amenities</h3>
+                      <h3 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 pb-6 text-[18px]">The Club - Amenities</h3>
                       <div className="grid grid-cols-1 gap-4">
                         {[
                           "Lounge",

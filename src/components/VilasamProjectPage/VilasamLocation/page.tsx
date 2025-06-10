@@ -160,7 +160,7 @@ const LocationAdvantage = () => {
     {
       title: "Investment Potential",
       description: "Invest in Land, Invest in Legacy",
-      text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
+      text: "An address of quiet comfort & lasting promise where every day feels right, & every year adds value.",
       buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/invest.png",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp",
@@ -199,7 +199,7 @@ const LocationAdvantage = () => {
     },
     {
       title: "Location Advantage",
-      description: "Shaped Around You,A Place to Live Fully",
+      description: "Shaped Around You, A Place to Live Fully",
       text: "Enjoy the soothing sounds of waves & the convenience of a beachside retreat just minutes away from the beach.",
       buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
@@ -214,7 +214,7 @@ const LocationAdvantage = () => {
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/5.webp",
-          title: "Shaped Around You,A Place to Live Fully",
+          title: "Shaped Around You, A Place to Live Fully",
           description:
             "Discover a life where calm is your closest neighbor. At Vilasam, every element from tree-lined avenues to open green corners is thoughtfully planned to offer a peaceful lifestyle away from the city's chaos. It's a place where mornings begin with birdsong and evenings wind down with golden skies and gentle breezes.",
           middleDescription:
