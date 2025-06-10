@@ -143,7 +143,7 @@ export default function AppleStyleCard({
         onClick={() => setIsOpen(isExpanded)}
         className={cn("bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative ", className, cardClassName)}
       >
-        <div className="relative z-40 p-8">
+        <div className="relative z-50 p-8">
           {/* <motion.p
             layoutId={`card-category-${id}`}
             className={cn(
@@ -172,8 +172,9 @@ export default function AppleStyleCard({
             {subtitle}
           </motion.p>
         </div>
-        <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute  inset-0" />
-        <div className="absolute bottom-4 md:left-8 left-4 ">
+        <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute z-10 inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent z-20" />
+        <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
             variant="custom"
             className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl text-xl"
@@ -185,7 +186,7 @@ export default function AppleStyleCard({
             ))}
           </Typography>
         </div>
-        <div className={`absolute bottom-3 right-3 ${position === "right" ? "right-3" : "left-3"} position z-[1]`}>
+        <div className={`absolute bottom-3 right-3 ${position === "right" ? "right-3" : "left-3"} position z-50`}>
           {isViewMore === true && (isViewMoreType === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />)}
         </div>
 

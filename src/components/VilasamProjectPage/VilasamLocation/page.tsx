@@ -158,7 +158,7 @@ const LocationAdvantage = () => {
 
   const data: LocationAdvantageProps[] = [
     {
-      title: "Location Advantage",
+      title: "Investment Potential",
       description: "Invest in Land, Invest in Legacy",
       text: "An address of quiet comfort & lasting promise—where every day feels right, & every year adds value.",
       buttonText: "More about the Project",
@@ -223,7 +223,7 @@ const LocationAdvantage = () => {
       ],
     },
     {
-      title: "Location Advantage",
+      title: "Sustainable Living",
       description: "A Greener Way to Live",
       text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
       buttonText: "More about our Sustainability Initiatives",
@@ -249,7 +249,7 @@ const LocationAdvantage = () => {
       ],
     },
     {
-      title: "Location Advantage",
+      title: "Modern Infrastructure",
       description: "Designed for Today, Ready for Tomorrow ",
       text: "Smartly planned, future-ready infrastructure that makes everyday living seamless.",
       buttonText: "More about the Oxygen Park",

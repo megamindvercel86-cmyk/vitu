@@ -68,13 +68,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 scale-1">
         <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Image.mp4?alt=media&token=051f18f4-32b1-4d0a-9234-182e88ecde64"
+            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536647/New_Image_4_erfmty.mp4"
             type="video/mp4"
           />
         </video>
         <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Image%20Mobile.mp4?alt=media&token=4a2c622d-4e49-4d77-b28b-9da897928095"
+            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536697/New_Image_Mobile_2_n0i9mm.mp4"
             type="video/mp4"
           />
         </video>

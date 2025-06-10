@@ -46,7 +46,7 @@ export default function FounderMessage(): React.ReactElement {
       <button
       aria-label="Watch the full video"
         className="md:mt-10 flex items-center justify-center gap-3 bg-[#815C46] text-white text-base font-medium rounded-full px-6 py-2 2xl:px-8 2xl:py-4 2xl:text-2xl"
-        onClick={() => videoData && window.open("https://youtu.be/PS3l9zTvLgI?si=6NMZo9kPJLBk6sPo", "_blank", "noopener,noreferrer")}
+        onClick={() => window.open("https://youtu.be/PS3l9zTvLgI?si=6NMZo9kPJLBk6sPo", "_blank", "noopener,noreferrer")}
       >
         Watch the Full Video
         <PlayIcon />

@@ -20,7 +20,7 @@ const CustomCursor = ({ cursorVariant, cursorText , cursorBackground= "bg-custom
 
   return (
     <motion.div
-      className={`fixed pointer-events-none flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl ${cursorBackground} text-white font-bold`}
+      className={`fixed pointer-events-none px-4 lg2:px-7  !w-auto flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl ${cursorBackground} text-white font-bold`}
       variants={{
         default: {
           opacity: 1,

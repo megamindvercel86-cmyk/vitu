@@ -63,8 +63,7 @@ const DEFAULT_BUTTON_CONFIG = {
 const NAV_LINKS = [
   { href: "carousal", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
-  { href: "location", label: "Location" },
-  { href: "plots", label: "Plots" },
+  
 ];
 
 export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "secondary" }: ProjectNavbarProps) {
@@ -178,8 +177,8 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           </div>
 
           {/* Navigation Links - Right 50% */}
-          <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center justify-between`}>
-            <div className="flex items-center justify-between w-full">
+          <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center `}>
+            <div className="flex items-center justify-end gap-12 w-full">
               {NAV_LINKS.map(({ href, label }) => (
                 <Link key={href} to={href} smooth={true} duration={700}>
                   <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>

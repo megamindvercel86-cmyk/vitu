@@ -1,9 +1,6 @@
-// ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import Image from "next/image";
-import bgImage from "../../public/images/backgroundImages/homePagebanner.png";
 import Link from "next/link";
-``;
+
 // ============= Constants =========
 const NAVBAR_CONFIG = {
   className: "absolute top-0 left-0 right-0 z-10 w-full",
@@ -49,18 +46,32 @@ export async function generateMetadata() {
 
 export default function NotFound() {
   return (
-    <div
-      className="relative"
-      role="img"
-      aria-label="Modern real estate background"
-    >
-      <Image
-        src={bgImage}
-        alt="Home Hero Background"
-        placeholder="blur"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute top-0 left-0 right-0 bottom-36 flex flex-col items-center justify-center text-center text-white">
+    <div className="relative w-full h-screen" role="img" aria-label="Modern real estate background">
+      {/* Desktop Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="hidden sm:block absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536647/New_Image_4_erfmty.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Mobile Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="block sm:hidden absolute top-0 left-0 w-full h-full object-cover"
+      >
+        <source src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536697/New_Image_Mobile_2_n0i9mm.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="absolute top-0 left-0 right-0 bottom-36 flex flex-col items-center justify-center text-center text-white z-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-freightNeoMedium">
           Oops! Page Not Found
         </h1>
@@ -74,6 +85,9 @@ export default function NotFound() {
           Go Back to Home
         </Link>
       </div>
+
+      {/* Overlay to darken the video for readability (optional) */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-0" />
     </div>
   );
 }

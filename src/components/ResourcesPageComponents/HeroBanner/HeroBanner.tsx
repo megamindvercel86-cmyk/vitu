@@ -110,7 +110,7 @@ export default function HeroBanner(): React.ReactElement {
       <div className="hidden xl:block mt-4">
         <Button
            onClick={handleOpenModal}
-          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[15.688rem] lg:h-[4.5rem] sm:text-base lg2:text-[2rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
+          className="rounded-[2rem] bg-transparent border-2 w-full md:w-[11.688rem] lg:h-[3.5rem] sm:text-base lg2:text-[1.5rem] border-white 2xl:text-[3rem] 2xl:h-[6rem] 2xl:w-[20rem] 2xl:rounded-[3rem]"
         >
           {CONTENT.cta}
         </Button>

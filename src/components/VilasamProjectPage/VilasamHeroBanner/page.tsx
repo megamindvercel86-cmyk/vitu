@@ -80,7 +80,7 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVilasamEntrance.mp4?alt=media&token=49377947-c0d2-40e8-b9e8-8821504ab392"
+            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749540889/Entrance_1_fv6fdz.mp4"
             type="video/mp4"
           />
         </video>
@@ -95,7 +95,7 @@ const VilasamHeroSection = () => {
           // priority
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVilasamEntranceMobile.mp4?alt=media&token=5e74823a-7caa-49b7-984a-82a3cdda5865"
+            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749540895/Entrance_Mobile_1_knml0u.mp4"
             type="video/mp4"
           />
         </video>

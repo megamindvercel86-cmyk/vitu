@@ -221,7 +221,7 @@ const ProjectHeroSection: React.FC = () => {
         <ProjectHeader />
       </div>
       <div
-        id="carousal"
+        
         className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[100rem]  md:top-[70rem] top-[130vh] text-center  px-6"
       >
         <ProjectCarousel />

@@ -177,7 +177,7 @@ export default function MediaSection(): React.ReactElement {
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex items-center justify-between gap-4 lg:mt-[54px] px-3 xl:mt-[75px] mt-[36px]">
+        {/* <div className="flex items-center justify-between gap-4 lg:mt-[54px] px-3 xl:mt-[75px] mt-[36px]">
           <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
           <div className="gap-2 hidden lg:flex">
             <button
@@ -213,7 +213,7 @@ export default function MediaSection(): React.ReactElement {
               <IconArrowNarrowRight />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

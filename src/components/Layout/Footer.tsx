@@ -45,7 +45,7 @@ const Footer: FC = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             {/* Icon Wrapper */}
             <div style={{ width: "40px", height: "24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Image fill src="/image.png" alt="Success" style={{ width: "40px", height: "24px" }} />
+              <Image  src="/image.png" alt="Success" width={40} height={24} style={{ width: "40px", height: "24px" }} />
             </div>
 
             {/* Text Content */}
@@ -193,7 +193,6 @@ const Footer: FC = () => {
             title="Projects"
             links={[
               { href: "/vaikuntamcity", label: "Vaikuntamcity" },
-              { href: "/mithila", label: "Mithila" },
               { href: "/vilasam", label: "Vilasam" },
             ]}
             setQuickIsOpen={setProjectIsOpenIsOpen}
@@ -353,10 +352,7 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
-          Legal Disclaimer
-        </a>
-        <span className="text-[#FFFFFF66] text-xs">|</span>
+        
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
           Terms of Service
         </a>

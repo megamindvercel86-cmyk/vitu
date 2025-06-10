@@ -406,9 +406,9 @@ export default function Gallery() {
           isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-16 md:left-20 left-0" : "absolute lg2:bottom-28 md:left-36 bottom-16 left-0"
         } cursor-pointer z[1] lg2:text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
       >
-        <Link href={"/explore"}>
+        {/* <Link href={"/explore"}>
           <button aria-label="Explore More" className="border text-white w-full rounded-full px-6 py-2">Explore More</button>
-        </Link>
+        </Link> */}
       </div>
       <div
         className={`${

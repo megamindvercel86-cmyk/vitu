@@ -76,7 +76,7 @@ const CARDS_DATA: Card[] = [
     id: 5,
     url: "/images/vilasamPageImages/broucherImages/5.webp",
     fileUrl: "/images/vilasamPageImages/broucherImages/5.webp",
-    className: "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
+    className: "absolute right-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
     position: "right",

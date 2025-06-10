@@ -102,7 +102,7 @@ const ProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button>
+              {/* <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button> */}
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
                   <NavLink href="https://www.instagram.com/vitu.realty" target={true} ariaLabel="Visit our Instagram">
@@ -139,8 +139,8 @@ const ProjectFooter: FC = () => {
               links={[
                 { href: "sustainability", label: "Sustainability" },
                 { href: "carousal", label: "Amenities" },
-                { href: "location", label: "Location" },
-                { href: "plots", label: "Plots" },
+                // { href: "location", label: "Location" },
+                // { href: "plots", label: "Plots" },
               ]}
             />
           </div>
@@ -282,16 +282,16 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">Vitu Realty | All rights reserved.</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a
+        {/* <a
           href="/terms-of-service"
           className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
           aria-label="Read the legal disclaimer section of our terms of service"
         >
           Legal Disclaimer
-        </a>
-        <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
+        </a> */}
+        {/* <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
           |
-        </span>
+        </span> */}
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium" aria-label="Read the full terms of service">
           Terms of Service
         </a>

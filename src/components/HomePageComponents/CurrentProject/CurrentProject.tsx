@@ -438,9 +438,16 @@ const Counter = ({ value }: { value: number }) => {
     }
   }, [inView, value]);
 
+  // Format the number to remove comma after decimal point
+  const formatNumber = (num: number) => {
+    const parts = num.toString().split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+  };
+
   return (
     <motion.span ref={ref} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="inline-block">
-      {count.toLocaleString()}
+      {formatNumber(count)}
     </motion.span>
   );
 };
@@ -501,7 +508,8 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
       aria-label="Project Statistics"
-    >
+    > 
+
       {selectedLocation.description === STATS_DATA
         ? selectedLocation.description.map((stat, index) => (
             <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
@@ -516,7 +524,7 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
               </Typography>
               <Typography
                 variant="custom"
-                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} text-[24px] text-[#503637]`}
+                className={`font-FreightNeoProNormal text-[24px] text-[#503637]`}
               >
                 {stat.label}
               </Typography>
@@ -528,11 +536,11 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
                 variant="custom"
                 className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
               >
-                <span className="font-CandideCondensedNormal">{stat.value}</span>
+                <span className="font-freightNeoMedium">{stat.value}</span>
               </Typography>
               <Typography
                 variant="custom"
-                className={`${index === 0 ? "font-CandideCondensedMedium" : "font-FreightNeoProNormal"} lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#503637]`}
+                className={`font-FreightNeoProNormal lg:text-xl 2xl:text-[2.125rem] 2xl:leading-[40px] text-[#503637]`}
               >
                 {stat.label}
               </Typography>

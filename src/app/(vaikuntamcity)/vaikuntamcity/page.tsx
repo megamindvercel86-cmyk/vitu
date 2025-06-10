@@ -51,13 +51,13 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="relative">
         <ProjectHeroSection />
       </section>
-      <section id="location" className="!bg-[#f9f7f5]">
+      <section id="sustainability" className="!bg-[#f9f7f5]">
         <LocationAdvantage />
       </section>
       <section className="bg-[#FBFAF8] py-20 lg:py-36">
         <CurrentProject />
       </section>
-      <section id="sustainability" className="bg-[#FBFAF8]">
+      <section id="carousal"className="bg-[#FBFAF8]">
         <ExploreProjectsWrapper />
       </section>
       {/* <section id="plots"  className="bg-[#FBFAF8]">
