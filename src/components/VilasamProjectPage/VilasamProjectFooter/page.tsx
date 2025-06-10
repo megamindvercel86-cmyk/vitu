@@ -62,11 +62,10 @@ const VilasamProjectFooter: FC = () => {
     <footer className="bg-black text-white pt-8 lg:pt-12 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="flex items-center   space-x-2 pb-6 lg:pb-8">
- <FooterLink aria-label={`${mainPage} page`} href="/">
+          <FooterLink aria-label={`${mainPage} page`} href="/">
             <IoMdHome className="mb-[3px] text-white  text-lg" />
           </FooterLink>
           <FooterLink aria-label={`${mainPage} page`} className="text-white" href="/">
-
             Home
           </FooterLink>
           {mainPage && (
@@ -158,7 +157,7 @@ const VilasamProjectFooter: FC = () => {
               </li>
               <li>
                 <FooterContactItem
-                  icon={<ShareVilasam />}
+                  icon={<ShareVilasam  />}
                   text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
                   link="https://maps.app.goo.gl/pjwhDAAxb7p4qqCQ7"
                 />
@@ -175,7 +174,6 @@ const VilasamProjectFooter: FC = () => {
             </ul>
             <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-sourceSans3 mb-4">Get in Touch</SubHeading>
             <ul className="space-y-4 text-gray-300 lg:hidden">
-
               <li>
                 <FooterContactItem
                   name="Location"
@@ -285,22 +283,33 @@ const FooterSection: FC<{
  * - Renders contact details with icons
  */
 const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; name?: string }> = ({ icon, text, link, name }) => {
-
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
 
   return (
-
-    <div className={`text-white flex flex-col md:flex-row align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}>
-      <div className="flex items-center gap-3">
-        {icon}
-        <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+    <>
+      <div
+        className={`text-white flex lg:hidden  flex-col items-center md:flex-row justify-center align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}
+      >
+        <div className="flex items-center gap-3">
+          {icon}
+          <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+        </div>
+        <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
+          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
+        </FooterLink>
       </div>
-      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
-        {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
-      </FooterLink>
-    </div>
+      <div className={`text-white hidden lg:flex  flex-col md:flex-row align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}>
+        <div className="flex items-center gap-3">
+          {icon}
+          <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+        </div>
+        <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
+          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
+        </FooterLink>
+      </div>
+    </>
   );
 };
 

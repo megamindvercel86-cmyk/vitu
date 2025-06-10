@@ -78,7 +78,7 @@ export function Share() {
 export function ShareVilasam() {
   return (
     <svg
-      className="w-[18px] h-[18px] lg:w-[55px] lg:h-[55px] lg2:w-[29px] lg2:h-[29] xl:w-[23px] xl:h-[24px] 2xl:w-[24px] 2xl:h-[20px] "
+      className="w-[18px] h-[18px] lg:w-[55px] lg:h-[55px] lg2:w-[20px] lg2:h-[29] xl:w-[23px] xl:h-[24px] 2xl:w-[24px] 2xl:h-[20px] "
       viewBox="0 0 18 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -293,7 +293,7 @@ export function SecondaryViewMoreButton() {
   );
 }
 
-export function IconArrowNarrowLeft({fill="#EADFD1",color="#AE8566"}) {
+export function IconArrowNarrowLeft({ fill = "#EADFD1", color = "#AE8566" }) {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_415_472)">
@@ -313,7 +313,7 @@ export function IconArrowNarrowLeft({fill="#EADFD1",color="#AE8566"}) {
   );
 }
 
-export function IconArrowNarrowRight({fill="#EADFD1",color="#AE8566"}) {
+export function IconArrowNarrowRight({ fill = "#EADFD1", color = "#AE8566" }) {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_415_476)">
@@ -469,7 +469,7 @@ export function SecondaryYoutubeIcon() {
   );
 }
 
-export function ArrowRightIcon({rextFill="#EADFD1",pathFill="#AE8566"}) {
+export function ArrowRightIcon({ rextFill = "#EADFD1", pathFill = "#AE8566" }) {
   return (
     <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_407_517)">
@@ -764,6 +764,17 @@ export function CloseTabIcon({ fill = "white" }) {
           fill={fill}
         />
       </g>
+    </svg>
+  );
+}
+
+export function Airport({className = ""}) {
+  return (
+    <svg className={`${className}`} width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M7.49807 0.317802C6.80126 5.18433 4.25487 9.59481 0.38873 12.6315C0.143777 12.8239 0.251385 13.2163 0.560222 13.2568L19.2989 15.7153C19.6094 15.756 19.8143 15.4012 19.6238 15.1526L8.12532 0.153679C7.93581 -0.0935221 7.54222 0.00946326 7.49807 0.317802Z"
+        fill="#F8FBFA"
+      />
     </svg>
   );
 }

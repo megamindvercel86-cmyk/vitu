@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import image from "../../../../public/images/plotLocations/mobile.png";
-import { EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
+import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
 
 const Areas = [
   {
     location: "Mukka Junction",
-    type: "Emergdency Services",
+    type: "Null",
     position: "top-[16%] left-[35%]",
     isActive: true,
     textPosition: "top-[13%] left-[35%]",
@@ -62,33 +62,41 @@ const Areas = [
     isActive: true,
     textPosition: "top-[62%] left-[51%] max-w-[10%]",
   },
-  {
-    location: "Suratkal Market",
-    type: "Recreational Areas",
-    position: "top-[79%] left-[54%]",
+   {
+    location: "Padmavathi Hospital",
+    type: "Emergency Services",
+    position: "top-[72%] left-[57%]",
     isActive: true,
-    textPosition: "top-[74%] left-[54%] max-w-[10%]",
+    textPosition: "lg2:top-[55%] top-[75%] left-[57%]",
   },
+  
   {
     location: "Shri Kashi Math",
-    type: "Holy Spaces",
-    position: "top-[71%] left-[45%]",
+    type: ["Recreational Areas","Holy Spaces"],
+    position: "top-[72%] left-[45%]",
     isActive: true,
-    textPosition: "top-[71%] left-[38%]",
+    textPosition: "top-[72%] left-[38%]",
   },
   {
     location: "Abish Mall",
     type: "Recreational Areas",
-    position: "top-[79%] left-[47%]",
+    position: "top-[77%] left-[47%]",
     isActive: true,
-    textPosition: "top-[79%] left-[41%]",
+    textPosition: "top-[77%] left-[42%]",
   },
   {
     location: "Hotel Sadanand",
-    type: "Recreational Areas",
-    position: "top-[89%] left-[42%]",
+    type: "Null",
+    position: "top-[91%] left-[42%]",
     isActive: true,
-    textPosition: "top-[89%] left-[35%]",
+    textPosition: "top-[91%] left-[35%]",
+  },
+  {
+    location: "Surathkal Market",
+    type: "Null",
+    position: "top-[80%] left-[60%]",
+    isActive: true,
+    textPosition: "lg2:top-[87%] top-[82%] left-[60%]",
   },
   {
     location: "Sacred Heart Church",
@@ -98,15 +106,22 @@ const Areas = [
     textPosition: "top-[96.5%] max-w-[10%] left-[62%]",
   },
   {
+    location: "BASF",
+    type: "Null",
+    position: "top-[96%] left-[90%]",
+    isActive: true,
+    textPosition: "top-[98%] left-[90%]",
+  },
+  {
     location: "Karnataka Housing Board",
-    type: "Residential Areas",
+    type: "Null",
     position: "top-[40%] left-[95.5%]",
     isActive: true,
     textPosition: "top-[45%] left-[95.5%]",
   },
   {
     location: "MUDA Township",
-    type: "Residential Areas",
+    type: "Null",
     position: "top-[7%] left-[92%]",
     isActive: true,
     textPosition: "lg2:top-[7%] top-[12%] left-[92%]",
@@ -117,6 +132,64 @@ const Areas = [
     position: "top-[45%] left-[60%]",
     isActive: true,
     textPosition: "top-[49%] left-[60%]",
+  },
+  {
+    location: "Upcoming DMart",
+    type: "Recreational Areas",
+    position: "top-[58%] left-[37%]",
+    isActive: true,
+    textPosition: "top-[58%] lg2:left-[10%] left-[29%]",
+  },
+  {
+    location: "Cine Galaxy Movie Theatre",
+    type: "Recreational Areas",
+    position: "top-[69%] left-[38%]",
+    isActive: true,
+    textPosition: "top-[69%] lg2:left-[53.5%] left-[27%]",
+  },
+
+  {
+    location: "Zuese Fitness Gym",
+    type: "Recreational Areas",
+    position: "top-[75%] left-[40%]",
+    isActive: true,
+    textPosition: "top-[75%] lg2:left-[55.5%] left-[30%]",
+  },
+  {
+    location: "Raj’s Fitness Gym",
+    type: "Recreational Areas",
+    position: "top-[79%] left-[40%]",
+    isActive: true,
+    textPosition: "top-[79%] lg2:left-[54.5%] left-[30%]",
+  },
+  {
+    location: "Panambur Beach",
+    type: "Recreational Areas",
+    position: "top-[83%] left-[40%]",
+    isActive: true,
+    textPosition: "top-[83%] lg2:left-[54.5%] left-[32%]",
+  },
+  {
+    location: "New Mangalore Port",
+    type: "Recreational Areas",
+    position: "top-[88%] left-[40%]",
+    isActive: true,
+    textPosition: "top-[88%] lg2:left-[55.5%] left-[30%]",
+  },
+  {
+    location: "KIOCL Limited",
+    type: "Null",
+    position: "top-[95%] left-[43%]",
+    isActive: true,
+    textPosition: "top-[95%] lg2:left-[58.5%] left-[36%]",
+  },
+  {
+    location: "Mangalore International Airport (25 mins away)",
+    type: "Null",
+    icon: <Airport />,
+    position: "top-[77%] left-[81%]",
+    isActive: true,
+    textPosition: "top-[83%] lg2:left-[85.5%] left-[79.5%]",
   },
 ];
 
@@ -275,6 +348,14 @@ const PlotConnectionMobile = () => {
                     transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                   />
                 </motion.svg>
+              ) : area.icon ? (
+                <motion.span
+                  className={`flex items-center justify-center text-xs lg2:w-10 lg2:h-10 w-5 h-5 rounded-full shadow-md`}
+                  variants={markerVariants}
+                  animate={selectedType === null || area.type === selectedType ? "active" : "inactive"}
+                >
+                  <Airport className="w-[10px]"/>
+                </motion.span>
               ) : (
                 <motion.span
                   className="w-[6px] h-[6px] rounded-full"
@@ -314,7 +395,7 @@ const PlotConnectionMobile = () => {
             }
             return (
               <button
-              aria-label="Select Tab"
+                aria-label="Select Tab"
                 key={item.label}
                 onClick={() => handleTabClick(idx)}
                 className="relative px-5 py-3 rounded-full flex items-center justify-center"

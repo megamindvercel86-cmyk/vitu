@@ -58,13 +58,13 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-white">
         <VilasamCarousel />
       </section>
-      <section id="sustainability">
+      <section>
         <LocationAdvantage />
       </section>
       <section className="bg-[#FAFFFD]">
         <ElevatesLiving />
       </section>
-      <section  className="bg-[#FAFFFD] ">
+      <section id="sustainability" className="bg-[#FAFFFD] ">
         <CurrentProject />
       </section>
       <section className="bg-[#FAFFFD]">
