@@ -287,7 +287,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem] lg2:top-[35rem] lg:top-[25rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem]  lg:top-[25rem]  xl:top-[35rem] lg2:top-[35%] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -301,7 +301,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               amenities
             </motion.p>
             <motion.h1
-              className="xl:text-[100px]  lg:text-4xl lg2:text-7xl  md:text-5xl  lg2:mb-4 "
+              className="xl:text-[100px]  lg:text-4xl lg2:text-5xl  md:text-5xl  xl:mb-4 "
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
@@ -309,7 +309,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               Space to Settle,
             </motion.h1>
             <motion.h2
-              className="xl:text-[100px] lg:text-4xl lg2:text-7xl  md:text-5xl lg2:mb-4"
+              className="xl:text-[100px] lg:text-4xl  lg2:text-5xl md:text-5xl xl:mb-4"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
@@ -318,7 +318,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
             </motion.h2>
 
             <motion.button
-              className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[22px] font-sourceSans3 transition-colors mt-6`}
+              className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[18px] xl:text-[22px] font-sourceSans3 transition-colors mt-6`}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -370,12 +370,11 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
                     expandedImageClassName="object-center"
                     content={<CardContent textColor={textColor} cardId={card.id} textStyle={textStyle} />}
                   />
-                   {isExpanded && (
-    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
-      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
-    </div>
-  )}
-
+                  {isExpanded && (
+                    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
+                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );

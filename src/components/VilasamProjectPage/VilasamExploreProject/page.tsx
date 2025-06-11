@@ -32,8 +32,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"24x7 Gated Security"
   },
   {
@@ -44,8 +44,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"50+ Blooming Trees"
   },
   {
@@ -56,8 +56,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"Tiered/Relaxed Seating Zones"
   },
   {
@@ -68,8 +68,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"30 ft Wide Cobblestone-paved Roads"
   },
   {
@@ -80,8 +80,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px] lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"Solar-Powered Street Lights"
   },
   {
@@ -92,8 +92,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"Chromotheraphy Garden"
   },
   {
@@ -104,8 +104,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
     title:"Kids Play Area"
   },
 ];
