@@ -192,7 +192,7 @@ const Footer: FC = () => {
             isOpen={projectIsOpen}
             title="Projects"
             links={[
-              { href: "/vaikuntamcity", label: "Vaikuntamcity" },
+              { href: "/vaikuntamcity", label: "Vaikuntam City" },
               { href: "/vilasam", label: "Vilasam" },
             ]}
             setQuickIsOpen={setProjectIsOpenIsOpen}
