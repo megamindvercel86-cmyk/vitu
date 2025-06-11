@@ -9,8 +9,7 @@ import { motion, useInView } from "framer-motion";
 const PROJECT_DATA = {
   title: "Our Commitment to Tomorrow",
   description: {
-    prefix: "Just ",
-    number: "5",
+   
     suffix:
       " At Vitu Realty, we go beyond real estate, fostering lasting social impact & championing eco-friendly practices for a sustainable future by baking it into the very fabric of the spaces we create.",
   },
@@ -25,7 +24,7 @@ const STATS_DATA = [
   },
   {
     value: "20,000 sq.ft.",
-    label: "Spacious Clubhouse",
+    label: "Clubhouse Amenities",
   },
   {
     value: "3,400+ sq.m.",
@@ -146,16 +145,16 @@ const CurrentProject: React.FC = () => {
             variant="custom"
             className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl lg2:text-[24px] 2xl:leading-[40px] text-[#4F373799]"
           >
-            {PROJECT_DATA.description.prefix}
-            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span>
+            {/* {PROJECT_DATA.description.prefix}
+            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span> */}
             {PROJECT_DATA.description.suffix}
           </Typography>
         </div>
 
         {/* Desktop CTA */}
           <div className="mt-[29px]">
-            <button aria-label="Project Now Sold Out" className="hidden bg-[#AE8566]/20 md:block items-center justify-center text-center w-[287px] h-14 pt-1 font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
-            Project Now Sold Out
+            <button aria-label="Only few plots remaining" className="hidden bg-[#AE8566]/20 md:block items-center justify-center text-center w-[287px] h-14 pt-1 font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
+            Only few plots remaining
             </button>
           </div>
         {renderStats()}
