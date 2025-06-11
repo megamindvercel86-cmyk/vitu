@@ -485,10 +485,35 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
     description: STATS_DATA,
   });
 
-  // Debug click events
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoRotating || !isMobile) return;
+
+    const interval = setInterval(() => {
+      setSelectedLocation(prev => {
+        const currentIndex = LOCATIONS.findIndex(loc => loc.id === prev.id);
+        const nextIndex = (currentIndex + 1) % LOCATIONS.length;
+        return LOCATIONS[nextIndex];
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoRotating, isMobile]);
+
   const handleLocationClick = (location: Location) => {
-    console.log("Clicked location:", location.name);
     setSelectedLocation(location);
+    setIsAutoRotating(false);
   };
 
   // Reset to initial image on mouse leave
@@ -563,7 +588,7 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2 flex flex-col justify-between md:pb-32">
+      <article className="w-full lg:w-1/2 flex flex-col justify-between md:pb-32 ">
         <div>
           <header>
             <h1
@@ -584,10 +609,10 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
           </div>
 
           <Link href="/vilasam" aria-label={PROJECT_DATA.cta}>
-            <div className="mt-[29px]">
+            <div className="mt-[29px] hidden md:block ">
               <button
                 aria-label={PROJECT_DATA.cta}
-                className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown focus:outline-none focus:ring-2 focus:ring-customBrown focus:ring-offset-2 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]"
+                className="pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown focus:outline-none focus:ring-2 focus:ring-customBrown focus:ring-offset-2 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]"
               >
                 {PROJECT_DATA.cta}
               </button>
