@@ -42,7 +42,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
-      "Vitu Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care, and community for your golden years.",
+      "Vitu Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care and community for your golden years.",
     image: "/svgs/image1.svg",
     residentialType: "Retirement Homes",
   },
@@ -50,7 +50,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
-      "Vitu Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure, and rejuvenation for every moment of your escape.",
+      "Vitu Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure and rejuvenation for every moment of your escape.",
     image: "/svgs/image2.svg",
     residentialType: "Resorts",
   },
@@ -58,7 +58,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
-      "Vitu Wellness Centre envisions a sanctuary of holistic healing where the mind, body, and soul unite in harmony—offering the perfect blend of care, tranquility, and rejuvenation for your well-being.",
+      "Vitu Wellness Centre envisions a sanctuary of holistic healing where the mind, body and soul unite in harmony offering the perfect blend of care, tranquility and rejuvenation for your well-being.",
     image: "/svgs/image3.svg",
     residentialType: "Wellness Centre",
   },

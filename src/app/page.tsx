@@ -72,7 +72,7 @@ const CONTENT = {
       {
         title: "Accessible Luxury",
         description:
-          "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+        "Luxury living that blends comfort and sophistication with value-driven elegance.",
       },
       {
         title: "Trusted Experience ",
@@ -84,7 +84,7 @@ const CONTENT = {
       {
         title: "Prime Locations",
         description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+          "Strategically located properties offering convenience, connectivity and high investment value.",
       },
       {
         title: "Accessible Luxury",
