@@ -53,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 };
 
 // Update the CardContent component to accept props
-const CardContent = ({ cardId, textStyle, textColor }: { cardId: number, textStyle?:string, textColor?:string }) => {
+const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textStyle?: string; textColor?: string }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
   // Get current project dynamically
@@ -84,19 +84,13 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number, textSty
           height={45}
           className={cn("object-cover h-[652px] w-full")}
         />
-        <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>
-          {project.title}
-        </h2>
+        <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>{project.title}</h2>
         <h3 className={`${textColor} text-[20px] lg:text-[28px] leading-[1.3] font-medium px-6 lg:px-20 pb-6 text-[#040707CC]`}>
           {project.subtitle}
         </h3>
         <div className="flex flex-col gap-flex gap-6">
-          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
-            {project.description1}
-          </Typography>
-          <Typography className="text-[#04070799] px-6 lg:px-20 !text-xl">
-            {project.description2}
-          </Typography>
+          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">{project.description1}</Typography>
+          <Typography className="text-[#04070799] px-6 lg:px-20 !text-xl">{project.description2}</Typography>
           <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
         </div>
       </div>
@@ -188,14 +182,14 @@ interface Card {
   url: string;
   width?: string;
   height?: string;
-  title?:string;
+  title?: string;
   position?: "left" | "right";
 }
 
 interface ExpandableCardsProps {
   cards: Card[];
   textColor?: string;
-  borderColor?: string
+  borderColor?: string;
   textStyle?: string;
 }
 
@@ -207,7 +201,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
   const [currentBreakpoint, setCurrentBreakpoint] = useState("md");
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState(false);
-console.log(borderColor)
+  console.log(borderColor);
   // Add mounted state
   useEffect(() => {
     setIsMounted(true);
@@ -362,12 +356,12 @@ console.log(borderColor)
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+                  if (e.key === "Enter" || e.key === " ") {
                     handleExpand(e as any);
                   }
                 }}
               >
-                <div className="relative h-full w-full">
+                <div className="relative h-full w-full group">
                   <AppleStyleCard
                     id={card.id}
                     position={card.position}
@@ -376,11 +370,12 @@ console.log(borderColor)
                     expandedImageClassName="object-center"
                     content={<CardContent textColor={textColor} cardId={card.id} textStyle={textStyle} />}
                   />
-                  <div
-                    className={`${!isExpanded ? "hidden" : "absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"}`}
-                  >
-                    <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
-                  </div>
+                   {isExpanded && (
+    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
+      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
+    </div>
+  )}
+
                 </div>
               </motion.div>
             );
