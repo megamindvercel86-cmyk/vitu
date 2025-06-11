@@ -66,7 +66,7 @@ export const InfiniteMovingCards = ({
                 </div>
               </div>
               <div className="mt-5">
-                <p className="mt-2 text-base 2xl:text-xl text-[#4F373799]">{item.comment}</p>
+                <p className="mt-2 text-base font-FreightNeoProNormal 2xl:text-xl text-[#4F373799]">{item.comment}</p>
               </div>
             </blockquote>
           </li>

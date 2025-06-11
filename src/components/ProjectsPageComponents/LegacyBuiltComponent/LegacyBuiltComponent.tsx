@@ -39,11 +39,11 @@ const LegacyBuiltComponent = () => {
 
         {/* Right Recognition Section */}
         <div className="text-gray-700 text-center lg:mt-64 md:text-left">
-          <p className="text-sm lg:text-[24px] font-FreightNeoProNormal">Recognized by</p>
+          <p className="lg:text-[24px] font-FreightNeoProNormal">Recognized by</p>
           <div className="flex justify-center  md:justify-start mt-5">
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>
-          <p className="mt-8 lg:text-[24px] leading-[1.2]  text-[#4F3737] text-justify text-sm font-FreightNeoProNormal">
+          <p className="mt-8 lg:text-[24px] leading-[1.2]  text-[#4F3737] text-justify  font-FreightNeoProNormal">
             Founded in <span className="font-CandideCondensedNormal">1965</span>, our team brings years of cross-industry expertise
             on average, delivering exceptional skill & knowledge in every field.
           </p>

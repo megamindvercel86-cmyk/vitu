@@ -59,19 +59,9 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
   const renderBackgroundImages = () => (
     <div className="absolute inset-0">
       {/* Desktop Background */}
-      <Image
-        {...IMAGES.desktop.config}
-        src={IMAGES.desktop.src}
-        alt={IMAGES.desktop.alt}
-        className="hidden sm:block w-full h-full object-cover"
-      />
+      <Image {...IMAGES.desktop.config} src={IMAGES.desktop.src} alt={IMAGES.desktop.alt} className="hidden sm:block w-full h-full object-cover" />
       {/* Mobile Background */}
-      <Image
-        {...IMAGES.mobile.config}
-        src={IMAGES.mobile.src}
-        alt={IMAGES.mobile.alt}
-        className="block sm:hidden w-full h-full object-cover"
-      />
+      <Image {...IMAGES.mobile.config} src={IMAGES.mobile.src} alt={IMAGES.mobile.alt} className="block sm:hidden w-full h-full object-cover" />
     </div>
   );
 
@@ -89,27 +79,26 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Typography>
 
         {/* Desktop CTA */}
-     <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
-  <button
-    aria-label="Project Enquire Page"
-    className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]"
-  >
-    Enquire Now
-  </button>
-</Link>
+        <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
+          <button
+            aria-label="Project Enquire Page"
+            className="sm:hidden hidden md:block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] px-[26px] h-[50px] 2xl:text-[32px] 2xl:h-[60px]"
+          >
+            Enquire Now
+          </button>
+        </Link>
 
-{/* Mobile CTA */}
-<div className="mx-6 mt-44">
-  <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
-    <button
-      aria-label="Project Enquire Page"
-      className="md:hidden w-full block bg-white rounded-[57px] font-FreightNeoProBold text-[#79583F] text-[22px] h-[50px]"
-    >
-      Enquire Now
-    </button>
-  </Link>
-</div>
-
+        {/* Mobile CTA */}
+        <div className="mx-6 mt-44">
+          <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
+            <button
+              aria-label="Project Enquire Page"
+              className="md:hidden w-full block bg-[#ae8566] rounded-[57px] font-FreightNeoProBold text-white text-[22px] h-[50px]"
+            >
+              Download Now
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

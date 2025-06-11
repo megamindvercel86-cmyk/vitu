@@ -181,7 +181,7 @@ export default function VisionAndMission({ images, content }: Props) {
                         handleTransition(dotIndex > currentIndex ? "right" : "left");
                       }
                     }}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                       dotIndex === currentIndex ? "bg-white" : "bg-[#FFFFFF99]"
                     } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                     aria-label={`Go to slide ${dotIndex + 1}`}

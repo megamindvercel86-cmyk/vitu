@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Link } from "react-scroll";
+import { Link as LinkScroll } from "react-scroll";
+import Link from "next/link";
 
 import {
   MenuIcon,
@@ -61,9 +62,9 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 // ============= Navigation Links =============
 const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "carousal", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
-  
 ];
 
 export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "secondary" }: ProjectNavbarProps) {
@@ -112,24 +113,38 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  to={href}
-                  smooth={true}
-                  duration={700}
-                  className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
-                    {" "}
-                    {label}
-                  </div>
-                </Link>
+              {NAV_LINKS.map(( item,index) => (
+                <>
+                  {item.href === "/" ? (
+                    <Link href={item.href} key={index} className="mb-8 text-2xl font-FreightNeoProBold last:mb-0">
+                      {" "}
+                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
+                        {item.label}
+                      </div>
+                    </Link>
+                  ) : (
+                    <LinkScroll
+                      key={index}
+                      to={item.href}
+                      smooth={true}
+                      duration={700}
+                      className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
+                        {" "}
+                        {item.label}
+                      </div>
+                    </LinkScroll>
+                  )}
+                </>
               ))}
               {showGetInTouch && (
                 <NavLink href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">
-                  <button aria-label="Get in Touch" className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8">
+                  <button
+                    aria-label="Get in Touch"
+                    className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8"
+                  >
                     Get in Touch
                   </button>
                 </NavLink>
@@ -163,7 +178,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <NavLink href="/vaikuntamcity">
+            <NavLink href="/">
               <Image
                 src={logo}
                 alt="Logo"
@@ -180,9 +195,9 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center `}>
             <div className="flex items-center justify-end gap-12 w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                <Link key={href} to={href} smooth={true} duration={700}>
+                <LinkScroll key={href} to={href} smooth={true} duration={700}>
                   <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
-                </Link>
+                </LinkScroll>
               ))}
               {showGetInTouch && (
                 <NavLink href="/general-enquire">

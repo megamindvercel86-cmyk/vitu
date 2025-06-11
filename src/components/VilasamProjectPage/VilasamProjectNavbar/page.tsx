@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Link } from "react-scroll";
+import { Link as LinkScroll } from "react-scroll";
 
 import {
   MenuIcon,
@@ -21,6 +21,7 @@ import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 type VilasamProjectNavbarType = "primary" | "secondary";
@@ -63,9 +64,8 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 // ============= Navigation Links =============
 const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "explore", label: "Amenities" },
-  { href: "sustainability", label: "Sustainability" },
-  { href: "location", label: "Location" },
 ];
 
 export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamProjectNavbar = "secondary" }: VilasamProjectNavbarProps) {
@@ -118,26 +118,27 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
               {NAV_LINKS.map(({ href, label }) => (
                 label === "Afmenities" ? (
                   <div 
-                    key={href}
+                    key={item.href}
                     onClick={() => setIsModalOpen(true)} 
                     className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
                   >
-                    {label}
+                    {item.label}
                   </div>
                 ) : (
-                  <Link
-                    key={href}
-                    to={href}
+                  <>
+                  {item.href==="/" ? <Link key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0"> <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">{item.label}</div></Link>:<LinkScroll
+                    key={item.href}
+                    to={item.href}
                     smooth={true}
                     duration={1200}
                     className="mb-8 text-2xl font-geistSerif last:mb-0"
                     
                   >
                     <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
-                      {label}
+                      {item.label}
                     </div>
-                  </Link>
-                )
+                  </LinkScroll>}
+                </>)
               ))}
               {showGetInTouch && (
                 <NavLink
@@ -212,7 +213,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                     <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">
                       {label}
                     </div>
-                  </Link>
+                  </LinkScroll>
                 )
               ))}
               {showGetInTouch && (

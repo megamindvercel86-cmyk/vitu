@@ -103,6 +103,7 @@ const MediaKits: React.FC = () => {
                       {card.description}
                     </Typography>
                   )}
+                  <div className="flex justify-center lg:justify-start">
                   <a
                     href={card.location}
                     download
@@ -118,6 +119,7 @@ const MediaKits: React.FC = () => {
                     />
                     <span className="pt-1">{card.buttonText}</span>
                   </a>
+                  </div>
                 </>
               )}
             </div>
