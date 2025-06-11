@@ -209,8 +209,8 @@ export default function ProjectCarousel(): React.ReactElement {
           </Swiper>
 
           {/* Gradient at bottom */}
-          <div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[8%] bg-gradient-to-t from-[#e7dfda] via-[#e7dfda] to-transparent z-10" />
-
+          <div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[10%] bg-gradient-to-t from-[#e7dfda]  to-transparent z-10" />
+          <div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[4%] bg-gradient-to-t from-[#e7dfda]  to-transparent z-10" />
           {/* Carousel Dots */}
           <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[490px] rotate-90">
             <CarouselDots total={desktopDataRight.length} active={activeIndex} onDotClick={handleDotClick} className="rounded-full px-4" />
