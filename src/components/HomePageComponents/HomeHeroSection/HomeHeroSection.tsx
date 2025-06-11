@@ -132,11 +132,11 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Main Content */}
-      <div className="relative flex h-full justify-center mt-[9rem] lg:mt-[13rem] xl:mt-[19rem] 2xl:mt-[12rem]">
+      <div className="relative flex h-full justify-center mt-[9rem] lg:mt-[12rem] xl:mt-[19rem] 2xl:mt-[12rem]">
         <div className="flex flex-col items-center text-center text-white">
           <h1
             id="hero-heading"
-            className="font-freightNeoSemibold leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]"
+            className="font-freightNeoSemibold leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[5.25rem] 2xl:text-[9.375rem]"
           >
             Building Wholesome <br />
             Living Spaces

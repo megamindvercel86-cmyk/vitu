@@ -61,8 +61,12 @@ const DEFAULT_BUTTON_CONFIG = {
 
 // ============= Navigation Links =============
 // ============= Navigation Links =============
-const NAV_LINKS = [
+const NAV_LINKS_MOBAIL = [
   { href: "/", label: "Home" },
+  { href: "carousal", label: "Amenities" },
+  { href: "sustainability", label: "Sustainability" },
+];
+const NAV_LINKS = [
   { href: "carousal", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
 ];
@@ -103,7 +107,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-              <NavLink href="/">
+              <NavLink href="/vaikuntamcity">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
               <button aria-label="Close Menu" onClick={() => setIsMenuOpen(false)}>
@@ -113,10 +117,10 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS.map(( item,index) => (
+              {NAV_LINKS_MOBAIL.map(( item,index) => (
                 <>
                   {item.href === "/" ? (
-                    <Link href={item.href} key={index} className="mb-8 text-2xl font-FreightNeoProBold last:mb-0">
+                    <Link href={item.href} key={index} className="mb-8 lg:hidden text-2xl font-FreightNeoProBold last:mb-0">
                       {" "}
                       <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
                         {item.label}
@@ -178,7 +182,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <NavLink href="/">
+            <NavLink href="/vaikuntamcity">
               <Image
                 src={logo}
                 alt="Logo"

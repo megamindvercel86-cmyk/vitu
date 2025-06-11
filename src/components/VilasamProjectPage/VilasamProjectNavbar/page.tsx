@@ -2,18 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Link } from "react-scroll";
+import { Link as LinkScroll } from "react-scroll";
 
-import {
-  MenuIcon,
-  MenuIconWhite,
-  CloseIcon,
-
-  Instgram,
-  Meta,
-  LinkedIn,
-  Youtube,
-} from "@/components/Icons/Icons";
+import { MenuIcon, MenuIconWhite, CloseIcon, Instgram, Meta, LinkedIn, Youtube } from "@/components/Icons/Icons";
 
 import logo from "../../../../public/images/logos/vilasam.svg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +12,7 @@ import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
-
+import Link from "next/link";
 
 // ============= Types & Interfaces =============
 type VilasamProjectNavbarType = "primary" | "secondary";
@@ -63,13 +54,17 @@ const DEFAULT_BUTTON_CONFIG = {
 
 // ============= Navigation Links =============
 // ============= Navigation Links =============
-const NAV_LINKS = [
+const NAV_LINKS_MOBILE = [
   { href: "/", label: "Home" },
   { href: "explore", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
   { href: "location", label: "Location" },
 ];
-
+const NAV_LINKS = [
+  { href: "explore", label: "Amenities" },
+  { href: "sustainability", label: "Sustainability" },
+  { href: "location", label: "Location" },
+];
 
 export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamProjectNavbar = "secondary" }: VilasamProjectNavbarProps) {
   // ============= State =============
@@ -105,10 +100,10 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           className="fixed inset-0 z-50 overflow-y-auto bg-white"
           style={{ zIndex: 2147483648 }}
         >
-          <div className="flex flex-col h-full" >
+          <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-              <NavLink href="/">
+              <NavLink href="/vilasam">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
               <button aria-label="Close Button" onClick={() => setIsMenuOpen(false)}>
@@ -118,39 +113,44 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS.map((item) => (
+              {NAV_LINKS_MOBILE.map((item) =>
                 item.label === "Afmenities" ? (
-                  <div 
+                  <div
                     key={item.href}
-                    onClick={() => setIsModalOpen(true)} 
+                    onClick={() => setIsModalOpen(true)}
                     className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
                   >
                     {item.label}
                   </div>
-                ) : (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    smooth={true}
-                    duration={1200}
-                    className="mb-8 text-2xl font-geistSerif last:mb-0"
-                  >
+                ) : item.href === "/" ? (
+                  <Link key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
                     <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
                       {item.label}
                     </div>
                   </Link>
+                ) : (
+                  <LinkScroll key={item.href} to={item.href} smooth={true} duration={1200} className="mb-8 text-2xl font-geistSerif last:mb-0">
+                    <div onClick={()=>setIsMenuOpen(false)} className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
+                      {item.label}
+                    </div>
+                  </LinkScroll>
                 )
-              ))}
+              )}
               {showGetInTouch && (
                 <NavLink
                   href=""
                   onClick={() => {
                     setIsMenuOpen(false);
-                    setIsGetInTouchOpen(true)
+                    setIsGetInTouchOpen(true);
                   }}
                   className="w-full px-7"
                 >
-                  <button aria-label="Download Brochure" className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8">Download Brochure</button>
+                  <button
+                    aria-label="Download Brochure"
+                    className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8"
+                  >
+                    Download Brochure
+                  </button>
                 </NavLink>
               )}
             </div>
@@ -184,7 +184,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <NavLink href="/">
+            <NavLink href="/vilasam">
               <Image
                 src={logo}
                 alt="Logo"
@@ -200,23 +200,21 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           {/* Navigation Links - Right 50% */}
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3 items-center justify-between`}>
             <div className="flex items-center justify-between w-full">
-              {NAV_LINKS.map(({ href, label }) => (
+              {NAV_LINKS.map(({ href, label }) =>
                 label === "Amefnities" ? (
-                  <div 
+                  <div
                     key={href}
-                    onClick={() => setIsModalOpen(true)} 
+                    onClick={() => setIsModalOpen(true)}
                     className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif"
                   >
                     {label}
                   </div>
                 ) : (
-                  <Link key={href} to={href} smooth={true} duration={1200}>
-                    <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">
-                      {label}
-                    </div>
-                  </Link>
+                  <LinkScroll key={href} to={href} smooth={true} duration={1200}>
+                    <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">{label}</div>
+                  </LinkScroll>
                 )
-              ))}
+              )}
               {showGetInTouch && (
                 <NavLink href="">
                   <Button
