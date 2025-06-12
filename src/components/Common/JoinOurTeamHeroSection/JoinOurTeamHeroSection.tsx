@@ -95,7 +95,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
               aria-label="Project Enquire Page"
               className="md:hidden w-full block bg-[#ae8566] rounded-[57px] font-FreightNeoProBold text-white text-[22px] h-[50px]"
             >
-              Download Now
+              Enquire Now
             </button>
           </Link>
         </div>
