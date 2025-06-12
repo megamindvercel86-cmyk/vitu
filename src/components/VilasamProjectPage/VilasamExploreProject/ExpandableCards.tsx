@@ -98,14 +98,8 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
             </span>
           ))}
         </h3>
-        <p className={`${textColor} text-[16px] lg:text-[20px] leading-[1.5] font-normal px-6 lg:px-20 pb-6`}>
-          {project.description1.split('').map((char: string, index: number) => (
-            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
-              {char}
-            </span>
-          ))}
-        </p>
-        <div className="flex flex-col gap-flex gap-6">
+       
+        <div className={`${textColor} flex flex-col gap-flex gap-6`}>
           <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
             {project.description1.split('').map((char: string, index: number) => (
               <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>

@@ -1,7 +1,7 @@
 "use client";
 
 // ============= Core Imports =============
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 // ============= Component Imports (Direct) =============
 import Layout from "@/components/Layout/Layout";
@@ -12,31 +12,28 @@ import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonia
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import Typography from "@/components/Typography/Typography";
-
+import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
+import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
 // ============= Lazy-loaded Components =============
-const VilasamExploreProjects = dynamic(
-  () => import("@/components/VilasamProjectPage/VilasamExploreProject/page"),
-  {
-    ssr: false,
-    loading: () => <p className="text-center py-10">Loading Projects...</p>,
-  }
-);
+// const VilasamExploreProjects = dynamic(
+//   () => import("@/components/VilasamProjectPage/VilasamExploreProject/page"),
+//   {
+//     ssr: false,
+//     loading: () => <p className="text-center py-10">Loading Projects...</p>,
+//   }
+// );
 
-const CurrentProject = dynamic(
-  () => import("@/components/HomePageComponents/CurrentProject/CurrentProject"),
-  {
-    ssr: false,
-    loading: () => <p className="text-center py-10">Loading Current Projects...</p>,
-  }
-);
+// const CurrentProject = dynamic(
+//   () => import("@/components/HomePageComponents/CurrentProject/CurrentProject"),
+//   {
+//     ssr: false,
+//     loading: () => <p className="text-center py-10">Loading Current Projects...</p>,
+//   }
+// );
 
 // ============= Types & Interfaces =============
 const IMAGES = {
-  desktop: [
-    "/images/visionAndMissionImages/1.webp",
-    "/images/visionAndMissionImages/2.webp",
-    "/images/visionAndMissionImages/3.webp",
-  ],
+  desktop: ["/images/visionAndMissionImages/1.webp", "/images/visionAndMissionImages/2.webp", "/images/visionAndMissionImages/3.webp"],
   mobile: [
     "/images/visionAndMissionImages/mobile2.webp",
     "/images/visionAndMissionImages/mobile1.webp",
@@ -49,70 +46,58 @@ const CONTENT = {
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-          "Luxury living that blends comfort and sophistication with value-driven elegance.",
+        description: "Luxury living that blends comfort and sophistication with value-driven elegance.",
       },
       {
         title: "Trusted Experience",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity, and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity, and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-        "Luxury living that blends comfort and sophistication with value-driven elegance.",
+        description: "Luxury living that blends comfort and sophistication with value-driven elegance.",
       },
       {
         title: "Trusted Experience ",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
     [
       {
         title: "Prime Locations",
-        description:
-          "Strategically located properties offering convenience, connectivity and high investment value.",
+        description: "Strategically located properties offering convenience, connectivity and high investment value.",
       },
       {
         title: "Accessible Luxury",
-        description:
-          "Luxury living that blends comfort and sophistication with value-driven elegance.",
+        description: "Luxury living that blends comfort and sophistication with value-driven elegance.",
       },
       {
         title: "Trusted Experience ",
-        description:
-          "Delivering homes where families thrive, backed by years of trust and excellence.",
+        description: "Delivering homes where families thrive, backed by years of trust and excellence.",
       },
     ],
   ],
   mobile: [
     {
       title: "Prime Locations",
-      description:
-        "Strategically located properties offering convenience, connectivity, and high investment value.",
+      description: "Strategically located properties offering convenience, connectivity, and high investment value.",
     },
     {
       title: "Accessible Luxury",
-      description:
-        "Luxury living at accessible prices, designed to offer comfort and sophistication.",
+      description: "Luxury living at accessible prices, designed to offer comfort and sophistication.",
     },
     {
       title: "Trusted Experience ",
-      description:
-        "Delivering homes where families thrive, backed by years of trust and excellence.",
+      description: "Delivering homes where families thrive, backed by years of trust and excellence.",
     },
   ],
 };
@@ -131,10 +116,7 @@ const NAVBAR_CONFIG = {
  */
 export default function HomePage() {
   return (
-    <Layout
-      navbarClassName={NAVBAR_CONFIG.className}
-      navbarProps={NAVBAR_CONFIG.props}
-    >
+    <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
       {/* Hero Section */}
       <HomeHeroSection />
 
@@ -144,8 +126,7 @@ export default function HomePage() {
           variant="custom"
           className="font-freightNeoMedium text-[#040707CC] text-[1rem] px-7 pb-6 sm:text-[1.375rem] md:px-0 md:text-[1.3rem] 2xl:text-[2.125rem]"
         >
-          We create thoughtfully designed spaces that blend modern aesthetics
-          with lasting quality in Mangalore.
+          We create thoughtfully designed spaces that blend modern aesthetics with lasting quality in Mangalore.
         </Typography>
         <Typography
           variant="custom"
@@ -161,12 +142,14 @@ export default function HomePage() {
 
       {/* Future Vision */}
       <VisionForTheFuture />
+      <ExploreProjectsWrapper />
+      <CurrentProject />
 
       {/* Project Explorer (Lazy Loaded) */}
-      <VilasamExploreProjects homePage={true} />
+      {/* <VilasamExploreProjects homePage={true} /> */}
 
       {/* Current Projects (Lazy Loaded) */}
-      <CurrentProject homePage={true}/>
+      {/* <CurrentProject homePage={true}/> */}
 
       {/* Testimonials */}
       <Testimonials />
