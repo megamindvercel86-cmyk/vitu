@@ -11,7 +11,6 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
-import Link from "next/link";
 import { scroller } from "react-scroll";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
@@ -102,6 +101,16 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
     }
   }, [message]);
 
+  const highlightNames = (text: string) => {
+    const names = ["Mr. K Madhav Kamath", "Mr K Ananth Kamath", "Mr Laxman Kamath"];
+    let result = text;
+    names.forEach((name) => {
+      const regex = new RegExp(`(${name})`, "g");
+      result = result.replace(regex, `<span class="text-[#DABFA1]">$1</span>`);
+    });
+    return result;
+  };
+
   return (
     <div
       className={`${
@@ -109,13 +118,17 @@ function MessageDisplay({ message, isFixed }: { message: string; isFixed: boolea
       } pointer-events-none z-[1] lg:max-w-[425px] lg2:max-w-[560px] max-w-[300px]`}
     >
       <div ref={messageRef}>
-        <span className="lg2:text-2xl lg:text-xl ml-6  text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right">
-          {message.split("").map((char, index) => (
-            <span key={index} className={/\d/.test(char) ? "font-CandideCondensedBold" : ""}>
-              {char}
-            </span>
-          ))}
-        </span>
+        <span
+          className="lg2:text-2xl lg:text-xl ml-6 text-white font-freightNeoMedium md:font-freightNeoSemibold leading-tight block md:text-right"
+          dangerouslySetInnerHTML={{
+            __html: highlightNames(
+              message
+                .split("")
+                .map((char, index) => (/\d/.test(char) ? `<span class="font-CandideCondensedBold">${char}</span>` : char))
+                .join("")
+            ),
+          }}
+        />
       </div>
     </div>
   );
@@ -263,6 +276,7 @@ export default function Gallery() {
     else if (windowWidth >= 1024) return `45%`;
     else return `38%`;
   };
+
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
     const imageIndex = Math.min(Math.floor(progress * images.length), images.length - 1);
@@ -321,7 +335,7 @@ export default function Gallery() {
     };
   }, []);
 
-  // Set the SVG path based on window width
+  // Set SVG path based on window width
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSvg(getSvgPath(window.innerWidth, window.innerHeight));
@@ -337,6 +351,7 @@ export default function Gallery() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const handleSkip = () => {
     if (skipWalkthrough) {
       scroller.scrollTo("hero", {
@@ -358,7 +373,7 @@ export default function Gallery() {
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
         <div
-          className="absolute z-50"
+          className="absolute z-50]"
           ref={svgPathRef}
           style={{
             top: getTopValue(),
@@ -374,7 +389,7 @@ export default function Gallery() {
         <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
           {images.map((image, index) => (
             <div key={index} className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl">
-              <div className="absolute inset-0 gallery-image z-10">
+              <div className="absolute inset-0 gallery-image z-[10]">
                 <div className="h-[100vh]">
                   <Image
                     width={1594}
@@ -393,7 +408,7 @@ export default function Gallery() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/100 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/70 to-transparent">
                   <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
               </div>
@@ -403,17 +418,17 @@ export default function Gallery() {
       </div>
       <div
         className={`${
-          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-16 md:left-20 left-0" : "absolute lg2:bottom-28 md:left-36 bottom-16 left-0"
-        } cursor-pointer z[1] lg2:text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-16 md:left-20 left-0" : "absolute lg2:bottom-28 bottom-16 left-0"
+        } cursor-pointer z-[1] lg2:text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
       >
-        {/* <Link href={"/explore"}>
+        {/* <Link href="/explore">
           <button aria-label="Explore More" className="border text-white w-full rounded-full px-6 py-2">Explore More</button>
         </Link> */}
       </div>
       <div
         className={`${
-          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-5 " : "absolute lg2:bottom-28  bottom-5 mx-auto"
-        }  z[1] lg2:text-[22px] font-bold text-center  font-FreightNeoProBold flex w-full justify-center`}
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-5 " : "absolute lg2:bottom-28 bottom-5 mx-auto"
+        } z-[1] lg2:text-[22px] font-bold text-center font-FreightNeoProBold flex w-full justify-center`}
       >
         <button aria-label="Skip Legacy Walkthrough" onClick={handleSkip} className="underline text-white cursor-pointer">
           Skip Legacy Walkthrough

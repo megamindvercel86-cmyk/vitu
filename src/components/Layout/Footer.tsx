@@ -193,7 +193,7 @@ const Footer: FC = () => {
             title="Projects"
             links={[
               { href: "/vaikuntamcity", label: "Vaikuntam City" },
-              { href: "/vilasam", label: "Vilasam" },
+              // { href: "/vilasam", label: "Vilasam" },
             ]}
             setQuickIsOpen={setProjectIsOpenIsOpen}
           />

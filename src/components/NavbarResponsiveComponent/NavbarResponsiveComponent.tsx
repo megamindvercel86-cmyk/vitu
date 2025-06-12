@@ -23,7 +23,7 @@ const NavbarResponsiveComponent = ({
 }) => {
   const PROJECT_LINKS = [
     { href: "/vaikuntamcity", label: "Vaikuntam City" },
-    { href: "/vilasam", label: "Vilasam" },
+    // { href: "/vilasam", label: "Vilasam" },
   ];
   const NAV_LINKS = [
     { href: "/about", label: "About" },
