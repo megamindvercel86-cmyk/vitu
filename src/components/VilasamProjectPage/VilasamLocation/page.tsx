@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"; // Verify this utility exists
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
-import "./vilasamLocation.css"
+import "./vilasamLocation.css";
 
 interface LocationAdvantageProps {
   title: string;
@@ -26,7 +26,7 @@ interface LocationAdvantageProps {
   mobileImage: string;
   buttonTextColor?: string;
   buttonFillBg?: string;
-  closeIconFIll?:string;
+  closeIconFIll?: string;
   amenitiesDetails?: {
     title: string;
     subtitle?: string;
@@ -71,16 +71,13 @@ const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProp
     <div style={{ borderRadius: "50px" }} className={cn("flex items-center justify-center gap-2 py-3 ", className)}>
       {Array.from({ length: total }).map((_, index) => (
         <button
-        key={index}
-        onClick={() => onDotClick?.(index)}
-        className={cn(
-          "transition-all duration-300",
-          active === index ? "w-6 bg-white rounded-xl h-2" : "w-2 h-2 bg-gray-300 rounded-full"
-        )}
-        aria-label={`Go to slide ${index + 1}`}
-      >
-        <span className="sr-only">{`Go to slide ${index + 1}`}</span>
-      </button>
+          key={index}
+          onClick={() => onDotClick?.(index)}
+          className={cn("transition-all duration-300", active === index ? "w-6 bg-white rounded-xl h-2" : "w-2 h-2 bg-gray-300 rounded-full")}
+          aria-label={`Go to slide ${index + 1}`}
+        >
+          <span className="sr-only">{`Go to slide ${index + 1}`}</span>
+        </button>
       ))}
     </div>
   );
@@ -106,14 +103,7 @@ const CardContent = ({
 }) => (
   <div className="flex flex-col roun">
     <div className="relative w-full h-64 lg:h-[70vh] lg2:h-[80vh] md:rounded-t-[32]  overflow-hidden">
-      <Image
-        src={description.image}
-        alt={description.title}
-        fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover"
-        priority
-      />
+      <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
     </div>
     <div className="flex flex-col md:gap-4 gap-2 py-12 px-6 lg:px-20">
       <h2 className=" leading-[1.3] max-w-3xl font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold ">{description.title}</h2>
@@ -190,8 +180,8 @@ const LocationAdvantage = () => {
             "Infrastructure-ready community",
             "Silicon Beach Programme",
             "Mangalore International Airport Expansion",
-            "Limited inventory — premium value assured"
-          ]
+            "Limited inventory — premium value assured",
+          ],
         },
       ],
     },
@@ -313,7 +303,7 @@ const LocationAdvantage = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
-          <SwiperSlide key={index} style={{width:"100%",height:"100vh"}} className="!h-[100vh] !w-[100%] !rounded-none">
+          <SwiperSlide key={index} style={{ width: "100%", height: "100vh" }} className="!h-[100vh] !w-[100%] !rounded-none">
             <div className="relative w-full h-screen">
               <Image
                 src={item.image}
@@ -360,7 +350,7 @@ const LocationAdvantage = () => {
                       pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
                       text-base font-freightNeoMedium text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                      overflow-hidden z-100
+                      overflow-hidden z-1000
                     "
                   >
                     <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>
@@ -425,7 +415,14 @@ const LocationAdvantage = () => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+          <motion.div
+            style={{ zIndex: 2147483648 }}
+            className="fixed inset-0 h-screen z-50 overflow-auto"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            data-lenis-prevent
+          >
             <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
             <motion.div
               variants={cardVariants}
@@ -438,12 +435,10 @@ const LocationAdvantage = () => {
                 onClick={closeCard}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-              > 
-                <CloseTabIcon fill={data[activeIndex].closeIconFIll}/>
+              >
+                <CloseTabIcon fill={data[activeIndex].closeIconFIll} />
               </motion.button>
-              <div className="absolute">
-
-              </div>
+              <div className="absolute"></div>
               <motion.div variants={contentVariants}>
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
@@ -452,7 +447,7 @@ const LocationAdvantage = () => {
                 <div className="lg:px-44 md:px-12 px-6">
                   <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP NEXT</h1>
                   <div className="flex md:pb-16 pb-32 justify-between ">
-                    <button 
+                    <button
                       aria-label="Next Card"
                       onClick={goToNextCard}
                       className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px] text-base"

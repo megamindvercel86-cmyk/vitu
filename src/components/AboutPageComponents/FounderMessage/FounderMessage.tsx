@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PlayIcon } from "@/components/Icons/Icons";
+import Typography from "@/components/Typography/Typography";
 
 export default function FounderMessage(): React.ReactElement {
   const [showVideo, setShowVideo] = useState(false);
@@ -13,6 +14,13 @@ export default function FounderMessage(): React.ReactElement {
   return (
     <div className="flex flex-col items-center justify-center pb-32 lg:py-32 2xl:h-screen">
       {/* Video or Thumbnail */}
+      <Typography
+          variant="custom"
+          className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]"
+        >
+         Trusted by Families Like Yours 
+        </Typography>
+
       <div className="w-full max-w-7xl aspect-video rounded-2xl overflow-hidden relative">
         {!showVideo ? (
           <div

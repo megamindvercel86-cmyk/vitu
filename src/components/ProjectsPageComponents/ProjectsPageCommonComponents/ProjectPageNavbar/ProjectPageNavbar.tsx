@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link as LinkScroll } from "react-scroll";
 import Link from "next/link";
-
+import vitulogo from "../../../../../public/images/logos/logoWhite.svg";
 import {
   MenuIcon,
   MenuIconWhite,
@@ -107,6 +107,13 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
+            <Link href="/">
+              <Image
+                src={vitulogo}
+                alt="Logo"
+                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+              />
+            </Link>
               <NavLink href="/vaikuntamcity">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
@@ -182,11 +189,21 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
+          <Link href="/">
+              <Image
+                src={vitulogo}
+                alt="Logo"
+                className="w-[95px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[80px]"
+              />
+            </Link>
+            <div className="h-[40px] lg2:h-[72px] md:h-[60px] w-[1px] bg-white mx-2" />
+
             <NavLink href="/vaikuntamcity">
+            
               <Image
                 src={logo}
                 alt="Logo"
-                className="w-[135px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[83px]"
+                className="w-[135px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[z3px]"
               />
             </NavLink>
             {/* Mobile Menu Button */}

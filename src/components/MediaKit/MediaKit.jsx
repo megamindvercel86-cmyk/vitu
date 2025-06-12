@@ -14,10 +14,10 @@ export default function MediaKit() {
         </span>
         <div className="flex lg:justify-end mt-3 lg:mt-0 sm:justify-center md:w-auto sm:w-full w-full">
           <Button
-            className="md:w-[236px] lg:h-[55px] lg:text-[28px] text-base w-full"
+            className="md:w-[236px] lg:h-[55px] lg:text-[28px] pb-[2px] text-base w-full"
             onClick={() => router.push("resources/media-kit")}
           >
-            Download Now
+            Get Access
           </Button>
         </div>
       </div>

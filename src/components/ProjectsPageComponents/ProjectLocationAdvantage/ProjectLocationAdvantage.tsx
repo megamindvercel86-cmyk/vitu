@@ -418,7 +418,7 @@ const LocationAdvantage = () => {
                       pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
                       text-base font-freightNeoMedium text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                      overflow-hidden z-100
+                      overflow-hidden z-1000
                     "
                   >
                     <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>

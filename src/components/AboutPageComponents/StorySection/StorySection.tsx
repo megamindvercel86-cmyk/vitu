@@ -78,7 +78,7 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   return (
     <div
       className={`${
-        isFixed ? "fixed lg:bottom-40 lg2:bottom-56 bottom-40  md:left-20 left-4" : "absolute md:bottom-56 md:left-36  left-0 bottom-48 "
+        isFixed ? "fixed lg:bottom-40  bottom-40  md:left-20 left-4" : "absolute md:bottom-56 md:left-36  left-0 bottom-48 "
       } pointer-events-none z-[1]  w-full `}
     >
       <span className="lg2:text-[80px] lg:text-5xl text-[32px] text-white font-CandideCondensedMedium ">

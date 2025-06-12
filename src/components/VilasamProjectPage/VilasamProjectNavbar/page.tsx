@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Link as LinkScroll } from "react-scroll";
 
 import { MenuIcon, MenuIconWhite, CloseIcon, Instgram, Meta, LinkedIn, Youtube } from "@/components/Icons/Icons";
-
+import vitulogo from "../../../../public/images/logos/logoWhite.svg";
 import logo from "../../../../public/images/logos/vilasam.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
@@ -103,6 +103,13 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
+              <Link href="/">
+                <Image
+                  src={vitulogo}
+                  alt="Logo"
+                  className="w-[95px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[80px]"
+                />
+              </Link>
               <NavLink href="/vilasam">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </NavLink>
@@ -130,7 +137,10 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   </Link>
                 ) : (
                   <LinkScroll key={item.href} to={item.href} smooth={true} duration={1200} className="mb-8 text-2xl font-geistSerif last:mb-0">
-                    <div onClick={()=>setIsMenuOpen(false)} className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
+                    <div
+                      onClick={() => setIsMenuOpen(false)}
+                      className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
+                    >
                       {item.label}
                     </div>
                   </LinkScroll>
@@ -183,19 +193,35 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
       <header className="absolute  xl:pt-[80px] left-0 right-0   sm:pt-[60px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
-          <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <NavLink href="/vilasam">
-              <Image
-                src={logo}
-                alt="Logo"
-                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[360px] xl:h-[83px]"
-              />
-            </NavLink>
-            {/* Mobile Menu Button */}
-            <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isVilasamProjectNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
-            </div>
-          </div>
+          <div className="w-full lg:w-1/2 flex items-stretch justify-start gap-3">
+  <Link href="/">
+    <Image
+      src={vitulogo}
+      alt="Logo"
+      className="w-[95px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[80px]"
+    />
+  </Link>
+
+  {/* Vertical Divider Line with full height */}
+  <div className="w-[1px] bg-gray-300 mx-2 h-full" />
+
+  <NavLink href="/vilasam">
+    <Image
+      src={logo}
+      alt="Logo"
+      className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[360px] xl:h-[83px]"
+    />
+  </NavLink>
+
+  {/* Mobile Menu Button */}
+  <div
+    className="flex items-center cursor-pointer ml-auto lg:hidden"
+    onClick={() => setIsMenuOpen(!isMenuOpen)}
+  >
+    {isVilasamProjectNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
+  </div>
+</div>
+
 
           {/* Navigation Links - Right 50% */}
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3 items-center justify-between`}>
