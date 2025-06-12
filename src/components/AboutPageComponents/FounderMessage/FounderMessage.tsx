@@ -16,12 +16,12 @@ export default function FounderMessage(): React.ReactElement {
       {/* Video or Thumbnail */}
       <Typography
           variant="custom"
-          className="text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]"
+          className="text-[1.5rem] py-8 md:py-0 sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium text-center text-customBrown lg:pb-[84px] sm:pb-[94px]"
         >
          Trusted by Families Like Yours 
         </Typography>
 
-      <div className="w-full max-w-7xl aspect-video rounded-2xl overflow-hidden relative">
+      <div className="mx-8 md:mx-16 xl:max-w-7xl aspect-video rounded-2xl overflow-hidden relative">
         {!showVideo ? (
           <div
             className="w-full h-full cursor-pointer"
