@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { FC, JSX } from "react";
+import React, { FC, JSX, useState } from "react";
 import logo2 from "../../../../public/images/logos/projectfooter.svg";
 import logo from "../../../../public/images/logos/vilasamWhiteLogo.svg";
 import { Link } from "react-scroll";
@@ -12,6 +12,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 /**
  * Footer Component
@@ -25,6 +26,7 @@ import { IoMdHome } from "react-icons/io";
 const VilasamProjectFooter: FC = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
 
@@ -103,7 +105,7 @@ const VilasamProjectFooter: FC = () => {
             <p className="text-[#cdcdcd] font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">Homes that Breathe with you</p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button aria-label="Download" className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] ">
+              <button onClick={()=>setShowModal(true)} aria-label="Download" className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] ">
                 {" "}
                 Download E-Brochure
               </button>
@@ -230,6 +232,7 @@ const VilasamProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
+      <ContactFormModal isOpen={showModal} onClose={setShowModal} />
     </footer>
   );
 };

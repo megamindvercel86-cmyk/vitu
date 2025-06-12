@@ -166,7 +166,7 @@ const ProjectHeroSection: React.FC = () => {
     text-center
   `}
         >
-          Discover <span className="font-CandideCondensedMedium">3,74,284</span> Sqft of Luxuriously Affordable Coastal Bliss
+          Discover <span className="font-CandideCondensedMedium">21,587</span> SqM of Luxuriously Affordable Coastal Bliss
         </h1>
 
         {/* CTA Button */}
@@ -236,7 +236,7 @@ const ProjectHeroSection: React.FC = () => {
             <div className="cursor-pointer" onClick={toggleMute}>
               <motion.button
                 layout="preserve-aspect"
-                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${
+                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${
                   isMuted ? "bg-white/60" : "bg-white"
                 } cursor-pointer transition-colors duration-300 hover:shadow-md`}
                 aria-label={isMuted ? "Unmute" : "Mute"}

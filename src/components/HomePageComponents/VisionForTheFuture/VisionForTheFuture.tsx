@@ -214,7 +214,7 @@ export default function VisionForTheFuture() {
           </div>
 
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
-            <div className="flex justify-between  pt-7 md:pt-0 lg:pt-0 w-full lg:w-auto   ">
+            <div className="flex justify-center   pt-7 md:pt-0 lg:pt-0 w-full lg:w-auto   ">
               <Link
               aria-label="See What Next"
                 href="/about"
@@ -223,7 +223,7 @@ export default function VisionForTheFuture() {
                 See What&apos;s Next
                 <CTAButtonIcon fill="#4F3737" direction="right" />
               </Link>
-              <div className="relative lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
+              <div className="relative hidden lg:block lg:pe-5 pb-7 md:pb-0 md:pe-3 lg:pb-0 cursor-pointer" onClick={() => setIsPlay(!isPlay)}>
                 <svg width="50" height="50" viewBox="0 0 50 50">
                   {/* Background Circle */}
                   <circle cx="25" cy="25" r="22" stroke="#dbc9bc" strokeWidth="2" fill="none" opacity="0.3" />

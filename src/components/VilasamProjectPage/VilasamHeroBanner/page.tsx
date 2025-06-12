@@ -1,6 +1,6 @@
 "use client";
 
-import { Mute, UnMute } from "@/components/Icons/Icons";
+import {  MuteVilasam, UnMuteVilasam } from "@/components/Icons/Icons";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -124,7 +124,7 @@ const VilasamHeroSection = () => {
                   },
                 }}
               >
-                {isMuted ? <UnMute /> : <Mute />}
+                {isMuted ? <UnMuteVilasam /> : <MuteVilasam />}
                 <AnimatePresence mode="wait">
                   {isMuted && isFixed && (
                     <motion.span

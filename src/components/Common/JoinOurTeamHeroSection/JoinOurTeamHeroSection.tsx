@@ -29,7 +29,7 @@ const IMAGES = {
     } as ImageConfig,
   },
   mobile: {
-    src: "/images/backgroundImages/JoinOurTeamHeroSectionBackgroundMobile.png",
+    src: "/images/backgroundImages/JoinOurTeamHeroSectionBackgroundMobile.webp",
     alt: "Construction site planning mobile",
     config: {
       width: 1080,
@@ -71,7 +71,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         {/* Title */}
         <Typography
           variant="custom"
-          className="text-white text-[32px] md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] text-center md:text-start font-freightNeoMedium mb-4 md:mb-6 2xl:text-[72px]"
+          className="text-white text-[32px] md:text-[50px] xl:text-[60px] leading-[1.1] md:leading-[1.2] xl:leading-[67px] text-center md:text-start font-freightNeoMedium mb-4 md:mb-6 2xl:text-[72px] mt-11 lg:mt-0"
         >
           {CONTENT.title[0]}
           <br />
@@ -89,7 +89,7 @@ export default function JoinOurTeamHeroSection(): React.ReactElement {
         </Link>
 
         {/* Mobile CTA */}
-        <div className="mx-6 mt-44">
+        <div className="mx-6 mt-36">
           <Link href="/project-enquire" aria-label="Go to Project Enquire Page">
             <button
               aria-label="Project Enquire Page"

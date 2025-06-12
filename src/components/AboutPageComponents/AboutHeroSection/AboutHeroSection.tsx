@@ -128,7 +128,7 @@ const AboutHeroSection: React.FC = () => {
             <div className="cursor-pointer" onClick={toggleMute}>
               <motion.button
                 layout="preserve-aspect"
-                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#0C3E49] rounded-full lg:rounded-[30px] ${
+                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${
                   isMuted ? "bg-white/60" : "bg-white"
                 } cursor-pointer transition-colors duration-300 hover:shadow-md`}
                 aria-label={isMuted ? "Unmute" : "Mute"}

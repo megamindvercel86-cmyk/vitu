@@ -141,7 +141,7 @@ const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePag
       <div className="md:hidden block pb-5 " >
         {/* Mobile Title Section */}
         <div className={`w-full flex flex-col ${textColor} items-center justify-center text-center `}>
-          <Typography variant="custom" className={`text-xl lg:text-[]  font-geistSerif`}>
+          <Typography variant="custom" className={`text-2xl   font-geistSerif`}>
             A New Home,
           </Typography>
           <Typography variant="custom" className="text-2xl  font-geistSerif">
@@ -150,7 +150,7 @@ const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePag
         </div>
 
         {/* Mobile Carousel */}
-        <InfiniteCarousel iconColor="#0C3E49" controlButtonBg={controlButtonBg} cards={CARDS_DATA} data={exploreProjects} />
+        <InfiniteCarousel iconColor="#c9ad96" controlButtonBg={controlButtonBg} cards={CARDS_DATA} data={exploreProjects} />
 
         {/* Mobile CTA Button */}
         {/* <Link href="/vilasam">
