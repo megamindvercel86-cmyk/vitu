@@ -1,19 +1,36 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Typography from "@/components/Typography/Typography";
-import Image from "next/image";
-import Link from "next/link";
 import { motion, useInView } from "framer-motion";
+import CTAButtonIcon from "@/components/Icons/Icons";
+import Image from "next/image";
+import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
+
+// ============= Interfaces =============
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Location {
+  id: number;
+  name: string;
+  position: string;
+  imagePath: string;
+  description: Stat[];
+}
 
 // ============= Constants =============
 const PROJECT_DATA = {
   title: "Our Commitment to Tomorrow",
+  badge: "Limited Plots Available",
   description: {
     suffix:
       "At VITU Realty, we go beyond real estate, fostering lasting social impact & championing eco-friendly practices for a sustainable future by baking it into the very fabric of the spaces we create.",
   },
   cta: "Explore the Project Now",
-  image: "/images/visionAndFutureImages/image.png",
+  image: "/images/visionAndFutureImages/imageMain.png",
 };
 
 const STATS_DATA = [
@@ -31,19 +48,126 @@ const STATS_DATA = [
   },
 ];
 
-/**
- * Counter Component
- * Animates a number from a starting point to the target value
- * Handles formats like "500+", "20,000 sq.ft.", "3,400+ sq.m."
- */
-interface CounterProps {
-  value: string;
-}
+const LOCATIONS: Location[] = [
+  {
+    id: 1,
+    name: "Section 1",
+    position: "lg:left-[41%]  lg:top-[64%] left-[33%] top-[45%] md:left-[33%] md:top-[43%]  lg:w-[25px]  lg:h-[25px]",
+    imagePath: "/images/visionAndFutureImages/plots1.png",
+    description: [
+      { value: "Premium Plot", label: "4.00 Cents" },
+      {
+        value: "",
+        label:
+          "Premium Plots are thoughtfully located to offer a balance of exclusivity and convenience. These plots are ideal for families looking for a spacious foundation to build their dream home in a well-planned neighbourhood.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Section 2",
+    position: "left-[33%] top-[51%] lg:left-[55%] lg:top-[62%]  lg:w-[22px] rotate-45  lg:h-[25px]",
+    imagePath: "/images/visionAndFutureImages/plots2.png",
+    description: [
+      { value: "Signature Plot ", label: "5.10 Cents" },
+      {
+        value: "",
+        label:
+          "Crafted for refined living, Signature Plots offer premium positioning within the community, blending privacy with easy access to key amenities. Ideal for those who value both elegance and connectivity in their everyday lifestyle.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Section 3",
+    position: "left-[33%] top-[56%] md:left-[33%] md:top-[60%] lg:left-[58%] lg:top-[63%] lg:rotate-45  lg:w-[25px]  lg:h-[25px]",
+    imagePath: "/images/visionAndFutureImages/plots3.png",
+    description: [
+      { value: "Signature Plot ", label: "5.10 Cents" },
+      {
+        value: "",
+        label:
+          "Crafted for refined living, Signature Plots offer premium positioning within the community, blending privacy with easy access to key amenities. Ideal for those who value both elegance and connectivity in their everyday lifestyle.",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Section 4",
+    position: "left-[30%] top-[62%] md:left-[31%] md:top-[69%] lg:left-[62%] lg:top-[57%] lg:rotate-45  lg:w-[30px]  lg:h-[30px]",
+    imagePath: "/images/visionAndFutureImages/plots4.png",
+    description: [
+      { value: "Corner Plot", label: "6.25 Cents" },
+      {
+        value: "",
+        label:
+          "Corner Plots provide enhanced frontage and design flexibility, perfect for homeowners seeking standout appeal. With natural light and ventilation on multiple sides, these plots are designed for elevated living experiences. ",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Section 5",
+    position:
+      "left-[30%] top-[68%] lg:left-[65%] lg:top-[51%] lg:rotate-45 md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[30px]  lg:h-[30px]",
+    imagePath: "/images/visionAndFutureImages/plots5.png",
+    description: [
+      { value: "Signature Plot", label: "5.50 Cents" },
+      {
+        value: "",
+        label:
+          "Crafted for refined living, Signature Plots offer premium positioning within the community, blending privacy with easy access to key amenities. Ideal for those who value both elegance and connectivity in their everyday lifestyle.",
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Section 6",
+    position: "left-[43%] top-[68%] lg:left-[67%] lg:top-[48%] lg:rotate-45 md:left-[44%] md:top-[78%] lg:w-[30px] lg:h-[30px]",
+    imagePath: "/images/visionAndFutureImages/plots6.png",
+    description: [
+      { value: "Signature Plot", label: "5.50 Cents" },
+      {
+        value: "",
+        label:
+          "Crafted for refined living, Signature Plots offer premium positioning within the community, blending privacy with easy access to key amenities. Ideal for those who value both elegance and connectivity in their everyday lifestyle.",
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Section 7",
+    position: "left-[43%] top-[68%] lg:left-[76%] lg:top-[13%]  md:left-[44%] md:top-[78%] lg:w-[30px] lg:h-[30px]",
+    imagePath: "/images/visionAndFutureImages/plots7.png",
+    description: [
+      { value: "Signature Plot", label: "7.60 Cents" },
+      {
+        value: "",
+        label:
+          "Crafted for refined living, Signature Plots offer premium positioning within the community, blending privacy with easy access to key amenities. Ideal for those who value both elegance and connectivity in their everyday lifestyle.",
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "Section 8",
+    position: "left-[43%] top-[68%] lg:left-[54%] lg:top-[40%]  md:left-[44%] md:top-[78%] lg:w-[30px] lg:h-[30px]",
+    imagePath: "/images/visionAndFutureImages/plot10.png",
+    description: [
+      { value: "Premium Plot", label: "6.00 Cents" },
+      {
+        value: "",
+        label:
+          "Premium Plots are thoughtfully located to offer a balance of exclusivity and convenience. These plots are ideal for families looking for a spacious foundation to build their dream home in a well-planned neighbourhood.",
+      },
+    ],
+  },
+];
 
-const Counter: React.FC<CounterProps> = ({ value }) => {
-  // Extract numeric part from value (e.g., "500+" -> 500, "20,000 sq.ft." -> 20000)
+// ============= Components =============
+const Counter: React.FC<{ value: string }> = ({ value }) => {
   const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10);
-  const [count, setCount] = useState(numericValue - 5 >= 0 ? numericValue - 5 : 0); // Start from value - 5 or 0
+  const [count, setCount] = useState(numericValue - 5 >= 0 ? numericValue - 5 : 0);
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -51,10 +175,10 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
     if (inView && count < numericValue) {
       const start = count;
       const end = numericValue;
-      const duration = 2000; // 2 seconds
+      const duration = 2000;
       const incrementTime = 150;
       const steps = duration / incrementTime;
-      const stepSize = Math.max(1, Math.ceil((end - start) / steps)); // Ensure stepSize is at least 1
+      const stepSize = Math.max(1, Math.ceil((end - start) / steps));
 
       const timer = setInterval(() => {
         setCount((prev) => {
@@ -71,11 +195,10 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
     }
   }, [inView, numericValue, count]);
 
-  // Format display value to match original format (e.g., "500+" or "20,000 sq.ft.")
   const displayValue = value.includes("+")
     ? `${count.toLocaleString()}+`
     : value.includes("sq.ft.") || value.includes("sq.m.")
-      ? `${count.toLocaleString()} ${value.match(/sq\.\w+\.?/)?.[0] || ""}`
+      ? `${count.toLocaleString()} ${inView ? value.match(/sq\.\w+\.?/)?.[0] || "" : ""}`
       : count.toLocaleString();
 
   return (
@@ -87,11 +210,11 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
 
 /**
  * Current Project Component
- * Displays information about the current featured project
+ * Displays information about the current featured project with an interactive map
  *
  * Features:
  * 1. Project details with badge
- * 2. Project image
+ * 2. Interactive project map with clickable areas
  * 3. Key statistics
  * 4. Responsive CTA button
  *
@@ -102,89 +225,175 @@ const Counter: React.FC<CounterProps> = ({ value }) => {
  * @component
  */
 const CurrentProject: React.FC = () => {
+  const [selectedLocation, setSelectedLocation] = useState<Location>({
+    id: 0,
+    name: "Project Overview",
+    position: "left-[50%] top-[60%]",
+    imagePath: PROJECT_DATA.image,
+    description: STATS_DATA,
+  });
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const handleMouseLeave = () => {
+    setSelectedLocation({
+      id: 0,
+      name: "Project Overview",
+      position: "left-[50%] top-[60%]",
+      imagePath: PROJECT_DATA.image,
+      description: STATS_DATA,
+    });
+  };
+
+  const handleLocationClick = (location: Location) => {
+    setSelectedLocation(location);
+  };
+
   // ============= Render Helpers =============
   const renderStats = () => (
-    <div className="hidden md:flex lg:block md:justify-between mt-[50px] lg2:mt-[200px] 2xl:mt-[400px]" aria-label="Project Statistics">
-      {STATS_DATA.map((stat, index) => (
-        <div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-10" : ""}`}>
-          <Typography
-            variant="custom"
-            className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] text-[#503637]"
-          >
-            <Counter value={stat.value} />
-          </Typography>
-          <Typography variant="custom" className="font-FreightNeoProNormal text-[24px] text-[#503637]">
-            {stat.label}
-          </Typography>
-        </div>
-      ))}
-    </div>
+    <motion.div
+      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "xl:mt-[170px] lg:mt-[100px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      aria-label="Project Statistics"
+    >
+      {selectedLocation.description === STATS_DATA
+        ? selectedLocation.description.map((stat, index) => (
+            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
+              <Typography
+                variant="custom"
+                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+              >
+                <span className="font-CandideCondensedNormal">
+                  <Counter value={stat.value} />
+                </span>
+                <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
+              </Typography>
+              <Typography
+                variant="custom"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3"
+              >
+                {stat.label}
+              </Typography>
+            </motion.div>
+          ))
+        : selectedLocation.description.map((stat, index) => (
+            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-3" : ""}`}>
+              <Typography
+                variant="custom"
+                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+              >
+                <span className="font-CandideCondensedNormal">{stat.value}</span>
+              </Typography>
+              <Typography
+                variant="custom"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3"
+              >
+                {stat.label}
+              </Typography>
+            </motion.div>
+          ))}
+    </motion.div>
   );
 
   return (
     <section
-      className="flex flex-col sm:flex-col lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
+      className="flex flex-col sm:flex-col lg:max-h-screen  lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2">
-        <header>
-          {/* Project Title */}
+      <article className="w-full lg:w-1/2 lg2:py-32">
+        <header className="md:pb-10 pb-4">
           <h1
             id="project-title"
-            className="w-[224px] md:w-full pt-3 md:pt-0 text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[60px] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-customBrown"
+            className="w-[224px] hidden lg:block  md:w-full   text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
           >
-            {PROJECT_DATA.title}
+            Our Commitment <br /> to Tomorrow
+          </h1>
+          <h1
+            id="project-title"
+            className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+          >
+            Our Commitment to Tomorrow
           </h1>
         </header>
 
-        {/* Project Description */}
         <div className="flex items-center">
           <Typography
             variant="custom"
-            className="font-freightNeoMedium md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg:text-xl lg2:text-[24px] 2xl:leading-[40px] text-[#4F373799]"
+            className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
           >
-            {/* {PROJECT_DATA.description.prefix}
-            <span className="font-CandideCondensedMedium">{PROJECT_DATA.description.number}</span> */}
             {PROJECT_DATA.description.suffix}
           </Typography>
         </div>
 
-        {/* Desktop CTA */}
-        <div className="mt-[29px]">
-          <button
-            aria-label="Only few plots remaining"
-            className="hidden bg-[#AE8566]/20 md:block items-center justify-center text-center w-[287px] h-14 pt-1 font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]"
-          >
-            Only few plots remaining
-          </button>
-        </div>
         {renderStats()}
       </article>
 
-      {/* Right Column - Project Image */}
-      <figure className="flex items-center justify-center w-full lg:w-1/2" aria-labelledby="project-title">
-        <Image
-          src={PROJECT_DATA.image}
-          width={708}
-          height={400}
-          alt={`${PROJECT_DATA.title} - Premium plotted development near NITK Surathkal beach`}
-          className="w-full h-full object-contain"
-        />
+      {/* Right Column - Interactive Project Map (Desktop) */}
+      <figure
+        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[120vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
+        aria-labelledby="project-title"
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="relative w-full h-full">
+          <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
+          <div className="absolute inset-0 z-10">
+            {LOCATIONS.map((location) => (
+              <button
+                key={location.id}
+                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0  bg-[#503637] ${location.position}`}
+                onClick={() => handleLocationClick(location)}
+                onMouseEnter={() => handleLocationClick(location)}
+                aria-label={location.name}
+              />
+            ))}
+          </div>
+        </div>
       </figure>
 
-      {/* Mobile CTA */}
-      <Link href="/project-enquire">
-        <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-          <button
-            aria-label="Explore the Project Now"
-            className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
-          >
-            {/* Ensure PROJECT_DATA.cta is descriptive, e.g., "Explore the Project" */}
-            {PROJECT_DATA.cta || "Explore the Project"}
-          </button>
-        </div>
-      </Link>
+      <motion.div
+        className="  lg:hidden "
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        aria-label="Project Statistics"
+      >
+        {selectedLocation.description === STATS_DATA
+          ? selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+                <Typography
+                  variant="custom"
+                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                >
+                  <span className="font-CandideCondensedNormal">
+                    <Counter value={stat.value} />
+                  </span>
+                  <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
+                </Typography>
+                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3">
+                  {stat.label}
+                </Typography>
+              </motion.div>
+            ))
+          : selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-4" : ""}`}>
+                <Typography
+                  variant="custom"
+                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                >
+                  <span className="font-CandideCondensedNormal">{stat.value}</span>
+                </Typography>
+                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3">
+                  {stat.label}
+                </Typography>
+              </motion.div>
+            ))}
+      </motion.div>
+      <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
     </section>
   );
 };
