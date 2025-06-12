@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { FC, JSX, useRef } from "react";
 import logo from "../../../../../public/images/logos/vaikuntamCityFooter.svg";
-import logo2 from "../../../../../public/images/logos/projectfooter.svg";
+import logo2 from "../../../../../public/images/logos/logolight.svg";
 import { Link } from "react-scroll";
 
 import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Share1, Youtube } from "@/components/Icons/Icons";
@@ -191,7 +191,7 @@ const ProjectFooter: FC = () => {
               </div>
               <div className="flex justify-center md:justify-start  lg:justify-end">
                 <FooterLink href="/">
-                  <Image alt="logo" src={logo2} />
+                  <Image width={150} height={150} alt="logo" src={logo2} />
                 </FooterLink>
               </div>
             </div>

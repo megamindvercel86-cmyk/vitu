@@ -84,13 +84,42 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
           height={45}
           className={cn("object-cover h-[652px] w-full")}
         />
-        <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>{project.title}</h2>
+        <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>
+          {project.title.split('').map((char: string, index: number) => (
+            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
+              {char}
+            </span>
+          ))}
+        </h2>
         <h3 className={`${textColor} text-[20px] lg:text-[28px] leading-[1.3] font-medium px-6 lg:px-20 pb-6 text-[#040707CC]`}>
-          {project.subtitle}
+          {project.subtitle.split('').map((char: string, index: number) => (
+            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
+              {char}
+            </span>
+          ))}
         </h3>
+        <p className={`${textColor} text-[16px] lg:text-[20px] leading-[1.5] font-normal px-6 lg:px-20 pb-6`}>
+          {project.description1.split('').map((char: string, index: number) => (
+            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
+              {char}
+            </span>
+          ))}
+        </p>
         <div className="flex flex-col gap-flex gap-6">
-          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">{project.description1}</Typography>
-          <Typography className="text-[#04070799] px-6 lg:px-20 !text-xl">{project.description2}</Typography>
+          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
+            {project.description1.split('').map((char: string, index: number) => (
+              <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
+                {char}
+              </span>
+            ))}
+          </Typography>
+          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
+            {project.description2.split('').map((char: string, index: number) => (
+              <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
+                {char}
+              </span>
+            ))}
+          </Typography>
           <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
         </div>
       </div>
@@ -318,7 +347,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
             </motion.h2>
 
             <motion.button
-              className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[18px] xl:text-[22px] font-sourceSans3 transition-colors mt-6`}
+              className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[18px] xl:text-[22px] ${textStyle}  transition-colors mt-6`}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}

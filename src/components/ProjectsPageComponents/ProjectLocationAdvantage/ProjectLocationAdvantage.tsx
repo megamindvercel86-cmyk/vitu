@@ -182,7 +182,7 @@ const LocationAdvantage = () => {
       ],
     },
     {
-      title: "Location Advantage",
+      title: "Investment potential",
       description: "Great Investment Potential",
       text: "A smart address that offers comfort now & confidence for what’s ahead—where life & value grow together.",
       buttonText: "More about the Location",
@@ -219,7 +219,7 @@ const LocationAdvantage = () => {
       ],
     },
     {
-      title: "Location Advantage",
+      title: "Sustainable growth",
       description: "Sustainable Living",
       text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
       buttonText: "More about our Sustainability Initiatives",
@@ -310,7 +310,7 @@ const LocationAdvantage = () => {
         {
           title: "A Lifestyle of Choice",
           subtitle: "Amenities for Every Moment",
-          image: "/images/locationAdvantagesImages/10.webp",
+          image: "/images/locationAdvantagesImages/5.webp",
           description:
             "At Vitu Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
           middleTitle: "Why Amenities Enhance Living",

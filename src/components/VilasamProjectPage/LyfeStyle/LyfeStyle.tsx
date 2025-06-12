@@ -316,7 +316,7 @@ const LyfeStyle = () => {
         </div>
 
         {/* Image container with gradient */}
-        <div className="relative pt-52">
+        <div className="relative lg:pt-52">
           <Image src="/images/vilasamPageImages/image.webp" alt="vilasam" height={1000} width={1000} className="w-full  object-cover " />
           <div className="absolute bottom-0 left-0 w-full h-[30px] lg:h-[170px] xl:h-[250px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />
           <div className="absolute bottom-0 left-0 w-full h-[50px] lg:h-[170px] xl:h-[180px] bg-gradient-to-t from-[#FAFFFD]  to-transparent" />

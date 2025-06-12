@@ -162,7 +162,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                     </NavLink>
                     {hasDropdown && activeDropdown === href && (
                       <div
-                        className="absolute left-0 w-40 mt-0 origin-top-left backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
+                        className="absolute left-0 w-40 mt-0 origin-top-left bg-black/20 backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
                         onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
                         // onMouseLeave={handleMouseLeave} // Close dropdown after delay
                       >
