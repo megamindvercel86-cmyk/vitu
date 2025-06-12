@@ -8,10 +8,9 @@ export const JOB_OPTIONS = [
 ] as const;
 
 export const PROJECT_ENQUIRIES = [
-  { value: "Buying Property", label: "Buying Property" },
-  { value: "Selling Property", label: "Selling Property" },
-  { value: "Property Management", label: "Property Management" },
-  { value: "Real Estate Investment", label: "Real Estate Investment" },
+  { value: "Investing In Land", label: "Investing In Land" },
+  { value: "Building your Dream Home", label: "Building your Dream Home" },
+  { value: "Just Exploring", label: "Just Exploring" },
 
 ] as const;
 

@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       service: "gmail",
       auth: {
         user: "info@viturealty.com", // Your email
-        pass: "info tfii kdvj acvg wadc", // App password
+        pass: "tfii kdvj acvg wadc", // App password
       },
     });
 
