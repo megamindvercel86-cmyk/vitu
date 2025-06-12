@@ -9,7 +9,7 @@ import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import { db } from "@/firebase/firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
@@ -39,7 +39,7 @@ const Footer: FC = () => {
       try {
         const emailValue = email.trim();
         const collectionRef = collection(db, "newsLetter");
-        await addDoc(collectionRef, { email: emailValue });
+        await addDoc(collectionRef, { email: emailValue, createdAt: serverTimestamp() });
 
         toast.success(
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

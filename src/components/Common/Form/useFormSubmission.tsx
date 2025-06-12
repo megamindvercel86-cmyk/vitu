@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import { GeneralFormValidationSchema } from "./validations";
 import { ProjectFormValidationSchema } from "./validations";
@@ -56,6 +56,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               phone: values.phone,
               comments: values.comments,
               whatsapp: values.whatsapp,
+              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
             }
           : page === "Project Enquire"
             ? {
@@ -64,6 +65,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
                 phone: values.phone,
                 whatsapp: values.whatsapp,
                 interstedIn: values.option,
+                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
               }
             : {
                 fullName: values.fullName,
@@ -71,6 +73,7 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
                 phone: values.phone,
                 postionAppliedFor: values.option,
                 resumeUrl,
+                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
               };
 
       const collectionRef = collection(db, collectionName);

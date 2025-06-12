@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 
 // Animation variants
@@ -119,15 +119,24 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
   // Handle form submission
   const handleSubmit = async () => {
     if (validateForm()) {
-      setIsLoading(true)
-      const collectionRef = collection(db, "projectEnquiries");
-      await addDoc(collectionRef, formData);
-      setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
-      setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
-      setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
-setIsLoading(false)
-      setOpen(false);
-      onClose(false);
+      setIsLoading(true);
+      try {
+        const collectionRef = collection(db, "projectEnquiries");
+        const dataWithTimestamp = {
+          ...formData,
+          createdAt: serverTimestamp(),
+        };
+        await addDoc(collectionRef, dataWithTimestamp);
+        setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
+        setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
+        setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
+        setOpen(false);
+        onClose(false);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       console.log("Form has errors:", errors);
     }
@@ -165,6 +174,7 @@ setIsLoading(false)
   // Dropdown options
   const projectEnquiries = [
     { value: "Investing in Land", label: "Investing in Land" },
+
     { value: "Building your Dream Home", label: "Building your Dream Home" },
     { value: "Just Exploring", label: "Just Exploring" },
   ];
@@ -204,18 +214,18 @@ setIsLoading(false)
             {/* Form Content */}
             <motion.div
               variants={contentVariants}
-              className="flex flex-col lg:flex-row px-6 md:px-8 lg:px-32 xl:px-16 pt-16 lg:pt-24 xl:pt-24  gap-8 lg:gap-12"
+              className="flex flex-col lg:flex-row px-6 md:px-8 lg:px-32 xl:px-16 pt-16 lg:pt-24 xl:pt-24 gap-8 lg:gap-12"
             >
               {/* Left Side Content */}
               <div className="flex-1">
                 <h1 className="text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
-                <h1 className="text-center mt-7 lg:hidden font-geistSerif !leading-[1.3]  lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
+                <h1 className="text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
                   Your dream home is closer than you think!
                 </h1>
                 <p className="text-center font-geistSerif lg:text-left text-[#040707] text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4">
-                  Begin your journey to a new home—fill out the form &amp; let&apos;s get started.{" "}
+                  Begin your journey to a new home—fill out the form & let's get started.{" "}
                 </p>
                 <div className="hidden lg:block">
                   <hr className="w-full md:w-[392px] mt-12 lg:mt-8 border-black border-opacity-20" />
@@ -356,7 +366,7 @@ setIsLoading(false)
                   <hr className="w-full border-black border-opacity-20" />
                   <p className="pt-6 text-[#04070799] text-lg font-medium">Alternatively, for your queries contact</p>
                   <span className="text-[#04070799] font-bold text-lg">+91 89046 88886</span>
-                </div>
+                </div> 
               </div>
             </motion.div>
           </motion.div>
