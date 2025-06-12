@@ -14,7 +14,7 @@ const LegacyBuiltComponent = () => {
             A Legacy Built on Trust
           </h1>
           <p className="mt-4  lg:w-[330px]  text-[#4F373799] lg2:text-[24px]  font-FreightNeoProNormal">
-            Every Vitu Realty property embodies our Client centric philosophy.
+            Every VITU Realty property embodies our Client centric philosophy.
             Thoughtfully designed homes with abundant natural light, smart
             spaces, & premium amenities.
           </p>

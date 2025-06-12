@@ -22,7 +22,7 @@ interface Location {
 
 // ============= Constants =============
 const PROJECT_DATA = {
-  title: "Vitu Vilasam",
+  title: "VITU Vilasam",
   badge: "Limited Plots Available",
   description: {
     suffix:

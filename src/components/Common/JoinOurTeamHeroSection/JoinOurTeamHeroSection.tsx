@@ -14,7 +14,7 @@ interface ImageConfig {
 
 // ============= Constants =============
 const CONTENT = {
-  title: ["Build Better with", "Vitu Realty"],
+  title: ["Build Better with", "VITU Realty"],
   cta: "Enquire Now",
 };
 

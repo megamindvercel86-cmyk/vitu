@@ -164,7 +164,7 @@ const LocationAdvantage = () => {
           image: "/images/locationAdvantagesImages/6.webp",
           subtitle: "Crafting a Beachside Haven",
           description:
-            "At Vitu Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
+            "At VITU Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
           middleTitle: "Why Coastal Living Matters",
           middleDescription:
             "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
@@ -175,7 +175,7 @@ const LocationAdvantage = () => {
             "Wellness Amenities: On-site yoga studios and meditation spaces that leverage the calming effects of the ocean to promote mental and physical health.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
+            "At VITU Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
           bottomTitle: "The Core Principles of Coastal Design",
           bottomDescription: "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
         },
@@ -201,7 +201,7 @@ const LocationAdvantage = () => {
           subtitle: "Building Wealth Through Smart Real Estate",
           image: "/images/locationAdvantagesImages/7.webp",
           description:
-            "At Vitu Realty, we design properties that are not just homes but also smart investments. Located in high-growth areas, our developments offer strong appreciation potential, modern infrastructure, and access to thriving communities, ensuring long-term value for homeowners and investors alike.",
+            "At VITU Realty, we design properties that are not just homes but also smart investments. Located in high-growth areas, our developments offer strong appreciation potential, modern infrastructure, and access to thriving communities, ensuring long-term value for homeowners and investors alike.",
           middleTitle: "Why Location Drives Value",
           middleDescription:
             "A property’s value is deeply tied to its location. Our developments are strategically placed in areas with strong economic growth, excellent connectivity, and proximity to essential amenities, making them ideal for those seeking both comfort and financial security.",
@@ -214,7 +214,7 @@ const LocationAdvantage = () => {
             "Resale Potential: Designed with timeless aesthetics and durable materials to maintain value over time.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
+            "At VITU Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
         },
       ],
     },
@@ -238,7 +238,7 @@ const LocationAdvantage = () => {
           subtitle: "Sustainable Homes for a Better Planet",
           image: "/images/locationAdvantagesImages/8.webp",
           description:
-            "At Vitu Realty, sustainability is at the heart of our mission. Our eco-conscious properties are designed to minimize environmental impact while maximizing comfort, integrating green technologies and practices that make sustainable living effortless and rewarding.",
+            "At VITU Realty, sustainability is at the heart of our mission. Our eco-conscious properties are designed to minimize environmental impact while maximizing comfort, integrating green technologies and practices that make sustainable living effortless and rewarding.",
           middleTitle: "Why Green Living Matters",
           middleDescription:
             "Choosing a sustainable home means contributing to a healthier planet and a better quality of life. Our properties incorporate cutting-edge green technologies to reduce energy consumption, conserve water, and promote eco-friendly lifestyles, all while maintaining modern luxury.",
@@ -249,7 +249,7 @@ const LocationAdvantage = () => {
             "Eco-Friendly Materials: Use of sustainable, locally sourced materials to reduce environmental impact and support local economies.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
+            "At VITU Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
           bottomTitle: "The Core Principles of Green Design",
           bottomDescription: "Our sustainable properties integrate innovative technologies and practices to promote environmental stewardship:",
         },
@@ -275,7 +275,7 @@ const LocationAdvantage = () => {
           subtitle: "Nature at the Heart of Your Home",
           image: "/images/locationAdvantagesImages/9.webp",
           description:
-            "At Vitu Realty, our Oxygen Park is more than just green space—it’s a sanctuary designed to promote wellness, tranquility, and a deep connection to nature. With lush landscapes and thoughtful design, the park offers a serene escape within your community.",
+            "At VITU Realty, our Oxygen Park is more than just green space—it’s a sanctuary designed to promote wellness, tranquility, and a deep connection to nature. With lush landscapes and thoughtful design, the park offers a serene escape within your community.",
           middleTitle: "Why Green Spaces Matter",
           middleDescription:
             "Access to green spaces has been shown to improve mental health, reduce stress, and enhance overall well-being. Our Oxygen Park is designed to bring these benefits to your doorstep, creating a natural haven where you can recharge and reconnect with nature.",
@@ -286,7 +286,7 @@ const LocationAdvantage = () => {
             "Meditation Zones: Quiet areas for yoga, meditation, or simply enjoying the peace of nature.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
+            "At VITU Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
           bottomTitle: "The Core Principles of Green Space Design",
           bottomDescription: "Our Oxygen Park integrates thoughtful landscaping and amenities to create a natural oasis:",
         },
@@ -312,7 +312,7 @@ const LocationAdvantage = () => {
           subtitle: "Amenities for Every Moment",
           image: "/images/locationAdvantagesImages/5.webp",
           description:
-            "At Vitu Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
+            "At VITU Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
           middleTitle: "Why Amenities Enhance Living",
           middleDescription:
             "A diverse range of amenities creates a community where residents can thrive. Whether you’re seeking active pursuits, quiet relaxation, or social connections, our properties offer spaces that cater to every lifestyle, ensuring every day is enriched.",
@@ -323,7 +323,7 @@ const LocationAdvantage = () => {
             "Community Event Spaces: Areas for gatherings, events, and workshops to foster a sense of community.",
           ],
           middleBottomDescription:
-            "At Vitu Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
+            "At VITU Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
           bottomTitle: "The Core Principles of Amenity Design",
           bottomDescription: "Our amenities are crafted to enhance your daily experience, offering variety and quality:",
         },

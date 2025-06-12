@@ -14,7 +14,7 @@ const VilasamLegacyBuiltComponent = () => {
             Trust You <br /> Can Build On
           </h1>
           <p className=" lg2:mt-4   lg:w-[300px] lg2:w-[500px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
-            Every Vitu Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
+            Every VITU Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
             & premium amenities.
           </p>
           <Link href="/about" className="mt-4 font-[700] text-[20px] font-sourceSans3 inline-block  text-[#0C3E49] hover:underline">
