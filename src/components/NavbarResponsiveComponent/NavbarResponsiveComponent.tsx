@@ -24,7 +24,6 @@ const NavbarResponsiveComponent = ({
   const PROJECT_LINKS = [
     { href: "/vaikuntamcity", label: "Vaikuntam City" },
     { href: "/vilasam", label: "Vilasam" },
-    { href: "/mithila", label: "Mithila" },
   ];
   const NAV_LINKS = [
     { href: "/about", label: "About" },
@@ -97,7 +96,7 @@ const NavbarResponsiveComponent = ({
                   {isDropDownOpen && dropdownItems && (
                     <div className="mt-2  flex flex-col items-center space-y-2">
                       {dropdownItems.map((item, index) => (
-                        <NavLink key={index} href={item.href} className="text-lg font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors">
+                        <NavLink key={index} href={item.href} className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors">
                           {item.label}
                         </NavLink>
                       ))}

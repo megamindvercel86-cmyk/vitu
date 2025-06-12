@@ -410,8 +410,6 @@ const LOCATIONS: Location[] = [
 ];
 
 
-// corner 
-// Offering extra space, dual access, and a premium sense of privacy, corner plots are prized for their flexibility and openness. Whether you dream of a spacious layout or wish to design with more natural ventilation and light, these plots offer a distinctive edge in both function and prestige.
 
 
 
@@ -553,7 +551,7 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
                 <span className="font-CandideCondensedNormal">
                   <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
                 </span>
-                <span className="font-FreightNeoProNormal">{stat.value.replace(/\d+/g, "")}</span>
+                <span className="font-FreightNeoProNormal">{stat.value.replace(/,/, "").replace(/\d+/g, "")}</span>
               </Typography>
               <Typography
                 variant="custom"

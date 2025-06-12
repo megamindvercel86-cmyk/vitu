@@ -91,14 +91,14 @@ const MediaKits: React.FC = () => {
                 <>
                   <Typography
                     variant="custom"
-                    className="text-[32px] font-freightNeoMedium text-customBrown"
+                    className="text-[32px] text-center lg:text-start font-freightNeoMedium text-customBrown"
                   >
                     {card.title}
                   </Typography>
                   {card.description && (
                     <Typography
                       variant="custom"
-                      className="text-xl font-freightNeoMedium text-[#04070799] mb-[20px]"
+                      className="text-xl text-center lg:text-start font-freightNeoMedium text-[#04070799] mb-[20px]"
                     >
                       {card.description}
                     </Typography>

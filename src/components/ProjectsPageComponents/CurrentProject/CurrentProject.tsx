@@ -9,9 +9,8 @@ import { motion, useInView } from "framer-motion";
 const PROJECT_DATA = {
   title: "Our Commitment to Tomorrow",
   description: {
-   
     suffix:
-      " At Vitu Realty, we go beyond real estate, fostering lasting social impact & championing eco-friendly practices for a sustainable future by baking it into the very fabric of the spaces we create.",
+      "At Vitu Realty, we go beyond real estate, fostering lasting social impact & championing eco-friendly practices for a sustainable future by baking it into the very fabric of the spaces we create.",
   },
   cta: "Explore the Project Now",
   image: "/images/visionAndFutureImages/image.png",

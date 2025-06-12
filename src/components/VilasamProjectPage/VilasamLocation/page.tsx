@@ -12,7 +12,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
 import "./vilasamLocation.css"
 
-
 interface LocationAdvantageProps {
   title: string;
   description: string;
@@ -40,7 +39,6 @@ interface LocationAdvantageProps {
     bottomDescription?: string;
     image: string;
   }[];
-  
 }
 
 interface CarouselDotsProps {
@@ -236,7 +234,7 @@ const LocationAdvantage = () => {
       carousalClassName: "bg-[#AE856666]",
       fill: "#6E1F14",
       buttonFillBg: "bg-[#6E1F14]",
-      closeIconFIll:"#a1a1a1",
+      closeIconFIll: "#a1a1a1",
       amenitiesDetails: [
         {
           image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
@@ -295,7 +293,7 @@ const LocationAdvantage = () => {
     setActiveIndex(nextIndex);
     setCurrentIndex(0);
     if (swiperInstance) {
-      swiperInstance.slideTo(nextIndex);
+      swiperInstance.slideToLoop(nextIndex); // Use slideToLoop for looped Swiper
     }
   };
 
@@ -321,7 +319,6 @@ const LocationAdvantage = () => {
                 src={item.image}
                 alt={item.description}
                 fill
-              
                 className="absolute hidden md:block object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />
@@ -442,9 +439,8 @@ const LocationAdvantage = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               > 
-                {/* <IconX className="h-6 w-6 text-[#7a6d3c]" /> */}
-              <CloseTabIcon fill={data[activeIndex].closeIconFIll}/>
-             </motion.button>
+                <CloseTabIcon fill={data[activeIndex].closeIconFIll}/>
+              </motion.button>
               <div className="absolute">
 
               </div>
@@ -454,12 +450,12 @@ const LocationAdvantage = () => {
               <motion.div variants={contentVariants} className="">
                 <hr className="border-t-gray-200 border-[1px]" />
                 <div className="lg:px-44 md:px-12 px-6">
-                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP MEXT</h1>
+                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP NEXT</h1>
                   <div className="flex md:pb-16 pb-32 justify-between ">
                     <button 
-                    aria-label="Previous Card"
+                      aria-label="Next Card"
                       onClick={goToNextCard}
-                      className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px]text-base"
+                      className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px] text-base"
                     >
                       {data[(activeIndex + 1) % data.length].description}
                     </button>

@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { InfiniteMovingCards } from "@/components/ui/infinite-carousel-card";
-import Link from "next/link";
 import VideoPlayer from "@/components/Common/VideoPlayer/page";
 
 // Dummy data for ProjectCarousel

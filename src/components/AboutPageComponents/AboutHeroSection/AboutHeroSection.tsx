@@ -42,14 +42,17 @@ const AboutHeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isFixed, setIsFixed] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false); // 🆕 New state
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
   };
-  const [isFixed, setIsFixed] = useState(true);
-  const sectionRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsDesktop(window.innerWidth >= 1024);
@@ -61,8 +64,9 @@ const AboutHeroSection: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // if (window.innerWidth < 768) return;
     const handleScroll = () => {
+      if (!hasScrolled) setHasScrolled(true); // ✅ Mark first scroll
+
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
@@ -73,10 +77,11 @@ const AboutHeroSection: React.FC = () => {
         // Mute video when section is not in view
         if (videoRef.current && isMuted && !isInView) {
           videoRef.current.muted = !isInView;
-         setIsMuted(!isInView);
-       }
+          setIsMuted(!isInView);
+        }
       }
     };
+
     // Add throttling to improve performance
     let ticking = false;
     const scrollHandler = () => {
@@ -91,7 +96,8 @@ const AboutHeroSection: React.FC = () => {
 
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, []);
+  }, [hasScrolled, isMuted]);
+
   return (
     <section
       ref={sectionRef}
@@ -114,7 +120,9 @@ const AboutHeroSection: React.FC = () => {
         <div
           className={`${
             isDesktop && isFixed ? "fixed" : "absolute"
-          } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row justify-center lg:justify-end z-[1] transition-all duration-300`}
+          } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
+            hasScrolled ? "justify-end" : "justify-center"
+          } lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
