@@ -127,7 +127,6 @@ export default function HomePage() {
           className="font-freightNeoMedium text-[#040707CC] text-[1rem] px-7 pb-6 sm:text-[1.375rem] md:px-0 md:text-[1.3rem] 2xl:text-[2.125rem]"
         >
           We create thoughtfully designed spaces that blend modern aesthetics with lasting quality.
-
         </Typography>
         <Typography
           variant="custom"

@@ -151,11 +151,14 @@ const CurrentProject: React.FC = () => {
         </div>
 
         {/* Desktop CTA */}
-          <div className="mt-[29px]">
-            <button aria-label="Only few plots remaining" className="hidden bg-[#AE8566]/20 md:block items-center justify-center text-center w-[287px] h-14 pt-1 font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
+        <div className="mt-[29px]">
+          <button
+            aria-label="Only few plots remaining"
+            className="hidden bg-[#AE8566]/20 md:block items-center justify-center text-center w-[287px] h-14 pt-1 font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]"
+          >
             Only few plots remaining
-            </button>
-          </div>
+          </button>
+        </div>
         {renderStats()}
       </article>
 
@@ -172,16 +175,16 @@ const CurrentProject: React.FC = () => {
 
       {/* Mobile CTA */}
       <Link href="/project-enquire">
-  <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-    <button 
-      aria-label="Explore the Project Now" 
-      className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
-    >
-      {/* Ensure PROJECT_DATA.cta is descriptive, e.g., "Explore the Project" */}
-      {PROJECT_DATA.cta || "Explore the Project"} 
-    </button>
-  </div>
-</Link>
+        <div className="block md:hidden w-full pt-10 text-center leading-[1]">
+          <button
+            aria-label="Explore the Project Now"
+            className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300"
+          >
+            {/* Ensure PROJECT_DATA.cta is descriptive, e.g., "Explore the Project" */}
+            {PROJECT_DATA.cta || "Explore the Project"}
+          </button>
+        </div>
+      </Link>
     </section>
   );
 };

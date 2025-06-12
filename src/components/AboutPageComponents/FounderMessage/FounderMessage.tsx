@@ -1,56 +1,58 @@
 "use client";
 
-// ============= Library Imports =============
-// import YouTube from "react-youtube";
-import { useEffect, useState } from "react";
-import { YouTubeEmbed } from "@next/third-parties/google";
-// ============= Component Imports =============
+import { useState } from "react";
 import { PlayIcon } from "@/components/Icons/Icons";
-import VideoPlayer from "@/components/Common/VideoPlayer/page";
 
-interface VideoData {
-  id?: string;
-  videoUrl: string;
-}
-
-/**
- * FounderMessage Component
- * Displays an embedded YouTube video with a play button to watch the full video.
- *
- * Features:
- * 1. Responsive YouTube video wrapper
- * 2. Styled button with PlayIcon
- * 3. Tailwind CSS optimized for different screen sizes
- * 4. Fetches video URL from API
- *
- * @returns {React.ReactElement} The FounderMessage component
- */
 export default function FounderMessage(): React.ReactElement {
-  // ============= State =============
-  const [videoData, setVideoData] = useState<VideoData | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
 
-  // ============= Render =============
+  const videoId = "PS3l9zTvLgI";
+  const customThumbnail =
+    "https://res.cloudinary.com/dvandhsai/image/upload/v1746771292/sy6cbijjnks8v018xurj.png";
+
   return (
-    <div className="flex flex-col items-center justify-center pb-32 lg:py-32     2xl:h-screen">
-      {/* Video Wrapper */}
-      <div className=" rounded-2xl overflow-hidden">
-         <VideoPlayer
-            videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1746688204/fjfhm5y8jzcsjpccwxbd.mp4"
-            youtubeUrl="https://youtu.be/PS3l9zTvLgI?si=6NMZo9kPJLBk6sPo"
-            thumbnail="https://res.cloudinary.com/dvandhsai/image/upload/v1746771292/sy6cbijjnks8v018xurj.png"
-            titleClassname="font-bold"
+    <div className="flex flex-col items-center justify-center pb-32 lg:py-32 2xl:h-screen">
+      {/* Video or Thumbnail */}
+      <div className="w-full max-w-7xl aspect-video rounded-2xl overflow-hidden relative">
+        {!showVideo ? (
+          <div
+            className="w-full h-full cursor-pointer"
+            onClick={() => setShowVideo(true)}
+          >
+            <img
+              src={customThumbnail}
+              alt="Video Thumbnail"
+              className="w-full h-full object-cover"
+            />
+          
+          </div>
+        ) : (
+          <iframe
+            className="w-full h-full"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+            title="YouTube video"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
           />
+        )}
       </div>
 
-      {/* Play Button */}
-      <button
-      aria-label="Watch the full video"
+      {/* Watch on YouTube Button */}
+      {/* <button
+        aria-label="Watch the full video"
         className="md:mt-10 flex items-center justify-center gap-3 bg-[#815C46] text-white text-base font-medium rounded-full px-6 py-2 2xl:px-8 2xl:py-4 2xl:text-2xl"
-        onClick={() => window.open("https://youtu.be/PS3l9zTvLgI?si=6NMZo9kPJLBk6sPo", "_blank", "noopener,noreferrer")}
+        onClick={() =>
+          window.open(
+            "https://youtu.be/PS3l9zTvLgI?si=rJqqBv6ZHni3I-xx",
+            "_blank",
+            "noopener,noreferrer"
+          )
+        }
       >
         Watch the Full Video
         <PlayIcon />
-      </button>
+      </button> */}
     </div>
   );
 }
