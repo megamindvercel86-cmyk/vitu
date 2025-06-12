@@ -116,7 +116,7 @@ const ProjectHeroSection: React.FC = () => {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
   return (
-    <section id="hero" className=" w-full h-[250vh] md:h-[240vh] lg:h-[320vh]   xl:h-[290vh] overflow-hidden">
+    <section id="hero" className=" w-full h-[220vh] md:h-[240vh] lg:h-[250vh]   xl:h-[215vh] overflow-hidden">
       {/* Parallax Layers */}
       <audio ref={audioRef} src="/Beach.mp3" loop />
 
@@ -222,7 +222,7 @@ const ProjectHeroSection: React.FC = () => {
       </div>
       <div
         
-        className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[100rem]  md:top-[70rem] top-[130vh] text-center  px-6"
+        className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[80rem]  md:top-[70rem] top-[130vh] text-center  px-6"
       >
         <ProjectCarousel />
       </div>

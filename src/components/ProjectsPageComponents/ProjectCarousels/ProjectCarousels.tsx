@@ -39,12 +39,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
   };
 
   return (
-    <section className="overflow-hidden w-full rounded-3xl xl:px-0">
+    <section className="overflow-hidden w-full rounded-xl xl:px-0">
       <div className="relative">
         <video
           poster={thumbnail}
           ref={videoRef}
-          className="rounded-3xl w-full h-[50vh] lg:h-[100vh] object-cover"
+          className="rounded-xl w-full  md:h-[57vh]  aspect-[16/9]  object-cover"
           loop
           playsInline
           onTimeUpdate={handleTimeUpdate}
@@ -60,7 +60,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
             <div className="cursor-pointer" onClick={toggleMute}>
               <button className="w-full h-full cursor-pointer flex items-center justify-center" aria-label={isMuted ? "Unmute" : "Mute"}>
                 {isMuted ? (
-                  <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="lg:w-[51px] lg:h-[51px] w-[25px] h-[25px]" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="25.9727" cy="25.5" r="24" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="2" />
                     <path
                       d="M16.4357 19.8183C16.1164 19.9941 15.918 20.3298 15.918 20.6943V25.5001V30.3059C15.918 30.6704 16.1164 31.0061 16.4357 31.1819L25.7169 36.2912C26.2244 36.5706 26.8456 36.2035 26.8456 35.6242V25.5001V15.376C26.8456 14.7967 26.2244 14.4296 25.7169 14.7089L16.4357 19.8183Z"
@@ -76,7 +76,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
                     />
                   </svg>
                 ) : (
-                  <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="lg:w-[51px] lg:h-[51px] w-[25px] h-[25px]" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="25.4727" cy="25.8999" r="24" fill="#AE8566" fillOpacity="0.2" stroke="#AE8566" strokeWidth="2" />
                     <path
                       d="M15.9357 20.2182C15.6164 20.394 15.418 20.7297 15.418 21.0942V25.9V30.7058C15.418 31.0703 15.6164 31.406 15.9357 31.5818L25.2169 36.6911C25.7244 36.9705 26.3456 36.6034 26.3456 36.0241V25.9V15.7759C26.3456 15.1966 25.7244 14.8295 25.2169 15.1088L15.9357 20.2182Z"
@@ -166,7 +166,10 @@ export default function ProjectCarousel(): React.ReactElement {
     <section className="bg-gradient-to-b h-auto lg:h-[200vh] overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:mx-16 md:gap-4 md:mt-16">
         {/* Video Column */}
-        <div className="col-span-12 lg:col-span-7 mb-12 md:mb-0">
+        <div className="col-span-12 lg:col-span-1 mb-12 md:mb-0"/>
+
+        
+        <div className="col-span-12 lg:col-span-7 mb-12 md:mb-0 ml-">
           <VideoPlayer
             videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1749547995/cwmfzdeujetjhmgijlew.mp4"
             youtubeUrl="https://www.youtube.com"
@@ -175,7 +178,7 @@ export default function ProjectCarousel(): React.ReactElement {
         </div>
 
         {/* Carousel Column */}
-        <div className="col-span-12 hidden lg:block lg:col-span-5 relative">
+        <div className="col-span-12 hidden lg:block lg:col-span-3 relative">
           <Swiper
             // modules={[Autoplay]}
             direction="vertical"
@@ -184,7 +187,7 @@ export default function ProjectCarousel(): React.ReactElement {
             loop={true}
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="!w-full h-[100vh] !pt-0 !pb-0"
+            className="w-[10%] h-[57vh] !pt-0 !pb-0"
             onSwiper={setSwiperInstance}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             breakpoints={{
