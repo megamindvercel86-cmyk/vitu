@@ -155,9 +155,9 @@ const Footer: FC = () => {
             <Link href="/">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </Link>
-            <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
+            {/* <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Building Wholesome <br /> Living Spaces
-            </p>
+            </p> */}
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="#">Recognized by</FooterLink>

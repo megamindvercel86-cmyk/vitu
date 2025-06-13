@@ -94,9 +94,15 @@ const ProjectFooter: FC = () => {
         <div className="grid  grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col  items-center lg:items-start">
-            <FooterLink href="/">
-              <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
-            </FooterLink>
+            <div className="flex flex-col  lg:flex-row gap-5 lg:gap-2">
+              <FooterLink href="/">
+                <Image src={logo2} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
+              </FooterLink>
+              <div className="border-l border-[#EADFD1] h-16 mx-4 hidden lg:block" />
+              <FooterLink href="/">
+                <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[280px] h-auto" />
+              </FooterLink>
+            </div>
             <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
               Premium Plotted Development
             </p>
@@ -174,27 +180,6 @@ const ProjectFooter: FC = () => {
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
             </ul>
-            <div className="pt-16 w-[100%]  cursor-pointer relative">
-              {/* <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
-                  <input
-                  type="email"
-                  ref={email}
-                  className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
-                  placeholder="Sign Up for Our Newsletter"
-                  />
-                  <button type="submit">
-                  <BsArrowRight className="text-[#EADFD1CC] lg:text-xl lg2:2xl: absolute right-0 lg:bottom-4 lg2:bottom-5 transform translate-y-1/2" />
-                  </button>
-                </div> */}
-              <div className="flex justify-center md:justify-start lg:justify-end   pb-4 text-footerTextColor">
-                <h1 className="font-FreightNeoProNormal   text-[16px]">Porject By</h1>
-              </div>
-              <div className="flex justify-center md:justify-start  lg:justify-end">
-                <FooterLink href="/">
-                  <Image width={150} height={150} alt="logo" src={logo2} />
-                </FooterLink>
-              </div>
-            </div>
           </div>
         </div>
       </div>
