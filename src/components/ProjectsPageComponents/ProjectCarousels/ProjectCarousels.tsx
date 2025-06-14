@@ -163,7 +163,7 @@ export default function ProjectCarousel(): React.ReactElement {
   };
 
   return (
-    <section className="bg-gradient-to-b h-auto lg:h-[200vh] overflow-hidden">
+    <section className=" h-auto  overflow-hidden mb-16 md:mb-32">
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:mx-16 md:gap-4 md:mt-16">
         {/* Video Column */}
         <div className="col-span-12 lg:col-span-1 mb-12 md:mb-0"/>

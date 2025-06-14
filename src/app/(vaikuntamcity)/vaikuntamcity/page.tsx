@@ -8,7 +8,10 @@ import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuil
 import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
 import PlotWrapper from "@/components/ProjectsPageComponents/Plots/PlotsWrapper";
 import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
-
+import ProjectCarousel from "@/components/ProjectsPageComponents/ProjectCarousels/ProjectCarousels";
+import backgroundImage from "../../../../public/images/vilasamImages/herobanner.webp";
+import Image from "next/image";
+import ProjectHeader from "@/components/ProjectsPageComponents/ProjectsHeader/ProjectsHeader";
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
 
@@ -48,10 +51,17 @@ export async function generateMetadata() {
 export default function ProjectPage({}: ProjectPageProps) {
   return (
     <div className="bg-[#e7dfda] ">
+      <div className="h-[160vh] absolute">
+        <Image src={backgroundImage} alt="Background Layer"  className=" h-[160vh] object-cover" placeholder="blur" />
+      </div>
       <section className="relative">
         <ProjectHeroSection />
+      <section className="relative z-10">
+        <ProjectHeader />
       </section>
-      <section id="sustainability" className="!bg-[#f9f7f5]">
+      </section>
+      <ProjectCarousel />
+      <section id="sustainability" className="">
         <LocationAdvantage />
       </section>
       <section className="bg-[#FBFAF8] py-20 lg:py-36">

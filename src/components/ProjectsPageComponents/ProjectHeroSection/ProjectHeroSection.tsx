@@ -5,7 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CTAButtonIcon, { Mute, UnMute } from "@/components/Icons/Icons";
-import backgroundImage from "../../../../public/images/backgroundImages/projectPageBackground.png";
+import backgroundImage from "../../../../public/images/vilasamImages/herobanner.webp";
 import ProjectHeader from "../ProjectsHeader/ProjectsHeader";
 import ProjectCarousel from "../ProjectCarousels/ProjectCarousels";
 import { Link } from "react-scroll";
@@ -116,20 +116,13 @@ const ProjectHeroSection: React.FC = () => {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
   return (
-    <section id="hero" className=" w-full h-[220vh] md:h-[240vh] lg:h-[250vh]   xl:h-[215vh] overflow-hidden">
+    <section
+      id="hero"
+      className="relative w-full h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+    >
       {/* Parallax Layers */}
       <audio ref={audioRef} src="/Beach.mp3" loop />
 
-      <div className="layer absolute top-0 left-0 w-full h-full  " style={{ zIndex: 0 }} data-depth="0.50">
-        <Image src={backgroundImage} alt="Background Layer" fill className="object-contain" placeholder="blur" />
-      </div>
-      <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
-        <Image src={backgroundImage} alt="Midground Layer" fill className="object-cover" placeholder="blur" />
-      </div>
-      <div className="layer absolute top-0 left-0 w-full h-full " style={{ zIndex: 0 }} data-depth="0.70">
-        <Image src={backgroundImage} alt="Foreground Layer" fill className="object-cover" placeholder="blur" />
-      </div>
-      <div className="absolute h-[100vh]" ref={sectionRef}></div>
       {/* Hero Content */}
       <div className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
         {/* Main Title */}
@@ -137,7 +130,7 @@ const ProjectHeroSection: React.FC = () => {
           className={`
             font-freightNeoSemibold
             leading-none
-            text-[2.2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]
+            text-[2.2rem] sm:text-[2rem] md:text-[3.75rem] lg2:text-[6.25rem]  2xl:text-[9.375rem]
           `}
         >
           {ABOUT_HERO_CONFIG.titles.main}
@@ -217,16 +210,16 @@ const ProjectHeroSection: React.FC = () => {
           {/* ============================================================ */}
         </Link>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[100vh]  text-center px-6">
-        <ProjectHeader />
+      <div className="absolute inset-0 flex flex-col items-center xl:top-[65rem] lg2:top-[55rem] md:top-[45rem] top-[100vh] h-auto  text-center px-6">
+     
       </div>
-      <div
+      {/* <div
         
         className="absolute overflow-hidden  inset-0 flex flex-col items-center lg2:top-[70rem] xl:top-[80rem]  md:top-[70rem] top-[130vh] text-center  px-6"
       >
         <ProjectCarousel />
-      </div>
-      <div className="absolute top-1/3  lg2:right-10 righ w-full p-4 flex flex-row md:justify-end justify-center">
+      </div> */}
+      {/* <div className="absolute top-1/3  lg2:right-10 righ w-full p-4 flex flex-row md:justify-end justify-center">
         <div
           className={`${isFixed ? "fixed" : "absolute"} bottom-3 right-0 lg:bottom-2  md:right-20 w-full p-4 flex flex-row lg:justify-end ${
             isMuted ? "justify-center" : "justify-end"
@@ -279,7 +272,7 @@ const ProjectHeroSection: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
