@@ -18,7 +18,7 @@ interface Card {
   position?: "left" | "right";
   width?: string;
   height?: string;
-  fileUrl?:string;
+  fileUrl?: string;
 }
 
 const CARDS_DATA: Card[] = [
@@ -30,8 +30,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 4,
@@ -41,20 +41,19 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 2,
     url: "/images/exploreProjectImages/2.png",
     fileUrl: "/images/exploreProjectImages/2.png",
-    className:
-      "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
+    className: "absolute xl:right-[56px] md:right-[-150px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 3,
@@ -64,20 +63,41 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-     width: "md:w-[220px] lg2:w-[298px] lg:w-[250px] xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px] xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 1,
     url: "/images/exploreProjectImages/1.png",
     fileUrl: "/images/exploreProjectImages/1.png",
-    className:
-      "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px] lg2:w-[298px] lg:w-[250px]  xl:w-[247px] 2xl:w-[418px]",
-    height: "md:h-[270px] lg2:h-[385px] lg:h-[300px]   xl:h-[350px] 2xl:h-[505px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+  },
+  {
+    id: 22,
+    url: "/images/vilasamPageImages/image.webp",
+    fileUrl: "/images/vilasamPageImages/image.webp",
+    className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "right",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+  },
+  {
+    id: 23,
+    url: "/images/timelineImages/timelineImage8.png",
+    fileUrl: "/images/timelineImages/timelineImage8.png",
+    className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
+    startPosition: { x: -100 },
+    isViewMore: true,
+    position: "right",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
 ];
 
@@ -97,24 +117,18 @@ const ExploreProjects: React.FC = () => {
   return (
     <>
       {/* Desktop Version */}
-      <div className="md:block hidden relative z-0 overflow-hidden" >
+      <div className="md:block hidden relative z-0 overflow-hidden">
         <ExpandableCards cards={CARDS_DATA} />
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden block pb-5 " >
+      <div className="md:hidden block pb-5 ">
         {/* Mobile Title Section */}
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
-          <Typography
-            variant="custom"
-            className="text-xl lg:text-[] text-customBrown font-freightNeoSemibold"
-          >
+          <Typography variant="custom" className="text-xl lg:text-[] text-customBrown font-freightNeoSemibold">
             A New Home,
           </Typography>
-          <Typography
-            variant="custom"
-            className="text-2xl text-customBrown font-freightNeoSemibold"
-          >
+          <Typography variant="custom" className="text-2xl text-customBrown font-freightNeoSemibold">
             A New Way of Life
           </Typography>
         </div>

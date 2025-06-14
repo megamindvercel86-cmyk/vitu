@@ -28,5 +28,17 @@
     "title": "Game On",
     "description": "Shoot hoops on the basketball court, gather friends for a game at the multi-sport complex, or unwind in outdoor activity zones built for every skill level. Whether you're playing for fun or pushing your limits, these spaces add energy and joy to your day.",
     "fileUrl": "/images/exploreProjectImages/4.png"
+  },
+  {
+    "id": 22,
+    "title": "Stay Active",
+    "description": "Keep moving in a well-equipped gym designed to support your fitness journey. Whether you're looking to build strength, boost endurance, or simply stay flexible, the space is consciously designed to help you feel your best.",
+    "fileUrl": "/images/vilasamPageImages/image.webp"
+  },
+  {
+    "id": 23,
+    "title": "Game On",
+    "description": "Shoot hoops on the basketball court, gather friends for a game at the multi-sport complex, or unwind in outdoor activity zones built for every skill level. Whether you're playing for fun or pushing your limits, these spaces add energy and joy to your day.",
+    "fileUrl": "/images/timelineImages/timelineImage8.png"
   }
 ]

@@ -51,29 +51,25 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 const CardContent = ({ cardId }: { cardId: number }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
-  let project = exploreProjects.find((project) => project.id === currentCardId);
+
+
+
+  const project = exploreProjects.find((project) => project.id === currentCardId);
+
+  // Get index of the current project
+  const currentIndex = exploreProjects.findIndex((p) => p.id === currentCardId);
+
+  // Get next project using modular logic to loop back
+  const nextProject = exploreProjects[(currentIndex + 1) % exploreProjects.length];
 
   const handleFooterClick = () => {
-    const nextProject = exploreProjects.find((project) => {
-      if (project.id === 5) {
-        return 1 === currentCardId;
-      } else {
-        return project.id + 1 === currentCardId;
-      }
-    });
-
-    if (nextProject) {
-      setCurrentCardId(nextProject.id); // Update state to trigger re-render
-    }
+    setCurrentCardId(nextProject.id);
   };
 
-  const nextProject = exploreProjects.find((project) => {
-    if (project.id === 5) {
-      return 1 === currentCardId;
-    } else {
-      return project.id + 1 === currentCardId;
-    }
-  });
+  if (!project) {
+    console.error(`Project with id ${cardId} not found`);
+    return null;
+  }
 
   return (
     <>
@@ -107,6 +103,8 @@ const expandedPositions = {
     { top: "10%", right: "1%", left: "auto" },
     { top: "45%", left: "1%", right: "auto" },
     { top: "15%", left: "3%", right: "auto" },
+    { top: "10%", left: "31%", right: "auto" },
+    { top: "64%", left: "60%", right: "auto" },
   ],
   xl: [
     { top: "64%", left: "25%", right: "auto" },
@@ -114,13 +112,17 @@ const expandedPositions = {
     { top: "12%", right: "1%", left: "auto" },
     { top: "50%", left: "1%", right: "auto" },
     { top: "15%", left: "3%", right: "auto" },
+    { top: "10%", left: "31%", right: "auto" },
+    { top: "64%", left: "60%", right: "auto" },
   ],
   lg: [
     { top: "65%", left: "30%", right: "auto" },
     { top: "50%", right: "1%", left: "auto" },
-    { top: "0%", right: "1%", left: "auto" },
+    { top: "10%", right: "1%", left: "auto" },
     { top: "45%", left: "1%", right: "auto" },
-    { top: "5%", left: "1%", right: "auto" },
+    { top: "8%", left: "1%", right: "auto" },
+    { top: "10%", left: "28%", right: "auto" },
+    { top: "65%", left: "55%", right: "auto" },
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
@@ -128,6 +130,8 @@ const expandedPositions = {
     { top: "20%", right: "-3%", left: "auto" },
     { top: "55%", left: "-5%", right: "auto" },
     { top: "23%", left: "-3%", right: "auto" },
+    { top: "10%", left: "38%", right: "auto" },
+    { top: "43%", right: "-3%", left: "auto" },
   ],
 };
 
@@ -138,6 +142,8 @@ const notExpandedPositions = {
     { top: "20%", left: "45%", right: "auto" },
     { top: "36%", left: "47%", right: "auto" },
     { top: "25%", left: "36%", right: "auto" },
+    { top: "36%", left: "47%", right: "auto" },
+    { top: "25%", left: "36%", right: "auto" },
   ],
   xl: [
     { top: "31%", left: "35%", right: "auto" },
@@ -145,6 +151,8 @@ const notExpandedPositions = {
     { top: "2%", left: "43%", right: "auto" },
     { top: "26%", left: "47%", right: "auto" },
     { top: "7%", left: "31%", right: "auto" },
+    { top: "10%", left: "49%", right: "auto" },
+    { top: "38%", left: "43%", right: "auto" },
   ],
   lg: [
     { top: "31%", left: "33%", right: "auto" },
@@ -152,6 +160,8 @@ const notExpandedPositions = {
     { top: "4%", left: "41%", right: "auto" },
     { top: "26%", left: "44%", right: "auto" },
     { top: "9%", left: "29%", right: "auto" },
+    { top: "35%", left: "48%", right: "auto" },
+    { top: "9%", left: "50%", right: "auto" },
   ],
   md: [
     { top: "31%", left: "30%", right: "auto" },
@@ -159,6 +169,8 @@ const notExpandedPositions = {
     { top: "6%", left: "38%", right: "auto" },
     { top: "26%", left: "41%", right: "auto" },
     { top: "11%", left: "27%", right: "auto" },
+    { top: "3%", left: "50%", right: "auto" },
+    { top: "18%", left: "20%", right: "auto" },
   ],
 };
 
@@ -210,6 +222,8 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  
+
   const handleMouseEnter = () => {
     // Only show cursor if not expanded
     if (!isExpanded) {
@@ -224,7 +238,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   };
 
   const handleExpand = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded(true);
 
     // Smooth scroll to center when expanded
     if (!isExpanded) {
@@ -253,14 +267,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
       <div
         ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[150vh] md:h-[150vh]" : "h-[100vh]"}`}
+        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[160vh] md:h-[150vh]" : "h-[100vh]"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleExpand}
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem] lg2:top-[22rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -292,7 +306,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                
               >
                 Explore the Project Now
               </motion.button>
