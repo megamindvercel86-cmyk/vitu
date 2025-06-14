@@ -21,22 +21,23 @@ export default function FounderMessage(): React.ReactElement {
          Trusted by Families Like Yours 
         </Typography>
 
-      <div className="mx-8 md:mx-16 xl:max-w-7xl aspect-video rounded-2xl overflow-hidden relative">
+        <div className="w-full px-8 md:px-16 xl:max-w-7xl aspect-video rounded-3xl overflow-hidden relative">
+
         {!showVideo ? (
           <div
-            className="w-full h-full cursor-pointer"
+            className="w-full h-full cursor-pointer rounded-3xl"
             onClick={() => setShowVideo(true)}
           >
             <img
               src={customThumbnail}
               alt="Video Thumbnail"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
             />
           
           </div>
         ) : (
           <iframe
-            className="w-full h-full"
+       className="w-full h-full block rounded-2xl"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
             title="YouTube video"
             frameBorder="0"
