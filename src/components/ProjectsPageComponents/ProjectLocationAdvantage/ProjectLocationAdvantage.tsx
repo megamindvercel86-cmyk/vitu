@@ -204,8 +204,6 @@ const LocationAdvantage = () => {
     return () => clearProgressInterval();
   }, [activeIndex]);
 
-
-
   const data: LocationAdvantageProps[] = [
     {
       title: "Location Advantage",
@@ -434,19 +432,9 @@ const LocationAdvantage = () => {
         modules={[Autoplay]}
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
-
-        onSwiper={(swiper) => {
-          setSwiperInstance(swiper);
-
-          // Optional: attach hover listeners
-          const el = swiper.el;
-          el.addEventListener("mouseenter", () => swiper.autoplay.stop());
-          el.addEventListener("mouseleave", () => swiper.autoplay.start());
-        }}
-
-
+        onSwiper={setSwiperInstance}
         loop={true}
-         autoplay={{
+        autoplay={{
           delay: SLIDE_DURATION,
           disableOnInteraction: false,
         }}
@@ -454,7 +442,6 @@ const LocationAdvantage = () => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-       
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">

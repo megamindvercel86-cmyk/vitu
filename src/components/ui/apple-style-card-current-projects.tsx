@@ -94,7 +94,7 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
                   { icon: <Chromotherapy />, label: "Chromotherapy Park" },
                   { icon: <Tree />, label: "Tree Cover" },
                   { icon: <Groundwater />, label: "Groundwater Recharge Pits" },
-                  { icon: <RainWater />, label: "Rainwater Harvesting Tank" },
+                  // { icon: <RainWater />, label: "Rainwater Harvesting Tank" },
                   { icon: <Solar />, label: "Solar-powered Streetlights" },
                 ].map((item, index) => (
                   <motion.button
@@ -115,7 +115,7 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
               </div>
             </div>
 
-            <div className="text-start mt-10">
+            <div className="text-start mt-2">
               <Image src={data.mapImage ?? "/images/placeholder.png"} alt="" width={1000} height={1000} />
             </div>
           </div>
