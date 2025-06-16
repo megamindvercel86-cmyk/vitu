@@ -11,7 +11,8 @@ import FHDLAPTOP from "../../../../public/svgs/LineAnimations/fhdLaptop";
 import HDPLUSLAPTOP from "../../../../public/svgs/LineAnimations/hdPlusLaptop";
 import FULLHDMOBILE from "../../../../public/svgs/LineAnimations/fullHdMobiles";
 import SvgWave1024 from "../../../../public/svgs/LineAnimations/SvgWave1024";
-import { scroller } from "react-scroll";
+import Link from "next/link";
+import { scroller } from 'react-scroll';
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -78,7 +79,7 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   return (
     <div
       className={`${
-        isFixed ? "fixed lg:bottom-40  bottom-40  md:left-20 left-4" : "absolute md:bottom-56 md:left-36  left-0 bottom-48 "
+        isFixed ? "fixed lg:bottom-32  bottom-40  md:left-20 left-4" : "absolute md:bottom-32 md:left-36  left-0 bottom-48 "
       } pointer-events-none z-[1]  w-full `}
     >
       <span className="lg2:text-[80px] lg:text-5xl text-[32px] text-white font-CandideCondensedMedium ">
@@ -191,7 +192,7 @@ function ScrollController({ progress, onDrag, isFixed }: { progress: number; isF
   }, [progress]);
 
   return (
-    <div className={`${isFixed ? "fixed" : "absolute"} bottom-48 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[30%] lg2:max-w-[550px]`}>
+    <div className={`${isFixed ? "fixed" : "absolute"} bottom-36 lg:bottom-16 lg2:bottom-36 right-5 z[1] w-[90%] lg:w-[40%] lg2:max-w-[550px]`}>
       <div ref={trackRef} className=" h-12 cursor-pointer rounded">
         <svg viewBox="0 0 430 45" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[100%] absolute top-1/2 -translate-y-1/2 ">
           <path
@@ -276,7 +277,6 @@ export default function Gallery() {
     else if (windowWidth >= 1024) return `45%`;
     else return `38%`;
   };
-
   // When progress changes (from either scroll or draggable), update the year/message
   useEffect(() => {
     const imageIndex = Math.min(Math.floor(progress * images.length), images.length - 1);
@@ -335,7 +335,7 @@ export default function Gallery() {
     };
   }, []);
 
-  // Set SVG path based on window width
+  // Set the SVG path based on window width
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSvg(getSvgPath(window.innerWidth, window.innerHeight));
@@ -351,29 +351,19 @@ export default function Gallery() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   const handleSkip = () => {
-    if (skipWalkthrough) {
-      scroller.scrollTo("hero", {
-        duration: 1800,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
-    } else {
-      scroller.scrollTo("video", {
-        duration: 1800,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
-    }
-    setSkipWalkthrough(!skipWalkthrough);
+    scroller.scrollTo('video', {
+      duration: 1800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    });
   };
-
+  
   return (
     <div className="relative overflow-hidden">
       <div ref={containerRef} className="h-[100vh]  w-full bg-black/5 relative">
         <div
-          className="absolute z-50]"
+          className="absolute z-50"
           ref={svgPathRef}
           style={{
             top: getTopValue(),
@@ -389,7 +379,7 @@ export default function Gallery() {
         <div ref={galleryRef} className="flex absolute top-1/2 -translate-y-1/2 will-change-transform">
           {images.map((image, index) => (
             <div key={index} className="relative flex-none w-[100vw]  h-[100vh] overflow-hidden shadow-xl">
-              <div className="absolute inset-0 gallery-image z-[10]">
+              <div className="absolute inset-0 gallery-image z-10">
                 <div className="h-[100vh]">
                   <Image
                     width={1594}
@@ -408,7 +398,7 @@ export default function Gallery() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/70 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t h-72 from-black/100 to-transparent">
                   <div className="h-2 w-2 bg-primary rounded-full absolute -top-[150px] left-1/2 transform -translate-x-1/2" />
                 </div>
               </div>
@@ -416,21 +406,21 @@ export default function Gallery() {
           ))}
         </div>
       </div>
+      {/* <div
+        className={`${
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-16 md:left-20 left-0" : "absolute lg2:bottom-28 md:left-36 bottom-16 left-0"
+        } cursor-pointer z[1] text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
+      >
+        <Link href={"/explore"}>
+          <button className="border w-full rounded-full px-6 py-2">Explore More</button>
+        </Link>
+      </div> */}
       <div
         className={`${
-          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-16 md:left-20 left-0" : "absolute lg2:bottom-28 bottom-16 left-0"
-        } cursor-pointer z-[1] lg2:text-[22px] font-bold md:w-auto w-full px-4 font-FreightNeoProBold flext`}
+          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-5 " : "absolute lg2:bottom-28  bottom-5 mx-auto"
+        }  z[1] md:text-[22px] font-bold text-center  font-FreightNeoProBold flex w-full justify-center`}
       >
-        {/* <Link href="/explore">
-          <button aria-label="Explore More" className="border text-white w-full rounded-full px-6 py-2">Explore More</button>
-        </Link> */}
-      </div>
-      <div
-        className={`${
-          isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-5 " : "absolute lg2:bottom-28 bottom-5 mx-auto"
-        } z-[1] lg2:text-[22px] font-bold text-center font-FreightNeoProBold flex w-full justify-center`}
-      >
-        <button aria-label="Skip Legacy Walkthrough" onClick={handleSkip} className="underline text-white cursor-pointer">
+        <button onClick={handleSkip} className="underline cursor-pointer">
           Skip Legacy Walkthrough
         </button>
       </div>
