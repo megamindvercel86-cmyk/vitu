@@ -362,14 +362,7 @@ const LocationAdvantage = () => {
         modules={[Autoplay]}
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
-        onSwiper={(swiper) => {
-          setSwiperInstance(swiper);
-      
-          // Optional: attach hover listeners
-          const el = swiper.el;
-          el.addEventListener('mouseenter', () => swiper.autoplay.stop());
-          el.addEventListener('mouseleave', () => swiper.autoplay.start());
-        }}
+        onSwiper={setSwiperInstance}
         loop={true}
         speed={1000}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Use realIndex for looped Swiper

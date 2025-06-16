@@ -304,7 +304,7 @@ const CurrentProject: React.FC = () => {
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2 lg2:py-32">
+      <article className="w-full lg:w-1/2 ">
         <header className="md:pb-10 pb-4">
           <h1
             id="project-title"
@@ -334,7 +334,7 @@ const CurrentProject: React.FC = () => {
 
       {/* Right Column - Interactive Project Map (Desktop) */}
       <figure
-        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[120vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
+        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[100vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
         aria-labelledby="project-title"
         onMouseLeave={handleMouseLeave}
       >

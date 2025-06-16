@@ -11,7 +11,7 @@ const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFixed, setIsFixed] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false); // 🆕 New state
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const toggleMute = () => {
     if (videoRef.current) {

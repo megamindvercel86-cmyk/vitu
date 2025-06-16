@@ -107,13 +107,13 @@ const expandedPositions = {
     { top: "64%", left: "60%", right: "auto" },
   ],
   xl: [
-    { top: "64%", left: "25%", right: "auto" },
+    { top: "55%", left: "25%", right: "auto" },
     { top: "50%", right: "1%", left: "auto" },
-    { top: "12%", right: "1%", left: "auto" },
+    { top: "0%", right: "1%", left: "auto" },
     { top: "50%", left: "1%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "10%", left: "31%", right: "auto" },
-    { top: "64%", left: "60%", right: "auto" },
+    { top: "5%", left: "3%", right: "auto" },
+    { top: "0%", left: "41%", right: "auto" },
+    { top: "58%", left: "60%", right: "auto" },
   ],
   lg: [
     { top: "65%", left: "30%", right: "auto" },
@@ -245,7 +245,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       setTimeout(() => {
         const element = containerRef.current;
         if (element) {
-          const yOffset = 300;
+          const yOffset = 0;
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
           gsap.to(window, {
@@ -265,9 +265,10 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
     <div className="h-auto flex items-center justify-center">
       {/* Only render cursor when not expanded */}
       {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
+    xx
       <div
         ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[160vh] md:h-[150vh]" : "h-[100vh]"}`}
+        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[160vh] md:h-[150vh]" : "h-[90vh]"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleExpand}

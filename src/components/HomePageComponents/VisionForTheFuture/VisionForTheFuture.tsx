@@ -136,7 +136,7 @@ export default function VisionForTheFuture() {
 
   return (
     <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
-      <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125rem] xl:mx-[13.125rem]">
+      <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125 xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
         <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
           <header className="w-[16.0625rem] sm:w-[16.0625rem] md:w-[26.5rem] 2xl:w-[39rem] mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
@@ -155,11 +155,13 @@ export default function VisionForTheFuture() {
           </header>
         </motion.span>
         <div className="mt-8 flex items-center justify-between mx-[1.8125rem] sm:mx-[1.8125rem] md:mx-[4.125rem] lg:mx-[5.5rem] xl:mx-0">
-          <Link href="/about" aria-label="See What Next"               className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
->
-            
-              See What&apos;s Next
-              <CTAButtonIcon fill="#4F3737" direction="right" />
+          <Link
+            href="/about"
+            aria-label="See What Next"
+            className="hidden sm:hidden md:flex items-center justify-center gap-[0.6875rem] pt-1 pr-1 pl-[1.125rem] py-[0.1875rem] font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] 2xl:text-[1.5rem]"
+          >
+            See What&apos;s Next
+            <CTAButtonIcon fill="#4F3737" direction="right" />
           </Link>
           <Typography className="hidden sm:hidden md:block font-FreightNeoProNormal text-base text-[#4F373799] lg:text-4xl">
             {CAROUSEL_DATA[currentIndex].residentialType}
@@ -216,7 +218,7 @@ export default function VisionForTheFuture() {
           <div className="flex flex-col w-full mt-6 items-center sm:flex-col sm:items-center md:flex-row md:justify-end lg:w-1/2 lg:mt-0">
             <div className="flex justify-center   pt-7 md:pt-0 lg:pt-0 w-full lg:w-auto   ">
               <Link
-              aria-label="See What Next"
+                aria-label="See What Next"
                 href="/about"
                 className="flex w-[10.3125rem] mb-[2.8125rem] items-center justify-center gap-[0.6875rem]  mt-[3px] p-[0.5rem] pr-1 font-freightNeoMedium text-base text-customBrown rounded-full bg-[#AE856633] md:hidden sm:flex"
               >
