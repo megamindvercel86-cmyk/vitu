@@ -21,6 +21,10 @@ interface Location {
   description: Stat[];
 }
 
+interface CurrentProjectProps {
+  homePage?: boolean;
+}
+
 // ============= Constants =============
 const PROJECT_DATA = {
   title: "Our Commitment to Tomorrow",
@@ -224,7 +228,7 @@ const Counter: React.FC<{ value: string }> = ({ value }) => {
  *
  * @component
  */
-const CurrentProject: React.FC = () => {
+const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => {
   const [selectedLocation, setSelectedLocation] = useState<Location>({
     id: 0,
     name: "Project Overview",
@@ -305,30 +309,56 @@ const CurrentProject: React.FC = () => {
     >
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2 ">
-        <header className="md:pb-10 pb-4">
-          <h1
-            id="project-title"
-            className="w-[224px] hidden lg:block  md:w-full   text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-          >
-            Our Commitment <br /> to Tomorrow
-          </h1>
-          <h1
-            id="project-title"
-            className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-          >
-            Our Commitment to Tomorrow
-          </h1>
-        </header>
+        <header className="q`pb-4">
+          {homePage ? (
+            <h1
+              id="project-title"
+              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+            >
+              Vaikuntam City
+            </h1>
+          ) : (
+            <h1
+              id="project-title"
+              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+            >
+              Our Commitment <br /> to Tomorrow
+            </h1>
+          )}
 
+          {homePage ? (
+            <h1
+              id="project-title"
+              className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+            >
+              Vaikuntam City
+            </h1>
+          ) : (
+            <h1
+              id="project-title"
+              className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+            >
+              Our Commitment to Tomorrow
+            </h1>
+          )}
+        </header>{" "}
         <div className="flex items-center">
-          <Typography
-            variant="custom"
-            className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
-          >
-            {PROJECT_DATA.description.suffix}
-          </Typography>
+          {homePage ? (
+            <Typography
+              variant="custom"
+              className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+            >
+              Just 5 minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.
+            </Typography>
+          ) : (
+            <Typography
+              variant="custom"
+              className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+            >
+              {PROJECT_DATA.description.suffix}
+            </Typography>
+          )}
         </div>
-
         {renderStats()}
       </article>
 

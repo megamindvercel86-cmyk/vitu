@@ -143,7 +143,7 @@ export default function HomePage() {
       {/* Future Vision */}
       <VisionForTheFuture />
       <ExploreProjectsWrapper />
-      <CurrentProject />
+      <CurrentProject homePage={true}/>
 
       {/* Project Explorer (Lazy Loaded) */}
       {/* <VilasamExploreProjects homePage={true} /> */}
