@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IconX } from "@tabler/icons-react";
 import CTAButtonIcon from "@/components/Icons/Icons";
+import CircularPlayPauseButton from "@/components/Common/CircularPlayPauseButton/CircularPlayPauseButton";
 
 interface LocationAdvantageProps {
   title: string;
@@ -24,7 +25,7 @@ interface LocationAdvantageProps {
   paragraphClassName?: string;
   fill?: string;
   buttonTextColor?: string;
-  mobileImage:string
+  mobileImage: string;
   buttonFillBg?: string;
   amenitiesDetails?: {
     title: string;
@@ -72,10 +73,7 @@ const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProp
         <button
           key={index}
           onClick={() => onDotClick?.(index)}
-          className={cn(
-            "transition-all duration-300",
-            active === index ? `w-6 bg-white rounded-xl h-2` : "w-2 h-2 bg-gray-300 rounded-full"
-          )}
+          className={cn("transition-all duration-300", active === index ? `w-6 bg-white rounded-xl h-2` : "w-2 h-2 bg-gray-300 rounded-full")}
           aria-label={`Go to slide ${index + 1}`}
         />
       ))}
@@ -116,7 +114,9 @@ const CardContent = ({
       <ul className="mt-6 space-y-6" aria-label="List of key points">
         {description.bottomPoints.map((point, index) => (
           <li key={index} className="flex items-start">
-            <span className="text-[#656666] mr-2 font-FreightNeoProNormal text-start text-[18px]" aria-hidden="true">•</span>
+            <span className="text-[#656666] mr-2 font-FreightNeoProNormal text-start text-[18px]" aria-hidden="true">
+              •
+            </span>
             <p className="text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{point}</p>
           </li>
         ))}
@@ -130,18 +130,81 @@ const LocationAdvantage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSlidePaused, setIsSlidePaused] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const SLIDE_DURATION = 3000; // Duration for each slide in ms
+  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clear progress interval to prevent memory leaks
+  const clearProgressInterval = () => {
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+  };
+
+  // Start the progress animation for the current slide
+  const startProgress = () => {
+    clearProgressInterval(); // Clear any existing interval
+    setProgress(0); // Reset progress
+
+    if (!isSlidePaused && !isOpen) {
+      // Start progress animation
+      progressIntervalRef.current = setInterval(() => {
+        setProgress((prev) => {
+          const newProgress = prev + 100 / (SLIDE_DURATION / 100);
+          if (newProgress >= 100) {
+            clearInterval(progressIntervalRef.current!);
+            return 100;
+          }
+          return newProgress;
+        });
+      }, 100);
+    }
+  };
+
+  // Handle play/pause toggle
+  const handleTogglePlayPause = () => {
+    setIsSlidePaused((prev) => {
+      const newPausedState = !prev;
+      if (swiperInstance) {
+        if (newPausedState) {
+          swiperInstance.autoplay.stop();
+          clearProgressInterval();
+        } else {
+          swiperInstance.autoplay.start();
+          startProgress();
+        }
+      }
+      return newPausedState;
+    });
+  };
 
   useEffect(() => {
-    if (swiperInstance && swiperInstance.autoplay) {
-      if (isOpen) {
-        swiperInstance.autoplay.stop();
-      } else {
+    if (swiperInstance) {
+      if (!isSlidePaused && !isOpen) {
         swiperInstance.autoplay.start();
+        startProgress();
+      } else {
+        swiperInstance.autoplay.stop();
+        clearProgressInterval();
       }
     }
-  }, [isOpen, swiperInstance]);
+
+    return () => clearProgressInterval();
+  }, [swiperInstance, isSlidePaused, isOpen]);
+
+  useEffect(() => {
+    // Reset progress when slide changes
+    if (!isSlidePaused && !isOpen) {
+      startProgress();
+    }
+    return () => clearProgressInterval();
+  }, [activeIndex]);
+
+
 
   const data: LocationAdvantageProps[] = [
     {
@@ -177,7 +240,8 @@ const LocationAdvantage = () => {
           middleBottomDescription:
             "At VITU Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
           bottomTitle: "The Core Principles of Coastal Design",
-          bottomDescription: "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
+          bottomDescription:
+            "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
         },
       ],
     },
@@ -333,8 +397,12 @@ const LocationAdvantage = () => {
 
   const handleDotClick = (index: number) => {
     if (swiperInstance) {
-      swiperInstance.slideToLoop(index); // Use slideToLoop for looped Swiper
-      setActiveIndex(index); // Update activeIndex manually
+      swiperInstance.slideToLoop(index);
+      setActiveIndex(index);
+      if (!isSlidePaused) {
+        swiperInstance.autoplay.start();
+        startProgress();
+      }
     }
   };
 
@@ -353,6 +421,10 @@ const LocationAdvantage = () => {
     setCurrentIndex(0);
     if (swiperInstance) {
       swiperInstance.slideToLoop(nextIndex);
+      if (!isSlidePaused) {
+        swiperInstance.autoplay.start();
+        startProgress();
+      }
     }
   };
 
@@ -362,16 +434,33 @@ const LocationAdvantage = () => {
         modules={[Autoplay]}
         slidesPerView={1}
         className={styles.locationAdvantageSwiper}
-        onSwiper={setSwiperInstance}
+
+        onSwiper={(swiper) => {
+          setSwiperInstance(swiper);
+
+          // Optional: attach hover listeners
+          const el = swiper.el;
+          el.addEventListener("mouseenter", () => swiper.autoplay.stop());
+          el.addEventListener("mouseleave", () => swiper.autoplay.start());
+        }}
+
+
         loop={true}
         speed={1000}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Use realIndex for looped Swiper
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+         autoplay={{
+          delay: SLIDE_DURATION,
+          disableOnInteraction: false,
+        }}
+        onSlideChange={(swiper) => {
+          const realIndex = swiper.realIndex;
+          setActiveIndex(realIndex);
+        }}
+       
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} className="!h-[100vh] !rounded-none">
             <div className="relative w-full h-screen">
-            <Image
+              <Image
                 src={item.image}
                 alt={item.description}
                 fill
@@ -387,7 +476,7 @@ const LocationAdvantage = () => {
                 className="absolute md:hidden object-cover w-full h-full md:object-center"
                 priority={index === 0}
               />
-               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
               <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1
                   className={`text-lg md:text-lg lg2:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-freightNeoMedium`}
@@ -478,23 +567,16 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-72 z-20">
+        <CircularPlayPauseButton isPlay={!isSlidePaused} onToggle={handleTogglePlayPause} progress={progress} strokeColor="#ffffff" />
+      </div>
       <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="fixed inset-0 h-screen z-50 overflow-auto"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            data-lenis-prevent
-          >
-            <motion.div
-              variants={backdropVariants}
-              className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
-              onClick={closeCard}
-            />
+          <motion.div className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+            <motion.div variants={backdropVariants} className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
             <motion.div
               variants={cardVariants}
               ref={containerRef}
@@ -513,12 +595,10 @@ const LocationAdvantage = () => {
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
               <motion.div variants={contentVariants} className="p-4 lg:px-20 mt-10">
-                <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-FreightNeoProNormal text-[#8E8E93] border-t-gray-200">
-                  NextUp
-                </h1>
+                <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-FreightNeoProNormal text-[#8E8E93] border-t-gray-200">NextUp</h1>
                 <div className="flex justify-between">
                   <button
-                  aria-label="Next Card"
+                    aria-label="Next Card"
                     onClick={goToNextCard}
                     className="text-[#1D1D1F] flex font-FreightNeoProBold justify-between items-center cursor-pointer font-bold text-[18px]"
                   >

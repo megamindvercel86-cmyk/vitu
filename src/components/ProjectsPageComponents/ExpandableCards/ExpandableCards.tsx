@@ -10,6 +10,7 @@ import { ArrowRightIcon } from "@/components/Icons/Icons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -192,6 +193,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [cursorText, setCursorText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentBreakpoint, setCurrentBreakpoint] = useState(getBreakpoint());
+  const [modalIsopen,setModalIsOpen]=useState(false)
 
   // Add scroll listener to detect when user scrolls away
   useEffect(() => {
@@ -262,6 +264,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   };
 
   return (
+    <>
     <div className="h-auto flex items-center justify-center">
       {/* Only render cursor when not expanded */}
       {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
@@ -301,16 +304,14 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             >
               A New Way of Life
             </motion.h2>
-            <Link href="/vaikuntamcity">
-              <motion.button
-                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
+              <motion.button onClick={()=>setModalIsOpen(true)}
+                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1    border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                Explore the Project Now
+                Download E-Brochure
               </motion.button>
-            </Link>
           </div>
         </motion.div>
         {/* Images */}
@@ -323,7 +324,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             return (
               <motion.div
                 key={card.id}
-                className={`${card.width} ${card.height} absolute overflow-hidden`}
+                className={`${card.width} ${card.height} absolute  overflow-hidden`}
                 initial={false}
                 animate={{
                   // scale: isExpanded ? 1 : 1 - index * 0.05,
@@ -354,7 +355,10 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           })}
         </AnimatePresence>
       </div>
+
     </div>
+        <ContactFormModal  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
+</>
   );
 };
 

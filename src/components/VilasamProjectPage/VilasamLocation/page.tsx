@@ -1,16 +1,18 @@
 "use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
-import styles from "../../ProjectsPageComponents/ProjectLocationAdvantage/LocationAdvantage.module.css"; // Verify this file exists
-import { cn } from "@/lib/utils"; // Verify this utility exists
+import styles from "../../ProjectsPageComponents/ProjectLocationAdvantage/LocationAdvantage.module.css";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons"; // Verify this component exists
+import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons";
 import "./vilasamLocation.css";
+import CircularPlayPauseButton from "@/components/Common/CircularPlayPauseButton/CircularPlayPauseButton";
 
 interface LocationAdvantageProps {
   title: string;
@@ -101,18 +103,18 @@ const CardContent = ({
   };
   slideImage: string;
 }) => (
-  <div className="flex flex-col roun">
-    <div className="relative w-full h-64 lg:h-[70vh] lg2:h-[80vh] md:rounded-t-[32]  overflow-hidden">
+  <div className="flex flex-col">
+    <div className="relative w-full h-64 lg:h-[70vh] lg2:h-[80vh] md:rounded-t-[32px] overflow-hidden">
       <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
     </div>
     <div className="flex flex-col md:gap-4 gap-2 py-12 px-6 lg:px-20">
-      <h2 className=" leading-[1.3] max-w-3xl font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold ">{description.title}</h2>
-      <h3 className="text-[#040707]/60 font-sourceSans3  md:!text-xl">{description.subtitle}</h3>
-      <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.description}</p>
+      <h2 className="leading-[1.3] max-w-3xl font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold">{description.title}</h2>
+      <h3 className="text-[#040707]/60 font-sourceSans3 md:!text-xl">{description.subtitle}</h3>
+      <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.description}</p>
       <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleTitle}</h4>
-      <p className=" text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleDescription}</p>
+      <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleDescription}</p>
       <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.bottomTitle}</h4>
-      <ul className="space-y-4 " aria-label="List of key points">
+      <ul className="space-y-4" aria-label="List of key points">
         {description?.bottomPoints?.map((point, index) => (
           <li key={index} className="flex items-start">
             <span className="text-[#656666] mr-2 font-geistSerif text-start text-[18px]" aria-hidden="true">
@@ -122,7 +124,7 @@ const CardContent = ({
           </li>
         ))}
       </ul>
-      <p className="text-[#040707]/60 font-sourceSans3  !text-xl">{description.middleBottomDescription}</p>
+      <p className="text-[#040707]/60 font-sourceSans3 !text-xl">{description.middleBottomDescription}</p>
     </div>
   </div>
 );
@@ -132,17 +134,79 @@ const LocationAdvantage = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSlidePaused, setIsSlidePaused] = useState(false);
+  const [progress, setProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const SLIDE_DURATION = 3000; // Duration for each slide in ms
+
+  // Clear progress interval to prevent memory leaks
+  const clearProgressInterval = () => {
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+  };
+
+  // Start the progress animation for the current slide
+  const startProgress = () => {
+    clearProgressInterval(); // Clear any existing interval
+    setProgress(0); // Reset progress
+
+    if (!isSlidePaused && !isOpen) {
+      // Start progress animation
+      progressIntervalRef.current = setInterval(() => {
+        setProgress((prev) => {
+          const newProgress = prev + (100 / (SLIDE_DURATION / 100));
+          if (newProgress >= 100) {
+            clearInterval(progressIntervalRef.current!);
+            return 100;
+          }
+          return newProgress;
+        });
+      }, 100);
+    }
+  };
+
+  // Handle play/pause toggle
+  const handleTogglePlayPause = () => {
+    setIsSlidePaused((prev) => {
+      const newPausedState = !prev;
+      if (swiperInstance) {
+        if (newPausedState) {
+          swiperInstance.autoplay.stop();
+          clearProgressInterval();
+        } else {
+          swiperInstance.autoplay.start();
+          startProgress();
+        }
+      }
+      return newPausedState;
+    });
+  };
 
   useEffect(() => {
-    if (swiperInstance && swiperInstance.autoplay) {
-      if (isOpen) {
-        swiperInstance.autoplay.stop();
-      } else {
+    if (swiperInstance) {
+      if (!isSlidePaused && !isOpen) {
         swiperInstance.autoplay.start();
+        startProgress();
+      } else {
+        swiperInstance.autoplay.stop();
+        clearProgressInterval();
       }
     }
-  }, [isOpen, swiperInstance]);
+
+    return () => clearProgressInterval();
+  }, [swiperInstance, isSlidePaused, isOpen]);
+
+  useEffect(() => {
+    // Reset progress when slide changes
+    if (!isSlidePaused && !isOpen) {
+      startProgress();
+    }
+    return () => clearProgressInterval();
+  }, [activeIndex]);
 
   const data: LocationAdvantageProps[] = [
     {
@@ -191,13 +255,13 @@ const LocationAdvantage = () => {
       text: "Enjoy the soothing sounds of waves & the convenience of a beachside retreat just minutes away from the beach.",
       buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/1.webp",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage1.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#A4C9D333]",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#AE856666]",
       fill: "#9CC3CB",
-      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage1.webp",
       buttonFillBg: "bg-[#9CC3CB]",
       amenitiesDetails: [
         {
@@ -242,10 +306,10 @@ const LocationAdvantage = () => {
       text: "Smartly planned, future-ready infrastructure that makes everyday living seamless.",
       buttonText: "More about the Oxygen Park",
       image: "/images/vilasamPageImages/locationAdvantageImages/4.webp",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage4.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#A4C9D366]",
-      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage4.webp",
       buttonTextColor: "text-white",
       carousalClassName: "bg-[#AE856666]",
       fill: "#469060",
@@ -265,7 +329,12 @@ const LocationAdvantage = () => {
 
   const handleDotClick = (index: number) => {
     if (swiperInstance) {
-      swiperInstance.slideTo(index);
+      swiperInstance.slideToLoop(index);
+      setActiveIndex(index);
+      if (!isSlidePaused) {
+        swiperInstance.autoplay.start();
+        startProgress();
+      }
     }
   };
 
@@ -283,7 +352,11 @@ const LocationAdvantage = () => {
     setActiveIndex(nextIndex);
     setCurrentIndex(0);
     if (swiperInstance) {
-      swiperInstance.slideToLoop(nextIndex); // Use slideToLoop for looped Swiper
+      swiperInstance.slideToLoop(nextIndex);
+      if (!isSlidePaused) {
+        swiperInstance.autoplay.start();
+        startProgress();
+      }
     }
   };
 
@@ -296,11 +369,14 @@ const LocationAdvantage = () => {
         onSwiper={setSwiperInstance}
         loop={true}
         speed={1000}
+        autoplay={{
+          delay: SLIDE_DURATION,
+          disableOnInteraction: false,
+        }}
         onSlideChange={(swiper) => {
           const realIndex = swiper.realIndex;
           setActiveIndex(realIndex);
         }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         {data.map((item, index) => (
           <SwiperSlide key={index} style={{ width: "100%", height: "100vh" }} className="!h-[100vh] !w-[100%] !rounded-none">
@@ -327,22 +403,22 @@ const LocationAdvantage = () => {
                   {item.title}
                 </h1>
                 <h1
-                  className={`text-2xl lg:text-5xl lg2:text-6xl  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
                 >
                   {item.description}
                 </h1>
                 <p
-                  className={`mt-4 inline-block  ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-sourceSans3 font-[400]`}
+                  className={`mt-4 inline-block ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-sourceSans3 font-[400]`}
                 >
                   {item.text}
                 </p>
-                <div className=" group cursor-pointer bottom-0 md:block relative hidden">
+                <div className="group cursor-pointer bottom-0 md:block relative hidden">
                   <button
                     type="button"
                     aria-label="More about the Project"
                     onClick={() => openCard(0)}
                     className="
-                       relative group
+                      relative group
                       mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
@@ -366,7 +442,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More about the Project</span>
+                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0`}>More about the Project</span>
                   </button>
                 </div>
               </div>
@@ -376,31 +452,31 @@ const LocationAdvantage = () => {
                   aria-label="More about the Project"
                   onClick={() => openCard(0)}
                   className="
-                       relative group
-                      mt-4
-                      flex items-center justify-center
-                      gap-[0.6875rem]
-                      rounded-full 
-                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                      text-base font-freightNeoMedium text-white
-                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                      overflow-hidden z-100
-                    "
+                    relative group
+                    mt-4
+                    flex items-center justify-center
+                    gap-[0.6875rem]
+                    rounded-full
+                    pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
+                    text-base font-freightNeoMedium text-white
+                    2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                    overflow-hidden z-100
+                  "
                 >
                   <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>
                   <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
                     <div
                       className={`
-                          absolute w-0 h-0 ${item.buttonFillBg} rounded-full
-                          group-hover:w-[40rem] group-hover:h-[30rem]
-                          transition-all duration-500 ease-out
-                        `}
+                        absolute w-0 h-0 ${item.buttonFillBg} rounded-full
+                        group-hover:w-[40rem] group-hover:h-[30rem]
+                        transition-all duration-500 ease-out
+                      `}
                     ></div>
                     <div className="relative z-20">
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0 `}>More about the Project</span>
+                  <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0`}>More about the Project</span>
                 </button>
               </div>
             </div>
@@ -410,7 +486,15 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-      <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-72 z-20">
+        <CircularPlayPauseButton
+          isPlay={!isSlidePaused}
+          onToggle={handleTogglePlayPause}
+          progress={progress}
+          strokeColor="#ffffff"
+        />
+      </div>
+      <div className="md:hidden absolute !rounded-[300px] bottom-5 flex justify-center w-full z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
       </div>
       <AnimatePresence>
@@ -427,26 +511,25 @@ const LocationAdvantage = () => {
             <motion.div
               variants={cardVariants}
               ref={containerRef}
-              className="lg2:max-w-4xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12  md:!rounded-[32px] font-sans relative shadow-2xl"
+              className="lg2:max-w-4xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12 md:!rounded-[32px] font-sans relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}
-                className="absolute  top-6 z-50 me-5 lg:me-6 h-8 w-8 right-0 cursor-pointer ml-auto  rounded-full flex items-center justify-center"
+                className="absolute top-6 z-50 me-5 lg:me-6 h-8 w-8 right-0 cursor-pointer ml-auto rounded-full flex items-center justify-center"
                 onClick={closeCard}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <CloseTabIcon fill={data[activeIndex].closeIconFIll} />
               </motion.button>
-              <div className="absolute"></div>
               <motion.div variants={contentVariants}>
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
-              <motion.div variants={contentVariants} className="">
+              <motion.div variants={contentVariants}>
                 <hr className="border-t-gray-200 border-[1px]" />
                 <div className="lg:px-44 md:px-12 px-6">
-                  <h1 className=" pt-10 text-[10px] md:text-[12px] font-sourceSans3  text-[#8E8E93] border-t-gray-200">UP NEXT</h1>
-                  <div className="flex md:pb-16 pb-32 justify-between ">
+                  <h1 className="pt-10 text-[10px] md:text-[12px] font-sourceSans3 text-[#8E8E93] border-t-gray-200">UP NEXT</h1>
+                  <div className="flex md:pb-16 pb-32 justify-between">
                     <button
                       aria-label="Next Card"
                       onClick={goToNextCard}

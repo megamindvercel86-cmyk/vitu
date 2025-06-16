@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { FC, JSX, useRef } from "react";
+import React, { FC, JSX, useRef, useState } from "react";
 import logo from "../../../../../public/images/logos/vaikuntamCityFooter.svg";
 import logo2 from "../../../../../public/images/logos/logolight.svg";
 import { Link } from "react-scroll";
@@ -13,6 +13,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 /**
  * Footer Component
@@ -26,6 +27,7 @@ import { IoMdHome } from "react-icons/io";
 const ProjectFooter: FC = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [showModal,setShowModal]=useState<boolean>(false)
 
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
 
@@ -108,6 +110,10 @@ const ProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
+               <button onClick={()=>setShowModal(true)} aria-label="Download" className="font-FreightNeoProBold text-white text-[22px] bg-[#4f3737] py-2 px-4 rounded-[56px] ">
+                {" "}
+                Download E-Brochure
+              </button>
               {/* <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button> */}
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
@@ -186,6 +192,7 @@ const ProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
+      <ContactFormModal buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown" isOpen={showModal} onClose={setShowModal} />
     </footer>
   );
 };

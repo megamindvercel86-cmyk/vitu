@@ -28,9 +28,12 @@ interface ContactFormModalProps {
   onClose: (isModalOpen: boolean) => void;
   className?: string;
   maxWidth?: string;
+  textColor?:string;
+  buttonBg?:string;
+  peerBg?:string;
 }
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
+const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -218,22 +221,22 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
             >
               {/* Left Side Content */}
               <div className="flex-1">
-                <h1 className="text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
+                <h1 className={`text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-4xl md:text-5xl`}>
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
-                <h1 className="text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left text-[#0C3E49] font-semibold text-4xl md:text-5xl">
+                <h1 className={`text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-4xl md:text-5xl`}>
                   Your dream home is closer than you think!
                 </h1>
-                <p className="text-center font-geistSerif lg:text-left text-[#040707] text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4">
+                <p className={`text-center font-geistSerif lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
                   Begin your journey to a new home—fill out the form & let's get started.{" "}
                 </p>
-                <div className="hidden lg:block">
+                {/* <div className="hidden lg:block">
                   <hr className="w-full md:w-[392px] mt-12 lg:mt-8 border-black border-opacity-20" />
                   <p className="pt-6 text-[#040707] text-lg">Alternatively, for your queries contact</p>
                   <a aria-label="Call +91 89046 88886" href="tel:+91 89046 88886" className="text-[#040707] font-bold text-lg">
                     +91 89046 88886
                   </a>
-                </div>
+                </div> */}
               </div>
               {/* Right Side Form */}
               <div className="flex-1">
@@ -247,7 +250,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:text-[#676a6a] font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
                         touched.fullName && errors.fullName ? "border-red-500" : ""
                       }`}
                       placeholder="Your Full Name"
@@ -263,7 +266,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:text-[#676a6a] font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
                         touched.email && errors.email ? "border-red-500" : ""
                       }`}
                       placeholder="Your Email"
@@ -279,7 +282,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                       value={formData.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:text-[#676a6a] font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
                         touched.phone && errors.phone ? "border-red-500" : ""
                       }`}
                       placeholder="Your Phone Number"
@@ -289,11 +292,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                   {/* Interested In Dropdown */}
                   <div className="relative z-10">
                     <div
-                      className="text-[#04070799] text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer"
+                      className={`${textColor?textColor:"text-[#0C3E49]"} text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
                       onClick={() => setOpen(!open)}
                     >
                       <span>{formData.interstedIn || "Interested In"}</span>
-                      <IconChevronDown className="h-5 w-5 text-[#04070799]" />
+                      <IconChevronDown className={`h-5 w-5 ${textColor?textColor:"text-[#0C3E49]"}`} />
                     </div>
                     <hr className="border-black border-opacity-20" />
                     {open && (
@@ -301,7 +304,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
-                            className="px-4 py-2 text-[#04070799] text-xl font-medium hover:bg-gray-200 cursor-pointer"
+                            className={`px-4 py-2 ${textColor?textColor:"text-[#0C3E49]"} text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
                             onClick={() => {
                               setFormData((prev) => ({ ...prev, interstedIn: option.label }));
                               setTouched((prev) => ({ ...prev, interstedIn: true }));
@@ -321,7 +324,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                     <button
                       type="button"
                       aria-label="Submit Form"
-                      className={`lg:hidden block text-[26px] w-full py-2 bg-[#0C3E49] text-white  rounded-full font-medium ${
+                      className={`lg:hidden block text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
                         !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
                       onClick={handleSubmit}
@@ -339,7 +342,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                           onChange={handleChange}
                           className="sr-only peer"
                         />
-                        <div className="w-5 h-5 border border-[#0C3E49] rounded-full peer-checked:bg-[#0C3E49] transition-colors flex items-center justify-center">
+                        <div className={`w-5 h-5 border border-[#0C3E49] rounded-full ${peerBg?peerBg:"peer-checked:bg-[#0C3E49]"}  transition-colors flex items-center justify-center`}>
                           {formData.whatsapp && (
                             <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -347,12 +350,12 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                           )}
                         </div>
                       </div>
-                      <span className="text-base text-[#04070799] font-medium">Receive Updates on WhatsApp</span>
+                      <span className={`text-base ${textColor?textColor:"text-[#0C3E49]"} font-medium`}>Receive Updates on WhatsApp</span>
                     </label>
                     <button
                       type="button"
                       aria-label="Submit Form"
-                      className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2 bg-[#0C3E49] text-white rounded-full font-medium ${
+                      className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg?buttonBg:"bg-[#0C3E49]"} text-white rounded-full font-medium ${
                         !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
                       onClick={handleSubmit}
@@ -362,11 +365,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose, cl
                     </button>
                   </div>
                 </div>
-                <div className="block lg:hidden text-center mt-2 mb-12">
+                {/* <div className="block lg:hidden text-center mt-2 mb-12">
                   <hr className="w-full border-black border-opacity-20" />
                   <p className="pt-6 text-[#04070799] text-lg font-medium">Alternatively, for your queries contact</p>
                   <span className="text-[#04070799] font-bold text-lg">+91 89046 88886</span>
-                </div> 
+                </div>  */}
               </div>
             </motion.div>
           </motion.div>
