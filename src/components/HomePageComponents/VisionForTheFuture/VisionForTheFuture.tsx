@@ -31,13 +31,22 @@ const CAROUSEL_CONFIG = {
   },
   scales: {
     0: { mobile: { x: 1, y: 1.5 }, desktop: { x: 1, y: 1 } },
-    1: { mobile: { x: 1.2, y: 1.5 }, desktop: { x: 0.9, y: 1 } },
-    2: { mobile: { x: 1, y: 1.1 }, desktop: { x: 0.9, y: 1 } },
-    3: { mobile: { x: 1.5, y: 1.8 }, desktop: { x: 1, y: 1 } },
+    1: { mobile: { x: 1, y: 1.5 }, desktop: { x: 1, y: 1 } },
+    2: { mobile: { x: 1.2, y: 1.5 }, desktop: { x: 0.9, y: 1 } },
+    3: { mobile: { x: 1, y: 1.1 }, desktop: { x: 0.9, y: 1 } },
+    4: { mobile: { x: 1.5, y: 1.8 }, desktop: { x: 1, y: 1 } },
   },
 };
 
 const CAROUSEL_DATA: CarouselItem[] = [
+  {
+    title: "Embracing new Horizons in Living",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
+      "VITU Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care and community for your golden years.",
+    image: "/svgs/plotted.svg",
+    residentialType: "Plotted development",
+  },
   {
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",

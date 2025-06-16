@@ -112,8 +112,8 @@ const expandedPositions = {
     { top: "50%", right: "1%", left: "auto" },
     { top: "0%", right: "1%", left: "auto" },
     { top: "50%", left: "1%", right: "auto" },
-    { top: "5%", left: "3%", right: "auto" },
-    { top: "0%", left: "41%", right: "auto" },
+    { top: "1%", left: "3%", right: "auto" },
+    { top: "3%", left: "44%", right: "auto" },
     { top: "58%", left: "60%", right: "auto" },
   ],
   lg: [
@@ -268,7 +268,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
     <div className="h-auto flex items-center justify-center">
       {/* Only render cursor when not expanded */}
       {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
-    xx
       <div
         ref={containerRef}
         className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[160vh] md:h-[150vh]" : "h-[90vh]"}`}
@@ -278,7 +277,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[35rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
@@ -288,24 +287,16 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
           <div>
-            <motion.h1
-              className="xl:text-[120px] lg:text-3xl lg2:text-7xl  md:text-5xl  font-freightNeoMedium mb-4 text-customBrown"
-              initial={{ y: 0 }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              A New Home,
-            </motion.h1>
             <motion.h2
-              className="xl:text-[120px] lg:text-3xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
+              className="xl:text-[100px] lg:text-3xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              A New Way of Life
+            Vaikuntam City
             </motion.h2>
               <motion.button onClick={()=>setModalIsOpen(true)}
-                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1    border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
+                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
@@ -357,7 +348,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       </div>
 
     </div>
-        <ContactFormModal downloadFileLink="/downloadingFiles/VC brochure.pdf"  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
+        <ContactFormModal  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
 </>
   );
 };

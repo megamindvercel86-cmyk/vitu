@@ -85,8 +85,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+    width: "md:w-[220px]  lg:w-[200px]  xl:w-[200px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[280px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 23,
@@ -96,8 +96,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+    width: "md:w-[220px]  lg:w-[200px]   xl:w-[200px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[250px]   xl:h-[280px] 2xl:h-[505px] lg2:h-[300px]",
   },
 ];
 
@@ -118,6 +118,15 @@ const ExploreProjects: React.FC = () => {
     <>
       {/* Desktop Version */}
       <div className="md:block hidden relative z-0 overflow-hidden">
+        <Typography className=" text-center font-FreightNeoProNormal text-base text-[#4F373799] lg:text-xl 2xl:text-[2.125rem]">
+          Featured Project
+        </Typography>
+        <h1
+          id="project-title"
+          className="w-[224px] pb-16 text-center hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+        >
+          A New Home, A New Way of Life
+        </h1>
         <ExpandableCards cards={CARDS_DATA} />
       </div>
 
