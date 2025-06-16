@@ -139,7 +139,7 @@ const LocationAdvantage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const SLIDE_DURATION = 3000; // Duration for each slide in ms
+  const SLIDE_DURATION = 2000; // Duration for each slide in ms
 
   // Clear progress interval to prevent memory leaks
   const clearProgressInterval = () => {
@@ -368,7 +368,6 @@ const LocationAdvantage = () => {
         className={styles.locationAdvantageSwiper}
         onSwiper={setSwiperInstance}
         loop={true}
-        speed={1000}
         autoplay={{
           delay: SLIDE_DURATION,
           disableOnInteraction: false,
@@ -486,7 +485,7 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-72 z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-[260px] z-20">
         <CircularPlayPauseButton
           isPlay={!isSlidePaused}
           onToggle={handleTogglePlayPause}

@@ -31,9 +31,10 @@ interface ContactFormModalProps {
   textColor?:string;
   buttonBg?:string;
   peerBg?:string;
+  downloadFileLink?:string;
 }
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
+const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadFileLink,peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -118,6 +119,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, peerBg,bu
     setTouched((prev) => ({ ...prev, [name]: true }));
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
+  console.log()
 
   // Handle form submission
   const handleSubmit = async () => {
@@ -130,6 +132,14 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, peerBg,bu
           createdAt: serverTimestamp(),
         };
         await addDoc(collectionRef, dataWithTimestamp);
+        if(downloadFileLink){
+        const link = document.createElement("a");
+        link.href = downloadFileLink;
+        link.download = downloadFileLink?.split("/").pop()?.toString() || "";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        }
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });

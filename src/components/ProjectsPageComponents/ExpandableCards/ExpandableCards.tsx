@@ -357,7 +357,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
       </div>
 
     </div>
-        <ContactFormModal  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
+        <ContactFormModal downloadFileLink="/downloadingFiles/VC brochure.pdf"  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
 </>
   );
 };

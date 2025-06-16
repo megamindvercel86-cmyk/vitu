@@ -446,7 +446,6 @@ const LocationAdvantage = () => {
 
 
         loop={true}
-        speed={1000}
          autoplay={{
           delay: SLIDE_DURATION,
           disableOnInteraction: false,
@@ -567,7 +566,7 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-20 left-24 z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} className={data[activeIndex]?.carousalClassName} />
       </div>
-      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-72 z-20">
+      <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-[260px] z-20">
         <CircularPlayPauseButton isPlay={!isSlidePaused} onToggle={handleTogglePlayPause} progress={progress} strokeColor="#ffffff" />
       </div>
       <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">

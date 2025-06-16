@@ -192,7 +192,7 @@ const ProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown" isOpen={showModal} onClose={setShowModal} />
+      <ContactFormModal downloadFileLink="/downloadingFiles/VC brochure.pdf" buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown" isOpen={showModal} onClose={setShowModal} />
     </footer>
   );
 };
