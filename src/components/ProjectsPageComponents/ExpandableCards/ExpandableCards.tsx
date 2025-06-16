@@ -52,9 +52,6 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
 const CardContent = ({ cardId }: { cardId: number }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
-
-
-
   const project = exploreProjects.find((project) => project.id === currentCardId);
 
   // Get index of the current project
@@ -193,7 +190,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const [cursorText, setCursorText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentBreakpoint, setCurrentBreakpoint] = useState(getBreakpoint());
-  const [modalIsopen,setModalIsOpen]=useState(false)
+  const [modalIsopen, setModalIsOpen] = useState(false);
 
   // Add scroll listener to detect when user scrolls away
   useEffect(() => {
@@ -223,8 +220,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  
 
   const handleMouseEnter = () => {
     // Only show cursor if not expanded
@@ -265,37 +260,38 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
 
   return (
     <>
-    <div className="h-auto flex items-center justify-center">
-      {/* Only render cursor when not expanded */}
-      {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
-      <div
-        ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[160vh] md:h-[150vh]" : "h-[90vh]"}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleExpand}
-      >
-        {/* Text Content */}
-        <motion.div
-          className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{
-            opacity: isExpanded ? 1 : 0,
-            scale: isExpanded ? 1 : 0.8,
-            y: isExpanded ? 0 : 20,
-          }}
-          transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
+      <div className="h-auto flex items-center justify-center">
+        {/* Only render cursor when not expanded */}
+        {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
+        <div
+          ref={containerRef}
+          className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[160vh] md:h-[150vh]" : "h-[90vh]"}`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleExpand}
         >
-          <div>
-            <motion.h2
-              className="xl:text-[100px] lg:text-3xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-            Vaikuntam City
-            </motion.h2>
-              <motion.button onClick={()=>setModalIsOpen(true)}
+          {/* Text Content */}
+          <motion.div
+            className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: isExpanded ? 1 : 0,
+              scale: isExpanded ? 1 : 0.8,
+              y: isExpanded ? 0 : 20,
+            }}
+            transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
+          >
+            <div>
+              <motion.h2
+                className="xl:text-[100px] lg:text-3xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                Vaikuntam City
+              </motion.h2>
+              <motion.button
+                onClick={() => setModalIsOpen(true)}
                 className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -303,53 +299,58 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               >
                 Download E-Brochure
               </motion.button>
-          </div>
-        </motion.div>
-        {/* Images */}
-        <AnimatePresence>
-          {cards.map((card, index) => {
-            const position = isExpanded
-              ? expandedPositions[currentBreakpoint as keyof typeof expandedPositions][index]
-              : notExpandedPositions[currentBreakpoint as keyof typeof notExpandedPositions][index];
+            </div>
+          </motion.div>
+          {/* Images */}
+          <AnimatePresence>
+            {cards.map((card, index) => {
+              const position = isExpanded
+                ? expandedPositions[currentBreakpoint as keyof typeof expandedPositions][index]
+                : notExpandedPositions[currentBreakpoint as keyof typeof notExpandedPositions][index];
 
-            return (
-              <motion.div
-                key={card.id}
-                className={`${card.width} ${card.height} absolute  overflow-hidden`}
-                initial={false}
-                animate={{
-                  // scale: isExpanded ? 1 : 1 - index * 0.05,
-                  top: position.top,
-                  left: position.left,
-                  right: "right" in position ? position.right : "auto",
-                  zIndex: isExpanded ? 1 : cards.length - index,
-                  // width: card.width || "200px",
-                  // height: card.height || "300px",
-                  borderRadius: "16px",
-                }}
-                // transition={{
-                //   type: "tween",
-                //   duration: 0.8,
-                //   ease: [0.43, 0.13, 0.23, 0.96],
-                // }}
-              >
-                <AppleStyleCard
-                  id={card.id}
-                  position={card.position}
-                  imageSrc={card.url}
-                  isExpanded={isExpanded}
-                  expandedImageClassName="object-center"
-                  content={<CardContent cardId={card.id} />}
-                />
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+              return (
+                <motion.div
+                  key={card.id}
+                  className={`${card.width} ${card.height} absolute  overflow-hidden`}
+                  initial={false}
+                  animate={{
+                    // scale: isExpanded ? 1 : 1 - index * 0.05,
+                    top: position.top,
+                    left: position.left,
+                    right: "right" in position ? position.right : "auto",
+                    zIndex: isExpanded ? 1 : cards.length - index,
+                    // width: card.width || "200px",
+                    // height: card.height || "300px",
+                    borderRadius: "16px",
+                  }}
+                  // transition={{
+                  //   type: "tween",
+                  //   duration: 0.8,
+                  //   ease: [0.43, 0.13, 0.23, 0.96],
+                  // }}
+                >
+                  <AppleStyleCard
+                    id={card.id}
+                    position={card.position}
+                    imageSrc={card.url}
+                    isExpanded={isExpanded}
+                    expandedImageClassName="object-center"
+                    content={<CardContent cardId={card.id} />}
+                  />
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
       </div>
-
-    </div>
-        <ContactFormModal  buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown"  isOpen={modalIsopen} onClose={setModalIsOpen} />
-</>
+      <ContactFormModal
+        buttonBg="bg-[#4f3737]"
+        peerBg="peer-checked:bg-[#4f3737]"
+        textColor="text-customBrown"
+        isOpen={modalIsopen}
+        onClose={setModalIsOpen}
+      />
+    </>
   );
 };
 
