@@ -50,9 +50,10 @@ export async function generateMetadata() {
 
 export default function ProjectPage({}: ProjectPageProps) {
   return (
-    <div className="bg-[#e7dfda] ">
+    <div className="bg-[#e6ddd6] ">
       <div className="h-[160vh] absolute">
         <Image src={backgroundImage} alt="Background Layer"  className=" h-[160vh] object-cover" placeholder="blur" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#e6ddd6] via-transparent to-transparent" />
       </div>
       <section className="relative">
         <ProjectHeroSection />

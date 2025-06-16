@@ -3,7 +3,7 @@ import Typography from "@/components/Typography/Typography";
 export default function ProjectHeader() {
   return (
     <>
-      <div className="bg-[#E5DCD5] text-center">
+      <div className=" text-center">
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-8xl mx-auto px-4  pb-36">
           <div className="flex flex-col items-center">
             <Typography variant="custom" className="font-CandideCondensedNormal text-customBrown text-4xl lg:text-5xl">
