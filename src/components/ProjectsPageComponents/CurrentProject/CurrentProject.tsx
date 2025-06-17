@@ -70,7 +70,7 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[54%] top-[59%] md:left-[54%] md:top-[62%] lg:left-[55%] lg:top-[62%]  lg:w-[22px] rotate-45  lg:h-[25px]",
+    position: "left-[54%] top-[59%] md:left-[54%] md:top-[62%] lg:left-[54%] lg:top-[62%]  lg:w-[22px] rotate-45  lg:h-[25px]",
     imagePath: "/images/visionAndFutureImages/plots2.png",
     description: [
       { value: "Signature Plot ", label: "5.10 Cents" },
@@ -84,7 +84,7 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[57.5%] top-[60%] md:left-[57%] md:top-[64%] lg:left-[58%] lg:top-[63%] lg:rotate-45  lg:w-[25px]  lg:h-[25px]",
+    position: "left-[57.5%] top-[60%] md:left-[57%] md:top-[64%] lg:left-[56%] lg:top-[63%] lg:rotate-45  lg:w-[25px]  lg:h-[25px]",
     imagePath: "/images/visionAndFutureImages/plots3.png",
     description: [
       { value: "Signature Plot ", label: "5.10 Cents" },
@@ -98,7 +98,7 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[62%] top-[55.5%] md:left-[62%] md:top-[57.5%] lg:left-[62%] lg:top-[57%] lg:rotate-45  lg:w-[30px]  lg:h-[30px]",
+    position: "left-[62%] top-[55.5%] md:left-[62%] md:top-[57.5%] lg:left-[60%] lg:top-[57%] lg:rotate-45  lg:w-[30px]  lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plots4.png",
     description: [
       { value: "Corner Plot", label: "6.25 Cents" },
@@ -113,7 +113,7 @@ const LOCATIONS: Location[] = [
     id: 5,
     name: "Section 5",
     position:
-      "left-[66%] top-[51%] lg:left-[65%] lg:top-[51%] lg:rotate-45 md:left-[65%] md:top-[51%] md:w-[100px]  md:h-[50px] lg:w-[30px]  lg:h-[30px]",
+      "left-[66%] top-[51%] lg:left-[63%] lg:top-[51%] lg:rotate-45 md:left-[65%] md:top-[51%] md:w-[100px]  md:h-[50px] lg:w-[30px]  lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plots5.png",
     description: [
       { value: "Signature Plot", label: "5.50 Cents" },
@@ -127,7 +127,7 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: " left-[68%] top-[49%] lg:left-[67%] lg:top-[48%] lg:rotate-45 md:left-[66%] md:top-[47.5%]  lg:w-[30px] lg:h-[30px]",
+    position: " left-[68%] top-[49%] lg:left-[64%] lg:top-[48%] lg:rotate-45 md:left-[66%] md:top-[47.5%]  lg:w-[30px] lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plots6.png",
     description: [
       { value: "Signature Plot", label: "5.50 Cents" },
@@ -141,7 +141,7 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[77%] top-[22.5%] lg:left-[76%] lg:top-[13%]  md:left-[74%] md:top-[11.5%] lg:w-[30px] lg:h-[30px]",
+    position: "left-[77%] top-[22.5%] lg:left-[72%] lg:top-[11%]  md:left-[74%] md:top-[11.5%] lg:w-[30px] lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plots7.png",
     description: [
       { value: "Signature Plot", label: "7.60 Cents" },
@@ -256,7 +256,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "xl:mt-[170px] lg:mt-[100px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
+      className={`hidden lg:block  mt-[40px] lg:mt-[50px]  2xl:mt-[400px]`}
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -322,7 +322,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
               id="project-title"
               className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
-              Our Commitment <br /> to Tomorrow
+              Our Commitment <br /> to Tomorrow 
             </h1>
           )}
 
@@ -410,7 +410,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
               </motion.div>
             ))
           : selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-4" : ""}`}>
+              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-5" : ""}`}>
                 <Typography
                   variant="custom"
                   className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"

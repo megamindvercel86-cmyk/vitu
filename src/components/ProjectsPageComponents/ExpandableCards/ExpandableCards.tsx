@@ -120,7 +120,7 @@ const expandedPositions = {
     { top: "45%", left: "1%", right: "auto" },
     { top: "8%", left: "1%", right: "auto" },
     { top: "10%", left: "28%", right: "auto" },
-    { top: "65%", left: "55%", right: "auto" },
+    { top: "60%", left: "55%", right: "auto" },
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
@@ -182,9 +182,10 @@ interface Card {
 
 interface ExpandableCardsProps {
   cards: Card[];
+  home?: boolean;
 }
 
-const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
+const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
@@ -290,15 +291,28 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
               >
                 Vaikuntam City
               </motion.h2>
-              <motion.button
-                onClick={() => setModalIsOpen(true)}
-                className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                Download E-Brochure
-              </motion.button>
+              {home ? (
+                <Link href="/vaikuntamcity">
+                  <motion.button
+                    className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    Explore Projects
+                  </motion.button>
+                </Link>
+              ) : (
+                <motion.button
+                  onClick={() => setModalIsOpen(true)}
+                  className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  Download E-Brochure
+                </motion.button>
+              )}
             </div>
           </motion.div>
           {/* Images */}
