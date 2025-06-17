@@ -3,7 +3,7 @@ import React from "react";
 const BeachAnimation = () => {
   return (
     <div className="h-[200vh] absolute w-full">
-      <video className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay>
+      <video className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted>
         <source
           src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach.mp4?alt=media&token=f42e9fa8-9137-4fca-ad6d-3cd53ef384ee"
           type="video/mp4"
