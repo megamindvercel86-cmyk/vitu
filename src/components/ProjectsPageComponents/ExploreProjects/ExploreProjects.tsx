@@ -127,7 +127,7 @@ const ExploreProjects: React.FC = () => {
         >
           A New Home, A New Way of Life
         </h1>
-        <ExpandableCards home={true} cards={CARDS_DATA} />
+        <ExpandableCards  cards={CARDS_DATA} />
       </div>
 
       {/* Mobile Version */}
