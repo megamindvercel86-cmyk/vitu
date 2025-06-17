@@ -1,12 +1,9 @@
 // ============= Component Imports =============
 import ProjectHeroSection from "@/components/ProjectsPageComponents/ProjectHeroSection/ProjectHeroSection";
-
 import LocationAdvantage from "@/components/ProjectsPageComponents/ProjectLocationAdvantage/ProjectLocationAdvantage";
 import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
-
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
 import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
-import PlotWrapper from "@/components/ProjectsPageComponents/Plots/PlotsWrapper";
 import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import ProjectCarousel from "@/components/ProjectsPageComponents/ProjectCarousels/ProjectCarousels";
 import backgroundImage from "../../../../public/images/vilasamImages/herobanner.webp";
