@@ -9,6 +9,7 @@ import ProjectCarousel from "@/components/ProjectsPageComponents/ProjectCarousel
 import backgroundImage from "../../../../public/images/vilasamImages/herobanner.webp";
 import Image from "next/image";
 import ProjectHeader from "@/components/ProjectsPageComponents/ProjectsHeader/ProjectsHeader";
+import BeachAnimation from "@/components/ProjectsPageComponents/BeachAnimation/BeachAnimation";
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
 
@@ -47,11 +48,8 @@ export async function generateMetadata() {
 
 export default function ProjectPage({}: ProjectPageProps) {
   return (
-    <div className="bg-[#e6ddd6] ">
-      <div className="h-[160vh] absolute">
-        <Image src={backgroundImage} alt="Background Layer"  className=" h-[160vh] object-cover" placeholder="blur" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#e6ddd6] via-transparent to-transparent" />
-      </div>
+    <div className="bg-[#e6ddd6]">
+      <BeachAnimation/>
       <section className="relative">
         <ProjectHeroSection />
       <section className="relative z-10">
