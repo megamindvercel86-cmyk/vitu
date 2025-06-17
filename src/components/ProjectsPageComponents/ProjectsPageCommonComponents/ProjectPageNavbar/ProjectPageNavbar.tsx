@@ -20,6 +20,7 @@ import logo from "../../../../../public/images/logos/vaikuntamCity.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/Common/NavLink";
 import Button from "@/components/Common/Button";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 // ============= Types & Interfaces =============
 type ProjectNavbarType = "primary" | "secondary";
@@ -73,7 +74,8 @@ const NAV_LINKS = [
 
 export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "secondary" }: ProjectNavbarProps) {
   // ============= State =============
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [contactModalOpen,setContactModalOpen]=useState<boolean>(false)
   const pathname = usePathname();
 
   // ============= Computed Values =============
@@ -220,22 +222,23 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
                 </LinkScroll>
               ))}
               {showGetInTouch && (
-                <NavLink href="/general-enquire">
-                  <Button
+                <div className="lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer">
+                  <Button onClick={()=>setContactModalOpen(true)}
                     className={` w-full pb-1 text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}
                   >
-                    Enquire Now
+                    Download E-Brochure
                   </Button>
-                </NavLink>
+                </div>
               )}
             </div>
           </div>
         </nav>
       </header>
       <SidebarMenu />
+      <ContactFormModal isOpen={contactModalOpen} onClose={setContactModalOpen}/>
     </div>
   );
 }
