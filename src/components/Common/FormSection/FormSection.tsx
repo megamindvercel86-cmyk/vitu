@@ -66,13 +66,13 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
         <Typography variant="body" className="text-center md:text-left pt-3 md:px-0 px-6 md:pt-12 lg:pt-10 xl:pt-8 w-full md:w-[24.5rem] ">
           {subheading}
         </Typography>
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <hr className="w-full md:w-[392px] mt-[56px] lg:mt-[38px]  border-black border-opacity-20 text-customTextGray font-medium sm:text-[19px] text-[19px] md:text-xl  font-freightNeoMedium " />
           <Typography className="pt-8 text-customTextGray font-freightNeoMedium">Alternatively, for your queries contact</Typography>
           <Link href="tel:+91 89046 88886">
             <Typography variant="number">+91 89046 88886</Typography>
           </Link>
-        </div>
+        </div> */}
       </div>
       {/* Right Side Form */}
       <div className="flex-1">

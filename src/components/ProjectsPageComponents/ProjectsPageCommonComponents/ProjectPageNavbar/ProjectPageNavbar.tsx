@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Link as LinkScroll } from "react-scroll";
@@ -124,10 +124,10 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS_MOBAIL.map(( item,index) => (
-                <>
+              {NAV_LINKS_MOBAIL.map((item, index) => (
+                <React.Fragment key={index}>
                   {item.href === "/" ? (
-                    <Link href={item.href} key={index} className="mb-8 lg:hidden text-2xl font-FreightNeoProBold last:mb-0">
+                    <Link href={item.href} className="mb-8 lg:hidden text-2xl font-FreightNeoProBold last:mb-0">
                       {" "}
                       <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
                         {item.label}
@@ -135,7 +135,6 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
                     </Link>
                   ) : (
                     <LinkScroll
-                      key={index}
                       to={item.href}
                       smooth={true}
                       duration={700}
@@ -148,7 +147,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
                       </div>
                     </LinkScroll>
                   )}
-                </>
+                </React.Fragment>
               ))}
               {showGetInTouch && (
                 <NavLink href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">

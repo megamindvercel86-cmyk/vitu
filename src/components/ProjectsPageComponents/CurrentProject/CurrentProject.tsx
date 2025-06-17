@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
+import Link from "next/link";
 
 // ============= Interfaces =============
 
@@ -229,6 +231,7 @@ const Counter: React.FC<{ value: string }> = ({ value }) => {
  * @component
  */
 const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [selectedLocation, setSelectedLocation] = useState<Location>({
     id: 0,
     name: "Project Overview",
@@ -310,6 +313,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2 ">
         <header className="q`pb-4">
+          <button className="text-[#4F3737] bg-[#AE856614] px-4 py-1 lg:py-1.5 mb-2 rounded-md">Limited Plots Available</button>
           {homePage ? (
             <h1
               id="project-title"
@@ -322,7 +326,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
               id="project-title"
               className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
-              Our Commitment <br /> to Tomorrow 
+              Our Commitment <br /> to Tomorrow
             </h1>
           )}
 
@@ -359,16 +363,33 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
             </Typography>
           )}
         </div>
+        {homePage?<Link href="/vaikuntamcity" passHref legacyBehavior><motion.button
+          className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Explore Projects
+        </motion.button></Link>:
+         <motion.button
+          onClick={() => setModalIsOpen(true)}
+          className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Download E-Brochure
+        </motion.button>}
         {renderStats()}
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
       <figure
-        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[100vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
+        className="lg:flex ml-auto  items-center h-[55vh] lg:h-[100vh] lg2:h-[100vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
         aria-labelledby="project-title"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full lg:h-full">
           <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
           <div className="absolute inset-0 z-10">
             {LOCATIONS.map((location) => (
@@ -383,6 +404,28 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
           </div>
         </div>
       </figure>
+      {homePage ? (
+        <Link href="/vaikuntamcity" passHref legacyBehavior>
+          <motion.a
+            className="lg:px-8 mb-8  lg:hidden lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors flex items-center justify-center"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            Explore Projects
+          </motion.a>
+        </Link>
+      ) : (
+        <motion.button
+          onClick={() => setModalIsOpen(true)}
+          className="lg:px-8 mb-8  lg:hidden lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Download E-Brochure
+        </motion.button>
+      )}
 
       <motion.div
         className="  lg:hidden "
@@ -424,6 +467,13 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
             ))}
       </motion.div>
       <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
+      <ContactFormModal
+        buttonBg="bg-[#4f3737]"
+        peerBg="peer-checked:bg-[#4f3737]"
+        textColor="text-customBrown"
+        isOpen={modalIsOpen}
+        onClose={setModalIsOpen}
+      />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link as LinkScroll } from "react-scroll";
 
@@ -120,32 +120,34 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
 
             {/* Navigation Links - Updated for center alignment */}
             <div className="flex flex-col items-center justify-center flex-grow">
-              {NAV_LINKS_MOBILE.map((item) =>
-                item.label === "Afmenities" ? (
-                  <div
-                    key={item.href}
-                    onClick={() => setIsModalOpen(true)}
-                    className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
-                  >
-                    {item.label}
-                  </div>
-                ) : item.href === "/" ? (
-                  <Link key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
-                    <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
-                      {item.label}
-                    </div>
-                  </Link>
-                ) : (
-                  <LinkScroll key={item.href} to={item.href} smooth={true} duration={1200} className="mb-8 text-2xl font-geistSerif last:mb-0">
+              {NAV_LINKS_MOBILE.map((item, index) => (
+                <React.Fragment key={index}>
+                  {item.label === "Afmenities" ? (
                     <div
-                      onClick={() => setIsMenuOpen(false)}
+                      key={item.href}
+                      onClick={() => setIsModalOpen(true)}
                       className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
                     >
                       {item.label}
                     </div>
-                  </LinkScroll>
-                )
-              )}
+                  ) : item.href === "/" ? (
+                    <Link key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
+                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
+                        {item.label}
+                      </div>
+                    </Link>
+                  ) : (
+                    <LinkScroll key={item.href} to={item.href} smooth={true} duration={1200} className="mb-8 text-2xl font-geistSerif last:mb-0">
+                      <div
+                        onClick={() => setIsMenuOpen(false)}
+                        className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
+                      >
+                        {item.label}
+                      </div>
+                    </LinkScroll>
+                  )}
+                </React.Fragment>
+              ))}
               {showGetInTouch && (
                 <NavLink
                   href=""
@@ -194,34 +196,30 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-stretch justify-start gap-3">
-  <Link href="/">
-    <Image
-      src={vitulogo}
-      alt="Logo"
-      className="w-[95px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[80px]"
-    />
-  </Link>
+            <Link href="/">
+              <Image
+                src={vitulogo}
+                alt="Logo"
+                className="w-[95px] h-[40px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[260px] xl:h-[80px]"
+              />
+            </Link>
 
-  {/* Vertical Divider Line with full height */}
-  <div className="w-[1px] bg-gray-300 mx-2 h-full" />
+            {/* Vertical Divider Line with full height */}
+            <div className="w-[1px] bg-gray-300 mx-2 h-full" />
 
-  <NavLink href="/vilasam">
-    <Image
-      src={logo}
-      alt="Logo"
-      className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[360px] xl:h-[83px]"
-    />
-  </NavLink>
+            <NavLink href="/vilasam">
+              <Image
+                src={logo}
+                alt="Logo"
+                className="w-[95px] h-[30px] sm:w-[95px] sm:h-[30px] md:w-[105px] md:h-[60px] lg2:w-[225px] lg2:h-[72px] lg:w-[150px] lg:h-[50px] xl:w-[360px] xl:h-[83px]"
+              />
+            </NavLink>
 
-  {/* Mobile Menu Button */}
-  <div
-    className="flex items-center cursor-pointer ml-auto lg:hidden"
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
-  >
-    {isVilasamProjectNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
-  </div>
-</div>
-
+            {/* Mobile Menu Button */}
+            <div className="flex items-center cursor-pointer ml-auto lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isVilasamProjectNavbarPrimary ? <MenuIconWhite /> : <MenuIcon />}
+            </div>
+          </div>
 
           {/* Navigation Links - Right 50% */}
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3 items-center justify-between`}>
