@@ -153,12 +153,20 @@ const desktopDataRight = [
 ];
 
 export default function ProjectCarousel(): React.ReactElement {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const [activeIndexDesktop, setActiveIndexDesktop] = useState(0);
+  const [activeIndexMobile, setActiveIndexMobile] = useState(0);
+  const [swiperInstanceDesktop, setSwiperInstanceDesktop] = useState<any>(null);
+  const [swiperInstanceMobile, setSwiperInstanceMobile] = useState<any>(null);
 
-  const handleDotClick = (index: number) => {
-    if (swiperInstance) {
-      swiperInstance.slideTo(index);
+  const handleDotClickDesktop = (index: number) => {
+    if (swiperInstanceDesktop) {
+      swiperInstanceDesktop.slideToLoop(index);
+    }
+  };
+
+  const handleDotClickMobile = (index: number) => {
+    if (swiperInstanceMobile) {
+      swiperInstanceMobile.slideToLoop(index);
     }
   };
 
@@ -169,7 +177,7 @@ export default function ProjectCarousel(): React.ReactElement {
         <div className="col-span-12 lg:col-span-1 mb-12 md:mb-0"/>
 
         
-        <div className="col-span-12 lg:col-span-7 mb-12 md:mb-0 ml-">
+        <div className="col-span-12 mx-2 lg:mx-0 lg:col-span-7 mb-12 md:mb-0 ml-">
           <VideoPlayer
             videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1749547995/cwmfzdeujetjhmgijlew.mp4"
             youtubeUrl="https://www.youtube.com"
@@ -188,8 +196,8 @@ export default function ProjectCarousel(): React.ReactElement {
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="w-[10%] h-[57vh] !pt-0 !pb-0"
-            onSwiper={setSwiperInstance}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            onSwiper={setSwiperInstanceDesktop}
+            onSlideChange={(swiper) => setActiveIndexDesktop(swiper.realIndex)}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -215,12 +223,12 @@ export default function ProjectCarousel(): React.ReactElement {
           <div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[10%] bg-gradient-to-t from-[#e7dfda]  to-transparent z-10" />
           <div className="pointer-events-none absolute  bottom-0 left-0 w-[80%] h-[4%] bg-gradient-to-t from-[#e7dfda]  to-transparent z-10" />
           {/* Carousel Dots */}
-          <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%] lg:left-[490px] rotate-90">
-            <CarouselDots total={desktopDataRight.length} active={activeIndex} onDotClick={handleDotClick} className="rounded-full px-4" />
+          <div className="absolute bottom-48 left-[315px] transform -translate-x-1/2 z-10 lg:bottom-[50%]  xl:left-[490px] rotate-90">
+            <CarouselDots total={desktopDataRight.length} active={activeIndexDesktop} onDotClick={handleDotClickDesktop} className="rounded-full px-4" />
           </div>
         </div>
 
-        <div className="col-span-12 lg:hidden lg:col-span-5 relative">
+        <div className="col-span-12 mx-2 lg:hidden lg:col-span-5 relative">
           <Swiper
             modules={[Autoplay]}
             spaceBetween={24}
@@ -229,8 +237,8 @@ export default function ProjectCarousel(): React.ReactElement {
             loop={true}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             className="!w-full  !pt-0 !pb-0"
-            onSwiper={setSwiperInstance}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            onSwiper={setSwiperInstanceMobile}
+            onSlideChange={(swiper) => setActiveIndexMobile(swiper.realIndex)}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -256,7 +264,7 @@ export default function ProjectCarousel(): React.ReactElement {
 
           {/* Carousel Dots */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-            <CarouselDots total={desktopDataRight.length} active={activeIndex} onDotClick={handleDotClick} className="rounded-full px-4" />
+            <CarouselDots total={desktopDataRight.length} active={activeIndexMobile} onDotClick={handleDotClickMobile} className="rounded-full px-4" />
           </div>
         </div>
       </div>
