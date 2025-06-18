@@ -87,7 +87,7 @@ const HeroSection = () => {
           muted={isMuted}
         >
           <source
-            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536647/New_Image_4_erfmty.mp4"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeDeskTop.mp4?alt=media&token=78a75591-b32a-4e25-897e-c2e876b53af6"
             type="video/mp4"
           />
         </video>
@@ -100,7 +100,7 @@ const HeroSection = () => {
           muted={isMuted}
         >
           <source
-            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536697/New_Image_Mobile_2_n0i9mm.mp4"
+            src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeMobile.mp4?alt=media&token=42e9c62b-871f-4c98-bb55-b2fb86d0c2ee"
             type="video/mp4"
           />
         </video>
