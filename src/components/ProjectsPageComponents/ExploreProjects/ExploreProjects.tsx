@@ -30,8 +30,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[250px]",
+    width: "md:w-[220px]  lg:w-[150px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[200px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[250px]",
   },
   {
     id: 4,
@@ -41,8 +41,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+    width: "md:w-[220px]  lg:w-[150px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[200px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 2,
@@ -52,8 +52,8 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
+    width: "md:w-[220px]  lg:w-[150px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
+    height: "md:h-[270px] lg:h-[200px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
   },
   {
     id: 3,

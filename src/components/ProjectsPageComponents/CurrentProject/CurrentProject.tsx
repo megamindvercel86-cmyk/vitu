@@ -259,7 +259,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className={`hidden lg:block  mt-[40px] lg:mt-[50px]  2xl:mt-[400px]`}
+      className={`hidden lg:block  mt-[40px] lg:mb-[150px]  2xl:mt-[400px]`}
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -290,7 +290,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
             <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-3" : ""}`}>
               <Typography
                 variant="custom"
-                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-3xl lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
               >
                 <span className="font-CandideCondensedNormal">{stat.value}</span>
               </Typography>
@@ -311,13 +311,16 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2 ">
-        <header className="q`pb-4">
-          <button className="text-[#4F3737] bg-[#AE856614] px-4 py-1 lg:py-1.5 mb-2 rounded-md">Limited Plots Available</button>
+      <article className="w-full lg:w-1/2 flex flex-col justify-between">
+      <div>
+        <header className="pb-4">
+          <button className="text-[#4F3737] bg-[#AE856614] font-FreightNeoProNormal px-4 py-1 lg:py-1.5 mb-2 rounded-md">
+            Limited Plots Available
+          </button>
           {homePage ? (
             <h1
               id="project-title"
-              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
+              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-3xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
               Vaikuntam City
             </h1>
@@ -350,36 +353,42 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
           {homePage ? (
             <Typography
               variant="custom"
-              className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+              className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[558px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
             >
               Just 5 minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.
             </Typography>
           ) : (
             <Typography
               variant="custom"
-              className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+              className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
             >
               {PROJECT_DATA.description.suffix}
             </Typography>
           )}
         </div>
-        {homePage?<Link href="/vaikuntamcity" passHref legacyBehavior><motion.button
-          className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          Explore Projects
-        </motion.button></Link>:
-         <motion.button
-          onClick={() => setModalIsOpen(true)}
-          className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          Download E-Brochure
-        </motion.button>}
+       
+        {homePage ? (
+          <Link href="/vaikuntamcity" passHref legacyBehavior>
+            <motion.button
+              className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full !lġ2:text-[4px] font-FreightNeoProBold transition-colors"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              Explore Projects Now
+            </motion.button>
+          </Link>
+        ) : (
+          <motion.button
+            onClick={() => setModalIsOpen(true)}
+            className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            Download E-Brochure
+          </motion.button>
+        )} </div>
         {renderStats()}
       </article>
 
