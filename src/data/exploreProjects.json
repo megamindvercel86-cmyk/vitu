@@ -31,14 +31,16 @@
   },
   {
     "id": 22,
-    "title": "Stay Active",
-    "description": "Keep moving in a well-equipped gym designed to support your fitness journey. Whether you're looking to build strength, boost endurance, or simply stay flexible, the space is consciously designed to help you feel your best.",
+    "title": "20,000 Sq ft of The Club Amenities",
+    "bottomTitle2":"A space designed for leisure, wellness and community",
+    "description": "Spread across 20,000 Sq ft, The Club is the social and wellness heart of the community with spaces designed for relaxation, recreation and everything in between. Whether you’re seeking solitude, fitness, or festive moments with neighbors, it’s all thoughtfully brought together under one roof.",
     "fileUrl": "/images/vilasamPageImages/1.webp"
   },
   {
     "id": 23,
-    "title": "Game On",
-    "description": "Shoot hoops on the basketball court, gather friends for a game at the multi-sport complex, or unwind in outdoor activity zones built for every skill level. Whether you're playing for fun or pushing your limits, these spaces add energy and joy to your day.",
-    "fileUrl": "/images/timelineImages/timelineImage8.png"
+    "title": "24x7 Gated Community",
+    "description": "Come home to peace of mind in a fully secured gated community that blends protection with a sense of ease. With 24x7 security personnel, CCTV surveillance, and controlled entry points, every layer of security is designed to make you feel truly at home. Safe, cared for and comfortable from the moment you arrive.Beyond just safety, this setting fosters trust and togetherness. Children play freely, neighbors connect with ease, and evening strolls become part of the daily rhythm. All within a space that values both your privacy and your peace of mind. It’s not just a secure address, it’s a community that lets you live with confidence.",
+    "fileUrl": "/images/timelineImages/timelineImage8.png",
+    "bottomTitle2":"Where safety meets serenity"
   }
 ]
