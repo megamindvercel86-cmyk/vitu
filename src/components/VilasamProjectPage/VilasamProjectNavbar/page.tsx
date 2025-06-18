@@ -195,7 +195,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
       <header className="absolute  xl:pt-[80px] left-0 right-0   sm:pt-[60px] sm:px-[26px] px-[26px] md:px-[78px] xl:px-[78px] pt-[34px] flex justify-center items-center w-full z-50 mx-auto lg:px-12 max-w-">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
-          <div className="w-full lg:w-1/2 flex items-stretch justify-start gap-3">
+          <div className="w-full lg:w-1/2 flex items-stretch justify-start gap-3 h-[40px] sm:h-[30px] md:h-[60px] lg2:h-[72px] lg:h-[50px] xl:h-[80px]">
             <Link href="/">
               <Image
                 src={vitulogo}

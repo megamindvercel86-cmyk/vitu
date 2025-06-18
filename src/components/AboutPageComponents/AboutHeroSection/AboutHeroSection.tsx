@@ -106,21 +106,13 @@ const AboutHeroSection: React.FC = () => {
       {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
-          <source
-            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536827/Park_kzyczv.mp4"
-            type="video/mp4"
-          />
+          <source src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536827/Park_kzyczv.mp4" type="video/mp4" />
         </video>
         <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
-          <source
-            src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536838/Park_Mobile_nowvcm.mp4"
-            type="video/mp4"
-          />
+          <source src="https://res.cloudinary.com/dvandhsai/video/upload/v1749536838/Park_Mobile_nowvcm.mp4" type="video/mp4" />
         </video>
         <div
-          className={`${
-            isDesktop && isFixed ? "fixed" : "absolute"
-          } bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
+          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
             hasScrolled ? "justify-end" : "justify-center"
           } lg:justify-end z-[1] transition-all duration-300`}
         >
@@ -185,7 +177,7 @@ const AboutHeroSection: React.FC = () => {
           <Link to="storysection" smooth={true} duration={700}>
             <div className="relative group cursor-pointer">
               <button
-              aria-label="Discover our Vision"
+                aria-label="Discover our Vision"
                 type="button"
                 className="
       relative group
