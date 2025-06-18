@@ -64,13 +64,13 @@ const BeachAnimation = () => {
         muted={isMuted}
       >
         <source
-          src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach.mp4?alt=media&token=f42e9fa8-9137-4fca-ad6d-3cd53ef384ee"
+          src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach.mp4?alt=media&token=d71ebe29-5784-4a56-b057-2af9454d29c3"
           type="video/mp4"
 
         />
       </video>
        <video
-        className="w-[100%] h-[70vh] object-cover  md:hidden"
+        className="w-[100%] h-[100vh] object-cover block  md:hidden"
         ref={videoRef}
         loop
         playsInline
@@ -78,7 +78,7 @@ const BeachAnimation = () => {
         muted={isMuted}
       >
         <source
-          src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach%20Mobile.mp4?alt=media&token=c7136724-32c1-4a6a-acbb-7118c043b269"
+          src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach%20Mobile%20(2).mp4?alt=media&token=e13f036b-ffa3-45c7-92c7-03753c0b271d"
           type="video/mp4"
 
         />
