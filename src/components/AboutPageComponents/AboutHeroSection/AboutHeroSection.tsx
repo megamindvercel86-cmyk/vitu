@@ -3,7 +3,7 @@ import CTAButtonIcon, { Mute, UnMute } from "@/components/Icons/Icons";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
 import { motion, AnimatePresence } from "framer-motion";
-// ============= Types =============
+
 interface AboutHeroConfig {
   backgroundImage: string;
   titles: {
@@ -15,7 +15,6 @@ interface AboutHeroConfig {
   };
 }
 
-// ============= Constants =============
 const ABOUT_HERO_CONFIG: AboutHeroConfig = {
   backgroundImage: "/images/backgroundImages/aboutPageBackgroundImageDesktop.png",
   titles: {
@@ -27,62 +26,57 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
   },
 };
 
-/**
- * About Hero Section Component
- * Main landing section of the about page
- *
- * Features:
- * 1. Full-width background image with gradient overlay
- * 2. Centered main titles
- * 3. CTA button with icon
- * 4. Responsive design for all screen sizes
- */
-
 const AboutHeroSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFixed, setIsFixed] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false); // 🆕 New state
+  const [hasScrolled, setHasScrolled] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
+  if (videoRef.current) {
+    const newMutedState = !videoRef.current.muted;
+    videoRef.current.muted = newMutedState;
+    setIsMuted(newMutedState);
+
+    // ✅ Trigger scroll-style animation on mobile when unmuted
+    if (newMutedState === false && window.innerWidth < 1024 && !hasScrolled) {
+      setHasScrolled(true);
     }
-  };
+  }
+};
+
 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsDesktop(window.innerWidth >= 1024);
     };
 
-    checkScreenSize(); // Initial check
+    checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!hasScrolled) setHasScrolled(true); // ✅ Mark first scroll
+      if (!hasScrolled) setHasScrolled(true);
 
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        // Change to absolute when the section is about to leave the viewport
+
         setIsFixed(rect.bottom > windowHeight);
         const isInView = rect.bottom > 0 && rect.top < windowHeight;
 
-        // Mute video when section is not in view
-        if (videoRef.current && isMuted && !isInView) {
-          videoRef.current.muted = !isInView;
-          setIsMuted(!isInView);
+        // ✅ Mute when out of view
+        if (videoRef.current && !isInView) {
+          videoRef.current.muted = true;
+          setIsMuted(true);
         }
       }
     };
 
-    // Add throttling to improve performance
     let ticking = false;
     const scrollHandler = () => {
       if (!ticking) {
@@ -96,14 +90,13 @@ const AboutHeroSection: React.FC = () => {
 
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [hasScrolled, isMuted]);
+  }, [hasScrolled]);
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
-      {/* Background Swiper with Overlay */}
       <div className="absolute inset-0 scale-1">
         <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
           <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Park.mp4?alt=media&token=f929985d-9e84-42f3-9d1d-d34ec4739bc4" type="video/mp4" />
@@ -164,7 +157,7 @@ const AboutHeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Main Content */}
+
       <div className="relative flex h-full justify-center top-[10rem] sm:top-[9.8125rem] lg:top-[15.4375rem] xl:top-[21.4375rem] 2xl:top-[23.375rem]">
         <div className="flex flex-col items-center text-center text-white">
           <h1
@@ -179,40 +172,16 @@ const AboutHeroSection: React.FC = () => {
               <button
                 aria-label="Discover our Vision"
                 type="button"
-                className="
-      relative group
-      mt-8
-      flex items-center justify-center
-      gap-[0.6875rem]
-      rounded-full
-      pl-[0.5rem] 2xl:pl-[1rem] pr-[0.125rem] py-[0.1875rem]
-      text-base font-freightNeoMedium text-white
-      2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem]
-      overflow-hidden
-    "
+                className="relative group mt-8 flex items-center justify-center gap-[0.6875rem] rounded-full pl-[0.5rem] 2xl:pl-[1rem] pr-[0.125rem] py-[0.1875rem] text-base font-freightNeoMedium text-white 2xl:pt-4 2xl:pb-4 2xl:pr-4 2xl:text-[2rem] overflow-hidden"
               >
-                {/* Default background */}
                 <div className="absolute inset-0 bg-[#815C46] rounded-full"></div>
-
-                {/* Hover effect starts from the icon */}
-                <div className="relative  flex items-center justify-center w-[2rem] h-[2rem]">
-                  {/* Expanding hover background from icon */}
-                  <div
-                    className="
-          absolute w-0 h-0 bg-[#614130] rounded-full
-          group-hover:w-[30rem] group-hover:h-[30rem]
-          transition-all duration-[1000ms] ease-out
-        "
-                  ></div>
-
-                  {/* Icon stays above the expanding background */}
-                  <div className="relative ">
+                <div className="relative flex items-center justify-center w-[2rem] h-[2rem]">
+                  <div className="absolute w-0 h-0 bg-[#614130] rounded-full group-hover:w-[30rem] group-hover:h-[30rem] transition-all duration-[1000ms] ease-out"></div>
+                  <div className="relative">
                     <CTAButtonIcon fill="#614130" />
                   </div>
                 </div>
-
-                {/* Button text (z-20 to keep it visible above the hover effect) */}
-                <span className="relative  mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
+                <span className="relative mr-4 mt-[2px] md:mt-0">{ABOUT_HERO_CONFIG.cta.text}</span>
               </button>
             </div>
           </Link>

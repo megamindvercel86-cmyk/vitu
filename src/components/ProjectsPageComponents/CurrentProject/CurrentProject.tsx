@@ -58,7 +58,7 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[41%]  lg:top-[64%] left-[41%] top-[60.5%] md:left-[41%] md:top-[64%]  lg:w-[25px]  lg:h-[25px]",
+    position: "lg:left-[41%]  lg:top-[64%] left-[41%] top-[63.5%] md:left-[41%] md:top-[64%]  lg:w-[25px]  lg:h-[25px]",
     imagePath: "/images/visionAndFutureImages/plots1.png",
     description: [
       { value: "Premium Plot", label: "4.00 Cents" },
@@ -72,7 +72,7 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[54%] top-[59%] md:left-[54%] md:top-[62%] lg:left-[54%] lg:top-[62%]  lg:w-[22px] rotate-45  lg:h-[25px]",
+    position: "left-[54%] top-[62%] md:left-[54%] md:top-[62%] lg:left-[54%] lg:top-[62%]  lg:w-[22px] rotate-45  lg:h-[25px]",
     imagePath: "/images/visionAndFutureImages/plots2.png",
     description: [
       { value: "Signature Plot ", label: "5.10 Cents" },
@@ -86,7 +86,7 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[57.5%] top-[60%] md:left-[57%] md:top-[64%] lg:left-[56%] lg:top-[63%] lg:rotate-45  lg:w-[25px]  lg:h-[25px]",
+    position: "left-[57.5%] top-[62%] md:left-[57%] md:top-[64%] lg:left-[56%] lg:top-[63%] lg:rotate-45  lg:w-[25px]  lg:h-[25px]",
     imagePath: "/images/visionAndFutureImages/plots3.png",
     description: [
       { value: "Signature Plot ", label: "5.10 Cents" },
@@ -143,7 +143,7 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[77%] top-[22.5%] lg:left-[72%] lg:top-[11%]  md:left-[74%] md:top-[11.5%] lg:w-[30px] lg:h-[30px]",
+    position: "left-[77%] top-[14.5%] lg:left-[72%] lg:top-[11%]  md:left-[74%] md:top-[11.5%] lg:w-[30px] lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plots7.png",
     description: [
       { value: "Signature Plot", label: "7.60 Cents" },
@@ -157,7 +157,7 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[55%] top-[43%] lg:left-[54%] lg:top-[40%] md:left-[53%] md:top-[40%]   lg:w-[30px] lg:h-[30px]",
+    position: "left-[55%] top-[40%] lg:left-[54%] lg:top-[40%] md:left-[53%] md:top-[40%]   lg:w-[30px] lg:h-[30px]",
     imagePath: "/images/visionAndFutureImages/plot10.png",
     description: [
       { value: "Premium Plot", label: "6.00 Cents" },

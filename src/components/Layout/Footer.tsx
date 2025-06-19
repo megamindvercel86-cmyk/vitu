@@ -353,7 +353,9 @@ const FooterBottom: FC = () => (
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         
-        <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
+        <a href="/terms-of-service"
+        aria-label="Go to Terms of Service"
+         className="text-[#FFFFFF66] text-xs font-freightNeoMedium">
           Terms of Service
         </a>
       </div>

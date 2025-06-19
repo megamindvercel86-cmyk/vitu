@@ -10,12 +10,18 @@ const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFixed, setIsFixed] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false); 
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const toggleMute = () => {
     if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
+      const newMuted = !videoRef.current.muted;
+      videoRef.current.muted = newMuted;
+      setIsMuted(newMuted);
+
+      // 👇 Only trigger scroll-style animation on mobile when unmuted
+      if (newMuted === false && window.innerWidth < 1024 && !hasScrolled) {
+        setHasScrolled(true);
+      }
     }
   };
 
@@ -30,17 +36,17 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!hasScrolled) setHasScrolled(true); 
+      if (!hasScrolled) setHasScrolled(true);
 
-      if (sectionRef.current) {
+      if (sectionRef.current && videoRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         setIsFixed(rect.bottom > windowHeight);
         const isInView = rect.bottom > 0 && rect.top < windowHeight;
 
-        if (videoRef.current && isMuted && !isInView) {
-          videoRef.current.muted = !isInView;
-          setIsMuted(!isInView);
+        if (!isInView && !videoRef.current.muted) {
+          videoRef.current.muted = true;
+          setIsMuted(true);
         }
       }
     };
@@ -58,7 +64,7 @@ const HeroSection = () => {
 
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [hasScrolled, isMuted]);
+  }, [hasScrolled]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -105,13 +111,17 @@ const HeroSection = () => {
           />
         </video>
         <div
-          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${hasScrolled ? "justify-end" : "justify-center"} lg:justify-end z-[1] transition-all duration-300`}
+          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
+            hasScrolled ? "justify-end" : "justify-center"
+          } lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="flex gap-4">
             <div className="cursor-pointer" onClick={toggleMute}>
               <motion.button
                 layout="preserve-aspect"
-                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${isMuted ? "bg-white/60" : "bg-white"} cursor-pointer transition-colors duration-300 hover:shadow-md`}
+                className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${
+                  isMuted ? "bg-white/60" : "bg-white"
+                } cursor-pointer transition-colors duration-300 hover:shadow-md`}
                 aria-label={isMuted ? "Unmute" : "Mute"}
                 transition={{
                   layout: {

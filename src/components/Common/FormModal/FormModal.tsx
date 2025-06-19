@@ -214,7 +214,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
             {/* Close Button */}
             <motion.button
               variants={contentVariants}
-              className="absolute top-6 right-0 me-8 h-12 w-12 cursor-pointer ml-auto bg-[#808080] rounded-full flex items-center justify-center"
+              className="absolute top-6 right-0 me-8 h-10 w-10 lg:h-12 lg:w-12 cursor-pointer ml-auto bg-[#808080] rounded-full flex items-center justify-center"
               onClick={() => {
                 setOpen(false);
                 onClose(false);
@@ -222,7 +222,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <IconX className="h-8 w-8 text-white" />
+              <IconX className="lg:h-8 lg:w-8 h-6 w-6 text-white" />
             </motion.button>
             {/* Form Content */}
             <motion.div
@@ -234,10 +234,10 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                 <h1 className={`text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-4xl md:text-5xl`}>
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
-                <h1 className={`text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-4xl md:text-5xl`}>
+                <h1 className={`text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}>
                   Your dream home is closer than you think!
                 </h1>
-                <p className={`text-center font-geistSerif lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-lg md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
+                <p className={`text-center font-geistSerif lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
                   Begin your journey to a new home—fill out the form & let's get started.{" "}
                 </p>
                 {/* <div className="hidden lg:block">
@@ -260,12 +260,12 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
                         touched.fullName && errors.fullName ? "border-red-500" : ""
                       }`}
                       placeholder="Your Full Name"
                     />
-                    {touched.fullName && errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+                    {touched.fullName && errors.fullName && <p className="text-red-500 text-[18px] mt-1">{errors.fullName}</p>}
                   </div>
                   {/* Email */}
                   <div>
@@ -276,12 +276,12 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
                         touched.email && errors.email ? "border-red-500" : ""
                       }`}
                       placeholder="Your Email"
                     />
-                    {touched.email && errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                    {touched.email && errors.email && <p className="text-red-500 text-[18px] mt-1">{errors.email}</p>}
                   </div>
                   {/* Phone */}
                   <div>
@@ -292,17 +292,17 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       value={formData.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
+                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
                         touched.phone && errors.phone ? "border-red-500" : ""
                       }`}
                       placeholder="Your Phone Number"
                     />
-                    {touched.phone && errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                    {touched.phone && errors.phone && <p className="text-red-500 text-[18px] mt-1">{errors.phone}</p>}
                   </div>
                   {/* Interested In Dropdown */}
                   <div className="relative z-10">
                     <div
-                      className={`${textColor?textColor:"text-[#0C3E49]"} text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
+                      className={`${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
                       onClick={() => setOpen(!open)}
                     >
                       <span>{formData.interstedIn || "Interested In"}</span>
@@ -314,7 +314,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
-                            className={`px-4 py-2 ${textColor?textColor:"text-[#0C3E49]"} text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
+                            className={`px-4 leading-[2] ${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
                             onClick={() => {
                               setFormData((prev) => ({ ...prev, interstedIn: option.label }));
                               setTouched((prev) => ({ ...prev, interstedIn: true }));
@@ -327,14 +327,14 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                         ))}
                       </div>
                     )}
-                    {touched.interstedIn && errors.interstedIn && <p className="text-red-500 text-sm mt-1">{errors.interstedIn}</p>}
+                    {touched.interstedIn && errors.interstedIn && <p className="text-red-500 text-[18px] mt-1">{errors.interstedIn}</p>}
                   </div>
                   {/* WhatsApp Checkbox and Submit Button */}
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-10 pb-12">
+                  <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-4 pb-12">
                     <button
                       type="button"
                       aria-label="Submit Form"
-                      className={`lg:hidden block text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
+                      className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
                         !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
                       }`}
                       onClick={handleSubmit}

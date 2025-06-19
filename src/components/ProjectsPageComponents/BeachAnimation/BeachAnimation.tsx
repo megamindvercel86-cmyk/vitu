@@ -4,21 +4,26 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BeachAnimation = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement | null>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [showLabel, setShowLabel] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  const getActiveVideoRef = () => (isDesktop ? desktopVideoRef.current : mobileVideoRef.current);
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      const newMuteState = !videoRef.current.muted;
-      videoRef.current.muted = newMuteState;
+    const videoEl = getActiveVideoRef();
+    if (videoEl) {
+      const newMuteState = !isMuted;
+      videoEl.muted = newMuteState; // ✅ Direct DOM update
       setIsMuted(newMuteState);
-      if (!newMuteState) {
-        setShowLabel(false); // hide label when unmuted
-      } else {
-        setShowLabel(true); // show label again when muted
+      setShowLabel(newMuteState);
+      if (newMuteState === false && !isDesktop && !hasScrolled) {
+        setHasScrolled(true);
       }
     }
   };
@@ -32,62 +37,78 @@ const BeachAnimation = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // ✅ Sync DOM with state on every change
+  useEffect(() => {
+    const desktopVideo = desktopVideoRef.current;
+    const mobileVideo = mobileVideoRef.current;
+    if (desktopVideo) desktopVideo.muted = isMuted;
+    if (mobileVideo) mobileVideo.muted = isMuted;
+  }, [isMuted]);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || !videoRef.current) return;
+      if (!buttonRef.current) return;
+      const videoEl = getActiveVideoRef();
+      if (!videoEl) return;
 
-      const sectionTop = sectionRef.current.offsetTop;
-      const scrollY = window.scrollY;
-      const hideThreshold = sectionTop + 100; // when scrollY passes this, hide label
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const buttonVisible = buttonRect.top >= 0 && buttonRect.bottom <= window.innerHeight;
 
-      if (scrollY > hideThreshold) {
+      if (!buttonVisible) {
         setShowLabel(false);
-        if (!videoRef.current.muted) {
-          videoRef.current.muted = true;
+        if (!videoEl.muted) {
+          videoEl.muted = true;
           setIsMuted(true);
         }
       }
+
+      if (!hasScrolled) setHasScrolled(true);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isDesktop, hasScrolled]);
 
   return (
     <div ref={sectionRef} className="absolute h-[200vh] w-full">
+      {/* Desktop Video */}
       <video
         className="w-full h-full object-cover hidden md:block"
-        ref={videoRef}
+        ref={desktopVideoRef}
         loop
         playsInline
         autoPlay
-        muted={isMuted}
+        muted
       >
         <source
           src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach.mp4?alt=media&token=d71ebe29-5784-4a56-b057-2af9454d29c3"
           type="video/mp4"
-
         />
       </video>
-       <video
-        className="w-[100%] h-[100vh] object-cover block  md:hidden"
-        ref={videoRef}
+
+      {/* Mobile Video */}
+      <video
+        className="w-[100%] h-[125vh] object-cover block md:hidden"
+        ref={mobileVideoRef}
         loop
         playsInline
         autoPlay
-        muted={isMuted}
+        muted
       >
         <source
           src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FBeach%20Mobile%20(2).mp4?alt=media&token=e13f036b-ffa3-45c7-92c7-03753c0b271d"
           type="video/mp4"
-
         />
       </video>
-       
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#e6ddd6] via-transparent to-transparent" />
 
-      <div className="absolute bottom-[700px] right-0 lg:bottom-[740px] md:right-20 w-full p-4 flex flex-row justify-end lg:justify-end z-[1]">
+      <div
+        ref={buttonRef}
+        className={`absolute bottom-[1000px] right-0 lg:bottom-[740px] md:right-20 w-full p-4 flex flex-row ${
+          !isDesktop && !hasScrolled ? "justify-center" : "justify-end"
+        } lg:justify-end z-[1]`}
+      >
         <div className="flex gap-4">
           <div className="cursor-pointer" onClick={toggleMute}>
             <motion.button

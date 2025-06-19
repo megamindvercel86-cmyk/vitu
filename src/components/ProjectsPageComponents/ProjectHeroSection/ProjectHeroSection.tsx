@@ -64,7 +64,7 @@ const ProjectHeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative w-full h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+      className="relative w-full h-[50rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
       {/* Hero Content */}
       <div className="absolute inset-0 flex flex-col items-center lg2:top-[20rem] md:top-[30vh] top-[30vh]  text-white">
