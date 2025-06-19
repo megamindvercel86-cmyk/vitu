@@ -103,7 +103,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-              <Link href="/">
+              <Link href="/" aria-label="Go to Homepage">
                 <Image
                   src={vitulogo}
                   alt="Logo"
@@ -131,13 +131,20 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                       {item.label}
                     </div>
                   ) : item.href === "/" ? (
-                    <Link key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
+                    <Link aria-label={item.label} key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
                       <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
                         {item.label}
                       </div>
                     </Link>
                   ) : (
-                    <LinkScroll key={item.href} to={item.href} smooth={true} duration={1200} className="mb-8 text-2xl font-geistSerif last:mb-0">
+                    <LinkScroll
+                      aria-label={item.label}
+                      key={item.href}
+                      to={item.href}
+                      smooth={true}
+                      duration={1200}
+                      className="mb-8 text-2xl font-geistSerif last:mb-0"
+                    >
                       <div
                         onClick={() => setIsMenuOpen(false)}
                         className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
@@ -196,7 +203,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-stretch justify-start gap-3 h-[40px] sm:h-[30px] md:h-[60px] lg2:h-[72px] lg:h-[50px] xl:h-[80px]">
-            <Link href="/">
+            <Link href="/" aria-label="Go to Home">
               <Image
                 src={vitulogo}
                 alt="Logo"
@@ -234,7 +241,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                     {label}
                   </div>
                 ) : (
-                  <LinkScroll key={href} to={href} smooth={true} duration={1200}>
+                  <LinkScroll aria-label={label} key={href} to={href} smooth={true} duration={1200}>
                     <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">{label}</div>
                   </LinkScroll>
                 )

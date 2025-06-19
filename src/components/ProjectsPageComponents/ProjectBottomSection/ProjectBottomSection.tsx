@@ -111,7 +111,7 @@ const ProjectBottomSection: React.FC = () => {
         <h2 className="font-freightNeoSemibold text-4xl md:text-6xl lg:text-6xl lg2:text-8xl 2xl:text-9xl text-center leading-tight mb-8">
           {ABOUT_HERO_CONFIG.titles.sub}
         </h2>
-        <Link href="/project-enquire">
+        <Link href="/project-enquire" aria-label="Enquire About Project Details">
           <button
             aria-label="Enquire About Project Details"
             type="button"

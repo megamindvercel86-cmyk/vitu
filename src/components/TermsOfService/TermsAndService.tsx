@@ -7,7 +7,7 @@ const TermsAndService: React.FC = () => {
   return (
     <div className="xl:pt-[9rem] xl:px-[13.125rem] lg:pt-[9.25rem] lg:px-[4.875rem] sm:pt-[3.938rem] sm:px-[1.688rem] pt-[3.938rem] px-[1.688rem]">
       <div className="flex lg:gap-[1.313rem] gap-2">
-        <Link href="/">
+        <Link href="/" aria-label="Back to home">
         
         <div className="pt-1">
           <BackArrow />

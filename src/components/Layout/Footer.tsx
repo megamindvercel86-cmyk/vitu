@@ -152,7 +152,8 @@ const Footer: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
-            <Link href="/">
+            <Link href="/" 
+            aria-label="Go to homepage">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </Link>
             {/* <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
@@ -161,7 +162,10 @@ const Footer: FC = () => {
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="#">Recognized by</FooterLink>
-              <Link href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
+              <Link 
+              aria-label="Go to recognition page"
+              
+               href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
                 <Image src={chieverslog} alt="chieverslog" width={148} height={82} className="mt-4" />
               </Link>
             </div>
@@ -230,6 +234,7 @@ const Footer: FC = () => {
               <div className="pt-16 w-[100%] hidden md:hidden lg:block cursor-pointer relative">
                 <div className="flex items-center relative border-b-[1px] border-b-[#EADFD1CC]">
                   <input
+                  aria-label="Email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

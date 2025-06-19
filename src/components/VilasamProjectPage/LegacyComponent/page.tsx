@@ -17,7 +17,7 @@ const VilasamLegacyBuiltComponent = () => {
             Every VITU Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
             & premium amenities.
           </p>
-          <Link href="/about" className="mt-4 font-[700] text-[20px] font-sourceSans3 inline-block  text-[#0C3E49] hover:underline">
+          <Link aria-label="Discover Our Story" href="/about" className="mt-4 font-[700] text-[20px] font-sourceSans3 inline-block  text-[#0C3E49] hover:underline">
             Discover Our Story →
           </Link>
         </div>

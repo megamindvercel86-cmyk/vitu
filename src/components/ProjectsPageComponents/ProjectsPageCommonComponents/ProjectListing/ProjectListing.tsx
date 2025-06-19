@@ -26,7 +26,9 @@ const ProjectListing = ( {card,
   layout?: boolean;
 }) => {
   return (
-   <Link href={card.href || ""}> <motion.button
+   <Link href={card.href || ""}
+   aria-label='Project'>
+   <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         className="md:rounded-[20px] overflow-hidden rounded-[30px] bg-gray-100 dark:bg-neutral-900 
           flex flex-col items-start justify-start relative z-10 w-full h-full"

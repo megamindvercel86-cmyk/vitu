@@ -40,7 +40,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
               <p className="text-[#0C3E49] md:leading-7 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 pt-6  ">{description}</p>
             </div>
             <div>
-              <Link href="project-enquire">
+              <Link href="project-enquire" aria-label="Get the Best Quote">
                 <button aria-label="Get the Best Quote" className="px-5 border py-2 rounded-3xl font-sourceSans3 bg-[#0C3E49] font-semibold text-white mt-4 ">Get the Best Quote</button>
               </Link>
             </div>

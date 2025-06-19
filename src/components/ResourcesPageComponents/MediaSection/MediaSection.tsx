@@ -102,7 +102,7 @@ export default function MediaSection(): React.ReactElement {
 
     return (
       <div className="media-card rounded-lg overflow-hidden">
-        <Link href={item.link} target="_blank" rel="noopener noreferrer">
+        <Link  aria-label={`Read more about ${item.title}`} href={item.link} target="_blank" rel="noopener noreferrer">
           <div className="relative overflow-hidden rounded-[10px] lg:rounded-[20px] xl:rounded-[20px] w-full h-[201.5px] sm:h-[201.5px] lg:h-[310px] xl:h-[310px]">
             <Image src={item.fileUrl} alt={item.title} width={400} height={310} className="w-full h-full object-cover" />
           </div>

@@ -272,7 +272,9 @@ export default function ProjectCarousel(): React.ReactElement {
       {/* Centered Button */}
       <div className="flex justify-center mt-12">
         <Link href="/general-enquire">
-          <button className="px-8 py-3 border-[#AE8567]  border-[2px] text-[#AE8567]  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors">
+          <button 
+          aria-label="Contact Us"
+          className="px-8 py-3 border-[#AE8567]  border-[2px] text-[#AE8567]  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors">
             Contact Us for a Visit
           </button>
         </Link>

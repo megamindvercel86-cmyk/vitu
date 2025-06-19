@@ -4,10 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavLink from "../Common/NavLink";
 import Button from "../Common/Button";
-import {
-  MenuIcon,
-  MenuIconWhite,
-} from "../Icons/Icons";
+import { MenuIcon, MenuIconWhite } from "../Icons/Icons";
 import logo from "../../../public/images/logos/logo.svg";
 import logoWhite from "../../../public/images/logos/logoWhite.svg";
 import { motion } from "framer-motion";
@@ -51,7 +48,6 @@ const DEFAULT_BUTTON_CONFIG = {
 const PROJECT_LINKS = [
   { href: "/vaikuntamcity", label: "Vaikuntam City" },
   // { href: "/vilasam", label: "Vilasam" },
-
 ];
 
 const NAV_LINKS = [
@@ -123,17 +119,16 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
   };
   // Add this at the top of the Navbar component (within function scope)
 
-
   const { buttonColor } = ROUTE_CONFIG[pathname] || DEFAULT_BUTTON_CONFIG;
 
-  const isNavbarPrimary = navbar === "primary"
+  const isNavbarPrimary = navbar === "primary";
   return (
     <div>
       <header className="max-w-[1497px] 2xl:max-w-full 2xl:mx-40 xl:pt-[98px] xl:px-0 xl:mx-auto lg:pt-[62px] lg:px-[48px] lg2:px-[78px] sm:pt-[34px] sm:px-[26px] pt-[34px] px-[26px]">
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-            <Link href="/">
+            <Link href="/" aria-label="Home">
               <Image
                 src={isNavbarPrimary ? logoWhite : logo}
                 alt="Logo"
@@ -169,6 +164,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                         {dropdownItems?.map((item) => (
                           <div className="py-1" key={item.href}>
                             <Link
+                            aria-label="Dropdown Item"
                               href={item.href}
                               className={`block px-4 py-2 font-freightNeoMedium  lg:text-[16px] lg2:text-xl   ${
                                 pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
@@ -184,7 +180,9 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                 </div>
               ))}
               {showGetInTouch && (
-                <Link href="/general-enquire">
+                <Link href="/general-enquire" 
+                aria-label="Get in Touch"
+                >
                   <Button
                     className={`w-full pt-[2px] text-base h-auto lg2:h-[50px] sm:text-lg lg:h-[30px] md:text-xl lg2:text-2xl px-4 lg2:px-7  lg:text-[16px] xl:text-[26px] 2xl:text-4xl ${
                       isNavbarPrimary ? "bg-white" : ""

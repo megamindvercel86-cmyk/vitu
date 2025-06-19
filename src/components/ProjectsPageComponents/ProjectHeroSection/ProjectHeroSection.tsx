@@ -106,7 +106,9 @@ const ProjectHeroSection: React.FC = () => {
         </h1>
 
         {/* CTA Button */}
-        <Link to="carousal" smooth={true} duration={700}>
+        <Link to="carousal" smooth={true} duration={700} 
+        aria-label="Scroll to Learn More">
+        
           {/* ================================================== */}
 
           <div className="relative group cursor-pointer">

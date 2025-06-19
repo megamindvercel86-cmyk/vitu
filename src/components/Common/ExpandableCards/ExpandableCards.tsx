@@ -286,7 +286,9 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
             >
               A New Way of Life
             </motion.h2>
-            <Link href="/vaikuntamcity">
+            <Link href="/vaikuntamcity"
+            aria-label="Learn More About Vaikuntam City"
+            >
               <motion.button
                 className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1   border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors mt-6"
                 initial={{ y: 20, opacity: 0 }}

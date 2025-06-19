@@ -60,7 +60,7 @@ const NavbarResponsiveComponent = ({
           <div className="flex flex-col h-full" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-              <Link href="/">
+              <Link href="/" aria-label="Go to Homepage">
                 <Image src={logo} alt="Logo" className="w-[95px] h-[30px]" />
               </Link>
               <motion.button
@@ -96,7 +96,11 @@ const NavbarResponsiveComponent = ({
                   {isDropDownOpen && dropdownItems && (
                     <div className="mt-2  flex flex-col items-center space-y-2">
                       {dropdownItems.map((item, index) => (
-                        <NavLink key={index} href={item.href} className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors">
+                        <NavLink
+                          key={index}
+                          href={item.href}
+                          className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
+                        >
                           {item.label}
                         </NavLink>
                       ))}
@@ -106,7 +110,7 @@ const NavbarResponsiveComponent = ({
               ))}
 
               {showGetInTouch && (
-                <Link href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
+                <Link aria-label="Get in Touch" href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
                   <button
                     aria-label="Get in Touch"
                     className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8"
@@ -119,16 +123,36 @@ const NavbarResponsiveComponent = ({
 
             {/* Social Links */}
             <div className="flex justify-center w-full gap-4 mt-auto mb-8">
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
+              <Link
+                href="https://www.instagram.com/vitu.realty"
+                target="_blank"
+                aria-label="Visit our Instagram"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
                 <SecondaryInstgramIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
+              <Link
+                href="https://www.facebook.com/p/VITU-Realty-61557046860214/"
+                target="_blank"
+                aria-label="Visit our Facebook"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
                 <SecondaryMetaIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
+              <Link
+                href="https://www.linkedin.com/company/vitu-realty/"
+                target="_blank"
+                aria-label="Visit our LinkedIn"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
                 <SecondaryLinkedInIcon />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center">
+              <Link
+                href="https://www.youtube.com/@viturealty/featured"
+                target="_blank"
+                aria-label="Visit our YouTube"
+                className="w-10 h-10 rounded-full bg-[#EFEAE8] flex items-center justify-center"
+              >
                 <SecondaryYoutubeIcon />
               </Link>
             </div>

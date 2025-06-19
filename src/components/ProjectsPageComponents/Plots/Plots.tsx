@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./Plot.module.scss";
-import { useTransform, motion} from "framer-motion";
+import { useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import { MotionValue } from "framer-motion";
 import Link from "next/link";
@@ -32,7 +32,6 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
       )
     );
   };
-  
 
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
 
@@ -48,11 +47,14 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
       >
         <div className={styles.body}>
           <div className={styles.description}>
-            <h2  className="text-customBrown font-FreightNeoProNormal leading-[1] text-2xl lg:text-[60px]">{highlightNumbers(title)}</h2>
+            <h2 className="text-customBrown font-FreightNeoProNormal leading-[1] text-2xl lg:text-[60px]">{highlightNumbers(title)}</h2>
             <p className="text-[#4F373799] font-FreightNeoProNormal pt-6 text-lg sm:text-base lg2:text-[24px]">{description}</p>
             <div>
-              <Link href="project-enquire">
-                <button aria-label="Get the Best Quote" className="px-5 border py-2 rounded-3xl font-FreightNeoProNormal bg-[#4F3737] text-white mt-4 lg:mt-[40%]">
+              <Link href="project-enquire" aria-label="Get the Best Quote">
+                <button
+                  aria-label="Get the Best Quote"
+                  className="px-5 border py-2 rounded-3xl font-FreightNeoProNormal bg-[#4F3737] text-white mt-4 lg:mt-[40%]"
+                >
                   Get the Best Quote
                 </button>
               </Link>
