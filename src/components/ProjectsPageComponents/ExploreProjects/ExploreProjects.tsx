@@ -134,8 +134,8 @@ const ExploreProjects: React.FC = () => {
       <div className="md:hidden block pb-5 ">
         {/* Mobile Title Section */}
         <div className="w-full flex flex-col items-center justify-center text-center pt-10">
-          <Typography variant="custom" className="text-xl lg:text-[] text-customBrown font-freightNeoSemibold">
-            A New Home,
+          <Typography variant="custom" className="text-2xl lg:text-[] text-customBrown font-freightNeoSemibold">
+            A New Home
           </Typography>
           <Typography variant="custom" className="text-2xl text-customBrown font-freightNeoSemibold">
             A New Way of Life

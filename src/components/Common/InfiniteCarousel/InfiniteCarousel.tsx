@@ -103,7 +103,7 @@ const CardContent = ({ cardId, data, textStyle, rextFill,pathFill  }: { cardId: 
             height={45}
             className={cn("h-[300px] w-full")}
           />
-          <div className="p-4 md:p-10">
+          <div className="p-6 md:p-10">
             <Typography variant="h1" className="text-customBrown">
               {project?.title?.split("").map((char, index) => (
                 <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedMedium" : "font-freightNeoMedium"}`}>
@@ -111,7 +111,7 @@ const CardContent = ({ cardId, data, textStyle, rextFill,pathFill  }: { cardId: 
                 </span>
               ))}
             </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] text-base md:!text-xl">
               {project?.description?.split("").map((char, index) => (
                 <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedMedium" : "font-freightNeoMedium"}`}>
                   {char}

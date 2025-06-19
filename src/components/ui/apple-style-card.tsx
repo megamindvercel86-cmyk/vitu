@@ -114,7 +114,7 @@ export default function AppleStyleCard({
             ref={containerRef}
             layoutId={`expandable-card-${id}`}
             className={cn(
-              "lg:mx-16 lg2:mx-auto border-[1px] border-[#bdbec2] lg2:max-w-5xl  bg-white z-[9999] dark:bg-bg-[#F8F6F5]  h-auto  md:my-10 sm:mx-5 md:mx-auto md:rounded-[32px] font-sans relative overflow-hidden",
+              "lg:mx-16 lg2:mx-auto border-[1px] border-[#bdbec2] lg2:max-w-5xl  bg-white z-[9999] dark:bg-bg-[#F8F6F5]  h-auto my-6 mx-4 rounded-xl  md:my-10 sm:mx-5 md:mx-auto md:rounded-[32px] font-sans relative overflow-hidden",
               expandedClassName
             )}
           >
