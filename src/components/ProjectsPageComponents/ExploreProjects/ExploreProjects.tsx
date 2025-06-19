@@ -122,7 +122,6 @@ const ExploreProjects: React.FC = () => {
           Featured Project
         </Typography>
         <h1
-          id="project-title"
           className="w-[224px] pb-16 text-center hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
         >
           A New Home, A New Way of Life

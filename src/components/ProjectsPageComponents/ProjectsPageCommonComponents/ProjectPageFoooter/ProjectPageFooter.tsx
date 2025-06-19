@@ -27,7 +27,7 @@ import ContactFormModal from "@/components/Common/FormModal/FormModal";
 const ProjectFooter: FC = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [showModal,setShowModal]=useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
 
@@ -68,7 +68,9 @@ const ProjectFooter: FC = () => {
           <FooterLink href="/" ariaLabel="Go to Home">
             <IoMdHome className="text-footerTextColor mb-[3px]  text-lg" />
           </FooterLink>
-          <FooterLink href="/" ariaLabel="Go to Home">Home</FooterLink>
+          <FooterLink href="/" ariaLabel="Go to Home">
+            Home
+          </FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
@@ -78,8 +80,9 @@ const ProjectFooter: FC = () => {
                     {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
                   </span>
                 ) : (
-                  // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`} ariaLabel={`Go to ${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
+                  <FooterLink href={`/${mainPage}`} ariaLabel={`Navigate to ${mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)} page`}>
+                    {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
+                  </FooterLink>
                 )}
               </span>
             </>
@@ -110,8 +113,11 @@ const ProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-               <button onClick={()=>setShowModal(true)} aria-label="Download" className="font-FreightNeoProBold text-white text-[22px] bg-[#4f3737] py-2 px-4 rounded-[56px] ">
-                {" "}
+              <button
+                onClick={() => setShowModal(true)}
+                aria-label="Download"
+                className="font-FreightNeoProBold text-white text-[22px] bg-[#4f3737] py-2 px-4 rounded-[56px] "
+              >
                 Download E-Brochure
               </button>
               {/* <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button> */}
@@ -192,7 +198,14 @@ const ProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal downloadFileLink="/downloadingFiles/VC brochure.pdf" buttonBg="bg-[#4f3737]" peerBg="peer-checked:bg-[#4f3737]" textColor="text-customBrown" isOpen={showModal} onClose={setShowModal} />
+      <ContactFormModal
+        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+        buttonBg="bg-[#4f3737]"
+        peerBg="peer-checked:bg-[#4f3737]"
+        textColor="text-customBrown"
+        isOpen={showModal}
+        onClose={setShowModal}
+      />
     </footer>
   );
 };
@@ -219,7 +232,9 @@ const FooterSection: FC<{
       <ul className="space-y-4 mt-4 text-[#EADFD1] ">
         {links.map((link) => (
           <li key={link.href} className="cursor-pointer">
-            <FooterLink href={link.href} ariaLabel={link.label}>{link.label}</FooterLink>
+            <FooterLink href={link.href} ariaLabel={link.label}>
+              {link.label}
+            </FooterLink>
           </li>
         ))}
       </ul>
@@ -257,7 +272,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
     >
       {icon}
       <FooterLink href={link} target="_blank" ariaLabel={text} className="pl-4 lg:pe-14 text-center lg:text-left">
-        {isPhoneNumber || isPincode || email && <span className={`font-CandideCondensedNormal`}>{text}</span>}
+        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : ""}
       </FooterLink>
     </li>
   );
