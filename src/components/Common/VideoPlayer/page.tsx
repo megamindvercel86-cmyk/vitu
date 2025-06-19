@@ -105,14 +105,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <svg className="w-12 h-12 lg:w-20 lg:h-20" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M70 0. b411255C31.6264 0.411255 0.411255 31.6294 0.411255 70C0.411255 108.371 31.6264 139.589 70 139.589C108.374 139.589 139.589 108.371 139.589 70C139.589 31.6294 108.374 0.411255 70 0.411255ZM97.6645 72.438L57.0712 98.5338C56.5955 98.8424 56.0461 98.9954 55.5024 98.9954C55.0267 98.9954 54.5453 98.8763 54.115 98.6415C53.1805 98.1318 52.6028 97.1576 52.6028 96.0958V43.9042C52.6028 42.8424 53.1805 41.8682 54.115 41.3585C55.0324 40.8545 56.182 40.8855 57.0712 41.4662L97.6645 67.562C98.4914 68.0942 98.9954 69.0146 98.9954 70C98.9954 70.9854 98.4914 71.9055 97.6645 72.438Z"
-                fill="#E8E8E8"
-              />
-            </svg>
-          </div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full p-4 z-10 flex justify-center items-center">
+    <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M70 0.411255C31.6264 0.411255 0.411255 31.6294 0.411255 70C0.411255 108.371 31.6264 139.589 70 139.589C108.374 139.589 139.589 108.371 139.589 70C139.589 31.6294 108.374 0.411255 70 0.411255ZM97.6645 72.438L57.0712 98.5338C56.5955 98.8424 56.0461 98.9954 55.5024 98.9954C55.0267 98.9954 54.5453 98.8763 54.115 98.6415C53.1805 98.1318 52.6028 97.1576 52.6028 96.0958V43.9042C52.6028 42.8424 53.1805 41.8682 54.115 41.3585C55.0324 40.8545 56.182 40.8855 57.0712 41.4662L97.6645 67.562C98.4914 68.0942 98.9954 69.0146 98.9954 70C98.9954 70.9854 98.4914 71.9055 97.6645 72.438Z"
+        fill="#E8E8E8"
+      />
+    </svg>
+  </div>
         <div className="absolute bottom-0 w-full p-4 z-10 flex flex-row justify-end md:justify-between">
           <div className="hidden md:block">
             {isYoutube && (
@@ -156,16 +156,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           {!isYoutube && (
             <div className="flex gap-4">
               <div>
-                <Link href={youtubeUrl} target="_blank"
-                aria-label="Open YouTube video in new tab">
-                
-                  <button
-                    aria-label=" Watch The Full Video"
-                    className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"
-                  >
-                    Watch the Full Video
-                  </button>
-                </Link>
+                <button
+                  aria-label="Watch The Full Video"
+                  className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"
+                  onClick={openModal}
+                >
+                  Watch the Full Video
+                </button>
               </div>
               <div className="cursor-pointer" onClick={togglePlayPause}>
                 <svg width="50" height="50" viewBox="0 0 50 50">
