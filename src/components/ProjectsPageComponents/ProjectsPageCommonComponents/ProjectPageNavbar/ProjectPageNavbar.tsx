@@ -109,7 +109,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-7 pt-[34px]">
-            <Link href="/">
+            <Link href="/" aria-label="Go to home page">
               <Image
                 src={vitulogo}
                 alt="Logo"
@@ -129,24 +129,19 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
               {NAV_LINKS_MOBAIL.map((item, index) => (
                 <React.Fragment key={index}>
                   {item.href === "/" ? (
-                    <Link href={item.href} className="mb-8 lg:hidden text-2xl font-FreightNeoProBold last:mb-0">
-                      {" "}
-                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
+                    <Link aria-label={item.label} href={item.href} className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
                         {item.label}
-                      </div>
                     </Link>
                   ) : (
                     <LinkScroll
+                    aria-label={item.label}
                       to={item.href}
                       smooth={true}
                       duration={700}
-                      className="mb-8 text-2xl font-FreightNeoProBold last:mb-0"
+                      className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer mb-8 text-xl last:mb-0">
-                        {" "}
                         {item.label}
-                      </div>
                     </LinkScroll>
                   )}
                 </React.Fragment>
@@ -190,7 +185,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
         <nav className="flex flex-col items-center lg:flex-row w-full">
           {/* Logo Section - Left 50% */}
           <div className="w-full lg:w-1/2 flex items-center justify-start">
-          <Link href="/">
+          <Link href="/" aria-label="Go to Homepage">
               <Image
                 src={vitulogo}
                 alt="Logo"
@@ -217,8 +212,8 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
           <div className={`hidden lg:flex lg2:w-1/2 lg:w-2/3   items-center `}>
             <div className="flex items-center justify-end gap-12 w-full">
               {NAV_LINKS.map(({ href, label }) => (
-                <LinkScroll key={href} to={href} smooth={true} duration={700}>
-                  <div className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">{label}</div>
+                <LinkScroll aria-label={label} key={href} to={href} smooth={true} duration={700} className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium">
+                  {label}
                 </LinkScroll>
               ))}
               {showGetInTouch && (

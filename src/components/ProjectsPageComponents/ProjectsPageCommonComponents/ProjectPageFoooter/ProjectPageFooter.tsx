@@ -65,10 +65,10 @@ const ProjectFooter: FC = () => {
     <footer className="bg-black text-white pt-8 lg:pt-16 w-full">
       <div className="px-6 lg:px-20 xl:px-40">
         <div className="flex items-center  space-x-2 pb-3">
-          <FooterLink href="/">
+          <FooterLink href="/" ariaLabel="Go to Home">
             <IoMdHome className="text-footerTextColor mb-[3px]  text-lg" />
           </FooterLink>
-          <FooterLink href="/">Home</FooterLink>
+          <FooterLink href="/" ariaLabel="Go to Home">Home</FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine />
@@ -79,7 +79,7 @@ const ProjectFooter: FC = () => {
                   </span>
                 ) : (
                   // <button onClick={() => router.back()}>{mainPage}</button>
-                  <FooterLink href={`/${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
+                  <FooterLink href={`/${mainPage}`} ariaLabel={`Go to ${mainPage}`}>{mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}</FooterLink>
                 )}
               </span>
             </>
@@ -97,11 +97,11 @@ const ProjectFooter: FC = () => {
           {/* Section 1: Company Branding */}
           <div className="flex flex-col  items-center lg:items-start">
             <div className="flex flex-col  lg:flex-row gap-5 lg:gap-2">
-              <FooterLink href="/">
+              <FooterLink href="/" ariaLabel="Go to Home">
                 <Image src={logo2} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
               </FooterLink>
               <div className="border-l border-[#EADFD1] h-16 mx-4 hidden lg:block" />
-              <FooterLink href="/">
+              <FooterLink href="/" ariaLabel="Go to Home">
                 <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[280px] h-auto" />
               </FooterLink>
             </div>
@@ -219,7 +219,7 @@ const FooterSection: FC<{
       <ul className="space-y-4 mt-4 text-[#EADFD1] ">
         {links.map((link) => (
           <li key={link.href} className="cursor-pointer">
-            <FooterLink href={link.href}>{link.label}</FooterLink>
+            <FooterLink href={link.href} ariaLabel={link.label}>{link.label}</FooterLink>
           </li>
         ))}
       </ul>
@@ -231,7 +231,7 @@ const FooterSection: FC<{
       <ul className="space-y-4 text-[#EADFD1] font-freightNeoSemibold">
         {links.map((link) => (
           <li key={link.href} className="cursor-pointer">
-            <Link to={link.href} duration={700} smooth={true}>
+            <Link to={link.href} duration={700} smooth={true} aria-label={`Link to ${link.label}`}>
               {link.label}
             </Link>
           </li>
@@ -256,8 +256,8 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string }> =
       className={`flex md:flex-row flex-col text-footerTextColor  align-middle ${isPincode && "lg:items-start 2xl:item"} items-center  md:gap-0 gap-3 `}
     >
       {icon}
-      <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-center lg:text-left">
-        {isPhoneNumber || isPincode || email ? <span className={`font-CandideCondensedNormal`}>{text}</span> : "fdtext"}
+      <FooterLink href={link} target="_blank" ariaLabel={text} className="pl-4 lg:pe-14 text-center lg:text-left">
+        {isPhoneNumber || isPincode || email && <span className={`font-CandideCondensedNormal`}>{text}</span>}
       </FooterLink>
     </li>
   );

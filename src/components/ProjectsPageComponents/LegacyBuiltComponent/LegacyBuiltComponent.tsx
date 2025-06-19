@@ -10,16 +10,14 @@ const LegacyBuiltComponent = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full ">
         {/* Left Text Section */}
         <div className="mb-0 lg:mb-[260px] ">
-          <h1 className="lg:text-[60px] leading-[1] text-3xl  font-freightNeoSemibold text-[#4F3737]">
-            A Legacy Built on Trust
-          </h1>
+          <h1 className="lg:text-[60px] leading-[1] text-3xl  font-freightNeoSemibold text-[#4F3737]">A Legacy Built on Trust</h1>
           <p className="mt-4  lg:w-[330px]  text-[#4F373799] lg2:text-[24px]  font-FreightNeoProNormal">
-            Every VITU Realty property embodies our Client centric philosophy.
-            Thoughtfully designed homes with abundant natural light, smart
-            spaces, & premium amenities.
+            Every VITU Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces,
+            & premium amenities.
           </p>
           <Link
-            href="#"
+            aria-label="Go to about page"
+            href="/about"
             className="mt-4 font-[700] text-[24px] font-FreightNeoProNormal inline-block  text-[#4F3737] hover:underline"
           >
             Discover Our Story →
@@ -28,13 +26,7 @@ const LegacyBuiltComponent = () => {
 
         {/* Center Image */}
         <div className="flex justify-center h-[50vh] sm:h-[60vh] md:h-[40vh] lg:h-[86vh] object-fill">
-          <Image
-            src={projectPageBg}
-            alt="Green Leaves"
-            width={350}
-            height={450}
-            className="rounded-xl shadow-lg object-cover"
-          />
+          <Image src={projectPageBg} alt="Green Leaves" width={350} height={450} className="rounded-xl shadow-lg object-cover" />
         </div>
 
         {/* Right Recognition Section */}
@@ -44,8 +36,8 @@ const LegacyBuiltComponent = () => {
             <Image src={darkLogo} alt="ET Achievers" width={111} height={203} />
           </div>
           <p className="mt-8 lg:text-[24px] leading-[1.2]  text-[#4F3737] text-justify  font-FreightNeoProNormal">
-            Founded in <span className="font-CandideCondensedNormal">1965</span>, our team brings years of cross-industry expertise
-            on average, delivering exceptional skill & knowledge in every field.
+            Founded in <span className="font-CandideCondensedNormal">1965</span>, our team brings years of cross-industry expertise on average,
+            delivering exceptional skill & knowledge in every field.
           </p>
         </div>
       </div>

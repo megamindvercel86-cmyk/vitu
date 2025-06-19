@@ -256,7 +256,7 @@ export default function VisionForTheFuture() {
 
                   {/* Play/Pause Icon */}
                   <foreignObject x="14" y="14" width="22" height="22">
-                    <button className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
+                    <button  className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
                       {isPlay ? <FaPause className="text-lg text-[#dbc9bc]" /> : <FaPlay className="text-lg text-[#dbc9bc]" />}
                     </button>
                   </foreignObject>

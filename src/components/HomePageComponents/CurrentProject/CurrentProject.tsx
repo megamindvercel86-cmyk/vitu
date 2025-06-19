@@ -687,7 +687,7 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
 
       <Link href="/project-enquire" aria-label="Explore the Project Now">
         <div className="block md:hidden w-full pt-10 text-center leading-[1]">
-          <button className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
+          <button aria-label={PROJECT_DATA.cta} className="flex items-center justify-center w-full h-[56px] rounded-[36px] border-[2px] border-customBrown font-FreightNeoProBold text-[22px] text-customBrown hover:bg-customBrown hover:text-white transition-colors duration-300">
             {PROJECT_DATA.cta}
           </button>
         </div>

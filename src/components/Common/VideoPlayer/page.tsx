@@ -91,7 +91,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           {!isYoutube && (
             <div className="flex gap-4">
               <div>
-                <Link href={youtubeUrl} target="_blank">
+                <Link href={youtubeUrl} target="_blank"
+                aria-label="Open YouTube video in new tab">
+                
                   <button
                     aria-label=" Watch The Full Video"
                     className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"

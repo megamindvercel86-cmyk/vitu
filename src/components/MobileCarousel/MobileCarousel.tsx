@@ -1,19 +1,8 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  TouchEvent,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useCallback, TouchEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  PrimaryViewMoreButton,
-  SecondaryViewMoreButton,
-} from "../Icons/Icons";
+import { IconArrowNarrowLeft, IconArrowNarrowRight, PrimaryViewMoreButton, SecondaryViewMoreButton } from "../Icons/Icons";
 import Image from "next/image";
 
 interface Card {
@@ -157,20 +146,12 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
                   layoutId={`card-${card.id}`}
                   className={cn(
                     "transition-all duration-500 ease-in-out cursor-pointer ",
-                    index === 1
-                      ? "md:w-[300px] w-[231px] h-[289px] opacity-100 z-20 scale-100"
-                      : "w-[180px] h-[267px] my-auto   hover:opacity-60",
+                    index === 1 ? "md:w-[300px] w-[231px] h-[289px] opacity-100 z-20 scale-100" : "w-[180px] h-[267px] my-auto   hover:opacity-60"
                   )}
                 >
                   <div className="relative bg-white rounded-[20px] shadow-xl overflow-hidden h-full">
                     <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      width={500}
-                      height={300}
-                      className="w-full h-full object-cover absolute inset-0 z-10"
-                    />
+                    <Image src={card.image} alt={card.title} width={500} height={300} className="w-full h-full object-cover absolute inset-0 z-10" />
                     <div className="relative z-40 p-8">
                       <motion.p
                         layoutId={`category-${card.id}`}
@@ -192,11 +173,7 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
                       </motion.p>
                     </div>
                     <div className="absolute bottom-4 right-4 z-50">
-                      {card.type === "primary" ? (
-                        <PrimaryViewMoreButton />
-                      ) : (
-                        <SecondaryViewMoreButton />
-                      )}
+                      {card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />}
                     </div>
                   </div>
                 </motion.div>
@@ -205,19 +182,17 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
           </div>
         </div>
         <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl-mt-[75px] mt-[36px] px-6">
-          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base  text-customBrown  xl:text-[28px]">
-            Explore More
-          </span>
+          <span className="font-FreightNeoProBold lg:text-2xl sm:text-base  text-customBrown  xl:text-[28px]">Explore More</span>
           <div className="flex gap-2">
             <button
-            aria-label="Previous Slide"
+              aria-label="Previous Slide"
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
               onClick={handleManualPrev}
             >
               <IconArrowNarrowLeft />
             </button>
             <button
-            aria-label="Next Slide"
+              aria-label="Next Slide"
               className="relative z-40 lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
               onClick={handleManualNext}
             >
@@ -251,16 +226,10 @@ const MobileCarousel: React.FC<MobileCarouselProps> = ({ cards }) => {
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
-              <motion.p
-                layoutId={`category-${selectedCard.id}`}
-                className="text-base font-medium text-black dark:text-white font-freightNeoMedium"
-              >
+              <motion.p layoutId={`category-${selectedCard.id}`} className="text-base font-medium text-black dark:text-white font-freightNeoMedium">
                 {selectedCard.category}
               </motion.p>
-              <motion.p
-                layoutId={`title-${selectedCard.id}`}
-                className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white"
-              >
+              <motion.p layoutId={`title-${selectedCard.id}`} className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white">
                 {selectedCard.title}
               </motion.p>
               <div className="py-10">{selectedCard.content}</div>

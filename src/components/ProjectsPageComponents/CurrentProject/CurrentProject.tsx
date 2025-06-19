@@ -314,7 +314,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       <article className="w-full lg:w-1/2 flex flex-col justify-between">
       <div>
         <header className="pb-4">
-          <button className="text-[#4F3737] bg-[#AE856614] font-FreightNeoProNormal px-4 py-1 lg:py-1.5 mb-2 rounded-md">
+          <button aria-label="Limited Plots Available" className="text-[#4F3737] bg-[#AE856614] font-FreightNeoProNormal px-4 py-1 lg:py-1.5 mb-2 rounded-md">
             Limited Plots Available
           </button>
           {homePage ? (
@@ -368,7 +368,9 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
         </div>
        
         {homePage ? (
-          <Link href="/vaikuntamcity" passHref legacyBehavior>
+          <Link href="/vaikuntamcity" passHref legacyBehavior 
+          aria-label="Vaikuntam City" 
+          >
             <motion.button
               className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full !lġ2:text-[4px] font-FreightNeoProBold transition-colors"
               initial={{ y: 20, opacity: 0 }}
@@ -414,7 +416,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
         </div>
       </figure>
       {homePage ? (
-        <Link href="/vaikuntamcity" passHref legacyBehavior>
+        <Link href="/vaikuntamcity" passHref legacyBehavior aria-label="Vaikuntam City">
           <motion.a
             className="px-8 py-3 mx-10 text-center  lg:hidden mb-8 border-customBrown  border-[2px] text-customBrown  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors"
             initial={{ y: 20, opacity: 0 }}

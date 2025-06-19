@@ -434,7 +434,7 @@ export default function Gallery() {
           isFixed ? "fixed lg:bottom-10 lg2:bottom-28 bottom-5 " : "absolute lg2:bottom-28  bottom-5 mx-auto"
         }  z[1] md:text-[22px] font-bold text-center  font-FreightNeoProBold flex w-full justify-center`}
       >
-        <button onClick={handleSkip} className="underline cursor-pointer">
+        <button aria-label="Skip Legacy Walkthrough" onClick={handleSkip} className="underline cursor-pointer">
           Skip Legacy Walkthrough
         </button>
       </div>

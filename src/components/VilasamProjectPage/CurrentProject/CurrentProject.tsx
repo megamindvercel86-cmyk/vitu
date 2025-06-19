@@ -55,8 +55,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-    },
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+      },
     ],
   },
   {
@@ -97,8 +97,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-    },
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+      },
     ],
   },
   {
@@ -265,8 +265,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-    },
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+      },
     ],
   },
   {
@@ -279,8 +279,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-    },
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+      },
     ],
   },
   {
@@ -293,8 +293,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
-    },
+          "Known for welcoming the soft golden glow of the evening sun, west-facing plots are a perfect blend of comfort and warmth. Ideal for those who enjoy cooler mornings and brighter late afternoons, these plots are thoughtfully positioned to maximize natural light while offering serene sunset views right from your doorstep.",
+      },
     ],
   },
   {
@@ -349,8 +349,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-    },
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+      },
     ],
   },
   {
@@ -377,8 +377,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-    },
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+      },
     ],
   },
   {
@@ -391,8 +391,8 @@ const LOCATIONS: Location[] = [
       {
         value: "",
         label:
-        "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
-    },
+          "Designed for early risers and energy-conscious living, east-facing plots bask in the gentle morning light. These plots are ideal for building vastu-compliant homes that align with traditional preferences and modern needs, offering a peaceful start to every day.",
+      },
     ],
   },
   {
@@ -536,7 +536,7 @@ const CurrentProject: React.FC = () => {
             </motion.div>
           ))}
       <div className=" relative group cursor-pointer">
-        <button 
+        <button
           aria-label="Learn more about our sustainability approach"
           onClick={() => setIsModalOpen(true)}
           type="button"
@@ -675,6 +675,7 @@ const CurrentProject: React.FC = () => {
             ))}
         <div className=" relative group cursor-pointer">
           <button
+          aria-label="More about our sustainability centric approach"
             onClick={() => setIsModalOpen(true)}
             type="button"
             className="

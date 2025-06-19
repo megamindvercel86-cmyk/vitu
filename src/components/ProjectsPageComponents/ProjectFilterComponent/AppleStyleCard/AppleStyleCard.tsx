@@ -139,7 +139,9 @@ export default function ProjectFilterAppleStyleCard({
 
   return (
     <>
-    <Link href={href}>
+    <Link href={href}
+    aria-label={title ? `View details for ${title}` : "View project details"}
+    >
       <motion.button
         layoutId={`expandable-card-${id}`}
         // onClick={() => setIsOpen(isExpanded)}

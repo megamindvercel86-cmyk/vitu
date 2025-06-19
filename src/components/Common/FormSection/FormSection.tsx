@@ -50,7 +50,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
   // Loading animation (you can style this further or use an SVG spinner)
- 
+
   // Rest of your component (JSX) remains exactly the same
   return (
     <div className="flex flex-col sm:flex-row lg:flex-row pt-[4.125rem] px-6 md:px-8 sm:pt-[4.125rem] lg:pt-[9.938rem] xl:pt-[9.938rem] xl:px-[17.312rem] lg:px-[8.250rem] gap-[1.875rem] sm:gap-[2.813rem]">
@@ -78,17 +78,18 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
       <div className="flex-1">
         <form>
           <div>
-            <input type="text" placeholder="Your Full Name" {...formik.getFieldProps("fullName")} className={inputBaseClass} />
+            <input aria-label="Name" type="text" placeholder="Your Full Name" {...formik.getFieldProps("fullName")} className={inputBaseClass} />
             {formik.touched.fullName && formik.errors.fullName && <p className="text-red-500 text-sm">{formik.errors.fullName}</p>}
           </div>
 
           <div className="mt-[45px]">
-            <input type="email" placeholder="Your Email" {...formik.getFieldProps("email")} className={inputBaseClass} />
+            <input aria-label="Email" type="email" placeholder="Your Email" {...formik.getFieldProps("email")} className={inputBaseClass} />
             {formik.touched.email && formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
           </div>
 
           <div className="mt-[45px]">
             <input
+              aria-label="Phone Number"
               type="number"
               placeholder="Your Phone Number"
               {...formik.getFieldProps("phone")}
@@ -101,6 +102,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
           {page === "General Enquire" && (
             <div className="relative mt-[45px]">
               <textarea
+                aria-label="Message"
                 rows={3}
                 placeholder="Your Comments"
                 {...formik.getFieldProps("comments")}
@@ -124,7 +126,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 <span>{formik.values.option || "Interested In"}</span>
                 <Dropdown />
               </div>
-              <hr className="border-black border-opacity-20"/>
+              <hr className="border-black border-opacity-20" />
               {/* Dropdown Menu */}
               {open && (
                 <div className="absolute w-full bg-[#F8F6F5] font-freightNeoMedium  rounded-md ">
@@ -138,19 +140,15 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                       }}
                     >
                       {option.label}
-
                     </div>
-                    
                   ))}
-
                 </div>
-                
               )}
             </div>
           )}
           {page === FORM_TYPES.CAREER && (
             <>
-                <div className="relative mt-8 z-10 ">
+              <div className="relative mt-8 z-10 ">
                 {/* Dropdown Button */}
                 <div
                   className=" text-customTextGray font-freightNeoMedium text-lg py-3 rounded-md flex justify-between items-center cursor-pointer"
@@ -164,21 +162,21 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 {/* Dropdown Menu */}
                 {open && (
                   <div className="absolute w-full bg-[#F8F6F5] rounded-md">
-                  {JOB_OPTIONS.map((option) => (
-                    <div
-                    key={option.value}
-                    className="px-4 py-2 text-customTextGray font-freightNeoMedium text-lg hover:bg-gray-200 cursor-pointer"
-                    onClick={() => {
-                      formik.setFieldValue("option", option.label);
-                      setOpen(false);
-                    }}
-                    >
-                    {option.label}
-                    </div>
-                  ))}
+                    {JOB_OPTIONS.map((option) => (
+                      <div
+                        key={option.value}
+                        className="px-4 py-2 text-customTextGray font-freightNeoMedium text-lg hover:bg-gray-200 cursor-pointer"
+                        onClick={() => {
+                          formik.setFieldValue("option", option.label);
+                          setOpen(false);
+                        }}
+                      >
+                        {option.label}
+                      </div>
+                    ))}
                   </div>
                 )}
-                </div>
+              </div>
               <div className="mt-[45px] relative">
                 <div className="w-full px-1 pb-2 text-customTextGray bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl font-freightNeoMedium">
                   <label htmlFor="resume-upload" className="flex items-center cursor-pointer text-customTextGray w-full justify-between">
@@ -186,6 +184,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                     <Upload />
                   </label>
                   <input
+                    aria-label="Resume Upload"
                     id="resume-upload"
                     type="file"
                     accept=".pdf,.doc,.docx"
@@ -232,6 +231,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
                 <div className="relative">
                   <input
+                    aria-label="Resume Upload"
                     type="checkbox"
                     {...formik.getFieldProps("whatsapp")}
                     checked={formik.values.whatsapp} // Ensure controlled behavior
@@ -312,8 +312,9 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
               )}
 
               <label className="flex items-center mt-3 lg:mt-0 gap-3 cursor-pointer group w-fit">
-              <div className="relative">
+                <div className="relative">
                   <input
+                    aria-label="File input"
                     type="checkbox"
                     {...formik.getFieldProps("whatsapp")}
                     checked={formik.values.whatsapp} // Ensure controlled behavior
@@ -326,7 +327,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                   </div>
                 </div>
                 <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">Receive Updates on WhatsApp</span>
-             </label>
+              </label>
               {isLoading ? (
                 <span className="lg:block hidden items-center justify-center">
                   <Loader />

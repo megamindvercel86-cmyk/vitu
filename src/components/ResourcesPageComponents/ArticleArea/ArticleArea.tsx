@@ -272,7 +272,7 @@ export default function ArticleArea(): React.ReactElement {
             ))}
           </Swiper>
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
-            <Link href="/insights">
+            <Link href="/insights" aria-label="View all insights">
             
             <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
             </Link>

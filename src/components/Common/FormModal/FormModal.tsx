@@ -254,6 +254,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Full Name */}
                   <div>
                     <input
+                  aria-label="fullName"
                       type="text"
                       id="fullName"
                       name="fullName"
@@ -270,6 +271,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Email */}
                   <div>
                     <input
+                    aria-label="email"
                       type="email"
                       id="email"
                       name="email"
@@ -286,6 +288,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Phone */}
                   <div>
                     <input
+                    aria-label="phone"
                       type="number"
                       id="phone"
                       name="phone"
@@ -314,7 +317,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
-                            className={`px-4 leading-[2] ${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
+                            className={`px-4 leading-[2] lg:leading-none lg:py-4 ${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
                             onClick={() => {
                               setFormData((prev) => ({ ...prev, interstedIn: option.label }));
                               setTouched((prev) => ({ ...prev, interstedIn: true }));
@@ -345,7 +348,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                     <label className="flex items-center gap-3 cursor-pointer">
                       <div className="relative">
                         <input
-                          type="checkbox"
+                        aria-label="WhatsApp Checkbox"
+                        type="checkbox"
                           id="whatsapp"
                           name="whatsapp"
                           checked={formData.whatsapp}
