@@ -319,14 +319,12 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
           </button>
           {homePage ? (
             <h1
-              id="project-title"
               className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-3xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
               Vaikuntam City
             </h1>
           ) : (
             <h1
-              id="project-title"
               className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
               Our Commitment <br /> to Tomorrow
@@ -335,14 +333,12 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
 
           {homePage ? (
             <h1
-              id="project-title"
               className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
               Vaikuntam City
             </h1>
           ) : (
             <h1
-              id="project-title"
               className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
             >
               Our Commitment to Tomorrow
