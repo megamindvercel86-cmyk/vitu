@@ -15,6 +15,8 @@ interface InitiativeCard {
   bottomTitle: string;
   content?: string;
   fileUrl?: string;
+  bottomTitle2?: string;
+  content2?:string;
 }
 
 // ============= Constants =============
@@ -29,25 +31,31 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
     id: 14,
     url: "/images/SustainabilityInitiativesImages/1.png",
     fileUrl: "/images/SustainabilityInitiativesImages/1.png",
-    bottomTitle: "Beach cleaning",
+    bottomTitle: "Beach Cleaning & Tree Planting Drives",
+    bottomTitle2:"Giving Back to Nature, Together",
     content:
-      "We are actively preserving coastal ecosystems through regular beach cleanups, consciously contributing to cleaner shores and healthier marine life.",
-  },
+      "Sustainability is more than just planning; it's about participating. At VITU, we regularly engage in on-ground activities like coastal clean-up drives and community tree-planting events. These collective efforts help restore natural ecosystems while inspiring a deeper bond between our residents and the environment around them.",
+  content2:"These hands-on initiatives are our way of nurturing a culture of care. From keeping our shores plastic-free to planting roots that will grow for decades, we believe in small acts that ripple outwards. It’s our promise to leave the earth better than we found it and bring our community along on the journey."
+    },
   {
     id: 15,
     url: "/images/SustainabilityInitiativesImages/2.png",
     fileUrl: "/images/SustainabilityInitiativesImages/2.png",
-    bottomTitle: "500+ Tree Cover",
+    bottomTitle: "Breathing Life: 500+ Tree Cover",
+    bottomTitle2: "A green step for a greener future",
     content:
-      "With over 500 trees, we are prioritizing tree cover expansion within and around developments to enhance biodiversity, improve air quality, and create shaded, vibrant spaces.",
+      "At VITU Realty, we’ve taken a conscious step toward preserving the planet by nurturing a tree cover of over 500 native and flowering species across our communities. These trees don’t just beautify the landscape, they purify the air, reduce urban heat, support local wildlife, and create a calming natural atmosphere for residents to enjoy every day.",
+      content2:"Beyond their visible beauty, trees are our quiet protectors. They store carbon, improve air quality and play a vital role in the fight against climate change. Our green cover is an investment not just in today’s environment, but in tomorrow’s wellbeing ensuring healthier, more balanced communities for generations to come.",
   },
   {
     id: 16,
     url: "/images/SustainabilityInitiativesImages/3.png",
     fileUrl: "/images/SustainabilityInitiativesImages/3.png",
-    bottomTitle: "Emission control",
+    bottomTitle: "Eco-Friendly Infrastructure",
+    bottomTitle2:"Smart Living That Respects Nature",
     content:
-      "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
+      "Our developments are thoughtfully planned with eco-conscious systems like rainwater harvesting, groundwater recharge pits, solar-powered street lighting, and low-impact stampede concrete roads. These practices reduce dependency on finite resources while improving sustainability across every square foot of our spaces.",
+      content2:"By thoughtfully building these features into every project, we’re shaping spaces that care for both people and the planet. Every drop saved, every watt powered by the sun, and every surface designed to recharge the earth makes your home part of a bigger solution, one that values responsible progress and a healthier planet."
   },
   // Duplicate cards for infinite scroll
 
@@ -55,25 +63,31 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
     id: 17,
     url: "/images/SustainabilityInitiativesImages/1.png",
     fileUrl: "/images/SustainabilityInitiativesImages/1.png",
-    bottomTitle: "Beach cleaning",
+    bottomTitle: "Beach Cleaning & Tree Planting Drives",
+    bottomTitle2:"Giving Back to Nature, Together",
     content:
-      "We are actively preserving coastal ecosystems through regular beach cleanups, consciously contributing to cleaner shores and healthier marine life.",
-  },
+      "Sustainability is more than just planning; it's about participating. At VITU, we regularly engage in on-ground activities like coastal clean-up drives and community tree-planting events. These collective efforts help restore natural ecosystems while inspiring a deeper bond between our residents and the environment around them.",
+  content2:"These hands-on initiatives are our way of nurturing a culture of care. From keeping our shores plastic-free to planting roots that will grow for decades, we believe in small acts that ripple outwards. It’s our promise to leave the earth better than we found it and bring our community along on the journey."
+    },
   {
     id: 18,
     url: "/images/SustainabilityInitiativesImages/2.png",
     fileUrl: "/images/SustainabilityInitiativesImages/2.png",
-    bottomTitle: "500+ Tree Cover",
+    bottomTitle: "Breathing Life: 500+ Tree Cover",
+    bottomTitle2: "A green step for a greener future",
     content:
-      "With over 500 trees, we are prioritizing tree cover expansion within and around developments to enhance biodiversity, improve air quality, and create shaded, vibrant spaces.",
+      "At VITU Realty, we’ve taken a conscious step toward preserving the planet by nurturing a tree cover of over 500 native and flowering species across our communities. These trees don’t just beautify the landscape, they purify the air, reduce urban heat, support local wildlife, and create a calming natural atmosphere for residents to enjoy every day.",
+      content2:"Beyond their visible beauty, trees are our quiet protectors. They store carbon, improve air quality and play a vital role in the fight against climate change. Our green cover is an investment not just in today’s environment, but in tomorrow’s wellbeing ensuring healthier, more balanced communities for generations to come.",
   },
   {
     id: 19,
     url: "/images/SustainabilityInitiativesImages/3.png",
     fileUrl: "/images/SustainabilityInitiativesImages/3.png",
-    bottomTitle: "Emission control",
+    bottomTitle: "Eco-Friendly Infrastructure",
+    bottomTitle2:"Smart Living That Respects Nature",
     content:
-      "We’re committed to building a cleaner future by integrating energy-efficient systems. From using sustainable materials to adopting innovative technologies that cut down emissions, every step we take is guided by the goal of creating healthier, more sustainable communities for generations to come.",
+      "Our developments are thoughtfully planned with eco-conscious systems like rainwater harvesting, groundwater recharge pits, solar-powered street lighting, and low-impact stampede concrete roads. These practices reduce dependency on finite resources while improving sustainability across every square foot of our spaces.",
+      content2:"By thoughtfully building these features into every project, we’re shaping spaces that care for both people and the planet. Every drop saved, every watt powered by the sun, and every surface designed to recharge the earth makes your home part of a bigger solution, one that values responsible progress and a healthier planet."
   },
 ];
 
@@ -175,17 +189,8 @@ export default function SustainabilityInitiatives(): React.ReactElement {
       {renderRightColumn()}
 
       {/* Mobile Carousel */}
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="block mb-12 md:hidden"
-      >
-        <InfiniteCarousel
-          cards={INITIATIVE_CARDS}
-          data={sustainabilityInitiatives}
-        />
+      <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="block mb-12 md:hidden">
+        <InfiniteCarousel isSustainable={true} cards={INITIATIVE_CARDS} data={sustainabilityInitiatives} />
       </motion.div>
     </div>
   );

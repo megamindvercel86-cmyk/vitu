@@ -84,6 +84,7 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             <Typography variant="h1" className="text-customBrown">
               {project.title}
             </Typography>
+            {project.bottomTitle2&&<Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-2 !text-3xl">{project?.bottomTitle2}</Typography>}
             <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
@@ -185,7 +186,7 @@ interface ExpandableCardsProps {
   home?: boolean;
 }
 
-const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home=false }) => {
+const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
