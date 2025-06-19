@@ -28,7 +28,7 @@ const CONTENT = {
 
 const INITIATIVE_CARDS: InitiativeCard[] = [
   {
-    id: 14,
+    id: 34,
     url: "/images/SustainabilityInitiativesImages/1.png",
     fileUrl: "/images/SustainabilityInitiativesImages/1.png",
     bottomTitle: "Beach Cleaning & Tree Planting Drives",
@@ -38,7 +38,7 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
   content2:"These hands-on initiatives are our way of nurturing a culture of care. From keeping our shores plastic-free to planting roots that will grow for decades, we believe in small acts that ripple outwards. It’s our promise to leave the earth better than we found it and bring our community along on the journey."
     },
   {
-    id: 15,
+    id: 35,
     url: "/images/SustainabilityInitiativesImages/2.png",
     fileUrl: "/images/SustainabilityInitiativesImages/2.png",
     bottomTitle: "Breathing Life: 500+ Tree Cover",
@@ -48,7 +48,7 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
       content2:"Beyond their visible beauty, trees are our quiet protectors. They store carbon, improve air quality and play a vital role in the fight against climate change. Our green cover is an investment not just in today’s environment, but in tomorrow’s wellbeing ensuring healthier, more balanced communities for generations to come.",
   },
   {
-    id: 16,
+    id: 36,
     url: "/images/SustainabilityInitiativesImages/3.png",
     fileUrl: "/images/SustainabilityInitiativesImages/3.png",
     bottomTitle: "Eco-Friendly Infrastructure",
@@ -60,7 +60,7 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
   // Duplicate cards for infinite scroll
 
   {
-    id: 17,
+    id: 37,
     url: "/images/SustainabilityInitiativesImages/1.png",
     fileUrl: "/images/SustainabilityInitiativesImages/1.png",
     bottomTitle: "Beach Cleaning & Tree Planting Drives",
@@ -70,7 +70,7 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
   content2:"These hands-on initiatives are our way of nurturing a culture of care. From keeping our shores plastic-free to planting roots that will grow for decades, we believe in small acts that ripple outwards. It’s our promise to leave the earth better than we found it and bring our community along on the journey."
     },
   {
-    id: 18,
+    id: 38,
     url: "/images/SustainabilityInitiativesImages/2.png",
     fileUrl: "/images/SustainabilityInitiativesImages/2.png",
     bottomTitle: "Breathing Life: 500+ Tree Cover",
@@ -80,7 +80,7 @@ const INITIATIVE_CARDS: InitiativeCard[] = [
       content2:"Beyond their visible beauty, trees are our quiet protectors. They store carbon, improve air quality and play a vital role in the fight against climate change. Our green cover is an investment not just in today’s environment, but in tomorrow’s wellbeing ensuring healthier, more balanced communities for generations to come.",
   },
   {
-    id: 19,
+    id: 39,
     url: "/images/SustainabilityInitiativesImages/3.png",
     fileUrl: "/images/SustainabilityInitiativesImages/3.png",
     bottomTitle: "Eco-Friendly Infrastructure",

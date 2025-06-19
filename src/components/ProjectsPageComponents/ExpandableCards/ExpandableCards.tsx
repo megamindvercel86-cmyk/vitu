@@ -114,7 +114,7 @@ const expandedPositions = {
     { top: "3%", left: "44%", right: "auto" },
     { top: "58%", left: "60%", right: "auto" },
   ],
-  lg: [
+  lg2: [
     { top: "65%", left: "30%", right: "auto" },
     { top: "50%", right: "1%", left: "auto" },
     { top: "10%", right: "1%", left: "auto" },
@@ -122,6 +122,15 @@ const expandedPositions = {
     { top: "8%", left: "1%", right: "auto" },
     { top: "10%", left: "28%", right: "auto" },
     { top: "60%", left: "55%", right: "auto" },
+  ],
+  lg: [
+    { top: "60%", left: "30%", right: "auto" },
+    { top: "57%", right: "1%", left: "auto" },
+    { top: "1%", right: "1%", left: "auto" },
+    { top: "52%", left: "1%", right: "auto" },
+    { top: "3%", left: "1%", right: "auto" },
+    { top: "5%", left: "38%", right: "auto" },
+    { top: "55%", left: "55%", right: "auto" },
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
@@ -267,7 +276,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
         {!isExpanded && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} />}
         <div
           ref={containerRef}
-          className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[160vh] md:h-[150vh]" : "h-[90vh]"}`}
+          className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[120vh] lg:h-[120vh] lg2:h-[160vh] md:h-[150vh]" : "h-[90vh] xl:h-[70vh]"}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={handleExpand}
@@ -306,7 +315,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
               ) : (
                 <motion.button
                   onClick={() => setModalIsOpen(true)}
-                  className="lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
+                  className="lg2:px-8 lg2:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lg:text-[14px] lg2:text-[22px] font-FreightNeoProBold transition-colors"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}

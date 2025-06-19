@@ -14,10 +14,14 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, subTitle, thumbnail, titleClassname, isYoutube = true }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const fullVideoRef = useRef<HTMLVideoElement | null>(null); // Ref for full video in modal
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [fullVideoPlaying, setFullVideoPlaying] = useState<boolean>(false); // State for full video
   const [progress, setProgress] = useState<number>(0);
+  const [fullVideoProgress, setFullVideoProgress] = useState<number>(0); // Progress for full video
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // Modal state
 
-  // Toggle play/pause
+  // Toggle play/pause for main video
   const togglePlayPause = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -29,7 +33,19 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
     }
   };
 
-  // Update progress based on video time
+  // Toggle play/pause for full video in modal
+  const toggleFullVideoPlayPause = () => {
+    if (fullVideoRef.current) {
+      if (fullVideoPlaying) {
+        fullVideoRef.current.pause();
+      } else {
+        fullVideoRef.current.play();
+      }
+      setFullVideoPlaying(!fullVideoPlaying);
+    }
+  };
+
+  // Update progress for main video
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const progressPercent = (videoRef.current.currentTime / videoRef.current.duration) * 100;
@@ -37,18 +53,67 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
     }
   };
 
+  // Update progress for full video
+  const handleFullVideoTimeUpdate = () => {
+    if (fullVideoRef.current) {
+      const progressPercent = (fullVideoRef.current.currentTime / fullVideoRef.current.duration) * 100;
+      setFullVideoProgress(progressPercent);
+    }
+  };
+
+  // Open modal, pause main video if playing, and auto-play full video
+  const openModal = () => {
+    if (videoRef.current && isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+    setIsModalOpen(true);
+    // Auto-play full video
+    setTimeout(() => {
+      if (fullVideoRef.current) {
+        fullVideoRef.current
+          .play()
+          .then(() => {
+            setFullVideoPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Auto-play failed:", error);
+            setFullVideoPlaying(false); // Ensure state reflects failure
+          });
+      }
+    }, 0); // Delay to ensure video element is rendered
+  };
+
+  // Close modal and reset full video
+  const closeModal = () => {
+    if (fullVideoRef.current && fullVideoPlaying) {
+      fullVideoRef.current.pause();
+      setFullVideoPlaying(false);
+      setFullVideoProgress(0);
+    }
+    setIsModalOpen(false);
+  };
+
   return (
-    <section className="overflow-hidden max-w-7xl mx-auto xl:max-w-[75%] rounded-3xl  px-6 md:px-12 lg:px-16 xl:px-0 lg:py-20 py-6">
-      <div className=" mx-auto text-center text-white mb-16">
+    <section className="overflow-hidden max-w-7xl mx-auto xl:max-w-[75%] px-6 md:px-12 lg:px-16 xl:px-0 lg:py-20 py-6">
+      <div className="mx-auto text-center text-white mb-16">
         <h2 className={`${titleClassname} text-3xl md:text-[40px] max-w-4xl mx-auto lg2:text-5xl xl:text-6xl font-bold mb-5`}>{title}</h2>
-        <p className=" font-medium md:text-2xl text-base text-white/60 max-w-4xl mx-auto">{subTitle}</p>
+        <p className="font-medium md:text-2xl text-base text-white/60 max-w-4xl mx-auto">{subTitle}</p>
       </div>
-      <div className="relative ">
+      <div className="relative">
         <video poster={thumbnail} ref={videoRef} className="rounded-3xl" loop playsInline onTimeUpdate={handleTimeUpdate} width="100%">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute bottom-0 w-full  p-4 z-10 flex flex-row justify-end md:justify-between ">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <svg className="w-12 h-12 lg:w-20 lg:h-20" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M70 0. b411255C31.6264 0.411255 0.411255 31.6294 0.411255 70C0.411255 108.371 31.6264 139.589 70 139.589C108.374 139.589 139.589 108.371 139.589 70C139.589 31.6294 108.374 0.411255 70 0.411255ZM97.6645 72.438L57.0712 98.5338C56.5955 98.8424 56.0461 98.9954 55.5024 98.9954C55.0267 98.9954 54.5453 98.8763 54.115 98.6415C53.1805 98.1318 52.6028 97.1576 52.6028 96.0958V43.9042C52.6028 42.8424 53.1805 41.8682 54.115 41.3585C55.0324 40.8545 56.182 40.8855 57.0712 41.4662L97.6645 67.562C98.4914 68.0942 98.9954 69.0146 98.9954 70C98.9954 70.9854 98.4914 71.9055 97.6645 72.438Z"
+                fill="#E8E8E8"
+              />
+            </svg>
+          </div>
+        <div className="absolute bottom-0 w-full p-4 z-10 flex flex-row justify-end md:justify-between">
           <div className="hidden md:block">
             {isYoutube && (
               <svg width="180" height="41" viewBox="0 0 180 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,11 +142,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
                     fill="white"
                   />
                   <path
-                    d="M161.357 16.4631C161.014 14.8827 160.463 13.7397 159.702 13.0295C158.94 12.3192 157.891 11.9664 156.555 11.9664C155.52 11.9664 154.551 12.2581 153.653 12.846C152.754 13.434 152.058 14.2007 151.569 15.1555H151.527V1.95703H146.094V37.5073H150.75L151.324 35.1367H151.447C151.884 35.9833 152.538 36.6465 153.408 37.1405C154.278 37.6297 155.247 37.8743 156.31 37.8743C158.215 37.8743 159.622 36.9947 160.52 35.2401C161.418 33.4809 161.87 30.7387 161.87 27.0041V23.0389C161.87 20.2402 161.696 18.0436 161.357 16.4631ZM156.188 26.6841C156.188 28.5091 156.113 29.9391 155.962 30.9739C155.812 32.0087 155.562 32.7473 155.205 33.1799C154.852 33.6173 154.372 33.8337 153.775 33.8337C153.309 33.8337 152.881 33.7255 152.486 33.5045C152.091 33.2881 151.771 32.9589 151.527 32.5261V18.307C151.715 17.6249 152.044 17.0699 152.51 16.6325C152.971 16.195 153.479 15.9787 154.019 15.9787C154.593 15.9787 155.035 16.2044 155.346 16.6513C155.661 17.1028 155.877 17.8554 156 18.9185C156.122 19.9815 156.183 21.4913 156.183 23.4527V26.6841H156.188Z"
+                    d="M161.357 16.4631C161.014 14.8827 160.463 13.7397 159.702 13.0295C158.94 12.3192 157.891 11.9664 156.555 11.9664C155.520 11.9664 154.551 12.2581 153.653 12.846C152.754 13.434 152.058 14.2007 151.569 15.1555H151.527V1.95703H146.094V37.5073H150.750L151.324 35.1367H151.447C151.884 35.9833 152.538 36.6465 153.408 37.1405C154.278 37.6297 155.247 37.8743 156.310 37.8743C158.215 37.8743 159.622 36.9947 160.520 35.2401C161.418 33.4809 161.870 30.7387 161.870 27.0041V23.0389C161.870 20.2402 161.696 18.0436 161.357 16.4631ZM156.188 26.6841C156.188 28.5091 156.113 29.9391 155.962 30.9739C155.812 32.0087 155.562 32.7473 155.205 33.1799C154.852 33.6173 154.372 33.8337 153.775 33.8337C153.309 33.8337 152.881 33.7255 152.486 33.5045C152.091 33.2881 151.771 32.9589 151.527 32.5261V18.307C151.715 17.6249 152.044 17.0699 152.510 16.6325C152.971 16.195 153.479 15.9787 154.019 15.9787C154.593 15.9787 155.035 16.2044 155.346 16.6513C155.661 17.1028 155.877 17.8554 156.000 18.9185C156.122 19.9815 156.183 21.4913 156.183 23.4527V26.6841H156.188Z"
                     fill="white"
                   />
                   <path
-                    d="M169.872 28.1281C169.872 29.7367 169.919 30.941 170.013 31.7454C170.107 32.5496 170.305 33.133 170.606 33.5046C170.907 33.8714 171.368 34.0548 171.993 34.0548C172.835 34.0548 173.419 33.7256 173.729 33.0718C174.044 32.418 174.214 31.3268 174.242 29.8028L179.105 30.0896C179.134 30.306 179.148 30.607 179.148 30.988C179.148 33.3022 178.513 35.0332 177.247 36.1762C175.982 37.3192 174.19 37.893 171.876 37.893C169.096 37.893 167.149 37.0228 166.034 35.2778C164.914 33.5328 164.359 30.8376 164.359 27.1874V22.813C164.359 19.0548 164.938 16.3078 166.095 14.5769C167.252 12.8459 169.232 11.9805 172.04 11.9805C173.974 11.9805 175.46 12.3332 176.495 13.0435C177.53 13.7537 178.259 14.8544 178.682 16.3549C179.105 17.8553 179.317 19.925 179.317 22.5683V26.8582H169.872V28.1281ZM170.587 16.322C170.3 16.6747 170.112 17.2533 170.013 18.0576C169.919 18.8619 169.872 20.0802 169.872 21.7171V23.514H173.997V21.7171C173.997 20.1084 173.941 18.8902 173.833 18.0576C173.724 17.2251 173.527 16.6418 173.24 16.2984C172.953 15.9598 172.511 15.7857 171.913 15.7857C171.311 15.7904 170.869 15.9692 170.587 16.322Z"
+                    d="M169.872 28.1281C169.872 29.7367 169.919 30.9410 170.013 31.7454C170.107 32.5496 170.305 33.1330 170.606 33.5046C170.907 33.8714 171.368 34.0548 171.993 34.0548C172.835 34.0548 173.419 33.7256 173.729 33.0718C174.044 32.4180 174.214 31.3268 174.242 29.8028L179.105 30.0896C179.134 30.3060 179.148 30.6070 179.148 30.9880C179.148 33.3022 178.513 35.0332 177.247 36.1762C175.982 37.3192 174.190 37.8930 171.876 37.8930C169.096 37.8930 167.149 37.0228 166.034 35.2778C164.914 33.5328 164.359 30.8376 164.359 27.1874V22.8130C164.359 19.0548 164.938 16.3078 166.095 14.5769C167.252 12.8459 169.232 11.9805 172.040 11.9805C173.974 11.9805 175.460 12.3332 176.495 13.0435C177.530 13.7537 178.259 14.8544 178.682 16.3549C179.105 17.8553 179.317 19.9250 179.317 22.5683V26.8582H169.872V28.1281ZM170.587 16.3220C170.300 16.6747 170.112 17.2533 170.013 18.0576C169.919 18.8619 169.872 20.0802 169.872 21.7171V23.5140H173.997V21.7171C173.997 20.1084 173.941 18.8902 173.833 18.0576C173.724 17.2251 173.527 16.6418 173.240 16.2984C172.953 15.9598 172.511 15.7857 171.913 15.7857C171.311 15.7904 170.869 15.9692 170.587 16.3220Z"
                     fill="white"
                   />
                 </g>
@@ -91,20 +156,17 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           {!isYoutube && (
             <div className="flex gap-4">
               <div>
-                <Link href={youtubeUrl} target="_blank">
-                  <button
-                    aria-label=" Watch The Full Video"
-                    className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"
-                  >
-                    Watch the Full Video
-                  </button>
-                </Link>
+                <button
+                  aria-label="Watch The Full Video"
+                  className="text-white bg-transparent rounded-full border-white border py-2.5 px-4 hidden md:block cursor-pointer"
+                  onClick={openModal}
+                >
+                  Watch the Full Video
+                </button>
               </div>
               <div className="cursor-pointer" onClick={togglePlayPause}>
                 <svg width="50" height="50" viewBox="0 0 50 50">
-                  {/* Background Circle */}
                   <circle cx="25" cy="25" r="22" stroke="#ffff" strokeWidth="2" fill="none" opacity="0.3" />
-                  {/* Progress Circle */}
                   <circle
                     cx="25"
                     cy="25"
@@ -118,7 +180,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
                     className="transition-all duration-100"
                     transform="rotate(-90 25 25)"
                   />
-                  {/* Play/Pause Icon */}
                   <foreignObject x="9" y="8" width="32" height="32">
                     <button className="w-full h-full cursor-pointer flex items-center justify-center" aria-label={isPlaying ? "Pause" : "Play"}>
                       {isPlaying ? (
@@ -153,6 +214,83 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
           )}
         </div>
       </div>
+
+      {/* Modal for Full Video */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black z-[100] bg-opacity-75 flex items-center justify-center ">
+          <div className="relative w-full  bg-black rounded-3xl p-4">
+            {/* Close Button */}
+            <button className="absolute top-20 right-5 text-white text-2xl z-10 cursor-pointer" aria-label="Close Modal" onClick={closeModal}>
+              <svg width="46" height="47" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g style={{ mixBlendMode: "screen" }} opacity={0.8}>
+                  <path
+                    d="M6.90177 7.6437C15.6841 -1.2601 29.9236 -1.26066 38.706 7.64301C47.4884 16.5469 47.4884 30.9839 38.706 39.8878C29.9236 48.7914 15.6841 48.7909 6.90177 39.8871C-1.88038 30.9832 -1.88038 16.5475 6.90177 7.6437ZM15.0618 15.9263C14.7103 16.2827 14.5125 16.7663 14.5125 17.2703C14.5126 17.7742 14.7103 18.2578 15.0618 18.6142L20.1427 23.7654L15.0618 28.9166C14.7103 29.2729 14.5126 29.7565 14.5125 30.2605C14.5125 30.7645 14.7103 31.248 15.0618 31.6044C15.4134 31.9608 15.8902 32.1613 16.3874 32.1613C16.8846 32.1613 17.3615 31.9608 17.713 31.6044L22.7939 26.4533L27.8748 31.6044C28.2263 31.9608 28.7034 32.1612 29.2005 32.1613C29.6976 32.1613 30.1745 31.9608 30.5261 31.6044C30.8776 31.248 31.0754 30.7645 31.0754 30.2605C31.0753 29.7565 30.8776 29.2729 30.5261 28.9166L25.4451 23.7654L30.5261 18.6142C30.8776 18.2578 31.0753 17.7742 31.0754 17.2703C31.0754 16.7662 30.8776 16.2827 30.5261 15.9263C30.1745 15.57 29.6976 15.3694 29.2005 15.3694C28.7034 15.3695 28.2263 15.57 27.8748 15.9263L27.8838 15.9354L22.8029 21.0865L17.713 15.9263C17.3615 15.5699 16.8846 15.3694 16.3874 15.3694C15.8902 15.3694 15.4134 15.5699 15.0618 15.9263Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
+            {/* Full Video Player */}
+            <div className="relative ">
+              <video ref={fullVideoRef} className="w-full " loop playsInline onTimeUpdate={handleFullVideoTimeUpdate}>
+                <source src={youtubeUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute bottom-0 w-full pr-3 pb-28 flex justify-end">
+                <div className="cursor-pointer" onClick={toggleFullVideoPlayPause}>
+                  <svg width="50" height="50" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke="#ffff" strokeWidth="2" fill="none" opacity="0.3" />
+                    <circle
+                      cx="25"
+                      cy="25"
+                      r="22"
+                      stroke="#ffffff"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeDasharray={138}
+                      strokeDashoffset={(1 - fullVideoProgress / 100) * 138}
+                      strokeLinecap="round"
+                      className="transition-all duration-100"
+                      transform="rotate(-90 25 25)"
+                    />
+                    <foreignObject x="9" y="8" width="32" height="32">
+                      <button
+                        className="w-full h-full cursor-pointer flex items-center justify-center"
+                        aria-label={fullVideoPlaying ? "Pause" : "Play"}
+                      >
+                        {fullVideoPlaying ? (
+                          <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.851562" width="36" height="36" rx="18" fill="#E8E8ED" />
+                            <path
+                              d="M15.25 11.8516H13.75C12.9216 11.8516 12.25 12.5231 12.25 13.3516V24.3516C12.25 25.18 12.9216 25.8516 13.75 25.8516H15.25C16.0784 25.8516 16.75 25.18 16.75 24.3516V13.3516C16.75 12.5231 16.0784 11.8516 15.25 11.8516Z"
+                              fill="black"
+                              fillOpacity="0.56"
+                            />
+                            <path
+                              d="M23.25 11.8516H21.75C20.9216 11.8516 20.25 12.5231 20.25 13.3516V24.3516C20.25 25.18 20.9216 25.8516 21.75 25.8516H23.25C24.0784 25.8516 24.75 25.18 24.75 24.3516V13.3516C24.75 12.5231 24.0784 11.8516 23.25 11.8516Z"
+                              fill="black"
+                              fillOpacity="0.56"
+                            />
+                          </svg>
+                        ) : (
+                          <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.140625" y="0.261719" width="36" height="36" rx="18" fill="#E8E8ED" />
+                            <path
+                              d="M13.1441 23.5118V13.0318C13.1184 12.8282 13.1366 12.6214 13.1974 12.4254C13.2582 12.2293 13.3602 12.0485 13.4965 11.8951C13.6329 11.7417 13.8005 11.6192 13.9881 11.5359C14.1756 11.4525 14.3789 11.4102 14.5841 11.4118C14.9776 11.3951 15.3663 11.5036 15.6941 11.7218L24.2241 16.7218C24.9841 17.1618 25.3941 17.5218 25.3941 18.2318C25.3941 18.9418 24.9841 19.3018 24.2241 19.7418L15.6941 24.7418C15.3663 24.9601 14.9776 25.0686 14.5841 25.0518C14.3854 25.0554 14.1882 25.0171 14.0052 24.9396C13.8222 24.8621 13.6575 24.7471 13.5218 24.6019C13.3861 24.4568 13.2823 24.2847 13.2173 24.097C13.1522 23.9092 13.1273 23.7099 13.1441 23.5118Z"
+                              fill="black"
+                              fillOpacity="0.56"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                    </foreignObject>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,15 +1,14 @@
 "use client";
 
 // ============= Component Imports =============
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CiPlay1 } from "react-icons/ci";
 import { FaPause, FaPlay } from "react-icons/fa";
-
+import { useInView } from "framer-motion";
 // ============= Types & Interfaces =============
 type Direction = "left" | "right";
 
@@ -98,10 +97,16 @@ export default function VisionForTheFuture() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState<Direction>("right");
-  const [isPlay, setIsPlay] = useState<boolean>(true);
+  const [isPlay, setIsPlay] = useState<boolean>(false);
   const [progress, setProgress] = useState(0);
-
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, {
+    amount: 0.5, // Trigger when 50% is visible
+  });
   // ============= Handlers =============
+  useEffect(() => {
+    setIsPlay(isInView); // Start or pause autoplay based on visibility
+  }, [isInView]);
   const handleTransition = useCallback(
     (newDirection: Direction) => {
       if (isAnimating) return;
@@ -144,7 +149,7 @@ export default function VisionForTheFuture() {
   };
 
   return (
-    <section className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
+    <section ref={sectionRef} className="relative overflow-hidden text-[#42210B]" aria-label="Vision for the Future Carousel">
       <div className="relative py-[2.75rem] sm:py-[2.75rem] md:py-[3.4375rem] lg:py-[8.3125rem] lg:pb-[9.8125rem] xl:py-[9.8125 xl:mx-[13.125rem]">
         {/* Static Title, Subtitle, and Button */}
         <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>

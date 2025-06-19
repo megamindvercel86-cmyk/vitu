@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "./InfiniteCarousel.css";
 import AppleStyleCard from "@/components/ui/apple-style-card";
-import { ArrowRightIcon, IconArrowNarrowLeft, IconArrowNarrowRight } from "@/components/Icons/Icons";
+import { ArrowRightIcon } from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -53,7 +53,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle, pathFill, rextFill }) => {
-  console.log(pathFill, rextFill);
   
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
@@ -119,7 +118,7 @@ const CardContent = ({ cardId, data, isDescription,textStyle, rextFill,pathFill 
                 </span>
               ))}
             </Typography>
-            {isDescription&&<Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
+            {isDescription&&<Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] text-base md:!text-xl">
               {project?.description2?.split("").map((char, index) => (
                 <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedMedium" : "font-freightNeoMedium"}`}>
                   {char}
@@ -139,18 +138,6 @@ const CardContent = ({ cardId, data, isDescription,textStyle, rextFill,pathFill 
 
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textStyle = "text-customBrown", controlButtonBg, iconColor ,isSustainable }) => {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
-
-  const handlePrev = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
 
   return (
     <>
