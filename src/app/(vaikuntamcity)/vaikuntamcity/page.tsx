@@ -49,12 +49,12 @@ export async function generateMetadata() {
 export default function ProjectPage({}: ProjectPageProps) {
   return (
     <div className="bg-[#e6ddd6]">
-      <BeachAnimation/>
+      <BeachAnimation />
       <section className="relative">
         <ProjectHeroSection />
-      <section className="relative z-10">
-        <ProjectHeader />
-      </section>
+        <section className="relative z-10">
+          <ProjectHeader />
+        </section>
       </section>
       <ProjectCarousel />
       <section id="sustainability" className="">
@@ -63,7 +63,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section className="bg-[#FBFAF8] pt-20 pb-[1.5rem] lg:py-36">
         <CurrentProject />
       </section>
-      <section id="carousal"className="bg-[#FBFAF8]">
+      <section id="carousal" className="bg-[#FBFAF8]">
         <ExploreProjectsWrapper />
       </section>
       {/* <section id="plots"  className="bg-[#FBFAF8]">
