@@ -165,7 +165,7 @@ const ProjectFooter: FC = () => {
 
           {/* Contact Information */}
           <div>
-            <ul className="space-y-4 text-gray-300 hidden lg:block ">
+            <div className="space-y-4 text-gray-300 hidden lg:block ">
               <SubHeading className="text-lg md:text-xl text-footerTextColor font-freightNeoSemibold mb-4">Discover Excellence</SubHeading>
 
               <FooterContactItem
@@ -178,11 +178,11 @@ const ProjectFooter: FC = () => {
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
-            </ul>
+            </div>
             <SubHeading className="text-lg text-center md:text-start md:text-xl text-footerTextColor lg:hidden font-freightNeoSemibold mb-4">
               Get in Touch
             </SubHeading>
-            <ul className="space-y-4 text-gray-300 lg:hidden">
+            <div className="space-y-4 text-gray-300 lg:hidden">
               <FooterContactItem
                 icon={<Share />}
                 text="Laxman Commercial Complex, Golikatta Bazar, Bunder, Mangalore - 575001"
@@ -191,7 +191,7 @@ const ProjectFooter: FC = () => {
               <FooterContactItem icon={<Phone />} text="+91 89046 88886" link="tel:+91 89046 88886" />
               <FooterContactItem icon={<Mail />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               {/* Social Media Links */}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
