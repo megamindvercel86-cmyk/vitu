@@ -1,12 +1,19 @@
 // ============= Component Imports =============
 import Layout from "@/components/Layout/Layout";
-import AboutHeroSection from "@/components/AboutPageComponents/AboutHeroSection/AboutHeroSection";
 import FounderMessage from "@/components/AboutPageComponents/FounderMessage/FounderMessage";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 import LeadershipTeam from "@/components/AboutPageComponents/LeadershipTeam/LeadershipTeam";
-import StorySection from "@/components/AboutPageComponents/StorySection/StorySection";
 import StoryHeader from "@/components/AboutPageComponents/StoryHeader/StoryHeader";
+import dynamic from "next/dynamic";
+
+const StorySection = dynamic(() => import("@/components/AboutPageComponents/StorySection/StorySection"), {
+  loading: () => <p>Loading story section...</p>,
+});
+const AboutHeroSection = dynamic(() => import("@/components/AboutPageComponents/AboutHeroSection/AboutHeroSection"), {
+  loading: () => <p>Loading Video...</p>,
+});
+
 
 const IMAGES = {
   desktop: ["/images/aboutPageVisionAndMission/1.webp", "/images/aboutPageVisionAndMission/2.webp", "/images/aboutPageVisionAndMission/3.webp"],
