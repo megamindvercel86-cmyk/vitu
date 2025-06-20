@@ -110,7 +110,7 @@ const NavbarResponsiveComponent = ({
               ))}
 
               {showGetInTouch && (
-                <Link aria-label="Get in Touch" href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full flex justify-center">
+                <Link aria-label="Get in Touch" href="/project-enquire"  className="w-full flex justify-center">
                   <button
                     aria-label="Get in Touch"
                     className="w-[90%] h-[58px] text-xl font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8"

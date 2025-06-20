@@ -60,7 +60,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       <section id="sustainability" className="">
         <LocationAdvantage />
       </section>
-      <section className="bg-[#FBFAF8] py-20 lg:py-36">
+      <section className="bg-[#FBFAF8] pt-20 pb-[1.5rem] lg:py-36">
         <CurrentProject />
       </section>
       <section id="carousal"className="bg-[#FBFAF8]">
@@ -69,7 +69,7 @@ export default function ProjectPage({}: ProjectPageProps) {
       {/* <section id="plots"  className="bg-[#FBFAF8]">
      <PlotWrapper/>
     </section> */}
-      <section className="bg-[#fbfaf8] pb-20 lg:pb-36">
+      <section className="bg-[#fbfaf8] pt-[10px] lg:pt-0 pb-20 lg:pb-36">
         <LegacyBuiltComponent />
       </section>
       <section className="">

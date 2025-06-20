@@ -73,7 +73,7 @@ const BeachAnimation = () => {
     <div ref={sectionRef} className="absolute h-[200vh] w-full">
       {/* Desktop Video */}
       <video
-        className="w-full h-full object-cover hidden md:block"
+        className="w-full h-[250vh] xl:h-full object-cover hidden md:block"
         ref={desktopVideoRef}
         loop
         playsInline

@@ -147,7 +147,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
                 </React.Fragment>
               ))}
               {showGetInTouch && (
-                <NavLink href="/project-enquire" onClick={() => setIsMenuOpen(false)} className="w-full px-7">
+                <NavLink href="/project-enquire"  className="w-full px-7">
                   <button
                     aria-label="Get in Touch"
                     className="w-full h-[58px] text-xl  font-FreightNeoProBold text-white bg-cusomButtonColor rounded-[34px] mt-8"
