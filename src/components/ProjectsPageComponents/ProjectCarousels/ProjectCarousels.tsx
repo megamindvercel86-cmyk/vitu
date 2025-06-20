@@ -57,6 +57,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeUrl, videoUrl, title, 
         <div className="absolute bottom-0 w-full p-4 z-10 flex flex-row justify-end md:justify-between">
           <div className="hidden md:block"></div>
           <div className="flex gap-4">
+            <div className="flex justify-center items-center">
+             <button
+                  aria-label="Watch The Full Video"
+                  className="text-white bg-transparent text-sm  border-white rounded-full border py-2 px-2.5 hidden md:block cursor-pointer"
+                >
+                  Watch the Full Video
+                </button>
+                </div>
             <div className="cursor-pointer" onClick={toggleMute}>
               <button className="w-full h-full cursor-pointer flex items-center justify-center" aria-label={isMuted ? "Unmute" : "Mute"}>
                 {isMuted ? (
