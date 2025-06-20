@@ -22,7 +22,7 @@ export default function ProjectHeader() {
               5 mins
             </h2>
             <Typography variant="custom" className="font-freightNeoMedium text-[#4F3737] mt-2 text-sm lg:text-lg">
-              from NITK Beach
+              to the NITK Beach
             </Typography>
           </div>
           <div className="flex flex-col items-center">

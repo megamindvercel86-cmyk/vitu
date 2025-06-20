@@ -20,31 +20,31 @@ const CardContent = ({ id }: { id: number }) => {
       }
     | undefined;
 
-  project = sustainabilityInitiatives.find(
-    (project) => project.id === currentCardId,
+ project = sustainabilityInitiatives.find(
+  (project) => project.id === currentCardId
+);
+
+const handleFooterClick = () => {
+  const currentIndex = sustainabilityInitiatives.findIndex(
+    (project) => project.id === currentCardId
   );
 
-  const handleFooterClick = () => {
-    const nextProject = sustainabilityInitiatives.find((project) => {
-      if (project.id === 16) {
-        return 14 === currentCardId;
-      } else {
-        return project.id + 1 === currentCardId;
-      }
-    });
+  const nextIndex = (currentIndex + 1) % sustainabilityInitiatives.length;
+  const nextProject = sustainabilityInitiatives[nextIndex];
 
-    if (nextProject) {
-      setCurrentCardId(nextProject.id); // Update state to trigger re-render
-    }
-  };
+  if (nextProject) {
+    setCurrentCardId(nextProject.id);
+  }
+};
 
-  const nextProject = sustainabilityInitiatives.find((project) => {
-    if (project.id === 16) {
-      return 14 === currentCardId;
-    } else {
-      return project.id + 1 === currentCardId;
-    }
-  });
+const nextProject = (() => {
+  const currentIndex = sustainabilityInitiatives.findIndex(
+    (project) => project.id === currentCardId
+  );
+  const nextIndex = (currentIndex + 1) % sustainabilityInitiatives.length;
+  return sustainabilityInitiatives[nextIndex];
+})();
+
 
   return (
     <>
