@@ -35,13 +35,13 @@ const ExploreProjectsWrapper = dynamic(
     loading: () => <p className="text-center py-10">Loading Explore Projects...</p>,
   }
 );
-// const HomeHeroSection = dynamic(
-//   () => import("@/components/HomePageComponents/HomeHeroSection/HomeHeroSection"),
-//   {
-//     ssr: false,
-//     loading: () => <p className="text-center py-10">Loading Video...</p>,
-//   }
-// );
+const HomeHeroSection = dynamic(
+  () => import("@/components/HomePageComponents/HomeHeroSection/HomeHeroSection"),
+  {
+    ssr: false,
+    loading: () => <p className="text-center py-10">Loading Video...</p>,
+  }
+);
 // ============= Types & Interfaces =============
 const IMAGES = {
   desktop: ["/images/visionAndMissionImages/1.webp", "/images/visionAndMissionImages/2.webp", "/images/visionAndMissionImages/3.webp"],
@@ -129,7 +129,7 @@ export default function HomePage() {
   return (
     <Layout navbarClassName={NAVBAR_CONFIG.className} navbarProps={NAVBAR_CONFIG.props}>
       {/* Hero Section */}
-      {/* <HomeHeroSection /> */}
+      <HomeHeroSection />
 
       {/* Intro Section */}
       <article className="px-[1.875rem] pb-[3.75rem] pt-[4rem] text-center sm:px-[1.875rem] sm:pt-[4rem] md:pb-[6.9375rem] md:pt-[5.25rem] lg:pt-[6.5rem] xl:px-[24.125rem] xl:pt-[8rem]">
