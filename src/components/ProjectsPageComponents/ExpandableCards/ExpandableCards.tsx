@@ -196,6 +196,7 @@ interface ExpandableCardsProps {
 }
 
 const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }) => {
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
   const [cursorText, setCursorText] = useState("");
