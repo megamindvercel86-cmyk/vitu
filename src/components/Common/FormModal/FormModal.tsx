@@ -34,7 +34,7 @@ interface ContactFormModalProps {
   downloadFileLink?:string;
 }
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadFileLink,peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
+const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadFileLink="/downloadingFiles/VC brochure.pdf",peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
