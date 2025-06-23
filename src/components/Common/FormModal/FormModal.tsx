@@ -338,7 +338,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       type="button"
                       aria-label="Submit Form"
                       className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
-                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
+                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg?`hover:${buttonBg}`:"hover:bg-[#0A2F38]"}`
                       }`}
                       onClick={handleSubmit}
                       disabled={!isFormValid || isLoading}
@@ -370,7 +370,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       type="button"
                       aria-label="Submit Form"
                       className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg?buttonBg:"bg-[#0C3E49]"} text-white rounded-full font-medium ${
-                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0A2F38]"
+                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg?`hover:${buttonBg}`:"hover:bg-[#0A2F38]"}`
                       }`}
                       onClick={handleSubmit}
                       disabled={!isFormValid || isLoading}

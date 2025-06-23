@@ -42,7 +42,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
-      "VITU Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care and community for your golden years.",
+      "Strategically located and thoughtfully laid out, our plots offer the ideal foundation to build a future-ready home in a well-connected community.",
     image: "/svgs/plotted.svg",
     residentialType: "Plotted development",
   },
