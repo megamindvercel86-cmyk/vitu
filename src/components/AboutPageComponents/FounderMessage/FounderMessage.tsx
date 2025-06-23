@@ -35,7 +35,7 @@ export default function FounderMessage(): React.ReactElement {
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <svg
-                className="w-[120px] h-[120px]"
+                className="w-10 h-10 lg:w-[120px] lg:h-[120px]"
                 viewBox="0 0 140 140"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

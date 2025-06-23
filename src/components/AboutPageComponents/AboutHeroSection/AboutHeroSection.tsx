@@ -27,32 +27,32 @@ const ABOUT_HERO_CONFIG: AboutHeroConfig = {
 };
 
 const AboutHeroSection: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const videoRefDesktop = useRef<HTMLVideoElement | null>(null);
+  const videoRefMobile = useRef<HTMLVideoElement | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const [isMuted, setIsMuted] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFixed, setIsFixed] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [videoInView, setVideoInView] = useState(false);
 
   const toggleMute = () => {
-  if (videoRef.current) {
-    const newMutedState = !videoRef.current.muted;
-    videoRef.current.muted = newMutedState;
-    setIsMuted(newMutedState);
-
-    // ✅ Trigger scroll-style animation on mobile when unmuted
-    if (newMutedState === false && window.innerWidth < 1024 && !hasScrolled) {
-      setHasScrolled(true);
+    const video = isDesktop ? videoRefDesktop.current : videoRefMobile.current;
+    if (video) {
+      const newMutedState = !video.muted;
+      video.muted = newMutedState;
+      setIsMuted(newMutedState);
+      if (!newMutedState && window.innerWidth < 1024 && !hasScrolled) {
+        setHasScrolled(true);
+      }
     }
-  }
-};
-
+  };
 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsDesktop(window.innerWidth >= 1024);
     };
-
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
@@ -69,9 +69,9 @@ const AboutHeroSection: React.FC = () => {
         setIsFixed(rect.bottom > windowHeight);
         const isInView = rect.bottom > 0 && rect.top < windowHeight;
 
-        // ✅ Mute when out of view
-        if (videoRef.current && !isInView) {
-          videoRef.current.muted = true;
+        const video = isDesktop ? videoRefDesktop.current : videoRefMobile.current;
+        if (video && !isInView) {
+          video.muted = true;
           setIsMuted(true);
         }
       }
@@ -90,20 +90,59 @@ const AboutHeroSection: React.FC = () => {
 
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [hasScrolled]);
+  }, [hasScrolled, isDesktop]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVideoInView(true);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full  h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen  flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+      className="relative w-full h-[35.5rem] -mt-1 sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
       <div className="absolute inset-0 scale-1">
-        <video ref={videoRef} className="w-full h-full object-cover hidden md:block" loop playsInline autoPlay muted={isMuted}>
-          <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Park.mp4?alt=media&token=f929985d-9e84-42f3-9d1d-d34ec4739bc4" type="video/mp4" />
-        </video>
-        <video ref={videoRef} className="w-full h-full object-cover md:hidden block" loop playsInline autoPlay muted={isMuted}>
-          <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Park%20Mobile.mp4?alt=media&token=c68a011e-d781-4b5e-8d2d-879f4fa74e81" type="video/mp4" />
-        </video>
+        {videoInView && (
+          <>
+            <video
+              ref={videoRefDesktop}
+              className="w-full h-full object-cover hidden md:block"
+              loop
+              playsInline
+              autoPlay
+              muted={isMuted}
+              preload="none"
+            >
+              <source
+                src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Park.mp4?alt=media&token=f929985d-9e84-42f3-9d1d-d34ec4739bc4"
+                type="video/mp4"
+              />
+            </video>
+            <video
+              ref={videoRefMobile}
+              className="w-full h-full object-cover md:hidden block"
+              loop
+              playsInline
+              autoPlay
+              muted={isMuted}
+              preload="none"
+            >
+              <source
+                src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FNew%20Park%20Mobile.mp4?alt=media&token=c68a011e-d781-4b5e-8d2d-879f4fa74e81"
+                type="video/mp4"
+              />
+            </video>
+          </>
+        )}
+
         <div
           className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
             hasScrolled ? "justify-end" : "justify-center"
@@ -162,7 +201,7 @@ const AboutHeroSection: React.FC = () => {
         <div className="flex flex-col items-center text-center text-white">
           <h1
             id="hero-heading"
-            className="font-freightNeoSemibold leading-relaxed md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]"
+            className="font-freightNeoSemibold leading-[1.1] md:leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[6.25rem] 2xl:text-[9.375rem]"
           >
             Building Wholesome <br />
             Living Spaces

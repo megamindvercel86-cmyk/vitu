@@ -42,6 +42,7 @@ const HomeHeroSection = dynamic(
     loading: () => <p className="text-center py-10">Loading Video...</p>,
   }
 );
+
 // ============= Types & Interfaces =============
 const IMAGES = {
   desktop: ["/images/visionAndMissionImages/1.webp", "/images/visionAndMissionImages/2.webp", "/images/visionAndMissionImages/3.webp"],
