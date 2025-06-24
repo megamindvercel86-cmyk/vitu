@@ -1,23 +1,18 @@
 // ============= Component Imports =============
 import ProjectHeroSection from "@/components/ProjectsPageComponents/ProjectHeroSection/ProjectHeroSection";
 import LocationAdvantage from "@/components/ProjectsPageComponents/ProjectLocationAdvantage/ProjectLocationAdvantage";
+import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
 import LegacyBuiltComponent from "@/components/ProjectsPageComponents/LegacyBuiltComponent/LegacyBuiltComponent";
 import ProjectBottomSection from "@/components/ProjectsPageComponents/ProjectBottomSection/ProjectBottomSection";
 import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
+import ProjectCarousel from "@/components/ProjectsPageComponents/ProjectCarousels/ProjectCarousels";
+import backgroundImage from "../../../../public/images/vilasamImages/herobanner.webp";
+import Image from "next/image";
 import ProjectHeader from "@/components/ProjectsPageComponents/ProjectsHeader/ProjectsHeader";
-import dynamic from "next/dynamic";
+import BeachAnimation from "@/components/ProjectsPageComponents/BeachAnimation/BeachAnimation";
 // ============= Types & Interfaces =============
 interface ProjectPageProps {}
-const BeachAnimation = dynamic(() => import("@/components/ProjectsPageComponents/BeachAnimation/BeachAnimation"), {
-  loading: () => <p>Loading Video...</p>,
-});
 
-const ProjectCarousel = dynamic(() => import("@/components/ProjectsPageComponents/ProjectCarousels/ProjectCarousels"), {
-  loading: () => <p>Loading Carousal...</p>,
-});
-const CurrentProject = dynamic(() => import("@/components/ProjectsPageComponents/CurrentProject/CurrentProject"), {
-  loading: () => <p>Loading Current Projects...</p>,
-});
 export async function generateMetadata() {
   const pageTitle = "Vaikuntam City – Premium Living in Mangaluru | Vitu Realty";
   const pageDescription =

@@ -5,13 +5,15 @@
 
 // ============= Component Imports (Direct) =============
 import Layout from "@/components/Layout/Layout";
+import HomeHeroSection from "@/components/HomePageComponents/HomeHeroSection/HomeHeroSection";
 import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
 import VisionForTheFuture from "@/components/HomePageComponents/VisionForTheFuture/VisionForTheFuture";
 import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonial";
 import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
 import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
 import Typography from "@/components/Typography/Typography";
-import dynamic from "next/dynamic";
+import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
+import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
 // ============= Lazy-loaded Components =============
 // const VilasamExploreProjects = dynamic(
 //   () => import("@/components/VilasamProjectPage/VilasamExploreProject/page"),
@@ -21,27 +23,13 @@ import dynamic from "next/dynamic";
 //   }
 // );
 
-const CurrentProject = dynamic(
-  () => import("@/components/HomePageComponents/CurrentProject/CurrentProject"),
-  {
-    ssr: false,
-    loading: () => <p className="text-center py-10">Loading Current Projects...</p>,
-  }
-);
-const ExploreProjectsWrapper = dynamic(
-  () => import("@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper"),
-  {
-    ssr: false,
-    loading: () => <p className="text-center py-10">Loading Explore Projects...</p>,
-  }
-);
-const HomeHeroSection = dynamic(
-  () => import("@/components/HomePageComponents/HomeHeroSection/HomeHeroSection"),
-  {
-    ssr: false,
-    loading: () => <p className="text-center py-10">Loading Video...</p>,
-  }
-);
+// const CurrentProject = dynamic(
+//   () => import("@/components/HomePageComponents/CurrentProject/CurrentProject"),
+//   {
+//     ssr: false,
+//     loading: () => <p className="text-center py-10">Loading Current Projects...</p>,
+//   }
+// );
 
 // ============= Types & Interfaces =============
 const IMAGES = {
