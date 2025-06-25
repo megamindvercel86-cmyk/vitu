@@ -1,20 +1,32 @@
 "use client";
 
+// Core Imports
 import { Mute, UnMute } from "@/components/Icons/Icons";
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const HeroSection = () => {
-  const desktopVideoRef = useRef<HTMLVideoElement | null>(null);
-  const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isFixed, setIsFixed] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const [canPlayVideo, setCanPlayVideo] = useState(false); // For lazy load
+// Types & Interfaces
+interface VideoRef extends HTMLVideoElement {}
+interface SectionRef extends HTMLDivElement {}
 
-  // Toggle mute
+/**
+ * Hero section component with video background and mute/unmute functionality
+ * @returns JSX.Element
+ */
+export default function HeroSection() {
+  // State and Refs
+  const desktopVideoRef = useRef<VideoRef | null>(null);
+  const mobileVideoRef = useRef<VideoRef | null>(null);
+  const sectionRef = useRef<SectionRef | null>(null);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  const [isFixed, setIsFixed] = useState<boolean>(true);
+  const [hasScrolled, setHasScrolled] = useState<boolean>(false);
+  const [canPlayVideo, setCanPlayVideo] = useState<boolean>(false);
+
+  /**
+   * Toggles mute state for the video
+   */
   const toggleMute = () => {
     const videoEl = isDesktop ? desktopVideoRef.current : mobileVideoRef.current;
     if (videoEl) {
@@ -28,7 +40,9 @@ const HeroSection = () => {
     }
   };
 
-  // Responsive check
+  /**
+   * Checks screen size to determine desktop or mobile view
+   */
   useEffect(() => {
     const checkScreen = () => setIsDesktop(window.innerWidth >= 1024);
     checkScreen();
@@ -36,7 +50,9 @@ const HeroSection = () => {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // Lazy-load video when in viewport
+  /**
+   * Lazy-loads video when section is in viewport
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -48,7 +64,9 @@ const HeroSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Scroll handling
+  /**
+   * Handles scroll events to manage video mute state and button positioning
+   */
   useEffect(() => {
     const handleScroll = () => {
       if (!hasScrolled) setHasScrolled(true);
@@ -76,6 +94,7 @@ const HeroSection = () => {
       ref={sectionRef}
       className="relative w-full h-[35.5rem] sm:h-[35.5rem] lg:h-[130vh] xl:h-[130vh] 2xl:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
     >
+      {/* Video Background */}
       <div className="absolute inset-0 scale-1">
         {canPlayVideo && (
           <>
@@ -87,7 +106,10 @@ const HeroSection = () => {
               playsInline
               muted={isMuted}
             >
-              <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeDeskTop.mp4?alt=media&token=78a75591-b32a-4e25-897e-c2e876b53af6" type="video/mp4" />
+              <source
+                src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeDeskTop.mp4?alt=media&token=78a75591-b32a-4e25-897e-c2e876b53af6"
+                type="video/mp4"
+              />
             </video>
             <video
               ref={mobileVideoRef}
@@ -97,7 +119,10 @@ const HeroSection = () => {
               playsInline
               muted={isMuted}
             >
-              <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeMobile.mp4?alt=media&token=42e9c62b-871f-4c98-bb55-b2fb86d0c2ee" type="video/mp4" />
+              <source
+                src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeMobile.mp4?alt=media&token=42e9c62b-871f-4c98-bb55-b2fb86d0c2ee"
+                type="video/mp4"
+              />
             </video>
           </>
         )}
@@ -145,6 +170,7 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Hero Content */}
       <div className="relative flex h-full justify-center mt-[9rem] lg:mt-[12rem] xl:mt-[19rem] 2xl:mt-[12rem]">
         <div className="flex flex-col items-center text-center text-white">
           <h1 className="font-freightNeoSemibold leading-none text-[2.3rem] sm:text-[2.3rem] md:text-[3.75rem] lg2:text-[5.25rem] 2xl:text-[9.375rem]">
@@ -154,6 +180,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}
