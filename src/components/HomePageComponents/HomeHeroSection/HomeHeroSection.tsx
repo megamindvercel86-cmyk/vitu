@@ -86,7 +86,6 @@ const HeroSection = () => {
               autoPlay
               playsInline
               muted={isMuted}
-              poster="/desktop-poster.jpg"
             >
               <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeDeskTop.mp4?alt=media&token=78a75591-b32a-4e25-897e-c2e876b53af6" type="video/mp4" />
             </video>
@@ -97,7 +96,6 @@ const HeroSection = () => {
               autoPlay
               playsInline
               muted={isMuted}
-              poster="/mobile-poster.jpg"
             >
               <source src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FHomeMobile.mp4?alt=media&token=42e9c62b-871f-4c98-bb55-b2fb86d0c2ee" type="video/mp4" />
             </video>

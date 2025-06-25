@@ -29,21 +29,34 @@ export default function Layout({ children, navbarProps, navbarClassName }: Layou
   const pathname = usePathname();
 
   useEffect(() => {
-    setShowLoader(true); // Trigger loader again on route change
+    setShowLoader(true);
+
+    const timeout = setTimeout(() => {
+      setShowLoader(false); // Fade out after delay
+    }, 2500); // 2.5s loader time, adjust to match Lottie length
+
+    return () => clearTimeout(timeout);
   }, [pathname]);
 
   return (
     <>
       <ToastContainer />
-      {showLoader && <Loader onFinish={() => setShowLoader(false)} />}
 
-      <div className={`transition-opacity duration-700 ease-in-out ${showLoader ? "opacity-0" : "opacity-100"}`}>
-        {/* Navbar */}
+      {/* Loader Overlay (Does not block rendering) */}
+      <div
+        className={`fixed inset-0 bg-white z-50 flex justify-center items-center transition-opacity duration-700 ${
+          showLoader ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <Loader />
+      </div>
+
+      {/* Main Page Content */}
+      <div className="relative z-0">
         <div className={navbarClassName || ""}>
           <Navbar {...navbarProps} />
         </div>
 
-        {/* Main Content */}
         <main>{children}</main>
 
         <ScrollToTopButton />
