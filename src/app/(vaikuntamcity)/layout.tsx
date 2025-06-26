@@ -25,10 +25,10 @@ export default function RootLayout({
   return (
     <>
      <div
-        className={`fixed inset-0 bg-white z-50 flex justify-center items-center transition-opacity duration-700 ${
-          showLoader ? "opacity-1000 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
+  className={`fixed inset-0 bg-white z-[9999] flex justify-center items-center transition-opacity duration-700 ${
+    showLoader ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+  }`}
+>
         <Loader />
       </div> 
     <div className="min-h-screen flex flex-col"> 
