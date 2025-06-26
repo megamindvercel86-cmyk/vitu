@@ -228,13 +228,13 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
             >
               {/* Left Side Content */}
               <div className="flex-1">
-                <h1 className={`text-center font-geistSerif hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-4xl md:text-5xl`}>
+                <h1 className={`text-center font-freightNeoMedium hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor?textColor:"text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}>
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
-                <h1 className={`text-center mt-7 lg:hidden font-geistSerif !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}>
+                <h1 className={`text-center mt-7 lg:hidden font-freightNeoMedium !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}>
                   Your dream home is closer than you think!
                 </h1>
-                <p className={`text-center font-geistSerif lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
+                <p className={`text-center font-freightNeoMedium lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
                   Begin your journey to a new home—fill out the form & let's get started.{" "}
                 </p>
                 {/* <div className="hidden lg:block">

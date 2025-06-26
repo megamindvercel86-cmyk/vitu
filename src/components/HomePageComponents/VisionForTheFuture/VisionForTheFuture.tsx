@@ -50,6 +50,14 @@ const CAROUSEL_DATA: CarouselItem[] = [
     title: "Embracing new Horizons in Living",
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
+      "VITU Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
+    image: "/svgs/image4.webp",
+    residentialType: "Commercial Spaces",
+  },
+  {
+    title: "Embracing new Horizons in Living",
+    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
+    description:
       "VITU Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care and community for your golden years.",
     image: "/svgs/image1.webp",
     residentialType: "Retirement Homes",
@@ -70,14 +78,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     image: "/svgs/image3.webp",
     residentialType: "Wellness Centre",
   },
-  {
-    title: "Embracing new Horizons in Living",
-    subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
-    description:
-      "VITU Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
-    image: "/svgs/image4.webp",
-    residentialType: "Commercial Spaces",
-  },
+  
 ];
 
 /**

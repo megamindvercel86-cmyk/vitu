@@ -276,11 +276,11 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
                 <span className="font-CandideCondensedNormal">
                   <Counter value={stat.value} />
                 </span>
-                <span className="font-geistSerif">{stat.value.replace(/[\d,]+/g, "")}</span>
+                <span className="font-freightNeoMedium">{stat.value.replace(/[\d,]+/g, "")}</span>
               </Typography>
               <Typography
                 variant="custom"
-                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-freightNeoMedium"
               >
                 {stat.label}
               </Typography>
@@ -296,7 +296,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
               </Typography>
               <Typography
                 variant="custom"
-                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] pt-2  md:text-lg text-sm text-[#503637]/60  font-freightNeoMedium"
               >
                 {stat.label}
               </Typography>

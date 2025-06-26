@@ -59,7 +59,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
       <div className="flex-1">
         <Typography
           variant="h1"
-          className="text-center md:text-left text-customBrown font-semibold leading-[1] w-full md:w-[24.313rem] xl:w-[34.875rem]"
+          className="text-center md:text-left text-customBrown  leading-[1] w-full md:w-[24.313rem] xl:w-[34.875rem]"
         >
           {heading}
         </Typography>

@@ -61,7 +61,7 @@ const nextProject = (() => {
             {project?.title?.split('').map((char, index) => (
               <span 
                 key={index} 
-                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+                className={`${/\d/.test(char) ? 'font-CandideCondensedNormal' : 'font-freightNeoMedium'}`}
               >
                 {char}
               </span>
@@ -74,7 +74,7 @@ const nextProject = (() => {
           {project?.description?.split('').map((char, index) => (
               <span 
                 key={index} 
-                className={`${/\d/.test(char) ? 'font-CandideCondensedMedium' : 'font-freightNeoMedium'}`}
+                className={`${/\d/.test(char) ? 'font-CandideCondensedNormal' : 'font-freightNeoMedium'}`}
               >
                 {char}
               </span>
