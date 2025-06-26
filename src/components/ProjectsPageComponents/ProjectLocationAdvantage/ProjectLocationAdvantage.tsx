@@ -204,8 +204,6 @@ const LocationAdvantage = () => {
     return () => clearProgressInterval();
   }, [activeIndex]);
 
- 
-
   const handleDotClick = (index: number) => {
     if (swiperInstance) {
       swiperInstance.slideToLoop(index);
@@ -239,21 +237,20 @@ const LocationAdvantage = () => {
     }
   };
 
-
-   useEffect(() => {
-      if (isOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        setIsOpen(false);
       }
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === "Escape" && isOpen) {
-          setIsOpen(false);
-        }
-      };
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isOpen]);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   return (
     <div className="relative w-full h-screen">
@@ -390,7 +387,14 @@ const LocationAdvantage = () => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div style={{zIndex:"1232132233"}} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
+          <motion.div
+            style={{ zIndex: "1232132233" }}
+            className="fixed inset-0 h-screen z-50 overflow-auto"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            data-lenis-prevent
+          >
             <motion.div variants={backdropVariants} className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
             <motion.div
               variants={cardVariants}
@@ -434,191 +438,189 @@ const LocationAdvantage = () => {
 };
 
 export default LocationAdvantage;
- const data: LocationAdvantageProps[] = [
-    {
-      title: "Location Advantage",
-      description: "Built for Life's Moments",
-      text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
-      buttonText: "More about the Location",
-      image: "/images/locationAdvantagesImages/1.webp",
-      textClassName: "text-[#4F3737]",
-      paragraphClassName: "text-[#998d88]",
-      buttonClassName: "text-[#4F373799] bg-[#debf9d]",
-      buttonTextColor: "text-[#4F373799]",
-      carousalClassName: "bg-[#AE856666]",
-      mobileImage: "/images/locationAdvantagesImages/mobile1.webp",
-      fill: "#ccaa8d",
-      buttonFillBg: "bg-[#ccaa8d]",
-      amenitiesDetails: [
-        {
-          title: "Embracing Coastal Serenity",
-          image: "/images/locationAdvantagesImages/6.webp",
-          subtitle: "Crafting a Beachside Haven",
-          description:
-            "At VITU Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
-          middleTitle: "Why Coastal Living Matters",
-          middleDescription:
-            "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
-          bottomPoints: [
-            "Ocean-View Terraces: Spacious outdoor areas designed to maximize views of the sea, perfect for morning coffee or evening sunsets.",
-            "Coastal Design Aesthetics: Interiors inspired by the beach, using natural materials and soothing color palettes to create a serene environment.",
-            "Beach Access: Direct pathways to the shoreline, making beach walks and water activities a seamless part of your daily life.",
-            "Wellness Amenities: On-site yoga studios and meditation spaces that leverage the calming effects of the ocean to promote mental and physical health.",
-          ],
-          middleBottomDescription:
-            "At VITU Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
-          bottomTitle: "The Core Principles of Coastal Design",
-          bottomDescription:
-            "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
-        },
-      ],
-    },
-    {
-      title: "Investment potential",
-      description: "Great Investment Potential",
-      text: "A smart address that offers comfort now & confidence for what’s ahead—where life & value grow together.",
-      buttonText: "More about the Location",
-      image: "/images/locationAdvantagesImages/2.webp",
-      mobileImage: "/images/locationAdvantagesImages/mobile2.webp",
-      textClassName: "text-[#4F3737]",
-      paragraphClassName: "text-[#998d88]",
-      buttonClassName: "text-[#4F373799] bg-[#debf9d]",
-      buttonTextColor: "text-[#4F373799]",
-      carousalClassName: "bg-[#AE856666]",
-      fill: "#ccaa8d",
-      buttonFillBg: "bg-[#ccaa8d]",
-      amenitiesDetails: [
-        {
-          title: "Investing in Tomorrow",
-          subtitle: "Building Wealth Through Smart Real Estate",
-          image: "/images/locationAdvantagesImages/7.webp",
-          description:
-            "At VITU Realty, we design properties that are not just homes but also smart investments. Located in high-growth areas, our developments offer strong appreciation potential, modern infrastructure, and access to thriving communities, ensuring long-term value for homeowners and investors alike.",
-          middleTitle: "Why Location Drives Value",
-          middleDescription:
-            "A property’s value is deeply tied to its location. Our developments are strategically placed in areas with strong economic growth, excellent connectivity, and proximity to essential amenities, making them ideal for those seeking both comfort and financial security.",
-          bottomTitle: "The Core Principles of Investment-Driven Design",
-          bottomDescription: "Our properties are built with features that enhance long-term value and appeal:",
-          bottomPoints: [
-            "Strategic Location: Positioned in areas with high demand and growth potential, ensuring strong market performance.",
-            "Modern Infrastructure: Cutting-edge construction techniques and smart home technologies that increase property desirability.",
-            "Community Growth: Proximity to schools, hospitals, and commercial hubs, fostering a vibrant and connected lifestyle.",
-            "Resale Potential: Designed with timeless aesthetics and durable materials to maintain value over time.",
-          ],
-          middleBottomDescription:
-            "At VITU Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
-        },
-      ],
-    },
-    {
-      title: "Sustainable growth",
-      description: "Sustainable Living",
-      text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
-      buttonText: "More about our Sustainability Initiatives",
-      image: "/images/locationAdvantagesImages/3.webp",
-      textClassName: "text-white",
-      paragraphClassName: "text-white",
-      buttonClassName: "text-white bg-[#4B948066]",
-      mobileImage: "/images/locationAdvantagesImages/mobile3.webp",
-      buttonTextColor: "text-white",
-      carousalClassName: "bg-[#4B948066]",
-      fill: "#2c4f40",
-      buttonFillBg: "bg-[#2c4f40]",
-      amenitiesDetails: [
-        {
-          title: "Living Green, Made Simple",
-          subtitle: "Sustainable Homes for a Better Planet",
-          image: "/images/locationAdvantagesImages/8.webp",
-          description:
-            "At VITU Realty, sustainability is at the heart of our mission. Our eco-conscious properties are designed to minimize environmental impact while maximizing comfort, integrating green technologies and practices that make sustainable living effortless and rewarding.",
-          middleTitle: "Why Green Living Matters",
-          middleDescription:
-            "Choosing a sustainable home means contributing to a healthier planet and a better quality of life. Our properties incorporate cutting-edge green technologies to reduce energy consumption, conserve water, and promote eco-friendly lifestyles, all while maintaining modern luxury.",
-          bottomPoints: [
-            "Green Certifications: Our properties meet rigorous standards like LEED, ensuring top-tier sustainability performance.",
-            "Solar Energy Integration: Rooftop solar panels and energy-efficient systems to reduce reliance on non-renewable energy.",
-            "Smart Water Systems: Rainwater harvesting and low-flow fixtures to minimize water waste and promote conservation.",
-            "Eco-Friendly Materials: Use of sustainable, locally sourced materials to reduce environmental impact and support local economies.",
-          ],
-          middleBottomDescription:
-            "At VITU Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
-          bottomTitle: "The Core Principles of Green Design",
-          bottomDescription: "Our sustainable properties integrate innovative technologies and practices to promote environmental stewardship:",
-        },
-      ],
-    },
-    {
-      title: "500+ Tree Cover",
-      description: "Lush Oxygen Park",
-      text: "Breathe easy in a sanctuary of greenery, where every stroll through the Oxygen Park is a step toward calm & clarity.",
-      buttonText: "More about the Oxygen Park",
-      image: "/images/locationAdvantagesImages/4.webp",
-      textClassName: "text-white",
-      paragraphClassName: "text-white",
-      buttonClassName: "text-white bg-[#78a5c1]",
-      mobileImage: "/images/locationAdvantagesImages/mobile4.webp",
-      buttonTextColor: "text-white",
-      carousalClassName: "bg-[#4B948066]",
-      fill: "#4793be",
-      buttonFillBg: "bg-[#4793be]",
-      amenitiesDetails: [
-        {
-          title: "A Sanctuary of Green",
-          subtitle: "Nature at the Heart of Your Home",
-          image: "/images/locationAdvantagesImages/9.webp",
-          description:
-            "At VITU Realty, our Oxygen Park is more than just green space—it’s a sanctuary designed to promote wellness, tranquility, and a deep connection to nature. With lush landscapes and thoughtful design, the park offers a serene escape within your community.",
-          middleTitle: "Why Green Spaces Matter",
-          middleDescription:
-            "Access to green spaces has been shown to improve mental health, reduce stress, and enhance overall well-being. Our Oxygen Park is designed to bring these benefits to your doorstep, creating a natural haven where you can recharge and reconnect with nature.",
-          bottomPoints: [
-            "Biodiverse Landscaping: Native plants and trees that support local ecosystems and enhance air quality.",
-            "Walking and Jogging Trails: Scenic paths designed for exercise and relaxation, winding through the park’s greenery.",
-            "Community Gardens: Spaces for residents to grow their own produce, fostering sustainability and connection.",
-            "Meditation Zones: Quiet areas for yoga, meditation, or simply enjoying the peace of nature.",
-          ],
-          middleBottomDescription:
-            "At VITU Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
-          bottomTitle: "The Core Principles of Green Space Design",
-          bottomDescription: "Our Oxygen Park integrates thoughtful landscaping and amenities to create a natural oasis:",
-        },
-      ],
-    },
-    {
-      title: "Project Highlight",
-      description: "30+ Amenities",
-      text: "From sunrise workouts to sunset strolls, enjoy 30+ ways to relax, recharge & reconnect - every single day.",
-      buttonText: "More about the Amenities",
-      image: "/images/locationAdvantagesImages/5.webp",
-      mobileImage: "/images/locationAdvantagesImages/mobile5.webp",
-      textClassName: "text-white",
-      paragraphClassName: "text-white",
-      buttonClassName: "text-white bg-[#78a5c1]",
-      buttonTextColor: "text-white",
-      carousalClassName: "bg-[#4B948066]",
-      fill: "#4793be",
-      buttonFillBg: "bg-[#4793be]",
-      amenitiesDetails: [
-        {
-          title: "A Lifestyle of Choice",
-          subtitle: "Amenities for Every Moment",
-          image: "/images/locationAdvantagesImages/5.webp",
-          description:
-            "At VITU Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
-          middleTitle: "Why Amenities Enhance Living",
-          middleDescription:
-            "A diverse range of amenities creates a community where residents can thrive. Whether you’re seeking active pursuits, quiet relaxation, or social connections, our properties offer spaces that cater to every lifestyle, ensuring every day is enriched.",
-          bottomPoints: [
-            "State-of-the-Art Fitness Center: Equipped with modern gym equipment and spaces for group classes like yoga and pilates.",
-            "Rooftop Lounge: A stylish space for socializing, with stunning views and comfortable seating areas.",
-            "Swimming Pool: A serene pool area for relaxation or exercise, designed for year-round enjoyment.",
-            "Community Event Spaces: Areas for gatherings, events, and workshops to foster a sense of community.",
-          ],
-          middleBottomDescription:
-            "At VITU Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
-          bottomTitle: "The Core Principles of Amenity Design",
-          bottomDescription: "Our amenities are crafted to enhance your daily experience, offering variety and quality:",
-        },
-      ],
-    },
-  ];
+const data: LocationAdvantageProps[] = [
+  {
+    title: "Location Advantage",
+    description: "Built for Life's Moments",
+    text: "Enjoy the soothing sounds of the waves & the convenience of a beachside retreat right at your doorstep.",
+    buttonText: "More about the Location",
+    image: "/images/locationAdvantagesImages/1.webp",
+    textClassName: "text-[#4F3737]",
+    paragraphClassName: "text-[#998d88]",
+    buttonClassName: "text-[#4F373799] bg-[#debf9d]",
+    buttonTextColor: "text-[#4F373799]",
+    carousalClassName: "bg-[#AE856666]",
+    mobileImage: "/images/locationAdvantagesImages/mobile1.webp",
+    fill: "#ccaa8d",
+    buttonFillBg: "bg-[#ccaa8d]",
+    amenitiesDetails: [
+      {
+        title: "Embracing Coastal Serenity",
+        image: "/images/locationAdvantagesImages/6.webp",
+        subtitle: "Crafting a Beachside Haven",
+        description:
+          "At VITU Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
+        middleTitle: "Why Coastal Living Matters",
+        middleDescription:
+          "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
+        bottomPoints: [
+          "Ocean-View Terraces: Spacious outdoor areas designed to maximize views of the sea, perfect for morning coffee or evening sunsets.",
+          "Coastal Design Aesthetics: Interiors inspired by the beach, using natural materials and soothing color palettes to create a serene environment.",
+          "Beach Access: Direct pathways to the shoreline, making beach walks and water activities a seamless part of your daily life.",
+          "Wellness Amenities: On-site yoga studios and meditation spaces that leverage the calming effects of the ocean to promote mental and physical health.",
+        ],
+        middleBottomDescription:
+          "At VITU Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
+        bottomTitle: "The Core Principles of Coastal Design",
+        bottomDescription: "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
+      },
+    ],
+  },
+  {
+    title: "Investment potential",
+    description: "Great Investment Potential",
+    text: "A smart address that offers comfort now & confidence for what’s ahead—where life & value grow together.",
+    buttonText: "More about the Location",
+    image: "/images/locationAdvantagesImages/2.webp",
+    mobileImage: "/images/locationAdvantagesImages/mobile2.webp",
+    textClassName: "text-[#4F3737]",
+    paragraphClassName: "text-[#998d88]",
+    buttonClassName: "text-[#4F373799] bg-[#debf9d]",
+    buttonTextColor: "text-[#4F373799]",
+    carousalClassName: "bg-[#AE856666]",
+    fill: "#ccaa8d",
+    buttonFillBg: "bg-[#ccaa8d]",
+    amenitiesDetails: [
+      {
+        title: "Investing in Tomorrow",
+        subtitle: "Building Wealth Through Smart Real Estate",
+        image: "/images/locationAdvantagesImages/7.webp",
+        description:
+          "At VITU Realty, we design properties that are not just homes but also smart investments. Located in high-growth areas, our developments offer strong appreciation potential, modern infrastructure, and access to thriving communities, ensuring long-term value for homeowners and investors alike.",
+        middleTitle: "Why Location Drives Value",
+        middleDescription:
+          "A property’s value is deeply tied to its location. Our developments are strategically placed in areas with strong economic growth, excellent connectivity, and proximity to essential amenities, making them ideal for those seeking both comfort and financial security.",
+        bottomTitle: "The Core Principles of Investment-Driven Design",
+        bottomDescription: "Our properties are built with features that enhance long-term value and appeal:",
+        bottomPoints: [
+          "Strategic Location: Positioned in areas with high demand and growth potential, ensuring strong market performance.",
+          "Modern Infrastructure: Cutting-edge construction techniques and smart home technologies that increase property desirability.",
+          "Community Growth: Proximity to schools, hospitals, and commercial hubs, fostering a vibrant and connected lifestyle.",
+          "Resale Potential: Designed with timeless aesthetics and durable materials to maintain value over time.",
+        ],
+        middleBottomDescription:
+          "At VITU Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
+      },
+    ],
+  },
+  {
+    title: "Sustainable growth",
+    description: "Sustainable Living",
+    text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
+    buttonText: "More about our Sustainability Initiatives",
+    image: "/images/locationAdvantagesImages/3.webp",
+    textClassName: "text-white",
+    paragraphClassName: "text-white",
+    buttonClassName: "text-white bg-[#4B948066]",
+    mobileImage: "/images/locationAdvantagesImages/mobile3.webp",
+    buttonTextColor: "text-white",
+    carousalClassName: "bg-[#4B948066]",
+    fill: "#2c4f40",
+    buttonFillBg: "bg-[#2c4f40]",
+    amenitiesDetails: [
+      {
+        title: "Living Green, Made Simple",
+        subtitle: "Sustainable Homes for a Better Planet",
+        image: "/images/locationAdvantagesImages/8.webp",
+        description:
+          "At VITU Realty, sustainability is at the heart of our mission. Our eco-conscious properties are designed to minimize environmental impact while maximizing comfort, integrating green technologies and practices that make sustainable living effortless and rewarding.",
+        middleTitle: "Why Green Living Matters",
+        middleDescription:
+          "Choosing a sustainable home means contributing to a healthier planet and a better quality of life. Our properties incorporate cutting-edge green technologies to reduce energy consumption, conserve water, and promote eco-friendly lifestyles, all while maintaining modern luxury.",
+        bottomPoints: [
+          "Solar Energy Integration: Rooftop solar panels and energy-efficient systems to reduce reliance on non-renewable energy.",
+          "Smart Water Systems: Rainwater harvesting and low-flow fixtures to minimize water waste and promote conservation.",
+          "Eco-Friendly Materials: Use of sustainable, locally sourced materials to reduce environmental impact and support local economies.",
+        ],
+        middleBottomDescription:
+          "At VITU Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
+        bottomTitle: "The Core Principles of Green Design",
+        bottomDescription: "Our sustainable properties integrate innovative technologies and practices to promote environmental stewardship:",
+      },
+    ],
+  },
+  {
+    title: "500+ Tree Cover",
+    description: "Lush Oxygen Park",
+    text: "Breathe easy in a sanctuary of greenery, where every stroll through the Oxygen Park is a step toward calm & clarity.",
+    buttonText: "More about the Oxygen Park",
+    image: "/images/locationAdvantagesImages/4.webp",
+    textClassName: "text-white",
+    paragraphClassName: "text-white",
+    buttonClassName: "text-white bg-[#78a5c1]",
+    mobileImage: "/images/locationAdvantagesImages/mobile4.webp",
+    buttonTextColor: "text-white",
+    carousalClassName: "bg-[#4B948066]",
+    fill: "#4793be",
+    buttonFillBg: "bg-[#4793be]",
+    amenitiesDetails: [
+      {
+        title: "A Sanctuary of Green",
+        subtitle: "Nature at the Heart of Your Home",
+        image: "/images/locationAdvantagesImages/9.webp",
+        description:
+          "At VITU Realty, our Oxygen Park is more than just green space—it’s a sanctuary designed to promote wellness, tranquility, and a deep connection to nature. With lush landscapes and thoughtful design, the park offers a serene escape within your community.",
+        middleTitle: "Why Green Spaces Matter",
+        middleDescription:
+          "Access to green spaces has been shown to improve mental health, reduce stress, and enhance overall well-being. Our Oxygen Park is designed to bring these benefits to your doorstep, creating a natural haven where you can recharge and reconnect with nature.",
+        bottomPoints: [
+          "Biodiverse Landscaping: Native plants and trees that support local ecosystems and enhance air quality.",
+          "Walking and Jogging Trails: Scenic paths designed for exercise and relaxation, winding through the park’s greenery.",
+          "Community Gardens: Spaces for residents to grow their own produce, fostering sustainability and connection.",
+          "Meditation Zones: Quiet areas for yoga, meditation, or simply enjoying the peace of nature.",
+        ],
+        middleBottomDescription:
+          "At VITU Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
+        bottomTitle: "The Core Principles of Green Space Design",
+        bottomDescription: "Our Oxygen Park integrates thoughtful landscaping and amenities to create a natural oasis:",
+      },
+    ],
+  },
+  {
+    title: "Project Highlight",
+    description: "30+ Amenities",
+    text: "From sunrise workouts to sunset strolls, enjoy 30+ ways to relax, recharge & reconnect - every single day.",
+    buttonText: "More about the Amenities",
+    image: "/images/vilasamPageImages/1.webp",
+    mobileImage: "/images/vilasamPageImages/1.webp",
+    textClassName: "text-white",
+    paragraphClassName: "text-white",
+    buttonClassName: "text-white bg-[#78a5c1]",
+    buttonTextColor: "text-white",
+    carousalClassName: "bg-[#4B948066]",
+    fill: "#4793be",
+    buttonFillBg: "bg-[#4793be]",
+    amenitiesDetails: [
+      {
+        title: "A Lifestyle of Choice",
+        subtitle: "Amenities for Every Moment",
+        image: "/images/vilasamPageImages/1.webp",
+        description:
+          "At VITU Realty, we believe that a home should offer more than just shelter—it should provide a vibrant lifestyle. Our properties feature over 30 amenities designed to cater to every aspect of your life, from fitness and relaxation to socializing and recreation.",
+        middleTitle: "Why Amenities Enhance Living",
+        middleDescription:
+          "A diverse range of amenities creates a community where residents can thrive. Whether you’re seeking active pursuits, quiet relaxation, or social connections, our properties offer spaces that cater to every lifestyle, ensuring every day is enriched.",
+        bottomPoints: [
+          "State-of-the-Art Fitness Center: Equipped with modern gym equipment and spaces for group classes like yoga and pilates.",
+          "Rooftop Lounge: A stylish space for socializing, with stunning views and comfortable seating areas.",
+          "Swimming Pool: A serene pool area for relaxation or exercise, designed for year-round enjoyment.",
+          "Community Event Spaces: Areas for gatherings, events, and workshops to foster a sense of community.",
+        ],
+        middleBottomDescription:
+          "At VITU Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
+        bottomTitle: "The Core Principles of Amenity Design",
+        bottomDescription: "Our amenities are crafted to enhance your daily experience, offering variety and quality:",
+      },
+    ],
+  },
+];

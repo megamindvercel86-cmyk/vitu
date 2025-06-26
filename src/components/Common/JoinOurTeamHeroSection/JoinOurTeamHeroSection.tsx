@@ -1,4 +1,3 @@
-"use client";
 
 // ============= Component Imports =============
 import Image from "next/image";

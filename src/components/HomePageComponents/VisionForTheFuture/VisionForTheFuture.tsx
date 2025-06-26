@@ -43,7 +43,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "Strategically located and thoughtfully laid out, our plots offer the ideal foundation to build a future-ready home in a well-connected community.",
-    image: "/svgs/plotted.svg",
+    image: "/svgs/plotted.webp",
     residentialType: "Plotted development",
   },
   {
@@ -51,7 +51,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "VITU Realty envisions retirement homes as peaceful retreats, offering the perfect balance of comfort, care and community for your golden years.",
-    image: "/svgs/image1.svg",
+    image: "/svgs/image1.webp",
     residentialType: "Retirement Homes",
   },
   {
@@ -59,7 +59,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "VITU Resorts envisions serene getaways where luxury meets nature, creating the perfect harmony of relaxation, adventure and rejuvenation for every moment of your escape.",
-    image: "/svgs/image2.svg",
+    image: "/svgs/image2.webp",
     residentialType: "Resorts",
   },
   {
@@ -67,7 +67,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "VITU Wellness Centre envisions a sanctuary of holistic healing where the mind, body and soul unite in harmony offering the perfect blend of care, tranquility and rejuvenation for your well-being.",
-    image: "/svgs/image3.svg",
+    image: "/svgs/image3.webp",
     residentialType: "Wellness Centre",
   },
   {
@@ -75,7 +75,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     subtitle: "Rooted in our vision for bold growth and dedication to evolving our portfolio.",
     description:
       "VITU Commercial Spaces envisions dynamic hubs of innovation & opportunity, offering the perfect balance of functionality, sophistication, & community for your business to thrive.",
-    image: "/svgs/image4.svg",
+    image: "/svgs/image4.webp",
     residentialType: "Commercial Spaces",
   },
 ];

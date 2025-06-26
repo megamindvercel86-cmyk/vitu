@@ -1,4 +1,3 @@
-"use client";
 
 // ============= Imports =============
 import { motion } from "framer-motion";
