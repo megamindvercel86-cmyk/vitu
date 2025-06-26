@@ -102,7 +102,7 @@ const ProjectHeroSection: React.FC = () => {
     text-center
   `}
         >
-          Discover <span className="font-CandideCondensedMedium">3,74,284</span> SqM of Luxuriously Affordable Coastal Bliss
+          Discover <span className="font-CandideCondensedMedium">8.6</span> Acres of Luxuriously Affordable Coastal Bliss
         </h1>
 
         {/* CTA Button */}
