@@ -54,7 +54,6 @@ const CONTENT = {
 export default function InsightHeroSection(): React.ReactElement {
   const [desktopCard, setDesktopCard] = useState<Article[]>([]);
   const [mobileCard, setMobileCard] = useState<Article[]>([]);
-  console.log("desktopCard", desktopCard);
 
   const fetchBlogs = async () => {
     try {

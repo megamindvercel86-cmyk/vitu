@@ -40,7 +40,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
   const [open, setOpen] = useState<boolean>(false);
   // ============= Form Handling =============
   const handleSuccess = () => {
-    console.log("Form submission complete! Performing additional actions...");
+  
     // You can navigate to another page, show a modal, etc.
   };
 
@@ -216,7 +216,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                     try {
                       formik.handleSubmit();
                     } catch (error) {
-                      console.log(error);
+                    
                     }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
@@ -296,11 +296,6 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                       });
                       return;
                     }
-                    // setIsLoading(true); // Start loading
-                    Promise.resolve(formik.handleSubmit()).finally(() =>
-                      // setIsLoading(false)
-                      console.log("2")
-                    ); // Stop loading after submission
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:hidden block text-[26px] pb-[0.5px] w-full lg:w-[146px] ${
@@ -343,10 +338,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                       return;
                     }
                     // setIsLoading(true); // Start loading
-                    Promise.resolve(formik.handleSubmit()).finally(() =>
-                      // setIsLoading(false)
-                      console.log("3")
-                    ); // Stop loading after submission
+                    
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${

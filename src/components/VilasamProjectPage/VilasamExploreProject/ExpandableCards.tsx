@@ -224,7 +224,6 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
   const [currentBreakpoint, setCurrentBreakpoint] = useState("md");
   const [isGetInTouchOpen, setIsGetInTouchOpen] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState(false);
-  console.log(borderColor);
   // Add mounted state
   useEffect(() => {
     setIsMounted(true);

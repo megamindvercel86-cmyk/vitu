@@ -119,7 +119,6 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
     setTouched((prev) => ({ ...prev, [name]: true }));
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
-  console.log()
 
   // Handle form submission
   const handleSubmit = async () => {
@@ -150,8 +149,6 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
       } finally {
         setIsLoading(false);
       }
-    } else {
-      console.log("Form has errors:", errors);
     }
   };
 

@@ -525,10 +525,6 @@ const CurrentProject: React.FC<{ homePage?: boolean }> = ({ homePage = false }) 
     });
   };
 
-  // Debug state changes
-  useEffect(() => {
-    console.log("Selected location updated:", selectedLocation.name);
-  }, [selectedLocation]);
 
   // ============= Render Helpers =============
   const renderStats = () => (

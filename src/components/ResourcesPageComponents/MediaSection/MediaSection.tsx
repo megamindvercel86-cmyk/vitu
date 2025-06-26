@@ -74,9 +74,6 @@ export default function MediaSection(): React.ReactElement {
       swiperRef.current.update();
       swiperRef.current.autoplay.start();
 
-      // Log for debugging
-      console.log("Swiper initialized, autoplay started");
-
       // Handle resize to ensure autoplay persists
       const handleResize = () => {
         swiperRef.current?.update();
@@ -147,7 +144,6 @@ export default function MediaSection(): React.ReactElement {
             onInit={(swiper) => {
               // Ensure autoplay starts when Swiper is initialized
               swiper.autoplay.start();
-              console.log("Swiper onInit, autoplay started");
             }}
             modules={[Navigation, Autoplay]}
             spaceBetween={24}
