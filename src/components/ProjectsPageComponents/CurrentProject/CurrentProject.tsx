@@ -432,7 +432,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       )}
 
       <motion.div
-        className="  lg:hidden "
+        className="  lg:hidden flex gap-5 justify-center items-center"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -441,7 +441,8 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       >
         {selectedLocation.description === STATS_DATA
           ? selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-5" : ""}`}>
+              <motion.div key={index} className={`leading-[1.1]   ${index !== 0 ? "my-5 " : ""}`}>
+          
                 <Typography
                   variant="custom"
                   className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"

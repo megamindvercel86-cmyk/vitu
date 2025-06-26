@@ -291,17 +291,17 @@ const LocationAdvantage = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
               <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1
-                  className={`text-lg md:text-lg lg2:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-freightNeoMedium`}
+                  className={`text-lg md:text-lg lg2:text-[24px] text-white font-medium text-center uppercase tracking-wide font-freightNeoMedium`}
                 >
                   {item.title}
                 </h1>
                 <h1
-                  className={`text-2xl lg:text-5xl lg2:text-6xl  ${item.textClassName} md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl  text-white md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
                 >
                   {item.description}
                 </h1>
                 <p
-                  className={`mt-4 inline-block  ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
+                  className={`mt-4 inline-block  text-white lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
                 >
                   {item.text}
                 </p>
@@ -335,7 +335,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                    <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
                   </button>
                 </div>
               </div>
@@ -369,7 +369,7 @@ const LocationAdvantage = () => {
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`${item.buttonTextColor} font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                  <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
                 </button>
               </div>
             </div>
