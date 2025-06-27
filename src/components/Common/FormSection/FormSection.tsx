@@ -205,20 +205,24 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                    e.preventDefault();
-                    if (!formik.isValid || !formik.dirty) {
-                      Object.keys(formik.values).forEach((field) => {
-                        formik.setFieldTouched(field as any, true);
-                      });
-                      return;
-                    }
-                    try {
-                      formik.handleSubmit();
-                    } catch (error) {
-                    
-                    }
-                  }}
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
+
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                    // Ensure form submission is awaited
+                  } finally {
+                  }
+                }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
@@ -252,24 +256,24 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
-                    e.preventDefault();
-                    if (!formik.isValid || !formik.dirty) {
-                      Object.keys(formik.values).forEach((field) => {
-                        formik.setFieldTouched(field as any, true);
-                      });
-                      return;
-                    }
-                    // Start loading
-                    try {
-                      // setIsLoading(true);
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
 
-                      await formik.handleSubmit();
-                      // setIsLoading(false); // Stop loading after submission
-                      // Ensure form submission is awaited
-                    } finally {
-                    }
-                  }}
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                    // Ensure form submission is awaited
+                  } finally {
+                  }
+                }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:block hidden text-[26px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
@@ -288,15 +292,24 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                    e.preventDefault();
-                    if (!formik.isValid || !formik.dirty) {
-                      Object.keys(formik.values).forEach((field) => {
-                        formik.setFieldTouched(field as any, true);
-                      });
-                      return;
-                    }
-                  }}
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
+
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                    // Ensure form submission is awaited
+                  } finally {
+                  }
+                }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:hidden block text-[26px] pb-[0.5px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
@@ -329,17 +342,24 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                    e.preventDefault();
-                    if (!formik.isValid || !formik.dirty) {
-                      Object.keys(formik.values).forEach((field) => {
-                        formik.setFieldTouched(field as any, true);
-                      });
-                      return;
-                    }
-                    // setIsLoading(true); // Start loading
-                    
-                  }}
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
+
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                    // Ensure form submission is awaited
+                  } finally {
+                  }
+                }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
@@ -358,24 +378,24 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
-                    e.preventDefault();
-                    if (!formik.isValid || !formik.dirty) {
-                      Object.keys(formik.values).forEach((field) => {
-                        formik.setFieldTouched(field as any, true);
-                      });
-                      return;
-                    }
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  if (!formik.isValid || !formik.dirty) {
+                    Object.keys(formik.values).forEach((field) => {
+                      formik.setFieldTouched(field as any, true);
+                    });
+                    return;
+                  }
+                  // Start loading
+                  try {
+                    // setIsLoading(true);
 
-                    try {
-                      // setIsLoading(true); // Start loading
-                      formik.handleSubmit(); // Handle form submission
-                    } catch (error) {
-                      console.error("Form submission failed", error);
-                    } finally {
-                      // setIsLoading(false); // Stop loading after submission (whether success or failure)
-                    }
-                  }}
+                    await formik.handleSubmit();
+                    // setIsLoading(false); // Stop loading after submission
+                    // Ensure form submission is awaited
+                  } finally {
+                  }
+                }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
                   className={`text-[26px] pt-1 sm:w-full w-full md:w-[146px] ${
                     !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
