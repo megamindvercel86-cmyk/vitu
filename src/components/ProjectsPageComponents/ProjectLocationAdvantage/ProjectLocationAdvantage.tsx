@@ -510,7 +510,7 @@ const data: LocationAdvantageProps[] = [
         image: "/images/locationAdvantagesImages/6.webp",
         subtitle: "Crafting a Beachside Haven",
         description:
-          "At VITU Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail, from ocean-view terraces to coastal-inspired interiors, is crafted to enhance your connection to the sea.",
+          "At VITU Realty, we create homes that harmonize with the rhythm of the sea. Our beachside properties are designed to offer tranquility and convenience, blending modern luxury with the natural beauty of the coastline. Every detail is crafted to enhance your connection to the sea.",
         middleTitle: "Why Coastal Living Matters",
         middleDescription:
           "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
@@ -588,13 +588,14 @@ const data: LocationAdvantageProps[] = [
         middleDescription:
           "Choosing a sustainable home means contributing to a healthier planet and a better quality of life. Our properties incorporate cutting-edge green technologies to reduce energy consumption, conserve water, and promote eco-friendly lifestyles, all while maintaining modern luxury.",
         bottomPoints: [
-          "Solar Energy Integration: Rooftop solar panels and energy-efficient systems to reduce reliance on non-renewable energy.",
-          "Smart Water Systems: Rainwater harvesting and low-flow fixtures to minimize water waste and promote conservation.",
-          "Eco-Friendly Materials: Use of sustainable, locally sourced materials to reduce environmental impact and support local economies.",
+          "Smart Water Systems: Includes rainwater harvesting, low-flow fixtures, and sewage treatment plants. Treated water is reused for landscaping and maintaining green zones reducing waste and supporting water sustainability.",
+          "Energy-Efficient Street Lighting: Timer-Based LED Street Lights are installed across the layout to conserve energy and minimize power usage during off-peak hours promoting efficiency without compromising safety.",
+          "Eco-Friendly Materials: Construction of common infrastructure uses sustainable, locally sourced materials reducing carbon footprint while supporting regional ecosystems and artisans.",
+          "Paved Roads for Groundwater Recharge: Well-laid roads with permeable design features allow natural percolation, aiding groundwater recharge and reducing runoff all while providing durable, dust-free mobility."
         ],
         middleBottomDescription:
           "At VITU Realty, we believe sustainable living should be accessible and inspiring. Our homes are designed to make eco-conscious choices seamless, allowing you to live in harmony with the planet without sacrificing comfort. Together, we can create a greener future, one home at a time.",
-        bottomTitle: "The Core Principles of Green Design",
+        bottomTitle: "Sustainability Built into Every Plot",
         bottomDescription: "Our sustainable properties integrate innovative technologies and practices to promote environmental stewardship:",
       },
     ],
