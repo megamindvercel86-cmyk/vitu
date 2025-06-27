@@ -208,7 +208,7 @@ const LocationAdvantage = () => {
     if (swiperInstance) {
       swiperInstance.slideToLoop(index);
       setActiveIndex(index);
-      if (!isSlidePaused) {
+      if (!isSlidePaused && !isOpen) {
         swiperInstance.autoplay.start();
         startProgress();
       }
@@ -218,10 +218,18 @@ const LocationAdvantage = () => {
   const openCard = (index: number) => {
     setCurrentIndex(index);
     setIsOpen(true);
+    if (swiperInstance) {
+      swiperInstance.autoplay.stop();
+      clearProgressInterval();
+    }
   };
 
   const closeCard = () => {
     setIsOpen(false);
+    if (swiperInstance && !isSlidePaused) {
+      swiperInstance.autoplay.start();
+      startProgress();
+    }
   };
 
   const goToNextCard = () => {
@@ -230,7 +238,8 @@ const LocationAdvantage = () => {
     setCurrentIndex(0);
     if (swiperInstance) {
       swiperInstance.slideToLoop(nextIndex);
-      if (!isSlidePaused) {
+      // Only start autoplay if modal is closed and not paused
+      if (!isSlidePaused && !isOpen) {
         swiperInstance.autoplay.start();
         startProgress();
       }
@@ -246,11 +255,15 @@ const LocationAdvantage = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && isOpen) {
         setIsOpen(false);
+        if (swiperInstance && !isSlidePaused) {
+          swiperInstance.autoplay.start();
+          startProgress();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen]);
+  }, [isOpen, swiperInstance, isSlidePaused]);
 
   return (
     <div className="relative w-full h-screen">
@@ -296,22 +309,22 @@ const LocationAdvantage = () => {
                   {item.title}
                 </h1>
                 <h1
-                  className={`text-2xl lg:text-5xl lg2:text-6xl  text-white md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl text-white md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
                 >
                   {item.description}
                 </h1>
                 <p
-                  className={`mt-4 inline-block  text-white lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
+                  className={`mt-4 inline-block text-white lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
                 >
                   {item.text}
                 </p>
                 <div className=" group cursor-pointer bottom-0 md:block relative hidden">
                   <button
                     type="button"
-                    aria-label="More about the location"
+                    aria-label="More about the project"
                     onClick={() => openCard(0)}
                     className="
-                       relative group
+                      relative group
                       mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
@@ -335,41 +348,41 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                    <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0`}>More About the Project</span>
                   </button>
                 </div>
               </div>
               <div className="absolute group cursor-pointer bottom-14 md:hidden w-full flex items-center justify-center">
                 <button
                   type="button"
-                  aria-label="More about the location"
+                  aria-label="More about the Project"
                   onClick={() => openCard(0)}
                   className="
-                       relative group
-                      mt-4
-                      flex items-center justify-center
-                      gap-[0.6875rem]
-                      rounded-full 
-                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                      text-base font-freightNeoMedium text-white
-                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                      overflow-hidden z-100
-                    "
+                    relative group
+                    mt-4
+                    flex items-center justify-center
+                    gap-[0.6875rem]
+                    rounded-full 
+                    pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
+                    text-base font-freightNeoMedium text-white
+                    2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                    overflow-hidden z-100
+                  "
                 >
                   <div className={`absolute inset-0 ${item.buttonClassName} rounded-full`}></div>
                   <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
                     <div
                       className={`
-                          absolute w-0 h-0 ${item.buttonFillBg} rounded-full
-                          group-hover:w-[40rem] group-hover:h-[30rem]
-                          transition-all duration-500 ease-out
-                        `}
+                        absolute w-0 h-0 ${item.buttonFillBg} rounded-full
+                        group-hover:w-[40rem] group-hover:h-[30rem]
+                        transition-all duration-500 ease-out
+                      `}
                     ></div>
                     <div className="relative z-20">
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0 `}>More About the Location</span>
+                  <span className={`text-white font-freightNeoMedium relative z-20 mt-[3px] md:mt-0`}>More About the Project</span>
                 </button>
               </div>
             </div>
@@ -382,7 +395,7 @@ const LocationAdvantage = () => {
       <div className="hidden md:block absolute w-36 !rounded-[300px] bottom-[70px] left-[260px] z-20">
         <CircularPlayPauseButton isPlay={!isSlidePaused} onToggle={handleTogglePlayPause} progress={progress} strokeColor="#ffffff" />
       </div>
-      <div className="md:hidden  absolute  !rounded-[300px] bottom-5 flex justify-center w-full z-20">
+      <div className="md:hidden absolute !rounded-[300px] bottom-5 flex justify-center w-full z-20">
         <CarouselDots total={data.length} active={activeIndex} onDotClick={handleDotClick} />
       </div>
       <AnimatePresence>

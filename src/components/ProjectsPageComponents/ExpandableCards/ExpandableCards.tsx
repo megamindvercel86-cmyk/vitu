@@ -284,7 +284,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
         >
           {/* Text Content */}
           <motion.div
-            className="absolute md:top-[43rem] lg2:top-[29rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+            className="absolute md:top-[43rem] lg2:top-[26rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
               opacity: isExpanded ? 1 : 0,
@@ -295,7 +295,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
           >
             <div>
               <motion.h2
-                className="xl:text-[100px] lg:text-3xl lg2:text-7xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
+                className="xl:text-[100px] lg:text-3xl lg2:text-5xl  md:text-5xl font-freightNeoMedium mb-4 text-customBrown"
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.5 }}
