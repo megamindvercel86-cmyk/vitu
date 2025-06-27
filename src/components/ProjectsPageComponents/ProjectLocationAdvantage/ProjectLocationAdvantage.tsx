@@ -631,7 +631,7 @@ const data: LocationAdvantageProps[] = [
         ],
         middleBottomDescription:
           "At VITU Realty, we believe that nature is essential to a balanced life. Our Oxygen Park is designed to be a living, breathing part of your community, offering spaces to relax, play, and grow. Together, we can create a home where nature and well-being thrive.",
-        bottomTitle: "The Core Principles of Green Space Design",
+        bottomTitle: "Nature at the Center of Everyday Living",
         bottomDescription: "Our Oxygen Park integrates thoughtful landscaping and amenities to create a natural oasis:",
       },
     ],
