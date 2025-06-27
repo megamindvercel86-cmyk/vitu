@@ -39,26 +39,53 @@ const BACKGROUND = {
 
 const project = {
   fileUrl: "/images/backgroundImages/resourcesPageBackground.png",
-  title: "Is Real Estate Investment Really Worth It?",
-  subtitle: "Breaking down the advantages and pitfalls of investing in property.",
-  topTitle: "Introduction",
+  title: "Real Estate Trends in Mangalore",
+  subtitle: "What’s Shaping the Market in 2025",
+  topTitle: "",
   topDescription:
-    "Real estate has long been considered a stable investment. However, like any investment, it comes with its own set of challenges. In this blog, we analyze whether it’s truly worth putting your money into property.",
-  middleTitle: "Pros of Real Estate Investment",
-  middlePoints: [
-    "Tangible asset that appreciates over time",
-    "Regular income through rentals",
-    "Tax benefits and deductions",
-    "Hedge against inflation",
-  ],
-  middleTitle2: "Cons of Real Estate Investment",
-  middlePoints2: [
-    "Requires significant upfront capital",
-    "Low liquidity compared to stocks or mutual funds",
-    "Property management responsibilities",
-    "Market risks and unexpected expenses",
+    "Mangalore, a coastal gem in Karnataka, is rapidly transforming into a real estate hub. With its balanced blend of urban infrastructure, natural beauty, and cultural depth, the Mangalore real estate market is attracting homebuyers, NRIs, and investors alike. As 2025 unfolds, new patterns are emerging that are reshaping property investment in this vibrant city.",
+  points: [
+    {
+      title: "Plotted Developments Are in Demand",
+      description1:
+        "One of the biggest shifts in Mangalore’s property market is the rising demand for plots for sale in Mangalore. Buyers are increasingly preferring plotted developments over apartments, especially in suburban zones like Surathkal, Talapady and Kulshekar.",
+      description2:
+        "Plots offer flexibility, long-term value and lower maintenance costs making them an attractive choice for both investors and end users. With approvals from MUDA and RERA in place, plotted layouts are also gaining trust among first-time buyers.",
+    },
+    {
+      title: "Gated Communities and Lifestyle Living",
+      description1:
+        "Modern homebuyers are prioritizing security, amenities, and community living. As a result, there’s a surge in gated communities in Mangalore featuring 24x7 surveillance, landscaped parks, clubhouses, and smart infrastructure.",
+      description2:
+        "Developers are investing in premium features like rainwater harvesting, solar lighting, and fiber connectivity, making these projects not just homes, but complete lifestyle experiences.",
+    },
+    {
+      title: "Coastal Appeal Driving NRI Investment",
+      description1:
+        "Thanks to its scenic coastline and peaceful atmosphere, Mangalore continues to attract NRI investors and retirees looking for second homes. Areas closer to the coast like NITK, Panambur, Ullal and Someshwara are seeing increasing interest for vacation villas, holiday homes, and resale-ready plots.",
+      description2:
+        "With the Mangalore International Airport improving its connectivity, overseas buyers now see the city as a convenient and cost-effective alternative to Goa or Kerala.",
+    },
+    {
+      title: "Affordable Investment Opportunities",
+      description1:
+        "Compared to metros like Bangalore or Chennai, real estate in Mangalore is still affordable. Whether it’s a small residential plot or a commercial property, the city offers attractive price points and good ROI potential. For budget-conscious buyers or young families, Mangalore presents an opportunity to own land in a growing city without breaking the bank.",
+    },
+    {
+      title: "Sustainable and Smart Living Projects",
+      description1:
+        "As environmental awareness grows, Mangalore’s developers are focusing on green buildings, eco-friendly layouts, and smart homes. Projects offering sustainable features are becoming selling points, especially among younger and environmentally conscious buyers and investors.",
+    },
+    {
+      title: "Why Mangalore is Worth Watching",
+      description1:
+        "If you're considering investing in property in Mangalore, 2025 offers an ideal window. From plotted developments to lifestyle communities and NRI-friendly projects, the city is geared for long-term growth. With robust infrastructure and competitive pricing, Mangalore real estate trends show strong potential for both capital appreciation and peaceful living.",
+      description2:
+        "Whether you're buying your first plot, upgrading your home, or planning a retirement getaway, Mangalore offers options that align with your needs and budget.",
+    },
   ],
 };
+
 export default function HeroBanner(): React.ReactElement {
   // ============= Render Helpers =============
 
@@ -174,40 +201,24 @@ export default function HeroBanner(): React.ReactElement {
                       <Typography variant="h1" className="text-customBrown font-freightNeoMedium">
                         {project.title}
                       </Typography>
-                      <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-3xl">{project.subtitle}</Typography>
-                      <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-                        {project.topTitle}
-                      </Typography>
+                      <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-1 !text-3xl">{project.subtitle}</Typography>
                       <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl">{project.topDescription}</Typography>
-                      {project.middlePoints && (
-                        <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-                          {project.middleTitle}
-                        </Typography>
-                      )}
-                      {project.middlePoints && (
-                        <ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6 leading-10">
-                          {project.middlePoints?.map((point, index) => (
-                            <li key={index} className="pb-4">
-                              {point}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {project.middleTitle2 && (
-                        <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-                          {project.middleTitle2}
-                        </Typography>
-                      )}
-                      {project.middleTitle2 && (
-                        <ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6">
-                          {project.middlePoints2?.map((point, index) => (
-                            <li key={index} className="pb-4">
-                              {point}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    
+                      {project.points.map((point, index) => (
+                        <div key={index} className="mb-8">
+                          <Typography variant="h3" className="font-freightNeoMedium text-xl md:text-2xl text-customBrown mb-2">
+                            {point.title}
+                          </Typography>
+                          {point.description1 && (
+                            <Typography className="text-[#04070799] font-FreightNeoProNormal text-base md:text-lg mb-2">
+                              {point.description1}
+                            </Typography>
+                          )}
+                          {point.description2 && (
+                            <Typography className="text-[#04070799] font-FreightNeoProNormal text-base md:text-lg">{point.description2}</Typography>
+                          )}
+                        </div>
+                      ))}
+
                       {/* <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] !text-xl">{project.topDescription}</Typography> */}
                     </div>
                   </div>

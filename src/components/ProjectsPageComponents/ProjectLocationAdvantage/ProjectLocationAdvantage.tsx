@@ -66,6 +66,16 @@ const contentVariants = {
   exit: { opacity: 0 },
 };
 
+const StylizedText = ({ text }: { text?: string }) => (
+  <>
+    {text?.split("").map((char, index) => (
+      <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
+        {char}
+      </span>
+    ))}
+  </>
+);
+
 const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProps) => {
   return (
     <div style={{ borderRadius: "50px" }} className={cn("flex items-center justify-center gap-2 py-3 ", className)}>
@@ -104,13 +114,31 @@ const CardContent = ({
       <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
     </div>
     <div className=" px-6 lg:px-20">
-      <h2 className="text-[54px] leading-[1] font-FreightNeoProNormal text-[#4F3737]">{description.title}</h2>
-      <h3 className="text-[28px] leading-[1.2] font-FreightNeoProNormal mt-2 text-[#040707CC] ">{description.subtitle}</h3>
-      <p className="mt-8 text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{description.description}</p>
-      <h4 className="text-[28px] leading-[1.2] font-FreightNeoProNormal text-[#040707CC] mt-10">{description.middleTitle}</h4>
-      <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{description.middleDescription}</p>
-      <h4 className="text-[28px] leading-[1.2] font-FreightNeoProNormal text-[#040707CC] mt-10">{description.bottomTitle}</h4>
-      <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">{description.bottomDescription}</p>
+      <h2 className="text-[54px] leading-[1] font-FreightNeoProNormal text-[#4F3737]">
+        <StylizedText text={description.title} />
+      </h2>
+      <h3 className="text-[28px] leading-[1.2] font-FreightNeoProNormal mt-2 text-[#040707CC] ">
+        {" "}
+        <StylizedText text={description.subtitle} />
+      </h3>
+      <p className="mt-8 text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">
+        {" "}
+        <StylizedText text={description.description} />
+      </p>
+      <h4 className="text-[28px] leading-[1.2] font-FreightNeoProNormal text-[#040707CC] mt-10">
+        <StylizedText text={description.middleTitle} />
+      </h4>
+      <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">
+        <StylizedText text={description.middleDescription} />
+      </p>
+      <h4 className="text-[28px] leading-[1.2] font-FreightNeoProNormal text-[#040707CC] mt-10">
+        {" "}
+        <StylizedText text={description.bottomTitle} />
+      </h4>
+      <p className=" text-gray-600 text-base font-FreightNeoProNormal lg:text-lg">
+        {" "}
+        <StylizedText text={description.bottomDescription} />
+      </p>
       <ul className="mt-6 space-y-6" aria-label="List of key points">
         {description.bottomPoints.map((point, index) => (
           <li key={index} className="flex items-start">
@@ -303,20 +331,30 @@ const LocationAdvantage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
               <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
-                <h1
-                  className={`text-lg md:text-lg lg2:text-[24px] text-white font-medium text-center uppercase tracking-wide font-freightNeoMedium`}
-                >
-                  {item.title}
+                <h1 className={`text-lg md:text-lg lg2:text-[24px] text-white font-medium text-center uppercase tracking-wide `}>
+                  {item.title.split("").map((char, index) => (
+                    <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
+                      {char}
+                    </span>
+                  ))}
                 </h1>
                 <h1
                   className={`text-2xl lg:text-5xl lg2:text-6xl text-white md:font-normal font-semibold max-w-2xl font-freightNeoMedium leading-tight`}
                 >
-                  {item.description}
+                  {item.description.split("").map((char, index) => (
+                    <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
+                      {char}
+                    </span>
+                  ))}
                 </h1>
                 <p
                   className={`mt-4 inline-block text-white lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-freightNeoMedium font-[400]`}
                 >
-                  {item.text}
+                  {item.text.split("").map((char, index) => (
+                    <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
+                      {char}
+                    </span>
+                  ))}
                 </p>
                 <div className=" group cursor-pointer bottom-0 md:block relative hidden">
                   <button
@@ -426,7 +464,7 @@ const LocationAdvantage = () => {
               <motion.div variants={contentVariants}>
                 <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
               </motion.div>
-              <motion.div variants={contentVariants} className="p-4 lg:px-20 mt-10">
+              <motion.div variants={contentVariants} className="p-4 lg:px-20 mt-10 cursor-pointer" onClick={goToNextCard}>
                 <h1 className="border-t-2 pt-9 text-[10px] md:text-[12px] font-FreightNeoProNormal text-[#8E8E93] border-t-gray-200">NextUp</h1>
                 <div className="flex justify-between">
                   <button
@@ -434,7 +472,7 @@ const LocationAdvantage = () => {
                     onClick={goToNextCard}
                     className="text-[#1D1D1F] flex font-FreightNeoProBold justify-between items-center cursor-pointer font-bold text-[18px]"
                   >
-                    {data[(activeIndex + 1) % data.length].description}
+                    <StylizedText text={data[(activeIndex + 1) % data.length].description} />
                   </button>
                   <MdKeyboardArrowRight
                     onClick={goToNextCard}
@@ -460,7 +498,7 @@ const data: LocationAdvantageProps[] = [
     image: "/images/locationAdvantagesImages/1.webp",
     textClassName: "text-[#4F3737]",
     paragraphClassName: "text-[#998d88]",
-    buttonClassName: "text-[#4F373799] bg-[#debf9d]",
+    buttonClassName: "text-[#4F373799] bg-[#AE8566]",
     buttonTextColor: "text-[#4F373799]",
     carousalClassName: "bg-[#AE856666]",
     mobileImage: "/images/locationAdvantagesImages/mobile1.webp",
@@ -477,15 +515,14 @@ const data: LocationAdvantageProps[] = [
         middleDescription:
           "Living by the beach offers more than just scenic views—it promotes wellness, relaxation, and a lifestyle rooted in nature. Our properties are strategically located to provide immediate access to the shoreline, ensuring that the calming influence of the ocean is always within reach.",
         bottomPoints: [
-          "Ocean-View Terraces: Spacious outdoor areas designed to maximize views of the sea, perfect for morning coffee or evening sunsets.",
-          "Coastal Design Aesthetics: Interiors inspired by the beach, using natural materials and soothing color palettes to create a serene environment.",
-          "Beach Access: Direct pathways to the shoreline, making beach walks and water activities a seamless part of your daily life.",
-          "Wellness Amenities: On-site yoga studios and meditation spaces that leverage the calming effects of the ocean to promote mental and physical health.",
+          "Nature-Connected Open Spaces: Enjoy landscaped gardens, shaded walkways, and breezy sit-outs that bring the outdoors closer to your everyday life all within minutes of the shoreline.",
+          "Proximity to the Beach: With easy access to the nearby coastline, daily beach walks, sunrise jogs, and spontaneous sea dips are always within reach.",
+          "Architectural Freedom: Design a home that’s uniquely yours. From coastal-inspired aesthetics to eco-conscious materials, your vision takes shape on a plot that allows flexibility and creativity.",
         ],
         middleBottomDescription:
           "At VITU Realty, we believe that a beachside home is more than a place to live—it’s a lifestyle that nurtures peace and connection. Our properties are designed to let you live in harmony with the sea, offering a retreat where life’s moments are savored. Together, we can create a coastal haven that feels like home.",
-        bottomTitle: "The Core Principles of Coastal Design",
-        bottomDescription: "Our beachside properties integrate thoughtful design and functionality, ensuring a seamless blend of luxury and nature:",
+        bottomTitle: "Just Moments from the Shore",
+        bottomDescription: "Our plotted developments near the coast offer the perfect canvas for creating homes that embrace the elements of open skies, fresh air and the calming rhythm of coastal life.",
       },
     ],
   },
@@ -498,7 +535,7 @@ const data: LocationAdvantageProps[] = [
     mobileImage: "/images/locationAdvantagesImages/mobile2.webp",
     textClassName: "text-[#4F3737]",
     paragraphClassName: "text-[#998d88]",
-    buttonClassName: "text-[#4F373799] bg-[#debf9d]",
+    buttonClassName: "text-[#4F373799] bg-[#AE8566]",
     buttonTextColor: "text-[#4F373799]",
     carousalClassName: "bg-[#AE856666]",
     fill: "#ccaa8d",
@@ -513,13 +550,13 @@ const data: LocationAdvantageProps[] = [
         middleTitle: "Why Location Drives Value",
         middleDescription:
           "A property’s value is deeply tied to its location. Our developments are strategically placed in areas with strong economic growth, excellent connectivity, and proximity to essential amenities, making them ideal for those seeking both comfort and financial security.",
-        bottomTitle: "The Core Principles of Investment-Driven Design",
-        bottomDescription: "Our properties are built with features that enhance long-term value and appeal:",
+        bottomTitle: "Appreciating Land in a Growing Corridor",
+        bottomDescription: "Our properties are built with features that enhance long-term value and appeal.",
         bottomPoints: [
-          "Strategic Location: Positioned in areas with high demand and growth potential, ensuring strong market performance.",
-          "Modern Infrastructure: Cutting-edge construction techniques and smart home technologies that increase property desirability.",
-          "Community Growth: Proximity to schools, hospitals, and commercial hubs, fostering a vibrant and connected lifestyle.",
-          "Resale Potential: Designed with timeless aesthetics and durable materials to maintain value over time.",
+          "Strategic Location: Situated in a high-demand growth zone with seamless connectivity, the project benefits from both present livability and future development potential.",
+          "Appreciating Land Value: With limited plotted developments available in Surathkal and inclusion within the Smart City corridor, lland values have seen consistent appreciation, making this a high-return investment opportunity.",
+          "Community-Centric Connectivity: Proximity to educational institutions, healthcare centers and commercial zones ensures convenience and strong future demand from homebuilders and families alike.",
+          "High Resale Potential: Timeless planning, quality infrastructure and a desirable location combine to ensure that your plot maintains and grows in value over time.",
         ],
         middleBottomDescription:
           "At VITU Realty, we understand that investing in real estate is about securing your future. Our properties are crafted to deliver both immediate comfort and long-term financial growth, ensuring that your investment thrives as your life does. Together, we can build wealth, one smart address at a time.",
@@ -534,7 +571,7 @@ const data: LocationAdvantageProps[] = [
     image: "/images/locationAdvantagesImages/3.webp",
     textClassName: "text-white",
     paragraphClassName: "text-white",
-    buttonClassName: "text-white bg-[#4B948066]",
+    buttonClassName: "text-white bg-[#4B9480]",
     mobileImage: "/images/locationAdvantagesImages/mobile3.webp",
     buttonTextColor: "text-white",
     carousalClassName: "bg-[#4B948066]",
@@ -570,7 +607,7 @@ const data: LocationAdvantageProps[] = [
     image: "/images/locationAdvantagesImages/4.webp",
     textClassName: "text-white",
     paragraphClassName: "text-white",
-    buttonClassName: "text-white bg-[#78a5c1]",
+    buttonClassName: "text-white bg-[#298BBB]",
     mobileImage: "/images/locationAdvantagesImages/mobile4.webp",
     buttonTextColor: "text-white",
     carousalClassName: "bg-[#4B948066]",
@@ -608,7 +645,7 @@ const data: LocationAdvantageProps[] = [
     mobileImage: "/images/vilasamPageImages/1.webp",
     textClassName: "text-white",
     paragraphClassName: "text-white",
-    buttonClassName: "text-white bg-[#78a5c1]",
+    buttonClassName: "text-white bg-[#298BBB]",
     buttonTextColor: "text-white",
     carousalClassName: "bg-[#4B948066]",
     fill: "#4793be",
@@ -624,14 +661,15 @@ const data: LocationAdvantageProps[] = [
         middleDescription:
           "A diverse range of amenities creates a community where residents can thrive. Whether you’re seeking active pursuits, quiet relaxation, or social connections, our properties offer spaces that cater to every lifestyle, ensuring every day is enriched.",
         bottomPoints: [
-          "State-of-the-Art Fitness Center: Equipped with modern gym equipment and spaces for group classes like yoga and pilates.",
-          "Rooftop Lounge: A stylish space for socializing, with stunning views and comfortable seating areas.",
-          "Swimming Pool: A serene pool area for relaxation or exercise, designed for year-round enjoyment.",
-          "Community Event Spaces: Areas for gatherings, events, and workshops to foster a sense of community.",
+          "Fitness Center: Stay active in a fully equipped gym featuring modern workout equipment, strength-training stations and a dedicated area for yoga and group sessions.",
+          "Community Lounge: Unwind in a cozy, stylish lounge perfect for casual conversations, reading, or quiet reflection in a relaxed setting.",
+          "Swimming Pool: Enjoy a beautifully designed pool ideal for both relaxing swims and daily fitness routines.",
+          "Community Event Spaces: Host celebrations, attend community events all within thoughtfully planned event areas at the clubhouse.",
+          "Outdoor Sports: Take the game outside with dedicated courts for badminton, pickleball and basketball, designed to encourage an active and energetic lifestyle."
         ],
         middleBottomDescription:
           "At VITU Realty, we design amenities to elevate your everyday life. From morning workouts to evening gatherings, our properties offer endless opportunities to live fully and connect deeply. Together, we can create a home that supports every facet of your lifestyle.",
-        bottomTitle: "The Core Principles of Amenity Design",
+        bottomTitle: "Amenities Designed for Wholesome Living",
         bottomDescription: "Our amenities are crafted to enhance your daily experience, offering variety and quality:",
       },
     ],

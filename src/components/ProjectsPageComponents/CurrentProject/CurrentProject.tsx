@@ -251,6 +251,15 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       description: STATS_DATA,
     });
   };
+  const StylizedText = ({ text }: { text?: string }) => (
+    <>
+      {text?.split("").map((char, index) => (
+        <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
+          {char}
+        </span>
+      ))}
+    </>
+  );
 
   const handleLocationClick = (location: Location) => {
     setSelectedLocation(location);
@@ -292,7 +301,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
                 variant="custom"
                 className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-3xl lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
               >
-                <span className="font-CandideCondensedNormal">{stat.value}</span>
+                <StylizedText text={stat.value} />
               </Typography>
               <Typography
                 variant="custom"
@@ -312,79 +321,72 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
     >
       {/* Left Column - Project Details */}
       <article className="w-full lg:w-1/2 flex flex-col justify-between">
-      <div>
-        <header className="pb-4">
-          <button className="text-[#4F3737] bg-[#AE856614] font-FreightNeoProNormal px-4 py-1 lg:py-1.5 mb-2 rounded-md">
-            Limited Plots Available
-          </button>
-          {homePage ? (
-            <h1
-              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-3xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-            >
-              Vaikuntam City
-            </h1>
-          ) : (
-            <h1
-              className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-            >
-              Our Commitment <br /> to Tomorrow
-            </h1>
-          )}
+        <div>
+          <header className="pb-4">
+            <button className="text-[#4F3737] bg-[#AE856614] font-FreightNeoProNormal px-4 py-1 lg:py-1.5 mb-2 rounded-md">
+              Limited Plots Available
+            </button>
+            {homePage ? (
+              <h1 className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-3xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]">
+                Vaikuntam City
+              </h1>
+            ) : (
+              <h1 className="w-[224px] hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]">
+                Our Commitment <br /> to Tomorrow
+              </h1>
+            )}
 
+            {homePage ? (
+              <h1 className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]">
+                Vaikuntam City
+              </h1>
+            ) : (
+              <h1 className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]">
+                Our Commitment to Tomorrow
+              </h1>
+            )}
+          </header>{" "}
+          <div className="flex items-center">
+            {homePage ? (
+              <Typography
+                variant="custom"
+                className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[558px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+              >
+                Just 5 minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal
+                beauty.
+              </Typography>
+            ) : (
+              <Typography
+                variant="custom"
+                className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
+              >
+                {PROJECT_DATA.description.suffix}
+              </Typography>
+            )}
+          </div>
           {homePage ? (
-            <h1
-              className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-            >
-              Vaikuntam City
-            </h1>
+            <Link href="/vaikuntamcity" passHref legacyBehavior>
+              <motion.button
+                className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full !lġ2:text-[4px] font-FreightNeoProBold transition-colors"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                Explore Projects Now
+              </motion.button>
+            </Link>
           ) : (
-            <h1
-              className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
-            >
-              Our Commitment to Tomorrow
-            </h1>
-          )}
-        </header>{" "}
-        <div className="flex items-center">
-          {homePage ? (
-            <Typography
-              variant="custom"
-              className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[558px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
-            >
-              Just 5 minutes away from the serene NITK Surathkal beach, our premium plotted development offers unparalleled access to coastal beauty.
-            </Typography>
-          ) : (
-            <Typography
-              variant="custom"
-              className="font-freightNeoMedium  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#503637]/60"
-            >
-              {PROJECT_DATA.description.suffix}
-            </Typography>
-          )}
-        </div>
-       
-        {homePage ? (
-          <Link href="/vaikuntamcity" passHref legacyBehavior>
             <motion.button
-              className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full !lġ2:text-[4px] font-FreightNeoProBold transition-colors"
+              onClick={() => setModalIsOpen(true)}
+              className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              Explore Projects Now
+              Download E-Brochure
             </motion.button>
-          </Link>
-        ) : (
-          <motion.button
-            onClick={() => setModalIsOpen(true)}
-            className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            Download E-Brochure
-          </motion.button>
-        )} </div>
+          )}{" "}
+        </div>
         {renderStats()}
       </article>
 
@@ -410,15 +412,15 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
         </div>
       </figure>
       {homePage ? (
-          <motion.a
-            className="px-8 py-3 mx-10 text-center  lg:hidden mb-8 border-customBrown  border-[2px] text-customBrown  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors"
-            initial={{ y: 20, opacity: 0 }}
-            onClick={() => setModalIsOpen(true)}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-             Download E-Brochure
-          </motion.a>
+        <motion.a
+          className="px-8 py-3 mx-10 text-center  lg:hidden mb-8 border-customBrown  border-[2px] text-customBrown  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors"
+          initial={{ y: 20, opacity: 0 }}
+          onClick={() => setModalIsOpen(true)}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Download E-Brochure
+        </motion.a>
       ) : (
         <motion.button
           onClick={() => setModalIsOpen(true)}
@@ -442,18 +444,17 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
         {selectedLocation.description === STATS_DATA
           ? selectedLocation.description.map((stat, index) => (
               <motion.div key={index} className={`leading-[1.1]   ${index !== 0 ? "my-5 " : ""}`}>
-          
                 <Typography
                   variant="custom"
-                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
+                  className="font-FreightNeoProNormal text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#503637]"
                 >
                   <span className="font-CandideCondensedNormal">
                     <Counter value={stat.value} />
                   </span>
-                  <span className="font-geistSerif">{stat.value.replace(/[\d,]+/g, "")}</span>
+                  <span className="font-FreightNeoProNormal">{stat.value.replace(/[\d,]+/g, "")}</span>
                 </Typography>
-                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-sourceSans3">
-                  {stat.label}
+                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-FreightNeoProNormal">
+                  {stat.label}s
                 </Typography>
               </motion.div>
             ))

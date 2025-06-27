@@ -8,7 +8,7 @@ import mobileAnimationData from "@/app/lotties/mobileLotie.json"
 export default function Loader() {
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <div className="hidden md:block">
+      <div className="hidden md:block mt-24">
       <Lottie
         animationData={animationData}
         play

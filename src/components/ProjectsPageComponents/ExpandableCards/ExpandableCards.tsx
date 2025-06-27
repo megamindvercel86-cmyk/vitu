@@ -33,12 +33,12 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
   return (
-    <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
+    <div  onClick={onFooterClick} className="bg-white rounded-b-xl cursor-pointer lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
       <div className="px-32  container gap-8 lg:gap-48 flex justify-between lg:justify-between items-center py-2 lg:py-12 ">
         <div>
           <p className="text-sm font-FreightNeoProNormal font-bold text-[#8E8E93] ">UP NEXT</p>
-          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none">{nextProjectTitle}</h4>
+          <h4 className=" font-bold text-lg font-FreightNeoProBold max-w-[15rem] text-[#1D1D1F] lg:max-w-none"><StylizedText text={nextProjectTitle}/></h4>
         </div>
         <div onClick={onFooterClick} className="cursor-pointer">
           <ArrowRightIcon />
@@ -47,6 +47,15 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     </div>
   );
 };
+const StylizedText = ({ text }: { text?: string }) => (
+  <>
+    {text?.split("").map((char, index) => (
+      <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoMedium"}`}>
+        {char}
+      </span>
+    ))}
+  </>
+);
 
 // Update the CardContent component to accept props
 const CardContent = ({ cardId }: { cardId: number }) => {
@@ -80,12 +89,12 @@ const CardContent = ({ cardId }: { cardId: number }) => {
             height={45}
             className={cn("object-cover   h-[652px] w-full")}
           />
-          <div className="p-4 md:p-10">
+          <div className="p-4 md:p-10 lg:py-20">
             <Typography variant="h1" className="text-customBrown">
-              {project.title}
+               <StylizedText text={project.title}/>
             </Typography>
             {project.bottomTitle2&&<Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-2 !text-3xl">{project?.bottomTitle2}</Typography>}
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
+            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl"> <StylizedText text={project.description}/></Typography>
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
           </div>
         </div>
