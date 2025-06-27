@@ -293,7 +293,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
         >
           {/* Text Content */}
           <motion.div
-            className="absolute md:top-[43rem] lg2:top-[26rem] lg:top-[17rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+            className="absolute md:top-[43rem] lg2:top-[26rem] lg:top-[22rem] xl:top-[26rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
               opacity: isExpanded ? 1 : 0,
