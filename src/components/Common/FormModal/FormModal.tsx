@@ -131,6 +131,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
           createdAt: serverTimestamp(),
         };
         await addDoc(collectionRef, dataWithTimestamp);
+           await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, page:"Project Enquire"}),
+      });
         if(downloadFileLink){
         const link = document.createElement("a");
         link.href = downloadFileLink;
