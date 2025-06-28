@@ -220,7 +220,7 @@ export default function ProjectNavbar({ showGetInTouch = true, ProjectNavbar = "
               {showGetInTouch && (
                 <div className="lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer">
                   <Button onClick={()=>setContactModalOpen(true)}
-                    className={` w-full text-base sm:text-lg md:text-xl lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+                    className={` w-full text-base sm:text-lg md:text-xl lg1:text-[20px] lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
                       isProjectNavbarPrimary ? "bg-white" : ""
                     }`}
                     defaultTextColor={buttonColor}

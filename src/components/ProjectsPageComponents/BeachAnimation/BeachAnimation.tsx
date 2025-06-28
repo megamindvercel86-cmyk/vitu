@@ -105,7 +105,7 @@ const BeachAnimation = () => {
 
       <div
         ref={buttonRef}
-        className={`absolute bottom-[1000px] right-0 lg:bottom-[740px] xl:bottom-[62rem] md:right-20 w-full p-4 flex flex-row ${
+        className={`absolute bottom-[1000px] right-0 lg:bottom-[740px] lg2:bottom-[740px] lg1:bottom-[600px] xl:bottom-[62rem] md:right-20 w-full p-4 flex flex-row ${
           !isDesktop && !hasScrolled ? "justify-center" : "justify-end"
         } lg:justify-end z-[1]`}
       >

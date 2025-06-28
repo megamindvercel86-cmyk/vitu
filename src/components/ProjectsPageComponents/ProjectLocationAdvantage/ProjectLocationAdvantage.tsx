@@ -330,7 +330,7 @@ const LocationAdvantage = () => {
                 priority={index === 0}
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent rounded-lg h-[400]" />
-              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px]  lg:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px]  lg:bottom-[400px] lg2:bottom-[400px] lg1:bottom-[300px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
                 <h1 className={`text-lg md:text-lg lg2:text-[24px] text-white font-medium text-center uppercase tracking-wide `}>
                   {item.title.split("").map((char, index) => (
                     <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedNormal" : "font-FreightNeoProNormal"}`}>
