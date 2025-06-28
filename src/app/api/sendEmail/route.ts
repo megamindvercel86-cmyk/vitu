@@ -62,12 +62,21 @@ export async function POST(req: Request) {
     const subject = `You got a ${page}`;
 
     // Send email
-    await transporter.sendMail({
-      from: `${email}`,
-      to: "info@viturealty.com", // Replace with the recipient's email
-      subject,
-      html: emailTemplate,
-    });
+    if (page === "Career Application") {
+      await transporter.sendMail({
+        from: `${email}`,
+        to: "hr@viturealty.com", // Replace with the recipient's email
+        subject,
+        html: emailTemplate,
+      });
+    }else{
+      await transporter.sendMail({
+        from: `${email}`,
+        to: "info@viturealty.com", // Replace with the recipient's email
+        subject,
+        html: emailTemplate,
+      });
+    }
 
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
