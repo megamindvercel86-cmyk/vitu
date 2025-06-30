@@ -434,7 +434,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
       )}
 
       <motion.div
-        className="  lg:hidden flex gap-5 justify-center items-center"
+        className={`  lg:hidden ${selectedLocation.description === STATS_DATA&&"flex gap-5 justify-center items-center"}`}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -454,7 +454,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
                   <span className="font-FreightNeoProNormal">{stat.value.replace(/[\d,]+/g, "")}</span>
                 </Typography>
                 <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#503637]/60  font-FreightNeoProNormal">
-                  {stat.label}s
+                  {stat.label}
                 </Typography>
               </motion.div>
             ))

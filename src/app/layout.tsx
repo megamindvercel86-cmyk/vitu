@@ -1,7 +1,8 @@
+
 // RootLayout.tsx
-import { Geist, Geist_Mono,Noto_Serif,Source_Sans_3 } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
 
 const geistSans = Geist({
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 
 const notoSerif = Noto_Serif({
   variable: "--font-geist-serif",
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
 const sourceSans3 = Source_Sans_3({
@@ -28,7 +29,8 @@ export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
     "Discover thoughtfully designed premium plotted developments in Mangalore by Vitu-Realty. Experience a uniquely authentic lifestyle with our innovative designs and sustainable initiatives.";
-  const imageUrl = "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8";
+  const imageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8";
 
   return {
     title: pageTitle,
@@ -68,8 +70,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="robots" content="index, follow" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} antialiased`}>
+     
+
         <SmoothScroll>{children}</SmoothScroll>
-        <GoogleAnalytics gaId="G-B662JPJ850" />
+         <GoogleAnalytics gaId="G-B662JPJ850" />
+        <GoogleTagManager gtmId="GTM-NL8B3GFT" />
       </body>
     </html>
   );
