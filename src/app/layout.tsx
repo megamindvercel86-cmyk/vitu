@@ -73,8 +73,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
      
 
         <SmoothScroll>{children}</SmoothScroll>
+        <GoogleTagManager gtmId="GTM-NBVLQJD3" />
          <GoogleAnalytics gaId="G-B662JPJ850" />
-        <GoogleTagManager gtmId="GTM-NL8B3GFT" />
+        
       </body>
     </html>
   );
