@@ -52,46 +52,45 @@ export async function generateMetadata() {
 export default function ProjectPage({}: ProjectPageProps) {
   return (
     <div className="bg-[#FAFFFD] flex flex-col">
-  <section className="relative mb-20 lg2:mb-36">
-    <VilasamHeroSection />
-  </section>
-  <section className="bg-white mb-20 lg2:mb-36">
-    <VilasamCarousel />
-  </section>
-  <section id="sustainability" className="mb-20 lg2:mb-36">
-    <LocationAdvantage />
-  </section>
-  <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
-    <ElevatesLiving />
-  </section>
-  <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
-    <CurrentProject />
-  </section>
-  <section className="bg-[#FAFFFD] ">
-    <LyfeStyle />
-  </section>
-  <section className="bg-[#FAFFFD] md:block hidden mb-20 lg2:mb-36">
-    <PlotConnection />
-  </section>
-  <section className="bg-[#FAFFFD] md:hidden block mb-20 lg2:mb-36">
-    <PlotConnectionMobile />
-  </section>
-  <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
-    <VilasamExploreProjects />
-  </section>
-  <section className="bg-[#FAFFFD] hidden md:block mb-20 lg2:mb-36">
-    <PlotWrapper />
-  </section>
-  <section className="bg-[#FAFFFD] md:hidden mb-20 lg2:mb-36">
-    <PropertyCard />
-  </section>
-  <section className="mb-20 lg2:mb-36">
-    <VilasamLegacyBuiltComponent />
-  </section>
-  <section>
-    <UrbanAccessSection />
-  </section>
-</div>
-
+      <section className="relative mb-20 lg2:mb-36">
+        <VilasamHeroSection />
+      </section>
+      <section className="bg-white mb-20 lg2:mb-36">
+        <VilasamCarousel />
+      </section>
+      <section id="sustainability" className="mb-20 lg2:mb-36">
+        <LocationAdvantage />
+      </section>
+      <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
+        <ElevatesLiving />
+      </section>
+      <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
+        <CurrentProject />
+      </section>
+      <section className="bg-[#FAFFFD] ">
+        <LyfeStyle />
+      </section>
+      <section className="bg-[#FAFFFD] md:block hidden mb-20 lg2:mb-36">
+        <PlotConnection />
+      </section>
+      <section className="bg-[#FAFFFD] md:hidden block mb-20 lg2:mb-36">
+        <PlotConnectionMobile />
+      </section>
+      <section className="bg-[#FAFFFD] mb-20 lg2:mb-36">
+        <VilasamExploreProjects />
+      </section>
+      <section className="bg-[#FAFFFD] hidden md:block mb-20 lg2:mb-36">
+        <PlotWrapper />
+      </section>
+      <section className="bg-[#FAFFFD] md:hidden mb-20 lg2:mb-36">
+        <PropertyCard />
+      </section>
+      <section className="mb-20 lg2:mb-36">
+        <VilasamLegacyBuiltComponent />
+      </section>
+      <section>
+        <UrbanAccessSection />
+      </section>
+    </div>
   );
 }
