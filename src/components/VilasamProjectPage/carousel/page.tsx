@@ -34,9 +34,9 @@ export default function VilasamCarousel(): React.ReactElement {
         </div>
         <div>
         <VideoPlayer
-            videoUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1749548943/z9r8axhfoezm55m5qwpo.mp4"
-            youtubeUrl="https://res.cloudinary.com/dvandhsai/video/upload/v1749548943/z9r8axhfoezm55m5qwpo.mp4"
-            thumbnail="https://res.cloudinary.com/dvandhsai/image/upload/v1749705465/ldnpnqh9xnhjrswdxw20.webp"
+            videoUrl="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu_Vilasam.mp4?alt=media&token=13ade987-5e29-4ccd-b63b-65f99ed6ee4d"
+            youtubeUrl="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FVitu_Vilasam.mp4?alt=media&token=13ade987-5e29-4ccd-b63b-65f99ed6ee4d"
+            thumbnail="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FView-07.jpeg%201%20(4).png?alt=media&token=209a966d-b3f7-4fdb-a7c6-1be81b2f8ce4"
             titleClassname="font-bold"
             isYoutube={false}
           />
