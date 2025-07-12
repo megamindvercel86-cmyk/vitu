@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
+import { Tenor_Sans } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,11 @@ const geistMono = Geist_Mono({
 const notoSerif = Noto_Serif({
   variable: "--font-geist-serif",
   subsets: ["latin"],
+});
+const tenorSans = Tenor_Sans({
+  variable: "--font-tenor-sans",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const sourceSans3 = Source_Sans_3({
@@ -69,7 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* Robots Meta Tag for Indexing */}
         <meta name="robots" content="index, follow" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${tenorSans.variable} antialiased`}>
      
 
         <SmoothScroll>{children}</SmoothScroll>

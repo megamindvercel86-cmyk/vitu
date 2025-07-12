@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { GeneralFormValidationSchema } from "./validations";
+import { EliteFormValidationSchema, GeneralFormValidationSchema } from "./validations";
 import { ProjectFormValidationSchema } from "./validations";
 import { CareerFormValidationSchema } from "./validations";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "@/firebase/firebaseConfig";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const uploadToFirebaseStorage = async (file: File): Promise<string> => {
   const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`);
@@ -36,17 +37,25 @@ export interface FormValues {
 
 export const useFormSubmission = (page: string, callback?: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const router = useRouter();
   const handleFormSubmission = async (values: FormValues): Promise<void> => {
+    console.log("butom clicked", values);
     let resumeUrl: string | null = null;
     setIsLoading(true);
-
+    console.log("ded");
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
       }
 
-      const collectionName = page === "General Enquire" ? "generalEnquiries" : page === "Project Enquire" ? "projectEnquiries" : "careerApplications";
+      const collectionName =
+        page === "General Enquire"
+          ? "generalEnquiries"
+          : page === "Project Enquire"
+            ? "projectEnquiries"
+            : page === "Vaikuntam City Elite"
+              ? "elite"
+              : "careerApplications";
 
       const filteredValues =
         page === "General Enquire"
@@ -58,11 +67,12 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               whatsapp: values.whatsapp,
               createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
             }
-          : page === "Project Enquire"
+          : page === "Project Enquire" || page === "Vaikuntam City Elite"
             ? {
                 fullName: values.fullName,
                 email: values.email,
                 phone: values.phone,
+                project: "Vaikuntam City Elite",
                 whatsapp: values.whatsapp,
                 interstedIn: values.option,
                 createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
@@ -77,8 +87,13 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
               };
 
       const collectionRef = collection(db, collectionName);
+      console.log(collectionRef, filteredValues);
       await addDoc(collectionRef, filteredValues);
 
+      if (page === "Vaikuntam City Elite") {
+        router.push("/vaikuntam-city-elite/pre-launch/thank-you");
+        return
+      }
       await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -133,11 +148,13 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       resume: null,
     },
     validationSchema:
-      page === "General Enquire"
-        ? GeneralFormValidationSchema
-        : page === "Project Enquire"
-          ? ProjectFormValidationSchema
-          : CareerFormValidationSchema,
+      page === "Vaikuntam City Elite"
+        ? EliteFormValidationSchema
+        : page === "General Enquire"
+          ? GeneralFormValidationSchema
+          : page === "Project Enquire"
+            ? ProjectFormValidationSchema
+            : CareerFormValidationSchema,
 
     onSubmit: async (values, { resetForm }): Promise<void> => {
       return handleFormSubmission(values)
