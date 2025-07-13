@@ -22,7 +22,7 @@ const EliteHeroSection = () => {
         >
 
 
-        <button className="bg-white text-black text-sm sm:text-base px-6 py-3 rounded-sm font-semibold shadow-md hover:bg-gray-100 transition">
+        <button className="bg-white text-black text-xl px-6 py-3 rounded-xl font-semibold shadow-md hover:bg-gray-100 transition">
           REQUEST DETAILS <span className="inline-block ml-1">↓</span>
         </button>
         </Link>
