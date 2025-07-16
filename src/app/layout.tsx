@@ -1,5 +1,5 @@
 // RootLayout.tsx
-import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3 } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3, Tenor_Sans } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
