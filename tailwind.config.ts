@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin"; 
+import plugin from "tailwindcss/plugin";
 
 export default {
   content: [
@@ -19,6 +19,7 @@ export default {
         primaryBackgroundColor: "#F8F6F5",
         footerTextColor: "#EADFD1CC",
         primaryButtonTextColor: "#6F8AAF",
+        customCongoBrown : "#503637"
       },
       fontFamily: {
         freightNeoMedium: ["Freight Neo Pro Medium", "sans-serif"],
@@ -30,8 +31,10 @@ export default {
         CandideCondensedNormal: ["Candide-CondensedNormal", "sans-serif"],
         FreightNeoProLight: ["Freight Neo Pro Light", "sans-serif"],
         FreightNeoProNormal: ["Freight Neo Pro Normal", "sans-serif"],
-        geistSerif: 'var(--font-geist-serif)',
-        sourceSans3: 'var(--font-source-sans-3)',
+        geistSerif: "var(--font-geist-serif)",
+        sourceSans3: "var(--font-source-sans-3)",
+        fsSiena: "var(--font-fs-siena)",
+        fsSplitSans: "var(--font-fs-split-sans)",
       },
       screens: {
         sm: "640px",
@@ -56,7 +59,6 @@ export default {
           },
         },
       },
-      
     },
   },
   plugins: [
@@ -72,5 +74,4 @@ export default {
       });
     }),
   ],
-
 } satisfies Config;

@@ -1,10 +1,12 @@
-
 // RootLayout.tsx
 import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
-import { Tenor_Sans } from "next/font/google";
+import {
+  FS_Siena_Regular,
+  FS_Split_Sans_Trial_Regular,
+} from "../../styles/font";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,24 +66,29 @@ export async function generateMetadata() {
     },
   };
 }
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
         {/* Preconnect for Performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
 
         {/* Robots Meta Tag for Indexing */}
         <meta name="robots" content="index, follow" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${tenorSans.variable} antialiased`}>
-     
-
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} antialiased`}
+      >
         <SmoothScroll>{children}</SmoothScroll>
         <GoogleTagManager gtmId="GTM-NBVLQJD3" />
-         <GoogleAnalytics gaId="G-B662JPJ850" />
-        
+        <GoogleAnalytics gaId="G-B662JPJ850" />
       </body>
     </html>
   );
