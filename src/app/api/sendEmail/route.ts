@@ -72,7 +72,7 @@ export async function POST(req: Request) {
     }else{
       await transporter.sendMail({
         from: `${email}`,
-        to: "jamshadconnect@gmail.com", // Replace with the recipient's email
+        to: "info@viturealty.com", // Replace with the recipient's email
         subject,
         html: emailTemplate,
       });
