@@ -19,7 +19,7 @@ export default {
         primaryBackgroundColor: "#F8F6F5",
         footerTextColor: "#EADFD1CC",
         primaryButtonTextColor: "#6F8AAF",
-        customCongoBrown : "#503637"
+        customCongoBrown: "#503637",
       },
       fontFamily: {
         freightNeoMedium: ["Freight Neo Pro Medium", "sans-serif"],
@@ -35,6 +35,8 @@ export default {
         sourceSans3: "var(--font-source-sans-3)",
         fsSiena: "var(--font-fs-siena)",
         fsSplitSans: "var(--font-fs-split-sans)",
+        hankenGrotesk: "var(--font-hanken-grotesk)",
+        tenorSans: "var(--font-tenor-sans)",
       },
       screens: {
         sm: "640px",

@@ -1,37 +1,17 @@
 // RootLayout.tsx
-import { Geist, Geist_Mono, Noto_Serif, Source_Sans_3, Tenor_Sans } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
 import {
   FS_Siena_Regular,
   FS_Split_Sans_Trial_Regular,
+  geistMono,
+  geistSans,
+  hankenGrotesk,
+  notoSerif,
+  sourceSans3,
+  tenorSans,
 } from "../../styles/font";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const notoSerif = Noto_Serif({
-  variable: "--font-geist-serif",
-  subsets: ["latin"],
-});
-const tenorSans = Tenor_Sans({
-  variable: "--font-tenor-sans",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const sourceSans3 = Source_Sans_3({
-  variable: "--font-source-sans-3",
-  subsets: ["latin"],
-});
 
 export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
@@ -84,7 +64,7 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} ${hankenGrotesk.variable} ${tenorSans.variable} antialiased`}
       >
         <SmoothScroll>{children}</SmoothScroll>
         <GoogleTagManager gtmId="GTM-NBVLQJD3" />

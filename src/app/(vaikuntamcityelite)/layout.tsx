@@ -1,35 +1,71 @@
 "use client";
+
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import ScrollToTopButton from "@/components/Common/ScrollToTopButton";
 import WhatsappChatWidget from "@/components/Common/WhatsappChatWidget";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-
 import EliteFooter from "@/components/VaikuntamCityElite/Footer/EliteFooter";
+import EliteFooter2 from "@/components/VaikuntamCityElite/Footer/EliteFooter2";
+
 const Loader = dynamic(() => import("../../components/loader"), { ssr: false });
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const [showLoader, setShowLoader] = useState(true);
   const pathname = usePathname();
 
+  const footerTwoPathnames = [
+    "/vaikuntam-city-elite/landing-page",
+    "/vaikuntam-city-elite/landing-page-1",
+    "/vaikuntam-city-elite/landing-page-2",
+  ];
+
+  const excludeFooterPathnames = [
+    "/vaikuntam-city-elite/landing-page-2/thank-you",
+    "/vaikuntam-city-elite/landing-page-1/thank-you",
+  ];
   useEffect(() => {
+    if (excludeFooterPathnames.includes(pathname)) {
+      setShowLoader(false); // Don't show loader for thank-you pages
+      return;
+    }
+  
     setShowLoader(true);
-
     const timeout = setTimeout(() => {
-      setShowLoader(false); // Fade out after delay
-    }, 2500); // 2.5s loader time, adjust to match Lottie length
-
+      setShowLoader(false);
+    }, 2500);
+  
     return () => clearTimeout(timeout);
   }, [pathname]);
+  
+
+
   return (
     <>
-      
-      <div className="min-h-screen flex flex-col">
+      {/* ✅ Loader always shows first regardless of route */}
+      <div
+        className={`fixed inset-0 bg-[#F3EAE1] z-[9999999] flex justify-center items-center transition-opacity duration-700 ${
+          showLoader
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <Loader />
+      </div>
 
+      <div className="min-h-screen flex flex-col">
         <main className="flex-1">{children}</main>
         <ScrollToTopButton />
-        <WhatsappChatWidget />
-        <EliteFooter />
-        
+        {/* <WhatsappChatWidget /> */}
+
+        {/* ✅ Show appropriate footer based on path */}
+        {footerTwoPathnames.includes(pathname) ? (
+          <EliteFooter2 />
+        ) : excludeFooterPathnames.includes(pathname) ? null : (
+          <EliteFooter />
+        )}
       </div>
     </>
   );

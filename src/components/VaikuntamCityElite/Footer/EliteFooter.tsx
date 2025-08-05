@@ -8,7 +8,7 @@ const EliteFooter = () => {
 
      
       {/* Optional background pattern if needed */}
-      <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-10 z-0" />
+      <div className="absolute inset-0 bg-repeat opacity-10 z-0" />
 
       <div className="relative z-10 flex flex-col items-center gap-2">
         <p className="text-sm text-[#A39484] font-normal">Brought to Life by</p>

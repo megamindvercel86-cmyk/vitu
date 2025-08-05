@@ -5,7 +5,7 @@ import path from "path";
 
 export async function POST(req: Request) {
   try {
-    const { fullName, email, phone, comments, whatsapp, interstedIn, postionAppliedFor, page, resumeUrl } = await req.json();
+    const { fullName, email, phone, comments, whatsapp, interstedIn, postionAppliedFor, page, resumeUrl,interestedIn } = await req.json();
     // Define the path to the HTML template
     let templateFile = "";
     switch (page) {
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       .replace("[Name from Project Enquiry Form]", fullName)
       .replace("[Email from Project Enquiry Form]", email)
       .replace("[Phone from Project Enquiry Form]", phone)
-      .replace("[Field selected from Project Enquiry Form]", interstedIn || "")
+      .replace("[Field selected from Project Enquiry Form]", interstedIn || "" || interestedIn)
       .replace("[Name from Career Application Form]", fullName)
       .replace("[Email from Career ApplicationForm]", email)
       .replace("[Phone from Career Application Form]", phone)
