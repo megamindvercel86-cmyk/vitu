@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function InvestmentPotential() {
   return (
     <section className=" bg-[#F3EAE1] -mt-4">
-      <div className="container px-12 pt-16 lg:pt-0 lg:px-0 mx-auto lg:border-l lg:border-r border-[#1C1213]  ">
+      <div className="container px-12 pt-16 lg:pt-0 lg:px-0 mx-auto lg:border-l lg:border-r border-[#1C1213] relative">
         <div className="flex flex-col lg:flex-row items-center justify-between lg:px-12 pt-8 lg:pt-20 xl:pt-32 gap-4 lg:gap-10">
           <div className=" basis-[38%] ">
             <div className="max-w-md space-y-3 lg:space-y-4">
@@ -38,7 +38,13 @@ export default function InvestmentPotential() {
               className="w-full"
             />
           </div>
+          <p className=" text-[#37121A]/60 z-[9999999] lg:px-12 font-FreightNeoProNormal text-lg leading-[24px] text-justify text-pretty  lg:hidden">
+            A Land that’s achieved 2x growth in just 3 years.
+          </p>
         </div>
+        <p className="absolute left-12 bottom-5 text-[#37121A]/60 z-[9999999]  font-FreightNeoProNormal text-lg xl:text-xl leading-[24px] text-justify text-pretty hidden lg:block">
+          A Land that’s achieved 2x growth in just 3 years.
+        </p>
       </div>
     </section>
   );
