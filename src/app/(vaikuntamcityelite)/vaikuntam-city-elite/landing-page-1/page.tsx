@@ -21,17 +21,18 @@ import availablePlot1 from "../../../../../public/images/vaikuntamCityEliteLandi
 import availablePlot2 from "../../../../../public/images/vaikuntamCityEliteLandingPage/availablePlot2.webp";
 import availablePlot3 from "../../../../../public/images/vaikuntamCityEliteLandingPage/availablePlot3.webp";
 import NumberCounter2 from "@/components/VaikuntamCityElite/landing-page/NumberCounter2";
+import Features2 from "@/components/VaikuntamCityElite/landing-page/Features2";
 export default function vaikuntamCityEliteLandingPage() {
   return (
     <>
-      <EliteNavbar2 leftAlignLogos/>
+      <EliteNavbar2 leftAlignLogos />
       <Hero
         leftAlign
         herobg={herobg}
         herobgMobile={herobgMobile}
         title={{
-          title1: "Invest in Mangalore’s",
-          title2: "15-Minute City",
+          title1: "Invest in Mangalore’s ",
+          title2: "Elite Land Corridor",
         }}
       />
       <OurElevatedVision2
@@ -43,14 +44,14 @@ export default function vaikuntamCityEliteLandingPage() {
       />
       <NumberCounter2 data={numberCounterData} />
       <TheClub />
-      <Features accordianData={accordianData} />
+      <Features2 style="2" accordianData={accordianData} />
       <InvestmentPotential />
       <AvailablePlotOrientations
         image1={availablePlot1}
         image2={availablePlot2}
         image3={availablePlot3}
       />
-      <Enquiry userType="Investor"/>
+      <Enquiry userType="Investor" />
       <MapSection />
     </>
   );
@@ -76,26 +77,27 @@ const AccordianContent = (list: Array<string>) => {
 
 const numberCounterData2 = [
   {
-    description: "observed over the last 5 years",
-    title: "9-11% CAGR",
-    icon: "cagr",
-  },
-  {
-    description: "in past 3 years",
-    title: "2x Growth",
+    description: "In the past 3 years",
+    title: "2X Growth",
     icon: "growth",
   },
   {
-    description: "Projected land value growth over 3–5 years",
-    title: "15-20% PLV",
-    icon: "plv",
+    description: "City Access in Northern Belt",
+    title: "15 Mins",
+    icon: "expressway",
   },
   {
-    description: "driven by Mangalore Expressway",
-    title: "10x Growth",
+    description: "Future Growth from SEZs, Port & Expressway",
+    title: "10X",
     icon: "growth2",
   },
+  {
+    description: "Resale Flexibility from Lock-In",
+    title: "3 Years",
+    icon: "keyinhand",
+  },
 ];
+
 
 const accordianData = [
   {
@@ -165,16 +167,16 @@ const numberCounterData = [
     icon: "nh66",
   },
   {
-    description: "to New Mangalore Port",
-    title: "Seamless Access",
+    description: "To the Port",
+    title: "10 Mins",
     icon: "ship",
   },
 ];
 
 const ourElevatedVisionData = {
-  title: "Claim Your land With Confidence",
+  title: "Invest in Land That Returns More",
   description:
-    "Set in Mangalore’s fastest-growing corridor, these exclusive luxury villa plots combine premium location with assured potential. With seamless connectivity and consistent value growth, this is land you can count on for today, and for generations ahead.",
+    "Set in Mangalore’s fastest-growing corridor, these exclusive luxury villa plots combine premium location with assured potential. With seamless connectivity and consistent value growth, this land is an investment that stands ahead of time.",
   imageSection1: {
     image: {
       src: "/images/vaikuntamCityEliteLandingPage/couplesHoldingHand.webp",

@@ -13,6 +13,7 @@ interface NumberCounterProps {
   textColor?: string; // Optional: to customize the text color
   decimalPlaces?: number; // Optional: number of decimal places
   noBorder?: boolean; // Optional: to remove the border
+  staticTitle?: string; // Optional: static title to display
 }
 
 export default function AnimatedNumberCounter({
@@ -24,6 +25,7 @@ export default function AnimatedNumberCounter({
   textColor = "#37121A",
   decimalPlaces = 0,
   noBorder,
+  staticTitle,
 }: NumberCounterProps) {
   const localNoBorder = noBorder || false; // Default to false if noBorder is not provided
   const [currentValue, setCurrentValue] = useState(0);
@@ -86,27 +88,39 @@ export default function AnimatedNumberCounter({
       className={`text-center py-6 lg:py-10 ${localNoBorder ? "" : "lg:border-r border-[#1C1213]"}`}
       ref={containerRef}
     >
-      <div className="flex gap-6 mx-auto justify-center ">
-        <h3
-          key={pulseKey}
-          style={{
-            color: textColor,
-            opacity: "0.9",
-          }}
-          className={`text-[56px] sm:text-[66px] lg2:text-[76px] leading-[100%] font-CandideCondensedNormal tabular-nums animate-[pulse_0.3s_ease-out]`}
-        >
-          {currentValue.toLocaleString(undefined, {
-            minimumFractionDigits: decimalPlaces,
-            maximumFractionDigits: decimalPlaces,
-          })}
-        </h3>
+      <div className="flex gap-6 mx-auto justify-center items-center">
+        {staticTitle ? (
+          <h3
+            style={{
+              color: textColor,
+              opacity: "0.9",
+            }}
+            className={`text-[56px] sm:text-[66px] lg2:text-[76px] leading-[100%] font-CandideCondensedNormal tabular-nums`}
+          >
+            {staticTitle}
+          </h3>
+        ) : (
+          <h3
+            key={pulseKey}
+            style={{
+              color: textColor,
+              opacity: "0.9",
+            }}
+            className={`text-[56px] sm:text-[66px] lg2:text-[76px] leading-[100%] font-CandideCondensedNormal tabular-nums animate-[pulse_0.3s_ease-out]`}
+          >
+            {currentValue.toLocaleString(undefined, {
+              minimumFractionDigits: decimalPlaces,
+              maximumFractionDigits: decimalPlaces,
+            })}
+          </h3>
+        )}
         {title && (
           <p
             style={{
               color: textColor,
               opacity: "0.9",
             }}
-            className={`text-[56px] sm:text-[66px] lg2:text-[76px] leading-[100%] font-FreightNeoProNormal`}
+            className={`text-[36px] sm:text-[46px] lg2:text-[56px] leading-[100%] font-FreightNeoProNormal`}
           >
             {title}
           </p>
@@ -115,7 +129,7 @@ export default function AnimatedNumberCounter({
 
       {description && (
         <p
-          className={`font-FreightNeoProNormal text-[18px] leading-[24px] px-2`}
+          className={`font-FreightNeoProNormal text-pretty text-[18px] leading-[24px] px-2`}
           style={{
             color: textColor,
             opacity: "0.9",

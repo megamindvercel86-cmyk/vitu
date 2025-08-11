@@ -10,7 +10,7 @@ export default function InvestmentPotential() {
           <div className=" basis-[38%] ">
             <div className="max-w-md space-y-3 lg:space-y-4">
               <p className="text-[#DAA37A] lg:text-lg uppercase font-FreightNeoProNormal">
-                Investment potential
+                Residential Luxury Villa Plots for Sale
               </p>
               <h2 className="text-[26px] lg:text-[36px] lg2:text-[43px] leading-[100%] text-[#37121A] font-FreightNeoProNormal">
                 Position Yourself

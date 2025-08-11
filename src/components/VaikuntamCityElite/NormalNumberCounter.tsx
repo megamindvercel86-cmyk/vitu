@@ -15,22 +15,27 @@ export default function NormalNumberCounter({
   description,
   textColor = "#37121A",
   noBorder,
-  icon="",
+  icon = "",
 }: NumberCounterProps) {
   const localNoBorder = noBorder || false; // Default to false if noBorder is not provided
 
   return (
     <div
-      className={`text-center py-6 space-y-2 lg:py-10 ${localNoBorder ? "" : "lg:border-r border-[#1C1213]"}`}
+      className={`text-center py-6 space-y-2 cursor-default lg:py-10 group ${localNoBorder ? "" : "lg:border-r border-[#1C1213]"}`}
     >
-      <img src={`/svgs/${icon}.svg`} className="mx-auto w-auto h-14 lg:h-16" />
+      {icon && (
+        <img
+          src={`/svgs/${icon}.svg`}
+          className="mx-auto w-auto h-14 lg:h-16 group-hover:scale-110 transition-all ease-in-out duration-300"
+        />
+      )}
       <div className="flex gap-6 mx-auto justify-center ">
         <h3
           style={{
             color: textColor,
             opacity: "0.9",
           }}
-          className={`text-[32px] sm:text-[34px] lg2:text-[40px] leading-[100%] font-CandideCondensedNormal tabular-nums animate-[pulse_0.3s_ease-out]`}
+          className={`text-[32px] group-hover:-translate-y-[2px] transition-transform ease-in-out duration-300 sm:text-[34px] lg2:text-[40px] leading-[100%] font-CandideCondensedNormal tabular-nums animate-[pulse_0.3s_ease-out]`}
         >
           {title}
         </h3>
@@ -38,7 +43,7 @@ export default function NormalNumberCounter({
 
       {description && (
         <p
-          className={`font-FreightNeoProNormal text-[18px] leading-[24px] px-4 `}
+          className={`font-FreightNeoProNormal group-hover:-translate-y-[2px] transition-transform ease-in-out duration-300 text-[18px] leading-[24px] px-4 `}
           style={{
             color: textColor,
             opacity: "0.9",

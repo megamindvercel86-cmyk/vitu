@@ -10,7 +10,7 @@ import EliteNavbar2 from "@/components/VaikuntamCityElite/Navbar/EliteNavbar-2";
 
 // data for components
 
-import herobg from "../../../../../public/images/vaikuntamCityEliteLandingPage/Hero (5).webp";
+import herobg from "../../../../../public/images/vaikuntamCityEliteLandingPage/hero-bg.webp";
 import herobgMobile from "../../../../../public/images/vaikuntamCityEliteLandingPage/hero-bg1.webp";
 
 import OurElevatedVision2 from "@/components/VaikuntamCityElite/landing-page/OurElevatedVision2";

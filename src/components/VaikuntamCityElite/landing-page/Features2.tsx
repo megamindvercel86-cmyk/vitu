@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-export default function Features({
+export default function Features2({
   accordianData,
   style = "1",
 }: {
@@ -50,28 +50,28 @@ export default function Features({
             <div className="lg:border-r border-[#C7784D] flex items-center justify-center">
               <AnimatedNumberCounter
                 textColor="#E0D9C7"
-                targetNumber={38.3}
-                decimalPlaces={1}
-                title="%"
-                description="Parks & Open Spaces"
+                targetNumber={3800}
+                decimalPlaces={0}
+                description="Total Project Area (in SQM)"
               />
             </div>
           )}
           <div className="lg:border-r border-[#C7784D] flex items-center justify-center">
             <AnimatedNumberCounter
               textColor="#E0D9C7"
-              targetNumber={3800}
-              decimalPlaces={0}
-              description="Total Project Area (in SQM)"
+              targetNumber={38.3}
+              title="%"
+              decimalPlaces={1}
+              description="Parks and Open Spaces"
             />
           </div>
           <div className="flex items-center justify-center">
             <AnimatedNumberCounter
+              staticTitle="20:80"
               textColor="#E0D9C7"
-              targetNumber={20}
-              decimalPlaces={0}
-              title="%"
-              description="Payment to book your dream home"
+              targetNumber={10.67}
+              decimalPlaces={2}
+              description="Payment Plan Ideal for investors seeking long-term value"
             />
           </div>
         </div>
