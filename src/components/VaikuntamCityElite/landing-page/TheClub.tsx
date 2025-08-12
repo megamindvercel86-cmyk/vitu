@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import clubImage1 from "../../../../public/images/vaikuntamCityEliteLandingPage/club-alt.webp";
+import clubImage2 from "../../../../public/images/vaikuntamCityEliteLandingPage/club-2-alt.webp";
+import clubImage3 from "../../../../public/images/vaikuntamCityEliteLandingPage/club-3-alt.webp";
 
 const CAROUSEL_CONFIG = {
   autoplayInterval: 5000,
@@ -27,24 +30,24 @@ export default function TheClub() {
       title: "The Epicentre of Leisure",
       description:
         " More than just a clubhouse, this is your gateway to a world of elevated experiences. From wellness spaces to intimate lounges and thoughtfully curated gatherings, every corner of The Club reflects a life well-lived. Membership is reserved for those who appreciate detail, privacy and the quiet confidence of belonging.",
-      image: "/images/vaikuntamCityEliteLandingPage/club.webp",
-      mobileImage: "/images/vaikuntamCityEliteLandingPage/club2.webp",
+      image: clubImage1,
+      mobileImage: clubImage1,
       id: 1,
     },
     {
       title: "20+ Amenities",
       description:
         "Step into a community where over 20 curated amenities create space for every passion and pace of life. From Mangalore’s first exclusive Pickleball Court to a fully equipped gym and swimming pool, wellness and recreation are always close to home.",
-      image: "/images/vaikuntamCityEliteLandingPage/club22.webp",
-      mobileImage: "/images/vaikuntamCityEliteLandingPage/club22.webp",
+      image: clubImage2,
+      mobileImage: clubImage2,
       id: 2,
     },
     {
       title: "Generations in Bloom",
       description:
         "In today’s fast-paced world, finding time for family isn’t always easy. At The Club, moments slow down so you can truly connect with the ones who matter. Every corner is designed for all generations to come together and make the most of their quality time. ",
-      image: "/images/vaikuntamCityEliteLandingPage/club3.webp",
-      mobileImage: "/images/vaikuntamCityEliteLandingPage/club33.webp",
+      image: clubImage3,
+      mobileImage: clubImage3,
       id: 3,
     },
   ];
@@ -93,46 +96,34 @@ export default function TheClub() {
       // Do not reset progress so resume can continue smoothly
       return;
     }
-  }, [isPlay, CAROUSEL_DATA.length ]);
+  }, [isPlay, CAROUSEL_DATA.length]);
 
   return (
     <section
-      className="bg-[#F3EAE1] relative xl:h-[80rem] md:h-[50rem] lg:h-[60rem] lg2:h-[70rem] 2xl:h-[150vh] overflow-hidden"
+      className="bg-[#F3EAE1] relative xl:h-[80rem] md:h-[50rem] lg:h-[60rem] lg2:h-[70rem] 2xl:h-[100rem] overflow-hidden"
       ref={ref}
     >
-      <div className="container h-full mx-auto lg:border-l lg:border-r border-[#1C1213] pt-20 lg:pt-24 xl:pt-40 lg:pb-60 relative z-50">
+      <div className="container h-full mx-auto lg:border-l lg:border-r border-[#1C1213] pt-20 lg:pt-24 xl:pt-40 relative z-50">
         <div className="space-y-3 lg:space-y-4 basis-[38%] px-12 max-w-[38rem]">
           <AnimatePresence mode="wait">
-            <motion.p
-              className="text-[#DAA37A] lg:text-lg uppercase font-FreightNeoProNormal"
-              key={CAROUSEL_DATA[currentIndex].id + "-title"}
+            <motion.div
+              key={CAROUSEL_DATA[currentIndex].id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
+              transition={{ duration: 0.4 }}
+              className="space-y-3 lg:space-y-4 basis-[38%] max-w-[38rem]"
             >
-              the club
-            </motion.p>
-            <motion.h2
-              className="text-[32px] lg:text-[42px] lg2:text-5xl leading-[100%] text-[#37121A] font-FreightNeoProNormal"
-              key={CAROUSEL_DATA[currentIndex].id + "-heading"}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-            >
-              {CAROUSEL_DATA[currentIndex].title}
-            </motion.h2>
-            <motion.p
-              className="text-[#37121A]/60 font-FreightNeoProNormal text-lg leading-[24px] text-justify text-pretty"
-              key={CAROUSEL_DATA[currentIndex].id + "-description"}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              {CAROUSEL_DATA[currentIndex].description}
-            </motion.p>
+              <p className="text-[#DAA37A] lg:text-lg uppercase font-FreightNeoProNormal">
+                the club
+              </p>
+              <h2 className="text-[32px] lg:text-[42px] lg2:text-5xl leading-[100%] text-[#37121A] font-FreightNeoProNormal">
+                {CAROUSEL_DATA[currentIndex].title}
+              </h2>
+              <p className="text-[#37121A]/60 font-FreightNeoProNormal text-lg leading-[24px] text-justify text-pretty">
+                {CAROUSEL_DATA[currentIndex].description}
+              </p>
+            </motion.div>
           </AnimatePresence>
         </div>
         <div className="md:hidden overflow-hidden">
@@ -143,14 +134,13 @@ export default function TheClub() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
-              className=""
             >
               <Image
                 src={CAROUSEL_DATA[currentIndex].mobileImage}
                 alt="The Club"
                 width={1728}
                 height={1788}
-                className="w-full h-full object-cover object-center md:hidden"
+                className={`w-full h-[20rem] object-cover ${CAROUSEL_DATA[currentIndex].id === 3 ? "object-right" : "object-center"}  md:hidden`}
               />
             </motion.div>
           </AnimatePresence>
@@ -242,10 +232,12 @@ export default function TheClub() {
           >
             <Image
               src={CAROUSEL_DATA[currentIndex].image}
+              placeholder="blur"
               alt="The Club"
               width={1728}
               height={1788}
-              className="w-full h-full object-cover md:block hidden"
+              unoptimized
+              className="w-full xl:h-[80rem] md:h-[40rem] lg:h-[50rem] lg2:h-[65rem] 2xl:h-[95rem] object-cover md:block hidden"
             />
           </motion.div>
         </AnimatePresence>

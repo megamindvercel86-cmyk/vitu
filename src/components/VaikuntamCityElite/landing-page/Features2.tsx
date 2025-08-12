@@ -89,6 +89,7 @@ export default function Features2({
                 <Image
                   src={accordianData[activeIndex ?? 0].image}
                   fill
+                  placeholder="blur"
                   style={{ objectFit: "cover" }}
                   alt="Accordion Image"
                 />
