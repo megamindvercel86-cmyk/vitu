@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
+import Loader from "@/components/LoaderComponent/LoaderComponent";
 
 // Animation variants
 const backdropVariants = {
@@ -336,7 +337,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   </div>
                   {/* WhatsApp Checkbox and Submit Button */}
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-4 pb-12">
-                    <button
+                  { isLoading? <div className="lg:hidden block"><Loader/></div>: <button
                       type="button"
                       aria-label="Submit Form"
                       className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
@@ -346,7 +347,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       disabled={!isFormValid || isLoading}
                     >
                       Submit
-                    </button>
+                    </button>}
                     <label className="flex items-center gap-3 cursor-pointer">
                       <div className="relative">
                         <input
@@ -368,7 +369,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       </div>
                       <span className={`text-base ${textColor?textColor:"text-[#0C3E49]"} font-medium`}>Receive Updates on WhatsApp</span>
                     </label>
-                    <button
+                   {isLoading? <Loader/>:<button
                       type="button"
                       aria-label="Submit Form"
                       className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg?buttonBg:"bg-[#0C3E49]"} text-white rounded-full font-medium ${
@@ -378,7 +379,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                       disabled={!isFormValid || isLoading}
                     >
                       Submit
-                    </button>
+                    </button>}
+
                   </div>
                 </div>
                 {/* <div className="block lg:hidden text-center mt-2 mb-12">

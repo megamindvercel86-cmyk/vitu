@@ -9,14 +9,12 @@ import TheClub from "@/components/VaikuntamCityElite/landing-page/TheClub";
 import EliteNavbar2 from "@/components/VaikuntamCityElite/Navbar/EliteNavbar-2";
 import OurElevatedVision2 from "@/components/VaikuntamCityElite/landing-page/OurElevatedVision2";
 // data for components
-
 import herobg from "../../../../../public/images/vaikuntamCityEliteLandingPage/investors-hero-bg.webp";
 import herobgMobile from "../../../../../public/images/vaikuntamCityEliteLandingPage/Hero Phone.webp";
 import Accordian1Image from "../../../../../public/images/vaikuntamCityEliteLandingPage/cargoShip.webp";
 import Accordian2Image from "../../../../../public/images/vaikuntamCityEliteLandingPage/highway.webp";
 import Accordian3Image from "../../../../../public/images/vaikuntamCityEliteLandingPage/accordian3img.webp";
 import Accordian4Image from "../../../../../public/images/vaikuntamCityEliteLandingPage/skyScrappers.webp";
-
 import availablePlot1 from "../../../../../public/images/vaikuntamCityEliteLandingPage/availablePlot1.webp";
 import availablePlot2 from "../../../../../public/images/vaikuntamCityEliteLandingPage/availablePlot2.webp";
 import availablePlot3 from "../../../../../public/images/vaikuntamCityEliteLandingPage/availablePlot3.webp";
@@ -31,10 +29,11 @@ export default function vaikuntamCityEliteLandingPage() {
         herobg={herobg}
         herobgMobile={herobgMobile}
         title={{
-          title1: "Invest in Mangalore’s ",
-          title2: "Elite Land Corridor",
+          title1: "Invest in Coastal Karnataka’s",
+          title2: "Fastest Growing Corridor",
         }}
       />
+       
       <OurElevatedVision2
         numberCounterData={numberCounterData2}
         title={ourElevatedVisionData.title}
@@ -45,12 +44,12 @@ export default function vaikuntamCityEliteLandingPage() {
       <NumberCounter2 data={numberCounterData} />
       <TheClub />
       <Features2 style="2" accordianData={accordianData} />
-      <InvestmentPotential />
+      {/* <InvestmentPotential />
       <AvailablePlotOrientations
         image1={availablePlot1}
         image2={availablePlot2}
         image3={availablePlot3}
-      />
+      /> */}
       <Enquiry userType="Investor" />
       <MapSection />
     </>
@@ -82,7 +81,7 @@ const numberCounterData2 = [
     icon: "growth",
   },
   {
-    description: "City Access in Northern Belt",
+    description: "City Access",
     title: "15 Mins",
     icon: "expressway",
   },
@@ -92,7 +91,7 @@ const numberCounterData2 = [
     icon: "growth2",
   },
   {
-    description: "Resale Flexibility from Lock-In",
+    description: "Resale Flexibility",
     title: "3 Years",
     icon: "keyinhand",
   },
@@ -174,7 +173,7 @@ const numberCounterData = [
 ];
 
 const ourElevatedVisionData = {
-  title: "Invest in Land That Returns More",
+  title: "Invest in Land That Gives Beyond Value",
   description:
     "Set in Mangalore’s fastest-growing corridor, these exclusive luxury villa plots combine premium location with assured potential. With seamless connectivity and consistent value growth, this land is an investment that stands ahead of time.",
   imageSection1: {
@@ -185,8 +184,8 @@ const ourElevatedVisionData = {
       height: 730,
     },
     superscript: "Residential Luxury Villa Plots for Sale",
-    heading: "Built for Bold Investments",
-    text: "At Vaikuntam City Elite, clarity isn’t just a promise it’s built into every square foot. Strategically located in Mangalore’s high-growth corridor, these luxury villa plots offer planned infrastructure, strong connectivity, and long-term value you can see unfolding. This is land for those who in  vest with vision and expect returns with confidence.",
+    heading: "Mangalore, The Only City Connected By All 4 Modes of Transport",
+    text: "At Vaikuntam City Elite, clarity isn’t just a promise it’s built into every square foot. Strategically located in Mangalore’s high-growth corridor, these luxury villa plots offer planned infrastructure, strong connectivity, and long-term value you can see unfolding. This is land for those who invest with vision and expect returns with confidence.",
   },
   imageSection2: {
     image: {

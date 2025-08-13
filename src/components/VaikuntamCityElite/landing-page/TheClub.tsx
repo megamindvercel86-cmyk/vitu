@@ -38,16 +38,16 @@ export default function TheClub() {
       title: "20+ Amenities",
       description:
         "Step into a community where over 20 curated amenities create space for every passion and pace of life. From Mangalore’s first exclusive Pickleball Court to a fully equipped gym and swimming pool, wellness and recreation are always close to home.",
-      image: clubImage2,
-      mobileImage: clubImage2,
+      image: clubImage3,
+      mobileImage: clubImage3,
       id: 2,
     },
     {
       title: "Generations in Bloom",
       description:
         "In today’s fast-paced world, finding time for family isn’t always easy. At The Club, moments slow down so you can truly connect with the ones who matter. Every corner is designed for all generations to come together and make the most of their quality time. ",
-      image: clubImage3,
-      mobileImage: clubImage3,
+      image: clubImage2,
+      mobileImage: clubImage2,
       id: 3,
     },
   ];

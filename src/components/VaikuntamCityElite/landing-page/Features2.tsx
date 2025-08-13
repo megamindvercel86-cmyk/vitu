@@ -23,8 +23,8 @@ export default function Features2({
 }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   return (
-    <section className="bg-[#1C1213] relative z-50 -translate-y-2">
-      <div className="py-16 lg:py-28 container mx-auto lg:border-l lg:border-r border-[#C7784D]">
+    <section className="bg-[#1C1213] relative z-50 ">
+      <div className="pt-16 pb-0 lg:pb-0   lg:pt-28 container mx-auto lg:border-l lg:border-r border-[#C7784D]">
         <div className="px-4 lg:px-12">
           <h6 className="text-[#DAA37A] text-center lg:text-left uppercase lg:text-lg leading-[24px] font-FreightNeoProNormal">
             Project amenities
@@ -117,6 +117,7 @@ export default function Features2({
           </div>
         </div>
       </div>
+     
     </section>
   );
 }

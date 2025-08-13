@@ -23,12 +23,10 @@ export default function Features({
 }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   return (
-    <section className="bg-[#1C1213] relative z-50 -translate-y-2">
-      <div className="py-16 lg:py-28 container mx-auto lg:border-l lg:border-r border-[#C7784D]">
+    <section className="bg-[#1C1213] relative z-50 ">
+      <div className="pt-16 pb-0 lg:pb-0   lg:pt-28 container mx-auto lg:border-l lg:border-r border-[#C7784D]">
         <div className="px-4 lg:px-12">
-          <h6 className="text-[#DAA37A] text-center lg:text-left uppercase lg:text-lg leading-[24px] font-FreightNeoProNormal">
-            Project amenities
-          </h6>
+          <h6 className="text-[#DAA37A] text-center lg:text-left uppercase lg:text-lg leading-[24px] font-FreightNeoProNormal">Project amenities</h6>
           <AnimatedHeading className="text-[#E0D9C7] text-center font-FreightNeoProNormal mt-3 lg:mt-1 text-[32px] leading-[100%] lg:text-[42px] lg2:text-5xl">
             A World Of Comfort Within
           </AnimatedHeading>
@@ -38,41 +36,22 @@ export default function Features({
         >
           <div className={`${style === "1" ? "lg2:min-w-[27rem]" : ""}`}>
             <p className="py-6 lg:py-10 text-lg leading-[24px] font-FreightNeoProNormal text-[#E0D9C7E5] text-pretty text-justify px-12 lg:border-r border-[#C7784D] ">
-              A lifestyle that flows as freely as the spaces around you. Live in
-              a community that feels expansive and calm, with nature woven into
-              everyday living. From shaded walkways to green zones and refined
-              amenities, everything is designed for luxury and ease.
+              A lifestyle that flows as freely as the spaces around you. Live in a community that feels expansive and calm, with nature woven into
+              everyday living. From shaded walkways to green zones and refined amenities, everything is designed for luxury and ease.
             </p>
           </div>
           {style === "1" ? (
             <div className="lg:border-r border-[#C7784D] hidden lg2:block"></div>
           ) : (
             <div className="lg:border-r border-[#C7784D] flex items-center justify-center">
-              <AnimatedNumberCounter
-                textColor="#E0D9C7"
-                targetNumber={38.3}
-                decimalPlaces={1}
-                title="%"
-                description="Parks & Open Spaces"
-              />
+              <AnimatedNumberCounter textColor="#E0D9C7" targetNumber={38.3} decimalPlaces={1} title="%" description="Parks & Open Spaces" />
             </div>
           )}
           <div className="lg:border-r border-[#C7784D] flex items-center justify-center">
-            <AnimatedNumberCounter
-              textColor="#E0D9C7"
-              targetNumber={3800}
-              decimalPlaces={0}
-              description="Total Project Area (in SQM)"
-            />
+            <AnimatedNumberCounter textColor="#E0D9C7" targetNumber={3800} decimalPlaces={0} description="Total Project Area (in SQM)" />
           </div>
           <div className="flex items-center justify-center">
-            <AnimatedNumberCounter
-              textColor="#E0D9C7"
-              targetNumber={20}
-              decimalPlaces={0}
-              title="%"
-              description="Payment to book your dream home"
-            />
+            <AnimatedNumberCounter textColor="#E0D9C7" targetNumber={20} decimalPlaces={0} title="%" description="Payment to book your dream home" />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row lg:items-stretch mt-8 lg:mt-0 gap-8">
@@ -86,13 +65,7 @@ export default function Features({
                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
                 className="lg:absolute inset-0 h-[400px] lg:h-auto"
               >
-                <Image
-                  src={accordianData[activeIndex ?? 0].image}
-                  fill
-                  placeholder="blur"
-                  style={{ objectFit: "cover" }}
-                  alt="Accordion Image"
-                />
+                <Image src={accordianData[activeIndex ?? 0].image} fill placeholder="blur" style={{ objectFit: "cover" }} alt="Accordion Image" />
               </motion.div>
             </AnimatePresence>
           </div>

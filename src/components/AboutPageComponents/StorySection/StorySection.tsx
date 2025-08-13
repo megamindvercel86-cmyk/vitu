@@ -78,10 +78,10 @@ function YearDisplay({ number, isFixed }: { number: string; isFixed: boolean }) 
   return (
     <div
       className={`${
-        isFixed ? "fixed lg:bottom-32 bottom-40 md:left-20 left-4" : "absolute md:bottom-32 md:left-36 left-0 bottom-48"
+        isFixed ? "fixed lg:bottom-32 bottom-40 md:left-20 left-4" : "absolute md:bottom-32 md:left-36  bottom-48"
       } pointer-events-none z-[1] w-full`}
     >
-      <span className="lg2:text-[80px] lg:text-5xl text-[32px] text-white font-CandideCondensedMedium">
+      <span className="lg2:text-[80px] lg:text-5xl ml-6 md:ml-0 text-[32px] text-white font-CandideCondensedMedium">
         {number.split("").map((digit, index) => (
           <span key={index} className="inline-block w-[1ch]">
             {digit}

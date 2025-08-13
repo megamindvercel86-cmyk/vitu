@@ -44,12 +44,12 @@ export default function vaikuntamCityEliteLandingPage() {
       <NumberCounter2 data={numberCounterData} />
       <TheClub />
       <Features style="2" accordianData={accordianData} />
-      <InvestmentPotential />
-      <AvailablePlotOrientations
+      {/* <InvestmentPotential /> */}
+      {/* <AvailablePlotOrientations
         image1={availablePlot1}
         image2={availablePlot2}
         image3={availablePlot3}
-      />
+      /> */}
       <Enquiry userType="Home Buyer" />
       <MapSection />
     </>
@@ -151,7 +151,7 @@ const accordianData = [
 const numberCounterData = [
   {
     description: "To the NITK Campus",
-    title: "7 MINS",
+    title: "5 MINS",
     icon: "campus",
   },
   {
@@ -172,7 +172,7 @@ const numberCounterData = [
 ];
 
 const ourElevatedVisionData = {
-  title: "The Address Every Family Dreams Of",
+  title: "Your Dream Address",
   description:
     "Step into a neighbourhood where luxury, comfort, and security come together effortlessly. From peaceful surroundings to thoughtful amenities, every detail is crafted to enrich your family’s lifestyle. At Vaikuntam City Elite, you don’t just move in, you arrive at everything you’ve ever wanted in a home.",
   imageSection1: {
