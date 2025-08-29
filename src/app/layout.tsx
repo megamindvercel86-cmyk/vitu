@@ -67,7 +67,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} ${hankenGrotesk.variable} ${tenorSans.variable} antialiased`}
       >
         <SmoothScroll>{children}</SmoothScroll>
-        <GoogleTagManager gtmId="GTM-NBVLQJD3" />
+      
         <GoogleAnalytics gaId="G-B662JPJ850" />
       </body>
     </html>

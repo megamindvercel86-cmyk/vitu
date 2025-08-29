@@ -12,6 +12,7 @@ import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/J
 import Typography from "@/components/Typography/Typography";
 import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
 import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // Types & Interfaces
 /** Image paths for desktop and mobile */
@@ -122,6 +123,7 @@ export default function HomePage() {
       navbarClassName={NAVBAR_CONFIG.className}
       navbarProps={NAVBAR_CONFIG.props}
     >
+        <GoogleTagManager gtmId="GTM-NBVLQJD3" />
       {/* Hero Section */}
       <HomeHeroSection />
 
