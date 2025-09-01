@@ -43,7 +43,11 @@ export default function Enquiry({ userType }: EnquiryProps) {
         .then(() => {
           formik.setFieldValue("prefferedPlotOrientation", "");
           resetForm();
-          router.push("/vaikuntam-city-elite/thank-you");
+          if (userType === "Investor") {
+            router.push("/vaikuntam-city-elite/landing-page-1/thank-you");
+          } else {
+            router.push("/vaikuntam-city-elite/landing-page-2/thank-you");
+          }
         })
         .finally(() => {
           setIsLoading(false);
