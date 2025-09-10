@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import SvgButton from "../SvgButton/SvgButton";
 import { useEffect } from "react";
+
 
 interface CardContent {
   title: string;
@@ -101,31 +102,31 @@ export default function SustainabilityCards() {
           />
         </div>
 
-        
+
 
         {/* Title */}
-        
+
         <div className="absolute z-50 hidden lg:block  w-full top-0 ">
           <SvgButton button="SUSTAINABILTY" />
         </div>
 
         {/* Cards */}
-       
+
       </div>
       <div className="absolute hidden  z-50 w-full top-10 lg:top-80  lg2:top-96 lg:flex justify-center px-4">
-          <h1 className="text-3xl sm:text-5xl lg1:text-[96px] leading-[1.1] font-FreightNeoProNormal text-[#1C1213] text-center uppercase">
-            Sustainable by <br className="hidden lg:block" />
-            Design
-          </h1>
-        </div>
-       <div className="relative  z-50 mt-10 lg:absolute lg:top-auto lg:bottom-0 xl:bottom-32 left-0 right-0 mx-auto flex flex-col lg:flex-row justify-center items-center lg1:gap-0 xl:gap-0 gap-6 px-2 py-10 lg:py-16 w-full">
-           <div className=" z-50 lg:hidden flex justify-center px-4">
+        <h1 className="text-3xl sm:text-5xl lg1:text-[96px] leading-[1.1] font-FreightNeoProNormal text-[#1C1213] text-center uppercase">
+          Sustainable by <br className="hidden lg:block" />
+          Design
+        </h1>
+      </div>
+      <div className="relative  z-50 mt-10 lg:absolute lg:top-auto lg:bottom-0 xl:bottom-32 left-0 right-0 mx-auto flex flex-col lg:flex-row justify-center items-center lg1:gap-0 xl:gap-0 gap-6 px-2 py-10 lg:py-16 w-full">
+        <div className=" z-50 lg:hidden flex justify-center px-4">
           <h1 className="text-3xl  sm:text-5xl lg1:text-[96px] leading-[1.1] font-FreightNeoProNormal text-[#1C1213] text-center uppercase">
             Sustainable by <br className="hidden lg:block" />
             Design
           </h1>
         </div>
-          <div className="h-[6vh] absolute inset-0 top-0 lg:hidden sm:h-[8vh] md:h-[10vh] lg:h-[130vh] xl:h-[100vh]">
+        <div className="h-[6vh] absolute inset-0 top-0 lg:hidden sm:h-[8vh] md:h-[10vh] lg:h-[130vh] xl:h-[100vh]">
           <Image
             src="/images/eliteProjectPageImages/ProximitySectionImages/bgImage.webp"
             alt="Background"
@@ -135,21 +136,24 @@ export default function SustainabilityCards() {
             priority
           />
         </div>
-          {cards.map((card, i) => (
-            <div className="w-full sm:w-72 lg1:w-80 max-w-xs mx-auto" key={i}>
-              <HoverCard card={card} className={i === 1 ? "lg:mt-20" : ""} />
-            </div>
-          ))}
-        </div>
+        {cards.map((card, i) => (
+          <div className="w-full sm:w-72 lg1:w-80 max-w-xs mx-auto" key={i}>
+            <HoverCard card={card} className={i === 1 ? "lg:mt-20" : ""} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
 
 function HoverCard({ card, className = "" }: { card: CardProps; className?: string }) {
+
   const [isMobile, setIsMobile] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const viewRef = useRef(null);
+  const isInView = useInView(viewRef, { amount: 0.8 });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -160,22 +164,22 @@ function HoverCard({ card, className = "" }: { card: CardProps; className?: stri
 
   useEffect(() => {
     if (!swiperInstance) return;
- if (isMobile) {
-    // ✅ Only autoplay if the card is LANDSCAPE on mobile
-    if (card.title === "LANDSCAPE") {
-      swiperInstance?.autoplay?.start();
+    if (isMobile) {
+      // ✅ On mobile: autoplay if card is in view
+      if (isInView) {
+        swiperInstance?.autoplay?.start();
+      } else {
+        swiperInstance?.autoplay?.stop();
+      }
     } else {
-      swiperInstance?.autoplay?.stop();
+      // ✅ Desktop behavior stays same
+      if (hovered && isInView) {
+        swiperInstance?.autoplay?.start();
+      } else {
+        swiperInstance?.autoplay?.stop();
+      }
     }
-  } else {
-    // ✅ Desktop behavior stays same
-    if (hovered) {
-      swiperInstance?.autoplay?.start();
-    } else {
-      swiperInstance?.autoplay?.stop();
-    }
-  }
-}, [isMobile, hovered, swiperInstance, card.title]);
+  },  [isMobile, hovered, swiperInstance, isInView]);
 
   useEffect(() => {
     setHovered(isMobile);
@@ -184,6 +188,7 @@ function HoverCard({ card, className = "" }: { card: CardProps; className?: stri
   return (
     <>
       <motion.div
+      ref={viewRef}
         className={`relative w-full  lg:top-0 h-[400px] sm:h-[420px] md:h-[400px] lg1:w-80 lg1:h-[500px] xl:top-20 xl:h-[600px] font-tenorSans overflow-hidden ${className}`}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
         onMouseEnter={() => {

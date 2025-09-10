@@ -115,7 +115,7 @@ const ProximitySection: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-40 lg:h-72 bg-gradient-to-b from-[#F3EAE1] to-transparent pointer-events-none z-10"></div>
           <div className="absolute bottom-0 left-0 w-full h-16 lg:h-24 bg-gradient-to-t from-[#F3EAE1] to-transparent pointer-events-none z-10"></div>
           <Image
-            src="/images/eliteProjectPageImages/ProximitySectionImages/Frame 4722 (3).png"
+            src="/images/eliteProjectPageImages/ProximitySectionImages/Location-Advantage1.webp"
             alt="Map"
             width={600}
             height={400}

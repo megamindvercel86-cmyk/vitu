@@ -1,3 +1,4 @@
+
 "use client";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -29,7 +30,7 @@ const numberCounterData = [
     subtitle: "(Approx.)",
   },
   {
-    description: "Parks & Open Spaces",
+    description: "Parks & Open Spaces",
     title: "38.3%",
   },
   {
@@ -56,7 +57,7 @@ const numberCounterData2 = [
     title: "25+",
   },
   {
-    description: "Available Plot Size (in sqft)",
+    description: "Available Plot Size (in sqft)",
     title: "1,600 - 2,600",
   },
 ];
@@ -74,7 +75,6 @@ const IMAGES = {
     "/images/eliteProjectPageImages/eliteVissionAndMission/1.png",
   ],
 };
-
 /** Content data for desktop and mobile */
 const CONTENT = {
   desktop: [
@@ -196,9 +196,9 @@ const page = () => {
       <div className="flex items-center justify-center mb-20">
         <Link
           to="elitForm"
-          className="hidden lg:inline-flex cursor-pointer items-center justify-center gap-2  mt-10 text-[#1C1213]  border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
+          className=" lg:inline-flex cursor-pointer items-center justify-center gap-2  mt-10 text-[#1C1213]  border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
         >
-          <AnimatedConicButton theme="light" className="hidden !text-[#1C1213] lg:font-medium lg:font-freightNeoMedium md:flex !bg-none">
+          <AnimatedConicButton theme="light" className=" !text-[#1C1213] lg:font-medium lg:font-freightNeoMedium md:flex !bg-none">
             <span className="flex gap-2 items-center">
           DOWNLOAD BROCHURE{" "}
               <svg width="17" height="16" className="mt-[3.5px]" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

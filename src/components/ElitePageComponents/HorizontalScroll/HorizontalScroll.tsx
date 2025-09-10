@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Link } from "react-scroll";
 import { AnimatedConicButton } from "@/components/ui/moving-border";
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HorizontalScroll() {
@@ -18,6 +20,8 @@ export default function HorizontalScroll() {
   const [dragging, setDragging] = useState(false);
   const startX = useRef(0);
   const handleStartX = useRef(0);
+
+
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !trackRef.current || !lineRef.current) return;
@@ -303,7 +307,7 @@ function Panel({
       {!rightImage && !titleImage && (
         <div className="grid grid-cols-12 w-full h-full">
           <div className={`${button ? "col-span-5 " : "col-span-4 "} pt-10 px-12 bg-[#f3eae1] relative z-10`}>
-            <div className="pb-20">
+            <div className="pb-20 lg:w-auto w-[60%]">
               <h2
                 className={`${
                   button ? "text-7xl  w-[80%]" : "text-4xl w-full"
@@ -344,7 +348,7 @@ function Panel({
 
       {rightImage && (
         <div className="grid grid-cols-12 w-full h-full">
-          <div className={`col-span-7 flex flex-col ${isGolden ? "pl-56" : "pl-[430px]"} pt-20 px-12 bg-[#f3eae1] relative z-10`}>
+          <div className={`col-span-7 flex flex-col lg:w-auto w-[80%] ${isGolden ? "pl-56" : "pl-[430px]"} pt-20 px-12 bg-[#f3eae1] relative z-10`}>
             <h2
               className={`text-4xl  font-[400] ${isGolden ? "w-[70%]" : ""} font-FreightNeoProNormal uppercase tracking-tight mb-4 text-gray-900`}
             >
