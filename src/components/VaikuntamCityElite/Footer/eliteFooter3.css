@@ -1,0 +1,65 @@
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.hover-glow-button {
+  --angle: 0deg;
+  --border-width: 3px;
+  --radius: 8px;
+  --bg-color: #fff;
+  --text-color: #111;
+  --glow-color-1: red;
+  --glow-color-2: #0073e6;
+  --glow-color-3: #9C27B0;
+
+  position: relative;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  background: var(--bg-color);
+  border: var(--border-width) solid var(--bg-color);
+  border-radius: var(--radius);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hover-glow-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+
+  padding: var(--border-width);
+  background: conic-gradient(
+    from var(--angle),
+    var(--glow-color-1),
+    var(--glow-color-2),
+    var(--glow-color-3),
+    var(--glow-color-1)
+  );
+
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  animation: rotate-border 4s linear infinite paused;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+.hover-glow-button:hover::before {
+  animation-play-state: running;
+  opacity: 1;
+}

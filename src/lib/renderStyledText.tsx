@@ -15,12 +15,29 @@ export function renderStyledText(
     textFontClass = "font-FreightNeoProNormal",
   } = options || {};
 
-  return input.split(" ").map((word, idx) => {
-    const isNumeric = /^[\d,.%+-]+$/.test(word);
-    const className = isNumeric ? numberFontClass : textFontClass;
+  // Regex to detect numeric portion at start of word
+  const numberRegex = /^[-+]?(\d{1,3}(,\d{3})*|\d+)(\.\d+)?-?%?/;
 
+  return input.split(" ").map((word, idx) => {
+    const match = word.match(numberRegex);
+
+    if (match) {
+      // Separate numeric part and remaining text
+      const numericPart = match[0];
+      const remainingPart = word.slice(numericPart.length);
+
+      return (
+        <span key={idx}>
+          <span className={numberFontClass}>{numericPart}</span>
+          {remainingPart && <span className={textFontClass}>{remainingPart} </span>}
+          {!remainingPart && " "}
+        </span>
+      );
+    }
+
+    // No numeric part, full word is text
     return (
-      <span key={idx} className={className}>
+      <span key={idx} className={textFontClass}>
         {word + " "}
       </span>
     );

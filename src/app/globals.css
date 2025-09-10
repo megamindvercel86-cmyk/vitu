@@ -286,3 +286,120 @@ lite-youtube {
     transform: rotate(1turn);
   }
 }
+
+/* Add this to your global CSS file */
+/* Add this to your global CSS and remove any old versions */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* 1. The main button container (The visible part by default) */
+/* --- BASE STYLES (for all buttons) --- */
+.conic-button-base {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 180px;
+  padding: 1rem 1.5rem;
+  border-radius: 40px;
+
+ 
+  cursor: pointer;
+}
+
+.conic-button-base1 {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 40px;
+
+ 
+  cursor: pointer;
+}
+
+.animated-border-overlay-base {
+  --border-size: 2px;
+  --duration: 4s;
+  --gradient-angle: 0deg;
+  --gradient-percent: 8%;
+  
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  border: var(--border-size) solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  animation: rotate-conic-gradient-border var(--duration) linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+    pointer-events: none; /* prevent blocking hover */
+}
+
+/* --- HOVER BEHAVIOR (for all buttons) --- */
+.conic-button-base:hover .animated-border-overlay-base {
+  opacity: 1;
+}
+.conic-button-base1:hover .animated-border-overlay-base {
+  opacity: 1;
+}
+/* --- THEME 1 (Dark) --- */
+.theme-dark {
+  background-color: #6b402a;
+  color: white;
+}
+.theme-dark .animated-border-overlay-base {
+  background-image:
+    linear-gradient(#6b402a, #673e28),
+    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+}
+
+/* --- THEME 2 (Light) --- */
+.theme-light {
+  background-color: #F3EAE1;
+  color: #1C1213; /* Make text dark on light background */
+}
+.theme-light .animated-border-overlay-base {
+  background-image:
+    linear-gradient(#F3EAE1, #F3EAE1),
+    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #9a8a7a99 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+}
+
+
+/* --- THEME 3 (Mid Dark Light) --- NEW THEME --- */
+.theme-mid-dark-light {
+  background-color: (#be7a56, #bd7853); /* A mid-tone beige/brown */
+}
+.theme-mid-dark-light .animated-border-overlay-base {
+  background-image:
+    /* This gradient should match the button's background color */
+    linear-gradient(#be7a56, #bd7853), 
+    /* This is the animated border gradient */
+    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+}
+
+
+@keyframes rotate-conic-gradient-border {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+
+.theme-custom {
+  background-color: transparent;
+  color: #fff; /* optional for text */
+   
+}
+
+.theme-custom .animated-border-overlay-base {
+  background-image:
+    linear-gradient(#26170f, #26170f),
+    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+  
+}

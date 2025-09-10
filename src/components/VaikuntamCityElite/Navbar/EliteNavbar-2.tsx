@@ -5,11 +5,13 @@ import vitulogo from "../../../../public/images/logos/logoWhite.svg";
 
 const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) => {
   return (
-    <header className="absolute w-full z-10 bg-transparent">
+    <header className="absolute w-full z-10 bg-gradient-to-b from-black/80 to-transparent">
       <div className="container mx-auto">
         <div
           className={`flex items-center w-ful md:mx-20 mx-6 my-12 ${
-            leftAlignLogos ? "md:justify-start gap-4 justify-center" : "justify-center lg:justify-between"
+            leftAlignLogos
+              ? "md:justify-start gap-4 justify-center"
+              : "justify-center lg:justify-between"
           }`}
         >
           <Image
@@ -17,7 +19,7 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
             width={199}
             height={199}
             alt="elite"
-            className="lg:w-[16%] lg:h-[100%] sm:w-[35%] sm:h-[35%] w-[50%] h-[50%]"
+            className="lg:w-[16%] z-50 lg:h-[100%] sm:w-[35%] sm:h-[35%] w-[50%] h-[50%]"
           />
 
           {leftAlignLogos && (
@@ -29,7 +31,7 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
             width={199}
             height={199}
             alt="vitu"
-            className={`lg:w-[12%] lg:h-[100%] w-[30%] h-[30%] ${
+            className={`lg:w-[12%] z-50 lg:h-[100%] w-[30%] h-[30%] ${
               leftAlignLogos ? " hidden md:block" : "hidden lg:block"
             }`}
           />

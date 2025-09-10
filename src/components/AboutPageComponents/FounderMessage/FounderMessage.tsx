@@ -9,7 +9,7 @@ export default function FounderMessage(): React.ReactElement {
 
   const videoId = "PS3l9zTvLgI";
   const customThumbnail =
-    "https://res.cloudinary.com/dvandhsai/image/upload/v1746771292/sy6cbijjnks8v018xurj.png";
+    "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vitu%20images%2FGroup%201845.png?alt=media&token=a5c30a12-766b-4fc2-a5cc-9e3b2bcd42b1";
 
   return (
     <div className="flex flex-col items-center justify-center pb-32 lg:py-32 2xl:h-screen">
