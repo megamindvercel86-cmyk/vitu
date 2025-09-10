@@ -33,7 +33,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-cache, no-transform', // Replace "no-store" with this
+            value: 'no-cache, no-transform', 
           },
         ],
       },
