@@ -47,7 +47,7 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 const PROJECT_LINKS = [
   { href: "/vaikuntamcity", label: "Vaikuntam City" },
-  { href: "/elite", label: "Elite" },
+  { href: "/elite", label: "Vaikuntam City ELITE" },
 ];
 
 const NAV_LINKS = [

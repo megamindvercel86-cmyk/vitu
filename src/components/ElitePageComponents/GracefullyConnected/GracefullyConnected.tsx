@@ -67,7 +67,7 @@ const GracefullyConnected = () => {
     return () => ctx.revert();
   }, []);
   return (
-    <div className="relative w-full h-[55vh] sm:h-[100vh] max-w-screen-xl mx-auto overflow-hidden">
+    <div className="relative w-full h-[55vh] sm:h-[110vh] xl:h-[100vh] max-w-screen-xl mx-auto overflow-hidden">
       <svg
         ref={svgRef}
         className="lg:w-full w-[200vw] absolute h-[60vh] lg:static left-[-50%] lg:h-auto"

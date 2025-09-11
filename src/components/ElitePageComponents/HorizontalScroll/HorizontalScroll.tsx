@@ -81,6 +81,7 @@ gsap.utils.toArray<HTMLElement>(".anim-img").forEach((img) => {
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top top",
+      fastScrollEnd: true,
       end: () => "+=" + (totalWidth - sectionRef.current!.offsetWidth),
       onUpdate: (self) => {
         if (!dragging && handleRef.current && lineRef.current) {

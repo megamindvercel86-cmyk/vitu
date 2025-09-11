@@ -403,3 +403,6 @@ lite-youtube {
     conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
   
 }
+:root {
+  --app-height: 100vh;
+}

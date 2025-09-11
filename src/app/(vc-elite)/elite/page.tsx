@@ -23,6 +23,7 @@ import SvgButton from "@/components/ElitePageComponents/SvgButton/SvgButton";
 import ImageGridMobile from "@/components/ElitePageComponents/ImageGridMobile/ImageGridMobile";
 import { AnimatedConicButton } from "@/components/ui/moving-border";
 import { Link } from "react-scroll";
+
 const numberCounterData = [
   {
     description: "Total Project Area",
@@ -182,6 +183,11 @@ const page = () => {
     };
   }, []);
 
+    const handleClick = () => {
+    sessionStorage.setItem("eliteFormTitle", "DOWNLOAD E-BROCHURE");
+    window.dispatchEvent(new Event("storageChange")); // Custom event
+  };
+
   return (
     <div className="bg-[#F3EAE1] overflow-hidden">
       <EliteNavbar2 />
@@ -196,6 +202,7 @@ const page = () => {
       <div className="flex items-center justify-center mb-20">
         <Link
           to="elitForm"
+           onClick={handleClick}
           className=" lg:inline-flex cursor-pointer items-center justify-center gap-2  mt-10 text-[#1C1213]  border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
         >
           <AnimatedConicButton theme="light" className=" !text-[#1C1213] lg:font-medium lg:font-freightNeoMedium md:flex !bg-none">

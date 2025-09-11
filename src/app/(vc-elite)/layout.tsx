@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import ScrollToTopButton from "@/components/Common/ScrollToTopButton";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
 const Loader = dynamic(() => import("../../components/loader"), { ssr: false });
 
 export default function RootLayout({
@@ -32,6 +34,22 @@ export default function RootLayout({
     return () => clearTimeout(timeout);
   }, [pathname]);
   
+useEffect(() => {
+  const setAppHeight = () => {
+    document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+  setAppHeight();
+  window.visualViewport?.addEventListener("resize", setAppHeight);
+  return () => window.visualViewport?.removeEventListener("resize", setAppHeight);
+}, []);
+
+
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    ScrollTrigger.normalizeScroll(true); // smooth momentum handling iOS
+    ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
+  }
+}, []);
 
 
   return (

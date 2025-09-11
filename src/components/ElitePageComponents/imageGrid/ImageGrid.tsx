@@ -141,6 +141,7 @@ export default function ImageGrid() {
         pin: true,
         scrub: true,
         anticipatePin: 1,
+        pinSpacing:true,
         invalidateOnRefresh: true,
         onRefreshInit: () => (needsMeasure = true),
         onUpdate: (self) => {

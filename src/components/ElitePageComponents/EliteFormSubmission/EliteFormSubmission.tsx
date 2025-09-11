@@ -60,7 +60,7 @@ export default function EliteForm() {
 
       // Optionally, reset the form after successful submission
 
-      // setFormData({ fullName: "", email: "", phone: "", plotOrientation: "", whatsappUpdates: true });
+      setFormData({ fullName: "", email: "", phone: "", plotOrientation: "", whatsappUpdates: true });
     } catch (error) {
       console.error("Form submission failed:", error);
 
