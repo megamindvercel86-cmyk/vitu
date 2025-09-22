@@ -14,8 +14,8 @@ const EliteAnimatedButton = () => {
                <span className="flex gap-2 items-center">
                  DOWNLOAD E-BROCHURE
                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.2753 16.7061L16.2213 5.87717L5.39175 5.82251" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M16.2195 5.87756L6.1459 15.9512" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M16.2753 16.7061L16.2213 5.87717L5.39175 5.82251" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M16.2195 5.87756L6.1459 15.9512" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
 </svg>
 
                </span>

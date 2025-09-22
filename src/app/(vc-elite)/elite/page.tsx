@@ -199,7 +199,7 @@ const page = () => {
       </div>
       <ProximitySection />
       <GracefullyConnected />
-      <div className="flex items-center justify-center mb-20">
+      <div className="flex items-center z-50 justify-center mb-20">
         <Link
           to="elitForm"
            onClick={handleClick}
