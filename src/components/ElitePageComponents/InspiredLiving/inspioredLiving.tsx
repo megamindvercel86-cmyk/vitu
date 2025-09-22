@@ -75,16 +75,15 @@ export default function DesignedForLiving() {
       </motion.h2>
 
       {/* YouTube Video */}
-  <div className="relative w-full max-w-7xl mx-auto aspect-video">
-  <iframe
-    className="w-full h-full"
-    src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/ELITE%20Walkthrough%20Website.mp4?alt=media&token=3e470020-cb27-47fb-be70-a1e65cb368d1"
-    title="Project Walkthrough"
-    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  />
-</div>
-
+      <div className="mt-10 relative w-full max-w-7xl mx-auto aspect-video">
+     <video
+  ref={videoRef}
+  className="w-full h-full"
+  src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/ELITE%20Walkthrough%20Website.mp4?alt=media&token=3e470020-cb27-47fb-be70-a1e65cb368d1#t=0.001"
+  controls
+  playsInline
+/>
+      </div>
 
       {/* Download Button */}
       <div className="mt-6">
@@ -97,8 +96,8 @@ export default function DesignedForLiving() {
             <span className="flex gap-2 items-center">
               PROJECT HIGHLIGHTS
               <svg className="mt-1"  width="21" height="21" viewBox="0 0 21 21" fill="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.80422 6.7666L8.49957 14.3856L16.1959 6.7666" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
-<path d="M8.50053 14.3839L8.50053 0.137695" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M0.80422 6.7666L8.49957 14.3856L16.1959 6.7666" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M8.50053 14.3839L8.50053 0.137695" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
 </svg>
 
             </span>

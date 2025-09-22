@@ -24,9 +24,11 @@ const slides = [
 const ImageGridMobile = () => {
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
+  const [init, setInit] = useState(false);
 
-
-
+  useEffect(() => {
+    setInit(true);
+  }, []);
 
   return (
     <div className="mx-5">
@@ -49,26 +51,22 @@ const ImageGridMobile = () => {
 
         {/* Swiper Carousel */}
         <div className="relative mt-10">
-  <Swiper
-  modules={[Navigation]}
-  spaceBetween={20}
-  slidesPerView={1}
-  loop
-  onSwiper={(swiper) => {
-    setTimeout(() => {
-      if (prevRef.current && nextRef.current) {
-        swiper.params.navigation = {
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        };
-        swiper.navigation.destroy();
-        swiper.navigation.init();
-        swiper.navigation.update();
-      }
-    });
-  }}
-  className="w-full h-full"
->
+          {init && (
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={1}
+              loop={true}
+              onInit={(swiper) => {
+                // Attach navigation after refs are set
+                if (prevRef.current && nextRef.current) {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              }}
+            >
               {slides.map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className="border-2 rounded-lg p-5 border-[#1C1213]">
@@ -82,7 +80,7 @@ const ImageGridMobile = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-
+          )}
         </div>
 
         {/* Navigation Buttons */}

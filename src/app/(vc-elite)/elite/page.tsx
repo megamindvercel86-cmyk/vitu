@@ -198,8 +198,10 @@ const page = () => {
         <SvgButton button="LOCATION" />
       </div>
       <ProximitySection />
+      <div>
       <GracefullyConnected />
-      <div className="flex items-center z-50 justify-center mb-20">
+      </div>
+      <div className="flex items-center z-50 justify-center mt-3 mb-20">
         <Link
           to="elitForm"
            onClick={handleClick}
