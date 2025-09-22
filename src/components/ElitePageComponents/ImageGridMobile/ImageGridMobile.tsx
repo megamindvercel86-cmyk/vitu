@@ -9,17 +9,16 @@ import "swiper/css";
 const slides = [
   {
     title: "LOCATION-DRIVEN VALUE",
-    desc: "Positioned in Mangalore’s high-growth northern corridor, these plots benefit from expressway, port, and SEZ proximity. A future-ready address that guarantees both lifestyle and long-term capital appreciation.",
+    desc: "Positioned in Mangalore’s high-growth northern corridor, these plots benefit from expressway, port, and SEZ proximity. A future-ready address that guarantees both lifestyle and long-term capital appreciation.",
   },
   {
     title: "INVEST WITH CONFIDENCE",
-    desc: "RERA-registered, DC-converted, and with 100% clear legal titles, your investment is safeguarded at every step. Transparency and compliance ensure trust, making this not just land but a lasting legacy.",
+    desc: "RERA-registered, DC-converted, and with 100% clear legal titles, your investment is safeguarded at every step. Transparency and compliance ensure trust, making this not just land but a lasting legacy.",
   },
   {
     title: "PROVEN RETURNS",
-    desc: "These villa plots offer a legacy of consistent value growth. Designed for investors who seek stability, security, and the assurance of steady appreciation over time.",
+    desc: "These villa plots offer a legacy of consistent value growth. Designed for investors who seek stability, security, and the assurance of steady appreciation over time.",
   },
-  
 ];
 
 const ImageGridMobile = () => {
@@ -27,14 +26,13 @@ const ImageGridMobile = () => {
   const nextRef = useRef<HTMLDivElement | null>(null);
   const [init, setInit] = useState(false);
 
-  // Enable navigation refs after mount
   useEffect(() => {
     setInit(true);
   }, []);
 
   return (
     <div className="mx-5">
-      <div className="text-white pt-20 pb-10 ">
+      <div className="text-white pt-20 pb-10">
         <Image
           src="/images/ImageGrid/mobileImage.png"
           alt="dummy"
@@ -59,15 +57,20 @@ const ImageGridMobile = () => {
               spaceBetween={20}
               slidesPerView={1}
               loop={true}
-              navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
+              onInit={(swiper) => {
+                // Attach navigation after refs are set
+                if (prevRef.current && nextRef.current) {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
               }}
             >
               {slides.map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className="border-2 rounded-lg p-5 border-[#1C1213]">
-                    <h1 className="text-lg text-[#1C1213] font-FreightNeoProNormal  mb-2">
+                    <h1 className="text-lg text-[#1C1213] font-FreightNeoProNormal mb-2">
                       {slide.title}
                     </h1>
                     <p className="text-[#1C121399] font-FreightNeoProNormal text-sm">
@@ -78,13 +81,11 @@ const ImageGridMobile = () => {
               ))}
             </Swiper>
           )}
+        </div>
 
-          {/* Navigation Buttons */}
-           <div className="flex justify-center gap-4 mt-3">
-          <div
-            ref={prevRef}
-            className="  cursor-pointer z-10"
-          >
+        {/* Navigation Buttons */}
+        <div className="flex justify-center gap-4 mt-3">
+          <div ref={prevRef} className="cursor-pointer z-10">
             <svg
               width="30"
               height="30"
@@ -125,10 +126,7 @@ const ImageGridMobile = () => {
             </svg>
           </div>
 
-          <div
-            ref={nextRef}
-            className=" cursor-pointer z-10"
-          >
+          <div ref={nextRef} className="cursor-pointer z-10">
             <svg
               width="30"
               height="30"
@@ -163,8 +161,6 @@ const ImageGridMobile = () => {
                 </clipPath>
               </defs>
             </svg>
-          </div>
-          
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const SvgButton = ({ button, isWhite = false }: { button: string; isWhite?: bool
       {isWhite ? (
         <div className="overflow-hidden flex items-center flex-col">
           {/* Responsive container to fix mobile viewport issues */}
-          <div className="w-full flex justify-center overflow-hidden">
+          <div className="w-full md:flex hidden justify-center overflow-hidden">
             <motion.svg
               className="w-full max-w-[1529px] h-auto"
               viewBox="0 0 1529 202"
@@ -168,6 +168,113 @@ const SvgButton = ({ button, isWhite = false }: { button: string; isWhite?: bool
               </defs>
             </motion.svg>
           </div>
+          <div className="w-full flex justify-center overflow-hidden md:hidden ">
+  <motion.svg
+    className="text-white"
+    width="336"
+    height="120"
+    viewBox="0 0 336 120"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    <g opacity="0.5">
+      {/* All the other lines and spokes remain the same... */}
+      <motion.line x1="0.5" y1="61.4258" x2="156.329" y2="61.4258" stroke="url(#paint0_linear_640_155)" variants={draw} custom={0.1} />
+      <motion.line x1="335.5" y1="61.8359" x2="179.671" variants={draw} custom={0.25} y2="61.8359" stroke="url(#paint1_linear_640_153)" />
+      <motion.line x1="166.933" y1="119.098" x2="166.933" y2="70.931" variants={draw} custom={0.4} stroke="currentColor" />
+      <motion.line
+        x1="166.933"
+        y1="48.7324"
+        variants={draw}
+        custom={0.55}
+        x2="166.933"
+        y2="0.565762"
+        stroke="url(#paint2_linear_640_151)"
+      />
+      <motion.path
+        d="M159.269 57.1974C160.076 55.7721 161.261 54.5878 162.686 53.781L158.786 52.334C158.511 52.232 158.202 52.2996 157.995 52.5067C157.788 52.7139 157.721 53.0228 157.822 53.2976L159.269 57.1974Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.7}
+      />
+      <motion.path
+        d="M158.107 61.6125C158.107 60.7765 158.222 59.9668 158.436 59.1982L154.659 60.9311C154.392 61.0533 154.222 61.3195 154.222 61.6125C154.222 61.9055 154.392 62.1717 154.659 62.2939L158.436 64.0268C158.222 63.2582 158.107 62.4486 158.107 61.6125Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.75}
+      />
+      <motion.path
+        d="M167.102 52.6175C167.938 52.6175 168.748 52.7326 169.516 52.947L167.783 49.1695C167.661 48.9031 167.395 48.7324 167.102 48.7324C166.809 48.7324 166.543 48.9031 166.421 49.1695L164.688 52.9471C165.456 52.7326 166.266 52.6175 167.102 52.6175Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.8}
+      />
+      <motion.path
+        d="M174.936 57.1974L176.383 53.2975C176.485 53.0228 176.417 52.7139 176.21 52.5067C176.003 52.2994 175.694 52.2321 175.419 52.3339L171.519 53.7809C172.945 54.5877 174.129 55.7721 174.936 57.1974Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.85}
+      />
+      <motion.path
+        d="M167.102 70.6079C166.266 70.6079 165.456 70.4928 164.688 70.2784L166.421 74.056C166.543 74.3223 166.809 74.493 167.102 74.493C167.395 74.493 167.661 74.3223 167.783 74.0559L169.516 70.2783C168.748 70.4928 167.938 70.6079 167.102 70.6079Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.9}
+      />
+      <motion.path
+        d="M159.269 66.0312L157.822 69.9311C157.721 70.2058 157.788 70.5148 157.995 70.722C158.138 70.8651 158.33 70.9415 158.525 70.9415C158.613 70.9415 158.701 70.9262 158.786 70.8947L162.686 69.4477C161.261 68.6409 160.076 67.4565 159.269 66.0312Z"
+        fill="currentColor"
+        variants={pop}
+        custom={0.95}
+      />
+      <motion.path
+        d="M179.544 60.9312L175.767 59.1982C175.981 59.9669 176.096 60.7765 176.096 61.6125C176.096 62.4486 175.981 63.2582 175.767 64.0268L179.544 62.2939C179.811 62.1718 179.981 61.9056 179.981 61.6126C179.981 61.3196 179.811 61.0534 179.544 60.9312Z"
+        fill="currentColor"
+        variants={pop}
+        custom={1.0}
+      />
+      <motion.path
+        d="M174.936 66.0312C174.129 67.4565 172.945 68.6409 171.519 69.4477L175.419 70.8947C175.504 70.9262 175.592 70.9415 175.68 70.9415C175.875 70.9415 176.067 70.865 176.21 70.7219C176.417 70.5147 176.485 70.2058 176.383 69.931L174.936 66.0312Z"
+        fill="currentColor"
+        variants={pop}
+        custom={1.05}
+      />
+
+      {/* === CENTER RING === */}
+      <motion.path
+        d="M167.102 69.1082C162.969 69.1082 159.607 65.7457 159.607 61.6127C159.607 57.4796 162.969 54.1172 167.102 54.1172C171.235 54.1172 174.598 57.4796 174.598 61.6127C174.598 65.7457 171.235 69.1082 167.102 69.1082Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        variants={draw}
+        custom={1.1}
+      />
+      <motion.path
+        d="M167.102 69.1082C162.969 69.1082 159.607 65.7457 159.607 61.6127C159.607 57.4796 162.969 54.1172 167.102 54.1172C171.235 54.1172 174.598 57.4796 174.598 61.6127C174.598 65.7457 171.235 69.1082 167.102 69.1082Z"
+        fill="currentColor"
+        variants={pop}
+        custom={1.25}
+      />
+    </g>
+    <defs>
+      <linearGradient id="paint0_linear_640_155" x1="0.5" y1="62.4258" x2="156.329" y2="62.4258" gradientUnits="userSpaceOnUse">
+        <stop stopColor="currentColor" stopOpacity="0" />
+        <stop offset="1" stopColor="currentColor" />
+      </linearGradient>
+      <linearGradient id="paint1_linear_640_153" x1="335.5" y1="60.8359" x2="179.671" y2="60.8359" gradientUnits="userSpaceOnUse">
+        <stop stopColor="currentColor" stopOpacity="0" />
+        <stop offset="1" stopColor="currentColor" />
+      </linearGradient>
+      <linearGradient id="paint2_linear_640_151" x1="167.933" y1="0.565762" x2="167.933" y2="48.7324" gradientUnits="userSpaceOnUse">
+        <stop stopColor="currentColor" stopOpacity="0" />
+        <stop offset="1" stopColor="currentColor" />
+      </linearGradient>
+    </defs>
+  </motion.svg>
+</div>
 
           {/* Button below */}
          <div>
@@ -320,7 +427,7 @@ const SvgButton = ({ button, isWhite = false }: { button: string; isWhite?: bool
             </motion.svg>
           </div>
           <div className="w-full flex justify-center overflow-hidden md:hidden ">
-            <motion.svg
+          <motion.svg
               width="336"
               height="120"
               viewBox="0 0 336 120"

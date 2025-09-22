@@ -213,7 +213,7 @@ function HoverCard({ card, className = "" }: { card: CardProps; className?: stri
         >
           {card.hover.map((img, index) => (
             <SwiperSlide key={index}>
-              <Image src={img} alt={card.title} fill className="object-cover" />
+              <Image src={img} alt={card.title} width={10000} height={10000} priority className="object-cover h-full w-full" />
             </SwiperSlide>
           ))}
         </Swiper>
