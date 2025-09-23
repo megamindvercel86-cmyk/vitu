@@ -8,6 +8,7 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import SvgButton from "../SvgButton/SvgButton";
 import { useEffect } from "react";
+import "./sustainability.css";
 
 
 interface CardContent {
@@ -185,6 +186,13 @@ function HoverCard({ card, className = "" }: { card: CardProps; className?: stri
     setHovered(isMobile);
   }, [isMobile]);
 
+  useEffect(() => {
+  if (swiperInstance) {
+    // Force Swiper to recalculate dimensions after images are ready
+    swiperInstance.update();
+  }
+}, [swiperInstance]);
+
   return (
     <>
       <motion.div
@@ -210,10 +218,12 @@ function HoverCard({ card, className = "" }: { card: CardProps; className?: stri
           className="w-full h-full"
           allowTouchMove={true}
           grabCursor={true}
+          observer={true} // Add observer to watch for changes in DOM
+  observeParents={true} // Observe parent elements for changes
         >
           {card.hover.map((img, index) => (
             <SwiperSlide key={index}>
-              <Image src={img} alt={card.title} width={10000} height={10000} priority className="object-cover h-full w-full" />
+              <Image src={img} alt={card.title} fill onLoadingComplete={() => swiperInstance?.update()} priority className="object-cover h-full w-full" />
             </SwiperSlide>
           ))}
         </Swiper>

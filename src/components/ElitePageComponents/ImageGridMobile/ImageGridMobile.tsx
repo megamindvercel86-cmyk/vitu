@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+
 import "swiper/css";
 
 const slides = [
@@ -24,11 +24,8 @@ const slides = [
 const ImageGridMobile = () => {
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    setInit(true);
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [swiper, setSwiper] = useState(null);
 
   return (
     <div className="mx-5">
@@ -41,9 +38,7 @@ const ImageGridMobile = () => {
           className="object-cover w-full h-[180px] sm:h-[270px] xl:h-[340px]"
         />
         <div className="mt-5 space-y-3 text-center">
-          <h1 className="text-3xl lg:text-[38px] leading-[1.1] text-[#1C1213] font-FreightNeoProNormal font-normal">
-            Your Gateway to Lasting Value
-          </h1>
+          <h1 className="text-3xl lg:text-[38px] leading-[1.1] text-[#1C1213] font-FreightNeoProNormal font-normal">Your Gateway to Lasting Value</h1>
           <p className="text-[#1C121399] text-sm font-FreightNeoProNormal font-normal">
             A rare opportunity to invest in thoughtfully crafted villa plots in Mangalore’s thriving coastal corridor.
           </p>
@@ -51,48 +46,36 @@ const ImageGridMobile = () => {
 
         {/* Swiper Carousel */}
         <div className="relative mt-10">
-          {init && (
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={20}
-              slidesPerView={1}
-              loop={true}
-              onInit={(swiper) => {
-                // Attach navigation after refs are set
-                if (prevRef.current && nextRef.current) {
-                  swiper.params.navigation.prevEl = prevRef.current;
-                  swiper.params.navigation.nextEl = nextRef.current;
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }
-              }}
-            >
-              {slides.map((slide, index) => (
-                <SwiperSlide key={index}>
-                  <div className="border-2 rounded-lg p-5 border-[#1C1213]">
-                    <h1 className="text-lg text-[#1C1213] font-FreightNeoProNormal mb-2">
-                      {slide.title}
-                    </h1>
-                    <p className="text-[#1C121399] font-FreightNeoProNormal text-sm">
-                      {slide.desc}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper?.realIndex);
+            }}
+            onSwiper={setSwiper}
+            loop={true}
+          >
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="border-2 rounded-lg p-5 border-[#1C1213]">
+                  <h1 className="text-lg text-[#1C1213] font-FreightNeoProNormal mb-2">{slide.title}</h1>
+                  <p className="text-[#1C121399] font-FreightNeoProNormal text-sm">{slide.desc}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Navigation Buttons */}
         <div className="flex justify-center gap-4 mt-3">
-          <div ref={prevRef} className="cursor-pointer z-10">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+          <div
+            onClick={() => {
+              swiper.slidePrev();
+            }}
+            className="cursor-pointer z-10"
+          >
+            <svg width="30" height="30" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_551_274)">
                 <rect
                   x="17.9377"
@@ -112,37 +95,21 @@ const ImageGridMobile = () => {
               </g>
               <defs>
                 <clipPath id="clip0_551_274">
-                  <rect
-                    x="17.9377"
-                    y="17.2959"
-                    width="17.9374"
-                    height="17.2958"
-                    rx="8.64789"
-                    transform="rotate(-180 17.9377 17.2959)"
-                    fill="white"
-                  />
+                  <rect x="17.9377" y="17.2959" width="17.9374" height="17.2958" rx="8.64789" transform="rotate(-180 17.9377 17.2959)" fill="white" />
                 </clipPath>
               </defs>
             </svg>
           </div>
 
-          <div ref={nextRef} className="cursor-pointer z-10">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+          <div
+            onClick={() => {
+              swiper.slideNext();
+            }}
+            className="cursor-pointer z-10"
+          >
+            <svg width="30" height="30" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_551_271)">
-                <rect
-                  x="0.0625"
-                  width="17.9374"
-                  height="17.2958"
-                  rx="8.64789"
-                  fill="#D2D2D7"
-                  fillOpacity="0.64"
-                />
+                <rect x="0.0625" width="17.9374" height="17.2958" rx="8.64789" fill="#D2D2D7" fillOpacity="0.64" />
                 <path
                   d="M11.45 8.01902L8.63097 5.2039C8.33134 4.90427 7.84668 4.90575 7.54807 5.2059C7.24941 5.50629 7.25043 5.99239 7.55006 6.29156L9.82458 8.56285L7.55006 10.8341C7.25043 11.1333 7.24941 11.6194 7.54807 11.9198C7.69763 12.0705 7.89407 12.1457 8.09052 12.1457C8.28594 12.1457 8.48141 12.0713 8.63097 11.9218L11.45 9.10668C11.5941 8.96275 11.6753 8.76702 11.6753 8.56285C11.6753 8.35868 11.5941 8.163 11.45 8.01902Z"
                   fill="black"
@@ -151,13 +118,7 @@ const ImageGridMobile = () => {
               </g>
               <defs>
                 <clipPath id="clip0_551_271">
-                  <rect
-                    x="0.0625"
-                    width="17.9374"
-                    height="17.2958"
-                    rx="8.64789"
-                    fill="white"
-                  />
+                  <rect x="0.0625" width="17.9374" height="17.2958" rx="8.64789" fill="white" />
                 </clipPath>
               </defs>
             </svg>
