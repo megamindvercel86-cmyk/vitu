@@ -79,7 +79,7 @@ export default function DesignedForLiving() {
      <video
   ref={videoRef}
   className="w-full h-full"
-  src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/ELITE%20Walkthrough%20Website.mp4?alt=media&token=3e470020-cb27-47fb-be70-a1e65cb368d1#t=0.001"
+  src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/Elite%20Walkthrough%20Website%20(1).mp4?alt=media&token=6759359a-c42b-40c7-bfab-549932a9dc51"
   controls
   playsInline
 />
