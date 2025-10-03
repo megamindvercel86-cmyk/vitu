@@ -22,21 +22,27 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
     createdAt: serverTimestamp(),
   };
 
-      //  const googleScriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL!;
-      // const response = await fetch(googleScriptUrl, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      //   body: new URLSearchParams({
-      //     fullName: values.fullName,
-      //     email: values.email,
-      //     phone: values.phone,
-      //     project: "Vaikuntam City Elite",
-      //     whatsapp: values.whatsapp ? "Yes" : "No",
-      //     interestedIn: values.option,
-      //     userType: values.userType || "",
-      //     createdAt: new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
-      //   }),
-      // });
+       const googleScriptUrl = values.userType==="Investor"? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_INVESTOR:process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_HOME;
+       console.log(googleScriptUrl);
+       
+      const response = await fetch(googleScriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          fullName: values.fullName,
+          email: values.email,
+          phone: values.phone,
+          project: "Vaikuntam City Elite",
+          whatsapp: values.whatsapp ? "Yes" : "No",
+          interestedIn: values.option,
+          userType: values.userType || "",
+          createdAt: new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
+        }),
+        mode: "no-cors"
+      });
+
+  
+      
 
   try {
     // Firestore submission
