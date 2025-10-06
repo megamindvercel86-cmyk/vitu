@@ -12,7 +12,7 @@ import {
   sourceSans3,
   tenorSans,
 } from "../../styles/font";
-
+import { Analytics } from "@vercel/analytics/react";
 export async function generateMetadata() {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";
   const pageDescription =
@@ -69,6 +69,7 @@ export default function RootLayout({
         <SmoothScroll>{children}</SmoothScroll>
       
         <GoogleAnalytics gaId="G-B662JPJ850" />
+        <Analytics /> 
       </body>
     </html>
   );
