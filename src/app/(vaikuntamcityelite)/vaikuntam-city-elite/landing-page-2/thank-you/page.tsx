@@ -104,6 +104,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p className="text-[#E0D9C766] font-FreightNeoProNormal text-xs">
             © <span className="font-CandideCondensedNormal">2025</span> Vitu Realty | All rights reserved
           </p>
+
+               <div className="flex mt-4 lg:mt-0 flex-col lg:flex-row gap-2 text-[#E0D9C766] font-FreightNeoProNormal text-xs relative z-20">
+            Designed and Maintained by{" "}
+            <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="text-[#E0D9C766] hover:underline  font-FreightNeoProNormal text-xs">
+              Megamind Advertising Private Limited
+            </a>
+          </div>
           <div className="flex mt-4 lg:mt-0 flex-col lg:flex-row gap-2 text-[#E0D9C766] font-FreightNeoProNormal text-xs relative z-20">
             <Link href="/terms-of-service">
               <p className="cursor-pointer">Terms of Service</p>

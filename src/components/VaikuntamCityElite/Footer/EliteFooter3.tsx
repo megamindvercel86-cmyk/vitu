@@ -9,8 +9,10 @@ import vitulogo from "../../../../public/images/logos/vituLogoLight.svg";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+
 import { AnimatedConicButton } from "@/components/ui/moving-border";
+import Link from "next/link";
 // import "./eliteFooter3.css"
 
 export default function EliteFooter3() {
@@ -32,7 +34,10 @@ export default function EliteFooter3() {
       <div className="container mx-auto px-6 pt-12 pb-10 lg:pt-16 ">
         <div className="flex items-center justify-center lg:justify-start">
           <div className="flex uppercase mb-10 lg:font-freightNeoMedium text-lg items-center gap-3 text-[#E0D9C799]">
-            <h1>Home</h1>
+            <Link href={"/"}>
+              {" "}
+              <h1>Home</h1>
+            </Link>
             <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M1.36328 16.1885L8.9823 8.4932L1.36328 0.796875"
@@ -55,12 +60,12 @@ export default function EliteFooter3() {
                 alt="Vaikuntam City Elite"
                 width={270}
                 height={270}
-                className=""
+                className="cursor-pointer"
               />
               <p className="text-[20px] font-tenorSans mt-5 mb-7 opacity-80">Designed for Inspired Living</p>
             </div>
             <div className="mt-6 flex justify-center border-[#F3EAE1]/30">
-              <Link
+              <ScrollLink
                 to="elitForm"
                 onClick={handleClick}
                 className="inline-flex cursor-pointer !bg-none items-center justify-center gap-2  mt-10 border-[#F3EAE1]/30   text-white border-[0.25px]   rounded-full text-sm font-medium lg:text-xl  "
@@ -77,7 +82,7 @@ export default function EliteFooter3() {
                     </svg>
                   </span>
                 </AnimatedConicButton>
-              </Link>
+              </ScrollLink>
             </div>
             {/* Brochure Button */}
           </div>
@@ -85,18 +90,20 @@ export default function EliteFooter3() {
           {/* Middle section */}
           <div className="flex flex-col mt-10 lg:mt-0  items-center lg:items-end justify-between  space-y-6">
             {/* Vitu Logo */}
-            <Image
-              src={vitulogo} // replace with actual logo
-              alt="Vitu Realty"
-              width={200}
-              height={200}
-              className="opacity-90 mb-7 lg:mb-0"
-            />
+            <Link href="/">
+              <Image
+                src={vitulogo} // replace with actual logo
+                alt="Vitu Realty"
+                width={200}
+                height={200}
+                className="opacity-90 mb-7 lg:mb-0"
+              />
+            </Link>
 
             <div className="flex items-center justify-center lg:-space-x-3 ">
               {/* Instagram */}
 
-              <a href="#">
+              <Link href="https://www.instagram.com/vitu.realty" target="_blank" rel="noopener noreferrer">
                 <AnimatedConicButton
                   buttonBase="conic-button-base1"
                   theme="custom"
@@ -121,10 +128,10 @@ export default function EliteFooter3() {
                     />
                   </svg>
                 </AnimatedConicButton>
-              </a>
+              </Link>
 
               {/* Meta */}
-              <a href="#">
+              <Link href="https://www.facebook.com/p/VITU-Realty-61557046860214/" target="_blank" rel="noopener noreferrer">
                 <AnimatedConicButton
                   buttonBase="conic-button-base1"
                   theme="custom"
@@ -139,10 +146,10 @@ export default function EliteFooter3() {
                     />
                   </svg>
                 </AnimatedConicButton>
-              </a>
+              </Link>
 
               {/* LinkedIn */}
-              <a href="#">
+              <Link href="https://www.linkedin.com/company/vitu-realty/" target="_blank" rel="noopener noreferrer">
                 <AnimatedConicButton
                   buttonBase="conic-button-base1"
                   theme="custom"
@@ -163,10 +170,10 @@ export default function EliteFooter3() {
                     />
                   </svg>
                 </AnimatedConicButton>
-              </a>
+              </Link>
 
               {/* YouTube */}
-              <a href="#">
+              <Link href="https://www.youtube.com/@viturealty/featured" target="_blank" rel="noopener noreferrer">
                 <AnimatedConicButton
                   buttonBase="conic-button-base1"
                   theme="custom"
@@ -191,14 +198,14 @@ export default function EliteFooter3() {
                     />
                   </svg>
                 </AnimatedConicButton>
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Right section */}
         </div>
         <div className="flex flex-col items-center lg:flex-row  lg:justify-between text-lg font-FreightNeoProLight text-[#E0D9C7] mt-24">
-          <p className="flex items-center gap-2">
+          <a href="mailto:info@viturealty.com" className="flex items-center gap-2">
             <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16.2669 0.873203H2.10025C1.32106 0.873203 0.683594 1.51071 0.683594 2.28986V11.9233C0.683594 12.7025 1.32106 13.3398 2.10025 13.3398H16.267C17.0461 13.3398 17.6836 12.7025 17.6836 11.9233V2.28986C17.6836 1.51071 17.0461 0.873203 16.2669 0.873203Z"
@@ -216,9 +223,9 @@ export default function EliteFooter3() {
               />
             </svg>{" "}
             INFO@VITUREALTY.COM
-          </p>
-          <div className=" flex justify-center ml-5 lg:ml-0">
-            <p className="flex justify-center lg:items-center  gap-2">
+          </a>
+          <div className="hidden md:flex justify-center ml-5 lg:ml-0">
+<p className="flex justify-center md:items-center items-start  gap-2 ">
               <svg className="lg:w-5 w-8 h-8 lg:h-5" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.25781 8.90234L16.2912 0.869" stroke="#C7784D" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                 <path
@@ -229,10 +236,35 @@ export default function EliteFooter3() {
                   strokeLinejoin="round"
                 />
               </svg>
-              VAIKUNTAM CITY ELITE, BEHIND NITK CAMPUS, SURATHKAL, MANGALORE
+              VAIKUNTAM CITY ELITE, BEHIND NITK CAMPUS,  SURATHKAL, MANGALORE
             </p>
           </div>
-          <p className="flex items-center opacity-[85%] lg:opacity-[100%] text-[#E0D9C7] font-CandideCondensedNormal font-[300]  gap-2">
+
+
+           <div className="flex flex-col md:hidden justify-center  lg:ml-0">
+  <p className="flex items-center text-center gap-2">
+    <svg className="w-5 h-5" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.25781 8.90234L16.2912 0.869" stroke="#C7784D" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M8.25572 8.90053C8.25572 8.90053 3.74334 7.61128 1.94941 7.09872C1.52153 6.97647 1.22656 6.58544 1.22656 6.14041V6.14016C1.22656 5.6925 1.52019 5.29784 1.949 5.16922C4.95159 4.26844 16.2891 0.867188 16.2891 0.867188C16.2891 0.867188 12.8878 12.2047 11.987 15.2073C11.8584 15.6361 11.4638 15.9297 11.0161 15.9297H11.0158C10.5708 15.9297 10.1798 15.6347 10.0575 15.2068C9.54497 13.4129 8.25572 8.90053 8.25572 8.90053Z"
+        stroke="#C7784D"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+
+    <span>
+      VAIKUNTAM CITY ELITE,
+      BEHIND NITK <br/> CAMPUS, SURATHKAL, MANGALORE
+    </span>
+  </p>
+</div>
+
+          <a
+            href="tel:+918904688886"
+            className="flex items-center  opacity-[85%] lg:opacity-[100%] text-[#E0D9C7] font-CandideCondensedNormal font-[300]  gap-2"
+          >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M5.43612 12.2776C1.74897 8.587 -0.15831 4.52612 1.28303 3.08343L3.31074 1.05383C3.51258 0.851847 3.84177 0.851847 4.04361 1.05383L7.07293 4.08598C7.27476 4.288 7.27476 4.61755 7.07293 4.81953L5.77813 6.11553C5.37446 6.51958 5.37446 7.17867 5.77813 7.58268L10.1266 11.9352C10.5303 12.3393 11.1887 12.3393 11.5925 11.9352L12.8872 10.6392C13.089 10.4372 13.4183 10.4372 13.6201 10.6392L16.6494 13.6714C16.8512 13.8734 16.8512 14.203 16.6494 14.4049L14.6217 16.4345C13.217 17.8406 9.12327 15.9682 5.43612 12.2776Z"
@@ -243,7 +275,7 @@ export default function EliteFooter3() {
               />
             </svg>
             +91 89046 88886
-          </p>
+          </a>
         </div>
         {/* Divider */}
         <div className="border-t border-[#f3eae1]/20 my-5" />
@@ -312,7 +344,6 @@ function BorderDotButton({ button }: { button?: any }) {
 
   return (
     <motion.button className="relative px-6 py-3 text-white bg-red-400 font-semibold rounded-lg overflow-hidden">
-      dhfusdfh
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         {/* Static White Border */}
         <rect x="1" y="1" width="198" height="58" rx="12" stroke="white" strokeWidth="2" />
