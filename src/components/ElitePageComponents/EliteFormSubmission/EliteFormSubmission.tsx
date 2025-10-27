@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatedConicButton } from "@/components/ui/moving-border";
 import { handleFormSubmitVCE } from "@/lib/functionHelpers";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,8 @@ export default function EliteForm() {
   const [isBrochure, setIsBrochure] = useState("");
 
   const [openDropdown, setOpenDropdown] = useState(false);
+
+  const router = useRouter();
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -54,9 +57,8 @@ export default function EliteForm() {
     };
 
     try {
+      router.push("/elite/thank-you");
       await handleFormSubmitVCE(payload);
-
-      toast.success("Your details have been submitted successfully!");
 
       // Optionally, reset the form after successful submission
 
@@ -195,6 +197,7 @@ export default function EliteForm() {
               <input
                 type="text"
                 name="fullName"
+                required
                 placeholder="FULL NAME"
                 value={formData.fullName}
                 onChange={handleChange}
@@ -208,6 +211,7 @@ export default function EliteForm() {
             <div className="relative w-full">
               <input
                 type="email"
+                required
                 name="email"
                 placeholder="EMAIL ADDRESS"
                 value={formData.email}
@@ -223,6 +227,7 @@ export default function EliteForm() {
               <input
                 type="tel"
                 name="phone"
+                required
                 placeholder="PHONE NUMBER"
                 value={formData.phone}
                 onChange={handleChange}
