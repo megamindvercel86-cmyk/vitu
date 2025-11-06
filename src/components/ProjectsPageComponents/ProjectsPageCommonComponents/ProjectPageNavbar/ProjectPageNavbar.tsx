@@ -71,6 +71,7 @@ const NAV_LINKS_MOBAIL = [
   { href: "sustainability", label: "Sustainability" },
 ];
 const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "carousal", label: "Amenities" },
   { href: "sustainability", label: "Sustainability" },
 ];
@@ -256,32 +257,45 @@ export default function ProjectNavbar({
             className={`hidden lg:${isLandingPage ? "hidden" : "flex"} lg2:w-1/2 lg:w-2/3   items-center `}
           >
             <div className="flex items-center justify-end gap-12 w-full">
-              {NAV_LINKS.map(({ href, label }) => (
-                <LinkScroll
-                  aria-label={label}
-                  key={href}
-                  to={href}
-                  smooth={true}
-                  duration={700}
-                  className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium"
-                >
-                  {label}
-                </LinkScroll>
-              ))}
-              {showGetInTouch && (
-                <div className="lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer">
-                  <Button
-                    onClick={() => setContactModalOpen(true)}
-                    className={` w-full text-base sm:text-lg md:text-xl lg1:text-[20px] lg2:text-2xl px-4  lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
-                      isProjectNavbarPrimary ? "bg-white" : ""
-                    }`}
-                    defaultTextColor={buttonColor}
-                  >
-                    Download E-Brochure
-                  </Button>
-                </div>
-              )}
-            </div>
+  {NAV_LINKS.map((item, index) => (
+    <React.Fragment key={index}>
+      {item.href === "/" ? (
+        <Link
+          aria-label={item.label}
+          href={item.href}
+          className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium"
+        >
+          {item.label}
+        </Link>
+      ) : (
+        <LinkScroll
+          aria-label={item.label}
+          to={item.href}
+          smooth={true}
+          duration={700}
+          className="2xl:text-4xl text-white lg:text-xl lg2:text-[23px] cursor-pointer font-freightNeoMedium"
+        >
+          {item.label}
+        </LinkScroll>
+      )}
+    </React.Fragment>
+  ))}
+
+  {showGetInTouch && (
+    <div className="lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer">
+      <Button
+        onClick={() => setContactModalOpen(true)}
+        className={`w-full text-base sm:text-lg md:text-xl lg1:text-[20px] lg2:text-2xl px-4 lg2:px-7 xl:px-10 pt-[2px] lg:text-[20px] xl:text-[26px] 2xl:text-4xl ${
+          isProjectNavbarPrimary ? "bg-white" : ""
+        }`}
+        defaultTextColor={buttonColor}
+      >
+        Download E-Brochure
+      </Button>
+    </div>
+  )}
+</div>
+
           </div>
         </nav>
       </header>
