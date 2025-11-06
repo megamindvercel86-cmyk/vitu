@@ -86,6 +86,21 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
       body: JSON.stringify(emailPayload),
     });
 
+      await fetch("/api/send-whatsapp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.fullName,
+        phone: values.phone,
+      }),
+    });
+
+
+ 
+
+    
+  
+
     // 4️⃣ Send JSON to Pabbly Webhook
     await fetch(
       "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc",
