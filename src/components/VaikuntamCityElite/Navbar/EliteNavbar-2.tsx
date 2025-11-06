@@ -38,7 +38,7 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
             width={199}
             height={199}
             alt="vitu"
-            className={`cursor-pointer lg:w-[12%]  lg:h-[100%] w-[30%] h-[30%] ${
+            className={`cursor-pointer lg:w-[12%] z-50  lg:h-[100%] w-[30%] h-[30%] ${
               leftAlignLogos ? " hidden md:block" : "hidden lg:block"
             }`}
           />
