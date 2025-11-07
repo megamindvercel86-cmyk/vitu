@@ -94,6 +94,19 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         router.push("/vaikuntam-city-elite/pre-launch/thank-you");
         return
       }
+
+      if (page === "Project Enquire") {
+        router.push("/project-enquire/thank-you");
+        return
+      }
+       if (page === "Career Application") {
+        router.push("/career-application/thank-you");
+        return
+      }
+          if (page === "General Enquire") {
+        router.push("/general-enquire/thank-you");
+        return
+      }
       await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
