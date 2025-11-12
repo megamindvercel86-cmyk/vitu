@@ -5,6 +5,7 @@ import { IconX, IconChevronDown } from "@tabler/icons-react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import Loader from "@/components/LoaderComponent/LoaderComponent";
+import { useRouter } from "next/navigation";
 
 // Animation variants
 const backdropVariants = {
@@ -29,13 +30,22 @@ interface ContactFormModalProps {
   onClose: (isModalOpen: boolean) => void;
   className?: string;
   maxWidth?: string;
-  textColor?:string;
-  buttonBg?:string;
-  peerBg?:string;
-  downloadFileLink?:string;
+  textColor?: string;
+  buttonBg?: string;
+  peerBg?: string;
+  downloadFileLink?: string;
 }
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadFileLink="/downloadingFiles/VC brochure.pdf",peerBg,buttonBg,isOpen, onClose, className = "", maxWidth = "max-w-7xl" }) => {
+const ContactFormModal: React.FC<ContactFormModalProps> = ({
+  textColor,
+  downloadFileLink = "/downloadingFiles/VC brochure.pdf",
+  peerBg,
+  buttonBg,
+  isOpen,
+  onClose,
+  className = "",
+  maxWidth = "max-w-7xl",
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -59,7 +69,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
     interstedIn: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
-
+const router=useRouter()
   // Validation logic
   const validateField = (name: string, value: string): string => {
     switch (name) {
@@ -125,6 +135,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
   const handleSubmit = async () => {
     if (validateForm()) {
       setIsLoading(true);
+
+      router.push("/vaikuntamcity/thank-you")
       try {
         const collectionRef = collection(db, "projectEnquiries");
         const dataWithTimestamp = {
@@ -132,18 +144,27 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
           createdAt: serverTimestamp(),
         };
         await addDoc(collectionRef, dataWithTimestamp);
-           await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, page:"Project Enquire"}),
-      });
-        if(downloadFileLink){
-        const link = document.createElement("a");
-        link.href = downloadFileLink;
-        link.download = downloadFileLink?.split("/").pop()?.toString() || "";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        await fetch("/api/sendEmail", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, page: "Project Enquire" }),
+        });
+        await fetch("/api/send-whatsapp-vaikuntamcity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.fullName,
+            phone: formData.phone,
+          }),
+        });
+
+        if (downloadFileLink) {
+          const link = document.createElement("a");
+          link.href = downloadFileLink;
+          link.download = downloadFileLink?.split("/").pop()?.toString() || "";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         }
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
@@ -234,13 +255,19 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
             >
               {/* Left Side Content */}
               <div className="flex-1">
-                <h1 className={`text-center font-freightNeoMedium hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor?textColor:"text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}>
+                <h1
+                  className={`text-center font-freightNeoMedium hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor ? textColor : "text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}
+                >
                   Your dream <br /> home is closer <br /> than you think!
                 </h1>
-                <h1 className={`text-center mt-7 lg:hidden font-freightNeoMedium !leading-[1.3] lg:text-left ${textColor?textColor:"text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}>
+                <h1
+                  className={`text-center mt-7 lg:hidden font-freightNeoMedium !leading-[1.3] lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}
+                >
                   Your dream home is closer than you think!
                 </h1>
-                <p className={`text-center font-freightNeoMedium lg:text-left ${textColor?textColor:"text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}>
+                <p
+                  className={`text-center font-freightNeoMedium lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}
+                >
                   Begin your journey to a new home—fill out the form & let's get started.{" "}
                 </p>
                 {/* <div className="hidden lg:block">
@@ -257,14 +284,14 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Full Name */}
                   <div>
                     <input
-                  aria-label="fullName"
+                      aria-label="fullName"
                       type="text"
                       id="fullName"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
                         touched.fullName && errors.fullName ? "border-red-500" : ""
                       }`}
                       placeholder="Your Full Name"
@@ -274,14 +301,14 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Email */}
                   <div>
                     <input
-                    aria-label="email"
+                      aria-label="email"
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium ${
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
                         touched.email && errors.email ? "border-red-500" : ""
                       }`}
                       placeholder="Your Email"
@@ -291,14 +318,14 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Phone */}
                   <div>
                     <input
-                    aria-label="phone"
+                      aria-label="phone"
                       type="number"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor?textColor:"text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor?textColor:"text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
                         touched.phone && errors.phone ? "border-red-500" : ""
                       }`}
                       placeholder="Your Phone Number"
@@ -308,11 +335,11 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   {/* Interested In Dropdown */}
                   <div className="relative z-10">
                     <div
-                      className={`${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
+                      className={`${textColor ? textColor : "text-[#0C3E49]"} text-[18px] lg:text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
                       onClick={() => setOpen(!open)}
                     >
                       <span>{formData.interstedIn || "Interested In"}</span>
-                      <IconChevronDown className={`h-5 w-5 ${textColor?textColor:"text-[#0C3E49]"}`} />
+                      <IconChevronDown className={`h-5 w-5 ${textColor ? textColor : "text-[#0C3E49]"}`} />
                     </div>
                     <hr className="border-black border-opacity-20" />
                     {open && (
@@ -320,7 +347,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
-                            className={`px-4 leading-[2] lg:leading-none lg:py-4 ${textColor?textColor:"text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg?buttonBg:"bg-gray-200"} cursor-pointer`}
+                            className={`px-4 leading-[2] lg:leading-none lg:py-4 ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg ? buttonBg : "bg-gray-200"} cursor-pointer`}
                             onClick={() => {
                               setFormData((prev) => ({ ...prev, interstedIn: option.label }));
                               setTouched((prev) => ({ ...prev, interstedIn: true }));
@@ -337,29 +364,37 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                   </div>
                   {/* WhatsApp Checkbox and Submit Button */}
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-4 pb-12">
-                  { isLoading? <div className="lg:hidden block"><Loader/></div>: <button
-                      type="button"
-                      aria-label="Submit Form"
-                      className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg?buttonBg:"bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
-                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg?`hover:${buttonBg}`:"hover:bg-[#0A2F38]"}`
-                      }`}
-                      onClick={handleSubmit}
-                      disabled={!isFormValid || isLoading}
-                    >
-                      Submit
-                    </button>}
+                    {isLoading ? (
+                      <div className="lg:hidden block">
+                        <Loader />
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        aria-label="Submit Form"
+                        className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg ? buttonBg : "bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
+                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                        }`}
+                        onClick={handleSubmit}
+                        disabled={!isFormValid || isLoading}
+                      >
+                        Submit
+                      </button>
+                    )}
                     <label className="flex items-center gap-3 cursor-pointer">
                       <div className="relative">
                         <input
-                        aria-label="WhatsApp Checkbox"
-                        type="checkbox"
+                          aria-label="WhatsApp Checkbox"
+                          type="checkbox"
                           id="whatsapp"
                           name="whatsapp"
                           checked={formData.whatsapp}
                           onChange={handleChange}
                           className="sr-only peer"
                         />
-                        <div className={`w-5 h-5 border border-[#0C3E49] rounded-full ${peerBg?peerBg:"peer-checked:bg-[#0C3E49]"}  transition-colors flex items-center justify-center`}>
+                        <div
+                          className={`w-5 h-5 border border-[#0C3E49] rounded-full ${peerBg ? peerBg : "peer-checked:bg-[#0C3E49]"}  transition-colors flex items-center justify-center`}
+                        >
                           {formData.whatsapp && (
                             <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -367,20 +402,23 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({textColor, downloadF
                           )}
                         </div>
                       </div>
-                      <span className={`text-base ${textColor?textColor:"text-[#0C3E49]"} font-medium`}>Receive Updates on WhatsApp</span>
+                      <span className={`text-base ${textColor ? textColor : "text-[#0C3E49]"} font-medium`}>Receive Updates on WhatsApp</span>
                     </label>
-                   {isLoading? <Loader/>:<button
-                      type="button"
-                      aria-label="Submit Form"
-                      className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg?buttonBg:"bg-[#0C3E49]"} text-white rounded-full font-medium ${
-                        !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg?`hover:${buttonBg}`:"hover:bg-[#0A2F38]"}`
-                      }`}
-                      onClick={handleSubmit}
-                      disabled={!isFormValid || isLoading}
-                    >
-                      Submit
-                    </button>}
-
+                    {isLoading ? (
+                      <Loader />
+                    ) : (
+                      <button
+                        type="button"
+                        aria-label="Submit Form"
+                        className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg ? buttonBg : "bg-[#0C3E49]"} text-white rounded-full font-medium ${
+                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                        }`}
+                        onClick={handleSubmit}
+                        disabled={!isFormValid || isLoading}
+                      >
+                        Submit
+                      </button>
+                    )}
                   </div>
                 </div>
                 {/* <div className="block lg:hidden text-center mt-2 mb-12">

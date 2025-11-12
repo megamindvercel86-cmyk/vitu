@@ -19,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
     return () => clearTimeout(timeout);
   }, [pathname]);
+    const hideNavbar = pathname === "/vaikuntamcity/thank-you";
   return (
     <>
       <div
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Loader />
       </div>
       <div className="min-h-screen flex flex-col">
-        <ProjectNavbar />
+       {!hideNavbar && <ProjectNavbar />} {/* ✅ Conditionally render navbar */}
         <main className="flex-1">{children}</main>
         <ScrollToTopButton />
         <WhatsappChatWidget />

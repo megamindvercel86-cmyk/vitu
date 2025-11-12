@@ -90,6 +90,17 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       console.log(collectionRef, filteredValues);
       await addDoc(collectionRef, filteredValues);
 
+      if(page==="General Enquire"||page==="Project Enquire"){
+            await fetch("/api/send-whatsapp-vitu", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: values.fullName,
+            phone: values.phone,
+          }),
+        });
+      }
+
       if (page === "Vaikuntam City Elite") {
         router.push("/vaikuntam-city-elite/pre-launch/thank-you");
         return
