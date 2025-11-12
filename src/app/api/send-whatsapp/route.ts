@@ -73,7 +73,7 @@ export async function POST(request: Request) {
             filename: DOCUMENT_FILENAME,
           },
         }),
-  T    }
+     }
     );
 
     // --- (Your existing error checking for the second message) ---
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
       data = JSON.parse(raw);
     } catch {
       data = { rawResponse: raw };
-  S }
+   }
 
     if (data.status === "error") {
       console.error("AiSensy API Error (Message 2):", data.message);
