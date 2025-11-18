@@ -15,8 +15,8 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
         <div
           className={`flex items-center w-ful md:mx-20 mx-6 my-12 ${
             leftAlignLogos
-              ? "md:justify-start gap-4 justify-center"
-              : "justify-center lg:justify-between"
+              ? "justify-between md:justify-start gap-4 "
+              : "justify-between"
           }`}
         >
           <Image
@@ -30,7 +30,7 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
           {leftAlignLogos && (
             <div className="h-14 w-px bg-[#E0D9C7] hidden md:block" />
           )}
-
+<div className="h-14 w-px bg-[#E0D9C7] md:hidden" />
           <Image
 
           onClick={()=>router.push('/')}
@@ -38,9 +38,7 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
             width={199}
             height={199}
             alt="vitu"
-            className={`cursor-pointer lg:w-[12%] z-50  lg:h-[100%] w-[30%] h-[30%] ${
-              leftAlignLogos ? " hidden md:block" : "hidden lg:block"
-            }`}
+            className={`cursor-pointer lg:w-[12%] z-50  lg:h-[100%] w-[40%] h-[30%] `}
           />
         </div>
       </div>
