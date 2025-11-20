@@ -22,8 +22,9 @@ const NavbarResponsiveComponent = ({
   showGetInTouch: boolean;
 }) => {
   const PROJECT_LINKS = [
+          { href: "/elite", label: "Vaikuntam City ELITE" },
     { href: "/vaikuntamcity", label: "Vaikuntam City" },
-      { href: "/elite", label: "Vaikuntam City ELITE" },
+
     // { href: "/vilasam", label: "Vilasam" },
   ];
   const NAV_LINKS = [

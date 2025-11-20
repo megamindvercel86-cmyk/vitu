@@ -291,7 +291,8 @@ const FooterBottom: FC = () => (
        <p className="text-[#FFFFFF66] mt-4  md:mt-0 text-xs text-center 2xl:text-xl md:text-left">
             Designed and Maintained by{" "}
             <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="text-[#FFFFFF66] hover:underline text-xs text-center 2xl:text-xl md:text-left">
-              Megamind Advertising Private Limited
+             Megamind Studios
+
             </a>
           </p>
       <div className="flex gap-4 mt-4 md:mt-0">

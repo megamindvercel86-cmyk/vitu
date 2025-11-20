@@ -286,7 +286,8 @@ export default function EliteFooter3() {
           <p>
             Designed and Maintained by{" "}
             <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#f3eae1]">
-              Megamind Advertising Private Limited
+             Megamind Studios
+
             </a>
           </p>
           <div className="flex gap-3 justify-center lg:justify-normal">
