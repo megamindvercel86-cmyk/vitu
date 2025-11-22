@@ -108,14 +108,14 @@ export default function RootLayout({
       {
         "@type": "Offer",
         "name": "Vaikuntam City Elite",
-        "url": "https://www.viturealty.com/vaikuntam-city-elite/landing-page-1",
+        "url": "https://www.viturealty.com/elite",
         "availability": "https://schema.org/InStock",
         "category": "Premium Plotted Development"
       },
       {
         "@type": "Offer",
         "name": "Vaikuntam City",
-        "url": "https://www.viturealty.com/projects/vaikuntam-city",
+        "url": "https://www.viturealty.com/vaikuntamcity",
          "category": "Plotted Development"
       }
     ]
