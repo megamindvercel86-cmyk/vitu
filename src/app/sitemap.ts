@@ -3,9 +3,18 @@ import { MetadataRoute } from "next";
 const BASE_URL = "https://www.viturealty.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Static pages
+  
+  // 1. DEFINE YOUR PRIORITY PAGE (ELITE)
+  const eliteLandingPage = {
+    url: `${BASE_URL}/vaikuntam-city-elite/landing-page-1`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 1.0, // MAX PRIORITY (Same as homepage)
+  };
+
+  // 2. Standard Static pages
   const staticRoutes = [
-    "",
+    "", // Homepage
     "/about",
     "/resources",
     "/career-application",
@@ -19,16 +28,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
-  // Fetch dynamic properties
+  // 3. Fetch dynamic properties (Standard Projects)
   const properties = await getProperties();
   const dynamicPropertyRoutes = properties.map((property) => ({
     url: `${BASE_URL}/projects/${property.slug}`,
     lastModified: new Date(property.updatedAt),
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    // Keep standard projects at 0.7 so Elite (1.0) wins
+    priority: 0.7, 
   }));
 
-  // Fetch blog/resources articles
+  // 4. Fetch articles
   const articles = await getArticles();
   const articleRoutes = articles.map((article) => ({
     url: `${BASE_URL}/resources/${article.slug}`,
@@ -37,14 +47,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...dynamicPropertyRoutes, ...articleRoutes];
+  // Return Elite page FIRST in the array
+  return [eliteLandingPage, ...staticRoutes, ...dynamicPropertyRoutes, ...articleRoutes];
 }
 
-// Replace these with actual API/DB calls
+// --- Helper Functions (Keep as they were) ---
 async function getProperties() {
   return [
     { slug: "sea-view-residency", updatedAt: "2024-03-15" },
     { slug: "diamond-heights", updatedAt: "2024-02-20" },
+    // Note: If 'vaikuntam-city-elite' is in your DB, it will generate 
+    // a /projects/ url too. That is fine, but the landing page 
+    // defined above will have the higher priority (1.0 vs 0.7).
   ];
 }
 
