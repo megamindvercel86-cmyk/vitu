@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   // 1. DEFINE YOUR PRIORITY PAGE (ELITE)
   const eliteLandingPage = {
-    url: `${BASE_URL}/vaikuntam-city-elite/landing-page-1`,
+    url: `${BASE_URL}/elite`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 1.0, // MAX PRIORITY (Same as homepage)
