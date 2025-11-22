@@ -68,23 +68,55 @@ export default function RootLayout({
   // 5. STRUCTURED DATA: Explicitly list your Elite Project
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
+    "@type": "RealEstateAgent", 
     "name": "Vitu-Realty",
-    "url": BASE_URL,
-    "logo": "https://www.viturealty.com/logo.png", // Update with your actual logo path
-    "description": "Premium Plotted Developments in Mangalore",
-    // This section tells Google about your specific offerings
+    "image": [
+      "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
+    ],
+    "url": "https://www.viturealty.com",
+    "telephone": "+918904688886", 
+    "priceRange": "₹₹₹", 
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No 10-10-427/4, Laxman Commercial Complex, Golikatta Bazaar, Bunder",
+      "addressLocality": "Mangalore",
+      "addressRegion": "Karnataka",
+      "postalCode": "575001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 12.865208703988602, 
+      "longitude": 74.83302272565935
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
     "makesOffer": [
       {
         "@type": "Offer",
-        "name": "Vaikuntam City Elite", 
+        "name": "Vaikuntam City Elite",
         "url": "https://www.viturealty.com/vaikuntam-city-elite/landing-page-1",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "category": "Premium Plotted Development"
       },
       {
         "@type": "Offer",
-        "name": "Vaikuntam City Elite",
-        "url": "https://www.viturealty.com/elite"
+        "name": "Vaikuntam City",
+        "url": "https://www.viturealty.com/projects/vaikuntam-city",
+         "category": "Plotted Development"
       }
     ]
   };
