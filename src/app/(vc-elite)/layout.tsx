@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import ScrollToTopButton from "@/components/Common/ScrollToTopButton";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+
+gsap.registerPlugin(ScrollTrigger);
 const Loader = dynamic(() => import("../../components/loader"), { ssr: false });
 
 export default function RootLayout({
@@ -25,42 +26,41 @@ export default function RootLayout({
       setShowLoader(false); // Don't show loader for thank-you pages
       return;
     }
-  
+
     setShowLoader(true);
     const timeout = setTimeout(() => {
       setShowLoader(false);
     }, 2500);
-  
+
     return () => clearTimeout(timeout);
   }, [pathname]);
-  
-useEffect(() => {
-  const setAppHeight = () => {
-    document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
-  };
-  setAppHeight();
-  window.visualViewport?.addEventListener("resize", setAppHeight);
-  return () => window.visualViewport?.removeEventListener("resize", setAppHeight);
-}, []);
+
+  useEffect(() => {
+    const setAppHeight = () => {
+      document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+    };
+    setAppHeight();
+    window.visualViewport?.addEventListener("resize", setAppHeight);
+    return () => window.visualViewport?.removeEventListener("resize", setAppHeight);
+  }, []);
 
 
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    ScrollTrigger.normalizeScroll(true); // smooth momentum handling iOS
-    ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
-  }
-}, []);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      ScrollTrigger.normalizeScroll(true); // smooth momentum handling iOS
+      ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
+    }
+  }, []);
 
 
   return (
     <>
       {/* ✅ Loader always shows first regardless of route */}
       <div
-        className={`fixed inset-0 bg-[#F3EAE1] z-[9999999] flex justify-center items-center transition-opacity duration-700 ${
-          showLoader
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-[#F3EAE1] z-[9999999] flex justify-center items-center transition-opacity duration-700 ${showLoader
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+          }`}
       >
         <Loader />
       </div>
@@ -71,7 +71,7 @@ useEffect(() => {
         {/* <WhatsappChatWidget /> */}
 
         {/* ✅ Show appropriate footer based on path */}
-      
+
       </div>
     </>
   );

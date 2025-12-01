@@ -4,12 +4,12 @@ const BASE_URL = "https://www.viturealty.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
-  // 1. DEFINE YOUR PRIORITY PAGE (ELITE)
+  // 1. PRIORITY PAGE - ELITE (Flagship Project)
   const eliteLandingPage = {
     url: `${BASE_URL}/elite`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 1.0, // MAX PRIORITY (Same as homepage)
+    changeFrequency: "daily" as const, // More frequent updates signal importance
+    priority: 1.0, // MAX PRIORITY
   };
 
   // 2. Standard Static pages
@@ -28,12 +28,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
+  // 3. Secondary Project - Vaikuntam City (Lower priority than Elite)
+  const vaikuntamCityPage = {
+    url: `${BASE_URL}/vaikuntamcity`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9, // Lower than Elite
+  };
 
-  // 4. Fetch articles
- 
-
-  // Return Elite page FIRST in the array
-  return [eliteLandingPage, ...staticRoutes];
+  // Return Elite page FIRST, then homepage/static routes, then Vaikuntam City
+  return [eliteLandingPage, ...staticRoutes, vaikuntamCityPage];
 }
 
 

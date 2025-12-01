@@ -1,9 +1,9 @@
-
 "use client";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "@/components/ElitePageComponents/HeroBanner/Hero";
 import React, { useEffect } from "react";
+import Head from "next/head";
 import herobg from "../../../../public/images/vaikuntamCityEliteLandingPage/Hero (5).webp";
 import herobgMobile from "../../../../public/images/vaikuntamCityEliteLandingPage/hero-bg1.webp";
 import EliteNavbar2 from "@/components/VaikuntamCityElite/Navbar/EliteNavbar-2";
@@ -183,13 +183,76 @@ const page = () => {
     };
   }, []);
 
-    const handleClick = () => {
+  const handleClick = () => {
     sessionStorage.setItem("eliteFormTitle", "DOWNLOAD E-BROCHURE");
     window.dispatchEvent(new Event("storageChange")); // Custom event
   };
 
   return (
     <div className="bg-[#F3EAE1] overflow-hidden">
+      {/* ============= SEO Metadata ============= */}
+      <Head>
+        <title>Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty</title>
+        <meta
+          name="description"
+          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
+        />
+        <link rel="canonical" href="https://www.viturealty.com/elite" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty" />
+        <meta
+          property="og:description"
+          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
+        />
+        <meta property="og:url" content="https://www.viturealty.com/elite" />
+        <meta property="og:site_name" content="Vitu-Realty" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Vaikuntam City Elite - Luxury Villa Plots in Mangaluru" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty" />
+        <meta
+          name="twitter:description"
+          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
+        />
+        <meta
+          name="twitter:image"
+          content="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
+        />
+      </Head>
+
+      {/* Breadcrumb Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.viturealty.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Vaikuntam City Elite",
+                item: "https://www.viturealty.com/elite",
+              },
+            ],
+          }),
+        }}
+      />
       <EliteNavbar2 />
       <Hero herobg={herobg} herobgMobile={herobgMobile} />
       <DesignedForLiving />
@@ -199,17 +262,17 @@ const page = () => {
       </div>
       <ProximitySection />
       <div>
-      <GracefullyConnected />
+        <GracefullyConnected />
       </div>
       <div className="flex items-center z-50 justify-center mt-3 mb-20">
         <Link
           to="elitForm"
-           onClick={handleClick}
+          onClick={handleClick}
           className=" lg:inline-flex cursor-pointer items-center justify-center gap-2  mt-10 text-[#1C1213]  border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
         >
           <AnimatedConicButton theme="light" className=" !text-[#1C1213] lg:font-medium lg:font-freightNeoMedium md:flex !bg-none">
             <span className="flex gap-2 items-center">
-          DOWNLOAD BROCHURE{" "}
+              DOWNLOAD BROCHURE{" "}
               <svg width="17" height="16" className="mt-[3.5px]" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.999472 7.00488L8.69482 14.6239L16.3911 7.00488" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10" />
                 <path d="M8.6958 14.6222L8.6958 0.375977" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10" />
