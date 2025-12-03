@@ -56,6 +56,7 @@ export default function EliteForm() {
       userType: "", // This value can be passed as a prop or defined as needed.
     };
 
+
     try {
       router.push("/elite/thank-you");
       await handleFormSubmitVCE(payload);
@@ -201,7 +202,7 @@ export default function EliteForm() {
                 placeholder="FULL NAME"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="bg-transparent border-b border-white/0 focus:border-white outline-none py-2 placeholder-white/70 w-full"
+                className="bg-transparent border-b border-white/0 focus:border-white md:placeholder:text-base placeholder:text-sm outline-none py-2 placeholder-white/70 w-full"
               />
               <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#F3EAE1CC] origin-left scale-x-0"></span>
               <span className="spark absolute left-0 bottom-0 h-[6px] w-[6px] rounded-full bg-[#F3EAE1] opacity-0"></span>
@@ -216,7 +217,7 @@ export default function EliteForm() {
                 placeholder="EMAIL ADDRESS"
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-transparent border-b border-white/0 focus:border-white outline-none py-2 placeholder-white/70 w-full"
+                className="bg-transparent border-b border-white/0 focus:border-white outline-none md:placeholder:text-base placeholder:text-sm py-2 placeholder-white/70 w-full"
               />
               <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#F3EAE1CC] origin-left scale-x-0"></span>
               <span className="spark absolute left-0 bottom-0 h-[6px] w-[6px] rounded-full bg-[#F3EAE1] opacity-0"></span>
@@ -231,53 +232,67 @@ export default function EliteForm() {
                 placeholder="PHONE NUMBER"
                 value={formData.phone}
                 onChange={handleChange}
-                className="bg-transparent border-b border-white/0 focus:border-white outline-none py-2 placeholder-white/70 w-full"
+                className="bg-transparent border-b border-white/0 focus:border-white md:placeholder:text-base placeholder:text-sm outline-none py-2 placeholder-white/70 w-full"
               />
               <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#F3EAE1CC] origin-left scale-x-0"></span>
               <span className="spark absolute left-0 bottom-0 h-[6px] w-[6px] rounded-full bg-[#F3EAE1] opacity-0"></span>
             </div>
 
             {/* Dropdown – full width */}
-            <div className="relative dropdown-wrapper ">
-              <div
-                className="bg-transparent border-b border-white/0 py-2 cursor-pointer flex justify-between items-center"
-                onClick={() => setOpenDropdown((prev) => !prev)}
-              >
-                <span className={formData.plotOrientation ? "text-white" : "text-white/70"}>
-                  {formData.plotOrientation || "PREFERRED PLOT ORIENTATION"}
-                </span>
-                <svg
-                  className={`w-4 h-4 transform transition-transform ${openDropdown ? "rotate-180" : "rotate-0"}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#F3EAE1CC] origin-left scale-x-0 dropdown-border"></span>
-              <span className="spark absolute left-0 bottom-0 h-[6px] w-[6px] rounded-full bg-[#F3EAE1] opacity-0"></span>
+ <div className="relative dropdown-wrapper">
 
-              {openDropdown && (
-                <div className="absolute left-0 mt-2 w-full bg-white text-black rounded-md shadow-lg z-10">
-                  {["Signature Plots", "Sunrise Plots", "Sunset Plots"].map((option) => (
-                    <div
-                      key={option}
-                      onClick={() => {
-                        setFormData((prev) => ({
-                          ...prev,
-                          plotOrientation: option.toLowerCase(),
-                        }));
-                        setOpenDropdown(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+  <input
+    type="text"
+    required
+    value={formData.plotOrientation || ""}
+    placeholder="PREFERRED PLOT ORIENTATION"
+    onClick={() => setOpenDropdown(prev => !prev)}
+    
+    // BLOCK TYPING but allow required validation
+    onKeyDown={(e) => e.preventDefault()}
+    
+    className={`bg-transparent border-b border-white/0 outline-none placeholder-white/70 md:placeholder:text-base placeholder:text-sm py-2 cursor-pointer w-full 
+      ${formData.plotOrientation ? "text-white" : "text-white/70"}`}
+  />
+
+  {/* underline animations */}
+  <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#F3EAE1CC] origin-left scale-x-0 dropdown-border"></span>
+  <span className="spark absolute left-0 bottom-0 h-[6px] w-[6px] rounded-full bg-[#F3EAE1] opacity-0"></span>
+
+  {/* icon */}
+  <svg
+    className={`w-4 h-4 transform transition-transform absolute right-0 top-1/2 -translate-y-1/2 
+      ${openDropdown ? "rotate-180" : "rotate-0"}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+
+  {/* dropdown */}
+  {openDropdown && (
+    <div className="absolute left-0 mt-2 w-full bg-white text-black rounded-md shadow-lg z-10">
+      {["Signature Plots", "Sunrise Plots", "Sunset Plots"].map(option => (
+        <div
+          key={option}
+          onClick={() => {
+            setFormData(prev => ({
+              ...prev,
+              plotOrientation: option.toLowerCase(),
+            }));
+            setOpenDropdown(false);
+          }}
+          className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+        >
+          {option}
+        </div>
+      ))}
+    </div>
+  )}
+</div> 
+
+
 
             {/* Submit + Checkbox – full width row */}
             <div className="flex flex-col md:flex-row col-span-1 md:col-span-2 mt-12 md:mt-24 lg:items-center justify-between gap-6 ">

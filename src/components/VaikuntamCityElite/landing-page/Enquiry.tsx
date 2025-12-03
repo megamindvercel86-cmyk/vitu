@@ -9,13 +9,14 @@ import { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import AnimatedHeading from "./AnimatedHeading";
 import { handleFormSubmitVCE } from "@/lib/functionHelpers";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface EnquiryProps {
   userType: "Home Buyer" | "Investor" | ""; // or make it optional if needed
 }
 export default function Enquiry({ userType }: EnquiryProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#F3EAE1] bg-transparent border-0 border-b border-[#F3EAE1] focus:outline-none text-xl placeholder:font-FreightNeoProNormal font-FreightNeoProNormal placeholder:text-[#F3EAE1]";
@@ -43,12 +44,13 @@ export default function Enquiry({ userType }: EnquiryProps) {
         .then(() => {
           formik.setFieldValue("prefferedPlotOrientation", "");
           resetForm();
-          if (userType === "Investor") {
-            router.push("/vaikuntam-city-elite/landing-page-1/thank-you");
-          } else {
-            router.push("/vaikuntam-city-elite/landing-page-2/thank-you");
-          }
-        })
+            const segments = pathname.split("/").filter(Boolean);
+      const landingPage = segments.pop(); 
+      // e.g., "landing-page", "landing-page-1", "landing-page-2"
+
+      // 🔥 Redirect dynamically
+      router.push(`/vaikuntam-city-elite/${landingPage}/thank-you`);
+    })
         .finally(() => {
           setIsLoading(false);
         });
@@ -102,7 +104,7 @@ export default function Enquiry({ userType }: EnquiryProps) {
                 type="number"
                 placeholder="Phone Number"
                 {...formik.getFieldProps("phone")}
-                className={inputBaseClass}
+                className={"w-full px-1 pb-[7px] text-[#F3EAE1] bg-transparent border-0 border-b border-[#F3EAE1] focus:outline-none placeholder:text-xl text-lg placeholder:font-FreightNeoProNormal !font-noraml placeholder:text-[#F3EAE1]"}
               />
               {formik.touched.phone && formik.errors.phone && (
                 <p className="text-red-500 text-sm">{formik.errors.phone}</p>

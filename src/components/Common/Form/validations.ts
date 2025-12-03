@@ -21,6 +21,8 @@ export const landingPageFormValidationSchema = Yup.object({
   phone: Yup.string()
     .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
     .required("Phone number is required"),
+     prefferedPlotOrientation: Yup.string()
+    .required("Please select a plot orientation"),
 });
 
 export const ProjectFormValidationSchema = Yup.object({
