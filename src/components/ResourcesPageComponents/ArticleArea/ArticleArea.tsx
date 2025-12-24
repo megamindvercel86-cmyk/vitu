@@ -25,6 +25,7 @@ interface Article {
   type: "primary" | "secondary" | string;
   fileUrl: string;
   subtitle: string;
+  contentHtml?: string;
   topTitle?: string; // Added missing properties
   topDescription?: string;
   middleTitle?: string;
@@ -67,36 +68,23 @@ export default function ArticleArea(): React.ReactElement {
     onFooterClick?: () => void;
     nextProjectTitle: string;
   }
-
+  console.log("Fetching blogs...");
   const CardContent = ({ cardId, data }: { cardId: number; data: Article[] }) => {
     const [currentCardId, setCurrentCardId] = useState(cardId);
     const [card, setCard] = useState<Article[]>([]);
 
-    let project:
-      | {
-          id: number;
-          fileUrl: string;
-          title: string;
-          description?: string;
-          subtitle?: string;
-          topTitle?: string;
-          topDescription?: string;
-          middleTitle?: string;
-          middlePoints?: string[];
-          middleTitle2?: string;
-          middlePoints2?: string[];
-        }
-      | undefined;
+    let project: Article | undefined;
 
     const fetchBlogs = async () => {
       try {
+        console.log("Fetching blogs...");
         const response = await fetch("/api/blogs");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
         const res = await response.json();
         const data = res.data;
-
+        console.log(data)
         setCard(data);
       } catch (error) {
         console.error("Failed to fetch team members", error);
@@ -116,58 +104,35 @@ export default function ArticleArea(): React.ReactElement {
     };
 
     const nextProject = data[(data.findIndex((project) => project.id === currentCardId) + 1) % data.length];
-
+    console.log(nextProject)
     return (
       <>
         {project && (
           <div key={"dummy-content"} data-lenis-prevent>
-          <Image
-            src={project.fileUrl || "/placeholder.svg"}
-            alt={nextProject?.title || "Card image"}
-            width={1042}
-            height={45}
-            className={cn("object-cover   h-[652px] w-full")}
-          />
-          <div className="p-4 md:p-10">
-            <Typography variant="h1" className="text-customBrown font-freightNeoMedium">
-              {project.title}
-            </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-3xl">
-              {project.subtitle}
-            </Typography>
-            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-              {project.topTitle}
-            </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl">
-              {project.topDescription}
-            </Typography>
-            {project.middlePoints&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-              {project.middleTitle}
-            </Typography>}
-            {project.middlePoints&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6 leading-10">
-              {project.middlePoints?.map((point, index) => (
-                <li key={index} className="pb-4">{point}</li>
-              ))}
-            </ul>}
-            {project.middleTitle2&&<Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-              {project.middleTitle2}
-            </Typography>}
-            {project.middleTitle2&&<ul className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl list-disc pl-6">
-              {project.middlePoints2?.map((point, index) => (
-                <li key={index} className="pb-4">{point}</li>
-              ))}
-            </ul>}
-            <Typography variant="h3" className="text-customBrown font-freightNeoMedium">
-              {project.topTitle}
-            </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] !text-xl">
-              {project.topDescription}
-            </Typography>
-      
-            <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
+            <Image
+              src={project.fileUrl || "/placeholder.svg"}
+              alt={nextProject?.title || "Card image"}
+              width={1042}
+              height={45}
+              className={cn("object-cover   h-[652px] w-full")}
+            />
+            <div className="p-4 md:p-10">
+              <Typography variant="h1" className="text-customBrown font-freightNeoMedium">
+                {project.title}
+              </Typography>
+              <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-8 !text-3xl">
+                {project.subtitle}
+              </Typography>
+
+              <div
+                className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
+                dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+              />
+
+              <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
+            </div>
           </div>
-        </div>
-      
+
         )}
       </>
     );
@@ -273,12 +238,12 @@ export default function ArticleArea(): React.ReactElement {
           </Swiper>
           <div className="flex items-center justify-between gap-4 lg:mt-[54px] xl:mt-[75px] mt-[36px]">
             <Link href="/insights" aria-label="View all insights">
-            
-            <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
+
+              <span className="font-FreightNeoProBold lg:text-2xl sm:text-base text-customBrown xl:text-[28px]">Explore More</span>
             </Link>
             <div className="flex gap-2">
               <button
-              aria-label="Previous Slide"
+                aria-label="Previous Slide"
                 onClick={() => swiperRef.current?.slidePrev()}
                 disabled={isNavigationDisabled}
                 className="relative z-[1] lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -286,7 +251,7 @@ export default function ArticleArea(): React.ReactElement {
                 <IconArrowNarrowLeft />
               </button>
               <button
-              aria-label="Next Slide"
+                aria-label="Next Slide"
                 onClick={() => swiperRef.current?.slideNext()}
                 disabled={isNavigationDisabled}
                 className="relative z-[1] lg:w-[36px] lg:h-[36px] w-[27px] h-[27px] rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"

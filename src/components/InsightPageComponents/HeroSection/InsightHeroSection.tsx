@@ -20,6 +20,7 @@ interface Article {
   type: "primary" | "secondary" | string;
   fileUrl: string;
   subtitle: string;
+  contentHtml?: string;
 }
 
 interface FooterProps {
@@ -107,7 +108,10 @@ export default function InsightHeroSection(): React.ReactElement {
               <Typography variant="h1" className="text-customBrown">
                 {project.title}
               </Typography>
-              <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">{project.description}</Typography>
+              <div
+                className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
+                dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+              />
               <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
             </div>
           </div>

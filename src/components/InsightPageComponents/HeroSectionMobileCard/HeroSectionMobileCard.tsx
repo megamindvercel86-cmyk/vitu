@@ -34,6 +34,7 @@ interface Card {
   role2?: string;
   name?: string;
   description?: string;
+  contentHtml?: string;
 }
 
 interface InfiniteCarouselProps {
@@ -85,8 +86,8 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
 
   const nextProject =
     data[
-      (data.findIndex((project) => project.id === currentCardId) + 1) %
-        data.length
+    (data.findIndex((project) => project.id === currentCardId) + 1) %
+    data.length
     ];
 
   return (
@@ -104,9 +105,10 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
             <Typography variant="h1" className="text-customBrown">
               {project.title}
             </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] !text-xl">
-              {project.description}
-            </Typography>
+            <div
+              className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
+              dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+            />
             <Footer
               onFooterClick={handleFooterClick}
               nextProjectTitle={nextProject?.title || ""}
@@ -135,25 +137,25 @@ const HeroSectionMobileCard: React.FC<InfiniteCarouselProps> = ({ cards, data })
 
   return (
     <>
-      
-        {cards?.map((card) => (
-          <div key={card.id + 5} className="h-[50vh] pb-8 px-7">
-            <AppleStyleCardInsight
-              id={card.id + 5}
-              imageSrc={card.fileUrl}
-              expandedImageClassName="object-center"
-              bottomTitle={card.bottomTitle}
-              isViewMoreType={card.type}
-              title={card.title}
-              subtitle={card.subtitle}
-              category={card.category}
-              isViewMore={card.isViewMore}
-              content={data && <CardContent cardId={card.id} data={data} />}
-            />
-            <Typography variant="custom"> {card.name}</Typography>
-          </div>
-        ))}
-     
+
+      {cards?.map((card) => (
+        <div key={card.id + 5} className="h-[50vh] pb-8 px-7">
+          <AppleStyleCardInsight
+            id={card.id + 5}
+            imageSrc={card.fileUrl}
+            expandedImageClassName="object-center"
+            bottomTitle={card.bottomTitle}
+            isViewMoreType={card.type}
+            title={card.title}
+            subtitle={card.subtitle}
+            category={card.category}
+            isViewMore={card.isViewMore}
+            content={data && <CardContent cardId={card.id} data={data} />}
+          />
+          <Typography variant="custom"> {card.name}</Typography>
+        </div>
+      ))}
+
     </>
   );
 };

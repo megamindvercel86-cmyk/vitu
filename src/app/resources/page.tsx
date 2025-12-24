@@ -6,7 +6,7 @@ import MediaSection from "@/components/ResourcesPageComponents/MediaSection/Medi
 import MediaKit from "@/components/MediaKit/MediaKit";
 
 // ============= Types & Interfaces =============
-interface ResourcePageProps {}
+interface ResourcePageProps { }
 
 // ============= Constants =============
 const NAVBAR_CONFIG = {
@@ -65,7 +65,7 @@ export async function generateMetadata() {
  * 3. Media Content
  * 4. Media Kit Downloads
  */
-export default function ResourcePage({}: ResourcePageProps) {
+export default function ResourcePage({ }: ResourcePageProps) {
   return (
     <Layout
       navbarClassName={NAVBAR_CONFIG.className}

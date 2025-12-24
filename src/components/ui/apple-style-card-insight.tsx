@@ -117,7 +117,7 @@ export default function AppleStyleCardInsight({
           >
             <div className="relative h-auto "></div>
             <div className="">
-              <button 
+              <button
                 aria-label="Close Modal"
                 className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
@@ -170,6 +170,7 @@ export default function AppleStyleCardInsight({
           </motion.p>
         </div>
         <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute overflow-hidden  rounded-xl inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent z-20 pointer-events-none" />
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
             variant="custom"

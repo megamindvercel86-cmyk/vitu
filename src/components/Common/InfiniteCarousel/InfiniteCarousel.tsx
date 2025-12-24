@@ -32,6 +32,7 @@ interface Card {
   description?: string;
   description1?: string;
   description2?: string;
+  contentHtml?: string;
 }
 
 interface InfiniteCarouselProps {
@@ -53,7 +54,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle, pathFill, rextFill }) => {
-  
+
   return (
     <div className="bg-white rounded-b-xl lg:rounded-b-3xl pt-10 lg:pb-0">
       <hr className="w-full h-[2px] bg-[#BDBEC2]" />
@@ -79,7 +80,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle, pathFi
 };
 
 // Update the CardContent component to accept props
-const CardContent = ({ cardId, data, isDescription,textStyle, rextFill,pathFill  }: { isDescription:boolean,cardId: number; data: Card[]; textStyle: string; rextFill?: string; pathFill?: string }) => {
+const CardContent = ({ cardId, data, isDescription, textStyle, rextFill, pathFill }: { isDescription: boolean, cardId: number; data: Card[]; textStyle: string; rextFill?: string; pathFill?: string }) => {
   const [currentCardId, setCurrentCardId] = useState(cardId);
 
   let project = data.find((project) => project.id === currentCardId);
@@ -111,23 +112,11 @@ const CardContent = ({ cardId, data, isDescription,textStyle, rextFill,pathFill 
                 </span>
               ))}
             </Typography>
-            <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] text-base md:!text-xl">
-              {project?.description?.split("").map((char, index) => (
-                <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedMedium" : "font-freightNeoMedium"}`}>
-                  {char}
-                </span>
-              ))}
-            </Typography>
-            {isDescription&&<Typography className="text-[#04070799] font-FreightNeoProNormal pt-[20px] text-base md:!text-xl">
-              {project?.description2?.split("").map((char, index) => (
-                <span key={index} className={`${/\d/.test(char) ? "font-CandideCondensedMedium" : "font-freightNeoMedium"}`}>
-                  {char}
-                </span>
-              ))}
-            </Typography>}
-            
-            <Typography className="text-[#04070799] font-geistSerif  !text-base">{project?.description1}</Typography>
-            {!isDescription&&<Typography className="text-[#04070799] font-geistSerif pt-[20px] !text-base">{project?.description2}</Typography>}
+            <div
+              className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
+              dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+            />
+
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} pathFill={pathFill} rextFill={rextFill} />
           </div>
         </div>
@@ -136,7 +125,7 @@ const CardContent = ({ cardId, data, isDescription,textStyle, rextFill,pathFill 
   );
 };
 
-const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textStyle = "text-customBrown", controlButtonBg, iconColor ,isSustainable }) => {
+const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textStyle = "text-customBrown", controlButtonBg, iconColor, isSustainable }) => {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
 
   return (
@@ -184,7 +173,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
               subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
-              content={data && <CardContent  isDescription={isSustainable || false} pathFill={controlButtonBg} rextFill={iconColor} cardId={card.id} data={data} textStyle={textStyle} />}
+              content={data && <CardContent isDescription={isSustainable || false} pathFill={controlButtonBg} rextFill={iconColor} cardId={card.id} data={data} textStyle={textStyle} />}
             />
             <Typography variant="custom"> {card.name}</Typography>
           </SwiperSlide>

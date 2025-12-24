@@ -11,13 +11,13 @@ import { cn } from "@/lib/utils";
 // ============= Constants =============
 const CONTENT = {
   badge: "BLOG",
-  title: "Is it Really worth it?",
-  description: "Is real estate investment worth it? We break down the pros, cons and key considerations to help you decide.",
+  title: "Foundations for the Future",
+  description: "Building Sustainably for a Better Tomorrow.",
   cta: "Read Now",
 };
 
 const BACKGROUND = {
-  image: "/images/backgroundImages/resourcesPageBackground.png",
+  image: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/videos%2FVID-20251217-WA0005.mp4?alt=media&token=82a57d0b-a02c-40ad-821e-b29674a0285a",
 };
 
 /**
@@ -37,54 +37,63 @@ const BACKGROUND = {
  * @returns {React.ReactElement} The HeroBanner component
  */
 
-const project = {
-  fileUrl: "/images/backgroundImages/resourcesPageBackground.png",
-  title: "Real Estate Trends in Mangalore",
-  subtitle: "What’s Shaping the Market in 2025",
+interface Point {
+  title: string;
+  description1: string;
+  description2?: string;
+  contentHtml?: string;
+}
+
+const project: {
+  fileUrl: string;
+  title: string;
+  subtitle: string;
+  topTitle: string;
+  topDescription: string;
+  points: Point[];
+} = {
+  fileUrl: "/images/resources.webp",
+  title: "Foundations for the Future",
+  subtitle: "Building Sustainably for a Better Tomorrow",
   topTitle: "",
   topDescription:
-    "Mangalore, a coastal gem in Karnataka, is rapidly transforming into a real estate hub. With its balanced blend of urban infrastructure, natural beauty, and cultural depth, the Mangalore real estate market is attracting homebuyers, NRIs, and investors alike. As 2025 unfolds, new patterns are emerging that are reshaping property investment in this vibrant city.",
+    "At Vitu Realty, we believe that the future of real estate lies not only in the structures we create but in the positive impact they have on the environment and the communities they serve. Sustainability is more than just a buzzword—it’s a guiding principle that informs every aspect of our building practices. As we move into the future, it is our responsibility to ensure that the properties we develop and the spaces we design are both environmentally friendly and future-ready.",
   points: [
     {
-      title: "Plotted Developments Are in Demand",
+      title: "Why Sustainable Building Matters",
       description1:
-        "One of the biggest shifts in Mangalore’s property market is the rising demand for plots for sale in Mangalore. Buyers are increasingly preferring plotted developments over apartments, especially in suburban zones like Surathkal, Talapady and Kulshekar.",
-      description2:
-        "Plots offer flexibility, long-term value and lower maintenance costs making them an attractive choice for both investors and end users. With approvals from MUDA and RERA in place, plotted layouts are also gaining trust among first-time buyers.",
+        "Sustainable building is not a trend—it is a necessity. The growing demand for energy-efficient, eco-friendly properties reflects a shift in consumer preferences and an increasing awareness of our collective responsibility to the planet. As the world faces climate challenges, the construction industry has a crucial role to play in reducing carbon footprints, conserving resources, and promoting environmental stewardship. By embracing sustainable building practices, we not only reduce negative environmental impacts but also create healthier, more efficient living and working spaces for generations to come.",
     },
     {
-      title: "Gated Communities and Lifestyle Living",
+      title: "The Core Principles of Sustainable Building",
       description1:
-        "Modern homebuyers are prioritizing security, amenities, and community living. As a result, there’s a surge in gated communities in Mangalore featuring 24x7 surveillance, landscaped parks, clubhouses, and smart infrastructure.",
-      description2:
-        "Developers are investing in premium features like rainwater harvesting, solar lighting, and fiber connectivity, making these projects not just homes, but complete lifestyle experiences.",
+        "At Vitu Realty, our commitment to sustainability begins with a holistic approach to development. Our building practices integrate:",
+      contentHtml: `<ul>
+  <li style="margin-bottom:16px; font-size:18px;">
+    <strong>Energy Efficiency:</strong> From the design phase to construction, we prioritize energy-efficient systems and materials. This includes maximizing natural light, installing high-efficiency HVAC systems, and incorporating renewable energy sources like solar panels.
+  </li>
+  <li style="margin-bottom:16px; font-size:18px;">
+    <strong>Sustainable Materials:</strong> We choose materials that are renewable, durable, and responsibly sourced. From recycled materials to low-impact, non-toxic finishes, our buildings reflect our commitment to reducing waste and conserving resources.
+  </li>
+  <li style="margin-bottom:16px; font-size:18px;">
+    <strong>Water Conservation:</strong> Our properties are designed with water-saving technologies that minimize waste and optimize usage, contributing to lower utility bills and environmental preservation.
+  </li>
+  <li style="margin-bottom:16px; font-size:18px;">
+    <strong>Waste Reduction:</strong> During construction, we implement strategies to reduce, reuse, and recycle waste, ensuring less material ends up in landfills and supporting a more sustainable building process.
+  </li>
+  <li style="font-size:18px;">
+    <strong>Indoor Environmental Quality:</strong> Sustainability also means improving occupant health and well-being. We use low-VOC paints, efficient air filtration systems, and proper ventilation to promote clean air and overall wellness.
+  </li>
+</ul>`,
     },
     {
-      title: "Coastal Appeal Driving NRI Investment",
+      title: "",
       description1:
-        "Thanks to its scenic coastline and peaceful atmosphere, Mangalore continues to attract NRI investors and retirees looking for second homes. Areas closer to the coast like NITK, Panambur, Ullal and Someshwara are seeing increasing interest for vacation villas, holiday homes, and resale-ready plots.",
-      description2:
-        "With the Mangalore International Airport improving its connectivity, overseas buyers now see the city as a convenient and cost-effective alternative to Goa or Kerala.",
-    },
-    {
-      title: "Affordable Investment Opportunities",
-      description1:
-        "Compared to metros like Bangalore or Chennai, real estate in Mangalore is still affordable. Whether it’s a small residential plot or a commercial property, the city offers attractive price points and good ROI potential. For budget-conscious buyers or young families, Mangalore presents an opportunity to own land in a growing city without breaking the bank.",
-    },
-    {
-      title: "Sustainable and Smart Living Projects",
-      description1:
-        "As environmental awareness grows, Mangalore’s developers are focusing on green buildings, eco-friendly layouts, and smart homes. Projects offering sustainable features are becoming selling points, especially among younger and environmentally conscious buyers and investors.",
-    },
-    {
-      title: "Why Mangalore is Worth Watching",
-      description1:
-        "If you're considering investing in property in Mangalore, 2025 offers an ideal window. From plotted developments to lifestyle communities and NRI-friendly projects, the city is geared for long-term growth. With robust infrastructure and competitive pricing, Mangalore real estate trends show strong potential for both capital appreciation and peaceful living.",
-      description2:
-        "Whether you're buying your first plot, upgrading your home, or planning a retirement getaway, Mangalore offers options that align with your needs and budget.",
+        "At Vitu Realty, we understand that building sustainably is not just about constructing buildings—it’s about building a better tomorrow. By embracing sustainable practices, we are helping to shape a world where both the environment and its inhabitants thrive in harmony. As we move forward, we remain dedicated to creating properties that are as kind to the planet as they are to those who inhabit them. Together, we can build the foundations for a more sustainable future—one project at a time.",
     },
   ],
 };
+
 
 export default function HeroBanner(): React.ReactElement {
   // ============= Render Helpers =============
@@ -144,8 +153,20 @@ export default function HeroBanner(): React.ReactElement {
   return (
     <>
       <div className="relative h-[35.5rem] sm:h-[35.5rem] lg:h-[100vh] lg2:h-[100vh] xl:h-[100vh]">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("${BACKGROUND.image}")` }} />
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={BACKGROUND.image} type="video/mp4" />
+        </video>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
         {/* Content Container */}
         <div className="relative h-full flex items-end pb-8 lg2:pb-24">
@@ -205,14 +226,24 @@ export default function HeroBanner(): React.ReactElement {
                       <Typography className="text-[#04070799] font-FreightNeoProNormal pt-[10px] pb-10 !text-xl">{project.topDescription}</Typography>
                       {project.points.map((point, index) => (
                         <div key={index} className="mb-8">
-                          <Typography variant="h3" className="font-freightNeoMedium text-xl md:text-2xl text-customBrown mb-2">
-                            {point.title}
-                          </Typography>
+                          {point.title && (
+                            <Typography variant="h3" className="font-freightNeoMedium text-xl md:text-2xl text-customBrown mb-2">
+                              {point.title}
+                            </Typography>
+                          )}
                           {point.description1 && (
                             <Typography className="text-[#04070799] font-FreightNeoProNormal text-base md:text-lg mb-2">
                               {point.description1}
                             </Typography>
                           )}
+                          {/* @ts-ignore */}
+                          {point.contentHtml && (
+                            <div
+                              className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
+                              dangerouslySetInnerHTML={{ __html: point.contentHtml }}
+                            />
+                          )}
+                          {/* @ts-ignore */}
                           {point.description2 && (
                             <Typography className="text-[#04070799] font-FreightNeoProNormal text-base md:text-lg">{point.description2}</Typography>
                           )}

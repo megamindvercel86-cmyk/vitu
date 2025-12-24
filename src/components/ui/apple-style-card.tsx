@@ -173,6 +173,7 @@ export default function AppleStyleCard({
           </motion.p>
         </div>
         <BlurImage src={imageSrc || "/placeholder.svg"} alt={title || "Card image"} fill className="object-cover absolute z-10 inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent z-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent z-20" />
         <div className="absolute bottom-4 md:left-8 left-4 z-50">
           <Typography
