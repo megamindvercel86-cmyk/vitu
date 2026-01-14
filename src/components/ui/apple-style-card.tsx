@@ -28,7 +28,9 @@ interface CardProps {
   bottomTitle?: string;
   isExpanded?: boolean;
   subtitle?: string;
+  onOpenChange?: (open: boolean) => void;
 }
+
 
 export default function AppleStyleCard({
   id,
@@ -49,6 +51,7 @@ export default function AppleStyleCard({
   isViewMoreType = "secondary",
   bottomTitle = "",
   isExpanded = true,
+  onOpenChange,
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,6 +64,10 @@ export default function AppleStyleCard({
       }
     };
 
+    if (onOpenChange) {
+      onOpenChange(isOpen);
+    }
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
@@ -71,7 +78,8 @@ export default function AppleStyleCard({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, onOpenChange]);
+
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {

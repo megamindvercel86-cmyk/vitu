@@ -7,6 +7,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+import { Autoplay, Navigation } from "swiper/modules";
 
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -180,6 +183,40 @@ export default function ArticleArea(): React.ReactElement {
   const [desktopCard, setDesktopCard] = useState<Article[]>([]);
   const isNavigationDisabled = desktopCard.length <= 3;
   const [mobileCard, setMobileCard] = useState<Article[]>([]); // Fixed typo and initialized as empty array
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer to detect when carousel is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Pause/Resume autoplay based on modal state and visibility
+  useEffect(() => {
+    if (swiperRef.current) {
+      if (isModalOpen || !isInView) {
+        swiperRef.current.autoplay?.stop();
+      } else {
+        swiperRef.current.autoplay?.start();
+      }
+    }
+  }, [isModalOpen, isInView]);
 
   const fetchBlogs = async () => {
     try {
@@ -206,7 +243,7 @@ export default function ArticleArea(): React.ReactElement {
   }, []);
 
   return (
-    <div className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
+    <div ref={containerRef} className=" 2xl:w-full xl:max-w-[1380px] 2xl:max-w-[2000px] xl:mx-auto lg:max-w-[1244px]  lg:mx-auto lg:px-2">
       <main className="lg:pt-[94px] xl:pt-[117px] pt-[59px]">
         {/* Header Section */}
         {renderHeader()}
@@ -217,6 +254,11 @@ export default function ArticleArea(): React.ReactElement {
             spaceBetween={30}
             slidesPerView={3}
             loop={true}
+            modules={[Autoplay, Navigation]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -231,6 +273,7 @@ export default function ArticleArea(): React.ReactElement {
                   imageSrc={card.fileUrl}
                   expandedImageClassName="object-center"
                   content={<CardContent cardId={card.id} data={desktopCard} />}
+                  onOpenChange={setIsModalOpen}
                   isViewMoreType={card.type}
                 />
               </SwiperSlide>

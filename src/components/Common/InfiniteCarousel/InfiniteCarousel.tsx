@@ -127,9 +127,43 @@ const CardContent = ({ cardId, data, isDescription, textStyle, rextFill, pathFil
 
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textStyle = "text-customBrown", controlButtonBg, iconColor, isSustainable }) => {
   const swiperRef = useRef<SwiperType | undefined>(undefined);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer to detect when carousel is in view
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Pause/Resume autoplay based on modal state and visibility
+  React.useEffect(() => {
+    if (swiperRef.current) {
+      if (isModalOpen || !isInView) {
+        swiperRef.current.autoplay?.stop();
+      } else {
+        swiperRef.current.autoplay?.start();
+      }
+    }
+  }, [isModalOpen, isInView]);
 
   return (
-    <>
+    <div ref={containerRef}>
       <Swiper
         modules={[EffectCoverflow, Autoplay, Navigation]}
         navigation={{
@@ -154,10 +188,11 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
           slideShadows: true,
         }}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           pauseOnMouseEnter: true,
           disableOnInteraction: false,
         }}
+
         className="mySwiper"
       >
         {cards?.map((card, index) => (
@@ -173,8 +208,10 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
               subtitle={card.subtitle}
               category={card.category}
               isViewMore={card.isViewMore}
+              onOpenChange={setIsModalOpen}
               content={data && <CardContent isDescription={isSustainable || false} pathFill={controlButtonBg} rextFill={iconColor} cardId={card.id} data={data} textStyle={textStyle} />}
             />
+
             <Typography variant="custom"> {card.name}</Typography>
           </SwiperSlide>
         ))}
@@ -198,8 +235,9 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
           </button>
         </div> */}
       </div>
-    </>
+    </div>
   );
 };
+
 
 export default InfiniteCarousel;

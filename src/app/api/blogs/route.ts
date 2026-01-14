@@ -8,7 +8,14 @@ export async function GET(req: NextRequest) {
     const blogs = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    }));
+    })) as any[];
+
+    // Sort blogs by createdAt descending, handling missing fields
+    blogs.sort((a, b) => {
+      const timeA = a.createdAt?.seconds || 0;
+      const timeB = b.createdAt?.seconds || 0;
+      return timeB - timeA;
+    });
 
     return NextResponse.json({ data: blogs }, { status: 200 });
   } catch (error) {
@@ -19,3 +26,5 @@ export async function GET(req: NextRequest) {
     );
   }
 }
+
+
