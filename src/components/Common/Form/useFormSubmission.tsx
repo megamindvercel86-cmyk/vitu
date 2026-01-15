@@ -60,38 +60,38 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       const filteredValues =
         page === "General Enquire"
           ? {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            comments: values.comments,
+            whatsapp: values.whatsapp,
+            createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
+          }
+          : page === "Project Enquire" || page === "Vaikuntam City Elite"
+            ? {
               fullName: values.fullName,
               email: values.email,
               phone: values.phone,
-              comments: values.comments,
+              project: "Vaikuntam City Elite",
               whatsapp: values.whatsapp,
+              interstedIn: values.option,
               createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
             }
-          : page === "Project Enquire" || page === "Vaikuntam City Elite"
-            ? {
-                fullName: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                project: "Vaikuntam City Elite",
-                whatsapp: values.whatsapp,
-                interstedIn: values.option,
-                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-              }
             : {
-                fullName: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                postionAppliedFor: values.option,
-                resumeUrl,
-                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-              };
+              fullName: values.fullName,
+              email: values.email,
+              phone: values.phone,
+              postionAppliedFor: values.option,
+              resumeUrl,
+              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
+            };
 
       const collectionRef = collection(db, collectionName);
       console.log(collectionRef, filteredValues);
       await addDoc(collectionRef, filteredValues);
 
-      if(page==="General Enquire"||page==="Project Enquire"){
-            await fetch("/api/send-whatsapp-vitu", {
+      if (page === "General Enquire" || page === "Project Enquire") {
+        await fetch("/api/send-whatsapp-vitu", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -110,11 +110,11 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         router.push("/project-enquire/thank-you");
         return
       }
-       if (page === "Career Application") {
+      if (page === "Career Application") {
         router.push("/career-application/thank-you");
         return
       }
-          if (page === "General Enquire") {
+      if (page === "General Enquire") {
         router.push("/general-enquire/thank-you");
         return
       }
@@ -123,6 +123,22 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
       });
+
+      // Accelr Webhook Integration
+      try {
+        await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...filteredValues,
+            formName: page,
+            source: "website",
+            resumeUrl: resumeUrl || undefined,
+          }),
+        });
+      } catch (webhookError) {
+        console.error("Accelr Webhook Error:", webhookError);
+      }
 
       toast.success(
         <div style={{ display: "flex", alignItems: "center", gap: "12px", position: "relative", width: "100%", height: "100px" }}>

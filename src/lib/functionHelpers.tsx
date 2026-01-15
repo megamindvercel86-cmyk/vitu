@@ -49,9 +49,9 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
   try {
     // 1️⃣ Send to Google Script (Sheet integration)
     const googleScriptUrl =
-      values.userType === "Investor"
+      (values.userType === "Investor"
         ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_INVESTOR
-        : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_HOME;
+        : process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_HOME) || "";
 
     await fetch(googleScriptUrl, {
       method: "POST",
@@ -86,7 +86,7 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
       body: JSON.stringify(emailPayload),
     });
 
-      await fetch("/api/send-whatsapp", {
+    await fetch("/api/send-whatsapp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -96,38 +96,57 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
     });
 
 
- 
 
-    
-  
+
+
+
 
     // 4️⃣ Send JSON to Pabbly Webhook
-    await fetch(
-      "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc",
-      {
+    try {
+      await fetch(
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            utm_term: utmData.utm_term,
+            utm_source: utmData.utm_source,
+            utm_medium: utmData.utm_medium,
+            utm_matchtype: utmData.utm_matchtype,
+            utm_content: utmData.utm_content,
+            utm_campaign: utmData.utm_campaign,
+            form_name: "Vaikuntam City Elite Form",
+            form_id: values.userType,
+            device: utmData.device,
+            campaign_id: utmData.campaign_id,
+            ad_id: utmData.ad_id,
+            ad_group_id: utmData.ad_group_id,
+            plots: values.option,
+            phone: values.phone,
+            name: values.fullName,
+            email: values.email,
+            additional_parameters: "",
+          }),
+        }
+      );
+    } catch (pabblyError) {
+      console.error("Pabbly Webhook Error:", pabblyError);
+    }
+
+    // 5️⃣ Accelr Webhook Integration
+    try {
+      await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          utm_term: utmData.utm_term,
-          utm_source: utmData.utm_source,
-          utm_medium: utmData.utm_medium,
-          utm_matchtype: utmData.utm_matchtype,
-          utm_content: utmData.utm_content,
-          utm_campaign: utmData.utm_campaign,
-          form_name: "Vaikuntam City Elite Form",
-          form_id: values.userType,
-          device: utmData.device,
-          campaign_id: utmData.campaign_id,
-          ad_id: utmData.ad_id,
-          ad_group_id: utmData.ad_group_id,
-          plots: values.option,
-          phone: values.phone,
-          name: values.fullName,
-          email: values.email,
-          additional_parameters: "",
+          ...payload,
+          formName: "Vaikuntam City Elite Form",
+          source: "website",
         }),
-      }
-    );
+      });
+    } catch (webhookError) {
+      console.error("Accelr Webhook Error:", webhookError);
+    }
 
     console.log("Form submitted successfully!");
   } catch (error) {

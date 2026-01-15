@@ -6,6 +6,9 @@ import dynamic from "next/dynamic";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import { db } from "@/firebase/firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-toastify";
 const Loader = dynamic(() => import("@/components/loader"), { ssr: false });
 export default function EnquirySection(): React.ReactElement {
   const [plots, setPlots] = useState<Array<string>>([]);
@@ -20,9 +23,40 @@ export default function EnquirySection(): React.ReactElement {
     validationSchema: GeneralFormValidationSchema,
 
     onSubmit: async (values, { resetForm }): Promise<void> => {
-      // Handle form submission logic here
-      console.log("Form submitted with values:", values);
-      resetForm();
+      setIsLoading(true);
+      try {
+        const payload = {
+          fullName: values.fullName,
+          email: values.email,
+          phone: values.phone,
+          interestedIn: plots,
+          project: "Vaikuntam City",
+          createdAt: serverTimestamp(),
+        };
+
+        const collectionRef = collection(db, "vaikuntamCityEnquiries");
+        await addDoc(collectionRef, payload);
+
+        // Accelr Webhook Integration
+        await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...payload,
+            formName: "Vaikuntam City Let's Explore",
+            source: "website",
+          }),
+        });
+
+        toast.success("Enquiry submitted successfully!");
+        resetForm();
+        setPlots([]);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        toast.error("Error submitting form. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     },
   });
 
@@ -144,11 +178,10 @@ export default function EnquirySection(): React.ReactElement {
                     }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${
-                    !formik.isValid || !formik.dirty
+                  className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${!formik.isValid || !formik.dirty
                       ? "opacity-50 cursor-not-allowed"
                       : ""
-                  }`}
+                    }`}
                 >
                   Submit
                 </Button>
@@ -178,11 +211,10 @@ export default function EnquirySection(): React.ReactElement {
                     }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${
-                    !formik.isValid || !formik.dirty
+                  className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${!formik.isValid || !formik.dirty
                       ? "opacity-50 cursor-not-allowed"
                       : ""
-                  }`}
+                    }`}
                 >
                   Submit
                 </Button>
