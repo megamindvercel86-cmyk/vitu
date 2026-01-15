@@ -5,7 +5,7 @@ import { IconX, IconChevronDown } from "@tabler/icons-react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import Loader from "@/components/LoaderComponent/LoaderComponent";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Animation variants
 const backdropVariants = {
@@ -69,7 +69,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
     interstedIn: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+  const searchParams = useSearchParams();
   // Validation logic
   const validateField = (name: string, value: string): string => {
     switch (name) {
@@ -136,7 +137,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
     if (validateForm()) {
       setIsLoading(true);
 
-      router.push("/vaikuntamcity/thank-you")
+      router.push("/vaikuntamcity/thank-you");
       try {
         const collectionRef = collection(db, "projectEnquiries");
         const dataWithTimestamp = {
@@ -159,14 +160,23 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
         });
 
         // Accelr Webhook Integration
+        const utmParams = {
+          utm_source: searchParams.get("utm_source") || "direct",
+          utm_medium: searchParams.get("utm_medium") || "",
+          utm_campaign: searchParams.get("utm_campaign") || "",
+          utm_term: searchParams.get("utm_term") || "",
+          utm_content: searchParams.get("utm_content") || "",
+        };
+
         try {
-          await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
+          await fetch("/api/accelr-webhook", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               ...formData,
               formName: "Project Enquiry Modal",
               source: "website",
+              ...utmParams,
             }),
           });
         } catch (webhookError) {
@@ -306,8 +316,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${touched.fullName && errors.fullName ? "border-red-500" : ""
-                        }`}
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
+                        touched.fullName && errors.fullName ? "border-red-500" : ""
+                      }`}
                       placeholder="Your Full Name"
                     />
                     {touched.fullName && errors.fullName && <p className="text-red-500 text-[18px] mt-1">{errors.fullName}</p>}
@@ -322,8 +333,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${touched.email && errors.email ? "border-red-500" : ""
-                        }`}
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
+                        touched.email && errors.email ? "border-red-500" : ""
+                      }`}
                       placeholder="Your Email"
                     />
                     {touched.email && errors.email && <p className="text-red-500 text-[18px] mt-1">{errors.email}</p>}
@@ -338,8 +350,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                       value={formData.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${touched.phone && errors.phone ? "border-red-500" : ""
-                        }`}
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
+                        touched.phone && errors.phone ? "border-red-500" : ""
+                      }`}
                       placeholder="Your Phone Number"
                     />
                     {touched.phone && errors.phone && <p className="text-red-500 text-[18px] mt-1">{errors.phone}</p>}
@@ -384,8 +397,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                       <button
                         type="button"
                         aria-label="Submit Form"
-                        className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg ? buttonBg : "bg-[#0C3E49]"}  text-white  rounded-full font-medium ${!isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
-                          }`}
+                        className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg ? buttonBg : "bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
+                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                        }`}
                         onClick={handleSubmit}
                         disabled={!isFormValid || isLoading}
                       >
@@ -421,8 +435,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
                       <button
                         type="button"
                         aria-label="Submit Form"
-                        className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg ? buttonBg : "bg-[#0C3E49]"} text-white rounded-full font-medium ${!isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
-                          }`}
+                        className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg ? buttonBg : "bg-[#0C3E49]"} text-white rounded-full font-medium ${
+                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                        }`}
                         onClick={handleSubmit}
                         disabled={!isFormValid || isLoading}
                       >

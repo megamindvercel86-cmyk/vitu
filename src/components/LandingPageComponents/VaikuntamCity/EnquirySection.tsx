@@ -10,7 +10,11 @@ import { db } from "@/firebase/firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 const Loader = dynamic(() => import("@/components/loader"), { ssr: false });
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function EnquirySection(): React.ReactElement {
+  const searchParams = useSearchParams();
+
   const [plots, setPlots] = useState<Array<string>>([]);
   const inputBaseClass =
     "w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-freightNeoMedium placeholder:text-[#04070799]";
@@ -38,15 +42,28 @@ export default function EnquirySection(): React.ReactElement {
         await addDoc(collectionRef, payload);
 
         // Accelr Webhook Integration
-        await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...payload,
-            formName: "Vaikuntam City Let's Explore",
-            source: "website",
-          }),
-        });
+        const utmParams = {
+          utm_source: searchParams.get("utm_source") || "direct",
+          utm_medium: searchParams.get("utm_medium") || "",
+          utm_campaign: searchParams.get("utm_campaign") || "",
+          utm_term: searchParams.get("utm_term") || "",
+          utm_content: searchParams.get("utm_content") || "",
+        };
+
+        try {
+          await fetch("/api/accelr-webhook", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...payload,
+              formName: "Vaikuntam City Let's Explore",
+              source: "website",
+              ...utmParams,
+            }),
+          });
+        } catch (webhookError) {
+          console.error("Accelr Webhook Error:", webhookError);
+        }
 
         toast.success("Enquiry submitted successfully!");
         resetForm();
@@ -80,9 +97,7 @@ export default function EnquirySection(): React.ReactElement {
           {plots.includes(label) && <FaCheck className="w-3 h-3 text-white" />}
         </div>
       </div>
-      <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">
-        {label}
-      </span>
+      <span className="text-base text-gray-600 text-customTextGray font-freightNeoMedium">{label}</span>
     </label>
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -108,29 +123,13 @@ export default function EnquirySection(): React.ReactElement {
           </h1>
           <form className="mt-8 lg:mt-12">
             <div>
-              <input
-                aria-label="Name"
-                type="text"
-                placeholder="Your Full Name"
-                {...formik.getFieldProps("fullName")}
-                className={inputBaseClass}
-              />
-              {formik.touched.fullName && formik.errors.fullName && (
-                <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
-              )}
+              <input aria-label="Name" type="text" placeholder="Your Full Name" {...formik.getFieldProps("fullName")} className={inputBaseClass} />
+              {formik.touched.fullName && formik.errors.fullName && <p className="text-red-500 text-sm">{formik.errors.fullName}</p>}
             </div>
 
             <div className="mt-[45px]">
-              <input
-                aria-label="Email"
-                type="email"
-                placeholder="Your Email"
-                {...formik.getFieldProps("email")}
-                className={inputBaseClass}
-              />
-              {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm">{formik.errors.email}</p>
-              )}
+              <input aria-label="Email" type="email" placeholder="Your Email" {...formik.getFieldProps("email")} className={inputBaseClass} />
+              {formik.touched.email && formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
             </div>
 
             <div className="mt-[45px]">
@@ -142,9 +141,7 @@ export default function EnquirySection(): React.ReactElement {
                 className="w-full px-1 pb-[7px] text-[#04070799] bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-xl placeholder:font-freightNeoMedium font-CandideCondensedMedium placeholder:text-[#04070799] 
       appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
               />
-              {formik.touched.phone && formik.errors.phone && (
-                <p className="text-red-500 text-sm">{formik.errors.phone}</p>
-              )}
+              {formik.touched.phone && formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
             </div>
             <div className="flex lg:items-center flex-col lg:flex-row lg:justify-between gap-2  mt-[25px] lg:flex-wrap">
               <CheckBox label="Premium Plots" />
@@ -178,10 +175,9 @@ export default function EnquirySection(): React.ReactElement {
                     }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${!formik.isValid || !formik.dirty
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                    }`}
+                  className={`lg:hidden block text-[26px] w-full lg:w-[146px] ${
+                    !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
                   Submit
                 </Button>
@@ -211,10 +207,9 @@ export default function EnquirySection(): React.ReactElement {
                     }
                   }}
                   disabled={isLoading || !formik.isValid || !formik.dirty}
-                  className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${!formik.isValid || !formik.dirty
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                    }`}
+                  className={`lg:block pb-[3px] hidden text-[26px] w-full lg:w-[146px] ${
+                    !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
                   Submit
                 </Button>

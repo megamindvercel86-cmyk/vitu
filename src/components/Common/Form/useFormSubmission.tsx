@@ -10,7 +10,7 @@ import { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "@/firebase/firebaseConfig";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const uploadToFirebaseStorage = async (file: File): Promise<string> => {
   const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`);
@@ -38,6 +38,15 @@ export interface FormValues {
 export const useFormSubmission = (page: string, callback?: () => void) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const utmParams = {
+    utm_source: searchParams.get("utm_source") || "direct",
+    utm_medium: searchParams.get("utm_medium") || "",
+    utm_campaign: searchParams.get("utm_campaign") || "",
+    utm_term: searchParams.get("utm_term") || "",
+    utm_content: searchParams.get("utm_content") || "",
+  };
+
   const handleFormSubmission = async (values: FormValues): Promise<void> => {
     console.log("butom clicked", values);
     let resumeUrl: string | null = null;
@@ -60,32 +69,50 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
       const filteredValues =
         page === "General Enquire"
           ? {
-            fullName: values.fullName,
-            email: values.email,
-            phone: values.phone,
-            comments: values.comments,
-            whatsapp: values.whatsapp,
-            createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-          }
+              fullName: values.fullName,
+              email: values.email,
+              phone: values.phone,
+              comments: values.comments,
+              whatsapp: values.whatsapp,
+              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
+              ...utmParams,
+            }
           : page === "Project Enquire" || page === "Vaikuntam City Elite"
             ? {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              project: "Vaikuntam City Elite",
-              whatsapp: values.whatsapp,
-              interstedIn: values.option,
-              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-            }
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                project: "Vaikuntam City Elite",
+                whatsapp: values.whatsapp,
+                interstedIn: values.option,
+                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
+                ...utmParams,
+              }
             : {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              postionAppliedFor: values.option,
-              resumeUrl,
-              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-            };
+                fullName: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                postionAppliedFor: values.option,
+                resumeUrl,
+                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
+                ...utmParams,
+              };
 
+               try {
+        await fetch("/api/accelr-webhook", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...filteredValues,
+            formName: page,
+            source: "website",
+            resumeUrl: resumeUrl || undefined,
+            ...utmParams,
+          }),
+        });
+      } catch (webhookError) {
+        console.error("Accelr Webhook Error:", webhookError);
+      }
       const collectionRef = collection(db, collectionName);
       console.log(collectionRef, filteredValues);
       await addDoc(collectionRef, filteredValues);
@@ -100,45 +127,32 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
           }),
         });
       }
-
-      if (page === "Vaikuntam City Elite") {
-        router.push("/vaikuntam-city-elite/pre-launch/thank-you");
-        return
-      }
-
-      if (page === "Project Enquire") {
-        router.push("/project-enquire/thank-you");
-        return
-      }
-      if (page === "Career Application") {
-        router.push("/career-application/thank-you");
-        return
-      }
-      if (page === "General Enquire") {
-        router.push("/general-enquire/thank-you");
-        return
-      }
-      await fetch("/api/sendEmail", {
+  await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
       });
+      if (page === "Vaikuntam City Elite") {
+        router.push("/vaikuntam-city-elite/pre-launch/thank-you");
+        return;
+      }
+
+      if (page === "Project Enquire") {
+        router.push("/project-enquire/thank-you");
+        return;
+      }
+      if (page === "Career Application") {
+        router.push("/career-application/thank-you");
+        return;
+      }
+      if (page === "General Enquire") {
+        router.push("/general-enquire/thank-you");
+        return;
+      }
+    
 
       // Accelr Webhook Integration
-      try {
-        await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...filteredValues,
-            formName: page,
-            source: "website",
-            resumeUrl: resumeUrl || undefined,
-          }),
-        });
-      } catch (webhookError) {
-        console.error("Accelr Webhook Error:", webhookError);
-      }
+     
 
       toast.success(
         <div style={{ display: "flex", alignItems: "center", gap: "12px", position: "relative", width: "100%", height: "100px" }}>
@@ -209,3 +223,4 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
 
   return { formik, isLoading };
 };
+

@@ -12,7 +12,7 @@ import { db } from "@/firebase/firebaseConfig";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -30,6 +30,7 @@ const Footer: FC = () => {
   const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
 
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
   const [email, setEmail] = useState<string>("");
 
@@ -42,14 +43,23 @@ const Footer: FC = () => {
         await addDoc(collectionRef, { email: emailValue, createdAt: serverTimestamp() });
 
         // Accelr Webhook Integration
+        const utmParams = {
+          utm_source: searchParams.get("utm_source") || "direct",
+          utm_medium: searchParams.get("utm_medium") || "",
+          utm_campaign: searchParams.get("utm_campaign") || "",
+          utm_term: searchParams.get("utm_term") || "",
+          utm_content: searchParams.get("utm_content") || "",
+        };
+
         try {
-          await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
+          await fetch("/api/accelr-webhook", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               email: emailValue,
               formName: "Newsletter Signup",
               source: "website",
+              ...utmParams,
             }),
           });
         } catch (webhookError) {
@@ -138,7 +148,9 @@ const Footer: FC = () => {
           <FooterLink href="/" ariaLabel="Go to homepage">
             <IoMdHome className="text-footerTextColor mb-[8px] lg:mb-0 xl:mb-0 text-lg" />
           </FooterLink>
-          <FooterLink className="!text-lg" href="/">Home</FooterLink>
+          <FooterLink className="!text-lg" href="/">
+            Home
+          </FooterLink>
           {mainPage && (
             <>
               <RiArrowRightSLine className="text-lg mb-[3px] lg:mb-0" />
@@ -167,8 +179,7 @@ const Footer: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Section 1: Company Branding */}
           <div className="flex flex-col items-center lg:items-start">
-            <Link href="/"
-              aria-label="Go to homepage">
+            <Link href="/" aria-label="Go to homepage">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </Link>
             {/* <p className="text-footerTextColor font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">
@@ -177,10 +188,7 @@ const Footer: FC = () => {
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <FooterLink href="#">Recognized by</FooterLink>
-              <Link
-                aria-label="Go to recognition page"
-
-                href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
+              <Link aria-label="Go to recognition page" href="https://www.daijiworld.com/news/newsDisplay?newsID=1245174" target="_blank">
                 <Image src={chieverslog} alt="chieverslog" width={148} height={82} className="mt-4" />
               </Link>
             </div>
@@ -214,7 +222,6 @@ const Footer: FC = () => {
               { href: "/elite", label: "Vaikuntam City ELITE" },
               { href: "/vaikuntamcity", label: "Vaikuntam City" },
               // { href: "/vilasam", label: "Vilasam" },
-
             ]}
             setQuickIsOpen={setProjectIsOpenIsOpen}
           />
@@ -344,7 +351,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
 
   return (
     <>
-      <li className={`flex lg:hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}>
+      <li
+        className={`flex lg:hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}
+      >
         <span className="flex items-center lg:hidden gap-3">
           {icon}
           <span className="lg:hidden text-[14px] font-freightNeoSemibold">{name}</span>
@@ -353,7 +362,9 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
           {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : "fdtext"}
         </Link>
       </li>
-      <li className={`lg:flex hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}>
+      <li
+        className={`lg:flex hidden md:flex-row flex-col text-footerTextColor align-middle ${isPincode && "lg:items-start 2xl:items-center"} items-center md:gap-0 gap-3`}
+      >
         {icon}
         <Link href={link} target="_blank" className="pl-4 text-center lg:text-left">
           {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : "fdtext"}
@@ -374,19 +385,23 @@ const FooterBottom: FC = () => (
         © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
       </p>
 
-
-
       <p className="text-[#FFFFFF66] mt-4  md:mt-0 text-xs text-center 2xl:text-xl md:text-left">
         Designed and Maintained by{" "}
-        <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="text-[#FFFFFF66] hover:underline text-xs text-center 2xl:text-xl md:text-left">
+        <a
+          href="https://megamind.studio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FFFFFF66] hover:underline text-xs text-center 2xl:text-xl md:text-left"
+        >
           Megamind Studios
         </a>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0 text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-
-        <a href="/terms-of-service"
+        <a
+          href="/terms-of-service"
           aria-label="Go to Terms of Service"
-          className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left font-freightNeoMedium">
+          className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left font-freightNeoMedium"
+        >
           Terms of Service
         </a>
       </div>
