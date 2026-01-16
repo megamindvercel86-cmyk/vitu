@@ -34,7 +34,7 @@ interface FormSectionProps {
  * 3. WhatsApp updates opt-in
  * 4. Firebase integration
  */
-export default function FormSection({ heading, subheading, page }: FormSectionProps) {
+const FormSectionContent = ({ heading, subheading, page }: FormSectionProps) => {
   // ============= Refs =============
   const selectRef = useRef<HTMLSelectElement>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -453,7 +453,7 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
                 </span>
               ) : (
                 <Button
-                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  onClick={async (e: React.MouseEvent<HTMLButtonButtonElement>) => {
                     e.preventDefault();
                     if (!formik.isValid || !formik.dirty) {
                       Object.keys(formik.values).forEach((field) => {
@@ -525,5 +525,13 @@ export default function FormSection({ heading, subheading, page }: FormSectionPr
         </div>
       </div>
     </div>
+  );
+};
+
+export default function FormSection(props: FormSectionProps) {
+  return (
+    <React.Suspense fallback={null}>
+      <FormSectionContent {...props} />
+    </React.Suspense>
   );
 }

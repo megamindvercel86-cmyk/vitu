@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import Button from "@/components/Common/Button";
 import { GeneralFormValidationSchema } from "@/components/Common/Form/validations";
@@ -12,7 +13,7 @@ import { toast } from "react-toastify";
 const Loader = dynamic(() => import("@/components/loader"), { ssr: false });
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function EnquirySection(): React.ReactElement {
+const EnquirySectionContent = (): React.ReactElement => {
   const searchParams = useSearchParams();
 
   const [plots, setPlots] = useState<Array<string>>([]);
@@ -219,5 +220,13 @@ export default function EnquirySection(): React.ReactElement {
         </div>
       </div>
     </section>
+  );
+};
+
+export default function EnquirySection() {
+  return (
+    <React.Suspense fallback={null}>
+      <EnquirySectionContent />
+    </React.Suspense>
   );
 }

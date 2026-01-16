@@ -24,7 +24,7 @@ import { motion, AnimatePresence } from "framer-motion";
  * - Contact information & newsletter
  * - Copyright and legal links
  */
-const Footer: FC = () => {
+const FooterContent: FC = () => {
   const [quickIsOpen, setQuickIsOpen] = useState<boolean>(false);
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
   const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
@@ -279,6 +279,10 @@ const Footer: FC = () => {
       <FooterBottom />
     </footer>
   );
+};
+
+const Footer: FC = () => {
+  return React.createElement(React.Suspense, { fallback: null }, React.createElement(FooterContent, null));
 };
 
 const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (

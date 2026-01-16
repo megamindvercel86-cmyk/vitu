@@ -36,7 +36,7 @@ interface ContactFormModalProps {
   downloadFileLink?: string;
 }
 
-const ContactFormModal: React.FC<ContactFormModalProps> = ({
+const ContactFormContent: React.FC<ContactFormModalProps> = ({
   textColor,
   downloadFileLink = "/downloadingFiles/VC brochure.pdf",
   peerBg,
@@ -460,4 +460,10 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
   );
 };
 
-export default ContactFormModal;
+export default function ContactFormModal(props: ContactFormModalProps) {
+  return (
+    <React.Suspense fallback={null}>
+      <ContactFormContent {...props} />
+    </React.Suspense>
+  );
+}
