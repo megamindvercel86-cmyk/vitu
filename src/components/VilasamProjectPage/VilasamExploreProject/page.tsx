@@ -20,7 +20,7 @@ interface Card {
   width?: string;
   height?: string;
   fileUrl?: string;
-  title?:string;
+  title?: string;
 }
 
 const CARDS_DATA: Card[] = [
@@ -32,9 +32,9 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"24x7 Gated Security"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px]  llg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "24x7 Gated Security"
   },
   {
     id: 2,
@@ -44,9 +44,9 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"50+ Blooming Trees"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[00px] lg2:h-[250px]",
+    height: "md:h-[180px]  lg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "50+ Blooming Trees"
   },
   {
     id: 4,
@@ -56,9 +56,9 @@ const CARDS_DATA: Card[] = [
     startPosition: { y: 100 },
     isViewMore: true,
     position: "left",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"Tiered/Relaxed Seating Zones"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px]  lg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "Tiered/Relaxed Seating Zones"
   },
   {
     id: 3,
@@ -68,9 +68,9 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"30 ft Wide Cobblestone-paved Roads"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px]  lg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "30 ft Wide Cobblestone-paved Roads"
   },
   {
     id: 5,
@@ -80,33 +80,33 @@ const CARDS_DATA: Card[] = [
     startPosition: { x: 100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px] lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"Solar-Powered Street Lights"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px]  lg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "Solar-Powered Street Lights"
   },
   {
     id: 30,
-    url: "/images/vilasamPageImages/broucherImages/6.webp",
-    fileUrl: "/images/vilasamPageImages/broucherImages/6.webp",
+    url: "/images/vilasamPageImages/broucherImages/7.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/7.webp",
     className: "absolute left-[42px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px]  lg:h-[250px] xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"Chromotheraphy Garden"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px] xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px]  lg:w-[200px] lg:h-[200px] xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "Chromotheraphy Garden"
   },
   {
     id: 31,
-    url: "/images/vilasamPageImages/broucherImages/7.webp",
-    fileUrl: "/images/vilasamPageImages/broucherImages/7.webp",
+    url: "/images/vilasamPageImages/broucherImages/6.webp",
+    fileUrl: "/images/vilasamPageImages/broucherImages/6.webp",
     className: "absolute xl:left-[70px] w-[348px] h-[435px] rounded-[20px] z-20",
     startPosition: { x: -100 },
     isViewMore: true,
     position: "right",
-    width: "md:w-[220px]  lg:w-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px]",
-    height: "md:h-[270px] lg:h-[250px]   xl:h-[350px] 2xl:h-[505px] lg2:h-[300px]",
-    title:"Kids Play Area"
+    width: "md:w-[180px]  lg:w-[200px] lg:h-[200px]  xl:w-[247px] 2xl:w-[418px]  lg2:w-[200px] lg2:h-[250px]",
+    height: "md:h-[180px] lg:w-[200px] lg:h-[200px]   xl:h-[300px] 2xl:h-[505px] lg2:w-[200px] lg2:h-[250px]",
+    title: "Kids Play Area"
   },
 ];
 
@@ -129,22 +129,22 @@ interface VilasamExploreProjectsProps {
 const VilasamExploreProjects: React.FC<VilasamExploreProjectsProps> = ({ homePage = false }) => {
   const textColor = homePage ? "text-customBrown" : "text-[#0C3E49]";
   const controlButtonBg = homePage ? "customBrown" : "[#0C3E49]";
-  const textStyle = homePage ? "font-freightNeoMedium" : "font-geistSerif";
+  const textStyle = homePage ? "font-freightNeoMedium" : "font-theSeasons";
   return (
     <>
       {/* Desktop Version */}
       <div className="md:block hidden relative z-0 overflow-hidden" id="explore" >
-        <ExpandableCards  cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg} textStyle={textStyle}/>
+        <ExpandableCards cards={CARDS_DATA} textColor={textColor} borderColor={controlButtonBg} textStyle={textStyle} />
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden block pb-5 " >
+      <div className="md:hidden block  " >
         {/* Mobile Title Section */}
         <div className={`w-full flex flex-col ${textColor} items-center justify-center text-center `}>
-          <Typography variant="custom" className={`text-2xl   font-geistSerif`}>
+          <Typography variant="custom" className={`text-2xl   font-theSeasons`}>
             A New Home,
           </Typography>
-          <Typography variant="custom" className="text-2xl  font-geistSerif">
+          <Typography variant="custom" className="text-2xl  font-theSeasons">
             A New Way of Life
           </Typography>
         </div>

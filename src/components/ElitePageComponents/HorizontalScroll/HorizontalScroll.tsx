@@ -39,16 +39,23 @@ export default function HorizontalScroll() {
       lineRef.current.setAttribute("width", sectionWidth.toString());
     }
 
+    // Optimize scrub for mobile - smoother on mobile devices
+    const isMobile = window.innerWidth < 1024;
     const tween = gsap.to(panels, {
       x: () => `-${totalWidth - sectionRef.current!.offsetWidth}px`,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
         pin: true,
-        scrub: 1,
+        scrub: isMobile ? 0.5 : 1, // Smoother scrub on mobile
         anticipatePin: 1,
         invalidateOnRefresh: true,
         end: () => "+=" + (totalWidth - sectionRef.current!.offsetWidth),
+        // Mobile optimizations
+        ...(isMobile && {
+          fastScrollEnd: true,
+          refreshPriority: -1,
+        }),
       },
     });
 
@@ -77,32 +84,42 @@ gsap.utils.toArray<HTMLElement>(".anim-img").forEach((img) => {
 });
 
 
-    // Sync handle with scroll progress
+    // Sync handle with scroll progress - optimized for mobile
+    let updateTicking = false;
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top top",
       fastScrollEnd: true,
       end: () => "+=" + (totalWidth - sectionRef.current!.offsetWidth),
       onUpdate: (self) => {
-        if (!dragging && handleRef.current && lineRef.current) {
-          const lineRect = lineRef.current.getBoundingClientRect();
-          const handleWidth = handleRef.current.offsetWidth;
-          const maxLeft = lineRect.width - handleWidth;
-          gsap.set(handleRef.current, { left: self.progress * maxLeft });
+        if (!dragging && handleRef.current && lineRef.current && !updateTicking) {
+          updateTicking = true;
+          requestAnimationFrame(() => {
+            const lineRect = lineRef.current!.getBoundingClientRect();
+            const handleWidth = handleRef.current!.offsetWidth;
+            const maxLeft = lineRect.width - handleWidth;
+            gsap.set(handleRef.current, { left: self.progress * maxLeft });
+            updateTicking = false;
+          });
         }
       },
     });
 
-    // Handle window resize
+    // Handle window resize - debounced for mobile
+    let resizeTimeout: NodeJS.Timeout;
     const refresh = () => {
-      if (lineRef.current && sectionRef.current) {
-        const sectionWidth = sectionRef.current.offsetWidth;
-        gsap.set(lineRef.current, { width: sectionWidth });
-        lineRef.current.setAttribute("width", sectionWidth.toString());
-        ScrollTrigger.refresh();
-      }
+      clearTimeout(resizeTimeout);
+      const isMobile = window.innerWidth < 1024;
+      resizeTimeout = setTimeout(() => {
+        if (lineRef.current && sectionRef.current) {
+          const sectionWidth = sectionRef.current.offsetWidth;
+          gsap.set(lineRef.current, { width: sectionWidth });
+          lineRef.current.setAttribute("width", sectionWidth.toString());
+          ScrollTrigger.refresh();
+        }
+      }, isMobile ? 250 : 100);
     };
-    window.addEventListener("resize", refresh);
+    window.addEventListener("resize", refresh, { passive: true });
 
     return () => {
       window.removeEventListener("resize", refresh);

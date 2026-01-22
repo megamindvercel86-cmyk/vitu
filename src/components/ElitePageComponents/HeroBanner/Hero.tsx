@@ -148,24 +148,31 @@ export default function Hero({
    * Handles scroll events to manage video mute state and button positioning
    */
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!hasScrolled) setHasScrolled(true);
-      const videoEl = isDesktop ? desktopVideoRef.current : mobileVideoRef.current;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!hasScrolled) setHasScrolled(true);
+          const videoEl = isDesktop ? desktopVideoRef.current : mobileVideoRef.current;
 
-      if (sectionRef.current && videoEl) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        setIsFixed(rect.bottom > windowHeight);
-        const isInView = rect.bottom > 0 && rect.top < windowHeight;
+          if (sectionRef.current && videoEl) {
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            setIsFixed(rect.bottom > windowHeight);
+            const isInView = rect.bottom > 0 && rect.top < windowHeight;
 
-        if (!isInView && !videoEl.muted) {
-          videoEl.muted = true;
-          setIsMuted(true);
-        }
+            if (!isInView && !videoEl.muted) {
+              videoEl.muted = true;
+              setIsMuted(true);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasScrolled, isDesktop]);
 

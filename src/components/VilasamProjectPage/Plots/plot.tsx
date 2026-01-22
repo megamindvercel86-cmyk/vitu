@@ -3,9 +3,11 @@
 import Image from "next/image";
 import styles from "../../ProjectsPageComponents/Plots/Plot.module.scss";
 import { useTransform, motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { MotionValue } from "framer-motion";
 import Link from "next/link";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
 
 interface PlotProps {
   title: string;
@@ -22,6 +24,12 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
   const container = useRef(null);
 
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
+  const safeText = useSafeSpecialCharacters(title);
+  const safeDesc =useSafeSpecialCharacters(description)
+
+
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -36,13 +44,13 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
         <div className={styles.body}>
           <div className="lg:w-1/2 lg2:p-10 flex flex-col justify-between">
             <div>
-              <h2 className="text-[#0C3E49] text-2xl lg:text-3xl lg2:text-5xl  font-geistSerif">{title}</h2>
-              <p className="text-[#0C3E49] md:leading-7 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 pt-6  ">{description}</p>
+              <h2 className="text-[#0C3E49] text-2xl lg:text-3xl lg2:text-5xl  font-theSeasons">{safeText}</h2>
+              <p className="text-[#0C3E49] md:leading-7 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-ttCommons pt-6   ">{safeDesc}</p>
             </div>
             <div>
-              <Link href="project-enquire" aria-label="Get the Best Quote">
-                <button aria-label="Get the Best Quote" className="px-5 border py-2 rounded-3xl font-sourceSans3 bg-[#0C3E49] font-semibold text-white mt-4 ">Get the Best Quote</button>
-              </Link>
+             
+                <button onClick={() => setIsModalOpen(true)} aria-label="Get the Best Quote" className="px-5 border py-2 rounded-3xl font-ttCommons bg-[#0C3E49] font-semibold text-white mt-4 text-[18px] ">Get the Best Quote</button>
+  
             </div>
           </div>
 
@@ -53,6 +61,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
           </div>
         </div>
       </motion.div>
+      <ContactFormModal isOpen={isModalOpen} onClose={setIsModalOpen} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VC brochure.pdf" />
     </div>
   );
 };

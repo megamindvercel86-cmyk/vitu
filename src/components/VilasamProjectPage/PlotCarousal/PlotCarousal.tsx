@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils"; // Verify this utility exists
 import { useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
 import { Autoplay } from "swiper/modules";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 const CarouselDots = ({
   total,
@@ -39,6 +41,7 @@ const CarouselDots = ({
 
 export default function PropertyCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const swiperRef = useRef<SwiperType | undefined>(undefined); // Use SwiperType for ref
   const duplicatedPlots = plots.length < 5 ? [...plots, ...plots] : plots;
 
@@ -57,17 +60,23 @@ export default function PropertyCarousel() {
       >
         {duplicatedPlots.map((property, index) => (
           <SwiperSlide className="!h-[80vh]" key={index}>
-            <div className="max-w-sm mx-auto h-[78vh]  rounded-2xl overflow-hidden  bg-white">
+            <div className="max-w-sm mx-auto h-full  rounded-2xl overflow-hidden  bg-white">
               <div className="relative w-full h-64">
                 <Image src={property.src} alt={property.title} fill className="object-cover rounded-2xl" />
               </div>
               <div className="py-6 flex flex-col justify-between h-[350px]">
                 <div>
-                  <h2 className="text-2xl font-semibold font-geistSerif text-[#0C3E49] mb-3">{property.title}</h2>
-                  <p className="text-[#0C3E4999] font-sourceSans3 leading-[1.6] text-sm mb-5">{property.description}</p>
+                  <h2 className="text-2xl font-semibold font-theSeasons text-[#0C3E49] mb-3">{useSafeSpecialCharacters(property.title)}</h2>
+                  <p className="text-[#0C3E4999] font-ttCommons leading-[1.6] text-sm mb-5">{useSafeSpecialCharacters(property.description)}</p>
                 </div>
                 <div>
-                  <button aria-label="Get the Best Quote" className="w-full bg-[#0C3E49] text-white font-semibold py-3 font-sourceSans3 rounded-full" >Get the Best Quote</button>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    aria-label="Get the Best Quote"
+                    className="w-full bg-[#0C3E49] text-white font-semibold py-3 font-ttCommons rounded-full "
+                  >
+                    Get the Best Quote
+                  </button>
                 </div>
               </div>
             </div>
@@ -84,6 +93,13 @@ export default function PropertyCarousel() {
           }}
         />
       </div>
+      <ContactFormModal
+        isOpen={isModalOpen}
+        onClose={setIsModalOpen}
+        collectionName="vilasam"
+        thankYouRoute="/vilasam/thank-you"
+        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+      />
     </div>
   );
 }

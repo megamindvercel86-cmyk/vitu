@@ -10,11 +10,19 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "placehold.co",
+      },
+      {
+        protocol: "https",
         hostname: "res.cloudinary.com",
       },
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
       },
     ],
     deviceSizes: [320, 420, 768, 1024, 1200],

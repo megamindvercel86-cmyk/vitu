@@ -7,6 +7,7 @@ import { IconX } from "@tabler/icons-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { cn } from "@/lib/utils";
 import { Autoplay } from "swiper/modules";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
 
 // Animation variants
 const backdropVariants = {
@@ -307,10 +308,10 @@ const LyfeStyle = () => {
   return (
     <section className="grid grid-cols-1 gap-8 items-center !px-0 lg:flex-row">
       <div className="relative">
-        <div className="lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-16 flex lg:flex-row flex-col items-start w-full lg:gap-14">
+        <div className="lg:absolute px-[1rem] sm:px-[1rem] md:px-[4.125rem] lg:px-[3.5rem] xl:px-[9rem] lg:top-0 flex lg:flex-row flex-col items-start w-full lg:gap-14">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif lg:pb-10 pb-4">
-              20,000 sq.ft of Lifestyle & Comfort
+            <h2 className="text-2xl md:text-4xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-theSeasons lg:pb-10 pb-4  md:mt-0  -mt-6">
+            20,000 sq.ft of Lifestyle <span className="font-CandideCondensedNormal">&</span> Comfort
             </h2>
             <div className="group cursor-pointer hidden md:block">
               <button
@@ -324,7 +325,7 @@ const LyfeStyle = () => {
                   gap-[0.6875rem]
                   rounded-full
                   pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                  text-base font-freightNeoMedium text-white
+                  text-base font-theSeasons text-white
                   2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                   overflow-hidden z-100
                 "
@@ -342,37 +343,35 @@ const LyfeStyle = () => {
                     <CTAButtonIcon fill="#0C3E49" direction="right" />
                   </div>
                 </div>
-                <span className="relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3">More about our Exclusive Membership</span>
+                <span className="relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-ttCommons">More about our Exclusive Membership</span>
               </button>
             </div>
           </div>
 
           <div className="lg:w-1/2 flex justify-end">
-            <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60 font-sourceSans3">
+            <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60 font-ttcommons">
               Experience leisure and lifestyle come together at The Club. As part of your Vilasam journey, enjoy exclusive membership to the Vaikuntam
               City Clubhouse, an elegant space designed for relaxation, connection, and recreation.
             </p>
           </div>
         </div>
 
-        {/* Image container with gradient */}
-        <div className="relative lg:pt-52">
-          <Image src="/images/vilasamPageImages/imageMain.webp" alt="vilasam" height={1000} width={1000} className="w-full object-cover" />
-        </div>
         <button
           aria-label="Discover our Vision"
           onClick={() => setIsOpen(true)}
           type="button"
           className="
             relative group
+            ml-[1rem] lg:ml-0
             mt-4
-            flex items-center justify-center mx-auto md:hidden
+            flex items-center justify-center md:hidden
             gap-[0.6875rem]
             rounded-full
-            pl-[4px] md:pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-            text-base font-freightNeoMedium text-white
+            pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.20rem]
+            text-base font-theSeasons text-white
             2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
             overflow-hidden z-100
+            w-fit
           "
         >
           <div className="absolute inset-0 bg-[#e0f2ec] rounded-full"></div>
@@ -388,8 +387,12 @@ const LyfeStyle = () => {
               <CTAButtonIcon fill="#0C3E49" direction="right" />
             </div>
           </div>
-          <span className="relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3">More about our Exclusive Membership</span>
+          <span className="relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-ttCommons">More about our Exclusive Membership</span>
         </button>
+        {/* Image container with gradient */}
+        <div className="relative lg:pt-52">
+          <Image src="/images/vilasamPageImages/imageMain.webp" alt="vilasam" height={1000} width={1000} className="w-full object-cover" />
+        </div>
       </div>
       <AnimatePresence>
         {open && (
@@ -417,13 +420,13 @@ const LyfeStyle = () => {
               </motion.button>
               <motion.div variants={contentVariants}>
                 <div className="flex flex-col">
-                  <div className="relative w-full h-64 lg:h-[80vh] xl:h-[70vh] rounded-t-xl overflow-hidden">
+                  <div className="relative w-full h-64 lg:h-[60vh] xl:h-[70vh] rounded-t-xl overflow-hidden">
                     <Swiper
                       spaceBetween={0}
                       slidesPerView={1}
                       modules={[Autoplay]}
                       autoplay={{
-                        delay: 1000,
+                        delay: 3000,
                         disableOnInteraction: false,
                       }}
                       loop={true}
@@ -431,7 +434,7 @@ const LyfeStyle = () => {
                       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                       className="!w-full !pb-0 !pt-0 !h-full"
                     >
-                      {["/images/vilasamPageImages/1.webp", "/images/vilasamPageImages/2.webp", "/images/vilasamPageImages/3.webp"].map(
+                      {["/images/vilasamPageImages/new1.webp", "/images/vilasamPageImages/new2.webp", "/images/vilasamPageImages/new3.webp","/images/vilasamPageImages/new4.webp","/images/vilasamPageImages/lifestyle2.webp"].map(
                         (src, idx) => (
                           <SwiperSlide key={idx} className="!h-full !rounded-t-[10px] !w-full">
                             <Image
@@ -447,26 +450,26 @@ const LyfeStyle = () => {
                       )}
                     </Swiper>
                     <div className="absolute hidden lg:block bottom-10 right-10 z-50">
-                      <CarouselDots total={3} active={activeIndex} onDotClick={handleDotClick} />
+                      <CarouselDots total={5} active={activeIndex} onDotClick={handleDotClick} />
                     </div>
                   </div>
-                  <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-                    <h2 className="font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold">20,000 sq.ft of Lifestyle & Comfort</h2>
-                    <h2 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 md:pb-6 text-[18px]">
+                  <div className="flex flex-col gap-4 py-12 px-6 lg:px-16">
+                    <h2 className="font-theSeasons text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold"> 20,000{useSafeSpecialCharacters(" sq.ft of Lifestyle & Comfort")}</h2>
+                    <h2 className="font-bold text-[#0C3E4999] md:text-[24px] font-theSeasons md:pb-6 text-[18px]">
                       A space designed for leisure, wellness, and community
                     </h2>
-                    <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">
-                      At the heart of Vilasam lies The Club, a sprawling 20,000 sq.ft of clubhouse amenities designed to enrich everyday living.
-                      Whether it's a quiet moment of reflection or a lively gathering with neighbors, the clubhouse brings together spaces that cater
-                      to wellness, connection, and celebration.
+                    <p className="text-[#0C3E4999] font-ttCommons text-base md:!text-xl">
+                      {useSafeSpecialCharacters(
+                        "At the heart of Vilasam lies The Club, a sprawling 20,000 sq.ft of clubhouse amenities designed to enrich everyday living. Whether it's a quiet moment of reflection or a lively gathering with neighbors, the clubhouse brings together spaces that cater to wellness, connection, and celebration."
+                      )}
                     </p>
-                    <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">
-                      From indoor activity zones to calm corners for reading or relaxing, every detail has been thoughtfully curated to elevate the
-                      way you live. It's more than just a building, it's where community comes alive, and where every visit feels like an escape
-                      within your own neighborhood.
+                    <p className="text-[#0C3E4999] font-ttCommons text-base md:!text-xl">
+                      {useSafeSpecialCharacters(
+                        "From indoor activity zones to calm corners for reading or relaxing, every detail has been thoughtfully curated to elevate the way you live. It's more than just a building, it's where community comes alive, and where every visit feels like an escape within your own neighborhood."
+                      )}
                     </p>
                     <div className="mt-8">
-                      <h3 className="font-bold text-[#04070799] md:text-[24px] font-sourceSans3 pb-6 text-[18px]">The Club - Amenities</h3>
+                      <h3 className="font-bold text-[#0D3F4A] md:text-[24px] font-theSeasons pb-6 text-[18px]">{useSafeSpecialCharacters("The Club - Amenities")}</h3>
                       <div className="grid grid-cols-1 gap-4">
                         {[
                           "Lounge",
@@ -483,7 +486,7 @@ const LyfeStyle = () => {
                             <div className="flex-shrink-0">
                               <AmenityIcon name={amenity} />
                             </div>
-                            <p className="text-[#040707]/60 text-sm md:!text-xl font-sourceSans3">{amenity}</p>
+                            <p className="text-[#0C3E4999] text-base md:!text-xl font-ttCommons">{amenity}</p>
                           </div>
                         ))}
                       </div>
@@ -500,5 +503,4 @@ const LyfeStyle = () => {
 };
 
 export default LyfeStyle;
-
 

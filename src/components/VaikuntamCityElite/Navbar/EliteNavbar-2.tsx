@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import eliteLogo from "../../../../public/images/logos/vaikuntamCityElite.svg";
-import vitulogo from "../../../../public/images/logos/logoWhite.svg";
+import vitulogo from "../../../../public/images/logos/vituLogoDark.svg";
 import { useRouter } from "next/navigation";
 
 const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) => {
@@ -28,9 +28,9 @@ const EliteNavbar2 = ({ leftAlignLogos = false }: { leftAlignLogos?: boolean }) 
           />
 
           {leftAlignLogos && (
-            <div className="h-14 w-px bg-[#E0D9C7] hidden md:block" />
+            <div className="h-14 w-px  hidden md:block" />
           )}
-<div className="h-14 w-px bg-[#E0D9C7] md:hidden" />
+<div className="h-14 w-px  md:hidden" />
           <Image
 
           onClick={()=>router.push('/')}

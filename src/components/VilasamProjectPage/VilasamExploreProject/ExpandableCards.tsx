@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import CustomCursor from "@/components/Common/CustomCursor";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+
 
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
@@ -33,18 +35,18 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
     <>
       <hr className="border-t-gray-200 border-[1px] mt-12" />
       <div className="lg:px-44 px-12">
-        <h1 className=" pt-10 text-[10px] md:text-[12px] font-geistSerif  text-[#8E8E93] border-t-gray-200">NextUp</h1>
+        <h1 className=" pt-10 text-[10px] md:text-[12px] font-theSeasons  text-[#0C3E4999] border-t-gray-200">NextUp</h1>
         <div className="flex pb-16 justify-between ">
           <button
             aria-label="Next Project"
             onClick={onFooterClick}
-            className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold text-[18px] "
+            className="text-[#0C3E49] flex font-theSeasons justify-between items-center cursor-pointer font-bold text-[18px] "
           >
-            {nextProjectTitle}
+            {useSafeSpecialCharacters(nextProjectTitle)}
           </button>
           <MdKeyboardArrowRight
             onClick={onFooterClick}
-            className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#EADFD1] text-[#AE85668F] rounded-full md:text-[25px]"
+            className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#0c3e4965] text-[#0C3E49] rounded-full md:text-[25px]"
           />
         </div>
       </div>
@@ -82,35 +84,35 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
           alt={project.title || "Card image"}
           width={1042}
           height={45}
-          className={cn("object-cover h-[652px] w-full")}
+          className={cn("object-cover h-[74vh] w-full")}
         />
         <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>
-          {project.title.split('').map((char: string, index: number) => (
-            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
-              {char}
+          {project.title.split("").map((char: string, index: number) => (
+            <span key={index} className={/\d/.test(char) ? "font-theSeasons" : ""}>
+              {useSafeSpecialCharacters(char)}
             </span>
           ))}
         </h2>
         <h3 className={`${textColor} text-[20px] lg:text-[28px] leading-[1.3] font-medium px-6 lg:px-20 pb-6 text-[#040707CC]`}>
-          {project.subtitle.split('').map((char: string, index: number) => (
-            <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
-              {char}
+          {project.subtitle.split("").map((char: string, index: number) => (
+            <span key={index} className={/\d/.test(char) ? "font-theSeasons" : ""}>
+              {useSafeSpecialCharacters(char)}
             </span>
           ))}
         </h3>
-       
+
         <div className={`${textColor} flex flex-col gap-flex gap-6`}>
-          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
-            {project.description1.split('').map((char: string, index: number) => (
-              <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
-                {char}
+          <Typography className="text-[#0C3E4999] px-6 lg:px-20 !text-xl font-ttCommons">
+            {project.description1.split("").map((char: string, index: number) => (
+              <span key={index} className={/\d/.test(char) ? "font-ttCommons" : ""}>
+                {useSafeSpecialCharacters(char)}
               </span>
             ))}
           </Typography>
-          <Typography className="text-[#040707]/60 px-6 lg:px-20 !text-xl">
-            {project.description2.split('').map((char: string, index: number) => (
-              <span key={index} className={/\d/.test(char) ? 'font-CandideCondensedMedium' : ''}>
-                {char}
+          <Typography className="text-[#0C3E4999] px-6 lg:px-20 !text-xl font-ttCommons">
+            {project.description2.split("").map((char: string, index: number) => (
+              <span key={index} className={/\d/.test(char) ? "font-ttCommons" : ""}>
+                {useSafeSpecialCharacters(char)}
               </span>
             ))}
           </Typography>
@@ -125,41 +127,51 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
 const expandedPositions = {
   "2xl": [
     { top: "60%", left: "20%", right: "auto" },
-    { top: "50%", right: "1%", left: "auto" },
-    { top: "10%", right: "1%", left: "auto" },
-    { top: "45%", left: "1%", right: "auto" },
+    { top: "50%", right: "3%", left: "auto" },
+    { top: "10%", right: "3%", left: "auto" },
+    { top: "45%", left: "3%", right: "auto" },
     { top: "15%", left: "3%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "10%", left: "31%", right: "auto" },
+    { top: "64%", left: "60%", right: "auto" },
   ],
   xl: [
-    { top: "64%", left: "25%", right: "auto" },
-    { top: "50%", right: "1%", left: "auto" },
-    { top: "12%", right: "1%", left: "auto" },
-    { top: "50%", left: "1%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
-    { top: "65%", left: "53%", right: "auto" },
+    { top: "55%", left: "43.5%", right: "auto" },   //5
+    { top: "50%", right: "4%", left: "auto" },    //7
+    { top: "6%", right: "4%", left: "auto" },      //3
+    { top: "50%", left: "4%", right: "auto" },     //4
+    { top: "6%", left: "4%", right: "auto" },      //1
+    { top: "1%", left: "28%", right: "auto" },     //2
+    { top: "1%", left: "58%", right: "auto" },     ///6
+  ],
+  lg2: [
+    { top: "25%", left: "30%", right: "auto" },
+    { top: "50%", right: "3%", left: "auto" },
+    { top: "20%", right: "3%", left: "auto" },
+    { top: "45%", left: "3%", right: "auto" },
+    { top: "12%", left: "3%", right: "auto" },
+    { top: "10%", left: "28%", right: "auto" },
+    { top: "60%", left: "55%", right: "auto" },
   ],
   lg: [
-    { top: "60%", left: "30%", right: "auto" },
-    { top: "32%", right: "-3%", left: "auto" },
-    { top: "0%", right: "-3%", left: "auto" },
-    { top: "45%", left: "-5%", right: "auto" },
-    { top: "5%", left: "-1%", right: "auto" },
-    { top: "55%", left: "60%", right: "auto" },
-    { top: "5%", left: "43%", right: "auto" },
+    { top: "63%", left: "43%", right: "auto" },   //5
+    { top: "54%", right: "4%", left: "auto" },    //7
+    { top: "6%", right: "4%", left: "auto" },      //3
+    { top: "54%", left: "4%", right: "auto" },     //4
+    { top: "6%", left: "4%", right: "auto" },      //1
+    { top: "1%", left: "28%", right: "auto" },     //2
+    { top: "1%", left: "58%", right: "auto" },     ///6
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
-    { top: "65%", right: "-5%", left: "auto" },
-    { top: "20%", right: "-3%", left: "auto" },
-    { top: "55%", left: "-5%", right: "auto" },
-    { top: "23%", left: "-3%", right: "auto" },
-    { top: "15%", left: "3%", right: "auto" },
-    { top: "5%", left: "53%", right: "auto" },
+    { top: "65%", right: "5%", left: "auto" },
+    { top: "10%", right: "3%", left: "auto" },
+    { top: "55%", left: "5%", right: "auto" },
+    { top: "13%", left: "3%", right: "auto" },
+    { top: "10%", left: "38%", right: "auto" },
+    { top: "43%", right: "3%", left: "auto" },
   ],
 };
+
 
 const notExpandedPositions = {
   "2xl": [
@@ -262,7 +274,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
   const handleMouseEnter = () => {
     // Only show cursor if not expanded
     if (!isExpanded) {
-      setCursorText("Click to more ");
+      setCursorText("Click to Explore ");
       setCursorVariant("project");
     }
   };
@@ -282,7 +294,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
       setTimeout(() => {
         const element = containerRef.current;
         if (element) {
-          const yOffset = 300;
+          const yOffset = 0;
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
           gsap.to(window, {
@@ -299,22 +311,23 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
   };
 
   return (
-    <div className="h-auto flex items-center justify-center">
-      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} cursorBackground={`bg-${borderColor}`} />}
+    <div id="carousal" className="h-auto flex items-center justify-center">
+      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} fontClass="font-ttCommons" cursorBackground={`bg-${borderColor}`} />}
       <div
         ref={containerRef}
-        className={`mx-auto w-full relative ${isExpanded ? "2xl:h-[150vh] xl:h-[180vh] lg:h-[200vh] md:h-[150vh]" : "h-[100vh]"}`}
+        className={`mx-auto w-full relative font-ttCommons ${isExpanded ? "2xl:h-[130vh] xl:h-[120vh] lg:h-[100vh] lg2:h-[100vh] md:h-[100vh]" : "h-[90vh] xl:h-[70vh] cursor-pointer"}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={!isExpanded ? handleExpand : undefined}
       >
         {/* Text Content */}
         <motion.div
-          className="absolute md:top-[43rem]  lg:top-[25rem]  xl:top-[35rem] lg2:top-[35%] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
+          className="absolute md:top-[22rem]  lg:top-[13rem]  xl:top-[21rem] lg2:top-[17rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: isExpanded ? 1 : 0,
             scale: isExpanded ? 1 : 0.8,
-            y: isExpanded ? 0 : 20,
+            y: isExpanded ? 0 : 10,
           }}
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
@@ -323,21 +336,21 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               amenities
             </motion.p>
             <motion.h1
-              className="xl:text-[100px]  lg:text-4xl lg2:text-5xl  md:text-5xl  xl:mb-4 "
+              className="xl:text-[80px]  lg:text-4xl lg2:text-5xl  md:text-5xl  xl:mb-4 "
               initial={{ y: 0 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Space to Settle,
+              Space to Settle, Room to Grow 
             </motion.h1>
-            <motion.h2
+            {/* <motion.h2
               className="xl:text-[100px] lg:text-4xl  lg2:text-5xl md:text-5xl xl:mb-4"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.5 }}
             >
               Room to Grow
-            </motion.h2>
+            </motion.h2> */}
 
             <motion.button
               className={`lg:px-8 lg:py-3 md:px-5 md:py-2 pb-1 border-${borderColor} border-[2px] rounded-full text-xs lg2:text-[18px] xl:text-[22px] ${textStyle}  transition-colors mt-6`}
@@ -346,7 +359,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               transition={{ delay: 0.6 }}
               onClick={() => setIsGetInTouchOpen(true)}
             >
-              Download E-Brochure
+              {useSafeSpecialCharacters("Download E-Brochure")}
             </motion.button>
           </div>
         </motion.div>
@@ -394,7 +407,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
                   />
                   {isExpanded && (
                     <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
-                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{card.title}</span>
+                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{useSafeSpecialCharacters(card.title)}{ }</span>
                     </div>
                   )}
                 </div>
@@ -403,7 +416,13 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
           })}
         </AnimatePresence>
       </div>
-      <ContactFormModal isOpen={isGetInTouchOpen} onClose={setIsGetInTouchOpen} />
+      <ContactFormModal
+        isOpen={isGetInTouchOpen}
+        onClose={setIsGetInTouchOpen}
+        collectionName="vilasam"
+        thankYouRoute="/vilasam/thank-you"
+        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+      />
     </div>
   );
 };

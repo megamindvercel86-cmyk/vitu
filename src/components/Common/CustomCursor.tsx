@@ -5,9 +5,10 @@ interface CustomCursorProps {
   cursorVariant: string;
   cursorText: string;
   cursorBackground?: string;
+  fontClass?: string;
 }
 
-const CustomCursor = ({ cursorVariant, cursorText , cursorBackground= "bg-customBrown" }: CustomCursorProps) => {
+const CustomCursor = ({ cursorVariant, cursorText , cursorBackground= "bg-customBrown", fontClass = "font-FreightNeoProNormal" }: CustomCursorProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const CustomCursor = ({ cursorVariant, cursorText , cursorBackground= "bg-custom
 
   return (
     <motion.div
-      className={`fixed pointer-events-none px-4 lg2:px-7  !w-auto flex items-center justify-center font-FreightNeoProNormal rounded-md text-2xl ${cursorBackground} text-white font-bold`}
+      className={`fixed pointer-events-none px-4 lg2:px-7  !w-auto flex items-center justify-center ${fontClass} rounded-md text-2xl ${cursorBackground} text-white font-bold`}
       variants={{
         default: {
           opacity: 1,

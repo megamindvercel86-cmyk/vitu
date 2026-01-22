@@ -1,14 +1,19 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import image1 from "../../../../public/images/plotLocations/largeScreens.png";
 import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+
+
+
+
 const Areas = [
   {
     location: "Mukka Junction",
     type: "Null",
-    position: "top-[4%] left-[55.5%]",
+    position: "top-[5%] left-[55.5%]",
     isActive: true,
     textPosition: "top-[2%] left-[55.5%]",
   },
@@ -20,35 +25,42 @@ const Areas = [
     textPosition: "top-[10%] lg2:left-[48%] left-[46%]",
   },
   {
-    location: "Srinivas Hospital",
+    location: "Srinivas Medical College and Hospital",
     type: ["Educational Institutions", "Emergency Services"],
-    position: "top-[12%] left-[59%]",
+    position: "top-[14%] left-[59%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[16%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[62.5%]",
     isActive: true,
-    textPosition: "top-[12%] lg2:left-[62.5%] left-[65.5%]",
+    textPosition: "top-[12%] lg2:left-[63%] left-[65.5%]",
   },
   {
     location: "National Institute of Technology Karnataka",
     type: "Educational Institutions",
     position: "top-[30%] left-[60%]",
     isActive: true,
-    textPosition: "lg2:top-[27%] top-[24%] left-[60%]",
+    textPosition: "lg2:top-[26%] top-[24%] left-[60%]",
   },
   {
     location: "NITK Beach",
     type: "Recreational Areas",
-    position: "top-[30%] left-[52.5%]",
+    position: "top-[26%] left-[52.5%]",
     isActive: true,
-    textPosition: "top-[30%] lg2:left-[50%] left-[48%]",
+    textPosition: "top-[26%] lg2:left-[49%] left-[48%]",
   },
   {
     location: "Vilasam",
     type: "Main",
     position: "top-[39%] left-[67%]",
     isActive: true,
-    textPosition: "lg2:top-[42%] top-[43%] left-[67%]",
+    textPosition: "lg2:top-[43%] top-[43%] left-[67%]",
   },
   {
-    location: "Suratkal Beach",
+    location: "Thadambail Junction",
+    type: "null",
+    position: "top-[32%] left-[57.7%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[34%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[57.5%]",
+    isActive: true,
+    textPosition: "top-[32%] lg2:left-[53%] left-[51%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[34%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[62.5%]",
+  },
+  {
+    location: "Surathkal Beach",
     type: "Recreational Areas",
     position: "top-[48%] left-[56.5%]",
     isActive: true,
@@ -57,10 +69,11 @@ const Areas = [
   {
     location: "Hotel Suraj International",
     type: "Recreational Areas",
-    position: "top-[50%] left-[66.5%]",
+    position: "top-[51%] left-[66.5%]",
     isActive: true,
     textPosition: "lg2:top-[48%] top-[53%] left-[66.5%]",
   },
+
   {
     location: "Padmavathi Hospital",
     type: "Emergency Services",
@@ -68,7 +81,7 @@ const Areas = [
     isActive: true,
     textPosition: "lg2:top-[55%] top-[53%] left-[68.5%]",
   },
-  
+
   {
     location: "Shri Kashi Math",
     type: ["Recreational Areas", "Holy Spaces"],
@@ -85,24 +98,31 @@ const Areas = [
   },
   {
     location: "Hotel Sadanand",
-    type: "Null",
+    type: "Recreational Areas",
     position: "top-[71%] left-[60%]",
     isActive: true,
     textPosition: "top-[71%] left-[54%] lg2:left-[56%]",
+  },
+  {
+    location: "Surathkal Junction",
+    type: "null",
+    position: "top-[78%] left-[66.2%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[74%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[66.5%]",
+    isActive: true,
+    textPosition: "lg2:top-[78%] lg1:top-[50%] lg1:left-[73%] top-[88%] lg2:left-[70.5%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[73%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[71%]",
   },
   {
     location: "Surathkal Market",
     type: "Null",
     position: "top-[84%] left-[70%]",
     isActive: true,
-    textPosition: "lg2:top-[87%] top-[88%] left-[70%]",
+    textPosition: "lg2:top-[87%]  top-[88%] left-[70%]",
   },
   {
     location: "Sacred Heart Church",
     type: "Holy Spaces",
     position: "top-[91%] left-[73%]",
     isActive: true,
-    textPosition: "lg2:top-[94%] top-[70%] left-[73%]",
+    textPosition: "lg2:top-[94%] top-[70%] left-[74%] ",
   },
   {
     location: "BASF",
@@ -116,21 +136,21 @@ const Areas = [
     type: "Null",
     position: "top-[28.5%] left-[95.5%]",
     isActive: true,
-    textPosition: "lg2:top-[32%] top-[34%] left-[95.5%]",
+    textPosition: "lg2:top-[34%] top-[34%] left-[95.5%]",
   },
   {
     location: "MUDA Township",
     type: "Null",
     position: "top-[5%] left-[92%]",
     isActive: true,
-    textPosition: "lg2:top-[7%] top-[10%] left-[92%]",
+    textPosition: "lg2:top-[8%] top-[10%] left-[92%]",
   },
   {
     location: "Club",
     type: "Main",
     position: "top-[35%] left-[72%]",
     isActive: true,
-    textPosition: "lg2:top-[37%] top-[39%] left-[72%]",
+    textPosition: "lg2:top-[39%] top-[39%] left-[72%]",
   },
   {
     location: "Upcoming DMart",
@@ -183,12 +203,12 @@ const Areas = [
     textPosition: "top-[94%] lg2:left-[58.5%] left-[67.5%]",
   },
   {
-    location: "Mangalore International Airport (25 mins away)",
+    location: "Mangalore International Airport",
     type: "Null",
     icon: <Airport />,
-    position: "top-[77%] left-[81%]",
+    position: "top-[77%] left-[79%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[73%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[80%]",
     isActive: true,
-    textPosition: "top-[83%] lg2:left-[81.5%] left-[67.5%]",
+    textPosition: "top-[83%] !whitespace-pre-line !max-w-[100%]  lg2:left-[79%] left-[67.5%] [@media(min-width:1024px)_and_(max-width:1480px)]:top-[79%] [@media(min-width:1024px)_and_(max-width:1480px)]:left-[80%]",
   },
 ];
 
@@ -240,8 +260,23 @@ const legendVariants = {
 };
 const PlotConnection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const legendRef = useRef<HTMLDivElement>(null);
 
   const selectedType = activeIndex === null ? null : legendItems[activeIndex].label;
+
+  // Handle click outside to reset selection
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (legendRef.current && !legendRef.current.contains(event.target as Node)) {
+        setActiveIndex(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div id="location" className="relative inline-block h-[100vh] w-full">
@@ -253,15 +288,15 @@ const PlotConnection = () => {
         <div key={index}>
           {area.type === "Main" ? (
             <motion.span
-              className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+              className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
               variants={textVariants}
               animate="active"
             >
-              {area.location}
+              {useSafeSpecialCharacters(area.location)}
             </motion.span>
           ) : (
             <motion.span
-              className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+              className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
               variants={textVariants}
               animate={
                 selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
@@ -269,11 +304,11 @@ const PlotConnection = () => {
                   : "inactive"
               }
             >
-              {area.location}
+              {useSafeSpecialCharacters(area.location)}
             </motion.span>
           )}
           <motion.span
-            className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+            className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
             variants={textVariants}
             animate={
               selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
@@ -281,7 +316,7 @@ const PlotConnection = () => {
                 : "inactive"
             }
           >
-            {area.location}
+            {useSafeSpecialCharacters(area.location)}
           </motion.span>
           <div className={`absolute ${area.position} z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1`}>
             {area.location === "Vilasam" ? (
@@ -342,18 +377,18 @@ const PlotConnection = () => {
       {/* Text & Legend */}
       <div className="absolute w-1/2 inset-0 z-20 flex flex-col justify-between mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem] py-16 xl:py-24 h-full">
         <div>
-          <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif">
-            Truly Well- <br />
+          <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-theSeasons">
+            Truly Well<span className="font-CandideCondensedNormal">-</span> <br />
             Connected Living
           </h2>
-          <p className="font-sourceSans3 font-medium text-lg lg2:text-2xl text-[#0C3E4999] leading-relaxed mb-8 max-w-[54%] pt-6">
-            A perfect blend of nature's calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
+          <p className="font-ttcommons font-medium text-lg lg2:text-2xl text-[#0C3E4999] leading-relaxed mb-8 max-w-[54%] pt-6">
+            A perfect blend of nature<span className="font-sans">'</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
             landmarks, airports, hospitals, and more.
           </p>
         </div>
 
         {/* Legend */}
-        <div className="lg2:space-y-8 space-y-4">
+        <div ref={legendRef} className="lg2:space-y-8 space-y-4">
           {legendItems.map((item, idx) => {
             const isActive = activeIndex === null || activeIndex === idx;
             let IconComponent;
@@ -376,7 +411,7 @@ const PlotConnection = () => {
             return (
               <motion.div
                 key={item.label}
-                className="flex items-center gap-3 text-lg lg2:text-2xl font-semibold font-sourceSans3 cursor-pointer select-none"
+                className="flex items-center gap-3 text-lg lg2:text-2xl font-semibold font-theSeasons cursor-pointer select-none"
                 variants={legendVariants}
                 animate={isActive ? "active" : "inactive"}
                 onClick={() => setActiveIndex(idx)}

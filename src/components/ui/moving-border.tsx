@@ -12,7 +12,17 @@ export const AnimatedConicButton = ({
     themeClass = "theme-light";
   } else if (theme === "mid-dark-light") {
     themeClass = "theme-mid-dark-light";
-  } else if (theme === "custom") {
+  } 
+  else if (theme === "light-green") {
+    themeClass = "theme-light-green";
+  }
+  else if (theme === "vilasam-brochure") {
+    themeClass = "theme-vilasam-brochure";
+  }
+    else if (theme === "vilasam-brochure-mobile") {
+    themeClass = "theme-vilasam-brochure-mobile";
+  }
+  else if (theme === "custom") {
     themeClass = "theme-custom"; // our new custom theme
   } else {
     themeClass = "theme-dark"; // default

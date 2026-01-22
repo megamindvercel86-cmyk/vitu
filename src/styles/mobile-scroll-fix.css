@@ -1,0 +1,102 @@
+/* Mobile Scroll Optimization CSS */
+
+/* Prevent scroll hijacking on mobile devices */
+html {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  /* Prevent momentum scrolling issues */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Fix for iOS Safari scroll bounce */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+
+
+/* Optimize touch events for better performance */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Prevent scroll conflicts with GSAP ScrollTrigger */
+.gsap-scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  will-change: transform;
+}
+
+/* Mobile-specific fixes for horizontal scroll sections */
+@media (max-width: 768px) {
+  .horizontal-scroll-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* overscroll-behavior-x: none; */
+    /* scroll-snap-type: x mandatory; */
+  }
+  
+  .horizontal-scroll-item {
+    /* scroll-snap-align: start; */
+  }
+  
+  /* Disable complex animations on mobile for better performance */
+  .disable-mobile-animation {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Fix for sticky scroll issues */
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+/* Prevent touch delay on mobile */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Optimize video elements for mobile */
+video {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Fix for momentum scrolling conflicts */
+.no-momentum-scroll {
+  -webkit-overflow-scrolling: auto;
+}
+
+/* Prevent scroll anchoring issues */
+* {
+  overflow-anchor: none;
+}
+
+/* Mobile-specific ScrollTrigger optimizations */
+@media (max-width: 768px) {
+  .gsap-pin-spacer {
+    overflow: visible !important;
+  }
+  
+  /* Reduce transform complexity on mobile */
+  .mobile-optimized {
+    will-change: auto;
+    transform: translateZ(0);
+  }
+}

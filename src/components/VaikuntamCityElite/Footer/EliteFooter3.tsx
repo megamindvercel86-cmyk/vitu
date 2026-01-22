@@ -225,7 +225,7 @@ export default function EliteFooter3() {
             INFO@VITUREALTY.COM
           </a>
           <div className="hidden md:flex justify-center ml-5 lg:ml-0">
-<p className="flex justify-center md:items-center items-start  gap-2 ">
+            <p className="flex justify-center md:items-center items-start  gap-2 ">
               <svg className="lg:w-5 w-8 h-8 lg:h-5" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.25781 8.90234L16.2912 0.869" stroke="#C7784D" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                 <path
@@ -236,30 +236,28 @@ export default function EliteFooter3() {
                   strokeLinejoin="round"
                 />
               </svg>
-              VAIKUNTAM CITY ELITE, BEHIND NITK CAMPUS,  SURATHKAL, MANGALORE
+              VAIKUNTAM CITY ELITE, BEHIND NITK CAMPUS, SURATHKAL, MANGALORE
             </p>
           </div>
 
+          <div className="flex flex-col md:hidden justify-center  lg:ml-0">
+            <p className="flex items-center text-center gap-2">
+              <svg className="w-5 h-5" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.25781 8.90234L16.2912 0.869" stroke="#C7784D" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M8.25572 8.90053C8.25572 8.90053 3.74334 7.61128 1.94941 7.09872C1.52153 6.97647 1.22656 6.58544 1.22656 6.14041V6.14016C1.22656 5.6925 1.52019 5.29784 1.949 5.16922C4.95159 4.26844 16.2891 0.867188 16.2891 0.867188C16.2891 0.867188 12.8878 12.2047 11.987 15.2073C11.8584 15.6361 11.4638 15.9297 11.0161 15.9297H11.0158C10.5708 15.9297 10.1798 15.6347 10.0575 15.2068C9.54497 13.4129 8.25572 8.90053 8.25572 8.90053Z"
+                  stroke="#C7784D"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
 
-           <div className="flex flex-col md:hidden justify-center  lg:ml-0">
-  <p className="flex items-center text-center gap-2">
-    <svg className="w-5 h-5" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8.25781 8.90234L16.2912 0.869" stroke="#C7784D" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-      <path
-        d="M8.25572 8.90053C8.25572 8.90053 3.74334 7.61128 1.94941 7.09872C1.52153 6.97647 1.22656 6.58544 1.22656 6.14041V6.14016C1.22656 5.6925 1.52019 5.29784 1.949 5.16922C4.95159 4.26844 16.2891 0.867188 16.2891 0.867188C16.2891 0.867188 12.8878 12.2047 11.987 15.2073C11.8584 15.6361 11.4638 15.9297 11.0161 15.9297H11.0158C10.5708 15.9297 10.1798 15.6347 10.0575 15.2068C9.54497 13.4129 8.25572 8.90053 8.25572 8.90053Z"
-        stroke="#C7784D"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-
-    <span>
-      VAIKUNTAM CITY ELITE,
-      BEHIND NITK <br/> CAMPUS, SURATHKAL, MANGALORE
-    </span>
-  </p>
-</div>
+              <span>
+                VAIKUNTAM CITY ELITE, BEHIND NITK <br /> CAMPUS, SURATHKAL, MANGALORE
+              </span>
+            </p>
+          </div>
 
           <a
             href="tel:+918904688886"
@@ -282,12 +280,11 @@ export default function EliteFooter3() {
 
         {/* Bottom text */}
         <div className="flex flex-col font-hankenGrotesk text-[12px] text-[#E0D9C799]  font-medium lg:flex-row justify-between text-center lg:text-start text-xs  space-y-4 lg:space-y-0">
-          <p>© 2025 Vitu Realty | All rights reserved</p>
+          <p>© {new Date().getFullYear()} VITU Realty | All rights reserved</p>
           <p>
             Designed and Maintained by{" "}
             <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#f3eae1]">
-             Megamind Studios
-
+              Megamind Studios
             </a>
           </p>
           <div className="flex gap-3 justify-center lg:justify-normal">

@@ -126,13 +126,13 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                     <div
                       key={item.href}
                       onClick={() => setIsModalOpen(true)}
-                      className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
+                      className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-theSeasons cursor:pointer mb-8 text-xl last:mb-0"
                     >
                       {item.label}
                     </div>
                   ) : item.href === "/" ? (
-                    <Link aria-label={item.label} key={item.href} href={item.href} className="mb-8 text-2xl font-geistSerif last:mb-0">
-                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0">
+                    <Link aria-label={item.label} key={item.href} href={item.href} className="mb-8 text-2xl font-theSeasons last:mb-0">
+                      <div className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-theSeasons cursor:pointer mb-8 text-xl last:mb-0">
                         {item.label}
                       </div>
                     </Link>
@@ -143,11 +143,11 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                       to={item.href}
                       smooth={true}
                       duration={1200}
-                      className="mb-8 text-2xl font-geistSerif last:mb-0"
+                      className="mb-8 text-2xl font-theSeasons last:mb-0"
                     >
                       <div
                         onClick={() => setIsMenuOpen(false)}
-                        className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-geistSerif cursor:pointer mb-8 text-xl last:mb-0"
+                        className="cursor-pointer lg:gap-[86px] lg:text-[20px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-theSeasons cursor:pointer mb-8 text-xl last:mb-0"
                       >
                         {item.label}
                       </div>
@@ -166,7 +166,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                 >
                   <button
                     aria-label="Download Brochure"
-                    className="w-full h-[58px] text-xl  font-geistSerif text-white bg-[#0C3E49] rounded-[34px] mt-8"
+                    className="w-full h-[58px] text-xl  font-theSeasons text-white bg-[#0C3E49] rounded-[34px] mt-8"
                   >
                     Download Brochure
                   </button>
@@ -236,13 +236,13 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   <div
                     key={href}
                     onClick={() => setIsModalOpen(true)}
-                    className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif"
+                    className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-theSeasons"
                   >
                     {label}
                   </div>
                 ) : (
                   <LinkScroll aria-label={label} key={href} to={href} smooth={true} duration={1200}>
-                    <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-geistSerif">{label}</div>
+                    <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-theSeasons">{label}</div>
                   </LinkScroll>
                 )
               )}
@@ -273,7 +273,13 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         </nav>
       </header>
       <SidebarMenu />
-      <ContactFormModal isOpen={isGetInTouchOpen} onClose={setIsGetInTouchOpen} />
+      <ContactFormModal
+        isOpen={isGetInTouchOpen}
+        onClose={setIsGetInTouchOpen}
+        collectionName="vilasam"
+        thankYouRoute="/vilasam/thank-you"
+        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+      />
       <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>
   );

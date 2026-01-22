@@ -5,6 +5,9 @@ import { motion, useInView } from "framer-motion";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+
+
 
 // ============= Interfaces =============
 
@@ -30,7 +33,7 @@ const PROJECT_DATA = {
       "Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, & a lasting sense of belonging.",
   },
   cta: "Explore the Project Now",
-  image: "/images/vilasamCurrentProject/27.png",
+  image: "/images/vilasamCurrentProject/newFirst.png",
 };
 
 const STATS_DATA = [
@@ -48,8 +51,8 @@ const LOCATIONS: Location[] = [
   {
     id: 1,
     name: "Section 1",
-    position: "lg:left-[32%]  lg:top-[40%] left-[33%] top-[45%] md:left-[33%] md:top-[43%]  lg:w-[65px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/3.png",
+    position: "lg:left-[32%]  lg:top-[40%] left-[30%] top-[41%] md:left-[33%] md:top-[43%]  lg:w-[65px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new21.webp",
     description: [
       { value: "East Facing Plots", label: "4.00 Cents" },
       {
@@ -62,8 +65,8 @@ const LOCATIONS: Location[] = [
   {
     id: 2,
     name: "Section 2",
-    position: "left-[33%] top-[51%] lg:left-[32%] lg:top-[50%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/4.png",
+    position: "left-[28%] top-[50%] lg:left-[32%] lg:top-[50%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new22.webp",
     description: [
       { value: "East Facing Plots", label: "4.20 Cents" },
       {
@@ -76,8 +79,8 @@ const LOCATIONS: Location[] = [
   {
     id: 3,
     name: "Section 3",
-    position: "left-[33%] top-[56%] md:left-[33%] md:top-[60%] lg:left-[31%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/5.png",
+    position: "left-[28%] top-[58%] md:left-[33%] md:top-[60%] lg:left-[31%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new23.webp",
     description: [
       { value: "East Facing Plots", label: "4.80 Cents" },
       {
@@ -90,8 +93,8 @@ const LOCATIONS: Location[] = [
   {
     id: 4,
     name: "Section 4",
-    position: "left-[30%] top-[62%] md:left-[31%] md:top-[69%] lg:left-[27%] lg:top-[70%]  lg:w-24  lg:h-[58px]",
-    imagePath: "/images/vilasamCurrentProject/6.png",
+    position: "left-[25%] top-[66%] md:left-[31%] md:top-[69%] lg:left-[27%] lg:top-[70%]  lg:w-24  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/new24.webp",
     description: [
       { value: "East Facing Plots", label: "6.60 Cents" },
       {
@@ -104,8 +107,8 @@ const LOCATIONS: Location[] = [
   {
     id: 5,
     name: "Section 5",
-    position: "left-[30%] top-[68%] lg:left-[23%] lg:top-[78%] md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[130px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/7.png",
+    position: "left-[25%] top-[74%] lg:left-[23%] lg:top-[78%] md:left-[25%] md:top-[77%] md:w-[100px]  md:h-[50px] lg:w-[130px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new25.webp",
     description: [
       { value: "Corner Plots", label: "7.80 Cents" },
       {
@@ -118,8 +121,8 @@ const LOCATIONS: Location[] = [
   {
     id: 6,
     name: "Section 6",
-    position: "left-[43%] top-[68%] lg:left-[41%] lg:top-[79%] md:left-[44%] md:top-[78%] lg:w-[70px] lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/8.png",
+    position: "left-[40%] top-[75%] lg:left-[41%] lg:top-[79%] md:left-[44%] md:top-[78%] lg:w-[70px] lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new14.webp",
     description: [
       { value: "Corner Plots", label: "4.00 Cents" },
       {
@@ -132,8 +135,8 @@ const LOCATIONS: Location[] = [
   {
     id: 7,
     name: "Section 7",
-    position: "left-[43%] top-[62%] md:left-[44%] md:top-[70%] lg:left-[41%] lg:top-[69%]  lg:w-[70px]  lg:h-[68px]",
-    imagePath: "/images/vilasamCurrentProject/9.png",
+    position: "left-[40%] top-[66%] md:left-[44%] md:top-[70%] lg:left-[41%] lg:top-[69%]  lg:w-[70px]  lg:h-[68px]",
+    imagePath: "/images/vilasamCurrentProject/new15.webp",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -146,8 +149,8 @@ const LOCATIONS: Location[] = [
   {
     id: 8,
     name: "Section 8",
-    position: "left-[43%] top-[56%] md:left-[44%] md:top-[60%] lg:left-[41%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/10.png",
+    position: "left-[40%] top-[58%] md:left-[44%] md:top-[60%] lg:left-[41%] lg:top-[59%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new16.webp",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -160,8 +163,8 @@ const LOCATIONS: Location[] = [
   {
     id: 9,
     name: "Section 9",
-    position: "left-[43%] top-[51%] lg:left-[41%] lg:top-[50%]   lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/vilasamCurrentProject/11.png",
+    position: "left-[40%] top-[50%] lg:left-[41%] lg:top-[50%]   lg:w-[70px]  lg:h-[65px]",
+    imagePath: "/images/vilasamCurrentProject/new17.webp",
     description: [
       { value: "West Facing Plots", label: "4.00 Cents" },
       {
@@ -174,8 +177,8 @@ const LOCATIONS: Location[] = [
   {
     id: 10,
     name: "Section 10",
-    position: "left-[43%] top-[43%] lg:left-[41%] lg:top-[36%]  lg:w-[65px]  lg:h-[88px]",
-    imagePath: "/images/vilasamCurrentProject/12.png",
+    position: "left-[40%] top-[40%] lg:left-[41%] lg:top-[36%]  lg:w-[65px]  lg:h-[88px]",
+    imagePath: "/images/vilasamCurrentProject/new18.webp",
     description: [
       { value: "West Facing Plots", label: "5.45 Cents" },
       {
@@ -188,8 +191,8 @@ const LOCATIONS: Location[] = [
   {
     id: 11,
     name: "Section 11",
-    position: "left-[43%] top-[35%] md:left-[44%] md:top-[27%] lg:left-[40%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/vilasamCurrentProject/13.png",
+    position: "left-[41%] top-[30%] md:left-[44%] md:top-[27%] lg:left-[40%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/vilasamCurrentProject/new19.webp",
     description: [
       { value: "West Facing Plots", label: "5.00 Cents" },
       {
@@ -202,8 +205,8 @@ const LOCATIONS: Location[] = [
   {
     id: 12,
     name: "Section 12",
-    position: "left-[88%] top-[27%] lg:left-[84%] md:top-[17%] lg:top-[11%]  lg:w-[60px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/27.png",
+    position: "left-[90%] top-[27%] lg:left-[70%] md:top-[17%] lg:top-[11%]  lg:w-[60px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new05.png",
     description: [
       { value: "East Facing Plots", label: "6.57 Cents" },
       {
@@ -217,7 +220,7 @@ const LOCATIONS: Location[] = [
     id: 13,
     name: "Section 13",
     position: "left-[83%] top-[35%] md:left-[85%] md:top-[29%] lg:left-[82%] lg:top-[23%]  lg:w-10  lg:h-16",
-    imagePath: "/images/vilasamCurrentProject/27.png",
+    imagePath: "/images/vilasamCurrentProject/new04.webp",
     description: [
       { value: "Tech Hub", label: "Co-working Spaces" },
       {
@@ -231,7 +234,7 @@ const LOCATIONS: Location[] = [
     id: 14,
     name: "Section 14",
     position: "left-[71%] top-[53%] lg:left-[67%] lg:top-[53%]  lg:w-[70px]  lg:h-[65px]",
-    imagePath: "/images/vilasamCurrentProject/16.png",
+    imagePath: "/images/vilasamCurrentProject/new02.png",
     description: [
       { value: "Corner Plots", label: "3.65 Cents" },
       {
@@ -244,8 +247,8 @@ const LOCATIONS: Location[] = [
   {
     id: 15,
     name: "Section 15",
-    position: "left-[71%] top-[47%] lg:left-[67%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/vilasamCurrentProject/17.png",
+    position: "left-[70%] top-[46%] lg:left-[67%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/new03.webp",
     description: [
       { value: "West Facing Plots", label: "3.90 Cents" },
       {
@@ -258,8 +261,8 @@ const LOCATIONS: Location[] = [
   {
     id: 16,
     name: "Section 16",
-    position: "left-[71%] top-[42%]  md:top-[39%]  lg:left-[67%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
-    imagePath: "/images/vilasamCurrentProject/18.png",
+    position: "left-[70%] top-[38%]  md:top-[39%]  lg:left-[67%] lg:top-[34%] lg:w-[70px]  lg:h-[74px]",
+    imagePath: "/images/vilasamCurrentProject/new04.webp",
     description: [
       { value: "West Facing Plots", label: "4.50 Cents" },
       {
@@ -272,8 +275,8 @@ const LOCATIONS: Location[] = [
   {
     id: 17,
     name: "Section 17",
-    position: "left-[69%] top-[36%] md:left-[71%] md:top-[30%] lg:left-[67%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
-    imagePath: "/images/vilasamCurrentProject/19.png",
+    position: "left-[70%] top-[27%] md:left-[71%] md:top-[30%] lg:left-[67%] lg:top-[23%]  lg:w-[70px]  lg:h-[78px]",
+    imagePath: "/images/vilasamCurrentProject/new05.webp",
     description: [
       { value: "West Facing Plots", label: "5.00 Cents" },
       {
@@ -286,8 +289,8 @@ const LOCATIONS: Location[] = [
   {
     id: 18,
     name: "Section 18",
-    position: "left-[70%] top-[28%] md:left-[70%] md:top-[15%] lg:left-[67%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
-    imagePath: "/images/vilasamCurrentProject/20.png",
+    position: "left-[70%] top-[20%] md:left-[70%] md:top-[15%] lg:left-[67%] lg:top-[10%]  lg:w-[70px]  lg:h-[84px]",
+    imagePath: "/images/vilasamCurrentProject/new06.webp",
     description: [
       { value: "West Facing Plots", label: "5.80 Cents" },
       {
@@ -300,8 +303,8 @@ const LOCATIONS: Location[] = [
   {
     id: 19,
     name: "Section 19",
-    position: "left-[59%] top-[24%] md:left-[60%] md:top-[10%] lg:left-[57%] lg:top-[5%]  lg:w-[70px]  lg:h-[54px]",
-    imagePath: "/images/vilasamCurrentProject/21.png",
+    position: "left-[59%] top-[12%] md:left-[60%] md:top-[10%] lg:left-[57%] lg:top-[11%]  lg:w-[70px]  lg:h-[54px]",
+    imagePath: "/images/vilasamCurrentProject/new08.webp",
     description: [
       { value: "East Facing Plots", label: "3.35 Cents" },
       {
@@ -314,8 +317,8 @@ const LOCATIONS: Location[] = [
   {
     id: 20,
     name: "Section 20",
-    position: "left-[59%] top-[30%] md:left-[59%] md:top-[20%]  lg:left-[57%] lg:top-[14%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/22.png",
+    position: "left-[59%] top-[20%] md:left-[59%] md:top-[20%]  lg:left-[57%] lg:top-[18%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new09.webp",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
       {
@@ -328,8 +331,8 @@ const LOCATIONS: Location[] = [
   {
     id: 21,
     name: "Section 21",
-    position: "left-[59%]  top-[36%] md:left-[59%]  md:top-[29%] lg:left-[57%]  lg:top-[25%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/23.png",
+    position: "left-[59%]  top-[30%] md:left-[59%]  md:top-[29%] lg:left-[57%]  lg:top-[25%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new10.webp",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
       {
@@ -342,8 +345,8 @@ const LOCATIONS: Location[] = [
   {
     id: 22,
     name: "Section 22",
-    position: "left-[59%] top-[42%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
-    imagePath: "/images/vilasamCurrentProject/24.png",
+    position: "left-[59%] top-[37%] lg:left-[57%] md:top-[39%] lg:top-[35%]  lg:w-[70px]  lg:h-[70px]",
+    imagePath: "/images/vilasamCurrentProject/new11.webp",
     description: [
       { value: "East Facing Plots", label: "4.50 Cents" },
       {
@@ -356,8 +359,8 @@ const LOCATIONS: Location[] = [
   {
     id: 23,
     name: "Section 23",
-    position: "left-[60%] top-[68%] lg:left-[58%] lg:top-[76%] md:left-[60%] md:top-[75%] md:w-[70px]  md:h-[50px]  lg:w-[100px]  lg:h-[80px]",
-    imagePath: "/images/vilasamCurrentProject/25.png",
+    position: "left-[62%] top-[72%] lg:left-[58%] lg:top-[76%] md:left-[60%] md:top-[75%] md:w-[70px]  md:h-[50px]  lg:w-[100px]  lg:h-[80px]",
+    imagePath: "/images/vilasamCurrentProject/new01.webp",
     description: [
       { value: "Corner Plots", label: "7.60 Cents" },
       {
@@ -370,8 +373,8 @@ const LOCATIONS: Location[] = [
   {
     id: 24,
     name: "Section 24",
-    position: "left-[59%] top-[47%] lg:left-[57%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
-    imagePath: "/images/vilasamCurrentProject/26.png",
+    position: "left-[59%] top-[45%] lg:left-[57%] lg:top-[45%]  lg:w-[70px]  lg:h-[58px]",
+    imagePath: "/images/vilasamCurrentProject/new12.webp",
     description: [
       { value: "East Facing Plots", label: "3.60 Cents" },
       {
@@ -384,8 +387,8 @@ const LOCATIONS: Location[] = [
   {
     id: 25,
     name: "Section 25",
-    position: "lg:left-[33%] lg:top-[23%] left-[33%] top-[36%] md:left-[34%] md:top-[30%]   lg:w-[55px]  lg:h-[100px]",
-    imagePath: "/images/vilasamCurrentProject/28.png",
+    position: "lg:left-[33%] lg:top-[23%] left-[30%] top-[31%] md:left-[34%] md:top-[30%]   lg:w-[55px]  lg:h-[100px]",
+    imagePath: "/images/vilasamCurrentProject/new20.webp",
     description: [
       { value: "East Facing Plots", label: "5.40 Cents" },
       {
@@ -398,8 +401,8 @@ const LOCATIONS: Location[] = [
   {
     id: 26,
     name: "Section 26",
-    position: "left-[59%] top-[54%] lg:left-[57%] lg:top-[53%]    lg:w-[70px]  lg:h-[55px]",
-    imagePath: "/images/vilasamCurrentProject/29.png",
+    position: "left-[59%] top-[53%] lg:left-[57%] lg:top-[53%]    lg:w-[70px]  lg:h-[55px]",
+    imagePath: "/images/vilasamCurrentProject/new13.webp",
     description: [
       { value: "Corner Plots", label: "3.55 Cents" },
       {
@@ -492,71 +495,73 @@ const CurrentProject: React.FC = () => {
   // ============= Render Helpers =============
   const renderStats = () => (
     <motion.div
-      className={`hidden lg:block  mt-[40px] ${selectedLocation.description === STATS_DATA ? "xl:mt-[170px] lg:mt-[100px]" : "lg:mt-[50px]"}  2xl:mt-[400px]`}
+      key={selectedLocation.id}
+      className="hidden lg:flex  flex-col mt-5" // min-h-[400px]
       initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
       aria-label="Project Statistics"
     >
-      {selectedLocation.description === STATS_DATA
-        ? selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-10" : ""}`}>
+      <div className="flex-grow">
+        {selectedLocation.description === STATS_DATA
+          ? selectedLocation.description.map((stat, index) => (
+            <motion.div key={index} className={`leading-[1.1] md:space-y-3 ${index !== 0 ? "lg:my-10" : ""}`}>
               <Typography
                 variant="custom"
-                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[4rem] text-[#0C3E49]"
               >
                 <span className="font-CandideCondensedNormal">
                   <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
                 </span>
-                <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
+                <span className="font-CandideCondensedNormal">{stat.value.replace(/[0-9a-zA-Z\s]/g, "")}</span>
+                <span>{stat.value.replace(/[^a-zA-Z\s]/g, "")}</span>
               </Typography>
               <Typography
                 variant="custom"
-                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60 font-ttCommons "
               >
                 {stat.label}
               </Typography>
             </motion.div>
           ))
-        : selectedLocation.description.map((stat, index) => (
-            <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "lg:my-3" : ""}`}>
+          : selectedLocation.description.map((stat, index) => (
+            <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "lg:my-3" : ""}`}>
               <Typography
                 variant="custom"
-                className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[4rem] text-[#0C3E49]"
               >
-                <span className="font-CandideCondensedNormal">{stat.value}</span>
+                {useSafeSpecialCharacters(stat.value)}
               </Typography>
               <Typography
                 variant="custom"
-                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3"
+                className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60 font-ttCommons mt-1"
               >
-                {stat.label}
+                {useSafeSpecialCharacters(stat.label)}
               </Typography>
             </motion.div>
           ))}
-      <div className=" relative group cursor-pointer">
+      </div>
+      <div className="relative group cursor-pointer w-fit mt-auto">
         <button
           aria-label="Learn more about our sustainability approach"
           onClick={() => setIsModalOpen(true)}
           type="button"
           className="
                       relative group
-                      mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
                       rounded-full
-                      pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                      text-base font-freightNeoMedium text-white
-                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
-                      overflow-hidden z-100
+                      pl-[8px] pr-[1.2rem] py-[0.4rem]
+                      text-base font-theSeasons text-white
+                      2xl:py-3 2xl:pr-8 2xl:text-[1.25rem]
+                      overflow-hidden z-100 mt-6
                     "
         >
-          <div className={`absolute inset-0 bg-[#e0f2ec]  rounded-full`}></div>
+          <div className={`absolute inset-0 bg-[#e0f2ec] rounded-full`}></div>
           <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
             <div
               className={`
-                          absolute w-0 h-0   rounded-full
+                          absolute w-0 h-0 rounded-full
                           group-hover:w-[47rem] group-hover:h-[30rem]
                           transition-all duration-500 ease-out
                         `}
@@ -565,7 +570,7 @@ const CurrentProject: React.FC = () => {
               <CTAButtonIcon fill="#0C3E49" direction="right" />
             </div>
           </div>
-          <span className={` relative z-20 text-[#0C3E49] mt-[3px] md:mt-0 font-sourceSans3`}>More about our sustainability centric approach </span>
+          <span className={`relative z-20 text-[#0C3E49] mt-[2px] font-ttCommons whitespace-nowrap`}>More about our sustainability centric approach</span>
         </button>
       </div>
     </motion.div>
@@ -573,57 +578,63 @@ const CurrentProject: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col sm:flex-col lg:max-h-screen  lg:flex-row mx-[1rem] sm:mx-[1rem] md:mx-[4.125rem] lg:mx-[3.5rem] xl:mx-[9rem]"
+      className="flex flex-col sm:flex-col lg:max-h-screen lg:flex-row w-full relative pl-[1rem] sm:pl-[1rem] md:pl-[4.125rem] lg:pl-[3.5rem] xl:pl-[9rem] pr-[1rem] sm:pr-[1rem] md:pr-[4.125rem] lg:pr-0"
       aria-labelledby="project-title"
     >
       {/* Left Column - Project Details */}
-      <article className="w-full lg:w-1/2 lg2:py-32">
-        <header className="md:pb-10 pb-4">
-          <h1
-            className="w-[224px] hidden lg:block  md:w-full   text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
-          >
-            Explore your <br /> Future Home
-          </h1>
-          <h1
-            className=" lg:hidden  !font-medium  md:w-full  text-2xl md:text-[2.5rem] lg2:text-[3.5rem] 2xl:text-[5rem] font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#0C3E49]"
-          >
-            Explore your Future Home
-          </h1>
-        </header>
+      <article className="w-full lg:w-[45%] lg2:py-20 xl:py-24 2xl:py-32 flex flex-col lg:justify-start md:h-[105vh] lg:h-[110vh]">
+        <div className="lg2:mb-6  ">
+          <header className="md:pb-6 pb-4">
+            <h1
+              className="w-full hidden lg:block text-2xl lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[5.5rem] font-theSeasons leading-[1.1] text-[#0C3E49]"
+            >
+              Explore your <br /> Future Home
+            </h1>
+            <h1
+              className="lg:hidden !font-medium md:w-full text-2xl md:text-[2.5rem] font-theSeasons leading-[1.2] text-[#0C3E49]"
+            >
+              Explore your Future Home
+            </h1>
+          </header>
 
-        <div className="flex items-center">
-          <Typography
-            variant="custom"
-            className="font-sourceSans3  md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#0C3E49]/60"
-          >
-            {PROJECT_DATA.description.suffix}
-          </Typography>
-        </div>
-
-        {/* <Link href="/vaikuntamcity">
-          <div className="mt-[29px]">
-            <button className="hidden md:block pt-[5px] items-center justify-center pb-1 text-center w-[287px] h-14 rounded-[36px] border-[2px] border-customBrown bg-none font-FreightNeoProBold text-[22px] text-customBrown 2xl:w-[480px] 2xl:h-[66px] 2xl:text-[2.125rem]">
-              {PROJECT_DATA.cta}
-            </button>
+          <div className="flex items-center mt-2">
+            <Typography
+              variant="custom"
+              className="font-ttcommons md:max-w-[90%] xl:max-w-[480px] 2xl:max-w-[700px] text-base md:text-lg lg:text-[1.1rem] 2xl:text-[1.5rem] leading-[1.6] text-[#0C3E49]/70  md:mb-0 mb-5"
+            >
+              Where comfort meets affordability, and thoughtful design creates a sense of home. Vilasam blends refined living with everyday functionality—elegant spaces built to inspire joy, connection, <span className="font-CandideCondensedNormal">&</span> a lasting sense of belonging.
+            </Typography>
           </div>
-        </Link> */}
+        </div>
 
         {renderStats()}
       </article>
 
       {/* Right Column - Interactive Project Map (Desktop) */}
       <figure
-        className="lg:flex ml-auto  items-center h-[70vh] lg:h-[100vh] lg2:h-[90vh] justify-center w-full lg:w-[45%] lg2:w-1/2 relative"
+        className="lg:flex ml-auto items-center min-h-[500px] lg:h-auto justify-end w-full lg:w-[55%] relative"
         aria-labelledby="project-title"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative w-full h-full">
-          <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-contain" />
-          <div className="absolute inset-0 z-10">
+        <div className="relative w-full h-full min-h-[500px] lg:min-h-[700px]">
+          <Image fill src={selectedLocation.imagePath} alt="Project Map" className="w-full h-full object-cover " priority />
+          
+          {/* Compass SVG */}
+          <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20 w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20">
+            <Image 
+              src="/svgs/compass.svg" 
+              alt="Compass" 
+              width={80} 
+              height={80}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <div className="absolute inset-0 z-10">``
             {LOCATIONS.map((location) => (
               <button
                 key={location.id}
-                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0  bg-[#0C3E49] ${location.position}`}
+                className={`absolute w-6 h-6 md:h-10 md:w-10 opacity-0 bg-[#0C3E49] ${location.position}`}
                 onClick={() => handleLocationClick(location)}
                 onMouseEnter={() => handleLocationClick(location)}
                 aria-label={location.name}
@@ -634,65 +645,68 @@ const CurrentProject: React.FC = () => {
       </figure>
 
       <motion.div
-        className="  lg:hidden "
+        className="lg:hidden mt-9 flex flex-col space-y-6 "
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         aria-label="Project Statistics"
+        data-lenis-prevent
       >
-        {selectedLocation.description === STATS_DATA
-          ? selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-10" : ""}`}>
+        <div className="flex-grow">
+          {selectedLocation.description === STATS_DATA
+            ? selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "my-10" : ""}`}>
                 <Typography
                   variant="custom"
-                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                  className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] text-[#0C3E49]"
                 >
                   <span className="font-CandideCondensedNormal">
                     <Counter value={parseInt(stat.value.replace(/\D/g, ""), 10)} />
                   </span>
-                  <span className="font-geistSerif">{stat.value.replace(/\d+/g, "")}</span>
+                  <span className="font-CandideCondensedNormal">{stat.value.replace(/[0-9a-zA-Z\s]/g, "")}</span>
+                  <span className="font-theSeasons">{stat.value.replace(/[^a-zA-Z\s]/g, "")}</span>
                 </Typography>
-                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
+                <Typography variant="custom" className="text-sm md:text-lg text-[#0C3E49]/60 font-ttCommons mt-2">
                   {stat.label}
                 </Typography>
               </motion.div>
             ))
-          : selectedLocation.description.map((stat, index) => (
-              <motion.div key={index} className={`leading-[1.1]  ${index !== 0 ? "my-4" : ""}`}>
+            : selectedLocation.description.map((stat, index) => (
+              <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "my-4" : ""}`}>
                 <Typography
                   variant="custom"
-                  className="font-geistSerif text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[5rem] text-[#0C3E49]"
+                  className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] text-[#0C3E49]"
                 >
-                  <span className="font-CandideCondensedNormal">{stat.value}</span>
+                  {useSafeSpecialCharacters(stat.value)}
                 </Typography>
-                <Typography variant="custom" className="lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3">
-                  {stat.label}
+                <Typography variant="custom" className="text-sm md:text-lg text-[#0C3E49]/60 font-theSeasons mt-2">
+                  {useSafeSpecialCharacters(stat.label)}
                 </Typography>
               </motion.div>
             ))}
-        <div className=" relative group cursor-pointer">
+        </div>
+        <div className="relative group cursor-pointer w-fit mt-auto">
           <button
-          aria-label="More about our sustainability centric approach"
+            aria-label="More about our sustainability centric approach"
             onClick={() => setIsModalOpen(true)}
             type="button"
             className="
                       relative group
-                      mt-4
                       flex items-center justify-center
                       gap-[0.6875rem]
                       rounded-full
-                      pl-[10px] pr-[1rem] py-[0.1px] lg:py-[0.100rem]
-                      text-base font-freightNeoMedium text-white
-                      2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
+                      pl-[8px] pr-[1rem] py-[0.2rem]
+                      text-base font-ttCommons text-white
                       overflow-hidden z-100
+                      w-fit
                     "
           >
-            <div className={`absolute inset-0 bg-[#e0f2ec]  rounded-full`}></div>
+            <div className={`absolute inset-0 bg-[#e0f2ec] rounded-full`}></div>
             <div className="relative z-10 flex items-center justify-center w-[2rem] h-[2rem]">
               <div
                 className={`
-                          absolute w-0 h-0   rounded-full
+                          absolute w-0 h-0 rounded-full
                           group-hover:w-[47rem] group-hover:h-[30rem]
                           transition-all duration-500 ease-out
                         `}
@@ -701,7 +715,7 @@ const CurrentProject: React.FC = () => {
                 <CTAButtonIcon fill="#0C3E49" direction="right" />
               </div>
             </div>
-            <span className={` relative z-20 text-[#0C3E49] text-[13px] mt-[3px] md:mt-0 font-sourceSans3`}>
+            <span className={`relative z-20 text-[#0C3E49] text-[13px] mt-[2px] font-ttCommons`}>
               More about our sustainability centric approach
             </span>
           </button>
@@ -713,3 +727,4 @@ const CurrentProject: React.FC = () => {
 };
 
 export default CurrentProject;
+

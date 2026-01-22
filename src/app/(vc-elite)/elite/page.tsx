@@ -161,21 +161,23 @@ const page = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    // Debounce resize events
+    // Debounce resize events with longer delay for mobile
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
+      const isMobile = window.innerWidth < 1024;
       resizeTimeout = setTimeout(() => {
         ScrollTrigger.refresh();
         console.log("ScrollTrigger refreshed, Scroll Height:", document.documentElement.scrollHeight);
-      }, 100);
+      }, isMobile ? 250 : 100);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
-    // Initial refresh
+    // Initial refresh with delay for mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100);
+    }, isMobile ? 300 : 100);
 
     return () => {
       window.removeEventListener("resize", handleResize);

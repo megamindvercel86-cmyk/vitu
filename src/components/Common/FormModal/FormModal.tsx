@@ -6,6 +6,9 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import Loader from "@/components/LoaderComponent/LoaderComponent";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 // Animation variants
 const backdropVariants = {
@@ -34,6 +37,8 @@ interface ContactFormModalProps {
   buttonBg?: string;
   peerBg?: string;
   downloadFileLink?: string;
+  collectionName?: string;
+  thankYouRoute?: string;
 }
 
 const ContactFormContent: React.FC<ContactFormModalProps> = ({
@@ -44,11 +49,15 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
   isOpen,
   onClose,
   className = "",
-  maxWidth = "max-w-7xl",
+  maxWidth = "max-w-8xl",
+  collectionName = "projectEnquiries",
+  thankYouRoute = "/vaikuntamcity/thank-you",
 }) => {
+  const isVilasam = thankYouRoute === "/vilasam/thank-you";
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [dialCode, setDialCode] = useState("91");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -85,7 +94,9 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
         return "";
       case "phone":
         if (!value.trim()) return "Phone number is required";
-        if (!/^\+?\d{10,15}$/.test(value.replace(/\s/g, ""))) return "Invalid phone number (10-15 digits)";
+        // Phone length check (usually 10-15 digits globally)
+        const digitsOnly = value.replace(/\D/g, "");
+        if (digitsOnly.length < 10) return "Phone number must be at least 10 digits";
         return "";
       case "interstedIn":
         if (!value.trim()) return "Please select an option";
@@ -137,27 +148,29 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
     if (validateForm()) {
       setIsLoading(true);
 
-      router.push("/vaikuntamcity/thank-you");
+      router.push(thankYouRoute);
       try {
-        const collectionRef = collection(db, "projectEnquiries");
+        const collectionRef = collection(db, collectionName);
         const dataWithTimestamp = {
           ...formData,
           createdAt: serverTimestamp(),
         };
         await addDoc(collectionRef, dataWithTimestamp);
-        await fetch("/api/sendEmail", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, page: "Project Enquire" }),
-        });
-        await fetch("/api/send-whatsapp-vaikuntamcity", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.fullName,
-            phone: formData.phone,
-          }),
-        });
+        if (collectionName === "projectEnquiries") {
+          await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...formData, page: "Project Enquire" }),
+          });
+          await fetch("/api/send-whatsapp-vaikuntamcity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.fullName,
+              phone: formData.phone,
+            }),
+          });
+        }
 
         // Accelr Webhook Integration
         const utmParams = {
@@ -258,7 +271,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           <motion.div
             variants={cardVariants}
             ref={containerRef}
-            className={`${maxWidth} mx-auto bg-white h-fit z-[60] my-auto pb-10 rounded-3xl font-sans relative shadow-2xl ${className}`}
+            className={`${maxWidth} mx-auto bg-white h-fit z-[60] my-auto pb-10 rounded-3xl ${isVilasam ? "font-theSeasons" : "font-sans"} relative shadow-2xl ${className}`}
           >
             {/* Close Button */}
             <motion.button
@@ -281,19 +294,20 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
               {/* Left Side Content */}
               <div className="flex-1">
                 <h1
-                  className={`text-center font-freightNeoMedium hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor ? textColor : "text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}
+                  className={`text-center ${isVilasam ? "font-theSeasons" : "font-freightNeoMedium"} hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor ? textColor : "text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}
                 >
-                  Your dream <br /> home is closer <br /> than you think!
+                  Your dream <br /> home is closer <br /> than you think<span className="font-freightNeoMedium">!</span>
                 </h1>
                 <h1
-                  className={`text-center mt-7 lg:hidden font-freightNeoMedium !leading-[1.3] lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}
+                  className={`text-center mt-7 lg:hidden ${isVilasam ? "font-theSeasons" : "font-freightNeoMedium"} !leading-[1.3] lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}
                 >
-                  Your dream home is closer than you think!
+                  {useSafeSpecialCharacters("Your dream home is closer than you think !")}
                 </h1>
                 <p
-                  className={`text-center font-freightNeoMedium lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4`}
+                  className={`text-center ${isVilasam ? "font-ttCommons" : "font-freightNeoMedium"} lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4 max-w-lg`}
                 >
-                  Begin your journey to a new home—fill out the form & let's get started.{" "}
+                  Begin your journey to a new home.
+                  Fill out the form to download e-Brochure
                 </p>
                 {/* <div className="hidden lg:block">
                   <hr className="w-full md:w-[392px] mt-12 lg:mt-8 border-black border-opacity-20" />
@@ -316,9 +330,8 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
-                        touched.fullName && errors.fullName ? "border-red-500" : ""
-                      }`}
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} font-ttCommons bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${touched.fullName && errors.fullName ? "border-red-500" : ""
+                        }`}
                       placeholder="Your Full Name"
                     />
                     {touched.fullName && errors.fullName && <p className="text-red-500 text-[18px] mt-1">{errors.fullName}</p>}
@@ -333,34 +346,98 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                       value={formData.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${
-                        touched.email && errors.email ? "border-red-500" : ""
-                      }`}
+                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} font-ttCommons bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium ${touched.email && errors.email ? "border-red-500" : ""
+                        }`}
                       placeholder="Your Email"
                     />
                     {touched.email && errors.email && <p className="text-red-500 text-[18px] mt-1">{errors.email}</p>}
                   </div>
                   {/* Phone */}
-                  <div>
-                    <input
-                      aria-label="phone"
-                      type="number"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={`w-full px-1 pb-2 ${textColor ? textColor : "text-[#0C3E49]"} bg-transparent border-0 border-b border-black/[20%] focus:outline-none text-[18px] lg:text-xl placeholder:${textColor ? textColor : "text-[#0C3E49]"} font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance]:textfield ${
-                        touched.phone && errors.phone ? "border-red-500" : ""
-                      }`}
-                      placeholder="Your Phone Number"
-                    />
+                  <div className="flex flex-col relative">
+                    <div
+                      className={`flex items-center w-full border-b ${touched.phone && errors.phone ? "border-red-500" : "border-black/[20%]"
+                        }`}
+                    >
+                      <PhoneInput
+                        defaultCountry="in"
+                        value={formData.phone}
+                        onChange={(phone, data: any) => {
+                          setFormData((prev) => ({ ...prev, phone: phone }));
+                          // Only validate if already touched, otherwise wait for blur or submit
+                          if (touched.phone) {
+                            setErrors((prev) => ({ ...prev, phone: validateField("phone", phone) }));
+                          }
+                          if (data?.country?.dialCode) {
+                            setDialCode(data.country.dialCode);
+                          }
+                        }}
+                        onBlur={() => {
+                          setTouched((prev) => ({ ...prev, phone: true }));
+                          setErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
+                        }}
+                        disableDialCodeAndPrefix={true}
+                        className="w-full vilasam-phone-input-modal font-ttCommons"
+                        inputClassName={`w-full !px-1 !pb-2 ${textColor ? textColor : "!text-[#0C3E49]"} !bg-transparent !border-0 focus:!outline-none !text-[18px] lg:!text-xl placeholder:${textColor ? textColor : "!text-[#0C3E49]"} !font-medium !h-auto !rounded-none`}
+                        style={{
+                          "--dial-code": `"${dialCode}"`,
+                        } as React.CSSProperties}
+                        countrySelectorStyleProps={{
+                          buttonStyle: {
+                            background: "transparent",
+                            border: "0px",
+                            borderRadius: "0px",
+                            paddingBottom: "8px",
+                            width: "fit-content",
+                            minWidth: "60px",
+                            gap: "2px",
+                            color: textColor ? textColor : "#0C3E49",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                            paddingLeft: "4px",
+                          } as React.CSSProperties,
+                          buttonClassName: "country-selector-button-modal [&_img]:hidden",
+                          dropdownStyleProps: {
+                            style: {
+                              maxHeight: "220px",
+                              overflowY: "auto",
+                              border: "1px solid rgba(0,0,0,0.1)",
+                              background: "white",
+                              zIndex: 9999,
+                              fontFamily: "ttCommons",
+                              overscrollBehavior: "contain",
+                            },
+                            listItemFlagClassName: "hidden",
+                            listItemCountryNameClassName: "hidden",
+                            listItemDialCodeClassName: textColor ? textColor : "text-[#0C3E49]",
+                          },
+                        }}
+                      />
+                    </div>
+                    <style jsx global>{`
+                      .country-selector-button-modal::before {
+                        content: "+" var(--dial-code);
+                        color: ${textColor ? textColor : "#0C3E49"};
+                        font-family: "ttCommons";
+                        font-weight: 500;
+                        font-size: 18px;
+                      }
+                      @media (min-width: 1024px) {
+                        .country-selector-button-modal::before {
+                          font-size: 20px;
+                        }
+                      }
+                      .vilasam-phone-input-modal .react-international-phone-input-container .react-international-phone-input {
+                        padding-left: 10px !important;
+                        font-family: "ttCommons";
+                      }
+                    `}</style>
                     {touched.phone && errors.phone && <p className="text-red-500 text-[18px] mt-1">{errors.phone}</p>}
                   </div>
                   {/* Interested In Dropdown */}
                   <div className="relative z-10">
                     <div
-                      className={`${textColor ? textColor : "text-[#0C3E49]"} text-[18px] lg:text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
+                      className={`${textColor ? textColor : "text-[#0C3E49]"} font-ttCommons text-[18px] lg:text-xl font-medium py-3 rounded-md flex justify-between items-center cursor-pointer`}
                       onClick={() => setOpen(!open)}
                     >
                       <span>{formData.interstedIn || "Interested In"}</span>
@@ -368,11 +445,11 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                     </div>
                     <hr className="border-black border-opacity-20" />
                     {open && (
-                      <div className="absolute w-full bg-white rounded-md">
+                      <div className="absolute w-full bg-white rounded-md ">
                         {projectEnquiries.map((option) => (
                           <div
                             key={option.value}
-                            className={`px-4 leading-[2] lg:leading-none lg:py-4 ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg ? buttonBg : "bg-gray-200"} cursor-pointer`}
+                            className={`px-4 leading-[2] font-ttCommons lg:leading-none lg:py-4 text-start ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] lg:text-xl font-medium  hover:${buttonBg ? buttonBg : "bg-gray-200"} cursor-pointer`}
                             onClick={() => {
                               setFormData((prev) => ({ ...prev, interstedIn: option.label }));
                               setTouched((prev) => ({ ...prev, interstedIn: true }));
@@ -397,9 +474,8 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                       <button
                         type="button"
                         aria-label="Submit Form"
-                        className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg ? buttonBg : "bg-[#0C3E49]"}  text-white  rounded-full font-medium ${
-                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
-                        }`}
+                        className={`lg:hidden block text-2xl lg:text-[26px] w-full py-2 ${buttonBg ? buttonBg : "bg-[#0C3E49]"}  text-white  rounded-full font-medium ${!isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                          }`}
                         onClick={handleSubmit}
                         disabled={!isFormValid || isLoading}
                       >
@@ -435,9 +511,8 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                       <button
                         type="button"
                         aria-label="Submit Form"
-                        className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg ? buttonBg : "bg-[#0C3E49]"} text-white rounded-full font-medium ${
-                          !isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
-                        }`}
+                        className={`lg:block hidden text-[26px] w-full lg:w-[146px] py-2  ${buttonBg ? buttonBg : "bg-[#0C3E49]"} text-white rounded-full font-medium ${!isFormValid || isLoading ? "opacity-50 cursor-not-allowed" : `${buttonBg ? `hover:${buttonBg}` : "hover:bg-[#0A2F38]"}`
+                          }`}
                         onClick={handleSubmit}
                         disabled={!isFormValid || isLoading}
                       >

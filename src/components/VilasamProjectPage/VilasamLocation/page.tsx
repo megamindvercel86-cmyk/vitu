@@ -13,8 +13,12 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons";
 import "./vilasamLocation.css";
 import CircularPlayPauseButton from "@/components/Common/CircularPlayPauseButton/CircularPlayPauseButton";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+
+
 
 interface LocationAdvantageProps {
+  width?: string;
   title: string;
   description: string;
   text: string;
@@ -40,6 +44,7 @@ interface LocationAdvantageProps {
     bottomTitle?: string;
     bottomDescription?: string;
     image: string;
+    width?: string,
   }[];
 }
 
@@ -88,6 +93,7 @@ const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProp
 const CardContent = ({
   description,
   slideImage,
+  width,
 }: {
   description: {
     title: string;
@@ -100,34 +106,47 @@ const CardContent = ({
     bottomTitle?: string;
     bottomDescription?: string;
     image: string;
+
   };
   slideImage: string;
-}) => (
-  <div className="flex flex-col">
-    <div className="relative w-full h-64 lg:h-[70vh] lg2:h-[80vh] md:rounded-t-[32px] overflow-hidden">
-      <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
+  width?: string;
+}) => {
+  const safeTitle = useSafeSpecialCharacters(description.title);
+  const safeSubtitle = useSafeSpecialCharacters(description.subtitle || "");
+  const safeDescription = useSafeSpecialCharacters(description.description || "");
+  const safeMiddleTitle = useSafeSpecialCharacters(description.middleTitle || "");
+  const safeMiddleDescription = useSafeSpecialCharacters(description.middleDescription || "");
+  const safeBottomTitle = useSafeSpecialCharacters(description.bottomTitle || "");
+  const safeMiddleBottomDescription = useSafeSpecialCharacters(description.middleBottomDescription || "");
+
+  return (
+    <div className="flex flex-col">
+      <div className="relative w-full h-[35vh] sm:h-64 lg:h-[60vh] lg2:h-[60vh] md:rounded-t-[32px] overflow-hidden">
+        <Image src={description.image} alt={description.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-bl from-black/60 to-transparent" />
+      </div>
+      <div className="flex flex-col md:gap-4 gap-3 py-8 md:py-12 px-5 md:px-12 lg:px-20">
+        <h2 className={`leading-[1.2] ${width === "sm" ? "max-w-lg" : "max-w-2xl"} font-theSeasons text-[#0C3E49] text-[28px] sm:text-[32px] lg:text-[48px] font-semibold`}>{safeTitle}</h2>
+        <h3 className="text-[#040707]/60 font-ttcommons text-base md:text-xl">{safeSubtitle}</h3>
+      <p className="text-[#0C3E4999] font-ttcommons text-base md:text-xl">{safeDescription}</p>
+        <h4 className="text-[#0C3E4999] font-ttcommons text-base md:text-xl font-medium">{safeMiddleTitle}</h4>
+        <p className="text-[#0C3E4999] font-ttcommons text-base md:text-xl">{safeMiddleDescription}</p>
+        <h4 className="text-[#0C3E4999] font-ttcommons text-base md:text-xl font-medium">{safeBottomTitle}</h4>
+        <ul className="space-y-3 text-[#0C3E4999] md:space-y-4" aria-label="List of key points">
+          {description?.bottomPoints?.map((point, index) => (
+            <li key={index} className="flex items-start">
+              <span className="text-[#656666] mr-2 font-theSeasons text-start text-[18px]" aria-hidden="true">
+                •
+              </span>
+              <p className="text-[#0C3E4999] text-sm  md:text-base lg:text-lg">{useSafeSpecialCharacters(point)}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[#0C3E4999] font-theSeasons text-base md:text-xl">{safeMiddleBottomDescription}</p>
+      </div>
     </div>
-    <div className="flex flex-col md:gap-4 gap-2 py-12 px-6 lg:px-20">
-      <h2 className="leading-[1.3] max-w-3xl font-geistSerif text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold">{description.title}</h2>
-      <h3 className="text-[#040707]/60 font-sourceSans3 md:!text-xl">{description.subtitle}</h3>
-      <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.description}</p>
-      <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleTitle}</h4>
-      <p className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.middleDescription}</p>
-      <h4 className="text-[#040707]/60 font-sourceSans3 text-sm md:!text-xl">{description.bottomTitle}</h4>
-      <ul className="space-y-4" aria-label="List of key points">
-        {description?.bottomPoints?.map((point, index) => (
-          <li key={index} className="flex items-start">
-            <span className="text-[#656666] mr-2 font-geistSerif text-start text-[18px]" aria-hidden="true">
-              •
-            </span>
-            <p className="text-[#040707]/60 text-base font-sourceSans3 lg:text-lg">{point}</p>
-          </li>
-        ))}
-      </ul>
-      <p className="text-[#040707]/60 font-sourceSans3 !text-xl">{description.middleBottomDescription}</p>
-    </div>
-  </div>
-);
+  );
+};
 
 const LocationAdvantage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -139,7 +158,7 @@ const LocationAdvantage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const SLIDE_DURATION = 2000; // Duration for each slide in ms
+  const SLIDE_DURATION = 3000; // Duration for each slide in ms
 
   // Clear progress interval to prevent memory leaks
   const clearProgressInterval = () => {
@@ -210,6 +229,7 @@ const LocationAdvantage = () => {
 
   const data: LocationAdvantageProps[] = [
     {
+      width: "lg",
       title: "Investment Potential",
       description: "Invest in Land, Invest in Legacy",
       text: "An address of quiet comfort & lasting promise where every day feels right, & every year adds value.",
@@ -250,6 +270,7 @@ const LocationAdvantage = () => {
       ],
     },
     {
+      width: "xl",
       title: "Location Advantage",
       description: "Shaped Around You, A Place to Live Fully",
       text: "Enjoy the soothing sounds of waves & the convenience of a beachside retreat just minutes away from the beach.",
@@ -275,12 +296,13 @@ const LocationAdvantage = () => {
       ],
     },
     {
+      width: "md",
       title: "Sustainable Living",
       description: "A Greener Way to Live",
       text: "Enjoy the comfort of conscious living, with sustainable choices woven seamlessly into your everyday surroundings.",
-      buttonText: "More about our Sustainability Initiatives",
-      image: "/images/vilasamPageImages/locationAdvantageImages/3.webp",
-      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage3.webp",
+      buttonText: "More about the Project",
+      image: "/images/vilasamPageImages/locationAdvantageImages/Yoga.webp",
+      mobileImage: "/images/vilasamPageImages/locationAdvantageImages/newYoga.webp",
       textClassName: "text-white",
       paragraphClassName: "text-white",
       buttonClassName: "text-[#4F373799] bg-[#AB352533]",
@@ -291,7 +313,7 @@ const LocationAdvantage = () => {
       closeIconFIll: "#a1a1a1",
       amenitiesDetails: [
         {
-          image: "/images/vilasamPageImages/locationAdvantageImages/7.webp",
+          image: "/images/vilasamPageImages/locationAdvantageImages/Yoga.webp",
           title: "A Greener Way to Live",
           description:
             "At Vilasam, sustainability isn't an afterthought. It's part of our core philosophy. Every element of the layout has been crafted with a commitment to reducing environmental impact while enhancing the quality of life. From energy-efficient street lighting to eco-sensitive landscaping and water management systems, we've taken conscious steps to build a community that respects nature.",
@@ -301,10 +323,11 @@ const LocationAdvantage = () => {
       ],
     },
     {
+      width: "sm",
       title: "Modern Infrastructure",
       description: "Designed for Today, Ready for Tomorrow ",
       text: "Smartly planned, future-ready infrastructure that makes everyday living seamless.",
-      buttonText: "More about the Oxygen Park",
+      buttonText: "More about the Project",
       image: "/images/vilasamPageImages/locationAdvantageImages/4.webp",
       mobileImage: "/images/vilasamPageImages/locationAdvantageImages/mobileImage4.webp",
       textClassName: "text-white",
@@ -353,7 +376,7 @@ const LocationAdvantage = () => {
     setCurrentIndex(0);
     if (swiperInstance) {
       swiperInstance.slideToLoop(nextIndex);
-      if (!isSlidePaused) {
+      if (!isSlidePaused && !isOpen) {
         swiperInstance.autoplay.start();
         startProgress();
       }
@@ -392,24 +415,27 @@ const LocationAdvantage = () => {
                 alt={item.description}
                 fill
                 sizes="100vw"
-                className="absolute md:hidden object-cover w-full h-full md:object-center"
+                className="absolute md:hidden object-cover w-full h-full object-top"
                 priority={index === 0}
               />
-              <div className="absolute bottom-[500px] sm:bottom-[330px] md:bottom-[500px] lg:bottom-[290px] lg2:bottom-[400px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4 justify-center items-start px-4 sm:px-12 text-[#4F6B94]">
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/20 to-black/10 z-[1]" />
+              <div className={`absolute top-[60px] left-4 sm:left-20 inset-0 flex flex-col lg:px-1 lg2:px-4  items-start px-4 sm:px-12 text-[#4F6B94]  ${item.width == "md" ? "max-w-md" : ""} ${item.width == "lg" ? "max-w-lg" : ""} z-[2]`}>
                 <h1
-                  className={`text-lg md:text-lg lg2:text-[24px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-sourceSans3`}
+                  className={`text-xs md:text-lg lg2:text-[16px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-ttcommons`}
                 >
-                  {item.title}
+                  {useSafeSpecialCharacters(item.title)}
                 </h1>
                 <h1
-                  className={`text-2xl lg:text-5xl lg2:text-6xl ${item.textClassName} md:font-normal font-semibold max-w-2xl font-geistSerif leading-tight`}
+                  className={`text-2xl lg:text-5xl lg2:text-6xl ${item.textClassName} md:font-normal font-semibold max-w-2xl font-theSeasons lg2:leading-tight `}
                 >
-                  {item.description}
+                  {useSafeSpecialCharacters(item.description)}
                 </h1>
                 <p
-                  className={`mt-4 inline-block ${item.paragraphClassName} lg2:text-[24px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-sourceSans3 font-[400]`}
+                  className={`mt-4 inline-block ${item.paragraphClassName} lg2:text-[22px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-ttCommons font-[400]`}
                 >
-                  {item.text}
+                  {useSafeSpecialCharacters(item.text)}
                 </p>
                 <div className="group cursor-pointer bottom-0 md:block relative hidden">
                   <button
@@ -423,7 +449,7 @@ const LocationAdvantage = () => {
                       gap-[0.6875rem]
                       rounded-full
                       pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                      text-base font-freightNeoMedium text-white
+                      text-base font-ttCommons text-white
                       2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                       overflow-hidden z-1000
                     "
@@ -441,7 +467,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0`}>More about the Project</span>
+                    <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{useSafeSpecialCharacters(item.buttonText)}</span>
                   </button>
                 </div>
               </div>
@@ -457,7 +483,7 @@ const LocationAdvantage = () => {
                     gap-[0.6875rem]
                     rounded-full
                     pl-[7px] pr-[1rem] py-[0.6px] lg:py-[0.20rem]
-                    text-base font-freightNeoMedium text-white
+                    text-base font-ttCommons text-white
                     2xl:pt-4 2xl:pb-4 2xl:pr-6 2xl:text-[2rem]
                     overflow-hidden z-100
                   "
@@ -475,7 +501,7 @@ const LocationAdvantage = () => {
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`${item.buttonTextColor} font-sourceSans3 relative z-20 mt-[3px] md:mt-0`}>More about the Project</span>
+                  <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{useSafeSpecialCharacters(item.buttonText)}</span>
                 </button>
               </div>
             </div>
@@ -510,7 +536,7 @@ const LocationAdvantage = () => {
             <motion.div
               variants={cardVariants}
               ref={containerRef}
-              className="lg2:max-w-4xl max-w-4xl md:m-auto bg-white h-fit z-[60] md:!my-12 md:!rounded-[32px] font-sans relative shadow-2xl"
+              className="w-full md:max-w-4xl md:m-auto bg-white min-h-screen md:min-h-fit md:h-fit z-[60] md:!my-12 md:!rounded-[32px] font-ttCommons relative shadow-2xl"
             >
               <motion.button
                 variants={contentVariants}
@@ -522,17 +548,17 @@ const LocationAdvantage = () => {
                 <CloseTabIcon fill={data[activeIndex].closeIconFIll} />
               </motion.button>
               <motion.div variants={contentVariants}>
-                <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} />
+                <CardContent description={data[activeIndex].amenitiesDetails![currentIndex]} slideImage={data[activeIndex].image} width={data[activeIndex].width} />
               </motion.div>
               <motion.div variants={contentVariants}>
                 <hr className="border-t-gray-200 border-[1px]" />
                 <div className="lg:px-44 md:px-12 px-6">
-                  <h1 className="pt-10 text-[10px] md:text-[12px] font-sourceSans3 text-[#8E8E93] border-t-gray-200">UP NEXT</h1>
+                  <h1 className="pt-10 text-[10px] md:text-[12px] font-theSeasons text-[#0C3E4999] border-t-gray-200">UP NEXT</h1>
                   <div className="flex md:pb-16 pb-32 justify-between">
                     <button
                       aria-label="Next Card"
                       onClick={goToNextCard}
-                      className="text-[#1D1D1F] flex font-sourceSans3 justify-between items-center text-left cursor-pointer font-bold md:text-[18px] text-base"
+                      className="text-[#0C3E49] flex font-theSeasons justify-between items-center text-left cursor-pointer font-bold md:text-[18px] text-base"
                     >
                       {data[(activeIndex + 1) % data.length].description}
                     </button>

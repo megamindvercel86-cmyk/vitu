@@ -213,7 +213,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards }) => {
   const handleMouseEnter = () => {
     // Only show cursor if not expanded
     if (!isExpanded) {
-      setCursorText("Click to more ");
+      setCursorText("Click to Explore ");
       setCursorVariant("project");
     }
   };

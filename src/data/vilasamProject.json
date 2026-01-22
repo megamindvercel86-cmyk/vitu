@@ -41,18 +41,18 @@
   },
   {
     "id": 30,
-    "title": "Kids Play Area",
-    "subtitle": "A joyful corner where childhood comes alive",
-    "description1": "The dedicated kids play area is a safe, vibrant space that encourages exploration, imagination and active play. With child-friendly materials and natural surroundings, it’s a place where children can move freely, laugh loudly, and create lasting memories.",
-    "description2": "More than just a playground, it’s a thoughtfully designed environment where children can connect with nature and neighbors alike. For parents, it brings peace of mind. For children, it brings freedom, fun, and the simple joy of being outside.",
-    "fileUrl": "/images/vilasamPageImages/broucherImages/6.webp"
-  },
-  {
-    "id": 31,
-    "title": "Chromotherapy Garden",
+        "title": "Chromotherapy Garden",
     "subtitle": "A healing space inspired by nature’s palette",
     "description1": "The Chromotherapy Garden is a unique space designed to harness the calming and restorative power of color and nature. Carefully selected plants and natural elements are arranged to create a space that soothes the senses and promotes emotional well-being.",
     "description2": "Whether you're taking a quiet walk, reflecting in silence, or simply enjoying the view, this garden becomes a space of inner balance. It’s a gentle reminder that harmony can be found in the simplest of surroundings where color, light, and nature work together to restore and rejuvenate.",
     "fileUrl": "/images/vilasamPageImages/broucherImages/7.webp"
+  },
+  {
+    "id": 31,
+   "title": "Kids Play Area",
+    "subtitle": "A joyful corner where childhood comes alive",
+    "description1": "The dedicated kids play area is a safe, vibrant space that encourages exploration, imagination and active play. With child-friendly materials and natural surroundings, it’s a place where children can move freely, laugh loudly, and create lasting memories.",
+    "description2": "More than just a playground, it’s a thoughtfully designed environment where children can connect with nature and neighbors alike. For parents, it brings peace of mind. For children, it brings freedom, fun, and the simple joy of being outside.",
+    "fileUrl": "/images/vilasamPageImages/broucherImages/6.webp"
   }
 ]

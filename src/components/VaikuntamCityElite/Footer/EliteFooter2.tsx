@@ -34,7 +34,7 @@ const EliteFooter2 = () => {
       </div>
       <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center lg:px-12 py-4  lg:border-l lg:border-r  border-[#C7784D]">
         <p className="text-[#E0D9C766] font-FreightNeoProNormal text-xs">
-          © <span className="font-CandideCondensedNormal">2025</span> Vitu Realty | All rights reserved
+          © <span className="font-CandideCondensedNormal">{new Date().getFullYear()}</span> Vitu Realty | All rights reserved
         </p>
         <div className="flex mt-4 lg:mt-0 flex-col lg:flex-row gap-2 text-[#E0D9C766] font-FreightNeoProNormal text-xs relative z-20">
         <Link href="/terms-of-service">

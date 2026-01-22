@@ -11,6 +11,8 @@ import {
   notoSerif,
   sourceSans3,
   tenorSans,
+  theSeasons,
+  ttCommons,
 } from "../../styles/font";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
@@ -28,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     // 2. SET METADATA BASE (Critical for Next.js SEO)
     metadataBase: new URL(BASE_URL),
-    
+
     // 3. ADD CANONICAL TAG (Tells Google this is the master copy)
     alternates: {
-        canonical: '/',
+      canonical: '/',
     },
 
     title: pageTitle,
@@ -40,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: pageTitle,
       description: pageDescription,
       // 4. FIX: Point to real domain, NOT vercel.app
-      url: BASE_URL, 
+      url: BASE_URL,
       siteName: "Vitu-Realty",
       images: [
         {
@@ -64,18 +66,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  
+
   // 5. STRUCTURED DATA: Explicitly list your Elite Project
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent", 
+    "@type": "RealEstateAgent",
     "name": "Vitu-Realty",
     "image": [
       "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
     ],
     "url": "https://www.viturealty.com",
-    "telephone": "+918904688886", 
-    "priceRange": "₹₹₹", 
+    "telephone": "+918904688886",
+    "priceRange": "₹₹₹",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "No 10-10-427/4, Laxman Commercial Complex, Golikatta Bazaar, Bunder",
@@ -86,7 +88,7 @@ export default function RootLayout({
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 12.865208703988602, 
+      "latitude": 12.865208703988602,
       "longitude": 74.83302272565935
     },
     "openingHoursSpecification": [
@@ -116,7 +118,7 @@ export default function RootLayout({
         "@type": "Offer",
         "name": "Vaikuntam City",
         "url": "https://www.viturealty.com/vaikuntamcity",
-         "category": "Plotted Development"
+        "category": "Plotted Development"
       }
     ]
   };
@@ -133,7 +135,7 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} ${hankenGrotesk.variable} ${tenorSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${sourceSans3.variable} ${FS_Siena_Regular.variable} ${FS_Split_Sans_Trial_Regular.variable} ${hankenGrotesk.variable} ${tenorSans.variable} ${theSeasons.variable} ${ttCommons.variable} antialiased`}
       >
         {/* Inject Structured Data */}
         <script

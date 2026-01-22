@@ -4,42 +4,46 @@ import Image from "next/image";
 import image from "../../../../public/images/plotLocations/mobile.png";
 import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+
+
 
 const Areas = [
-  {
-    location: "Mukka Junction",
-    type: "Null",
-    position: "top-[16%] left-[35%]",
-    isActive: true,
-    textPosition: "top-[13%] left-[35%]",
-  },
+
   {
     location: "Shashitulu Beach",
     type: "Recreational Areas",
     position: "top-[27%] left-[30%]",
     isActive: true,
-    textPosition: "top-[27%] left-[22%]",
+    textPosition: "top-[27%] left-[19%]",
   },
   {
-    location: "Srinivas Hospital",
+    location: "Srinivas Medical College and Hospital",
     type: ["Educational Institutions", "Emergency Services"],
     position: "top-[28%] left-[41%]",
     isActive: true,
-    textPosition: "top-[28%] left-[49%]",
+    textPosition: "top-[20%] left-[43%]",
   },
   {
     location: "National Institute of Technology Karnataka",
     type: "Educational Institutions",
-    position: "top-[40%] left-[43%]",
+    position: "top-[43%] left-[43%]",
     isActive: true,
     textPosition: "top-[36%] left-[43%] max-w-[20%]",
+  },
+    {
+    location: "Thadambail Junction",
+    type: "null",
+    position: "top-[44.5%] left-[38.5%]",
+    isActive: true,
+    textPosition: "top-[51%] left-[38%] max-w-[20%]",
   },
   {
     location: "NITK Beach",
     type: "Recreational Areas",
     position: "top-[42%] left-[31%]",
     isActive: true,
-    textPosition: "top-[42%] left-[25%]",
+    textPosition: "top-[42%] left-[23%]",
   },
   {
     location: "Vilasam",
@@ -48,83 +52,55 @@ const Areas = [
     isActive: true,
     textPosition: "top-[54%] left-[52%]",
   },
+
+
   {
-    location: "Suratkal Beach",
-    type: "Recreational Areas",
-    position: "top-[65%] left-[37%]",
+    location: "Surathkal Junction",
+    type: "",
+    position: "top-[83%] left-[51.5%]",
     isActive: true,
-    textPosition: "top-[65%] left-[30%]",
+    textPosition: "lg2:top-[55%] top-[86%] left-[53%]",
   },
-  {
-    location: "Hotel Suraj International",
-    type: "Recreational Areas",
-    position: "top-[66%] left-[51%]",
-    isActive: true,
-    textPosition: "top-[62%] left-[51%] max-w-[10%]",
-  },
-   {
+
+    {
     location: "Padmavathi Hospital",
     type: "Emergency Services",
     position: "top-[72%] left-[57%]",
     isActive: true,
     textPosition: "lg2:top-[55%] top-[75%] left-[57%]",
   },
-  
+
   {
     location: "Shri Kashi Math",
-    type: ["Recreational Areas","Holy Spaces"],
-    position: "top-[72%] left-[45%]",
+    type: ["Recreational Areas", "Holy Spaces"],
+    position: "top-[68%] left-[42%]",
     isActive: true,
-    textPosition: "top-[72%] left-[38%]",
+    textPosition: "top-[68%] left-[32%]",
   },
-  {
-    location: "Abish Mall",
-    type: "Recreational Areas",
-    position: "top-[77%] left-[47%]",
-    isActive: true,
-    textPosition: "top-[77%] left-[42%]",
-  },
-  {
-    location: "Hotel Sadanand",
-    type: "Null",
-    position: "top-[91%] left-[42%]",
-    isActive: true,
-    textPosition: "top-[91%] left-[35%]",
-  },
-  {
-    location: "Surathkal Market",
-    type: "Null",
-    position: "top-[80%] left-[60%]",
-    isActive: true,
-    textPosition: "lg2:top-[87%] top-[82%] left-[60%]",
-  },
+
+
+
   {
     location: "Sacred Heart Church",
     type: "Holy Spaces",
-    position: "top-[92%] left-[62%]",
+    position: "top-[90%] left-[62%]",
     isActive: true,
     textPosition: "top-[96.5%] max-w-[10%] left-[62%]",
   },
-  {
-    location: "BASF",
-    type: "Null",
-    position: "top-[96%] left-[90%]",
-    isActive: true,
-    textPosition: "top-[98%] left-[90%]",
-  },
+
   {
     location: "Karnataka Housing Board",
     type: "Null",
-    position: "top-[40%] left-[95.5%]",
+    position: "top-[40%] left-[93%]",
     isActive: true,
-    textPosition: "top-[45%] left-[95.5%]",
+    textPosition: "top-[47%] left-[93%]",
   },
   {
     location: "MUDA Township",
     type: "Null",
     position: "top-[7%] left-[92%]",
     isActive: true,
-    textPosition: "lg2:top-[7%] top-[12%] left-[92%]",
+    textPosition: "lg2:top-[7%] top-[13%] left-[92%]",
   },
   {
     location: "The Club",
@@ -133,63 +109,39 @@ const Areas = [
     isActive: true,
     textPosition: "top-[49%] left-[60%]",
   },
-  {
-    location: "Upcoming DMart",
-    type: "Recreational Areas",
-    position: "top-[58%] left-[37%]",
-    isActive: true,
-    textPosition: "top-[58%] lg2:left-[10%] left-[29%]",
-  },
-  {
-    location: "Cine Galaxy Movie Theatre",
-    type: "Recreational Areas",
-    position: "top-[69%] left-[38%]",
-    isActive: true,
-    textPosition: "top-[69%] lg2:left-[53.5%] left-[27%]",
-  },
+
+
 
   {
     location: "Zuese Fitness Gym",
     type: "Recreational Areas",
     position: "top-[75%] left-[40%]",
     isActive: true,
-    textPosition: "top-[75%] lg2:left-[55.5%] left-[30%]",
+    textPosition: "top-[75%] lg2:left-[55.5%] left-[28%]",
   },
-  {
-    location: "Raj’s Fitness Gym",
-    type: "Recreational Areas",
-    position: "top-[79%] left-[40%]",
-    isActive: true,
-    textPosition: "top-[79%] lg2:left-[54.5%] left-[30%]",
-  },
+
   {
     location: "Panambur Beach",
     type: "Recreational Areas",
     position: "top-[83%] left-[40%]",
     isActive: true,
-    textPosition: "top-[83%] lg2:left-[54.5%] left-[32%]",
+    textPosition: "top-[83%] lg2:left-[54.5%] left-[29%]",
   },
   {
     location: "New Mangalore Port",
     type: "Recreational Areas",
     position: "top-[88%] left-[40%]",
     isActive: true,
-    textPosition: "top-[88%] lg2:left-[55.5%] left-[30%]",
+    textPosition: "top-[88%] lg2:left-[55.5%] left-[27%]",
   },
+
   {
-    location: "KIOCL Limited",
-    type: "Null",
-    position: "top-[95%] left-[43%]",
-    isActive: true,
-    textPosition: "top-[95%] lg2:left-[58.5%] left-[36%]",
-  },
-  {
-    location: "Mangalore International Airport (25 mins away)",
-    type: "Null",
+    location: "Mangalore International Airport",
+    type: "Recreational Areas",
     icon: <Airport />,
     position: "top-[77%] left-[81%]",
     isActive: true,
-    textPosition: "top-[83%] lg2:left-[85.5%] left-[79.5%]",
+    textPosition: "top-[88%] lg2:left-[85.5%] left-[79%]",
   },
 ];
 
@@ -277,10 +229,10 @@ const PlotConnectionMobile = () => {
   return (
     <section id="location" className="w-full max-w-sm mx-auto space-y-4 bg-white rounded-lg relative">
       <div className="px-[1rem] space-y-2">
-        <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-geistSerif  md:pb-10 pb-2">Well-Connected Living</h2>
-        <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] pb-4 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-sourceSans3 ">
-          A perfect blend of nature's calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks, landmarks,
-          airports, hospitals, and more.
+        <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-theSeasons  md:pb-10 pb-2">Well<span className="font-CandideCondensedNormal">-</span>Connected Living</h2>
+        <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] pb-4 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-theSeasons ">
+          A perfect blend of nature<span className="font-sans">'</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
+          landmarks, airports, hospitals, and more.
         </p>
       </div>
 
@@ -291,23 +243,23 @@ const PlotConnectionMobile = () => {
           <React.Fragment key={index}>
             {area.location === "Vilasam" ? (
               <motion.span
-                className={`absolute ${area.textPosition}  text-center  font-semibold z-30 text-[12px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+                className={`absolute ${area.textPosition}  text-center  font-semibold z-30 text-[10px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
                 variants={textVariants}
                 animate="active"
               >
-                {area.location}
+                {useSafeSpecialCharacters(area.location)}
               </motion.span>
             ) : area.location === "The Club" ? (
               <motion.span
-                className={`absolute ${area.textPosition} text-center  font-semibold z-30 text-[7px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+                className={`absolute ${area.textPosition} text-center  font-semibold z-30 text-[9px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
                 variants={textVariants}
                 animate="active"
               >
-                {area.location}
+                {useSafeSpecialCharacters(area.location)}
               </motion.span>
             ) : (
               <motion.span
-                className={`absolute ${area.textPosition}  text-center  font-semibold z-30 text-[6px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-sourceSans3`}
+                className={`absolute ${area.textPosition} ${area.location === "Srinivas Medical College and Hospital" ? "max-w-[100px]" : ""}  text-center  font-semibold z-30 text-[9px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
                 variants={textVariants}
                 animate={
                   selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
@@ -315,7 +267,7 @@ const PlotConnectionMobile = () => {
                     : "inactive"
                 }
               >
-                {area.location}
+                {useSafeSpecialCharacters(area.location)}
               </motion.span>
             )}
 
@@ -354,7 +306,7 @@ const PlotConnectionMobile = () => {
                   variants={markerVariants}
                   animate={selectedType === null || area.type === selectedType ? "active" : "inactive"}
                 >
-                  <Airport className="w-[10px]"/>
+                  <Airport className="w-[10px]" />
                 </motion.span>
               ) : (
                 <motion.span

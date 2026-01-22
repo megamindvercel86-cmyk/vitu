@@ -58,4 +58,68 @@ export {
   tenorSans,
   hankenGrotesk,
   sourceSans3,
+  theSeasons,
+  ttCommons,
 };
+
+const ttCommons = localFont({
+  src: [
+    {
+      path: "./fonts/TTCommons-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/TTCommons-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/TTCommons-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/TTCommons-Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "./fonts/TTCommons-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/TTCommons-ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-tt-commons",
+});
+
+const theSeasons = localFont({
+  src: [
+    {
+      path: "../public/fonts/theseason/Fontspring-DEMO-theseasons-reg.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/theseason/Fontspring-DEMO-theseasons-bd.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/theseason/Fontspring-DEMO-theseasons-it.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/theseason/Fontspring-DEMO-theseasons-lt.otf",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-the-seasons",
+});

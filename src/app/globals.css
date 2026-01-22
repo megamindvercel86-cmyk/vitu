@@ -7,6 +7,10 @@
   --foreground: #171717;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 @layer utilities {
   .snap-x {
     scroll-snap-type: x mandatory;
@@ -98,6 +102,35 @@ body {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "The Seasons";
+  src: url("/fonts/theSeasons/Fontspring-DEMO-theseasons-reg.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/TTCommons-Regular/TTCommons-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/TTCommons-Bold/TTCommons-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/TTCommons-ExtraBold/TTCommons-ExtraBold.ttf") format("truetype");
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 option {
   border: none;
@@ -349,6 +382,15 @@ lite-youtube {
 .conic-button-base1:hover .animated-border-overlay-base {
   opacity: 1;
 }
+
+.no-hover:hover .animated-border-overlay-base {
+  opacity: 0 !important;
+}
+
+.no-hover:hover {
+  background-color: inherit !important;
+  transform: none !important;
+}
 /* --- THEME 1 (Dark) --- */
 .theme-dark {
   background-color: #6b402a;
@@ -370,6 +412,46 @@ lite-youtube {
     linear-gradient(#F3EAE1, #F3EAE1),
     conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #9a8a7a99 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
 }
+
+/* --- THEME 4 (Light Green) --- */
+.theme-light-green {
+  background-color: none; /* transparent bg */
+  color: #254C54; /* text color to match border */
+  /* on hover change bg ot white */
+  transition: background-color 0.5s ease;
+  &:hover {
+    background-color: none;
+  }
+}
+.theme-light-green .animated-border-overlay-base {
+  background-image:
+    linear-gradient(#ffffff, #ffffff),
+    conic-gradient( from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37,76,84,0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+}
+
+/* --- THEME Vilasam Brochure --- */
+.theme-vilasam-brochure {
+  background-color: transparent;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.theme-vilasam-brochure-mobile {
+  background-color: transparent;
+  color: #254C54;
+  transition: all 0.5s ease;
+}
+.theme-vilasam-brochure:hover {
+  color: #254C54;
+}
+.theme-vilasam-brochure .animated-border-overlay-base {
+  background-image:
+    linear-gradient(#f3f4f6, #f3f4f6),
+    conic-gradient( from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37,76,84,0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+}
+/* .Plot-module-scss-module__VjpZHq__cardContainer{
+  perspective: 1000px;
+  height: 100vh;
+} */
 
 
 /* --- THEME 3 (Mid Dark Light) --- NEW THEME --- */

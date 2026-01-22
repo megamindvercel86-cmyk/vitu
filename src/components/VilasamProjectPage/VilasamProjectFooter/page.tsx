@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { FC, JSX, useState } from "react";
-import logo2 from "../../../../public/images/logos/projectfooter.svg";
+import logo2 from "../../../../public/images/logos/vituTmWhiteLogo.png";
 import logo from "../../../../public/images/logos/vilasamWhiteLogo.svg";
 import { Link } from "react-scroll";
 import { Instgram, LinkedIn, Mail, MailVilasam, Meta, Phone, PhoneVilasam, Share, Share1, ShareVilasam, Youtube } from "@/components/Icons/Icons";
@@ -13,6 +13,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
+import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
 
 /**
  * Footer Component
@@ -75,7 +76,7 @@ const VilasamProjectFooter: FC = () => {
               <RiArrowRightSLine />
               <span className="text-white">
                 {!subPage ? (
-                  <span className="font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+                  <span className="font-theSeasons font-light text-base 2xl:text-2xl">
                     {mainPage.charAt(0).toLocaleUpperCase() + mainPage.slice(1)}
                   </span>
                 ) : (
@@ -90,7 +91,7 @@ const VilasamProjectFooter: FC = () => {
           {subPage && (
             <>
               <RiArrowRightSLine />
-              <span className="text-white font-FreightNeoProLight font-light text-base 2xl:text-2xl">
+              <span className="text-white font-theSeasons font-light text-base 2xl:text-2xl">
                 {subPage.charAt(0).toLocaleUpperCase() + subPage.slice(1)}
               </span>
             </>
@@ -102,15 +103,15 @@ const VilasamProjectFooter: FC = () => {
             <FooterLink aria-label={`${mainPage} page`} href="/">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </FooterLink>
-            <p className="text-[#cdcdcd] font-freightNeoMedium text-lg md:text-2xl mt-4 text-center lg:text-left">Homes that Breathe with you</p>
+            <p className="text-[#cdcdcd] font-theSeasons font-medium text-lg md:text-2xl mt-4 text-center lg:text-left">Homes that Breathe with you</p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <button
                 onClick={() => setShowModal(true)}
                 aria-label="Download"
-                className="font-FreightNeoProBold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "
+                className="font-theSeasons font-bold text-black text-[22px] bg-[#98D1D0] py-2 px-4 rounded-[56px] "
               >
-                Download E-Brochure
+                Download E<span className="font-sans">-</span>Brochure
               </button>
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
@@ -158,7 +159,7 @@ const VilasamProjectFooter: FC = () => {
           <div>
             <ul className="space-y-4 text-gray-300 hidden lg:block">
               <li>
-                <SubHeading className="text-lg md:text-xl text-white font-sourceSans3 mb-4">Discover Excellence</SubHeading>
+                <SubHeading className="text-lg md:text-xl text-white font-theSeasons mb-4">Discover Excellence</SubHeading>
               </li>
               <li>
                 <FooterContactItem
@@ -168,7 +169,7 @@ const VilasamProjectFooter: FC = () => {
                 />
               </li>
               <li>
-                <SubHeading className="text-lg lg:pt-10 md:text-xl text-white font-sourceSans3 mb-4">For Enquiries</SubHeading>
+                <SubHeading className="text-lg lg:pt-10 md:text-xl text-white font-theSeasons mb-4">For Enquiries</SubHeading>
               </li>
               <li>
                 <FooterContactItem icon={<PhoneVilasam />} text="+91 89046 88886" link="tel:+91 89046 88886" />
@@ -177,7 +178,7 @@ const VilasamProjectFooter: FC = () => {
                 <FooterContactItem icon={<MailVilasam />} text="info@viturealty.com" link="mailto:info@viturealty.com" />
               </li>
             </ul>
-            <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-sourceSans3 mb-4">Get in Touch</SubHeading>
+            <SubHeading className="text-lg text-center md:text-start md:text-xl text-white lg:hidden font-theSeasons mb-4">Get in Touch</SubHeading>
             <ul className="space-y-4 text-gray-300 lg:hidden">
               <li>
                 <FooterContactItem
@@ -213,7 +214,7 @@ const VilasamProjectFooter: FC = () => {
                   <input
                   type="email"
                   ref={email}
-                  className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-FreightNeoProNormal text-[#EADFD1CC]"
+                  className="lg:text-[13px] lg2:text-[20px] pb-2 flex-1 outline-none placeholder-[#EADFD1CC] bg-transparent font-theSeasons text-[#EADFD1CC]"
                   placeholder="Sign Up for Our Newsletter"
                   />
                   <button type="submit">
@@ -221,11 +222,11 @@ const VilasamProjectFooter: FC = () => {
                   </button>
                 </div> */}
               <div className="flex justify-center md:justify-start lg:justify-end   pb-4 text-white">
-                <h1 className="font-FreightNeoProNormal text-[#808080]   text-[16px]">Porject By</h1>
+                <h1 className="font-theSeasons text-[#808080]   text-[16px]">Project By</h1>
               </div>
               <div className="flex justify-center md:justify-start  lg:justify-end">
                 <FooterLink href="/">
-                  <Image alt="logo" src={logo2} />
+                  <Image width={250} height={250} alt="logo" src={logo2} />
                 </FooterLink>
               </div>
             </div>
@@ -235,7 +236,7 @@ const VilasamProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal isOpen={showModal} onClose={setShowModal} />
+      <ContactFormModal isOpen={showModal} onClose={setShowModal} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VC brochure.pdf" />
     </footer>
   );
 };
@@ -255,7 +256,7 @@ const FooterSection: FC<{
   <div>
     {/* Mobile View */}
     <details className="lg:hidden border-b border-gray-700 pb-2">
-      <summary className="flex items-center justify-between text-lg text-white font-sourceSans3 cursor-pointer">
+      <summary className="flex items-center justify-between text-lg text-white font-theSeasons cursor-pointer">
         {title}
         <DropdownArrow />
       </summary>
@@ -270,8 +271,8 @@ const FooterSection: FC<{
 
     {/* Desktop View */}
     <div className="hidden lg:block">
-      <SubHeading className="text-xl md:text-xl text-white  font-sourceSans3 mb-4">{title}</SubHeading>
-      <ul className="space-y-4  font-sourceSans3">
+      <SubHeading className="text-xl md:text-xl text-white  font-theSeasons mb-4">{title}</SubHeading>
+      <ul className="space-y-4  font-theSeasons">
         {links.map((link) => (
           <li key={link.href} className="cursor-pointer">
             <Link to={link.href} duration={700} smooth={true}>
@@ -292,6 +293,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
+const safeText = useSafeSpecialCharacters(text);
 
   return (
     <>
@@ -300,19 +302,19 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
       >
         <div className="flex items-center gap-3">
           {icon}
-          <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+          <span className="lg:hidden text-white/80 text-[14px] font-theSeasons font-semibold">{name}</span>
         </div>
         <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
-          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
+          {isPhoneNumber || isPincode || email ? <span className="font-theSeasons">{safeText}</span> : safeText}
         </FooterLink>
       </div>
       <div className={`text-white hidden lg:flex  flex-col md:flex-row align-middle gap-3 md:gap-0 ${isPincode ? "lg:items-start" : ""}`}>
         <div className="flex items-center gap-3">
           {icon}
-          <span className="lg:hidden text-white/80 text-[14px] font-freightNeoSemibold">{name}</span>
+          <span className="lg:hidden text-white/80 text-[14px] font-theSeasons font-semibold">{name}</span>
         </div>
         <FooterLink href={link} target="_blank" className="pl-4 lg:pe-14 text-white/80 text-center lg:text-left">
-          {isPhoneNumber || isPincode || email ? <span className="font-CandideCondensedNormal">{text}</span> : text}
+          {isPhoneNumber || isPincode || email ? <span className="font-theSeasons">{safeText}</span> : safeText}
         </FooterLink>
       </div>
     </>
@@ -327,16 +329,16 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#808080] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
+        © <span className="font-theSeasons">{new Date().getFullYear()}</span> <span className="font-theSeasons font-medium">{useSafeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
-        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium" aria-label="Read the legal disclaimer">
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="Read the legal disclaimer">
           Legal Disclaimer
         </a>
         <span className="text-[#808080] text-xs" aria-hidden="true">
           |
         </span>
-        <a href="/terms-of-service" className="text-[#808080] text-xs font-freightNeoMedium" aria-label="View the terms of service">
+        <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="View the terms of service">
           Terms of Service
         </a>
       </div>

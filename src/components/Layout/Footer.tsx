@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React, { FC, JSX, useState } from "react";
 import logo from "../../../public/images/logos/logolight.svg";
@@ -29,7 +31,7 @@ const FooterContent: FC = () => {
   const [resourcesIsOpen, setResourcesIsOpen] = useState<boolean>(false);
   const [projectIsOpen, setProjectIsOpenIsOpen] = useState<boolean>(false);
 
-  const pathname = usePathname();
+  const pathname = usePathname() || "";
   const searchParams = useSearchParams();
   const [mainPage, subPage] = pathname.split("/").filter(Boolean);
   const [email, setEmail] = useState<string>("");
@@ -386,7 +388,7 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t z-[9999999999] border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">2025</span> <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">{new Date().getFullYear()}</span> <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
       </p>
 
       <p className="text-[#FFFFFF66] mt-4  md:mt-0 text-xs text-center 2xl:text-xl md:text-left">

@@ -11,7 +11,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import image from "../../../../public/images/ImageGrid/3.webp";
 import xlImage from "../../../../public/images/ImageGrid/7.webp"
 gsap.registerPlugin(ScrollTrigger);
-
 const slides = [
   {
     title: "LOCATION-DRIVEN VALUE",
@@ -133,65 +132,88 @@ export default function ImageGrid() {
         gsap.set(overlay, { opacity: 0, y: "100vh", pointerEvents: "none" });
       }
 
+      // Optimize for mobile
+      const isMobile = window.innerWidth < 1024;
+      let updateTicking = false;
+      
       const st = ScrollTrigger.create({
         trigger: ".image-grid",
         start: "top top",
         // Extend the overall pin with a buffer, but keep animation mapped to BASE_PERCENT only
         end: () => `+=${BASE_PERCENT + BUFFER_PERCENT}%`,
         pin: true,
-        scrub: true,
+        scrub: isMobile ? 0.5 : true, // Smoother scrub on mobile
         anticipatePin: 1,
         pinSpacing:true,
         invalidateOnRefresh: true,
         onRefreshInit: () => (needsMeasure = true),
+        // Mobile optimizations
+        ...(isMobile && {
+          fastScrollEnd: true,
+          refreshPriority: -1,
+        }),
         onUpdate: (self) => {
-          if (needsMeasure) {
-            computeTarget();
-            needsMeasure = false;
-          }
+          // Throttle updates on mobile using requestAnimationFrame
+          if (updateTicking) return;
+          updateTicking = true;
+          
+          requestAnimationFrame(() => {
+            if (needsMeasure) {
+              computeTarget();
+              needsMeasure = false;
+            }
 
-          const vh = getViewportHeight();
+            const vh = getViewportHeight();
 
-          // --- Local progress that ONLY spans the original "+=250%" distance ---
-          const baseDistPx = (BASE_PERCENT / 100) * vh; // 250% of viewport height
-          const local = gsap.utils.clamp(0, 1, (self.scroll() - self.start) / baseDistPx);
+            // --- Local progress that ONLY spans the original "+=250%" distance ---
+            const baseDistPx = (BASE_PERCENT / 100) * vh; // 250% of viewport height
+            const local = gsap.utils.clamp(0, 1, (self.scroll() - self.start) / baseDistPx);
 
-          // === Image animations use LOCAL progress (unchanged timing) ===
-          const eased = local * local * (3 - 2 * local);
+            // === Image animations use LOCAL progress (unchanged timing) ===
+            const eased = local * local * (3 - 2 * local);
 
-          images.forEach((img) => {
-            if (img === centerImg) return;
-            gsap.set(img, {
-              opacity: 1 - eased,
-              scale: 1 - 0.2 * eased,
+            images.forEach((img) => {
+              if (img === centerImg) return;
+              gsap.set(img, {
+                opacity: 1 - eased,
+                scale: 1 - 0.2 * eased,
+              });
             });
+
+            const scale = 1 + (targetScale - 1) * eased;
+            gsap.set(centerImg, { scale });
+
+            // === Overlay animation uses LOCAL progress (so timing stays identical) ===
+            if (overlay) {
+              const overlayStart = 0.9; // your original timing
+              const raw = Math.min(1, Math.max(0, (local - overlayStart) / (1 - overlayStart)));
+              const easedOverlay = raw * raw * (3 - 2 * raw);
+
+              gsap.set(overlay, {
+                opacity: easedOverlay,
+                pointerEvents: easedOverlay > 0.05 ? "auto" : "none",
+                y: (1 - easedOverlay) * vh,
+              });
+            }
+            // After local reaches 1, the overlay stays as-is while the buffer scroll continues pinned.
+            
+            updateTicking = false;
           });
-
-          const scale = 1 + (targetScale - 1) * eased;
-          gsap.set(centerImg, { scale });
-
-          // === Overlay animation uses LOCAL progress (so timing stays identical) ===
-          if (overlay) {
-            const overlayStart = 0.9; // your original timing
-            const raw = Math.min(1, Math.max(0, (local - overlayStart) / (1 - overlayStart)));
-            const easedOverlay = raw * raw * (3 - 2 * raw);
-
-            gsap.set(overlay, {
-              opacity: easedOverlay,
-              pointerEvents: easedOverlay > 0.05 ? "auto" : "none",
-              y: (1 - easedOverlay) * vh,
-            });
-          }
-          // After local reaches 1, the overlay stays as-is while the buffer scroll continues pinned.
         },
       });
       // This is your NEW useEffect
 
+      // Debounce resize for mobile
+      let resizeTimeout: NodeJS.Timeout;
       const handleResize = () => {
-        needsMeasure = true;
-        ScrollTrigger.refresh();
+        clearTimeout(resizeTimeout);
+        const isMobile = window.innerWidth < 1024;
+        resizeTimeout = setTimeout(() => {
+          needsMeasure = true;
+          ScrollTrigger.refresh();
+        }, isMobile ? 250 : 100);
       };
-      window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize, { passive: true });
 
       return () => {
         st.kill();
