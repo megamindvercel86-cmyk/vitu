@@ -258,7 +258,7 @@ const LocationAdvantage = () => {
             "8 mins to MRPL, NMPT industrial zones",
             "20+ Top Educational Institutions",
             "10+ Major Hospitals",
-            "High-growth corridor with 2X appreciation in the last 4 years",
+            "High-growth corridor with 100% appreciation in the last 4 years",
             "Low Capital Entry",
             "New Mangalore Port Upgradation",
             "Infrastructure-ready community",

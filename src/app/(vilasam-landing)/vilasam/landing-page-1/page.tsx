@@ -122,14 +122,14 @@ export default function VaikuntamCityEliteLandingPage() {
       label: "Appreciation",
       title: "Appreciation",
       description: "Positioned at the heart of Surathkal’s emerging growth corridor, the project offers  premium limited plots with strong ROI potential, benefiting from infrastructure  expansion, rising demand and lifestyle-led differentiation, securing long-term value  appreciation and sustained investment appeal.",
-      imageSrc: "/vilasamImages/basicImages/appre1.png"
+      imageSrc: "/vilasamImages/basicImages/newapp1.png"
     },
     {
       id: "sustainability",
       label: "Lifestyle",
       title: "Lifestyle",
       description: "The location has recorded 100% growth over the past three years, with NH 66 connecting key cities including Mumbai, Goa and Kochi offering a rare balance of city access and coastal calm that strengthens demand and long-term investment potential.",
-      imageSrc: "/vilasamImages/basicImages/lifestyle1.png"
+      imageSrc: "/vilasamImages/basicImages/lifestyle.webp"
     }
   ];
 
@@ -153,14 +153,14 @@ export default function VaikuntamCityEliteLandingPage() {
       label: "Appreciation",
       title: "Appreciation",
       description: "Positioned at the heart of Surathkal’s emerging growth corridor, the project offers  premium limited plots with strong ROI potential, benefiting from infrastructure  expansion, rising demand and lifestyle-led differentiation, securing long-term value  appreciation and sustained investment appeal.",
-      imageSrc: "/vilasamImages/basicImages/appre1.webp"
+      imageSrc: "/vilasamImages/basicImages/newapp1.webp"
     },
     {
       id: "sustainability",
       label: "Lifestyle",
       title: "Lifestyle",
       description: "The location has recorded 100% growth over the past three years, with NH 66 connecting key cities including Mumbai, Goa and Kochi offering a rare balance of city access and coastal calm that strengthens demand and long-term investment potential.",
-      imageSrc: "/vilasamImages/basicImages/lifestyle1.webp"
+      imageSrc: "/vilasamImages/basicImages/lifestyle.webp"
     }
   ];
 
