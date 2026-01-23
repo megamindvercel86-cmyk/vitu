@@ -61,7 +61,7 @@ const UrbanAccessSection: React.FC = () => {
         onClose={setIsModalOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
       />
     </section>
   );

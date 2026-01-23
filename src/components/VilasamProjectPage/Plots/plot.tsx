@@ -61,7 +61,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
           </div>
         </div>
       </motion.div>
-      <ContactFormModal isOpen={isModalOpen} onClose={setIsModalOpen} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VC brochure.pdf" />
+      <ContactFormModal isOpen={isModalOpen} onClose={setIsModalOpen} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf" />
     </div>
   );
 };

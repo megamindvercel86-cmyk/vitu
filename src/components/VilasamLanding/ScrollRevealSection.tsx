@@ -171,7 +171,7 @@ export default function ScrollRevealSection({
 
         setIsLoading(true);
         try {
-            const downloadFileLink = "/downloadingFiles/VC brochure.pdf";
+            const downloadFileLink = "/downloadingFiles/VITU Realty - Vilasam.pdf";
             const collectionName = "projectEnquiries";
             const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
@@ -584,7 +584,7 @@ export default function ScrollRevealSection({
                                                 </AnimatedConicButton>
                                             </div>
                                             <h1 className="font-normal font-theSeasons text-4xl md:text-5xl lg:text-5xl lg2:text-6xl xl:text-7xl lg:leading-tight lg2:leading-snug ">
-                                               {heroTitle}
+                                                {heroTitle}
                                             </h1>
                                         </div>
                                     </div>
@@ -930,7 +930,7 @@ export default function ScrollRevealSection({
 
                                                 <button
                                                     type="submit"
-                                                    className={`w-full sm:w-auto bg-[#0a5f5f] hover:bg-[#083f3f] text-white font-semibold py-2.5 px-10 rounded-full transition-colors ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+                                                    className={`w-full sm:w-auto bg-[#0a5f5f] hover:bg-[#083f3f] text-white font-semibold py-2.5 px-10 rounded-full transition-colors ${isLoading || !isFormValid ? "opacity-50 cursor-not-allowed" : ""}`}
                                                     onClick={handleSubmit}
                                                     disabled={!isFormValid || isLoading}
                                                 >

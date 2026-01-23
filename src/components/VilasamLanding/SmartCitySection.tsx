@@ -107,7 +107,7 @@ export default function SmartCitySection() {
 
         setIsLoading(true);
         try {
-            const downloadFileLink = "/downloadingFiles/VC brochure.pdf";
+            const downloadFileLink = "/downloadingFiles/VITU Realty - Vilasam.pdf";
             const collectionName = "projectEnquiries";
             const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 

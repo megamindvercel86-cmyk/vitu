@@ -236,7 +236,7 @@ const VilasamProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal isOpen={showModal} onClose={setShowModal} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VC brochure.pdf" />
+      <ContactFormModal isOpen={showModal} onClose={setShowModal} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf" />
     </footer>
   );
 };

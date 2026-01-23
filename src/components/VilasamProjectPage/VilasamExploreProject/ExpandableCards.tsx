@@ -421,7 +421,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
         onClose={setIsGetInTouchOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
       />
     </div>
   );

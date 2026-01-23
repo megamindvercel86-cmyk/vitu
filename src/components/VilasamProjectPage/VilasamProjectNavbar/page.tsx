@@ -278,7 +278,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         onClose={setIsGetInTouchOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
       />
       <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>
