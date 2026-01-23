@@ -13,7 +13,7 @@ import { FaCheck } from "react-icons/fa";
 // Logic Imports
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface NewEnquireModalProps {
   isOpen: boolean;
@@ -26,9 +26,10 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
 }) => {
   // Logic State
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
-  
+
   // Form Data State
   const [formData, setFormData] = useState({
     fullName: "",
@@ -143,6 +144,30 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
         });
       }
 
+      // Accelr Webhook Integration
+      const utmParams = {
+        utm_source: searchParams.get("utm_source") || "direct",
+        utm_medium: searchParams.get("utm_medium") || "",
+        utm_campaign: searchParams.get("utm_campaign") || "",
+        utm_term: searchParams.get("utm_term") || "",
+        utm_content: searchParams.get("utm_content") || "",
+      };
+
+      try {
+        await fetch("/api/accelr-webhook", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            formName: "Project Enquiry Modal",
+            source: "website",
+            ...utmParams,
+          }),
+        });
+      } catch (webhookError) {
+        console.error("Accelr Webhook Error:", webhookError);
+      }
+
       // Download PDF
       if (downloadFileLink) {
         const link = document.createElement("a");
@@ -158,7 +183,7 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
       setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
       setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
       setConsentChecked(true);
-      
+
       // Close Modal
       onClose();
     } catch (error) {
@@ -247,15 +272,15 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     placeholder="Full Name"
                     value={formData.fullName}
                     onChange={(e) => {
-                        const value = e.target.value;
-                        setFormData((prev) => ({ ...prev, fullName: value }));
-                        setTouched((prev) => ({ ...prev, fullName: true }));
-                        setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
+                      const value = e.target.value;
+                      setFormData((prev) => ({ ...prev, fullName: value }));
+                      setTouched((prev) => ({ ...prev, fullName: true }));
+                      setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
                     }}
                     onBlur={(e) => {
-                        const value = e.target.value;
-                        setTouched((prev) => ({ ...prev, fullName: true }));
-                        setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
+                      const value = e.target.value;
+                      setTouched((prev) => ({ ...prev, fullName: true }));
+                      setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
                     }}
                     className="w-full border-b-2 border-[#254C54CC]/30 focus:border-[#254C5499] outline-none py-3 text-lg transition-colors bg-transparent text-[#254C54] placeholder:text-[#254C5499]"
                   />
@@ -272,15 +297,15 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     placeholder="Email Address"
                     value={formData.email}
                     onChange={(e) => {
-                        const value = e.target.value;
-                        setFormData((prev) => ({ ...prev, email: value }));
-                        setTouched((prev) => ({ ...prev, email: true }));
-                        setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
+                      const value = e.target.value;
+                      setFormData((prev) => ({ ...prev, email: value }));
+                      setTouched((prev) => ({ ...prev, email: true }));
+                      setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
                     }}
                     onBlur={(e) => {
-                        const value = e.target.value;
-                        setTouched((prev) => ({ ...prev, email: true }));
-                        setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
+                      const value = e.target.value;
+                      setTouched((prev) => ({ ...prev, email: true }));
+                      setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
                     }}
                     className="w-full border-b-2 border-[#254C54CC]/30 focus:border-[#254C5499] outline-none py-3 text-lg transition-colors bg-transparent text-[#254C54] placeholder:text-[#254C5499]"
                   />
@@ -304,8 +329,8 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                       }
                     }}
                     onBlur={() => {
-                        setTouched((prev) => ({ ...prev, phone: true }));
-                        setErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
+                      setTouched((prev) => ({ ...prev, phone: true }));
+                      setErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
                     }}
                     disableDialCodeAndPrefix={true}
                     className="w-full vilasam-phone-input"
@@ -417,9 +442,9 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     ]}
                     value={formData.interstedIn}
                     onChange={(value) => {
-                        setFormData((prev) => ({ ...prev, interstedIn: value }));
-                        setTouched((prev) => ({ ...prev, interstedIn: true }));
-                        setErrors((prev) => ({ ...prev, interstedIn: validateField("interstedIn", value) }));
+                      setFormData((prev) => ({ ...prev, interstedIn: value }));
+                      setTouched((prev) => ({ ...prev, interstedIn: true }));
+                      setErrors((prev) => ({ ...prev, interstedIn: validateField("interstedIn", value) }));
                     }}
                     placeholder="Preferred Plot Orientation"
                   />
@@ -437,9 +462,9 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                         id="modal-consent"
                         checked={consentChecked}
                         onChange={() => {
-                            const next = !consentChecked;
-                            setConsentChecked(next);
-                            setFormData((prev) => ({ ...prev, whatsapp: next }));
+                          const next = !consentChecked;
+                          setConsentChecked(next);
+                          setFormData((prev) => ({ ...prev, whatsapp: next }));
                         }}
                         className="sr-only peer"
                       />

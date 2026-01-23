@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoCloseOutline } from "react-icons/io5";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { useLenis } from "../Common/SmoothScroll";
@@ -98,6 +98,7 @@ export default function ScrollRevealSection({
     const { lenis } = useLenis();
 
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         fullName: "",
@@ -198,6 +199,30 @@ export default function ScrollRevealSection({
                         phone: formData.phone,
                     }),
                 });
+            }
+
+            // Accelr Webhook Integration
+            const utmParams = {
+                utm_source: searchParams.get("utm_source") || "direct",
+                utm_medium: searchParams.get("utm_medium") || "",
+                utm_campaign: searchParams.get("utm_campaign") || "",
+                utm_term: searchParams.get("utm_term") || "",
+                utm_content: searchParams.get("utm_content") || "",
+            };
+
+            try {
+                await fetch("/api/accelr-webhook", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        ...formData,
+                        formName: "Project Enquiry Modal",
+                        source: "website",
+                        ...utmParams,
+                    }),
+                });
+            } catch (webhookError) {
+                console.error("Accelr Webhook Error:", webhookError);
             }
 
             if (downloadFileLink) {

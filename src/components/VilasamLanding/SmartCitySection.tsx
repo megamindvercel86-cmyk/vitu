@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocationMap from "./LocationMap";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +34,7 @@ export default function SmartCitySection() {
     const [dialCode, setDialCode] = useState("91");
 
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         fullName: "",
@@ -134,6 +135,30 @@ export default function SmartCitySection() {
                         phone: formData.phone,
                     }),
                 });
+            }
+
+            // Accelr Webhook Integration
+            const utmParams = {
+                utm_source: searchParams.get("utm_source") || "direct",
+                utm_medium: searchParams.get("utm_medium") || "",
+                utm_campaign: searchParams.get("utm_campaign") || "",
+                utm_term: searchParams.get("utm_term") || "",
+                utm_content: searchParams.get("utm_content") || "",
+            };
+
+            try {
+                await fetch("/api/accelr-webhook", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        ...formData,
+                        formName: "Project Enquiry Modal",
+                        source: "website",
+                        ...utmParams,
+                    }),
+                });
+            } catch (webhookError) {
+                console.error("Accelr Webhook Error:", webhookError);
             }
 
             if (downloadFileLink) {
@@ -457,7 +482,7 @@ export default function SmartCitySection() {
                                     className="flex-1 border-b-2 border-[#254C54CC]/30 focus:border-[#254C5499] outline-none py-3 text-lg transition-colors bg-transparent"
                                 />
                             </div> */}
-                           <div className="flex flex-col" data-lenis-prevent>
+                            <div className="flex flex-col" data-lenis-prevent>
                                 <PhoneInput
                                     defaultCountry="in"
                                     value={phone}
@@ -617,7 +642,7 @@ export default function SmartCitySection() {
 
                                 <button
                                     type="submit"
-                                    className={`" bg-[#0a5f5f] hover:bg-[#083f3f] text-white font-semibold py-2 px-8 rounded-full transition-colors mt-6"${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+                                    className={`" bg-[#0a5f5f] hover:bg-[#083f3f] text-white font-semibold py-2 px-8 rounded-full ${isLoading || !isFormValid ? "opacity-50 cursor-not-allowed" : ""} transition-colors mt-6"`}
                                     onClick={handleSubmit}
                                     disabled={!isFormValid || isLoading}
                                 >
