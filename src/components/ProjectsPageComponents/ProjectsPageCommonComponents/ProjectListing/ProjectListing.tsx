@@ -13,11 +13,11 @@ type Card = {
   content?: React.ReactNode;
   type?: string;
   id?: number;
-  href:string;
+  href: string;
 };
 
 
-const ProjectListing = ( {card,
+const ProjectListing = ({ card,
   index,
   layout = false,
 }: {
@@ -26,12 +26,12 @@ const ProjectListing = ( {card,
   layout?: boolean;
 }) => {
   return (
-   <Link href={card.href || ""}
-   aria-label='Project'>
-   <motion.button
+    <Link href={card.href || ""}
+      aria-label='Project'>
+      <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         className="md:rounded-[20px] overflow-hidden rounded-[30px] bg-gray-100 dark:bg-neutral-900 
-          flex flex-col items-start justify-start relative z-10 w-full h-full"
+          flex flex-col items-start justify-start relative z-10 w-full h-full group"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
@@ -45,14 +45,14 @@ const ProjectListing = ( {card,
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
           >
-            
+
             {card.title}
           </motion.p>
-          {!card.href&&<motion.p
+          {!card.href && <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
           >
-            
+
             Coming Soon...
           </motion.p>}
           {/* <motion.p
@@ -66,18 +66,16 @@ const ProjectListing = ( {card,
           src={card.url || "/placeholder.svg"}
           alt={card.title || "Card image"}
           fill
-          className="object-cover absolute z-10 inset-0"
+          className="object-cover absolute z-10 inset-0 group-hover:scale-105 transition-transform duration-500 ease-in-out"
         />
-        {/* Plus icon at the bottom right */}
-        {card.href&&<div className="absolute bottom-4 right-4 z-50">
-          {card.type === "primary" ? (
-            <PrimaryViewMoreButton />
-          ) : (
-            <SecondaryViewMoreButton />
-          )}
+        {/* Learn More button with blur background */}
+        {card.href && <div className="absolute bottom-6 right-6 z-50">
+          <div className="backdrop-blur-md bg-white/20 border border-white/30 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium">
+            Learn More
+          </div>
         </div>}
       </motion.button>
-      </Link>
+    </Link>
   )
 }
 

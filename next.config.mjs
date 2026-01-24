@@ -28,6 +28,17 @@ const nextConfig = {
     deviceSizes: [320, 420, 768, 1024, 1200],
     imageSizes: [16, 32, 48, 64, 96],
   },
+  experimental: {
+    optimizePackageImports: [
+      "react-icons",
+      "react-icons/fa",
+      "react-icons/md",
+      "react-icons/io",
+      "react-icons/bs",
+      "react-icons/ri",
+      "framer-motion"
+    ],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -41,7 +52,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-cache, no-transform', 
+            value: 'no-cache, no-transform',
           },
         ],
       },

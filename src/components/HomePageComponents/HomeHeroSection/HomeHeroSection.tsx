@@ -6,8 +6,8 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Types & Interfaces
-interface VideoRef extends HTMLVideoElement {}
-interface SectionRef extends HTMLDivElement {}
+interface VideoRef extends HTMLVideoElement { }
+interface SectionRef extends HTMLDivElement { }
 
 /**
  * Hero section component with video background and mute/unmute functionality
@@ -50,9 +50,8 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  /**
-   * Lazy-loads video when section is in viewport
-   */
+  // Use state to track video playback, but default to true for LCP optimization
+  // The videos will auto-play as soon as they are loaded
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -129,15 +128,13 @@ export default function HeroSection() {
 
         {/* Mute/Unmute Button */}
         <div
-          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${
-            hasScrolled ? "justify-end" : "justify-center"
-          } lg:justify-end z-[1] transition-all duration-300`}
+          className={`${isDesktop && isFixed ? "fixed" : "absolute"} bottom-2 right-0 lg:bottom-2 md:right-20 w-full p-4 flex flex-row ${hasScrolled ? "justify-end" : "justify-center"
+            } lg:justify-end z-[1] transition-all duration-300`}
         >
           <div className="cursor-pointer" onClick={toggleMute}>
             <motion.button
-              className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${
-                isMuted ? "bg-white/60" : "bg-white"
-              } transition-colors duration-300 hover:shadow-md`}
+              className={`inline-flex items-center justify-center px-3 lg:px-5 py-1.5 text-[19px] text-[#4F3737] rounded-full lg:rounded-[30px] ${isMuted ? "bg-white/60" : "bg-white"
+                } transition-colors duration-300 hover:shadow-md`}
               aria-label={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? <UnMute /> : <Mute />}

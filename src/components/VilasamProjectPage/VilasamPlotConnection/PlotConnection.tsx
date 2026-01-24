@@ -310,6 +310,7 @@ const PlotConnection = () => {
           <motion.span
             className={`absolute ${area.textPosition} max-w-[10%] text-center text-xs font-semibold z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
             variants={textVariants}
+            viewport={{ once: true }}
             animate={
               selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
                 ? "active"
@@ -363,6 +364,7 @@ const PlotConnection = () => {
               <motion.span
                 className={`text-xs lg2:w-3 lg2:h-3 w-3 h-3 rounded-full shadow-md`}
                 variants={markerVariants}
+                viewport={{ once: true }}
                 animate={
                   selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
                     ? "active"

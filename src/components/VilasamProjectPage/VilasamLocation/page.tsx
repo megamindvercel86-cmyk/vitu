@@ -128,7 +128,7 @@ const CardContent = ({
       <div className="flex flex-col md:gap-4 gap-3 py-8 md:py-12 px-5 md:px-12 lg:px-20">
         <h2 className={`leading-[1.2] ${width === "sm" ? "max-w-lg" : "max-w-2xl"} font-theSeasons text-[#0C3E49] text-[28px] sm:text-[32px] lg:text-[48px] font-semibold`}>{safeTitle}</h2>
         <h3 className="text-[#040707]/60 font-ttcommons text-base md:text-xl">{safeSubtitle}</h3>
-      <p className="text-[#0C3E4999] font-ttcommons text-base md:text-xl">{safeDescription}</p>
+        <p className="text-[#0C3E4999] font-ttcommons text-base md:text-xl">{safeDescription}</p>
         <h4 className="text-[#0C3E4999] font-ttcommons text-base md:text-xl font-medium">{safeMiddleTitle}</h4>
         <p className="text-[#0C3E4999] font-ttcommons text-base md:text-xl">{safeMiddleDescription}</p>
         <h4 className="text-[#0C3E4999] font-ttcommons text-base md:text-xl font-medium">{safeBottomTitle}</h4>
@@ -226,6 +226,19 @@ const LocationAdvantage = () => {
     }
     return () => clearProgressInterval();
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
 
   const data: LocationAdvantageProps[] = [
     {
@@ -530,6 +543,7 @@ const LocationAdvantage = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
+            viewport={{ once: true }}
             data-lenis-prevent
           >
             <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeCard} />
@@ -544,6 +558,7 @@ const LocationAdvantage = () => {
                 onClick={closeCard}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                viewport={{ once: true }}
               >
                 <CloseTabIcon fill={data[activeIndex].closeIconFIll} />
               </motion.button>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 export const AnimatedConicButton = ({
   children,
-  buttonBase="conic-button-base",
+  buttonBase = "conic-button-base",
   className,
   theme = "dark", // 'dark', 'light', 'mid-dark-light', 'custom'
   ...props
@@ -12,14 +12,14 @@ export const AnimatedConicButton = ({
     themeClass = "theme-light";
   } else if (theme === "mid-dark-light") {
     themeClass = "theme-mid-dark-light";
-  } 
+  }
   else if (theme === "light-green") {
     themeClass = "theme-light-green";
   }
   else if (theme === "vilasam-brochure") {
     themeClass = "theme-vilasam-brochure";
   }
-    else if (theme === "vilasam-brochure-mobile") {
+  else if (theme === "vilasam-brochure-mobile") {
     themeClass = "theme-vilasam-brochure-mobile";
   }
   else if (theme === "custom") {
@@ -35,4 +35,3 @@ export const AnimatedConicButton = ({
     </button>
   );
 };
-  

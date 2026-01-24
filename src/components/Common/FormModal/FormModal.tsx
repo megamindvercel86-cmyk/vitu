@@ -2,8 +2,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/firebase/firebaseConfig";
+// Firebase imports removed from top-level to be lazy-loaded in handleSubmit
 import Loader from "@/components/LoaderComponent/LoaderComponent";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
@@ -150,6 +149,10 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
 
       router.push(thankYouRoute);
       try {
+        // Performance optimization: Lazy load Firebase only when user submits form
+        const { db } = await import("@/firebase/firebaseConfig");
+        const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+
         const collectionRef = collection(db, collectionName);
         const dataWithTimestamp = {
           ...formData,
@@ -262,6 +265,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           <motion.div
             variants={backdropVariants}
             className="backdrop-blur-lg h-full w-full fixed inset-0"
+            viewport={{ once: true }}
             onClick={() => {
               setOpen(false);
               onClose(false);
@@ -271,6 +275,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           <motion.div
             variants={cardVariants}
             ref={containerRef}
+            viewport={{ once: true }}
             className={`${maxWidth} mx-auto bg-white h-fit z-[60] my-auto pb-10 rounded-3xl ${isVilasam ? "font-theSeasons" : "font-sans"} relative shadow-2xl ${className}`}
           >
             {/* Close Button */}

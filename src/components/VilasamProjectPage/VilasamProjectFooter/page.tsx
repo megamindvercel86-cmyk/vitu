@@ -293,7 +293,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
-const safeText = useSafeSpecialCharacters(text);
+  const safeText = useSafeSpecialCharacters(text);
 
   return (
     <>

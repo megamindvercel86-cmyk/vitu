@@ -1,3 +1,7 @@
+
+
+"use client"
+
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -49,7 +53,7 @@ const PROJECT_LINKS = [
   { href: "/vilasam", label: "Vilasam" },
   { href: "/elite", label: "Vaikuntam City ELITE" },
   { href: "/vaikuntamcity", label: "Vaikuntam City" },
-  
+
 ];
 
 const NAV_LINKS = [
@@ -91,15 +95,14 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
   // ============= Helper Functions =============
   const getLinkClassName = (path: string) => {
     const isActive = pathname === path;
-    return `2xl:text-4xl ${
-      isActive
-        ? isNavbarPrimary
-          ? "text-white border-b-2 border-white"
-          : "text-black border-b-2 border-black"
-        : isNavbarPrimary
-          ? "text-white"
-          : "text-black"
-    }`;
+    return `2xl:text-4xl ${isActive
+      ? isNavbarPrimary
+        ? "text-white border-b-2 border-white"
+        : "text-black border-b-2 border-black"
+      : isNavbarPrimary
+        ? "text-white"
+        : "text-black"
+      }`;
   };
 
   // Add useEffect to control body scroll
@@ -145,9 +148,8 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
 
           {/* Navigation Links - Right 50% */}
           <div
-            className={`hidden lg:flex ${
-              showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
-            } items-center justify-between`}
+            className={`hidden lg:flex ${showGetInTouch ? "ml-2 2xl:ml-96 lg:w-1/2" : "lg:w-full xl:ml-[45rem] lg2:ml-[50%] lg:ml-[30rem]"
+              } items-center justify-between`}
           >
             <div className="flex items-center justify-between w-full">
               {NAV_LINKS.map(({ href, label, hasDropdown, dropdownItems }) => (
@@ -161,16 +163,15 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                       <div
                         className="absolute left-0 w-40 mt-0 origin-top-left bg-black/20 backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
                         onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
-                        // onMouseLeave={handleMouseLeave} // Close dropdown after delay
+                      // onMouseLeave={handleMouseLeave} // Close dropdown after delay
                       >
                         {dropdownItems?.map((item) => (
                           <div className="py-1" key={item.href}>
                             <Link
-                            aria-label="Dropdown Item"
+                              aria-label="Dropdown Item"
                               href={item.href}
-                              className={`block px-4 py-2 font-freightNeoMedium  lg:text-[16px] lg2:text-xl   ${
-                                pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
-                              } `}
+                              className={`block px-4 py-2 font-freightNeoMedium  lg:text-[16px] lg2:text-xl   ${pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
+                                } `}
                             >
                               {item.label}
                             </Link>
@@ -182,13 +183,12 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                 </div>
               ))}
               {showGetInTouch && (
-                <Link href="/general-enquire" 
-                aria-label="Get in Touch"
+                <Link href="/general-enquire"
+                  aria-label="Get in Touch"
                 >
                   <Button
-                    className={`w-full pt-[2px] text-base h-auto lg2:h-[50px] sm:text-lg lg:h-[30px] md:text-xl lg2:text-2xl px-4 lg2:px-7  lg:text-[16px] xl:text-[26px] 2xl:text-4xl ${
-                      isNavbarPrimary ? "bg-white" : ""
-                    }`}
+                    className={`w-full pt-[2px] text-base h-auto lg2:h-[50px] sm:text-lg lg:h-[30px] md:text-xl lg2:text-2xl px-4 lg2:px-7  lg:text-[16px] xl:text-[26px] 2xl:text-4xl ${isNavbarPrimary ? "bg-white" : ""
+                      }`}
                     defaultTextColor={buttonColor}
                   >
                     Get in Touch

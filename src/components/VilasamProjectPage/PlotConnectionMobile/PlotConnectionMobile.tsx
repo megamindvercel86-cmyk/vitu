@@ -31,7 +31,7 @@ const Areas = [
     isActive: true,
     textPosition: "top-[36%] left-[43%] max-w-[20%]",
   },
-    {
+  {
     location: "Thadambail Junction",
     type: "null",
     position: "top-[44.5%] left-[38.5%]",
@@ -62,7 +62,7 @@ const Areas = [
     textPosition: "lg2:top-[55%] top-[86%] left-[53%]",
   },
 
-    {
+  {
     location: "Padmavathi Hospital",
     type: "Emergency Services",
     position: "top-[72%] left-[57%]",
@@ -245,6 +245,7 @@ const PlotConnectionMobile = () => {
               <motion.span
                 className={`absolute ${area.textPosition}  text-center  font-semibold z-30 text-[10px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
                 variants={textVariants}
+                viewport={{ once: true }}
                 animate="active"
               >
                 {useSafeSpecialCharacters(area.location)}
@@ -261,6 +262,7 @@ const PlotConnectionMobile = () => {
               <motion.span
                 className={`absolute ${area.textPosition} ${area.location === "Srinivas Medical College and Hospital" ? "max-w-[100px]" : ""}  text-center  font-semibold z-30 text-[9px] transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 font-theSeasons`}
                 variants={textVariants}
+                viewport={{ once: true }}
                 animate={
                   selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
                     ? "active"
@@ -312,6 +314,7 @@ const PlotConnectionMobile = () => {
                 <motion.span
                   className="w-[6px] h-[6px] rounded-full"
                   variants={markerVariants}
+                  viewport={{ once: true }}
                   animate={
                     selectedType === null || (Array.isArray(area.type) ? area.type.includes(selectedType) : area.type === selectedType)
                       ? "active"

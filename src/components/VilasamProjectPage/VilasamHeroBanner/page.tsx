@@ -89,10 +89,9 @@ const VilasamHeroSection = () => {
           className="w-full h-full object-cover hidden md:block"
           loop
           playsInline
-          // onTimeUpdate={handleTimeUpdate}
           autoPlay
           muted={isMuted}
-        // priority
+          poster="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
         >
           <source
             src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance_1.mp4?alt=media&token=c0e465ca-97e8-487e-a2d5-40ab9f1160e6"
@@ -104,10 +103,9 @@ const VilasamHeroSection = () => {
           className="w-full h-full object-cover md:hidden block"
           loop
           playsInline
-          // onTimeUpdate={handleTimeUpdate}
           autoPlay
           muted={isMuted}
-        // priority
+          poster="/images/vilasamPageImages/locationAdvantageImages/mobileImage2.webp"
         >
           <source
             src="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2FEntrance%20Mobile_1.mp4?alt=media&token=75103fd4-9722-4875-84e8-c86a22d4fc5d"

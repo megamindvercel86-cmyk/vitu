@@ -28,7 +28,7 @@ interface CardProps {
   bottomTitle?: string;
   isExpanded?: boolean;
   subtitle?: string;
-  href:string;
+  href: string;
 }
 
 export default function ProjectFilterAppleStyleCard({
@@ -50,7 +50,7 @@ export default function ProjectFilterAppleStyleCard({
   isViewMoreType = "secondary",
   bottomTitle = "",
   isExpanded = true,
-  href="",
+  href = "",
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -122,7 +122,7 @@ export default function ProjectFilterAppleStyleCard({
             <div className="relative h-auto "></div>
             <div className="">
               <button
-              aria-label="Close Modal"
+                aria-label="Close Modal"
                 className="absolute top-4 right-4 h-8 w-8 bg-[#FFFFFF] rounded-full flex items-center justify-center transition-colors"
                 onClick={() => setIsOpen(false)}
               >
@@ -139,47 +139,47 @@ export default function ProjectFilterAppleStyleCard({
 
   return (
     <>
-    <Link href={href}
-    aria-label={title ? `View details for ${title}` : "View project details"}
-    >
-      <motion.button
-        layoutId={`expandable-card-${id}`}
-        // onClick={() => setIsOpen(isExpanded)}
-        className={cn(
-          "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10",
-          className,
-          cardClassName,
-        )}
+      <Link href={href}
+        aria-label={title ? `View details for ${title}` : "View project details"}
       >
-       <div className="relative z-40 p-8">
-          <motion.p
-            layoutId={`card-category-${id}`}
-            className={cn(
-              "text-sm md:text-base font-freightNeoMedium text-white text-left pt-4",
-              categoryClassName,
-            )}
-          >
-            {category}
-          </motion.p>
-          <motion.p
-            layoutId={`card-title-${id}`}
-            className={cn(
-              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
-              titleClassName,
-            )}
-          >
-            {title}
-          </motion.p>
-          {!href&&<motion.p
-            layoutId={`card-title-${id}`}
-            className={cn(
-              "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
-              titleClassName,
-            )}
-          >
-            Coming Soon...
-          </motion.p>}
-          {/* <motion.p
+        <motion.button
+          layoutId={`expandable-card-${id}`}
+          // onClick={() => setIsOpen(isExpanded)}
+          className={cn(
+            "bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative z-10 group",
+            className,
+            cardClassName,
+          )}
+        >
+          <div className="relative z-40 p-8">
+            <motion.p
+              layoutId={`card-category-${id}`}
+              className={cn(
+                "text-sm md:text-base font-freightNeoMedium text-white text-left pt-4",
+                categoryClassName,
+              )}
+            >
+              {category}
+            </motion.p>
+            <motion.p
+              layoutId={`card-title-${id}`}
+              className={cn(
+                "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
+                titleClassName,
+              )}
+            >
+              {title}
+            </motion.p>
+            {!href && <motion.p
+              layoutId={`card-title-${id}`}
+              className={cn(
+                "text-xl md:text-2xl xl:text-3xl font-freightNeoSemibold text-white text-left [text-wrap:balance] mt- line-clamp-2",
+                titleClassName,
+              )}
+            >
+              Coming Soon...
+            </motion.p>}
+            {/* <motion.p
             layoutId={`card-subtitle-${id}`}
             className={cn(
               "text-white text-xs lg:text-2xl xl:text-[26px] md:text-xl font-extralight max-w-xs text-left [text-wrap:balance] font-FreightNeoProNormal mt-2 2xl:text-3xl",
@@ -188,39 +188,36 @@ export default function ProjectFilterAppleStyleCard({
           >
             {subtitle}
           </motion.p> */}
-        </div>
-        <BlurImage
-          src={imageSrc || "/placeholder.svg"}
-          alt={title || "Card image"}
-          fill
-          className="object-cover absolute z-10 inset-0"
-        />
-        <div className="absolute bottom-4 md:left-8 left-4 z-50">
-          <Typography
-            variant="custom"
-            className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl   text-xl"
+          </div>
+          <BlurImage
+            src={imageSrc || "/placeholder.svg"}
+            alt={title || "Card image"}
+            fill
+            className="object-cover absolute z-10 inset-0 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+          />
+          <div className="absolute bottom-4 md:left-8 left-4 z-50">
+            <Typography
+              variant="custom"
+              className="text-white font-freightNeoSemibold md:font-FreightNeoProNormal md:text-2xl lg:text-4xl lg2:text-6xl   text-xl"
+            >
+              {bottomTitle}
+            </Typography>
+          </div>
+          {href && <div
+            className={`absolute bottom-6 md:right-8 right-6 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
           >
-            {bottomTitle}
-          </Typography>
-        </div>
-       {href&& <div
-          className={`absolute bottom-4 md:right-8 right-4 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
-        >
-          {isViewMore === true &&
-            (isViewMoreType === "primary" ? (
-              <PrimaryViewMoreButton />
-            ) : (
-              <SecondaryViewMoreButton />
-            ))}
-        </div>}
+            <div className=" bg-none border border-white/30 text-white px-5 py-2 rounded-full text-xs font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium">
+              Learn More
+            </div>
+          </div>}
 
-        {/* <Image
+          {/* <Image
           src={imageSrc || "/placeholder.svg"}
           alt={title || "Card image"}
           fill
           className={cn("object-cover absolute z-10 inset-0", imageClassName)}
         /> */}
-      </motion.button>
+        </motion.button>
       </Link>
 
       {/* {isMounted && createPortal(modalContent, document.body)} */}

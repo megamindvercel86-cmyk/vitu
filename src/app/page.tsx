@@ -4,15 +4,62 @@
 // Component Imports
 import Layout from "@/components/Layout/Layout";
 import HomeHeroSection from "@/components/HomePageComponents/HomeHeroSection/HomeHeroSection";
-import VisionAndMission from "@/components/Common/VisionAndMission/VisionAndMission";
-import VisionForTheFuture from "@/components/HomePageComponents/VisionForTheFuture/VisionForTheFuture";
-import Testimonials from "@/components/HomePageComponents/Testimonial/Testimonial";
-import SustainabilityInitiatives from "@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives";
-import JoinOurTeamHeroSection from "@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection";
-import Typography from "@/components/Typography/Typography";
-import ExploreProjectsWrapper from "@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper";
-import CurrentProject from "@/components/ProjectsPageComponents/CurrentProject/CurrentProject";
+// Dynamically import heavy below-the-fold components
+import dynamic from "next/dynamic";
 import { GoogleTagManager } from "@next/third-parties/google";
+
+const VisionAndMission = dynamic(
+  () => import("@/components/Common/VisionAndMission/VisionAndMission"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[500px] w-full bg-transparent" />
+  }
+);
+const VisionForTheFuture = dynamic(
+  () => import("@/components/HomePageComponents/VisionForTheFuture/VisionForTheFuture"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[500px] w-full bg-transparent" />
+  }
+);
+const Testimonials = dynamic(
+  () => import("@/components/HomePageComponents/Testimonial/Testimonial"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[400px] w-full bg-transparent" />
+  }
+);
+const SustainabilityInitiatives = dynamic(
+  () => import("@/components/HomePageComponents/SustainabilityInitiatives/SustainabilityInitiatives"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[400px] w-full bg-transparent" />
+  }
+);
+const JoinOurTeamHeroSection = dynamic(
+  () => import("@/components/Common/JoinOurTeamHeroSection/JoinOurTeamHeroSection"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[300px] w-full bg-transparent" />
+  }
+);
+const ExploreProjectsWrapper = dynamic(
+  () => import("@/components/ProjectsPageComponents/ExploreProjectsWrapper/ExploreProjectsWrapper"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[500px] w-full bg-transparent" />
+  }
+);
+const CurrentProject = dynamic(
+  () => import("@/components/ProjectsPageComponents/CurrentProject/CurrentProject"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[500px] w-full bg-transparent" />
+  }
+);
+
+import Typography from "@/components/Typography/Typography";
+import FeaturedProjects from "@/components/VilasamProjectPage/FeaturedProject/FeaturedProject";
 
 // Types & Interfaces
 /** Image paths for desktop and mobile */
@@ -123,7 +170,7 @@ export default function HomePage() {
       navbarClassName={NAVBAR_CONFIG.className}
       navbarProps={NAVBAR_CONFIG.props}
     >
-        <GoogleTagManager gtmId="GTM-NBVLQJD3" />
+      <GoogleTagManager gtmId="GTM-NBVLQJD3" />
       {/* Hero Section */}
       <HomeHeroSection />
 
@@ -152,7 +199,9 @@ export default function HomePage() {
       <VisionForTheFuture />
 
       {/* Explore Projects Section */}
-      <ExploreProjectsWrapper />
+      {/* <ExploreProjectsWrapper /> */}
+
+      <FeaturedProjects/>
 
       {/* Current Project Section */}
       <CurrentProject homePage={true} />

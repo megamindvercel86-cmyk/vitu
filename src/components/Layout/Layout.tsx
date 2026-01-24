@@ -44,9 +44,8 @@ export default function Layout({ children, navbarProps, navbarClassName }: Layou
 
       {/* Loader Overlay (Does not block rendering) */}
       <div
-        className={`fixed inset-0 bg-white z-50 flex justify-center items-center transition-opacity duration-700 ${
-          showLoader ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-white z-50 flex justify-center items-center transition-opacity duration-700 ${showLoader ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
       >
         <Loader />
       </div>

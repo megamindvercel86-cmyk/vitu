@@ -15,9 +15,11 @@ html {
   .snap-x {
     scroll-snap-type: x mandatory;
   }
+
   .snap-mandatory {
     scroll-snap-align: start;
   }
+
   .scroll-smooth {
     scroll-behavior: smooth;
   }
@@ -39,6 +41,7 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Black";
   src: url("/fonts/Freight Neo Pro Black.otf") format("opentype");
@@ -46,6 +49,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Medium";
   src: url("/fonts/Freight Neo Pro Medium.otf") format("opentype");
@@ -53,6 +57,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Semibold";
   src: url("/fonts/Freight Neo Pro Semibold.otf") format("opentype");
@@ -60,6 +65,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Bold";
   src: url("/fonts/Freight Neo Pro Bold.otf") format("opentype");
@@ -67,6 +73,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Light";
   src: url("/fonts/Freight Neo Pro Light.otf") format("opentype");
@@ -74,6 +81,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Candide-CondensedBold";
   src: url("/fonts/Candide-CondensedBold.ttf") format("truetype");
@@ -81,6 +89,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Candide-CondensedMedium";
   src: url("/fonts/Candide-CondensedMedium.ttf") format("truetype");
@@ -88,6 +97,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Neo Pro Normal";
   src: url("/fonts/Freight Neo Pro Book.otf") format("truetype");
@@ -95,6 +105,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Candide-CondensedNormal";
   src: url("/fonts/Candide-CondensedRegular.ttf") format("truetype");
@@ -102,6 +113,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "The Seasons";
   src: url("/fonts/theSeasons/Fontspring-DEMO-theseasons-reg.otf") format("truetype");
@@ -109,6 +121,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "TTCommons";
   src: url("/fonts/TTCommons-Regular/TTCommons-Regular.ttf") format("truetype");
@@ -116,6 +129,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "TTCommons";
   src: url("/fonts/TTCommons-Bold/TTCommons-Bold.ttf") format("truetype");
@@ -123,6 +137,7 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "TTCommons";
   src: url("/fonts/TTCommons-ExtraBold/TTCommons-ExtraBold.ttf") format("truetype");
@@ -134,7 +149,8 @@ body {
 
 option {
   border: none;
-  background: white; /* Optional */
+  background: white;
+  /* Optional */
 }
 
 @media (min-width: 1024px) and (min-height: 600px) {
@@ -142,108 +158,126 @@ option {
     height: 10vh;
   }
 }
+
 /* Default (Mobile First) */
 .herosection {
-  height: 150vh; /* 155vh - 5vh */
+  height: 150vh;
+  /* 155vh - 5vh */
 }
 
 /* 641px - 767px */
 @media (min-width: 641px) and (max-width: 767px) {
   .herosection {
-    height: 152vh; /* 157vh - 5vh */
+    height: 152vh;
+    /* 157vh - 5vh */
   }
 }
 
 /* 768px - 799px */
 @media (min-width: 768px) and (max-width: 799px) {
   .herosection {
-    height: 180vh; /* 185vh - 5vh */
+    height: 180vh;
+    /* 185vh - 5vh */
   }
 }
 
 /* 800px - 1023px */
 @media (min-width: 800px) and (max-width: 1023px) {
   .herosection {
-    height: 156vh; /* 161vh - 5vh */
+    height: 156vh;
+    /* 161vh - 5vh */
   }
 }
 
 /* Larger screens */
 @media (min-width: 1024px) and (min-height: 600px) {
   .herosection {
-    height: 287vh; /* 290vh - 3vh */
+    height: 287vh;
+    /* 290vh - 3vh */
   }
 }
 
 @media (min-width: 1024px) and (min-height: 768px) {
   .herosection {
-    height: 237vh; /* 240vh - 3vh */
+    height: 237vh;
+    /* 240vh - 3vh */
   }
 }
 
 @media (min-width: 1024px) and (min-height: 1366px) {
   .herosection {
-    height: 162vh !important; /* 165vh - 3vh */
+    height: 162vh !important;
+    /* 165vh - 3vh */
   }
 }
 
 @media (min-width: 1280px) and (min-height: 800px) {
   .herosection {
-    height: 267vh; /* 270vh - 3vh */
+    height: 267vh;
+    /* 270vh - 3vh */
   }
 }
 
 @media (min-width: 1366px) and (min-height: 768px) {
   .herosection {
-    height: 277vh; /* 280vh - 3vh */
+    height: 277vh;
+    /* 280vh - 3vh */
   }
 }
 
 @media (min-width: 1440px) and (min-height: 900px) {
   .herosection {
-    height: 247vh; /* 250vh - 3vh */
+    height: 247vh;
+    /* 250vh - 3vh */
   }
 }
 
 @media (min-width: 1680px) and (min-height: 1050px) {
   .herosection {
-    height: 0vh; /* 0vh - 3vh would be negative, keeping original */
+    height: 0vh;
+    /* 0vh - 3vh would be negative, keeping original */
   }
 }
 
 @media (min-width: 1920px) and (min-height: 1080px) {
   .herosection {
-    height: 287vh; /* 290vh - 3vh */
+    height: 287vh;
+    /* 290vh - 3vh */
   }
 }
 
 @media (min-width: 1920px) and (min-height: 1200px) {
   .herosection {
-    height: 202vh !important; /* 205vh - 3vh */
+    height: 202vh !important;
+    /* 205vh - 3vh */
   }
 }
 
 @media (min-width: 2560px) and (min-height: 1440px) {
   .herosection {
-    height: 180vh !important; /* 183vh - 3vh */
+    height: 180vh !important;
+    /* 183vh - 3vh */
   }
 }
 
 @media (min-width: 3840px) and (min-height: 2160px) {
   .herosection {
-    height: 142vh !important; /* 145vh - 3vh */
+    height: 142vh !important;
+    /* 145vh - 3vh */
   }
 }
 
 @media (min-width: 4096px) and (min-height: 2304px) {
   .herosection {
-    height: 137vh; /* 140vh - 3vh */
+    height: 137vh;
+    /* 140vh - 3vh */
   }
 }
 
 @media (min-width: 5120px) and (min-height: 2880px) {
   .herosection {
-    height: 122vh; /* 125vh - 3vh */
+    height: 122vh;
+    /* 125vh - 3vh */
   }
 }
 
@@ -258,7 +292,8 @@ lite-youtube {
 
 /* Option 3: If you want a specific width instead */
 lite-youtube {
-  max-width: 100% !important; /* or any specific value you want */
+  max-width: 100% !important;
+  /* or any specific value you want */
   border-radius: 20px;
 }
 
@@ -268,6 +303,7 @@ lite-youtube {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -277,6 +313,7 @@ lite-youtube {
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -296,9 +333,11 @@ lite-youtube {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.15);
   }
+
   100% {
     transform: scale(1);
   }
@@ -314,10 +353,27 @@ lite-youtube {
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: l13 1s infinite linear;
 }
+
 @keyframes l13 {
   100% {
     transform: rotate(1turn);
   }
+}
+
+@keyframes pulse-scale {
+
+  0%,
+  100% {
+    transform: scale(0.6);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-scale 1.5s ease-in-out infinite;
 }
 
 /* Add this to your global CSS file */
@@ -340,7 +396,7 @@ lite-youtube {
   padding: 1rem 1.5rem;
   border-radius: 40px;
 
- 
+
   cursor: pointer;
 }
 
@@ -352,7 +408,7 @@ lite-youtube {
   padding: 1rem 1.5rem;
   border-radius: 40px;
 
- 
+
   cursor: pointer;
 }
 
@@ -361,7 +417,7 @@ lite-youtube {
   --duration: 4s;
   --gradient-angle: 0deg;
   --gradient-percent: 8%;
-  
+
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -372,13 +428,15 @@ lite-youtube {
   animation: rotate-conic-gradient-border var(--duration) linear infinite;
   opacity: 0;
   transition: opacity 0.5s ease;
-    pointer-events: none; /* prevent blocking hover */
+  pointer-events: none;
+  /* prevent blocking hover */
 }
 
 /* --- HOVER BEHAVIOR (for all buttons) --- */
 .conic-button-base:hover .animated-border-overlay-base {
   opacity: 1;
 }
+
 .conic-button-base1:hover .animated-border-overlay-base {
   opacity: 1;
 }
@@ -391,42 +449,50 @@ lite-youtube {
   background-color: inherit !important;
   transform: none !important;
 }
+
 /* --- THEME 1 (Dark) --- */
 .theme-dark {
   background-color: #6b402a;
   color: white;
 }
+
 .theme-dark .animated-border-overlay-base {
   background-image:
     linear-gradient(#6b402a, #673e28),
-    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
 }
 
 /* --- THEME 2 (Light) --- */
 .theme-light {
   background-color: #F3EAE1;
-  color: #1C1213; /* Make text dark on light background */
+  color: #1C1213;
+  /* Make text dark on light background */
 }
+
 .theme-light .animated-border-overlay-base {
   background-image:
     linear-gradient(#F3EAE1, #F3EAE1),
-    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #9a8a7a99 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #9a8a7a99 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
 }
 
 /* --- THEME 4 (Light Green) --- */
 .theme-light-green {
-  background-color: none; /* transparent bg */
-  color: #254C54; /* text color to match border */
+  background-color: none;
+  /* transparent bg */
+  color: #254C54;
+  /* text color to match border */
   /* on hover change bg ot white */
   transition: background-color 0.5s ease;
+
   &:hover {
     background-color: none;
   }
 }
+
 .theme-light-green .animated-border-overlay-base {
   background-image:
     linear-gradient(#ffffff, #ffffff),
-    conic-gradient( from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37,76,84,0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+    conic-gradient(from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
 }
 
 /* --- THEME Vilasam Brochure --- */
@@ -435,19 +501,23 @@ lite-youtube {
   color: #ffffff;
   transition: all 0.5s ease;
 }
+
 .theme-vilasam-brochure-mobile {
   background-color: transparent;
   color: #254C54;
   transition: all 0.5s ease;
 }
+
 .theme-vilasam-brochure:hover {
   color: #254C54;
 }
+
 .theme-vilasam-brochure .animated-border-overlay-base {
   background-image:
     linear-gradient(#f3f4f6, #f3f4f6),
-    conic-gradient( from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37,76,84,0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+    conic-gradient(from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
 }
+
 /* .Plot-module-scss-module__VjpZHq__cardContainer{
   perspective: 1000px;
   height: 100vh;
@@ -456,37 +526,44 @@ lite-youtube {
 
 /* --- THEME 3 (Mid Dark Light) --- NEW THEME --- */
 .theme-mid-dark-light {
-  background-color: (#be7a56, #bd7853); /* A mid-tone beige/brown */
+  background-color: (#be7a56, #bd7853);
+  /* A mid-tone beige/brown */
 }
+
 .theme-mid-dark-light .animated-border-overlay-base {
   background-image:
     /* This gradient should match the button's background color */
-    linear-gradient(#be7a56, #bd7853), 
+    linear-gradient(#be7a56, #bd7853),
     /* This is the animated border gradient */
-    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
+    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
 }
 
 
 @keyframes rotate-conic-gradient-border {
-  0% { --gradient-angle: 0deg; }
-  100% { --gradient-angle: 360deg; }
+  0% {
+    --gradient-angle: 0deg;
+  }
+
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 
 
 .theme-custom {
   background-color: transparent;
-  color: #fff; /* optional for text */
-   
+  color: #fff;
+  /* optional for text */
+
 }
 
 .theme-custom .animated-border-overlay-base {
   background-image:
     linear-gradient(#26170f, #26170f),
-    conic-gradient( from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4) );
-  
+    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+
 }
+
 :root {
   --app-height: 100vh;
 }
-
-

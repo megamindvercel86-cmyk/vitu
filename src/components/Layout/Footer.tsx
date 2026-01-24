@@ -10,8 +10,6 @@ import FooterLink from "../Common/FooterLinks";
 import { Instgram, LinkedIn, Mail, Meta, Phone, Share, Youtube } from "../Icons/Icons";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
-import { db } from "@/firebase/firebaseConfig";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -40,6 +38,10 @@ const FooterContent: FC = () => {
     e.preventDefault();
     if (email) {
       try {
+        // Dynamically import Firebase only on submission
+        const { db } = await import("@/firebase/firebaseConfig");
+        const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+
         const emailValue = email.trim();
         const collectionRef = collection(db, "newsLetter");
         await addDoc(collectionRef, { email: emailValue, createdAt: serverTimestamp() });
@@ -221,6 +223,7 @@ const FooterContent: FC = () => {
             isOpen={projectIsOpen}
             title="Projects"
             links={[
+              { href: "/vilasam", label: "Vilasam" },
               { href: "/elite", label: "Vaikuntam City ELITE" },
               { href: "/vaikuntamcity", label: "Vaikuntam City" },
               // { href: "/vilasam", label: "Vilasam" },

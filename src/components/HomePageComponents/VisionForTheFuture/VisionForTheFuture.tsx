@@ -78,7 +78,7 @@ const CAROUSEL_DATA: CarouselItem[] = [
     image: "/svgs/image3.webp",
     residentialType: "Wellness Centre",
   },
-  
+
 ];
 
 /**
@@ -193,17 +193,16 @@ export default function VisionForTheFuture() {
               {CAROUSEL_DATA.map((item, index) => (
                 <figure
                   key={index}
-                  className={`absolute inset-0 transition-all duration-500 w-full h-full ease-in-out ${
-                    index === currentIndex
-                      ? "opacity-100 translate-x-0"
-                      : direction === "right"
-                        ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
-                          ? "opacity-0 -translate-x-full"
-                          : "opacity-0 translate-x-full"
-                        : index === (currentIndex + 1) % CAROUSEL_DATA.length
-                          ? "opacity-0 translate-x-full"
-                          : "opacity-0 -translate-x-full"
-                  }`}
+                  className={`absolute inset-0 transition-all duration-500 w-full h-full ease-in-out ${index === currentIndex
+                    ? "opacity-100 translate-x-0"
+                    : direction === "right"
+                      ? index === (currentIndex - 1 + CAROUSEL_DATA.length) % CAROUSEL_DATA.length
+                        ? "opacity-0 -translate-x-full"
+                        : "opacity-0 translate-x-full"
+                      : index === (currentIndex + 1) % CAROUSEL_DATA.length
+                        ? "opacity-0 translate-x-full"
+                        : "opacity-0 -translate-x-full"
+                    }`}
                   aria-hidden={index !== currentIndex}
                 >
                   <Image
@@ -262,7 +261,7 @@ export default function VisionForTheFuture() {
 
                   {/* Play/Pause Icon */}
                   <foreignObject x="14" y="14" width="22" height="22">
-                    <button  className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
+                    <button className="w-full h-full flex items-center justify-center" aria-label={isPlay ? "Pause" : "Play"}>
                       {isPlay ? <FaPause className="text-lg text-[#dbc9bc]" /> : <FaPlay className="text-lg text-[#dbc9bc]" />}
                     </button>
                   </foreignObject>
@@ -280,9 +279,8 @@ export default function VisionForTheFuture() {
                       handleTransition(direction);
                     }
                   }}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    dotIndex === currentIndex ? "bg-white md:w-8 w-9" : "bg-[#FFFFFF99]"
-                  } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${dotIndex === currentIndex ? "bg-white md:w-8 w-9" : "bg-[#FFFFFF99]"
+                    } ${isAnimating ? "cursor-not-allowed" : "cursor-pointer"}`}
                   aria-label={`Go to slide ${dotIndex + 1}`}
                   aria-current={dotIndex === currentIndex}
                 />

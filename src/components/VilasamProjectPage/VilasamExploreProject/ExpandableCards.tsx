@@ -324,11 +324,12 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
         <motion.div
           className="absolute md:top-[22rem]  lg:top-[13rem]  xl:top-[21rem] lg2:top-[17rem] 2xl:top-[50rem] text-center z-50 w-full mx-auto px-4"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{
+          whileInView={{
             opacity: isExpanded ? 1 : 0,
             scale: isExpanded ? 1 : 0.8,
             y: isExpanded ? 0 : 10,
           }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: isExpanded ? 0.3 : 0 }}
         >
           <div className={`${textColor} ${textStyle}`}>
@@ -341,7 +342,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               animate={{ y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Space to Settle, Room to Grow 
+              Space to Settle, Room to Grow
             </motion.h1>
             {/* <motion.h2
               className="xl:text-[100px] lg:text-4xl  lg2:text-5xl md:text-5xl xl:mb-4"

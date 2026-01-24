@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
@@ -53,6 +53,8 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
     setActiveIndex(index);
     setCurrentIndex(index); // Update the parent modal's currentIndex
   };
+
+
 
   return (
     <div className="flex flex-col">
@@ -138,6 +140,18 @@ interface ContactFormModalProps {
 const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalIsOpen]);
 
   const data: CurrentProjectCardProps[] = [
     {

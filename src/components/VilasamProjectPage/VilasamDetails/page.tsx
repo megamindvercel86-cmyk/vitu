@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
 import img from "../../../../public/images/vilasamPageImages/carouselmages/3.webp";
 interface PulsePoint {
@@ -74,7 +73,7 @@ const ElevatesLiving: React.FC = () => {
       </div>
 
       <div className="relative ">
-        <Image src={img} alt="Elevates Living" className="w-full h-auto object-contain rounded-lg" />
+        <Image  height={300} width={300} src={img} alt="Elevates Living" className="w-full h-auto object-contain rounded-lg" />
 
         {pulsePoints?.map((point) => (
           <div
@@ -83,11 +82,9 @@ const ElevatesLiving: React.FC = () => {
             onMouseEnter={() => setHoveredPoint(point.id)}
             onMouseLeave={() => setHoveredPoint(null)}
           >
-            <motion.div
-              className="lg:w-7 lg:h-7 w-5 h-5 bg-gray-100 rounded-full border-[5px] border-gray-100 shadow-lg cursor-pointer"
-              animate={{ scale: [0.6, 0.8, 0.6] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            />
+           <div
+  className="lg:w-7 lg:h-7 w-5 h-5 bg-gray-100 rounded-full border-[5px] border-gray-100 shadow-lg cursor-pointer pulse-dot"
+/>
 
             <button
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-0 z-20 lg:hidden cursor-pointer"
