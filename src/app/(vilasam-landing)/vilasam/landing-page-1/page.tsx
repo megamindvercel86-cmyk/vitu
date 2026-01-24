@@ -1,7 +1,7 @@
 "use client";
 
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import ScrollRevealSection from "@/components/VilasamLanding/ScrollRevealSection";
 import VilasamAtAGlance from "@/components/VilasamLanding/VilasamAtAGlance";
 import WellnessLifestyleSection from "@/components/VilasamLanding/WellnessLifestyleSection";
@@ -174,88 +174,90 @@ export default function VaikuntamCityEliteLandingPage() {
 
   return (
     <>
-      <main className="overflow-x-hidden">
-        <NewEnquireModal isOpen={isModalOpen} onClose={closeModal} />
-        <div className="md:block hidden">
-          <ScrollRevealSection
-            imageSrc={HERO_BG}
-            overlayImageSrc="/vilasamImages/basicImages/1.webp"
-            overlayImageSrcLeft="https://placehold.co/600x400/purple/white?text=Left+Image"
-            overlayImageSrc2="/vilasamImages/basicImages/2.webp"
-            contentImage1="/vilasamImages/basicImages/limitedImg.png"
+      <Suspense fallback={<div>Loading...</div>}>
+        <main className="overflow-x-hidden">
+          <NewEnquireModal isOpen={isModalOpen} onClose={closeModal} />
+          <div className="md:block hidden">
+            <ScrollRevealSection
+              imageSrc={HERO_BG}
+              overlayImageSrc="/vilasamImages/basicImages/1.webp"
+              overlayImageSrcLeft="https://placehold.co/600x400/purple/white?text=Left+Image"
+              overlayImageSrc2="/vilasamImages/basicImages/2.webp"
+              contentImage1="/vilasamImages/basicImages/limitedImg.png"
 
-            title1={<>Limited Edition <br /> Luxury Villa Plots</>}
-            description1={<>Vilasam presents 24 Boutique Luxury Villa Plots, a limited-edition investment sanctuary.
-              A strategic land asset in one of Karnataka’s fastest-growing coastal corridors, designed
-              for capital appreciation and long-term value. Located behind NITK, Surathkal, this asset
-              offers investors early positioning in a location primed for value expansion. </>}
-            title2={<>Enclave of peace <br /> and quiet</>}
-            description2="Your personal happy place, where deep relaxation helps you connect to your thoughts and feelings. Here, you will unveil hidden possibilities that the future holds just for you."
-            ft1num="100"
-            ft2num="3"
-            ft3num="10"
-            ft1="% Appreciation"
-            ft2="Years"
-            ft3="X Growth"
-            ft1desc="In the past 3 years"
-            ft2desc="Resale Flexibility"
-            ft3desc="in the future from SEZs, Port Expressway"
-            maxWidth="max-w-xl"
-            heroTitle={<>Secure your Legacy in <br /> <span>Mangalore<span className="font-CandideCondensedNormal">&apos;</span>s Growth Story</span></>}
-          />
-        </div>
-        <div className="md:hidden block">
-          <ScrollRevealMobileSection
-            mobtitle1="Secure your Legacy "
-            mobtitle2=" in Mangalore’s Growth Story"
-            mobsubtitle1="Limited Edition"
-            mobsubtitle2="Luxury Villa Plots"
-            mobiledesc1="Vilasam presents 24 Boutique Luxury Villa Plots, a limited-edition investment sanctuary. A strategic land asset in one of Karnataka’s fastest-growing coastal corridors, designed for capital appreciation and long-term value. Located behind NITK, Surathkal, this asset offers investors early positioning in a location primed for value expansion."
-            ft1num="100"
-            ft2num="3"
-            ft3num="10"
-            ft1="% Appreciation"
-            ft2="Years"
-            ft3="X Growth"
-            ft1desc="In the past 3 years"
-            ft2desc="Resale Flexibility"
-            ft3desc="in the future from SEZs, Port Expressway"
-            swiperImages={mobileSwiperImages}
-            onEnquireClick={openModal}
-          />
-          {/* <VilasamAtAGlance /> */}
-        </div>
+              title1={<>Limited Edition <br /> Luxury Villa Plots</>}
+              description1={<>Vilasam presents 24 Boutique Luxury Villa Plots, a limited-edition investment sanctuary.
+                A strategic land asset in one of Karnataka’s fastest-growing coastal corridors, designed
+                for capital appreciation and long-term value. Located behind NITK, Surathkal, this asset
+                offers investors early positioning in a location primed for value expansion. </>}
+              title2={<>Enclave of peace <br /> and quiet</>}
+              description2="Your personal happy place, where deep relaxation helps you connect to your thoughts and feelings. Here, you will unveil hidden possibilities that the future holds just for you."
+              ft1num="100"
+              ft2num="3"
+              ft3num="10"
+              ft1="% Appreciation"
+              ft2="Years"
+              ft3="X Growth"
+              ft1desc="In the past 3 years"
+              ft2desc="Resale Flexibility"
+              ft3desc="in the future from SEZs, Port Expressway"
+              maxWidth="max-w-xl"
+              heroTitle={<>Secure your Legacy in <br /> <span>Mangalore<span className="font-CandideCondensedNormal">&apos;</span>s Growth Story</span></>}
+            />
+          </div>
+          <div className="md:hidden block">
+            <ScrollRevealMobileSection
+              mobtitle1="Secure your Legacy "
+              mobtitle2=" in Mangalore’s Growth Story"
+              mobsubtitle1="Limited Edition"
+              mobsubtitle2="Luxury Villa Plots"
+              mobiledesc1="Vilasam presents 24 Boutique Luxury Villa Plots, a limited-edition investment sanctuary. A strategic land asset in one of Karnataka’s fastest-growing coastal corridors, designed for capital appreciation and long-term value. Located behind NITK, Surathkal, this asset offers investors early positioning in a location primed for value expansion."
+              ft1num="100"
+              ft2num="3"
+              ft3num="10"
+              ft1="% Appreciation"
+              ft2="Years"
+              ft3="X Growth"
+              ft1desc="In the past 3 years"
+              ft2desc="Resale Flexibility"
+              ft3desc="in the future from SEZs, Port Expressway"
+              swiperImages={mobileSwiperImages}
+              onEnquireClick={openModal}
+            />
+            {/* <VilasamAtAGlance /> */}
+          </div>
 
 
-        {/* Desktop: Show FtScroll with video backgrounds */}
-        <div className="hidden md:block">
-          <FtScroll cards={cards} />
-        </div>
+          {/* Desktop: Show FtScroll with video backgrounds */}
+          <div className="hidden md:block">
+            <FtScroll cards={cards} />
+          </div>
 
-        {/* Mobile: Show FtSectionMobile with image backgrounds */}
-        <div className="block md:hidden">
-          <FtSectionMobile mobileCards={mobileCards} />
-        </div>
+          {/* Mobile: Show FtSectionMobile with image backgrounds */}
+          <div className="block md:hidden">
+            <FtSectionMobile mobileCards={mobileCards} />
+          </div>
 
-        {/* 
+          {/* 
         <div className="block md:hidden">
               <FtSectionMobile mobileCards={mobileCards} />
             </div> */}
-        <WellnessLifestyleSection sectionData={SECTION_DATA} />
+          <WellnessLifestyleSection sectionData={SECTION_DATA} />
 
-        <div className="hidden md:block">
-          <MangaloreFrameSection />
-          <div className="h-screen w-full bg-transparent pointer-events-none" />
-          <FloorPerspectivesSection onEnquireClick={openModal} />
-        </div>
+          <div className="hidden md:block">
+            <MangaloreFrameSection />
+            <div className="h-screen w-full bg-transparent pointer-events-none" />
+            <FloorPerspectivesSection onEnquireClick={openModal} />
+          </div>
 
-        <div className="block md:hidden">
-          <MobileMangaloreFloorSection onEnquireClick={openModal} />
-        </div>
+          <div className="block md:hidden">
+            <MobileMangaloreFloorSection onEnquireClick={openModal} />
+          </div>
 
-        <SmartCitySection />
-        <LandingFooter />
-      </main>
+          <SmartCitySection />
+          <LandingFooter />
+        </main>
+      </Suspense>
     </>
   );
 }

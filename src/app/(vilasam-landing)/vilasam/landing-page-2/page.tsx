@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { AnimatedConicButton } from "@/components/ui/moving-border";
 import EnquireModal from "@/components/VilasamLanding/EnquireModal";
 
@@ -134,83 +134,85 @@ export default function VaikuntamCityEliteLandingPage2() {
 
   return (
     <>
-      <main className="overflow-x-hidden">
-        <NewEnquireModal isOpen={isModalOpen} onClose={closeModal} />
-       <div className="md:block hidden">
-                <ScrollRevealSection
-                  imageSrc={HERO_BG}
-            overlayImageSrc="/vilasamImages/basicImages/1.webp"
-            overlayImageSrcLeft="https://placehold.co/600x400/purple/white?text=Left+Image"
-            overlayImageSrc2="/vilasamImages/basicImages/2.webp"
-            title1={<>Limited Edition <br /> Luxury Villa Plots</>}
-            description1={<>Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary for families seeking peace and space. Thoughtfully planned layouts in a gated community create a setting where serenity meets modern living. Located behind NITK, Surathkal, Vilasam keeps you close to beaches, schools and city conveniences while surrounding you with greenery and calm. </>}
-            contentImage1="/vilasamImages/basicImages/limitedImg.png"
-            title2={<>Enclave of peace <br /> and quiet</>}
-            description2="Your personal happy place, where deep relaxation helps you connect to your thoughts and feelings. Here, you will unveil hidden possibilities that the future holds just for you."
-            ft1num="30ft"
-            ft2num="50+"
-            ft3num="24x7"
-            ft1="Wide Roads"
-            ft2="Blooming"
-            ft3="Security"
-            ft1desc="in the European Cobblestone-paved Style"
-            ft2desc="Trees"
-            ft3desc="to protect what matters"
-            maxWidth="max-w-2xl"
-            heroTitle={<>Your Space to <br /> <span>Breathe and Belong</span></>}
-                />
-              </div>
-        <div className="md:hidden block">
-          <ScrollRevealMobileSection
-            mobtitle1=" Your Space to"
-            mobtitle2="Breathe and Belong"
-            mobsubtitle1="Limited Edition"
-            mobsubtitle2="Luxury Villa Plots"
-            mobiledesc1="Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary for families seeking peace and space. Thoughtfully planned layouts in a gated community create a setting where serenity meets modern living. Located behind NITK, Surathkal, Vilasam keeps you close to beaches, schools and city conveniences while surrounding you with greenery and calm."
-            ft1num="30ft"
-            ft2num="50+"
-            ft3num="24x7"
-            ft1="Wide Roads"
-            ft2="Blooming"
-            ft3="Security"
-            ft1desc="in the European Cobblestone-paved Style"
-            ft2desc="Trees"
-            ft3desc="to protect what matters"
-            swiperImages={mobileSwiperImages}
-            onEnquireClick={openModal}
-          />
-        </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <main className="overflow-x-hidden">
+          <NewEnquireModal isOpen={isModalOpen} onClose={closeModal} />
+          <div className="md:block hidden">
+            <ScrollRevealSection
+              imageSrc={HERO_BG}
+              overlayImageSrc="/vilasamImages/basicImages/1.webp"
+              overlayImageSrcLeft="https://placehold.co/600x400/purple/white?text=Left+Image"
+              overlayImageSrc2="/vilasamImages/basicImages/2.webp"
+              title1={<>Limited Edition <br /> Luxury Villa Plots</>}
+              description1={<>Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary for families seeking peace and space. Thoughtfully planned layouts in a gated community create a setting where serenity meets modern living. Located behind NITK, Surathkal, Vilasam keeps you close to beaches, schools and city conveniences while surrounding you with greenery and calm. </>}
+              contentImage1="/vilasamImages/basicImages/limitedImg.png"
+              title2={<>Enclave of peace <br /> and quiet</>}
+              description2="Your personal happy place, where deep relaxation helps you connect to your thoughts and feelings. Here, you will unveil hidden possibilities that the future holds just for you."
+              ft1num="30ft"
+              ft2num="50+"
+              ft3num="24x7"
+              ft1="Wide Roads"
+              ft2="Blooming"
+              ft3="Security"
+              ft1desc="in the European Cobblestone-paved Style"
+              ft2desc="Trees"
+              ft3desc="to protect what matters"
+              maxWidth="max-w-2xl"
+              heroTitle={<>Your Space to <br /> <span>Breathe and Belong</span></>}
+            />
+          </div>
+          <div className="md:hidden block">
+            <ScrollRevealMobileSection
+              mobtitle1=" Your Space to"
+              mobtitle2="Breathe and Belong"
+              mobsubtitle1="Limited Edition"
+              mobsubtitle2="Luxury Villa Plots"
+              mobiledesc1="Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary for families seeking peace and space. Thoughtfully planned layouts in a gated community create a setting where serenity meets modern living. Located behind NITK, Surathkal, Vilasam keeps you close to beaches, schools and city conveniences while surrounding you with greenery and calm."
+              ft1num="30ft"
+              ft2num="50+"
+              ft3num="24x7"
+              ft1="Wide Roads"
+              ft2="Blooming"
+              ft3="Security"
+              ft1desc="in the European Cobblestone-paved Style"
+              ft2desc="Trees"
+              ft3desc="to protect what matters"
+              swiperImages={mobileSwiperImages}
+              onEnquireClick={openModal}
+            />
+          </div>
 
 
-        {/* Desktop: Show FtScroll with video backgrounds */}
-        <div className="hidden md:block">
-          <FtScroll cards={cards} />
-        </div>
+          {/* Desktop: Show FtScroll with video backgrounds */}
+          <div className="hidden md:block">
+            <FtScroll cards={cards} />
+          </div>
 
-        {/* Mobile: Show FtSectionMobile with image backgrounds */}
-        {/* <div className="block md:hidden">
+          {/* Mobile: Show FtSectionMobile with image backgrounds */}
+          {/* <div className="block md:hidden">
           <FtSectionMobile mobileCards={mobileCards} />
         </div> */}
 
 
-        <div className="block md:hidden">
-          <FtSectionMobile mobileCards={mobileCards} />
-        </div>
-        <WellnessLifestyleSection sectionData={SECTION_DATA} />
+          <div className="block md:hidden">
+            <FtSectionMobile mobileCards={mobileCards} />
+          </div>
+          <WellnessLifestyleSection sectionData={SECTION_DATA} />
 
-        <div className="hidden md:block">
-          <MangaloreFrameSection />
-          <div className="h-screen w-full bg-transparent pointer-events-none" />
-          <FloorPerspectivesSection onEnquireClick={openModal} />
-        </div>
+          <div className="hidden md:block">
+            <MangaloreFrameSection />
+            <div className="h-screen w-full bg-transparent pointer-events-none" />
+            <FloorPerspectivesSection onEnquireClick={openModal} />
+          </div>
 
-        <div className="block md:hidden">
-          <MobileMangaloreFloorSection onEnquireClick={openModal} />
-        </div>
+          <div className="block md:hidden">
+            <MobileMangaloreFloorSection onEnquireClick={openModal} />
+          </div>
 
-        <SmartCitySection />
-        <LandingFooter />
-      </main>
+          <SmartCitySection />
+          <LandingFooter />
+        </main>
+      </Suspense>
     </>
   );
 }

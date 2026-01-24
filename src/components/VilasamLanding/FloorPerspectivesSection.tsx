@@ -11,7 +11,7 @@ import NewEnquireModal from "./NewEnquireModal";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-export default function FloorPerspectivesSection() {
+export default function FloorPerspectivesSection({ onEnquireClick }: { onEnquireClick?: () => void }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const leftImageRef = useRef<HTMLDivElement>(null);
     const rightImageRef = useRef<HTMLDivElement>(null);
@@ -168,12 +168,12 @@ export default function FloorPerspectivesSection() {
                     <h2 className="text-2xl md:text-xl lg:text-xl lg2:text-2xl text-[#254C54] leading-tight md:max-w-lg lg:max-w-xl lg2:max-w-2xl">
                         Mangalore International Airport Expansion and <br /> New Mangalore Port Upgradation are reshaping the city’s global outlook and enabling stronger connectivity.
                     </h2>
-                    
+
 
                     <div
                         className="inline-flex items-center justify-center gap-2 mt-10 text-[#254C54] border-[0.25px] border-[#254C54] transition-colors duration-500 rounded-full text-sm font-medium lg:text-md">
                         <AnimatedConicButton
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={onEnquireClick || (() => setIsModalOpen(true))}
                             theme="vilasam-brochure"
                             className="hidden !text-[#254C54] lg:font-medium md:flex p-6"
                         >
@@ -210,7 +210,7 @@ export default function FloorPerspectivesSection() {
 
             </div>
             {/* Modal */}
-{/* {showModal && (
+            {/* {showModal && (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999]">
         <div className="bg-white rounded-lg p-6 w-[90%] max-w-md relative">
             <h3 className="text-lg font-semibold text-[#254C54] mb-3">Download E-Brochure</h3>
@@ -238,6 +238,6 @@ export default function FloorPerspectivesSection() {
 )} */}
 
         </section>
-        
+
     );
 }
