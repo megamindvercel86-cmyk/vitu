@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
+import Script from "next/script";
 import { AnimatedConicButton } from "@/components/ui/moving-border";
 import EnquireModal from "@/components/VilasamLanding/EnquireModal";
 
@@ -134,8 +135,32 @@ export default function VaikuntamCityEliteLandingPage2() {
 
   return (
     <>
+      {/* Google Tag Manager */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-54GXP9NT');`,
+        }}
+      />
+      {/* End Google Tag Manager */}
+
       <Suspense fallback={<div>Loading...</div>}>
         <main className="overflow-x-hidden">
+          {/* Google Tag Manager (noscript) */}
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-54GXP9NT"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+          {/* End Google Tag Manager (noscript) */}
           <NewEnquireModal isOpen={isModalOpen} onClose={closeModal} />
           <div className="md:block hidden">
             <ScrollRevealSection
