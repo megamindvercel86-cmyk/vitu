@@ -26,6 +26,7 @@ interface CardContentProps {
   data: CurrentProjectCardProps;
   setCurrentIndex: (index: number) => void;
   currentIndex: number;
+  textColor: string; // Passed from parent
 }
 
 const backdropVariants = {
@@ -46,15 +47,10 @@ const contentVariants = {
   exit: { opacity: 0 },
 };
 
-const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
+const CardContent = ({ data, setCurrentIndex, currentIndex, textColor }: CardContentProps) => {
   const handleButtonClick = (index: number) => {
-    setActiveIndex(index);
-    setCurrentIndex(index); // Update the parent modal's currentIndex
+    setCurrentIndex(index);
   };
-
-
 
   return (
     <div className="flex flex-col">
@@ -69,27 +65,58 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
         />
       </div>
       <div className="flex flex-col gap-4 py-12 px-6 lg:px-20">
-        <h2 className="text-[#0C3E49] text-[24px] lg:text-[48px] font-theSeasons leading-[1.3] font-semibold max-w-3xl ">{data.title}</h2>
-        <p className="text-[#0C3E4999] font-ttcommons text-sm md:!text-xl">{useSafeSpecialCharacters(data.description)}</p>
-        <p className="text-[#0C3E4999] font-ttcommons text-sm md:!text-xl ">
-          As part of a holistic living concept, they also provide a distinctive value proposition seeking to blend luxury with health<span className="font-sans">-</span>conscious design.
-
+        <h2 
+          style={{ color: textColor }} 
+          className="text-[24px] lg:text-[48px] font-theSeasons leading-[1.3] font-semibold max-w-3xl"
+        >
+          {data.title}
+        </h2>
+        
+        <p 
+          style={{ color: textColor }} 
+          className="opacity-60 font-ttcommons text-sm md:!text-xl"
+        >
+          {useSafeSpecialCharacters(data.description)}
         </p>
+        
+        <p 
+          style={{ color: textColor }} 
+          className="opacity-60 font-ttcommons text-sm md:!text-xl"
+        >
+          As part of a holistic living concept, they also provide a distinctive value proposition seeking to blend luxury with health<span className="font-sans">-</span>conscious design.
+        </p>
+
         {data.bottomPoints && (
           <ul className="space-y-2 mt-4" aria-label="List of key points">
             {data.bottomPoints.map((point, index) => (
               <li key={index} className="flex items-start">
                 {point.startsWith("•") ? (
-                  <p className="text-[#0C3E4999] text-base font-ttcommons lg:text-lg pl-4">{useSafeSpecialCharacters(point)}</p>
+                  <p 
+                    style={{ color: textColor }} 
+                    className="opacity-60 text-base font-ttcommons lg:text-lg pl-4"
+                  >
+                    {useSafeSpecialCharacters(point)}
+                  </p>
                 ) : (
-                  <p className="text-[#0C3E4999] text-base font-ttcommons lg:text-lg font-semibold">{useSafeSpecialCharacters(point)}</p>
+                  <p 
+                    style={{ color: textColor }} 
+                    className="opacity-60 text-base font-ttcommons lg:text-lg font-semibold"
+                  >
+                    {useSafeSpecialCharacters(point)}
+                  </p>
                 )}
               </li>
             ))}
           </ul>
         )}
+
         <div className="md:m-12">
-          <h2 className="font-bold text-[#0C3E49] md:text-[24px] font-theSeasons pb-6 text-[18px]">See Our Sustainable Practices at work</h2>
+          <h2 
+            style={{ color: textColor }} 
+            className="font-bold md:text-[24px] font-theSeasons pb-6 text-[18px]"
+          >
+            See Our Sustainable Practices at work
+          </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="text-start">
@@ -98,21 +125,28 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
                   { icon: <Chromotherapy />, label: "Chromotherapy Park" },
                   { icon: <Tree />, label: "Tree Cover" },
                   { icon: <Groundwater />, label: "Groundwater Recharge Pits" },
-                  // { icon: <RainWater />, label: "Rainwater Harvesting Tank" },
                   { icon: <Solar />, label: "Solar-powered Streetlights" },
                 ].map((item, index) => (
                   <motion.button
                     key={index}
                     onClick={() => handleButtonClick(index)}
-                    className={`flex lg:w-[80%]  rounded-2xl py-3 px-5 text-[20px] font-theSeasons items-center h-16 gap-4 ${currentIndex === index ? "bg-[#0C3E491A]" : ""
-                      }`}
+                    className="flex lg:w-[80%] rounded-2xl py-3 px-5 text-[20px] font-theSeasons items-center h-16 gap-4"
+                    style={{ 
+                        // Using current textColor + 1A for the 10% opacity background effect
+                        backgroundColor: currentIndex === index ? `${textColor}1A` : "transparent" 
+                    }}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     animate={currentIndex === index ? { scale: 1.05 } : { scale: 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="flex-shrink-0">{item.icon}</div>
-                    <span className=" text-left text-[#0C3E4999]">{useSafeSpecialCharacters(item.label)}</span>
+                    <span 
+                      style={{ color: textColor }} 
+                      className="opacity-60 text-left"
+                    >
+                      {useSafeSpecialCharacters(item.label)}
+                    </span>
                   </motion.button>
                 ))}
               </div>
@@ -123,8 +157,6 @@ const CardContent = ({ data, setCurrentIndex, currentIndex }: CardContentProps) 
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   );
@@ -135,9 +167,14 @@ interface ContactFormModalProps {
   onClose: (isModalOpen: boolean) => void;
   className?: string;
   maxWidth?: string;
+  textColor?: string; // New Optional Prop
 }
 
-const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onClose }) => {
+const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ 
+  modalIsOpen, 
+  onClose, 
+  textColor = "#0C3E49" // Default color provided here
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -147,13 +184,10 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
     } else {
       document.body.style.overflow = "unset";
     }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    return () => { document.body.style.overflow = "unset"; };
   }, [modalIsOpen]);
 
-  const data: CurrentProjectCardProps[] = [
+   const data: CurrentProjectCardProps[] = [
     {
       image: "/images/vilasamPageImages/broucherImages/8.jpeg",
       title: "Chromotheraphy Garden",
@@ -286,20 +320,24 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
     },
   ];
 
-  const closeModal = () => {
-    onClose(false);
-  };
-
-  const goToNextCard = () => {
-    const nextIndex = (currentIndex + 1) % data.length;
-    setCurrentIndex(nextIndex);
-  };
+  const closeModal = () => onClose(false);
 
   return (
     <AnimatePresence>
       {modalIsOpen && (
-        <motion.div style={{ zIndex: 2147483648 }} className="fixed inset-0 h-screen z-50 overflow-auto" initial="hidden" animate="visible" exit="exit" data-lenis-prevent>
-          <motion.div variants={backdropVariants} className="backdrop-blur-lg h-full w-full fixed inset-0" onClick={closeModal} />
+        <motion.div 
+          style={{ zIndex: 2147483648 }} 
+          className="fixed inset-0 h-screen z-50 overflow-auto" 
+          initial="hidden" 
+          animate="visible" 
+          exit="exit" 
+          data-lenis-prevent
+        >
+          <motion.div 
+            variants={backdropVariants} 
+            className="backdrop-blur-lg h-full w-full fixed inset-0" 
+            onClick={closeModal} 
+          />
           <motion.div
             variants={cardVariants}
             ref={containerRef}
@@ -307,34 +345,21 @@ const CurrentProjectCard: React.FC<ContactFormModalProps> = ({ modalIsOpen, onCl
           >
             <motion.button
               variants={contentVariants}
-              className="absolute top-6 z-50 me-4 lg:me-8 h-8 w-8 right-0 cursor-pointer ml-auto bg-white rounded-full flex items-center justify-center"
+              className="absolute top-6 z-50 me-4 lg:me-8 h-8 w-8 right-0 cursor-pointer ml-auto bg-white rounded-full flex items-center justify-center shadow-sm"
               onClick={closeModal}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <IconX className="h-6 w-6 text-[#7a6d3c]" />
+              <IconX style={{ color: textColor }} className="h-6 w-6" />
             </motion.button>
             <motion.div variants={contentVariants}>
-              <CardContent data={data[currentIndex]} setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} />
+              <CardContent 
+                data={data[currentIndex]} 
+                setCurrentIndex={setCurrentIndex} 
+                currentIndex={currentIndex} 
+                textColor={textColor}
+              />
             </motion.div>
-            {/* <motion.div variants={contentVariants}>
-              <hr className="border-t-gray-200 border-[1px]" />
-              <div className="lg:px-44 px-12">
-                <h1 className="pt-10 text-[10px] md:text-[12px] font-geistSerif text-[#8E8E93] border-t-gray-200">NextUp</h1>
-                <div className="flex pb-16 justify-between">
-                  <button
-                    onClick={goToNextCard}
-                    className="text-[#1D1D1F] flex font-geistSerif justify-between items-center cursor-pointer font-bold text-[18px]"
-                  >
-                    {data[(currentIndex + 1) % data.length].title}
-                  </button>
-                  <MdKeyboardArrowRight
-                    onClick={goToNextCard}
-                    className="ml-1 cursor-pointer mt-1 text-[20px] bg-[#2B847D33] text-[#0C3E49] rounded-full md:text-[25px]"
-                  />
-                </div>
-              </div>
-            </motion.div> */}
           </motion.div>
         </motion.div>
       )}

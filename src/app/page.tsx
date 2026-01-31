@@ -57,6 +57,14 @@ const CurrentProject = dynamic(
     loading: () => <div className="h-[500px] w-full bg-transparent" />
   }
 );
+const CurrentProjectTwo = dynamic(
+  () => import("@/components/HomePageComponents/CurrentProject-2/CurrentProject-2"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[500px] w-full bg-transparent" />
+  }
+);
+
 
 import Typography from "@/components/Typography/Typography";
 import FeaturedProjects from "@/components/VilasamProjectPage/FeaturedProject/FeaturedProject";
@@ -204,7 +212,8 @@ export default function HomePage() {
       <FeaturedProjects/>
 
       {/* Current Project Section */}
-      <CurrentProject homePage={true} />
+      {/* <CurrentProject homePage={true} /> */}
+      <CurrentProjectTwo/>
 
       {/* Testimonials Section */}
       <Testimonials />
