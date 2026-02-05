@@ -17,18 +17,22 @@ export default function ThankYouPage() {
 
   return (
     <>
-      <Script
-        id="gtm-pageB"
+       <Script
+        id="gtm-script"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PCGZRLX5');`, // <-- different GTM ID
+})(window,document,'script','dataLayer','GTM-5FCWTL87');`,
         }}
       />
       <main className="bg-[#FBF6F0]">
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FCWTL87"
+            height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
+        </noscript>
         <div className="mx-auto flex min-h-[calc(100vh-1px)] w-full max-w-[1440px] flex-col items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-12 lg:py-14">
           <div className="flex w-full justify-center">
             <Image
