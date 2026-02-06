@@ -248,7 +248,9 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
         {cards?.map((card, index) => (
           <SwiperSlide key={index + 5} className="swiper-slide">
             <motion.button
-              onClick={() => openCard(card.id)}
+              onClick={() => {
+                window.location.href = `/insights/${card.id}`;
+              }}
               className={cn("bg-gray-100 dark:bg-neutral-900 overflow-hidden flex flex-col items-start justify-start relative w-full h-full")}
             >
               <div className="relative z-50 p-8">

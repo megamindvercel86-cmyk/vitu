@@ -275,6 +275,7 @@ export default function ArticleArea(): React.ReactElement {
                   content={<CardContent cardId={card.id} data={desktopCard} />}
                   onOpenChange={setIsModalOpen}
                   isViewMoreType={card.type}
+                  href={`/insights/${card.id}`}
                 />
               </SwiperSlide>
             ))}

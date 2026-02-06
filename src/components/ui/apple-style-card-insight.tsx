@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image, { ImageProps } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
@@ -28,6 +29,7 @@ interface CardProps {
   bottomTitle?: string;
   isExpanded?: boolean;
   subtitle?: string;
+  href?: string;
 }
 
 export default function AppleStyleCardInsight({
@@ -49,8 +51,10 @@ export default function AppleStyleCardInsight({
   isViewMoreType = "secondary",
   bottomTitle = "",
   isExpanded = true,
+  href,
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -137,7 +141,13 @@ export default function AppleStyleCardInsight({
     <>
       <motion.button
         layoutId={`expandable-card-${id}`}
-        onClick={() => setIsOpen(isExpanded)}
+        onClick={() => {
+          if (href) {
+            router.push(href);
+          } else {
+            setIsOpen(isExpanded);
+          }
+        }}
         className={cn(" overflow-hidden flex flex-col items-start justify-start relative ", className, cardClassName)}
       >
         <div className="relative z-40 p-8">

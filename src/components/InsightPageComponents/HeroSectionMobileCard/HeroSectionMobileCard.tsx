@@ -151,6 +151,7 @@ const HeroSectionMobileCard: React.FC<InfiniteCarouselProps> = ({ cards, data })
             category={card.category}
             isViewMore={card.isViewMore}
             content={data && <CardContent cardId={card.id} data={data} />}
+            href={`/insights/${card.id}`}
           />
           <Typography variant="custom"> {card.name}</Typography>
         </div>

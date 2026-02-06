@@ -156,6 +156,7 @@ export default function InsightHeroSection(): React.ReactElement {
                     expandedImageClassName="object-center"
                     content={<CardContent cardId={card.id} data={desktopCard} />}
                     isViewMoreType={card.type}
+                    href={`/insights/${card.id}`}
                   />
                 </div>
               ))}
