@@ -11,7 +11,8 @@ import AnimatedDropdown from "../ui/AnimatedDropdown";
 import { FaCheck } from "react-icons/fa";
 
 // Logic Imports
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
+import { handleFormSubmitVilasam } from "@/lib/functionHelpers";
 import { db } from "@/firebase/firebaseConfig";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -113,60 +114,25 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
     setIsLoading(true);
     try {
       const downloadFileLink = "/downloadingFiles/VITU Realty - Vilasam.pdf";
-      const collectionName = "projectEnquiries";
       const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
       // Navigation
       router.push(thankYouRoute);
 
-      // Firestore
-      const collectionRef = collection(db, collectionName);
-      const dataWithTimestamp = {
-        ...formData,
-        createdAt: serverTimestamp(),
-      };
-      await addDoc(collectionRef, dataWithTimestamp);
-
-      // API Calls
-      if (collectionName === "projectEnquiries") {
-        await fetch("/api/sendEmail", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, page: "Project Enquire" }),
-        });
-        await fetch("/api/send-whatsapp-vaikuntamcity", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.fullName,
-            phone: formData.phone,
-          }),
-        });
-      }
-
-      // Accelr Webhook Integration
+      // Webhook and Data Submission
       const utmParams = {
         utm_source: searchParams.get("utm_source") || "direct",
         utm_medium: searchParams.get("utm_medium") || "",
         utm_campaign: searchParams.get("utm_campaign") || "",
         utm_term: searchParams.get("utm_term") || "",
         utm_content: searchParams.get("utm_content") || "",
+        device: searchParams.get("device") || "",
+        campaign_id: searchParams.get("campaign_id") || "",
+        ad_id: searchParams.get("ad_id") || "",
+        ad_group_id: searchParams.get("ad_group_id") || "",
       };
 
-      try {
-        await fetch("/api/accelr-webhook", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            formName: "Project Enquiry Modal",
-            source: "website",
-            ...utmParams,
-          }),
-        });
-      } catch (webhookError) {
-        console.error("Accelr Webhook Error:", webhookError);
-      }
+      await handleFormSubmitVilasam(formData, utmParams);
 
       // Download PDF
       if (downloadFileLink) {
@@ -187,7 +153,7 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
       // Close Modal
       onClose();
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error submitting form: ", error);
     } finally {
       setIsLoading(false);
     }

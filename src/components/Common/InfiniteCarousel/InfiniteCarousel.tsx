@@ -168,14 +168,18 @@ const CardContent = ({ cardId, data, isDescription, textStyle, rextFill, pathFil
             <Typography variant="h3" className="text-[#0C3E49] font-medium pb-4">
               {formatText(project?.subtitle || "")}
             </Typography>
-            <div className="flex flex-col gap-4 text-[#0C3E4999] font-ttCommons text-lg md:text-xl">
-              <p>
-                {project.description1}
-              </p>
-              <p>
-                {project.description2}
-              </p>
-            </div>
+            {project.contentHtml ? (
+              <div
+                className="prose max-w-none text-[#0C3E4999] font-FreightNeoProNormal text-lg md:text-xl [&>p]:pb-4 [&_ul]:list-disc [&_ul]:pl-6"
+                dangerouslySetInnerHTML={{ __html: project.contentHtml.replace("min-height: 100vh;", "") }}
+              />
+            ) : (
+              <div className="flex flex-col gap-4 text-[#0C3E4999] font-ttCommons text-lg md:text-xl">
+                {project.description1 && <p>{project.description1}</p>}
+                {project.description2 && <p>{project.description2}</p>}
+                {project.description && <p>{project.description}</p>}
+              </div>
+            )}
 
             <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} pathFill={pathFill} rextFill={rextFill} />
           </div>
@@ -284,7 +288,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
                 </Typography>
               </div>
               <div className={`absolute bottom-3 right-3 ${card.position === "right" ? "right-3" : "left-3"} position z-50`}>
-                {card.isViewMore === true && (card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />)}
+                {card.isViewMore !== false && (card.type === "primary" ? <PrimaryViewMoreButton /> : <SecondaryViewMoreButton />)}
               </div>
             </motion.button>
             <Typography variant="custom"> {card.name}</Typography>

@@ -143,3 +143,74 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
     console.error("Error submitting form:", error);
   }
 };
+
+export const handleFormSubmitVilasam = async (values: any, utmParams: any) => {
+  const payload = {
+    ...values,
+    project: "Vilasam",
+    createdAt: serverTimestamp(),
+    ...utmParams,
+  };
+
+  try {
+    // 1️⃣ Save to Firestore
+    const collectionRef = collection(db, "projectEnquiries");
+    await addDoc(collectionRef, payload);
+
+    // 2️⃣ Send email
+    await fetch("/api/sendEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...values, page: "Project Enquire" }),
+    });
+
+    // 3️⃣ Send WhatsApp
+    await fetch("/api/send-whatsapp-vaikuntamcity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.fullName,
+        phone: values.phone,
+      }),
+    });
+
+    // 4️⃣ Send to Pabbly Webhook
+    try {
+      await fetch("https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...utmParams,
+          form_name: "Vilasam Landing Page Form",
+          form_id: values.interstedIn || "",
+          plots: values.interstedIn || "",
+          phone: values.phone,
+          name: values.fullName,
+          email: values.email,
+        }),
+      });
+    } catch (pabblyError) {
+      console.error("Pabbly Webhook Error:", pabblyError);
+    }
+
+    // 5️⃣ Accelr Webhook Integration
+    try {
+      await fetch("/api/accelr-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...payload,
+          formName: "Vilasam Landing Page Form",
+          source: "website",
+        }),
+      });
+    } catch (webhookError) {
+      console.error("Accelr Webhook Error:", webhookError);
+    }
+
+    console.log("Vilasam Form submitted successfully!");
+  } catch (error) {
+    console.error("Error submitting Vilasam form:", error);
+    throw error;
+  }
+};
