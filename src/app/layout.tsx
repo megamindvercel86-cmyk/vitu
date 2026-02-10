@@ -1,6 +1,6 @@
 // RootLayout.tsx
 import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import SmoothScroll from "@/components/Common/SmoothScroll";
 import {
   FS_Siena_Regular,
@@ -144,7 +144,7 @@ export default function RootLayout({
         />
 
         <SmoothScroll>{children}</SmoothScroll>
-        <GoogleAnalytics gaId="G-B662JPJ850" />
+        <GoogleTagManager gtmId="GTM-TVLJSG6D" />
         <Analytics />
       </body>
     </html>

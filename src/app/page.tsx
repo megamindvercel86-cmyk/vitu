@@ -6,7 +6,6 @@ import Layout from "@/components/Layout/Layout";
 import HomeHeroSection from "@/components/HomePageComponents/HomeHeroSection/HomeHeroSection";
 // Dynamically import heavy below-the-fold components
 import dynamic from "next/dynamic";
-import { GoogleTagManager } from "@next/third-parties/google";
 
 const VisionAndMission = dynamic(
   () => import("@/components/Common/VisionAndMission/VisionAndMission"),
@@ -178,7 +177,6 @@ export default function HomePage() {
       navbarClassName={NAVBAR_CONFIG.className}
       navbarProps={NAVBAR_CONFIG.props}
     >
-      <GoogleTagManager gtmId="GTM-NBVLQJD3" />
       {/* Hero Section */}
       <HomeHeroSection />
 
@@ -209,11 +207,11 @@ export default function HomePage() {
       {/* Explore Projects Section */}
       {/* <ExploreProjectsWrapper /> */}
 
-      <FeaturedProjects/>
+      <FeaturedProjects />
 
       {/* Current Project Section */}
       {/* <CurrentProject homePage={true} /> */}
-      <CurrentProjectTwo/>
+      <CurrentProjectTwo />
 
       {/* Testimonials Section */}
       <Testimonials />
