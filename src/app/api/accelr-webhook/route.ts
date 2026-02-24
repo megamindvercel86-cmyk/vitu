@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 
+const ACCELR_WEBHOOK_URL =
+  process.env.ACCELR_WEBHOOK_URL ||
+  "https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website";
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const response = await fetch("https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website", {
+    const response = await fetch(ACCELR_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
