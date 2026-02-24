@@ -453,7 +453,7 @@ const FormSectionContent = ({ heading, subheading, page }: FormSectionProps) => 
                 </span>
               ) : (
                 <Button
-                  onClick={async (e: React.MouseEvent<HTMLButtonButtonElement>) => {
+                  onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
                     e.preventDefault();
                     if (!formik.isValid || !formik.dirty) {
                       Object.keys(formik.values).forEach((field) => {

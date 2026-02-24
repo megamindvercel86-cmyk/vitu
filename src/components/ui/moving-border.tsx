@@ -1,4 +1,21 @@
 import { cn } from "@/lib/utils";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+
+type AnimatedConicButtonTheme =
+  | "dark"
+  | "light"
+  | "mid-dark-light"
+  | "light-green"
+  | "vilasam-brochure"
+  | "vilasam-brochure-mobile"
+  | "custom";
+
+interface AnimatedConicButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  buttonBase?: string;
+  className?: string;
+  theme?: AnimatedConicButtonTheme;
+}
 
 export const AnimatedConicButton = ({
   children,
@@ -6,7 +23,7 @@ export const AnimatedConicButton = ({
   className,
   theme = "dark", // 'dark', 'light', 'mid-dark-light', 'custom'
   ...props
-}) => {
+}: AnimatedConicButtonProps) => {
   let themeClass;
   if (theme === "light") {
     themeClass = "theme-light";

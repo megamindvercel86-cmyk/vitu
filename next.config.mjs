@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isStrictBuild = process.env.STRICT_BUILD === "true";
+
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -40,23 +42,10 @@ const nextConfig = {
     ],
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: !isStrictBuild,
   },
   typescript: {
-    ignoreBuildErrors: true,
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-transform',
-          },
-        ],
-      },
-    ];
+    ignoreBuildErrors: !isStrictBuild,
   },
 };
 

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 
@@ -25,7 +26,7 @@ const ImageGridMobile = () => {
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [swiper, setSwiper] = useState(null);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
 
   return (
     <div className="mx-5">
@@ -53,7 +54,7 @@ const ImageGridMobile = () => {
             onSlideChange={(swiper) => {
               setActiveIndex(swiper?.realIndex);
             }}
-            onSwiper={setSwiper}
+            onSwiper={(instance) => setSwiper(instance)}
             loop={true}
           >
             {slides.map((slide, index) => (
@@ -71,7 +72,7 @@ const ImageGridMobile = () => {
         <div className="flex justify-center gap-4 mt-3">
           <div
             onClick={() => {
-              swiper.slidePrev();
+              swiper?.slidePrev();
             }}
             className="cursor-pointer z-10"
           >
@@ -103,7 +104,7 @@ const ImageGridMobile = () => {
 
           <div
             onClick={() => {
-              swiper.slideNext();
+              swiper?.slideNext();
             }}
             className="cursor-pointer z-10"
           >

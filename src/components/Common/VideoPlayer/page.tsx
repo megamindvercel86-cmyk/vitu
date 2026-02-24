@@ -331,4 +331,6 @@ const VideoPlayer = forwardRef<VideoPlayerRef, VideoPlayerProps>(
   }
 );
 
+VideoPlayer.displayName = "VideoPlayer";
+
 export default VideoPlayer;

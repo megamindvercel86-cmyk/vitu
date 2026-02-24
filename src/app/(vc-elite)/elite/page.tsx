@@ -157,7 +157,7 @@ const CONTENT = {
   ],
 };
 
-const page = () => {
+const Page = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
@@ -321,4 +321,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

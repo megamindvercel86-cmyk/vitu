@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "build:strict": "npm run typecheck && npm run lint && STRICT_BUILD=true npm run build"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.12.3",

@@ -119,7 +119,7 @@ const EnquirySectionContent = (): React.ReactElement => {
         </div>
         <div className="flex-1 mt-4 lg:mt-0">
           <h1 className="font-fsSiena  text-customBrown   lg:leading-none  max-w-4xl text-2xl md:text-3xl lg:text-5xl lg2:text-6xl md:max-w-2xl ">
-            Let's Explore
+            Let&apos;s Explore
             <br /> Vaikuntam City Today!
           </h1>
           <form className="mt-8 lg:mt-12">

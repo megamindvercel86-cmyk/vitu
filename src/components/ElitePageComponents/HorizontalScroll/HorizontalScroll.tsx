@@ -77,7 +77,7 @@ gsap.utils.toArray<HTMLElement>(".anim-img").forEach((img) => {
         start: "left center",
         end: "right center",
         toggleActions: "play reverse play reverse",
-        containerAnimation: tweenRef.current, // sync with horizontal scroll
+        containerAnimation: tween, // sync with horizontal scroll
       },
     }
   );
