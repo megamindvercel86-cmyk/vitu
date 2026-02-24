@@ -18,6 +18,7 @@ import { useEffect, useRef, useState } from "react";
 import articleArea from "@/data/articleArea.json";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import Link from "next/link";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 // ============= Types & Interfaces =============
 interface Article {
@@ -71,7 +72,6 @@ export default function ArticleArea(): React.ReactElement {
     onFooterClick?: () => void;
     nextProjectTitle: string;
   }
-  console.log("Fetching blogs...");
   const CardContent = ({ cardId, data }: { cardId: number; data: Article[] }) => {
     const [currentCardId, setCurrentCardId] = useState(cardId);
     const [card, setCard] = useState<Article[]>([]);
@@ -80,14 +80,12 @@ export default function ArticleArea(): React.ReactElement {
 
     const fetchBlogs = async () => {
       try {
-        console.log("Fetching blogs...");
         const response = await fetch("/api/blogs");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
         const res = await response.json();
         const data = res.data;
-        console.log(data)
         setCard(data);
       } catch (error) {
         console.error("Failed to fetch team members", error);
@@ -107,7 +105,6 @@ export default function ArticleArea(): React.ReactElement {
     };
 
     const nextProject = data[(data.findIndex((project) => project.id === currentCardId) + 1) % data.length];
-    console.log(nextProject)
     return (
       <>
         {project && (
@@ -129,7 +126,11 @@ export default function ArticleArea(): React.ReactElement {
 
               <div
                 className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
-                dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeHtml(
+                    (project.contentHtml || "").replace("min-height: 100vh;", ""),
+                  ),
+                }}
               />
 
               <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />

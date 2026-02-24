@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import AppleStyleCard from "@/components/ui/apple-style-card";
 import HeroSectionMobileCard from "../HeroSectionMobileCard/HeroSectionMobileCard";
 import AppleStyleCardInsight from "@/components/ui/apple-style-card-insight";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 // ============= Types & Interfaces =============
 interface Article {
@@ -110,7 +111,11 @@ export default function InsightHeroSection(): React.ReactElement {
               </Typography>
               <div
                 className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
-                dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeHtml(
+                    (project.contentHtml || "").replace("min-height: 100vh;", ""),
+                  ),
+                }}
               />
               <Footer onFooterClick={handleFooterClick} nextProjectTitle={nextProject?.title || ""} />
             </div>

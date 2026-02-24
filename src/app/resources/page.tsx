@@ -35,7 +35,7 @@ export async function generateMetadata() {
       title: "Resources - Vitu Realty | Articles, Media & Downloads",
       description:
         "Explore Vitu Realty's resources, including insightful articles, media content, and downloadable media kits. Stay informed with our latest updates.",
-      url: "https://viturealty.vercel.app/resources",
+      url: "https://www.viturealty.com/resources",
       type: "website",
       images: [
         {
