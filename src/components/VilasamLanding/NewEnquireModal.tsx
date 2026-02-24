@@ -60,13 +60,13 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
     try {
       const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
-      // Navigation
-      router.push(thankYouRoute);
-
       // Webhook and Data Submission
       const utmParams = getLandingUtmParams(searchParams);
 
       await handleFormSubmitVilasam(formData, utmParams);
+
+      // Navigation
+      router.push(thankYouRoute);
 
       // Reset Form
       resetForm();

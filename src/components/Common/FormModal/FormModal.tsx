@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import { submitLead } from "@/lib/leadApi";
 
 // Animation variants
 const backdropVariants = {
@@ -146,35 +147,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
     if (validateForm()) {
       setIsLoading(true);
 
-      router.push(thankYouRoute);
       try {
-        // Performance optimization: Lazy load Firebase only when user submits form
-        const { db } = await import("@/firebase/firebaseConfig");
-        const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
-
-        const collectionRef = collection(db, collectionName);
-        const dataWithTimestamp = {
-          ...formData,
-          createdAt: serverTimestamp(),
-        };
-        await addDoc(collectionRef, dataWithTimestamp);
-        if (collectionName === "projectEnquiries") {
-          await fetch("/api/sendEmail", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...formData, page: "Project Enquire" }),
-          });
-          await fetch("/api/send-whatsapp-vaikuntamcity", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: formData.fullName,
-              phone: formData.phone,
-            }),
-          });
-        }
-
-        // Accelr Webhook Integration
         const utmParams = {
           utm_source: searchParams.get("utm_source") || "direct",
           utm_medium: searchParams.get("utm_medium") || "",
@@ -183,26 +156,26 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           utm_content: searchParams.get("utm_content") || "",
         };
 
-        try {
-          await fetch("/api/accelr-webhook", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...formData,
-              formName: "Project Enquiry Modal",
-              source: "website",
-              ...utmParams,
-            }),
-          });
-        } catch (webhookError) {
-          console.error("Accelr Webhook Error:", webhookError);
-        }
+        await submitLead({
+          intent: "projectModal",
+          payload: {
+            ...formData,
+            interestedIn: formData.interstedIn,
+            project: isVilasam ? "Vilasam" : "Vaikuntam City",
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Project Enquiry Modal",
+            collectionName,
+          },
+        });
 
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
         setOpen(false);
         onClose(false);
+        router.push(thankYouRoute);
       } catch (error) {
         console.error("Error adding document: ", error);
       } finally {

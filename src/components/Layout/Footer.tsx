@@ -15,6 +15,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
+import { submitLead } from "@/lib/leadApi";
 
 /**
  * Footer Component
@@ -38,15 +39,8 @@ const FooterContent: FC = () => {
     e.preventDefault();
     if (email) {
       try {
-        // Dynamically import Firebase only on submission
-        const { db } = await import("@/firebase/firebaseConfig");
-        const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
-
         const emailValue = email.trim();
-        const collectionRef = collection(db, "newsLetter");
-        await addDoc(collectionRef, { email: emailValue, createdAt: serverTimestamp() });
 
-        // Accelr Webhook Integration
         const utmParams = {
           utm_source: searchParams.get("utm_source") || "direct",
           utm_medium: searchParams.get("utm_medium") || "",
@@ -55,20 +49,16 @@ const FooterContent: FC = () => {
           utm_content: searchParams.get("utm_content") || "",
         };
 
-        try {
-          await fetch("/api/accelr-webhook", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email: emailValue,
-              formName: "Newsletter Signup",
-              source: "website",
-              ...utmParams,
-            }),
-          });
-        } catch (webhookError) {
-          console.error("Accelr Webhook Error:", webhookError);
-        }
+        await submitLead({
+          intent: "newsletterSignup",
+          payload: {
+            email: emailValue,
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Newsletter Signup",
+          },
+        });
 
         toast.success(
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

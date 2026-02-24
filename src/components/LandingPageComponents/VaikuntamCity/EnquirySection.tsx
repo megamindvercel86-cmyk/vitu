@@ -7,11 +7,10 @@ import dynamic from "next/dynamic";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
-import { db } from "@/firebase/firebaseConfig";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-toastify";
 const Loader = dynamic(() => import("@/components/loader"), { ssr: false });
 import { useRouter, useSearchParams } from "next/navigation";
+import { submitLead } from "@/lib/leadApi";
 
 const EnquirySectionContent = (): React.ReactElement => {
   const searchParams = useSearchParams();
@@ -30,19 +29,6 @@ const EnquirySectionContent = (): React.ReactElement => {
     onSubmit: async (values, { resetForm }): Promise<void> => {
       setIsLoading(true);
       try {
-        const payload = {
-          fullName: values.fullName,
-          email: values.email,
-          phone: values.phone,
-          interestedIn: plots,
-          project: "Vaikuntam City",
-          createdAt: serverTimestamp(),
-        };
-
-        const collectionRef = collection(db, "vaikuntamCityEnquiries");
-        await addDoc(collectionRef, payload);
-
-        // Accelr Webhook Integration
         const utmParams = {
           utm_source: searchParams.get("utm_source") || "direct",
           utm_medium: searchParams.get("utm_medium") || "",
@@ -51,20 +37,19 @@ const EnquirySectionContent = (): React.ReactElement => {
           utm_content: searchParams.get("utm_content") || "",
         };
 
-        try {
-          await fetch("/api/accelr-webhook", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...payload,
-              formName: "Vaikuntam City Let's Explore",
-              source: "website",
-              ...utmParams,
-            }),
-          });
-        } catch (webhookError) {
-          console.error("Accelr Webhook Error:", webhookError);
-        }
+        await submitLead({
+          intent: "vaikuntamCityExplore",
+          payload: {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            interestedIn: plots,
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Vaikuntam City Let's Explore",
+          },
+        });
 
         toast.success("Enquiry submitted successfully!");
         resetForm();
