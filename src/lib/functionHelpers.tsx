@@ -1,5 +1,6 @@
 import { db } from "@/firebase/firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import type { LandingUtmParams, VilasamLandingFormData } from "@/lib/vilasamLandingForm";
 
 export interface FormValues {
   fullName: string;
@@ -144,7 +145,17 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
   }
 };
 
-export const handleFormSubmitVilasam = async (values: any, utmParams: any) => {
+interface HandleVilasamSubmitOptions {
+  formName?: string;
+}
+
+export const handleFormSubmitVilasam = async (
+  values: VilasamLandingFormData,
+  utmParams: LandingUtmParams,
+  options: HandleVilasamSubmitOptions = {},
+) => {
+  const formName = options.formName || "Vilasam Landing Page Form";
+
   const payload = {
     ...values,
     project: "Vilasam",
@@ -181,7 +192,7 @@ export const handleFormSubmitVilasam = async (values: any, utmParams: any) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...utmParams,
-          form_name: "Vilasam Landing Page Form",
+          form_name: formName,
           form_id: values.interstedIn || "",
           plots: values.interstedIn || "",
           phone: values.phone,
@@ -200,7 +211,7 @@ export const handleFormSubmitVilasam = async (values: any, utmParams: any) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...payload,
-          formName: "Vilasam Landing Page Form",
+          formName,
           source: "website",
         }),
       });

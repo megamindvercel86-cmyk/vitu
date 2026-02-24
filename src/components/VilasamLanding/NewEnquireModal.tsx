@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { IoCloseOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,10 +11,10 @@ import AnimatedDropdown from "../ui/AnimatedDropdown";
 import { FaCheck } from "react-icons/fa";
 
 // Logic Imports
-import { serverTimestamp } from "firebase/firestore";
 import { handleFormSubmitVilasam } from "@/lib/functionHelpers";
-import { db } from "@/firebase/firebaseConfig";
 import { useRouter, useSearchParams } from "next/navigation";
+import { getLandingUtmParams } from "@/lib/vilasamLandingForm";
+import { useVilasamLandingForm } from "@/hooks/useVilasamLandingForm";
 
 interface NewEnquireModalProps {
   isOpen: boolean;
@@ -29,30 +29,19 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  // Form Data State
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    interstedIn: "",
-    whatsapp: true,
-  });
-
-  const [errors, setErrors] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    interstedIn: "",
-  });
-
-  const [touched, setTouched] = useState({
-    fullName: false,
-    email: false,
-    phone: false,
-    interstedIn: false,
-  });
+  const {
+    formData,
+    errors,
+    touched,
+    isFormValid,
+    validateForm,
+    setFieldValue,
+    blurField,
+    setPhoneValue,
+    setWhatsappConsent,
+    markAllTouched,
+    resetForm,
+  } = useVilasamLandingForm();
 
   // UI Specific State (Synced with Logic)
   const [dialCode, setDialCode] = useState("91");
@@ -60,94 +49,27 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
   const { lenis } = useLenis();
   const [mounted, setMounted] = useState(false);
 
-  // --- Validation Logic (Ported) ---
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case "fullName":
-        if (!value.trim()) return "Full name is required";
-        if (value.length < 2) return "Full name must be at least 2 characters";
-        if (!/^[a-zA-Z\s]+$/.test(value)) return "Full name can only contain letters and spaces";
-        return "";
-      case "email":
-        if (!value.trim()) return "Email is required";
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Invalid email format";
-        return "";
-      case "phone":
-        if (!value.trim()) return "Phone number is required";
-        {
-          const digitsOnly = value.replace(/\D/g, "");
-          if (digitsOnly.length < 10) return "Phone number must be at least 10 digits";
-        }
-        return "";
-      case "interstedIn":
-        if (!value.trim()) return "Please select an option";
-        return "";
-      default:
-        return "";
-    }
-  };
-
-  const validateForm = useCallback((): boolean => {
-    const newErrors = {
-      fullName: validateField("fullName", formData.fullName),
-      email: validateField("email", formData.email),
-      phone: validateField("phone", formData.phone),
-      interstedIn: validateField("interstedIn", formData.interstedIn),
-    };
-    setErrors(newErrors);
-    const valid = !Object.values(newErrors).some((e) => e !== "");
-    setIsFormValid(valid);
-    return valid;
-  }, [formData]);
-
-  useEffect(() => {
-    validateForm();
-  }, [validateForm]);
-
   // --- Submit Handler (Ported) ---
   const handleSubmit = async () => {
     if (!validateForm()) {
-      setTouched({ fullName: true, email: true, phone: true, interstedIn: true });
+      markAllTouched();
       return;
     }
 
     setIsLoading(true);
     try {
-      const downloadFileLink = "/downloadingFiles/VITU Realty - Vilasam.pdf";
       const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
       // Navigation
       router.push(thankYouRoute);
 
       // Webhook and Data Submission
-      const utmParams = {
-        utm_source: searchParams.get("utm_source") || "direct",
-        utm_medium: searchParams.get("utm_medium") || "",
-        utm_campaign: searchParams.get("utm_campaign") || "",
-        utm_term: searchParams.get("utm_term") || "",
-        utm_content: searchParams.get("utm_content") || "",
-        device: searchParams.get("device") || "",
-        campaign_id: searchParams.get("campaign_id") || "",
-        ad_id: searchParams.get("ad_id") || "",
-        ad_group_id: searchParams.get("ad_group_id") || "",
-      };
+      const utmParams = getLandingUtmParams(searchParams);
 
       await handleFormSubmitVilasam(formData, utmParams);
 
-      // Download PDF
-      if (downloadFileLink) {
-        const link = document.createElement("a");
-        link.href = downloadFileLink;
-        link.download = downloadFileLink?.split("/").pop()?.toString() || "";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-
       // Reset Form
-      setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
-      setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
-      setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
+      resetForm();
       setConsentChecked(true);
 
       // Close Modal
@@ -239,15 +161,9 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     value={formData.fullName}
                     onChange={(e) => {
                       const value = e.target.value;
-                      setFormData((prev) => ({ ...prev, fullName: value }));
-                      setTouched((prev) => ({ ...prev, fullName: true }));
-                      setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
+                      setFieldValue("fullName", value);
                     }}
-                    onBlur={(e) => {
-                      const value = e.target.value;
-                      setTouched((prev) => ({ ...prev, fullName: true }));
-                      setErrors((prev) => ({ ...prev, fullName: validateField("fullName", value) }));
-                    }}
+                    onBlur={() => blurField("fullName")}
                     className="w-full border-b-2 border-[#254C54CC]/30 focus:border-[#254C5499] outline-none py-3 text-lg transition-colors bg-transparent text-[#254C54] placeholder:text-[#254C5499]"
                   />
                   {/* Error Message for UI completeness based on logic */}
@@ -264,15 +180,9 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     value={formData.email}
                     onChange={(e) => {
                       const value = e.target.value;
-                      setFormData((prev) => ({ ...prev, email: value }));
-                      setTouched((prev) => ({ ...prev, email: true }));
-                      setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
+                      setFieldValue("email", value);
                     }}
-                    onBlur={(e) => {
-                      const value = e.target.value;
-                      setTouched((prev) => ({ ...prev, email: true }));
-                      setErrors((prev) => ({ ...prev, email: validateField("email", value) }));
-                    }}
+                    onBlur={() => blurField("email")}
                     className="w-full border-b-2 border-[#254C54CC]/30 focus:border-[#254C5499] outline-none py-3 text-lg transition-colors bg-transparent text-[#254C54] placeholder:text-[#254C5499]"
                   />
                   {touched.email && errors.email && (
@@ -286,18 +196,12 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     defaultCountry="in"
                     value={formData.phone}
                     onChange={(phone, data: any) => {
-                      setFormData((prev) => ({ ...prev, phone }));
-                      if (touched.phone) {
-                        setErrors((prev) => ({ ...prev, phone: validateField("phone", phone) }));
-                      }
+                      setPhoneValue(phone);
                       if (data?.country?.dialCode) {
                         setDialCode(data.country.dialCode);
                       }
                     }}
-                    onBlur={() => {
-                      setTouched((prev) => ({ ...prev, phone: true }));
-                      setErrors((prev) => ({ ...prev, phone: validateField("phone", formData.phone) }));
-                    }}
+                    onBlur={() => blurField("phone")}
                     disableDialCodeAndPrefix={true}
                     className="w-full vilasam-phone-input"
                     inputClassName="w-full placeholder:text-[#254C5499] placeholder:text-lg"
@@ -408,9 +312,7 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                     ]}
                     value={formData.interstedIn}
                     onChange={(value) => {
-                      setFormData((prev) => ({ ...prev, interstedIn: value }));
-                      setTouched((prev) => ({ ...prev, interstedIn: true }));
-                      setErrors((prev) => ({ ...prev, interstedIn: validateField("interstedIn", value) }));
+                      setFieldValue("interstedIn", value);
                     }}
                     placeholder="Preferred Plot Orientation"
                   />
@@ -430,7 +332,7 @@ const NewEnquireModal: React.FC<NewEnquireModalProps> = ({
                         onChange={() => {
                           const next = !consentChecked;
                           setConsentChecked(next);
-                          setFormData((prev) => ({ ...prev, whatsapp: next }));
+                          setWhatsappConsent(next);
                         }}
                         className="sr-only peer"
                       />

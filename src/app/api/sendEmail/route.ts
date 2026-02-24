@@ -6,6 +6,13 @@ import path from "path";
 export async function POST(req: Request) {
   try {
     const { fullName, email, phone, comments, whatsapp, interstedIn, postionAppliedFor, page, resumeUrl,interestedIn } = await req.json();
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+
+    if (!smtpUser || !smtpPass) {
+      return NextResponse.json({ message: "Email service is not configured" }, { status: 500 });
+    }
+
     // Define the path to the HTML template
     let templateFile = "";
     switch (page) {
@@ -53,8 +60,8 @@ export async function POST(req: Request) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "info@viturealty.com", // Your email
-        pass: "tfii kdvj acvg wadc", // App password
+        user: smtpUser,
+        pass: smtpPass,
       },
     });
 
