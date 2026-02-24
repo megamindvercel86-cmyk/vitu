@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 /* ================= TYPES ================= */
 
@@ -95,7 +95,7 @@ export default function FtSectionTest({ cards }: FtScrollProps) {
                 {/* TEXT */}
                 <div className="flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-theSeasons mb-1">
-                    {useSafeSpecialCharacters(card.title)}
+                    {safeSpecialCharacters(card.title)}
                   </h3>
                   {card.title2 && (
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-theSeasons mb-2">

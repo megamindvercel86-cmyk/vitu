@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "@/components/Icons/Icons";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 // Define a type for the card object
 interface Card {
@@ -259,7 +259,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data, textSt
                     "text-xl md:text-2xl lg2:text-3xl font-theSeasons text-white text-left leading-[1.5rem] line-clamp-2"
                   )}
                 >
-                  {useSafeSpecialCharacters(card.title)}
+                  {safeSpecialCharacters(card.title)}
                 </motion.p>
                 <motion.p
                   className={cn(

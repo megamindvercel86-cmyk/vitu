@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import { MotionValue } from "framer-motion";
 import Link from "next/link";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 interface PlotProps {
   title: string;
@@ -24,8 +24,8 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
   const container = useRef(null);
 
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
-  const safeText = useSafeSpecialCharacters(title);
-  const safeDesc =useSafeSpecialCharacters(description)
+  const safeText = safeSpecialCharacters(title);
+  const safeDesc =safeSpecialCharacters(description)
 
 
 

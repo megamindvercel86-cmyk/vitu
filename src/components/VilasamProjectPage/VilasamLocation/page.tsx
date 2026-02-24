@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -13,7 +13,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import CTAButtonIcon, { CloseTabIcon } from "@/components/Icons/Icons";
 import "./vilasamLocation.css";
 import CircularPlayPauseButton from "@/components/Common/CircularPlayPauseButton/CircularPlayPauseButton";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 
 
@@ -72,6 +72,7 @@ const contentVariants = {
   visible: { opacity: 1, transition: { delay: 0.2 } },
   exit: { opacity: 0 },
 };
+const SLIDE_DURATION = 3000;
 
 const CarouselDots = ({ total, active, onDotClick, className }: CarouselDotsProps) => {
   return (
@@ -111,13 +112,13 @@ const CardContent = ({
   slideImage: string;
   width?: string;
 }) => {
-  const safeTitle = useSafeSpecialCharacters(description.title);
-  const safeSubtitle = useSafeSpecialCharacters(description.subtitle || "");
-  const safeDescription = useSafeSpecialCharacters(description.description || "");
-  const safeMiddleTitle = useSafeSpecialCharacters(description.middleTitle || "");
-  const safeMiddleDescription = useSafeSpecialCharacters(description.middleDescription || "");
-  const safeBottomTitle = useSafeSpecialCharacters(description.bottomTitle || "");
-  const safeMiddleBottomDescription = useSafeSpecialCharacters(description.middleBottomDescription || "");
+  const safeTitle = safeSpecialCharacters(description.title);
+  const safeSubtitle = safeSpecialCharacters(description.subtitle || "");
+  const safeDescription = safeSpecialCharacters(description.description || "");
+  const safeMiddleTitle = safeSpecialCharacters(description.middleTitle || "");
+  const safeMiddleDescription = safeSpecialCharacters(description.middleDescription || "");
+  const safeBottomTitle = safeSpecialCharacters(description.bottomTitle || "");
+  const safeMiddleBottomDescription = safeSpecialCharacters(description.middleBottomDescription || "");
 
   return (
     <div className="flex flex-col">
@@ -138,7 +139,7 @@ const CardContent = ({
               <span className="text-[#656666] mr-2 font-theSeasons text-start text-[18px]" aria-hidden="true">
                 •
               </span>
-              <p className="text-[#0C3E4999] text-sm  md:text-base lg:text-lg">{useSafeSpecialCharacters(point)}</p>
+              <p className="text-[#0C3E4999] text-sm  md:text-base lg:text-lg">{safeSpecialCharacters(point)}</p>
             </li>
           ))}
         </ul>
@@ -158,18 +159,16 @@ const LocationAdvantage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const SLIDE_DURATION = 3000; // Duration for each slide in ms
-
   // Clear progress interval to prevent memory leaks
-  const clearProgressInterval = () => {
+  const clearProgressInterval = useCallback(() => {
     if (progressIntervalRef.current) {
       clearInterval(progressIntervalRef.current);
       progressIntervalRef.current = null;
     }
-  };
+  }, []);
 
   // Start the progress animation for the current slide
-  const startProgress = () => {
+  const startProgress = useCallback(() => {
     clearProgressInterval(); // Clear any existing interval
     setProgress(0); // Reset progress
 
@@ -186,7 +185,7 @@ const LocationAdvantage = () => {
         });
       }, 100);
     }
-  };
+  }, [clearProgressInterval, isOpen, isSlidePaused]);
 
   // Handle play/pause toggle
   const handleTogglePlayPause = () => {
@@ -217,7 +216,7 @@ const LocationAdvantage = () => {
     }
 
     return () => clearProgressInterval();
-  }, [swiperInstance, isSlidePaused, isOpen]);
+  }, [swiperInstance, isSlidePaused, isOpen, startProgress, clearProgressInterval]);
 
   useEffect(() => {
     // Reset progress when slide changes
@@ -225,7 +224,7 @@ const LocationAdvantage = () => {
       startProgress();
     }
     return () => clearProgressInterval();
-  }, [activeIndex]);
+  }, [activeIndex, isSlidePaused, isOpen, startProgress, clearProgressInterval]);
 
   useEffect(() => {
     if (isOpen) {
@@ -438,17 +437,17 @@ const LocationAdvantage = () => {
                 <h1
                   className={`text-xs md:text-lg lg2:text-[16px] ${item.textClassName} font-medium text-center uppercase tracking-wide font-ttcommons`}
                 >
-                  {useSafeSpecialCharacters(item.title)}
+                  {safeSpecialCharacters(item.title)}
                 </h1>
                 <h1
                   className={`text-2xl lg:text-5xl lg2:text-6xl ${item.textClassName} md:font-normal font-semibold max-w-2xl font-theSeasons lg2:leading-tight `}
                 >
-                  {useSafeSpecialCharacters(item.description)}
+                  {safeSpecialCharacters(item.description)}
                 </h1>
                 <p
                   className={`mt-4 inline-block ${item.paragraphClassName} lg2:text-[22px] md:text-lg text-sm lg:max-w-md lg2:max-w-2xl mx font-ttCommons font-[400]`}
                 >
-                  {useSafeSpecialCharacters(item.text)}
+                  {safeSpecialCharacters(item.text)}
                 </p>
                 <div className="group cursor-pointer bottom-0 md:block relative hidden">
                   <button
@@ -480,7 +479,7 @@ const LocationAdvantage = () => {
                         <CTAButtonIcon fill={item.fill} direction="right" />
                       </div>
                     </div>
-                    <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{useSafeSpecialCharacters(item.buttonText)}</span>
+                    <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{safeSpecialCharacters(item.buttonText)}</span>
                   </button>
                 </div>
               </div>
@@ -514,7 +513,7 @@ const LocationAdvantage = () => {
                       <CTAButtonIcon fill={item.fill} direction="right" />
                     </div>
                   </div>
-                  <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{useSafeSpecialCharacters(item.buttonText)}</span>
+                  <span className={`${item.buttonTextColor} font-ttCommons relative z-20 mt-[3px] md:mt-0`}>{safeSpecialCharacters(item.buttonText)}</span>
                 </button>
               </div>
             </div>

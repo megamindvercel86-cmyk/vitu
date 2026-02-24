@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 // Import Images
 import defaultBg from "../../../../public/images/plotLocations/default-bg.png";
@@ -80,7 +80,7 @@ const NewPlotConnection = () => {
                         Connected Living
                     </h2>
                     <p className="font-ttcommons font-medium text-lg lg2:text-2xl text-[#0C3E4999] leading-relaxed mb-8 pt-6 max-w-xl">
-                        A perfect blend of nature<span className="font-sans">'</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
+                        A perfect blend of nature<span className="font-sans">&apos;</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
                         landmarks, airports, hospitals, and more.
                     </p>
                 </div>

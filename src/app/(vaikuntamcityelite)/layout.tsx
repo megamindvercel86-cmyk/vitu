@@ -9,6 +9,15 @@ import EliteFooter from "@/components/VaikuntamCityElite/Footer/EliteFooter";
 import EliteFooter2 from "@/components/VaikuntamCityElite/Footer/EliteFooter2";
 
 const Loader = dynamic(() => import("../../components/loader"), { ssr: false });
+const FOOTER_TWO_PATHNAMES = [
+  "/vaikuntam-city-elite/landing-page",
+  "/vaikuntam-city-elite/landing-page-1",
+  "/vaikuntam-city-elite/landing-page-2",
+];
+const EXCLUDE_FOOTER_PATHNAMES = [
+  "/vaikuntam-city-elite/landing-page-2/thank-you",
+  "/vaikuntam-city-elite/landing-page-1/thank-you",
+];
 
 export default function RootLayout({
   children,
@@ -16,18 +25,8 @@ export default function RootLayout({
   const [showLoader, setShowLoader] = useState(true);
   const pathname = usePathname();
 
-  const footerTwoPathnames = [
-    "/vaikuntam-city-elite/landing-page",
-    "/vaikuntam-city-elite/landing-page-1",
-    "/vaikuntam-city-elite/landing-page-2",
-  ];
-
-  const excludeFooterPathnames = [
-    "/vaikuntam-city-elite/landing-page-2/thank-you",
-    "/vaikuntam-city-elite/landing-page-1/thank-you",
-  ];
   useEffect(() => {
-    if (excludeFooterPathnames.includes(pathname)) {
+    if (EXCLUDE_FOOTER_PATHNAMES.includes(pathname)) {
       setShowLoader(false); // Don't show loader for thank-you pages
       return;
     }
@@ -61,9 +60,9 @@ export default function RootLayout({
         {/* <WhatsappChatWidget /> */}
 
         {/* ✅ Show appropriate footer based on path */}
-        {footerTwoPathnames.includes(pathname) ? (
+        {FOOTER_TWO_PATHNAMES.includes(pathname) ? (
           <EliteFooter2 />
-        ) : excludeFooterPathnames.includes(pathname) ? null : (
+        ) : EXCLUDE_FOOTER_PATHNAMES.includes(pathname) ? null : (
           <EliteFooter />
         )}
       </div>

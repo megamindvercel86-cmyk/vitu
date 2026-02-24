@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import image1 from "../../../../public/images/plotLocations/largeScreens.png";
 import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 
 
@@ -292,7 +292,7 @@ const PlotConnection = () => {
               variants={textVariants}
               animate="active"
             >
-              {useSafeSpecialCharacters(area.location)}
+              {safeSpecialCharacters(area.location)}
             </motion.span>
           ) : (
             <motion.span
@@ -304,7 +304,7 @@ const PlotConnection = () => {
                   : "inactive"
               }
             >
-              {useSafeSpecialCharacters(area.location)}
+              {safeSpecialCharacters(area.location)}
             </motion.span>
           )}
           <motion.span
@@ -317,7 +317,7 @@ const PlotConnection = () => {
                 : "inactive"
             }
           >
-            {useSafeSpecialCharacters(area.location)}
+            {safeSpecialCharacters(area.location)}
           </motion.span>
           <div className={`absolute ${area.position} z-30 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-1`}>
             {area.location === "Vilasam" ? (
@@ -384,7 +384,7 @@ const PlotConnection = () => {
             Connected Living
           </h2>
           <p className="font-ttcommons font-medium text-lg lg2:text-2xl text-[#0C3E4999] leading-relaxed mb-8 max-w-[54%] pt-6">
-            A perfect blend of nature<span className="font-sans">'</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
+            A perfect blend of nature<span className="font-sans">&apos;</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
             landmarks, airports, hospitals, and more.
           </p>
         </div>

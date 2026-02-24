@@ -78,7 +78,7 @@ export default function ThankYouPage() {
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                     aria-label="Play walkthrough video"
                   >
-                    <img
+                    <Image
                       src="/svgs/play-button.svg"
                       alt="play button"
                       width={134}

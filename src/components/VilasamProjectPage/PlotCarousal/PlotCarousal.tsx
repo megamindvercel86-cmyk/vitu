@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"; // Verify this utility exists
 import { useState, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper"; // Import Swiper type
 import { Autoplay } from "swiper/modules";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 
 const CarouselDots = ({
@@ -66,8 +66,8 @@ export default function PropertyCarousel() {
               </div>
               <div className="py-6 flex flex-col justify-between h-[350px]">
                 <div>
-                  <h2 className="text-2xl font-semibold font-theSeasons text-[#0C3E49] mb-3">{useSafeSpecialCharacters(property.title)}</h2>
-                  <p className="text-[#0C3E4999] font-ttCommons leading-[1.6] text-sm mb-5">{useSafeSpecialCharacters(property.description)}</p>
+                  <h2 className="text-2xl font-semibold font-theSeasons text-[#0C3E49] mb-3">{safeSpecialCharacters(property.title)}</h2>
+                  <p className="text-[#0C3E4999] font-ttCommons leading-[1.6] text-sm mb-5">{safeSpecialCharacters(property.description)}</p>
                 </div>
                 <div>
                   <button

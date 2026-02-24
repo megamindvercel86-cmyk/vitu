@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -65,6 +65,7 @@ const contentVariants = {
   visible: { opacity: 1, transition: { delay: 0.2 } },
   exit: { opacity: 0 },
 };
+const SLIDE_DURATION = 3000;
 
 const StylizedText = ({ text }: { text?: string }) => (
   <>
@@ -162,19 +163,18 @@ const LocationAdvantage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const SLIDE_DURATION = 3000; // Duration for each slide in ms
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Clear progress interval to prevent memory leaks
-  const clearProgressInterval = () => {
+  const clearProgressInterval = useCallback(() => {
     if (progressIntervalRef.current) {
       clearInterval(progressIntervalRef.current);
       progressIntervalRef.current = null;
     }
-  };
+  }, []);
 
   // Start the progress animation for the current slide
-  const startProgress = () => {
+  const startProgress = useCallback(() => {
     clearProgressInterval(); // Clear any existing interval
     setProgress(0); // Reset progress
 
@@ -191,7 +191,7 @@ const LocationAdvantage = () => {
         });
       }, 100);
     }
-  };
+  }, [clearProgressInterval, isOpen, isSlidePaused]);
 
   // Handle play/pause toggle
   const handleTogglePlayPause = () => {
@@ -222,7 +222,7 @@ const LocationAdvantage = () => {
     }
 
     return () => clearProgressInterval();
-  }, [swiperInstance, isSlidePaused, isOpen]);
+  }, [swiperInstance, isSlidePaused, isOpen, startProgress, clearProgressInterval]);
 
   useEffect(() => {
     // Reset progress when slide changes
@@ -230,7 +230,7 @@ const LocationAdvantage = () => {
       startProgress();
     }
     return () => clearProgressInterval();
-  }, [activeIndex]);
+  }, [activeIndex, isSlidePaused, isOpen, startProgress, clearProgressInterval]);
 
   const handleDotClick = (index: number) => {
     if (swiperInstance) {
@@ -291,7 +291,7 @@ const LocationAdvantage = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, swiperInstance, isSlidePaused]);
+  }, [isOpen, swiperInstance, isSlidePaused, startProgress]);
 
   return (
     <div className="relative w-full h-screen">

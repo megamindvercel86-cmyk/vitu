@@ -4,7 +4,7 @@ import Image from "next/image";
 import image from "../../../../public/images/plotLocations/mobile.png";
 import { Airport, EducationalInstitutions, EmergencyService, HolySpaces, RecreationalAreas } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 
 
@@ -231,7 +231,7 @@ const PlotConnectionMobile = () => {
       <div className="px-[1rem] space-y-2">
         <h2 className="text-2xl lg:text-5xl lg2:text-6xl text-[#0C3E49] font-medium font-theSeasons  md:pb-10 pb-2">Well<span className="font-CandideCondensedNormal">-</span>Connected Living</h2>
         <p className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] pb-4 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-theSeasons ">
-          A perfect blend of nature<span className="font-sans">'</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
+          A perfect blend of nature<span className="font-sans">&apos;</span>s calm and urban ease, just 3 minutes from scenic beaches and thoughtfully connected to business parks,
           landmarks, airports, hospitals, and more.
         </p>
       </div>
@@ -248,7 +248,7 @@ const PlotConnectionMobile = () => {
                 viewport={{ once: true }}
                 animate="active"
               >
-                {useSafeSpecialCharacters(area.location)}
+                {safeSpecialCharacters(area.location)}
               </motion.span>
             ) : area.location === "The Club" ? (
               <motion.span
@@ -256,7 +256,7 @@ const PlotConnectionMobile = () => {
                 variants={textVariants}
                 animate="active"
               >
-                {useSafeSpecialCharacters(area.location)}
+                {safeSpecialCharacters(area.location)}
               </motion.span>
             ) : (
               <motion.span
@@ -269,7 +269,7 @@ const PlotConnectionMobile = () => {
                     : "inactive"
                 }
               >
-                {useSafeSpecialCharacters(area.location)}
+                {safeSpecialCharacters(area.location)}
               </motion.span>
             )}
 

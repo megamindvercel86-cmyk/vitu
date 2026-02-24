@@ -195,14 +195,15 @@ export default function ArticleArea(): React.ReactElement {
       },
       { threshold: 0.1 }
     );
+    const currentContainer = containerRef.current;
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (currentContainer) {
+      observer.observe(currentContainer);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (currentContainer) {
+        observer.unobserve(currentContainer);
       }
     };
   }, []);

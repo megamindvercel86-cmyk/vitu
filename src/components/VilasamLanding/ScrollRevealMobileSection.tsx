@@ -13,7 +13,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
 import { AnimatedConicButton } from "../ui/moving-border";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 export interface SwiperImage {
   src: string;
@@ -133,8 +133,8 @@ export default function ScrollRevealMobileSection({
         {/* Text Overlay */}
         <div className="absolute top-[20%] left-6 right-6 z-10 text-[#FFFAF6] max-w-md h-[70vh] flex flex-col justify-between items-start">
           <h2 ref={addToRefs} className="font-theSeasons text-[35px] leading-[1.1] mb-6">
-            {useSafeSpecialCharacters(mobtitle1)} <br />
-            {useSafeSpecialCharacters(mobtitle2)}
+            {safeSpecialCharacters(mobtitle1)} <br />
+            {safeSpecialCharacters(mobtitle2)}
           </h2>
 
           <div

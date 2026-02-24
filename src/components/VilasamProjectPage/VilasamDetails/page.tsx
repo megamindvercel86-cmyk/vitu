@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 import img from "../../../../public/images/vilasamPageImages/carouselmages/3.webp";
 interface PulsePoint {
   id: number;
@@ -105,8 +105,8 @@ const ElevatesLiving: React.FC = () => {
                         : "left-0 top-1/2 -translate-y-1/2 ml-1 sm:ml-2"
                   }`}
               >
-                <div className="font-semibold mb-0.5 sm:mb-1 font-theSeasons">{useSafeSpecialCharacters(point.detail.title)}</div>
-                <div className="font-ttCommons  ">{useSafeSpecialCharacters(point.detail.description)}</div>
+                <div className="font-semibold mb-0.5 sm:mb-1 font-theSeasons">{safeSpecialCharacters(point.detail.title)}</div>
+                <div className="font-ttCommons  ">{safeSpecialCharacters(point.detail.description)}</div>
               </div>
             )}
           </div>

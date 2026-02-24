@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { PlayIcon } from "@/components/Icons/Icons";
 import Typography from "@/components/Typography/Typography";
 
@@ -28,9 +29,11 @@ export default function FounderMessage(): React.ReactElement {
             className="w-full h-full cursor-pointer rounded-3xl relative"
             onClick={() => setShowVideo(true)}
           >
-            <img
+            <Image
               src={customThumbnail}
               alt="Video Thumbnail"
+              fill
+              unoptimized
               className="w-full h-full object-cover rounded-2xl"
             />
             <div className="absolute inset-0 flex items-center justify-center">

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Typography from "@/components/Typography/Typography";
 
 export default function LegacyYouCanLiveIN() {
@@ -30,9 +31,11 @@ export default function LegacyYouCanLiveIN() {
             className="mt-10 relative w-full max-w-7xl mx-auto aspect-video"
             onClick={() => setShowVideo(true)}
           >
-            <img
+            <Image
               src={customThumbnail}
               alt="Video Thumbnail"
+              fill
+              unoptimized
               className="w-full h-full object-cover "
             />
             <div className="absolute inset-0 flex items-center justify-center">

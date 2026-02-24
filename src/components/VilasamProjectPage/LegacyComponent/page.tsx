@@ -3,12 +3,12 @@ import React from "react";
 import darkLogo from "../../../../public/images/logos/logoGreen.svg";
 import projectPageBg from "../../../../public/images/vilasamPageImages/image.png";
 import Link from "next/link";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 const VilasamLegacyBuiltComponent = () => {
-  const safeText1 = useSafeSpecialCharacters(
+  const safeText1 = safeSpecialCharacters(
     "Every VITU Realty property embodies our Client centric philosophy. Thoughtfully designed homes with abundant natural light, smart spaces, & premium amenities."
   );
-  const safeText2 = useSafeSpecialCharacters(
+  const safeText2 = safeSpecialCharacters(
     "Founded in 1956, our team brings years of cross-industry expertise on average, delivering exceptional skill & knowledge in every field."
   );
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { renderStyledText } from "@/lib/renderStyledText";
+import Image from "next/image";
 
 interface NumberCounterProps {
   title: string;
@@ -24,8 +25,11 @@ export default function NormalNumberCounter({
       className={`text-center py-6 space-y-2 cursor-default lg:py-10 group ${localNoBorder ? "" : "lg:border-r border-[#1C1213]"}`}
     >
       {icon && (
-        <img
+        <Image
           src={`/svgs/${icon}.svg`}
+          alt={`${icon} icon`}
+          width={64}
+          height={64}
           className="mx-auto w-auto h-14 lg:h-16 group-hover:scale-110 transition-all ease-in-out duration-300"
         />
       )}

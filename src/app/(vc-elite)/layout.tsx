@@ -9,6 +9,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 const Loader = dynamic(() => import("../../components/loader"), { ssr: false });
+const EXCLUDE_FOOTER_PATHNAMES = [
+  "/vaikuntam-city-elite/landing-page-2/thank-you",
+  "/vaikuntam-city-elite/landing-page-1/thank-you",
+];
 
 export default function RootLayout({
   children,
@@ -17,12 +21,8 @@ export default function RootLayout({
   const pathname = usePathname();
 
 
-  const excludeFooterPathnames = [
-    "/vaikuntam-city-elite/landing-page-2/thank-you",
-    "/vaikuntam-city-elite/landing-page-1/thank-you",
-  ];
   useEffect(() => {
-    if (excludeFooterPathnames.includes(pathname)) {
+    if (EXCLUDE_FOOTER_PATHNAMES.includes(pathname)) {
       setShowLoader(false); // Don't show loader for thank-you pages
       return;
     }

@@ -66,7 +66,7 @@ const Counter: React.FC<{ value: string }> = ({ value }) => {
 
       return () => clearInterval(timer);
     }
-  }, [inView, value]);
+  }, [inView, value, isNumeric, isRange]);
 
   // Display logic
   const displayValue = !isNumeric

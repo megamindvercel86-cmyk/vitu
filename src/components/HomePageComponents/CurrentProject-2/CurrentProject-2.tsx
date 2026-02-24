@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import CTAButtonIcon from "@/components/Icons/Icons";
 import Image from "next/image";
 import CurrentProjectCard from "@/components/ui/apple-style-card-current-projects";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 // ============= Interfaces =============
 
@@ -528,13 +528,13 @@ const CurrentProjectTwo: React.FC = () => {
                   variant="custom"
                   className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] lg2:text-[2.5rem] 2xl:text-[4rem] text-[#503637]"
                 >
-                  {useSafeSpecialCharacters(stat.value)}
+                  {safeSpecialCharacters(stat.value)}
                 </Typography>
                 <Typography
                   variant="custom"
                   className="md:max-w-[553px] xl:max-w-[458px] 2xl:max-w-[855px] lg2:text-[24px] md:text-lg text-sm text-[#4F373799] font-ttCommons mt-1"
                 >
-                  {useSafeSpecialCharacters(stat.label)}
+                  {safeSpecialCharacters(stat.label)}
                 </Typography>
               </motion.div>
             ))}
@@ -665,10 +665,10 @@ const CurrentProjectTwo: React.FC = () => {
             : selectedLocation.description.map((stat, index) => (
                 <motion.div key={index} className={`leading-[1.1] ${index !== 0 ? "my-4" : ""}`}>
                   <Typography variant="custom" className="font-theSeasons text-[1.5rem] sm:text-[1.5rem] md:text-[2.5rem] text-[#503637]">
-                    {useSafeSpecialCharacters(stat.value)}
+                    {safeSpecialCharacters(stat.value)}
                   </Typography>
                   <Typography variant="custom" className="text-sm md:text-lg text-[#4F373799] font-theSeasons mt-2">
-                    {useSafeSpecialCharacters(stat.label)}
+                    {safeSpecialCharacters(stat.label)}
                   </Typography>
                 </motion.div>
               ))}

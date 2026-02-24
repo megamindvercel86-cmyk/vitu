@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,7 +109,7 @@ export default function FtSectionMobile({ mobileCards }: FtSectionMobile) {
       mm.revert();
       ctx.revert();
     };
-  }, []);
+  }, [mobileCards]);
 
   return (
     <div
@@ -185,7 +185,7 @@ export default function FtSectionMobile({ mobileCards }: FtSectionMobile) {
                       part === '%' ? <span key={i} className="font-CandideCondensedNormal">{part}</span> : part
                     )} */}
 
-                    {useSafeSpecialCharacters(card.title)}
+                    {safeSpecialCharacters(card.title)}
                   </h3>
                   <h3 className="text-3xl md:text-4xl font-theSeasons font-normal leading-tight mb-2">
                     {card.title2.split(/(%)/g).map((part, i) =>

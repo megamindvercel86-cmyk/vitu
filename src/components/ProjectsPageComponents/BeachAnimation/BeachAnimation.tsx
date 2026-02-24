@@ -1,6 +1,6 @@
 "use client";
 import { Mute, UnMute } from "@/components/Icons/Icons";
-import { useRef, useState, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BeachAnimation = () => {
@@ -13,7 +13,7 @@ const BeachAnimation = () => {
   const [showLabel, setShowLabel] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  const getActiveVideoRef = () => (isDesktop ? desktopVideoRef.current : mobileVideoRef.current);
+  const getActiveVideoRef = useCallback(() => (isDesktop ? desktopVideoRef.current : mobileVideoRef.current), [isDesktop]);
 
   const toggleMute = () => {
     const videoEl = getActiveVideoRef();
@@ -67,7 +67,7 @@ const BeachAnimation = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isDesktop, hasScrolled]);
+  }, [getActiveVideoRef, hasScrolled]);
 
   return (
     <div ref={sectionRef} className="absolute h-[200vh] w-full">

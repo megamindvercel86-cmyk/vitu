@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import CustomCursor from "@/components/Common/CustomCursor";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 
 // Register ScrollToPlugin
@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ onFooterClick, nextProjectTitle }) => {
             onClick={onFooterClick}
             className="text-[#0C3E49] flex font-theSeasons justify-between items-center cursor-pointer font-bold text-[18px] "
           >
-            {useSafeSpecialCharacters(nextProjectTitle)}
+            {safeSpecialCharacters(nextProjectTitle)}
           </button>
           <MdKeyboardArrowRight
             onClick={onFooterClick}
@@ -89,14 +89,14 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
         <h2 className={`${textColor} text-[40px] lg:text-[48px] leading-[1.3] font-semibold pt-24 px-6 lg:px-20`}>
           {project.title.split("").map((char: string, index: number) => (
             <span key={index} className={/\d/.test(char) ? "font-theSeasons" : ""}>
-              {useSafeSpecialCharacters(char)}
+              {safeSpecialCharacters(char)}
             </span>
           ))}
         </h2>
         <h3 className={`${textColor} text-[20px] lg:text-[28px] leading-[1.3] font-medium px-6 lg:px-20 pb-6 text-[#040707CC]`}>
           {project.subtitle.split("").map((char: string, index: number) => (
             <span key={index} className={/\d/.test(char) ? "font-theSeasons" : ""}>
-              {useSafeSpecialCharacters(char)}
+              {safeSpecialCharacters(char)}
             </span>
           ))}
         </h3>
@@ -105,14 +105,14 @@ const CardContent = ({ cardId, textStyle, textColor }: { cardId: number; textSty
           <Typography className="text-[#0C3E4999] px-6 lg:px-20 !text-xl font-ttCommons">
             {project.description1.split("").map((char: string, index: number) => (
               <span key={index} className={/\d/.test(char) ? "font-ttCommons" : ""}>
-                {useSafeSpecialCharacters(char)}
+                {safeSpecialCharacters(char)}
               </span>
             ))}
           </Typography>
           <Typography className="text-[#0C3E4999] px-6 lg:px-20 !text-xl font-ttCommons">
             {project.description2.split("").map((char: string, index: number) => (
               <span key={index} className={/\d/.test(char) ? "font-ttCommons" : ""}>
-                {useSafeSpecialCharacters(char)}
+                {safeSpecialCharacters(char)}
               </span>
             ))}
           </Typography>
@@ -360,7 +360,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
               transition={{ delay: 0.6 }}
               onClick={() => setIsGetInTouchOpen(true)}
             >
-              {useSafeSpecialCharacters("Download E-Brochure")}
+              {safeSpecialCharacters("Download E-Brochure")}
             </motion.button>
           </div>
         </motion.div>
@@ -408,7 +408,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
                   />
                   {isExpanded && (
                     <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
-                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{useSafeSpecialCharacters(card.title)}{ }</span>
+                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{safeSpecialCharacters(card.title)}{ }</span>
                     </div>
                   )}
                 </div>

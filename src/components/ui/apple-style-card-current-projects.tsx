@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { Chromotherapy, Groundwater, RainWater, Solar, Tree } from "@/components/Icons/Icons";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 import modalImg from '../../../public/images/vilasamPageImages/broucherImages/8.webp'
 
 interface CurrentProjectCardProps {
@@ -76,7 +76,7 @@ const CardContent = ({ data, setCurrentIndex, currentIndex, textColor }: CardCon
           style={{ color: textColor }} 
           className="opacity-60 font-ttcommons text-sm md:!text-xl"
         >
-          {useSafeSpecialCharacters(data.description)}
+          {safeSpecialCharacters(data.description)}
         </p>
         
         <p 
@@ -95,14 +95,14 @@ const CardContent = ({ data, setCurrentIndex, currentIndex, textColor }: CardCon
                     style={{ color: textColor }} 
                     className="opacity-60 text-base font-ttcommons lg:text-lg pl-4"
                   >
-                    {useSafeSpecialCharacters(point)}
+                    {safeSpecialCharacters(point)}
                   </p>
                 ) : (
                   <p 
                     style={{ color: textColor }} 
                     className="opacity-60 text-base font-ttcommons lg:text-lg font-semibold"
                   >
-                    {useSafeSpecialCharacters(point)}
+                    {safeSpecialCharacters(point)}
                   </p>
                 )}
               </li>
@@ -145,7 +145,7 @@ const CardContent = ({ data, setCurrentIndex, currentIndex, textColor }: CardCon
                       style={{ color: textColor }} 
                       className="opacity-60 text-left"
                     >
-                      {useSafeSpecialCharacters(item.label)}
+                      {safeSpecialCharacters(item.label)}
                     </span>
                   </motion.button>
                 ))}

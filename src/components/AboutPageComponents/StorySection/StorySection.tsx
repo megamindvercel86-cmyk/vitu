@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -139,13 +139,13 @@ function ScrollController({ progress, onDrag, isFixed }: { progress: number; isF
   const controllerRef = useRef<HTMLDivElement | null>(null);
   const [draggable, setDraggable] = useState<Draggable | null>(null);
 
-  const updateDraggableBounds = () => {
+  const updateDraggableBounds = useCallback(() => {
     if (trackRef.current && controllerRef.current && draggable) {
       const trackWidth = trackRef.current.offsetWidth - controllerRef.current.offsetWidth;
       draggable.applyBounds(trackRef.current);
       gsap.set(controllerRef.current, { x: progress * trackWidth });
     }
-  };
+  }, [draggable, progress]);
 
   useEffect(() => {
     if (controllerRef.current && trackRef.current) {
@@ -164,7 +164,6 @@ function ScrollController({ progress, onDrag, isFixed }: { progress: number; isF
         },
       })[0];
       setDraggable(newDraggable);
-      gsap.set(controllerRef.current, { x: progress * trackWidth });
 
       return () => {
         newDraggable.kill();
@@ -173,13 +172,9 @@ function ScrollController({ progress, onDrag, isFixed }: { progress: number; isF
   }, [onDrag]);
 
   useEffect(() => {
-    const handleResize = () => {
-      updateDraggableBounds();
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [draggable, progress]);
+    window.addEventListener("resize", updateDraggableBounds);
+    return () => window.removeEventListener("resize", updateDraggableBounds);
+  }, [updateDraggableBounds]);
 
   useEffect(() => {
     if (trackRef.current && controllerRef.current) {
@@ -226,6 +221,7 @@ export default function Gallery() {
   const [currentYear, setCurrentYear] = useState(images[0].year);
   const [currentMessage, setCurrentMessage] = useState(images[0].message);
   const [progress, setProgress] = useState(0);
+  const progressRef = useRef(progress);
   const [isFixed, setIsFixed] = useState(false);
   const [svg, setSvg] = useState<React.JSX.Element | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
@@ -234,6 +230,10 @@ export default function Gallery() {
   const [isMobile, setIsMobile] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+
+  useEffect(() => {
+    progressRef.current = progress;
+  }, [progress]);
 
   // Update window dimensions and mobile detection
   useEffect(() => {
@@ -313,7 +313,7 @@ export default function Gallery() {
     let animationFrame: number | null = null;
     let lastTouchX: number | null = null;
     let velocity = 0;
-    let lastProgress = progress;
+    let lastProgress = progressRef.current;
 
     const clamp = (val: number, min: number, max: number) => Math.max(min, Math.min(max, val));
 

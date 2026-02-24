@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { IoMdHome } from "react-icons/io";
 import ContactFormModal from "@/components/Common/FormModal/FormModal";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 /**
  * Footer Component
@@ -293,7 +293,7 @@ const FooterContactItem: FC<{ icon: JSX.Element; text: string; link: string; nam
   const isPhoneNumber = text.includes("+91 89046 88886");
   const isPincode = text.includes("575001");
   const email = text.includes("info@viturealty.com");
-  const safeText = useSafeSpecialCharacters(text);
+  const safeText = safeSpecialCharacters(text);
 
   return (
     <>
@@ -329,7 +329,7 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#808080] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-theSeasons">{new Date().getFullYear()}</span> <span className="font-theSeasons font-medium">{useSafeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
+        © <span className="font-theSeasons">{new Date().getFullYear()}</span> <span className="font-theSeasons font-medium">{safeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="Read the legal disclaimer">

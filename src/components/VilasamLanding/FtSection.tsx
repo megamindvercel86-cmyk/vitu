@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -212,7 +212,7 @@ export default function FtScroll({ cards }: FtScrollProps) {
                   {/* TEXT */}
                   <div className="flex flex-col justify-center">
                     <h3 className="text-4xl md:text-4xl lg:text-4xl lg2:text-5xl font-theSeasons mb-1">
-                      {useSafeSpecialCharacters(card.title)}
+                      {safeSpecialCharacters(card.title)}
                     </h3>
                     {card.title2 && (
                       <h3 className="text-4xl md:text-4xl lg:text-4xl lg2:text-5xl font-theSeasons mb-2">

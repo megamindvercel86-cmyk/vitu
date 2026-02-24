@@ -89,7 +89,7 @@ export default function MediaSection(): React.ReactElement {
         }
       };
     }
-  }, [swiperRef.current, news]);
+  }, [news]);
 
   // ============= Render Helpers =============
   const renderNewsCard = (item: NewsItem) => {

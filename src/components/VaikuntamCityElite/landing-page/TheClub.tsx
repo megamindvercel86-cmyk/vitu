@@ -23,6 +23,7 @@ export default function TheClub() {
   const isInView = useInView(ref, { once: false });
   const startTimeRef = useRef<number | null>(null);
   const rafIdRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
   const isPlay = isInView && !userPaused;
 
   const CAROUSEL_DATA = [
@@ -53,12 +54,16 @@ export default function TheClub() {
   ];
   // No explicit effect to set play state; derive from in-view and user pause.
 
+  useEffect(() => {
+    progressRef.current = progress;
+  }, [progress]);
+
   // Single timing loop to keep slide changes and progress perfectly in sync
   useEffect(() => {
     // If resuming from pause, continue from the current progress position
     if (isPlay) {
       const resumedStart =
-        Date.now() - (progress / 100) * CAROUSEL_CONFIG.autoplayInterval;
+        Date.now() - (progressRef.current / 100) * CAROUSEL_CONFIG.autoplayInterval;
       startTimeRef.current = resumedStart;
 
       const tick = () => {

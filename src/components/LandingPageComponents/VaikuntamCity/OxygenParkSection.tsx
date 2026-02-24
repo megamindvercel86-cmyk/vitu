@@ -24,13 +24,12 @@ const AccordianItemContent = (
           key={index}
           className="flex items-center gap-3 text-customCongoBrown/60 font-fsSplitSans text-sm md:text-base p-3 rounded-lg hover:bg-[#DABFA1]/20 w-fit cursor-default transition-colors duration-300"
         >
-          <img
+          <Image
             src={`/images/VaikuntamCityLandingPage/icons/${item.icon}`}
-            alt="Logo"
-            className="w-6 h-6 "
-            width={50}
-            height={50}
-            loading="lazy"
+            alt={`${item.label} icon`}
+            className="w-6 h-6"
+            width={24}
+            height={24}
           />
           <span>{item.label}</span>
         </li>

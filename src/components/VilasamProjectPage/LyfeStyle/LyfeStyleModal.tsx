@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
 interface Props {
   open: boolean;
@@ -133,7 +133,7 @@ export default function LyfeStyleModal({
 
                 <div className="flex flex-col gap-4 py-12 px-6 lg:px-16">
                   <h2 className="font-theSeasons text-[#0C3E49] text-[24px] lg:text-[48px] font-semibold">
-                    20,000{useSafeSpecialCharacters(" sq.ft of Lifestyle & Comfort")}
+                    20,000{safeSpecialCharacters(" sq.ft of Lifestyle & Comfort")}
                   </h2>
 
                   <h2 className="font-bold text-[#0C3E4999] md:text-[24px] font-theSeasons md:pb-6 text-[18px]">
@@ -141,20 +141,20 @@ export default function LyfeStyleModal({
                   </h2>
 
                   <p className="text-[#0C3E4999] font-ttCommons text-base md:!text-xl">
-                    {useSafeSpecialCharacters(
+                    {safeSpecialCharacters(
                       "At the heart of Vilasam lies The Club, a sprawling 20,000 sq.ft of clubhouse amenities designed to enrich everyday living. Whether it's a quiet moment of reflection or a lively gathering with neighbors, the clubhouse brings together spaces that cater to wellness, connection, and celebration."
                     )}
                   </p>
 
                   <p className="text-[#0C3E4999] font-ttCommons text-base md:!text-xl">
-                    {useSafeSpecialCharacters(
+                    {safeSpecialCharacters(
                       "From indoor activity zones to calm corners for reading or relaxing, every detail has been thoughtfully curated to elevate the way you live. It's more than just a building, it's where community comes alive, and where every visit feels like an escape within your own neighborhood."
                     )}
                   </p>
 
                   <div className="mt-8">
                     <h3 className="font-bold text-[#0D3F4A] md:text-[24px] font-theSeasons pb-6 text-[18px]">
-                      {useSafeSpecialCharacters("The Club - Amenities")}
+                      {safeSpecialCharacters("The Club - Amenities")}
                     </h3>
 
                     <div className="grid grid-cols-3 gap-4">

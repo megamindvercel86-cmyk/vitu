@@ -46,7 +46,7 @@ export default function ThankYouPage() {
                  Your browser does not support the video tag.
                </video>
                {!isPlaying && (
-                 <img
+                 <Image
                    src="/svgs/play-button.svg"
                    alt="play button"
                    width={134}

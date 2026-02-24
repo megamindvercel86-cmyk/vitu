@@ -5,7 +5,7 @@ import { IconX, IconChevronDown } from "@tabler/icons-react";
 // Firebase imports removed from top-level to be lazy-loaded in handleSubmit
 import Loader from "@/components/LoaderComponent/LoaderComponent";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSafeSpecialCharacters } from "@/hooks/useSafeSpecialCharacters";
+import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
@@ -42,7 +42,6 @@ interface ContactFormModalProps {
 
 const ContactFormContent: React.FC<ContactFormModalProps> = ({
   textColor,
-  downloadFileLink = "/downloadingFiles/VITU Realty - Vilasam.pdf",
   peerBg,
   buttonBg,
   isOpen,
@@ -199,14 +198,6 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           console.error("Accelr Webhook Error:", webhookError);
         }
 
-        if (downloadFileLink) {
-          const link = document.createElement("a");
-          link.href = downloadFileLink;
-          link.download = downloadFileLink?.split("/").pop()?.toString() || "";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
@@ -306,7 +297,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                 <h1
                   className={`text-center mt-7 lg:hidden ${isVilasam ? "font-theSeasons" : "font-freightNeoMedium"} !leading-[1.3] lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} font-semibold text-3xl md:text-5xl`}
                 >
-                  {useSafeSpecialCharacters("Your dream home is closer than you think !")}
+                  {safeSpecialCharacters("Your dream home is closer than you think !")}
                 </h1>
                 <p
                   className={`text-center ${isVilasam ? "font-ttCommons" : "font-freightNeoMedium"} lg:text-left ${textColor ? textColor : "text-[#0C3E49]"} text-[18px] md:text-xl pt-3 md:pt-8 lg:pt-6 xl:pt-4 max-w-lg`}
