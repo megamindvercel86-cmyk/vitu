@@ -548,6 +548,9 @@ const submitVilasamLanding = async (
     asString(request.payload.interstedIn) ||
     requireString(request.payload.interestedIn, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
+  const preferredPlotOrientation = asString(
+    request.payload.preferredPlotOrientation,
+  );
   const formName = request.meta.formName || "Vilasam Landing Page Form";
 
   const leadPayload = {
@@ -557,6 +560,7 @@ const submitVilasamLanding = async (
     interstedIn,
     interestedIn: interstedIn,
     whatsapp,
+    preferredPlotOrientation,
     project: "Vilasam",
     ...request.utm,
   };
@@ -583,6 +587,7 @@ const submitVilasamLanding = async (
       form_name: formName,
       form_id: interstedIn,
       plots: interstedIn,
+      preferred_plot_orientation: preferredPlotOrientation,
       phone,
       name: fullName,
       email,

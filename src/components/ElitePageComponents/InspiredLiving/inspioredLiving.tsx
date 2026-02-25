@@ -96,8 +96,8 @@ export default function DesignedForLiving() {
             <span className="flex gap-2 items-center">
               PROJECT HIGHLIGHTS
               <svg className="mt-1"  width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.80422 6.7666L8.49957 14.3856L16.1959 6.7666" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M8.50053 14.3839L8.50053 0.137695" stroke="#1C1213" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M0.80422 6.7666L8.49957 14.3856L16.1959 6.7666" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M8.50053 14.3839L8.50053 0.137695" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10"/>
 </svg>
 
             </span>
