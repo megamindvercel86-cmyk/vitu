@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
-    heading: <>Invest in Mangalore's <br className="hidden md:block"/> Fast-Growing Corridor</>,
+    heading: <>Your Space to <br className="hidden md:block"/> Breathe & Belong</>,
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
@@ -52,10 +52,10 @@ export default function VilasamInvestorsPage() {
     imageSrc: "/vilasamImages/basicImages/1.webp",
     imageAlt: "Vilasam gated entrance",
     cards: [
+      { title: "10-15 mins to Everyday\nEssentials" },
       { title: "2X growth in the\nlast 3 years" },
-      { title: "10X future potential", subtitle: "from SEZs, Port & Expressway" },
-      { title: "3-year resale\nflexibility" },
-      { title: "15 mins away\nfrom city" },
+      { title: "24x7 Gated Security" },
+      { title: "3‑Year Resale\nFlexibility" },
     ],
   };
 
@@ -121,14 +121,18 @@ export default function VilasamInvestorsPage() {
   const locationSectionData: InvestorsLocationSectionProps = {
     title: "Closer to What Matters",
     locations: [
-      { id: "1", name: "Surathkal Railway Station", distance: "5 mins" },
-      { id: "2", name: "Mangalore International Airport", distance: "15 mins" },
-      { id: "3", name: "New Mangalore Port", distance: "15 mins" },
-      { id: "4", name: "Haleyangadi Junction", distance: "15 mins" },
+      { id: "1", name: "Surathkal Lighthouse Beach", distance: "5 mins" },
+      { id: "2", name: "Srinivas Hospital", distance: "5 mins" },
+      { id: "3", name: "Upcoming McDonald's & KFC", distance: "5 mins" },
+      { id: "4", name: "Upcoming DMart", distance: "5 mins" },
+      { id: "5", name: "Mukka Beach", distance: "7 mins" },
+      { id: "6", name: "Srinivas University", distance: "7 mins" },
+      { id: "7", name: "Abish Mall", distance: "10 mins" },
+      { id: "8", name: "Bharath Mall", distance: "20 mins" },
     ],
     ctaLabel: "Get to Know Your Neighborhood",
     ctaHref: "#",
-    mapImageSrc: "/vilasamImages/mapinverstors1.png",
+    mapImageSrc: "/vilasamImages/mapinverstors2.png",
   };
 
   return (

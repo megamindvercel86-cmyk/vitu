@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { submitLead } from "@/lib/leadApi";
 
 interface InvestorsFormState {
@@ -135,18 +136,14 @@ export default function InvestorsContactSection() {
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 xl:gap-20">
           
-          {/* Left Side: Google Maps Embed */}
+          {/* Left Side: Map Image Placeholder */}
           <div className="relative lg:col-span-5 h-[300px] w-full overflow-hidden rounded-[16px] md:h-[450px] lg:h-full lg:min-h-[500px]">
-            <iframe
-              src="https://maps.app.goo.gl/4LVFvgR3NdBHPhig8"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full object-cover"
-            ></iframe>
+            <Image 
+              src="/vilasamImages/map2.png" 
+              alt="Location Map" 
+              fill 
+              className="object-cover" 
+            />
           </div>
 
           {/* Right Side: Contact Form */}

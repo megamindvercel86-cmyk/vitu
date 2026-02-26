@@ -65,7 +65,7 @@ export default function InvestorsAtAGlanceSection({ title, items }: InvestorsAtA
                       </div>
                     </div>
                     <span
-                      className={`font-ttCommons text-[15px] font-bold text-left transition-all md:text-[24px] ${
+                      className={`font-ttCommons text-[16px] font-bold text-left transition-all md:text-[24px] ${
                         isActive ? "font-bold text-[#064747]" : "font-medium text-[#999999]"
                       }`}
                     >

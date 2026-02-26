@@ -17,7 +17,7 @@ export default function VilasamInvestorsThankYouPage() {
   };
 
   return (
-    <main className="relative flex  min-h-screen w-full flex-col items-center justify-center bg-white px-5 pb-16 pt-[120px] md:px-8 md:pt-[160px]">
+    <main className="relative flex min-h-screen w-full flex-col items-center justify-center bg-white px-5 pb-16 pt-[120px] md:px-8 md:pt-[160px]">
       {/* Logos acting as Navbar */}
      <div className="absolute left-5 top-8 z-20 md:left-10 md:top-10">
               <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[150px] md:w-[220px]" />

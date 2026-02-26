@@ -17,7 +17,7 @@ export default function LandingFooter() {
       style={{
         background: "radial-gradient(circle at center, #0F5B5B 0%, #024854 100%)",
       }}
-      className="relative w-full  md:min-h-0 md:h-auto text-white py-12 md:pt-20 px-4 md:px-12 lg:px-10 overflow-hidden flex flex-col items-center"
+      className="relative w-full  md:min-h-0 md:h-auto text-white pt-12 pb-8  md:pt-20 px-4 md:px-12 lg:px-10 overflow-hidden flex flex-col items-center"
     >
       {/* =========================================
           DESKTOP ONLY: Top-Left Back to Top Button

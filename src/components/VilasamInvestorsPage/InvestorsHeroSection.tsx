@@ -162,7 +162,7 @@ export default function InvestorsHeroSection() {
         <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-end md:justify-end pb-8 pt-28 md:pb-12 md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
           {/* Mobile Text Overlay */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-center pointer-events-none -mt-40 sm:-mt-20">
-            <h1 className="font-ttCommons font-bold text-[40px] text-[#064747] leading-none tracking-tight">Vilasam</h1>
+            <h1 className="font-ttCommons font-semibold text-[40px] text-[#064747] leading-none tracking-tight">Vilasam</h1>
             <div className="mt-4 border border-[#064747]  px-4 py-2 sm:px-5 sm:py-2.5 ">
               <p className="font-semibold text-[14px] sm:text-[15px] text-[#064747]">Starting Price: ₹33.5L Onwards*</p>
             </div>
@@ -178,7 +178,7 @@ export default function InvestorsHeroSection() {
 
           {/* Form Content - Desktop */}
           <form onSubmit={handleSubmit} className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20">
-            <div className="mb-4 md:mb-5 border-b border-[#f0f0f0] pb-4 text-center">
+            <div className="mb-4 md:mb-5 border-b border-[#E2E2E2] pb-4 text-center">
               <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">Vilasam</h1>
               <p className="mt-2 font-medium text-[14px] sm:text-[15px] text-[#333]">Starting Price: ₹33.5L Onwards*</p>
             </div>

@@ -28,7 +28,7 @@ export default function InvestorsStatsSection({ stats }: InvestorsStatsSectionPr
                             <h3 className="font-ttCommons text-5xl font-bold leading-none sm:text-6xl md:text-7xl">
                                 {stat.value}
                             </h3>
-                            <p className="mt-3 font-ttCommons text-sm font-medium tracking-wide sm:text-base md:text-lg">   
+                            <p className="mt-3 font-ttCommons text-sm font-medium tracking-wide sm:text-base md:text-2xl">   
                                 {stat.label}
                             </p>
                         </div>
