@@ -132,7 +132,7 @@ body {
 
 @font-face {
   font-family: "TTCommons";
-  src: url("/fonts/TTCommons-Bold/TTCommons-Bold.ttf") format("truetype");
+  src: url("/fonts/ttcommons/TTCommons-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -140,12 +140,35 @@ body {
 
 @font-face {
   font-family: "TTCommons";
-  src: url("/fonts/TTCommons-ExtraBold/TTCommons-ExtraBold.ttf") format("truetype");
-  font-weight: bolder;
+  src: url("/fonts/ttcommons/TTCommons-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/ttcommons/TTCommons-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/ttcommons/TTCommons-DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TTCommons";
+  src: url("/fonts/ttcommons/TTCommons-ExtraBold.ttf") format("truetype");
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
 
 option {
   border: none;
@@ -361,7 +384,6 @@ lite-youtube {
 }
 
 @keyframes pulse-scale {
-
   0%,
   100% {
     transform: scale(0.6);
@@ -396,7 +418,6 @@ lite-youtube {
   padding: 1rem 1.5rem;
   border-radius: 40px;
 
-
   cursor: pointer;
 }
 
@@ -407,7 +428,6 @@ lite-youtube {
   align-items: center;
   padding: 1rem 1.5rem;
   border-radius: 40px;
-
 
   cursor: pointer;
 }
@@ -459,27 +479,41 @@ lite-youtube {
 .theme-dark .animated-border-overlay-base {
   background-image:
     linear-gradient(#6b402a, #673e28),
-    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent,
+      #c7784d var(--gradient-percent),
+      #e0d9c799 calc(var(--gradient-percent) * 2),
+      #c7784d calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    );
 }
 
 /* --- THEME 2 (Light) --- */
 .theme-light {
-  background-color: #F3EAE1;
-  color: #1C1213;
+  background-color: #f3eae1;
+  color: #1c1213;
   /* Make text dark on light background */
 }
 
 .theme-light .animated-border-overlay-base {
   background-image:
-    linear-gradient(#F3EAE1, #F3EAE1),
-    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #9a8a7a99 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+    linear-gradient(#f3eae1, #f3eae1),
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent,
+      #c7784d var(--gradient-percent),
+      #9a8a7a99 calc(var(--gradient-percent) * 2),
+      #c7784d calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    );
 }
 
 /* --- THEME 4 (Light Green) --- */
 .theme-light-green {
   background-color: none;
   /* transparent bg */
-  color: #254C54;
+  color: #254c54;
   /* text color to match border */
   /* on hover change bg ot white */
   transition: background-color 0.5s ease;
@@ -492,7 +526,14 @@ lite-youtube {
 .theme-light-green .animated-border-overlay-base {
   background-image:
     linear-gradient(#ffffff, #ffffff),
-    conic-gradient(from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent,
+      #254c54 var(--gradient-percent),
+      rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2),
+      #254c54 calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    );
 }
 
 /* --- THEME Vilasam Brochure --- */
@@ -504,25 +545,31 @@ lite-youtube {
 
 .theme-vilasam-brochure-mobile {
   background-color: transparent;
-  color: #254C54;
+  color: #254c54;
   transition: all 0.5s ease;
 }
 
 .theme-vilasam-brochure:hover {
-  color: #254C54;
+  color: #254c54;
 }
 
 .theme-vilasam-brochure .animated-border-overlay-base {
   background-image:
     linear-gradient(#f3f4f6, #f3f4f6),
-    conic-gradient(from var(--gradient-angle), transparent, #254C54 var(--gradient-percent), rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2), #254C54 calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent,
+      #254c54 var(--gradient-percent),
+      rgba(37, 76, 84, 0.6) calc(var(--gradient-percent) * 2),
+      #254c54 calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    );
 }
 
 /* .Plot-module-scss-module__VjpZHq__cardContainer{
   perspective: 1000px;
   height: 100vh;
 } */
-
 
 /* --- THEME 3 (Mid Dark Light) --- NEW THEME --- */
 .theme-mid-dark-light {
@@ -535,9 +582,15 @@ lite-youtube {
     /* This gradient should match the button's background color */
     linear-gradient(#be7a56, #bd7853),
     /* This is the animated border gradient */
-    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
+      conic-gradient(
+        from var(--gradient-angle),
+        transparent,
+        #c7784d var(--gradient-percent),
+        #e0d9c799 calc(var(--gradient-percent) * 2),
+        #c7784d calc(var(--gradient-percent) * 3),
+        transparent calc(var(--gradient-percent) * 4)
+      );
 }
-
 
 @keyframes rotate-conic-gradient-border {
   0% {
@@ -549,21 +602,35 @@ lite-youtube {
   }
 }
 
-
 .theme-custom {
   background-color: transparent;
   color: #fff;
   /* optional for text */
-
 }
 
 .theme-custom .animated-border-overlay-base {
   background-image:
     linear-gradient(#26170f, #26170f),
-    conic-gradient(from var(--gradient-angle), transparent, #C7784D var(--gradient-percent), #E0D9C799 calc(var(--gradient-percent) * 2), #C7784D calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4));
-
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent,
+      #c7784d var(--gradient-percent),
+      #e0d9c799 calc(var(--gradient-percent) * 2),
+      #c7784d calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    );
 }
 
 :root {
   --app-height: 100vh;
+}
+
+.react-international-phone-country-selector{
+  height: 100%;
+ 
+}
+
+
+.react-international-phone-country-selector-button{
+  border-right: 1px solid #E2E2E2 !important;
 }
