@@ -193,10 +193,10 @@ export default function InvestorsHeroSection() {
           <form onSubmit={handleSubmit} className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20">
             <div className="mb-4 md:mb-5 border-b border-[#E2E2E2] pb-4 text-center">
               <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">Vilasam</h1>
-              <p className="mt-2 font-medium text-[14px] sm:text-[15px] text-[#333]">Starting Price: ₹33.5L Onwards*</p>
+              <p className="mt-2 font-medium text-[14px] sm:text-[15px] text-[#2A2A2A]">Starting Price: ₹33.5L Onwards*</p>
             </div>
 
-            <h2 className="mb-4 text-center font-bold text-[14px] md:text-[15px] text-[#222]">Book your Site Visit</h2>
+            <h2 className="mb-4 text-center font-semibold text-[14px] md:text-[15px] text-[#2A2A2A]">Book your Site Visit</h2>
 
             <div className="space-y-2.5">
               <input

@@ -30,7 +30,7 @@ export default function InvestorsOpportunitySection({
 }: InvestorsOpportunitySectionProps) {
   return (
     <section className="bg-white px-6 pb-10 pt-7 lg:px-12 lg:py-20 xl:px-20 xl:py-24">
-      <div className="mx-auto max-w-7xl 2xl:max-w-[90vw]">
+      <div className="mx-auto max-w-7xl xl:max-w-[90vw]">
         <div className="grid pb-5 lg:pb-0 grid-cols-1 gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-center lg:gap-10 xl:gap-16">
           {/* Text content - Reordered mathematically for CSS flex/grid but keeping DOM order same for SEO/accessibility */}
           <div className="order-1 flex flex-col space-y-4 lg:order-1 lg:space-y-7">
@@ -40,7 +40,7 @@ export default function InvestorsOpportunitySection({
             <h2 className="text-balance font-ttCommons leading-tight font-semibold text-[28px] text-[#2A2A2A] sm:text-[32px] lg:text-4xl xl:text-5xl lg:hidden">
               {headingMobile}
             </h2>
-            <p className="lg:max-w-sm pb-2 lg:pb-8 font-ttCommons font-medium text-[15px] text-[#999999] lg:text-lg lg:leading-[1.4] xl:max-w-xl">
+            <p className=" pb-2 lg:max-w-[90%] lg:pb-8 font-ttCommons font-medium text-[15px] text-[#999999] lg:text-lg lg:leading-[1.4] xl:max-w-xl">
               {description}
             </p>
             <Link
