@@ -29,7 +29,7 @@ export default function InvestorsOpportunitySection({
   cards,
 }: InvestorsOpportunitySectionProps) {
   return (
-    <section className="bg-white px-6 pb-10 pt-7 md:px-12 md:py-20 lg:px-20 lg:py-24">
+    <section className="bg-white px-5 pb-10 pt-7 md:px-12 md:py-20 lg:px-20 lg:py-24">
       <div className="mx-auto max-w-7xl xl:max-w-[90vw]">
         <div className="grid pb-5 md:pb-0 grid-cols-1 gap-6 md:grid-cols-[1fr_1.4fr] md:items-center md:gap-10 lg:gap-16">
           {/* Text content - Reordered mathematically for CSS flex/grid but keeping DOM order same for SEO/accessibility */}
