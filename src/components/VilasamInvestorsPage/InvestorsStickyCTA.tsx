@@ -48,9 +48,12 @@ export default function InvestorsStickyCTA() {
 
           <button
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              const contactSection = document.getElementById("contact-section");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+              }
             }}
-            className="inline-flex h-12 w-full items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943] md:w-auto md:h-10 md:px-10"
+            className="inline-flex py-3 items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943] w-auto md:h-10 md:px-10"
           >
             Book Now
           </button>

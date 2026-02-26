@@ -43,7 +43,11 @@ export const metadata: Metadata = {
 
 export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
-    heading: <>Invest in Mangalore's <br className="hidden md:block"/> Fast-Growing Corridor</>,
+    heading: (
+      <>
+        Invest in Mangalore's <br className="hidden md:block" /> Fast-Growing Corridor
+      </>
+    ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
@@ -139,7 +143,6 @@ export default function VilasamInvestorsPage() {
       <InvestorsStatsSection {...statsSectionData} />
       <InvestorsLocationSection {...locationSectionData} />
       <InvestorsContactSection />
-
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
       <LandingFooter />

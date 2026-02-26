@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { submitLead } from "@/lib/leadApi";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 interface InvestorsFormState {
   fullName: string;
@@ -33,6 +35,7 @@ export default function InvestorsContactSection() {
   const [form, setForm] = useState<InvestorsFormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [dialCode, setDialCode] = useState("91");
   const router = useRouter();
 
   const getUtmPayload = () => {
@@ -134,27 +137,24 @@ export default function InvestorsContactSection() {
         {/* Mobile Title */}
         <h2 className="mb-8 text-center font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:hidden">Book a Site Visit</h2>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 xl:gap-20">
-          
+        {/* UPDATED: Added lg:items-stretch so both columns share the same height on desktop */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-16 xl:gap-20">
           {/* Left Side: Map Image Placeholder */}
-          <div className="relative lg:col-span-5 h-[300px] w-full overflow-hidden rounded-[16px] md:h-[450px] lg:h-full lg:min-h-[500px]">
-            <Image 
-              src="/vilasamImages/map2.png" 
-              alt="Location Map" 
-              fill 
-              className="object-cover" 
-            />
+          {/* UPDATED: h-[350px] for mobile, md:h-[450px] for tablet, then lg:h-full to stretch to the content's height */}
+          <div className="relative lg:col-span-5 h-[350px] w-full overflow-hidden rounded-[16px] md:h-[450px] lg:h-full">
+            <Image src="/vilasamImages/map2.png" alt="Location Map" fill className="object-cover object-center" />
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="flex flex-col justify-center lg:col-span-7">
+          {/* UPDATED: Added py-4 md:py-12 lg:py-10 to add bulk to the content side */}
+          <div className="flex flex-col justify-center py-4 md:py-12 lg:py-10 lg:col-span-7">
             {/* Desktop Title */}
             <h2 className="hidden mb-8 font-ttCommons text-[36px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[42px]">
               Book a Site Visit
             </h2>
 
             <form onSubmit={handleSubmit} className="w-full">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-y-6 lg:gap-x-5">
                 {/* Full Width Name Row */}
                 <div className="col-span-1 md:col-span-2">
                   <input
@@ -167,20 +167,83 @@ export default function InvestorsContactSection() {
                 </div>
 
                 {/* Phone & Email Row */}
-                <div className="flex h-12 items-center rounded-md border border-[#E2E2E2] bg-[#FBFBFB] transition-colors focus-within:border-[#8ea7a5]">
-                  <div className="flex h-full items-center gap-1.5 border-r border-[#E2E2E2] px-3.5 text-[14px] text-[#555]">
-                    +91
-                    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1L4 4L7 1" stroke="#555" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <input
-                    type="tel"
+                <div className="flex flex-col" data-lenis-prevent>
+                  <PhoneInput
+                    defaultCountry="in"
                     value={form.phone}
-                    onChange={(event) => updateField("phone", event.target.value)}
-                    placeholder="Phone"
-                    className="h-full w-full bg-transparent px-3 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d]"
+                    onChange={(phone, data: any) => {
+                      updateField("phone", phone);
+                      if (data?.country?.dialCode) {
+                        setDialCode(data.country.dialCode);
+                      }
+                    }}
+                    disableDialCodeAndPrefix={true}
+                    className="flex h-12 w-full items-center rounded-md border border-[#E2E2E2] bg-[#FBFBFB] transition-colors focus-within:border-[#8ea7a5]"
+                    inputClassName="w-full bg-transparent px-3 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d]"
+                    inputStyle={{
+                      width: "100%",
+                      background: "transparent",
+                      border: "none",
+                      outline: "none",
+                      height: "100%",
+                    }}
+                    countrySelectorStyleProps={{
+                      buttonStyle: {
+                        background: "transparent",
+                        border: "none",
+                        borderRight: "1px solid #E2E2E2",
+                        height: "100%",
+                        padding: "0 12px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        // @ts-ignore
+                        "--dial-code": `"${dialCode}"`,
+                      } as React.CSSProperties,
+                      buttonClassName: "country-selector-button [&_img]:hidden",
+                      dropdownStyleProps: {
+                        style: {
+                          maxHeight: "220px",
+                          overflowY: "scroll",
+                          overflowX: "hidden",
+                          border: "1px solid #E2E2E2",
+                          borderRadius: "8px",
+                          background: "white",
+                          zIndex: 9999,
+                          overscrollBehavior: "contain",
+                        } as React.CSSProperties,
+                        listItemFlagClassName: "hidden",
+                        listItemCountryNameClassName: "hidden",
+                        listItemDialCodeClassName: "text-[#555] text-[13px]",
+                        className: "country-dropdown-list",
+                      },
+                    }}
                   />
+                  <style jsx global>{`
+                    .country-selector-button {
+                      gap: 6px;
+                    }
+                    .country-selector-button::before {
+                      content: "+" var(--dial-code);
+                      color: #555;
+                      font-size: 14px;
+                      font-weight: 400;
+                    }
+                    .country-dropdown-list {
+                      overflow-y: scroll !important;
+                      overflow-x: hidden !important;
+                    }
+                    .country-dropdown-list::-webkit-scrollbar {
+                      width: 4px;
+                    }
+                    .country-dropdown-list::-webkit-scrollbar-track {
+                      background: #f1f1f1;
+                    }
+                    .country-dropdown-list::-webkit-scrollbar-thumb {
+                      background: #848484;
+                      border-radius: 4px;
+                    }
+                  `}</style>
                 </div>
 
                 <input
@@ -262,7 +325,7 @@ export default function InvestorsContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex h-12 w-full items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943] disabled:cursor-not-allowed disabled:opacity-70 md:w-auto md:h-10 md:px-10"
+                  className="inline-flex py-3 w-full items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943] disabled:cursor-not-allowed disabled:opacity-70 md:w-auto md:h-10 md:px-10"
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>

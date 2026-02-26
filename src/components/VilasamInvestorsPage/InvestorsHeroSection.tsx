@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { submitLead } from "@/lib/leadApi";
 import { PhoneInput } from "react-international-phone";
@@ -132,6 +132,19 @@ export default function InvestorsHeroSection() {
     }
   };
 
+
+
+    useEffect(() => {
+    if (isModalOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isModalOpen) setIsModalOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isModalOpen]);
+
   return (
     <section className="relative min-h-[500px] md:min-h-[100vh]">
       <div className="relative flex min-h-[500px]  sm:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
@@ -171,7 +184,7 @@ export default function InvestorsHeroSection() {
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="md:hidden w-full bg-white text-[#064747] font-bold py-2 rounded-[4px] text-[15px]  transition hover:bg-gray-50 active:scale-95 z-20"
+            className="md:hidden w-full bg-white text-[#064747] font-bold py-3 rounded-[4px] text-[15px]  transition hover:bg-gray-50 active:scale-95 z-20"
           >
             Book a Site Visit Today
           </button>

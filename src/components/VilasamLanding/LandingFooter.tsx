@@ -78,7 +78,7 @@ export default function LandingFooter() {
           {/* =========================================
               DESKTOP ONLY: Standard Straight Divider
               ========================================= */}
-          <div className="hidden md:block w-full h-[1px] bg-white/10 mb-8"></div>
+          <div className="hidden md:block w-full h-[1px] bg-[#107e8c] mb-8"></div>
 
           {/* =========================================
               MOBILE ONLY: Divider with Centered Button

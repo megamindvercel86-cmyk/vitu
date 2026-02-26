@@ -78,7 +78,7 @@ export default function InvestorsAtAGlanceSection({ title, items }: InvestorsAtA
           </div>
 
           {/* Right Side Image Carousel */}
-          <div className="order-1 relative h-[320px] w-full overflow-hidden rounded-[16px] md:order-2 md:h-[480px] lg:h-[660px]">
+          <div className="order-1 relative h-[320px] w-full overflow-hidden rounded-[16px] md:order-2 md:h-[480px] lg:h-[580px]">
             {items.map((item, index) => (
               <Image
                 key={item.id}

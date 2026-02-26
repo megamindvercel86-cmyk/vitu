@@ -30,7 +30,7 @@ export default function InvestorsLocationSection({ title, locations, ctaLabel, c
         </h2>
 
         {/* UPDATED: Changed md:items-center to md:items-stretch so both columns share the same height */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_1.5fr] md:items-stretch md:gap-12 lg:grid-cols-[1fr_1.8fr] lg:gap-20">
+        <div className="grid grid-cols-1 gap-8  lg:items-stretch  lg:grid-cols-[1fr_1.8fr] lg:gap-20">
           
           {/* Left Side (Locations List & CTA) */}
           {/* UPDATED: Added py-8 md:py-12 lg:py-24 to add bulk to the content side */}
@@ -65,7 +65,7 @@ export default function InvestorsLocationSection({ title, locations, ctaLabel, c
 
           {/* Right Side Map */}
           {/* UPDATED: h-[350px] for mobile, then md:h-full to stretch exactly to the content's height */}
-          <div className="order-1 relative h-[350px] w-full overflow-hidden rounded-xl md:order-2 md:h-full">
+          <div className="order-1 relative h-[350px] w-full overflow-hidden rounded-xl lg:order-2 lg:h-full">
             <Image src={mapImageSrc} alt={title} fill className="object-cover object-center" />
           </div>
         </div>
