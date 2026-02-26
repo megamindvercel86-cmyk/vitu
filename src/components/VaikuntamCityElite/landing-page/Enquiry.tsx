@@ -13,8 +13,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 interface EnquiryProps {
   userType: "Home Buyer" | "Investor" | ""; // or make it optional if needed
+  premise?: string;
 }
-export default function Enquiry({ userType }: EnquiryProps) {
+export default function Enquiry({ userType, premise }: EnquiryProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -38,19 +39,20 @@ export default function Enquiry({ userType }: EnquiryProps) {
         whatsapp: false,
         option: values.prefferedPlotOrientation,
         userType: userType || "", // Use the userType prop or an empty string if not provided
+        premise: premise || "",
       };
       setIsLoading(true);
       handleFormSubmitVCE(payload)
         .then(() => {
           formik.setFieldValue("prefferedPlotOrientation", "");
           resetForm();
-            const segments = pathname.split("/").filter(Boolean);
-      const landingPage = segments.pop(); 
-      // e.g., "landing-page", "landing-page-1", "landing-page-2"
+          const segments = pathname.split("/").filter(Boolean);
+          const landingPage = segments.pop();
+          // e.g., "landing-page", "landing-page-1", "landing-page-2"
 
-      // 🔥 Redirect dynamically
-      router.push(`/vaikuntam-city-elite/${landingPage}/thank-you`);
-    })
+          // 🔥 Redirect dynamically
+          router.push(`/vaikuntam-city-elite/${landingPage}/thank-you`);
+        })
         .finally(() => {
           setIsLoading(false);
         });
@@ -73,49 +75,31 @@ export default function Enquiry({ userType }: EnquiryProps) {
         <div className="px-12 lg:px-12 mt-8 lg:mt-20">
           <form className="mt-8 lg:mt-12 space-y-6 lg:space-y-0 lg:grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <input
-                aria-label="Name"
-                type="text"
-                placeholder="Full Name"
-                {...formik.getFieldProps("fullName")}
-                className={inputBaseClass}
-              />
-              {formik.touched.fullName && formik.errors.fullName && (
-                <p className="text-red-500 text-sm">{formik.errors.fullName}</p>
-              )}
+              <input aria-label="Name" type="text" placeholder="Full Name" {...formik.getFieldProps("fullName")} className={inputBaseClass} />
+              {formik.touched.fullName && formik.errors.fullName && <p className="text-red-500 text-sm">{formik.errors.fullName}</p>}
             </div>
 
             <div className="">
-              <input
-                aria-label="Email"
-                type="email"
-                placeholder="Email Address"
-                {...formik.getFieldProps("email")}
-                className={inputBaseClass}
-              />
-              {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm">{formik.errors.email}</p>
-              )}
+              <input aria-label="Email" type="email" placeholder="Email Address" {...formik.getFieldProps("email")} className={inputBaseClass} />
+              {formik.touched.email && formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
             </div>
 
             <div className="">
               <input
                 aria-label="Phone Number"
-                type="number"
+                type="tel"
                 placeholder="Phone Number"
                 {...formik.getFieldProps("phone")}
-                className={"w-full px-1 pb-[7px] text-[#F3EAE1] bg-transparent border-0 border-b border-[#F3EAE1] focus:outline-none placeholder:text-xl text-lg placeholder:font-FreightNeoProNormal !font-noraml placeholder:text-[#F3EAE1]"}
+                className={
+                  "w-full px-1 pb-[7px] text-[#F3EAE1] bg-transparent border-0 border-b border-[#F3EAE1] focus:outline-none placeholder:text-xl text-lg placeholder:font-FreightNeoProNormal !font-noraml placeholder:text-[#F3EAE1]"
+                }
               />
-              {formik.touched.phone && formik.errors.phone && (
-                <p className="text-red-500 text-sm">{formik.errors.phone}</p>
-              )}
+              {formik.touched.phone && formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
             </div>
             <UnderlineSelect
               options={plotOptions}
               value={formik.values.prefferedPlotOrientation}
-              onChange={(value) =>
-                formik.setFieldValue("prefferedPlotOrientation", value)
-              }
+              onChange={(value) => formik.setFieldValue("prefferedPlotOrientation", value)}
               placeholder="Preferred Plot Orientation"
             />
 
@@ -142,9 +126,7 @@ export default function Enquiry({ userType }: EnquiryProps) {
                 }}
                 disabled={isLoading || !formik.isValid || !formik.dirty}
                 className={`text-xl font-FreightNeoProNormal uppercase bg-transparent min-w-36 border flex items-center justify-center gap-2 px-6 mx-auto py-2 border-[#F3EAE1] text-[#F3EAE1] ${
-                  !formik.isValid || !formik.dirty
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
+                  !formik.isValid || !formik.dirty ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
                 {isLoading ? (

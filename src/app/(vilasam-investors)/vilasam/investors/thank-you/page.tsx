@@ -20,8 +20,8 @@ export default function VilasamInvestorsThankYouPage() {
     <main className="relative flex  min-h-screen w-full flex-col items-center justify-center bg-white px-5 pb-16 pt-[120px] md:px-8 md:pt-[160px]">
       {/* Logos acting as Navbar */}
      <div className="absolute left-5 top-8 z-20 md:left-10 md:top-10">
-              <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[150px] md:w-[220px]" />
-            </div>
+              <Link href="/vilasam/investors"> <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[150px] md:w-[220px]" />
+            </Link></div>
     
             <div className="absolute right-5 top-8 z-20 md:right-10 md:top-10">
               <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] md:w-[170px]" />
@@ -62,7 +62,7 @@ export default function VilasamInvestorsThankYouPage() {
 
         {/* Text Content */}
         <div className="flex flex-col items-center justify-center space-y-3 text-center md:space-y-4">
-          <h1 className="font-ttCommons text-[32px] font-bold leading-tight text-[#2A2A2A] md:text-[40px] lg:text-[48px]">
+          <h1 className="font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:text-[40px] lg:text-[48px]">
             Thank You for Showing Interest
           </h1>
           <p className="max-w-[800px] font-ttCommons text-[15px] font-medium text-[#7b7b7b] md:text-[17px]">

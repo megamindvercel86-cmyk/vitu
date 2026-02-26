@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { submitLead } from "@/lib/leadApi";
+import { submitLead, type LeadIntent } from "@/lib/leadApi";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
@@ -31,7 +31,17 @@ const plotOrientationOptions = ["East Facing", "West Facing", "North Facing", "S
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function InvestorsContactSection() {
+interface InvestorsContactSectionProps {
+  thankYouRoute?: string;
+  intent?: LeadIntent;
+  formName?: string;
+}
+
+export default function InvestorsContactSection({
+  thankYouRoute = "/vilasam/investors/thank-you",
+  intent = "vilasamInvestors",
+  formName = "Vilasam Investors Contact Form",
+}: InvestorsContactSectionProps = {}) {
   const [form, setForm] = useState<InvestorsFormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -80,7 +90,6 @@ export default function InvestorsContactSection() {
     if (!emailRegex.test(form.email.trim())) return "Enter a valid email address.";
     if (!form.interestedIn) return "Please select what you are interested in.";
     if (!form.preferredPlotOrientation) return "Please select plot orientation.";
-    if (!form.consent) return "Please provide consent to continue.";
 
     return "";
   };
@@ -96,13 +105,13 @@ export default function InvestorsContactSection() {
     }
 
     const normalizedPhone = form.phone.replace(/\D/g, "");
-    const interstedIn = `${form.interestedIn} | ${form.preferredPlotOrientation}`;
+    const interstedIn = `${form.interestedIn}`;
 
     try {
       setIsSubmitting(true);
 
       await submitLead({
-        intent: "vilasamLanding",
+        intent,
         payload: {
           fullName: form.fullName.trim(),
           email: form.email.trim(),
@@ -110,16 +119,17 @@ export default function InvestorsContactSection() {
           interstedIn,
           interestedIn: interstedIn,
           preferredPlotOrientation: form.preferredPlotOrientation,
-          whatsapp: true,
+          whatsapp: form.consent,
+          premise: intent,
         },
         utm: getUtmPayload(),
         meta: {
-          formName: "Vilasam Investors Contact Form",
+          formName,
         },
       });
 
       setForm(initialFormState);
-      router.push("/vilasam/investors/thank-you");
+      router.push(thankYouRoute);
     } catch (submitError) {
       if (submitError instanceof Error) {
         setError(submitError.message);

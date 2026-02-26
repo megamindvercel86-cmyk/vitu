@@ -43,7 +43,11 @@ export const metadata: Metadata = {
 
 export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
-    heading: <>Your Space to <br className="hidden md:block"/> Breathe & Belong</>,
+    heading: (
+      <>
+        Your Space to <br className="hidden md:block" /> Breathe & Belong
+      </>
+    ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
@@ -133,16 +137,25 @@ export default function VilasamInvestorsPage() {
     ctaLabel: "Get to Know Your Neighborhood",
     ctaHref: "#",
     mapImageSrc: "/vilasamImages/mapinverstors2.png",
+    mapImageSrcMobile: "/vilasamImages/mapInMobile.png",
   };
 
   return (
     <main>
-      <InvestorsHeroSection />
+      <InvestorsHeroSection
+        thankYouRoute="/vilasam/home-buyers/thank-you"
+        intent="vilasamHomeBuyersLanding"
+        formName="Vilasam Home Buyers Page Form"
+      />
       <InvestorsOpportunitySection {...opportunitySectionData} />
       <InvestorsAtAGlanceSection {...atAGlanceSectionData} />
       <InvestorsStatsSection {...statsSectionData} />
       <InvestorsLocationSection {...locationSectionData} />
-      <InvestorsContactSection />
+      <InvestorsContactSection
+        thankYouRoute="/vilasam/home-buyers/thank-you"
+        intent="vilasamHomeBuyersLanding"
+        formName="Vilasam Home Buyers Contact Form"
+      />
 
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />

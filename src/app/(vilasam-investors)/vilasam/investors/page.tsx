@@ -133,6 +133,7 @@ export default function VilasamInvestorsPage() {
     ctaLabel: "Get to Know Your Neighborhood",
     ctaHref: "#",
     mapImageSrc: "/vilasamImages/mapinverstors1.png",
+    mapImageSrcMobile: "/vilasamImages/mapInMobile.png",
   };
 
   return (
@@ -142,7 +143,7 @@ export default function VilasamInvestorsPage() {
       <InvestorsAtAGlanceSection {...atAGlanceSectionData} />
       <InvestorsStatsSection {...statsSectionData} />
       <InvestorsLocationSection {...locationSectionData} />
-      <InvestorsContactSection />
+      <InvestorsContactSection thankYouRoute="/vilasam/investors/thank-you" intent="vilasamLanding" formName="Vilasam Investors Contact Form" />
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
       <LandingFooter />

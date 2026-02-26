@@ -4,9 +4,12 @@ export type LeadIntent =
   | "careerApplication"
   | "vaikuntamCityElite"
   | "vilasamLanding"
+  | "vilasamHomeBuyersLanding"
   | "projectModal"
   | "vaikuntamCityExplore"
-  | "newsletterSignup";
+  | "newsletterSignup"
+  | "vilasamInvestors";
+  
 
 export interface LeadUtmPayload {
   utm_source?: string;

@@ -42,7 +42,7 @@ export default function vaikuntamCityEliteLandingPage() {
       <Features accordianData={accordianData} />
       <InvestmentPotential />
       <AvailablePlotOrientations />
-      <Enquiry userType="" />
+      <Enquiry premise="Vaikuntam City Elite - Landing Page" userType="" />
       <MapSection />
     </>
   );

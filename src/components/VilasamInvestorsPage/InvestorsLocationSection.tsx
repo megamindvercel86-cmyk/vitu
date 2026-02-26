@@ -16,10 +16,11 @@ export interface InvestorsLocationSectionProps {
   ctaLabel: string;
   ctaHref: string;
   mapImageSrc: string;
+  mapImageSrcMobile: string;
 }
 
-export default function InvestorsLocationSection({ title, locations, ctaLabel, ctaHref, mapImageSrc }: InvestorsLocationSectionProps) {
-  if (!locations || locations.length === 0) return null;
+export default function InvestorsLocationSection({ title, locations, ctaLabel, ctaHref, mapImageSrc, mapImageSrcMobile }: InvestorsLocationSectionProps) {
+  if (!locations || locations.length === 0) return null;  
 
   return (
     <section className="bg-white px-5 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20">
@@ -65,8 +66,9 @@ export default function InvestorsLocationSection({ title, locations, ctaLabel, c
 
           {/* Right Side Map */}
           {/* UPDATED: h-[350px] for mobile, then md:h-full to stretch exactly to the content's height */}
-          <div className="order-1 relative h-[350px] w-full overflow-hidden rounded-xl lg:order-2 lg:h-full">
-            <Image src={mapImageSrc} alt={title} fill className="object-cover object-center" />
+          <div className="order-1 relative min-h-[350px] w-full overflow-hidden rounded-xl lg:order-2 lg:h-full">
+            <Image src={mapImageSrc} alt={title} fill className="object-cover object-center h-full hidden md:block" />
+            <Image src={mapImageSrcMobile} alt={title} fill className="object-cover h-full  md:hidden" />
           </div>
         </div>
       </div>

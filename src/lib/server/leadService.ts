@@ -1,18 +1,12 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import type {
-  LeadIntent,
-  LeadMetaPayload,
-  LeadUtmPayload,
-} from "@/lib/leadApi";
+import type { LeadIntent, LeadMetaPayload, LeadUtmPayload } from "@/lib/leadApi";
 import { sendFormEmail } from "@/lib/server/emailService";
 
 const ACCELR_WEBHOOK_URL =
-  process.env.ACCELR_WEBHOOK_URL ||
-  "https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website";
+  process.env.ACCELR_WEBHOOK_URL || "https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website";
 const PABBLY_WEBHOOK_URL =
-  process.env.PABBLY_WEBHOOK_URL ||
-  "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc";
+  process.env.PABBLY_WEBHOOK_URL || "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc";
 const AISENSY_URL = "https://backend.aisensy.com/campaign/t1/api/v2";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
@@ -28,6 +22,8 @@ const VALID_INTENTS: ReadonlySet<LeadIntent> = new Set([
   "projectModal",
   "vaikuntamCityExplore",
   "newsletterSignup",
+  "vilasamHomeBuyersLanding",
+  "vilasamInvestors",
 ]);
 
 export class LeadValidationError extends Error {}
@@ -45,11 +41,9 @@ export interface LeadSubmitResult {
   documentId: string;
 }
 
-const asString = (value: unknown): string =>
-  typeof value === "string" ? value.trim() : "";
+const asString = (value: unknown): string => (typeof value === "string" ? value.trim() : typeof value === "number" ? String(value) : "");
 
-const asBoolean = (value: unknown, fallback = false): boolean =>
-  typeof value === "boolean" ? value : fallback;
+const asBoolean = (value: unknown, fallback = false): boolean => (typeof value === "boolean" ? value : fallback);
 
 const asStringArray = (value: unknown): string[] => {
   if (!Array.isArray(value)) return [];
@@ -59,8 +53,7 @@ const asStringArray = (value: unknown): string[] => {
     .filter(Boolean);
 };
 
-const isValidEmail = (email: string): boolean =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isValidEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const normalizePhone = (value: unknown): string => {
   const digits = asString(value).replace(/\D/g, "");
@@ -70,10 +63,7 @@ const normalizePhone = (value: unknown): string => {
   return digits;
 };
 
-const ensureObject = (
-  value: unknown,
-  message = "Invalid request body.",
-): Record<string, unknown> => {
+const ensureObject = (value: unknown, message = "Invalid request body."): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     throw new LeadValidationError(message);
   }
@@ -104,12 +94,8 @@ const requirePhone = (value: unknown): string => {
   return phone;
 };
 
-const cleanObject = (
-  obj: Record<string, unknown>,
-): Record<string, unknown> => {
-  const filteredEntries = Object.entries(obj).filter(
-    ([, value]) => value !== undefined,
-  );
+const cleanObject = (obj: Record<string, unknown>): Record<string, unknown> => {
+  const filteredEntries = Object.entries(obj).filter(([, value]) => value !== undefined);
   return Object.fromEntries(filteredEntries);
 };
 
@@ -139,9 +125,7 @@ const enforceRateLimit = (headers: Headers): void => {
   }
 
   if (existingEntry.count >= RATE_LIMIT_MAX_REQUESTS) {
-    throw new LeadRateLimitError(
-      "Too many requests. Please try again in a few minutes.",
-    );
+    throw new LeadRateLimitError("Too many requests. Please try again in a few minutes.");
   }
 
   existingEntry.count += 1;
@@ -187,10 +171,7 @@ const normalizeLeadRequest = (body: unknown): NormalizedLeadRequest => {
   };
 };
 
-const persistLead = async (
-  collectionName: string,
-  data: Record<string, unknown>,
-): Promise<LeadSubmitResult> => {
+const persistLead = async (collectionName: string, data: Record<string, unknown>): Promise<LeadSubmitResult> => {
   const document = cleanObject({
     ...data,
     createdAt: serverTimestamp(),
@@ -199,10 +180,7 @@ const persistLead = async (
   return { collectionName, documentId: reference.id };
 };
 
-const safeIntegration = async (
-  integrationName: string,
-  task: () => Promise<void>,
-): Promise<void> => {
+const safeIntegration = async (integrationName: string, task: () => Promise<void>): Promise<void> => {
   try {
     await task();
   } catch (error) {
@@ -210,9 +188,7 @@ const safeIntegration = async (
   }
 };
 
-const sendAiSensyMessage = async (
-  payload: Record<string, unknown>,
-): Promise<void> => {
+const sendAiSensyMessage = async (payload: Record<string, unknown>): Promise<void> => {
   const apiKey = process.env.AISENSY_API_KEY;
   if (!apiKey) return;
 
@@ -261,10 +237,7 @@ const sendWhatsAppVitu = async (name: string, phone: string): Promise<void> => {
   });
 };
 
-const sendWhatsAppVaikuntamCity = async (
-  name: string,
-  phone: string,
-): Promise<void> => {
+const sendWhatsAppVaikuntamCity = async (name: string, phone: string): Promise<void> => {
   await sendAiSensyMessage({
     campaignName: "eliteutil",
     destination: `91${phone}`,
@@ -288,10 +261,15 @@ const sendWhatsAppVaikuntamCity = async (
 };
 
 const postAccelr = async (payload: Record<string, unknown>): Promise<void> => {
+  const enrichedPayload = {
+    ...payload,
+    premise: payload.premise || payload.project || payload.formName || "Website",
+  };
+
   const response = await fetch(ACCELR_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(enrichedPayload),
   });
 
   if (!response.ok) {
@@ -313,10 +291,7 @@ const postPabbly = async (payload: Record<string, unknown>): Promise<void> => {
   }
 };
 
-const postGoogleScript = async (
-  url: string,
-  payload: Record<string, string>,
-): Promise<void> => {
+const postGoogleScript = async (url: string, payload: Record<string, string>): Promise<void> => {
   if (!url) return;
 
   await fetch(url, {
@@ -326,9 +301,7 @@ const postGoogleScript = async (
   });
 };
 
-const submitGeneralEnquire = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -341,6 +314,7 @@ const submitGeneralEnquire = async (
     phone,
     comments,
     whatsapp,
+    premise: request.payload.premise,
     ...request.utm,
   };
 
@@ -369,14 +343,13 @@ const submitGeneralEnquire = async (
   return result;
 };
 
-const submitProjectEnquire = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
   const option = requireString(request.payload.option, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
+  const premise = asString(request.payload.premise);
 
   const leadPayload = {
     fullName,
@@ -386,6 +359,7 @@ const submitProjectEnquire = async (
     whatsapp,
     interstedIn: option,
     interestedIn: option,
+    premise,
     ...request.utm,
   };
 
@@ -415,9 +389,7 @@ const submitProjectEnquire = async (
   return result;
 };
 
-const submitCareerApplication = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -456,9 +428,7 @@ const submitCareerApplication = async (
   return result;
 };
 
-const submitVaikuntamCityElite = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -474,6 +444,7 @@ const submitVaikuntamCityElite = async (
     whatsapp,
     interestedIn: option,
     userType,
+    premise: request.payload.premise,
     ...request.utm,
   };
 
@@ -481,12 +452,8 @@ const submitVaikuntamCityElite = async (
 
   const googleScriptUrl =
     userType === "Investor"
-      ? process.env.GOOGLE_SCRIPT_URL_CALL_INVESTOR ||
-        process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_INVESTOR ||
-        ""
-      : process.env.GOOGLE_SCRIPT_URL_CALL_HOME ||
-        process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_HOME ||
-        "";
+      ? process.env.GOOGLE_SCRIPT_URL_CALL_INVESTOR || process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_INVESTOR || ""
+      : process.env.GOOGLE_SCRIPT_URL_CALL_HOME || process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL_CALL_HOME || "";
 
   await safeIntegration("send elite google script", async () => {
     await postGoogleScript(googleScriptUrl, {
@@ -538,19 +505,13 @@ const submitVaikuntamCityElite = async (
   return result;
 };
 
-const submitVilasamLanding = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
-  const interstedIn =
-    asString(request.payload.interstedIn) ||
-    requireString(request.payload.interestedIn, "Interested in");
+  const interstedIn = asString(request.payload.interstedIn) || requireString(request.payload.interestedIn, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
-  const preferredPlotOrientation = asString(
-    request.payload.preferredPlotOrientation,
-  );
+  const preferredPlotOrientation = asString(request.payload.preferredPlotOrientation);
   const formName = request.meta.formName || "Vilasam Landing Page Form";
 
   const leadPayload = {
@@ -562,6 +523,7 @@ const submitVilasamLanding = async (
     whatsapp,
     preferredPlotOrientation,
     project: "Vilasam",
+    premise: request.payload.premise,
     ...request.utm,
   };
 
@@ -604,15 +566,11 @@ const submitVilasamLanding = async (
   return result;
 };
 
-const submitProjectModal = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
-  const interstedIn =
-    asString(request.payload.interstedIn) ||
-    requireString(request.payload.interestedIn, "Interested in");
+  const interstedIn = asString(request.payload.interstedIn) || requireString(request.payload.interestedIn, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
 
   const collectionName = request.meta.collectionName || "projectEnquiries";
@@ -623,6 +581,7 @@ const submitProjectModal = async (
     interstedIn,
     interestedIn: interstedIn,
     whatsapp,
+    premise: request.payload.premise,
     ...request.utm,
   };
 
@@ -655,9 +614,7 @@ const submitProjectModal = async (
   return result;
 };
 
-const submitVaikuntamCityExplore = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -673,6 +630,7 @@ const submitVaikuntamCityExplore = async (
     phone,
     interestedIn,
     project: "Vaikuntam City",
+    premise: request.payload.premise,
     ...request.utm,
   };
 
@@ -689,9 +647,7 @@ const submitVaikuntamCityExplore = async (
   return result;
 };
 
-const submitNewsletterSignup = async (
-  request: NormalizedLeadRequest,
-): Promise<LeadSubmitResult> => {
+const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const email = requireEmail(request.payload.email);
 
   const leadPayload = {
@@ -712,10 +668,7 @@ const submitNewsletterSignup = async (
   return result;
 };
 
-export const submitLead = async (
-  body: unknown,
-  headers: Headers,
-): Promise<LeadSubmitResult> => {
+export const submitLead = async (body: unknown, headers: Headers): Promise<LeadSubmitResult> => {
   enforceRateLimit(headers);
   const request = normalizeLeadRequest(body);
 
@@ -729,6 +682,8 @@ export const submitLead = async (
     case "vaikuntamCityElite":
       return submitVaikuntamCityElite(request);
     case "vilasamLanding":
+    case "vilasamHomeBuyersLanding":
+    case "vilasamInvestors":
       return submitVilasamLanding(request);
     case "projectModal":
       return submitProjectModal(request);

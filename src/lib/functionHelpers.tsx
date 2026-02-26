@@ -8,6 +8,7 @@ export interface FormValues {
   whatsapp: boolean;
   option: string;
   userType: string;
+  premise?: string;
 }
 
 // 🔹 Helper to capture UTM parameters from the URL
@@ -39,10 +40,11 @@ export const handleFormSubmitVCE = async (values: FormValues) => {
       payload: {
         fullName: values.fullName,
         email: values.email,
-        phone: values.phone,
+        phone: String(values.phone),
         whatsapp: values.whatsapp,
         option: values.option,
         userType: values.userType || "",
+        premise: values.premise || "",
       },
       utm: utmData,
       meta: {
