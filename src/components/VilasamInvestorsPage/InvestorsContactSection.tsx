@@ -45,6 +45,7 @@ export default function InvestorsContactSection({
   const [form, setForm] = useState<InvestorsFormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [dialCode, setDialCode] = useState("91");
   const router = useRouter();
 
@@ -81,29 +82,36 @@ export default function InvestorsContactSection({
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const validate = (): string => {
-    if (!form.fullName.trim()) return "Name is required.";
+  const validate = (): boolean => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!form.fullName.trim()) newErrors.fullName = "Name is required.";
 
     const phone = form.phone.replace(/\D/g, "");
-    if (phone.length < 10) return "Enter a valid phone number.";
+    if (phone.length < 10) newErrors.phone = "Enter a valid phone number.";
 
-    if (!emailRegex.test(form.email.trim())) return "Enter a valid email address.";
-    if (!form.interestedIn) return "Please select what you are interested in.";
-    if (!form.preferredPlotOrientation) return "Please select plot orientation.";
+    if (!emailRegex.test(form.email.trim())) newErrors.email = "Enter a valid email address.";
+    if (!form.interestedIn) newErrors.interestedIn = "Please select what you are interested in.";
+    if (!form.preferredPlotOrientation) newErrors.preferredPlotOrientation = "Please select plot orientation.";
 
-    return "";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
 
-    const validationError = validate();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
+    const isValid = validate();
+    if (!isValid) return;
+    const link = document.createElement("a");
+    link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+    link.download = "VITU Realty - Vilasam.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
+    router.push(thankYouRoute);
     const normalizedPhone = form.phone.replace(/\D/g, "");
     const interstedIn = `${form.interestedIn}`;
 
@@ -129,7 +137,8 @@ export default function InvestorsContactSection({
       });
 
       setForm(initialFormState);
-      router.push(thankYouRoute);
+
+      // Trigger automatic file download
     } catch (submitError) {
       if (submitError instanceof Error) {
         setError(submitError.message);
@@ -170,10 +179,16 @@ export default function InvestorsContactSection({
                   <input
                     type="text"
                     value={form.fullName}
-                    onChange={(event) => updateField("fullName", event.target.value)}
+                    onChange={(event) => {
+                      updateField("fullName", event.target.value);
+                      if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+                    }}
                     placeholder="Name"
-                    className="h-12 w-full rounded-md border border-[#E2E2E2] bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors focus:border-[#8ea7a5]"
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                      errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                    }`}
                   />
+                  {errors.fullName && <p className="mt-1 text-[12px] text-red-500">{errors.fullName}</p>}
                 </div>
 
                 {/* Phone & Email Row */}
@@ -183,12 +198,15 @@ export default function InvestorsContactSection({
                     value={form.phone}
                     onChange={(phone, data: any) => {
                       updateField("phone", phone);
+                      if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
                       if (data?.country?.dialCode) {
                         setDialCode(data.country.dialCode);
                       }
                     }}
                     disableDialCodeAndPrefix={true}
-                    className="flex h-12 w-full items-center rounded-md border border-[#E2E2E2] bg-[#FBFBFB] transition-colors focus-within:border-[#8ea7a5]"
+                    className={`flex h-12 w-full items-center rounded-md border bg-[#FBFBFB] transition-colors ${
+                      errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#8ea7a5]"
+                    }`}
                     inputClassName="w-full bg-transparent px-3 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d]"
                     inputStyle={{
                       width: "100%",
@@ -254,55 +272,80 @@ export default function InvestorsContactSection({
                       border-radius: 4px;
                     }
                   `}</style>
+                  {errors.phone && <p className="mt-1 text-[12px] text-red-500">{errors.phone}</p>}
                 </div>
 
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(event) => updateField("email", event.target.value)}
-                  placeholder="Email"
-                  className="h-12 w-full rounded-md border border-[#E2E2E2] bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors focus:border-[#8ea7a5]"
-                />
+                <div>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={(event) => {
+                      updateField("email", event.target.value);
+                      if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                    }}
+                    placeholder="Email"
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                      errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                    }`}
+                  />
+                  {errors.email && <p className="mt-1 text-[12px] text-red-500">{errors.email}</p>}
+                </div>
 
                 {/* Dropdowns Row */}
-                <div className="relative w-full">
-                  <select
-                    value={form.interestedIn}
-                    onChange={(event) => updateField("interestedIn", event.target.value)}
-                    className="h-12 w-full appearance-none rounded-md border border-[#E2E2E2] bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors focus:border-[#8ea7a5]"
-                  >
-                    <option value="">Interested In</option>
-                    {interestedInOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                <div className="w-full">
+                  <div className="relative w-full">
+                    <select
+                      value={form.interestedIn}
+                      onChange={(event) => {
+                        updateField("interestedIn", event.target.value);
+                        if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
+                      }}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors ${
+                        errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
+                    >
+                      <option value="">Interested In</option>
+                      {interestedInOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </div>
+                  {errors.interestedIn && <p className="mt-1 text-[12px] text-red-500">{errors.interestedIn}</p>}
                 </div>
 
-                <div className="relative w-full">
-                  <select
-                    value={form.preferredPlotOrientation}
-                    onChange={(event) => updateField("preferredPlotOrientation", event.target.value)}
-                    className="h-12 w-full appearance-none rounded-md border border-[#E2E2E2] bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors focus:border-[#8ea7a5]"
-                  >
-                    <option value="">Preferred Plot Orientation</option>
-                    {plotOrientationOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                <div className="w-full">
+                  <div className="relative w-full">
+                    <select
+                      value={form.preferredPlotOrientation}
+                      onChange={(event) => {
+                        updateField("preferredPlotOrientation", event.target.value);
+                        if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
+                      }}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors ${
+                        errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
+                    >
+                      <option value="">Preferred Plot Orientation</option>
+                      {plotOrientationOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </div>
+                  {errors.preferredPlotOrientation && <p className="mt-1 text-[12px] text-red-500">{errors.preferredPlotOrientation}</p>}
                 </div>
               </div>
 

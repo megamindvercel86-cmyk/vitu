@@ -16,27 +16,27 @@ import {
 import LandingFooter from "@/components/VilasamLanding/LandingFooter";
 
 export const metadata: Metadata = {
-  title: "Vilasam Investors | Vitu Realty",
-  description: "Book your Vilasam site visit and explore premium investment-ready villa plots in Mangaluru.",
+  title: "Vilasam Home Buyers | Vitu Realty",
+  description: "Book your Vilasam site visit and explore premium residential villa plots in Mangaluru.",
   openGraph: {
-    title: "Vilasam Investors | Vitu Realty",
-    description: "Book your Vilasam site visit and explore premium investment-ready villa plots in Mangaluru.",
-    url: "https://www.viturealty.com/vilasam/investors",
+    title: "Vilasam Home Buyers | Vitu Realty",
+    description: "Book your Vilasam site visit and explore premium residential villa plots in Mangaluru.",
+    url: "https://www.viturealty.com/vilasam/home-buyers",
     siteName: "Vitu-Realty",
     images: [
       {
         url: "/images/vilasamImages/herobanner.webp",
         width: 1200,
         height: 630,
-        alt: "Vilasam Investors",
+        alt: "Vilasam Home Buyers",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vilasam Investors | Vitu Realty",
-    description: "Book your Vilasam site visit and explore premium investment-ready villa plots in Mangaluru.",
+    title: "Vilasam Home Buyers | Vitu Realty",
+    description: "Book your Vilasam site visit and explore premium residential villa plots in Mangaluru.",
     images: ["/images/vilasamImages/herobanner.webp"],
   },
 };
@@ -52,7 +52,6 @@ export default function VilasamInvestorsPage() {
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
     ctaLabel: "Download E-Brochure",
-    ctaHref: "/downloadingFiles/VITU Realty - Vilasam.pdf",
     imageSrc: "/vilasamImages/basicImages/1.webp",
     imageAlt: "Vilasam gated entrance",
     cards: [

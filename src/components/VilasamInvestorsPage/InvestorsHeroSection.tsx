@@ -45,6 +45,7 @@ export default function InvestorsHeroSection({
   const [form, setForm] = useState<InvestorsFormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [dialCode, setDialCode] = useState("91");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
@@ -82,34 +83,41 @@ export default function InvestorsHeroSection({
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const validate = (): string => {
-    if (!form.fullName.trim()) return "Name is required.";
+  const validate = (): boolean => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!form.fullName.trim()) newErrors.fullName = "Name is required.";
 
     const phone = form.phone.replace(/\D/g, "");
-    if (phone.length < 10) return "Enter a valid phone number.";
+    if (phone.length < 10) newErrors.phone = "Enter a valid phone number.";
 
-    if (!emailRegex.test(form.email.trim())) return "Enter a valid email address.";
-    if (!form.interestedIn) return "Please select what you are interested in.";
-    if (!form.preferredPlotOrientation) return "Please select plot orientation.";
+    if (!emailRegex.test(form.email.trim())) newErrors.email = "Enter a valid email address.";
+    if (!form.interestedIn) newErrors.interestedIn = "Please select what you are interested in.";
+    if (!form.preferredPlotOrientation) newErrors.preferredPlotOrientation = "Please select plot orientation.";
 
-    return "";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
 
-    const validationError = validate();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
+    const isValid = validate();
+    if (!isValid) return;
 
     const normalizedPhone = form.phone.replace(/\D/g, "");
     const interstedIn = `${form.interestedIn}`;
-
+    const link = document.createElement("a");
+    link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+    link.download = "VITU Realty - Vilasam.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     try {
       setIsSubmitting(true);
+
+      router.push(thankYouRoute);
 
       await submitLead({
         intent: intent as LeadIntent,
@@ -130,7 +138,9 @@ export default function InvestorsHeroSection({
       });
 
       setForm(initialFormState);
-      router.push(thankYouRoute);
+
+      // Trigger automatic file download
+      
     } catch (submitError) {
       if (submitError instanceof Error) {
         setError(submitError.message);
@@ -141,6 +151,12 @@ export default function InvestorsHeroSection({
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    const handleOpenModal = () => setIsModalOpen(true);
+    window.addEventListener("open-investors-modal", handleOpenModal);
+    return () => window.removeEventListener("open-investors-modal", handleOpenModal);
+  }, []);
 
   useEffect(() => {
     if (isModalOpen) document.body.style.overflow = "hidden";
@@ -207,13 +223,21 @@ export default function InvestorsHeroSection({
             <h2 className="mb-4 text-center font-semibold text-[14px] md:text-[15px] text-[#2A2A2A]">Book your Site Visit</h2>
 
             <div className="space-y-2.5">
-              <input
-                type="text"
-                value={form.fullName}
-                onChange={(event) => updateField("fullName", event.target.value)}
-                placeholder="Name"
-                className="h-10 w-full rounded-md border border-[#E2E2E2] bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] focus:border-[#E2E2E2]"
-              />
+              <div>
+                <input
+                  type="text"
+                  value={form.fullName}
+                  onChange={(event) => {
+                    updateField("fullName", event.target.value);
+                    if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+                  }}
+                  placeholder="Name"
+                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                    errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                  }`}
+                />
+                {errors.fullName && <p className="mt-1 text-[11px] text-red-500">{errors.fullName}</p>}
+              </div>
 
               <div className="flex flex-col" data-lenis-prevent>
                 <PhoneInput
@@ -221,12 +245,15 @@ export default function InvestorsHeroSection({
                   value={form.phone}
                   onChange={(phone, data: any) => {
                     updateField("phone", phone);
+                    if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
                     if (data?.country?.dialCode) {
                       setDialCode(data.country.dialCode);
                     }
                   }}
                   disableDialCodeAndPrefix={true}
-                  className="flex h-10 w-full items-center rounded-md border border-[#E2E2E2] bg-white transition-colors focus-within:border-[#E2E2E2]"
+                  className={`flex h-10 w-full items-center rounded-md border bg-white transition-colors ${
+                    errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#E2E2E2]"
+                  }`}
                   inputClassName="w-full bg-transparent px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{
                     width: "100%",
@@ -292,54 +319,79 @@ export default function InvestorsHeroSection({
                     border-radius: 4px;
                   }
                 `}</style>
+                {errors.phone && <p className="mt-1 text-[11px] text-red-500">{errors.phone}</p>}
               </div>
 
-              <input
-                type="email"
-                value={form.email}
-                onChange={(event) => updateField("email", event.target.value)}
-                placeholder="Email"
-                className="h-10 w-full rounded-md border border-[#E2E2E2] bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] focus:border-[#E2E2E2]"
-              />
-
-              <div className="relative">
-                <select
-                  value={form.interestedIn}
-                  onChange={(event) => updateField("interestedIn", event.target.value)}
-                  className="h-10 w-full appearance-none rounded-md border border-[#E2E2E2] bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none focus:border-[#E2E2E2]"
-                >
-                  <option value="">Interested In</option>
-                  {interestedInOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+              <div>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(event) => {
+                    updateField("email", event.target.value);
+                    if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                  }}
+                  placeholder="Email"
+                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                    errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                  }`}
+                />
+                {errors.email && <p className="mt-1 text-[11px] text-red-500">{errors.email}</p>}
               </div>
 
-              <div className="relative">
-                <select
-                  value={form.preferredPlotOrientation}
-                  onChange={(event) => updateField("preferredPlotOrientation", event.target.value)}
-                  className="h-10 w-full appearance-none rounded-md border border-[#E2E2E2] bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none focus:border-[#E2E2E2]"
-                >
-                  <option value="">Preferred Plot Orientation</option>
-                  {plotOrientationOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
+              <div className="w-full">
+                <div className="relative">
+                  <select
+                    value={form.interestedIn}
+                    onChange={(event) => {
+                      updateField("interestedIn", event.target.value);
+                      if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
+                    }}
+                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
+                      errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    }`}
+                  >
+                    <option value="">Interested In</option>
+                    {interestedInOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
+                {errors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{errors.interestedIn}</p>}
+              </div>
+
+              <div className="w-full">
+                <div className="relative">
+                  <select
+                    value={form.preferredPlotOrientation}
+                    onChange={(event) => {
+                      updateField("preferredPlotOrientation", event.target.value);
+                      if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
+                    }}
+                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
+                      errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    }`}
+                  >
+                    <option value="">Preferred Plot Orientation</option>
+                    {plotOrientationOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                {errors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{errors.preferredPlotOrientation}</p>}
               </div>
             </div>
 
@@ -379,10 +431,10 @@ export default function InvestorsHeroSection({
         </div>
       </div>
 
-      {/* Mobile Modal */}
+      {/* Modal for both Mobile and Desktop */}
       {isModalOpen && (
-        <div data-lenis-prevent className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm md:hidden p-4">
-          <form onSubmit={handleSubmit} className="relative w-full max-w-sm rounded-[12px] bg-white p-6 shadow-2xl">
+        <div data-lenis-prevent className="fixed inset-0 z-[60] flex items-center justify-center backdrop-blur-sm bg-black/20 p-4">
+          <form onSubmit={handleSubmit} className="relative w-full max-w-[420px] rounded-[12px] bg-white p-6 shadow-2xl">
             {/* Close Button */}
             <button type="button" onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-500 transition hover:text-black">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -395,13 +447,21 @@ export default function InvestorsHeroSection({
             </div>
 
             <div className="space-y-3.5">
-              <input
-                type="text"
-                value={form.fullName}
-                onChange={(event) => updateField("fullName", event.target.value)}
-                placeholder="Name"
-                className="h-[42px] w-full rounded-md border border-[#E2E2E2] bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] focus:border-[#064747]"
-              />
+              <div>
+                <input
+                  type="text"
+                  value={form.fullName}
+                  onChange={(event) => {
+                    updateField("fullName", event.target.value);
+                    if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+                  }}
+                  placeholder="Name"
+                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                    errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                  }`}
+                />
+                {errors.fullName && <p className="mt-1 text-[11px] text-red-500">{errors.fullName}</p>}
+              </div>
 
               <div className="flex flex-col" data-lenis-prevent>
                 <PhoneInput
@@ -409,12 +469,15 @@ export default function InvestorsHeroSection({
                   value={form.phone}
                   onChange={(phone, data: any) => {
                     updateField("phone", phone);
+                    if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
                     if (data?.country?.dialCode) {
                       setDialCode(data.country.dialCode);
                     }
                   }}
                   disableDialCodeAndPrefix={true}
-                  className="flex h-[42px] w-full items-center rounded-md border border-[#E2E2E2] bg-white transition-colors focus-within:border-[#064747]"
+                  className={`flex h-[42px] w-full items-center rounded-md border bg-white transition-colors ${
+                    errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#064747]"
+                  }`}
                   inputClassName="w-full bg-transparent px-3 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{ width: "100%", background: "transparent", border: "none", outline: "none", height: "100%" }}
                   countrySelectorStyleProps={{
@@ -450,54 +513,79 @@ export default function InvestorsHeroSection({
                     },
                   }}
                 />
+                {errors.phone && <p className="mt-1 text-[11px] text-red-500">{errors.phone}</p>}
               </div>
 
-              <input
-                type="email"
-                value={form.email}
-                onChange={(event) => updateField("email", event.target.value)}
-                placeholder="Email"
-                className="h-[42px] w-full rounded-md border border-[#E2E2E2] bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] focus:border-[#064747]"
-              />
-
-              <div className="relative">
-                <select
-                  value={form.interestedIn}
-                  onChange={(event) => updateField("interestedIn", event.target.value)}
-                  className="h-[42px] w-full appearance-none rounded-md border border-[#E2E2E2] bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none focus:border-[#064747]"
-                >
-                  <option value="">Interested In</option>
-                  {interestedInOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+              <div>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(event) => {
+                    updateField("email", event.target.value);
+                    if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                  }}
+                  placeholder="Email"
+                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
+                    errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                  }`}
+                />
+                {errors.email && <p className="mt-1 text-[11px] text-red-500">{errors.email}</p>}
               </div>
 
-              <div className="relative">
-                <select
-                  value={form.preferredPlotOrientation}
-                  onChange={(event) => updateField("preferredPlotOrientation", event.target.value)}
-                  className="h-[42px] w-full appearance-none rounded-md border border-[#E2E2E2] bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none focus:border-[#064747]"
-                >
-                  <option value="">Preferred Plot Orientation</option>
-                  {plotOrientationOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
+              <div className="w-full">
+                <div className="relative">
+                  <select
+                    value={form.interestedIn}
+                    onChange={(event) => {
+                      updateField("interestedIn", event.target.value);
+                      if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
+                    }}
+                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
+                      errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    }`}
+                  >
+                    <option value="">Interested In</option>
+                    {interestedInOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
+                {errors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{errors.interestedIn}</p>}
+              </div>
+
+              <div className="w-full">
+                <div className="relative">
+                  <select
+                    value={form.preferredPlotOrientation}
+                    onChange={(event) => {
+                      updateField("preferredPlotOrientation", event.target.value);
+                      if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
+                    }}
+                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
+                      errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    }`}
+                  >
+                    <option value="">Preferred Plot Orientation</option>
+                    {plotOrientationOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                {errors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{errors.preferredPlotOrientation}</p>}
               </div>
             </div>
 

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -12,7 +14,6 @@ export interface InvestorsOpportunitySectionProps {
   headingMobile: ReactNode;
   description: string;
   ctaLabel: string;
-  ctaHref: string;
   imageSrc: string;
   imageAlt: string;
   cards: InvestorsOpportunityCard[];
@@ -22,7 +23,6 @@ export default function InvestorsOpportunitySection({
   heading,
   description,
   ctaLabel,
-  ctaHref,
   imageSrc,
   imageAlt,
   headingMobile,
@@ -43,12 +43,16 @@ export default function InvestorsOpportunitySection({
             <p className="max-w-sm pb-2 md:pb-8 font-ttCommons font-medium text-[15px]  text-[#999999] md:text-lg md:leading-[1.4] lg:max-w-xl">
               {description}
             </p>
-            <Link
-              href={ctaHref}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-investors-modal"));
+              }}
               className="hidden h-12 w-fit items-center justify-center rounded-md bg-[#064747] px-8 font-ttCommons  font-bold text-white transition hover:bg-[#084943] md:inline-flex md:h-12 md:px-10 text-base"
             >
               {ctaLabel}
-            </Link>
+            </button>
           </div>
 
           {/* Image */}
@@ -56,14 +60,17 @@ export default function InvestorsOpportunitySection({
             <Image src={imageSrc} alt={imageAlt} fill className="object-cover object-[center_65%]" />
           </div>
 
-          {/* Mobile CTA */}
           <div className="order-3 mt-4 flex justify-center md:hidden">
-            <Link
-              href={ctaHref}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-investors-modal"));
+              }}
               className="inline-flex py-3 md:h-12 w-full items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943]"
             >
               {ctaLabel}
-            </Link>
+            </button>
           </div>
         </div>
 

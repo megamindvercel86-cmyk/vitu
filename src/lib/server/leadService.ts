@@ -8,6 +8,7 @@ const ACCELR_WEBHOOK_URL =
 const PABBLY_WEBHOOK_URL =
   process.env.PABBLY_WEBHOOK_URL || "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc";
 const AISENSY_URL = "https://backend.aisensy.com/campaign/t1/api/v2";
+const SOKT_WEBHOOK_URL = "https://flow.sokt.io/func/scriB9frxcNo";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
@@ -291,6 +292,19 @@ const postPabbly = async (payload: Record<string, unknown>): Promise<void> => {
   }
 };
 
+const postSokt = async (payload: Record<string, unknown>): Promise<void> => {
+  const response = await fetch(SOKT_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const raw = await response.text();
+    throw new Error(`Sokt request failed: ${response.status} ${raw}`);
+  }
+};
+
 const postGoogleScript = async (url: string, payload: Record<string, string>): Promise<void> => {
   if (!url) return;
 
@@ -334,6 +348,13 @@ const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<Lea
   });
   await safeIntegration("send general enquire accelr", async () => {
     await postAccelr({
+      ...leadPayload,
+      formName: request.meta.formName || "General Enquire",
+      source: "website",
+    });
+  });
+  await safeIntegration("send general enquire sokt", async () => {
+    await postSokt({
       ...leadPayload,
       formName: request.meta.formName || "General Enquire",
       source: "website",
@@ -385,6 +406,13 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       source: "website",
     });
   });
+  await safeIntegration("send project enquire sokt", async () => {
+    await postSokt({
+      ...leadPayload,
+      formName: request.meta.formName || "Project Enquire",
+      source: "website",
+    });
+  });
 
   return result;
 };
@@ -419,6 +447,13 @@ const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<
   });
   await safeIntegration("send career application accelr", async () => {
     await postAccelr({
+      ...leadPayload,
+      formName: request.meta.formName || "Career Application",
+      source: "website",
+    });
+  });
+  await safeIntegration("send career application sokt", async () => {
+    await postSokt({
       ...leadPayload,
       formName: request.meta.formName || "Career Application",
       source: "website",
@@ -501,6 +536,13 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       source: "website",
     });
   });
+  await safeIntegration("send elite sokt", async () => {
+    await postSokt({
+      ...leadPayload,
+      formName: request.meta.formName || "Vaikuntam City Elite Form",
+      source: "website",
+    });
+  });
 
   return result;
 };
@@ -562,6 +604,13 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
       source: "website",
     });
   });
+  await safeIntegration("send vilasam sokt", async () => {
+    await postSokt({
+      ...leadPayload,
+      formName,
+      source: "website",
+    });
+  });
 
   return result;
 };
@@ -610,6 +659,13 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
       source: "website",
     });
   });
+  await safeIntegration("send project modal sokt", async () => {
+    await postSokt({
+      ...leadPayload,
+      formName: request.meta.formName || "Project Enquiry Modal",
+      source: "website",
+    });
+  });
 
   return result;
 };
@@ -643,6 +699,13 @@ const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promi
       source: "website",
     });
   });
+  await safeIntegration("send vaikuntam city explore sokt", async () => {
+    await postSokt({
+      ...leadPayload,
+      formName: request.meta.formName || "Vaikuntam City Let's Explore",
+      source: "website",
+    });
+  });
 
   return result;
 };
@@ -659,6 +722,13 @@ const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<L
 
   await safeIntegration("send newsletter accelr", async () => {
     await postAccelr({
+      ...leadPayload,
+      formName: request.meta.formName || "Newsletter Signup",
+      source: "website",
+    });
+  });
+  await safeIntegration("send newsletter sokt", async () => {
+    await postSokt({
       ...leadPayload,
       formName: request.meta.formName || "Newsletter Signup",
       source: "website",

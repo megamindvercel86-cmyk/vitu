@@ -47,11 +47,9 @@ export default function InvestorsStickyCTA() {
           </div>
 
           <button
-            onClick={() => {
-              const contactSection = document.getElementById("contact-section");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth" });
-              }
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent("open-investors-modal"));
             }}
             className="inline-flex py-3 items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943] w-auto md:h-10 md:px-10"
           >

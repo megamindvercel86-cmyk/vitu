@@ -52,7 +52,6 @@ export default function VilasamInvestorsPage() {
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
     ctaLabel: "Download E-Brochure",
-    ctaHref: "/downloadingFiles/VITU Realty - Vilasam.pdf",
     imageSrc: "/vilasamImages/basicImages/1.webp",
     imageAlt: "Vilasam gated entrance",
     cards: [
