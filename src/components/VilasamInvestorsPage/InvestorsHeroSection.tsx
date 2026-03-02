@@ -6,6 +6,11 @@ import { useRouter } from "next/navigation";
 import { submitLead, type LeadIntent } from "@/lib/leadApi";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 interface InvestorsFormState {
   fullName: string;
@@ -42,11 +47,18 @@ export default function InvestorsHeroSection({
   intent = "vilasamInvestors",
   formName = "Vilasam Investors Page Form",
 }: InvestorsHeroSectionProps = {}) {
-  const [form, setForm] = useState<InvestorsFormState>(initialFormState);
+  // Separate states for Desktop and Modal forms to prevent validation crossover
+  const [desktopForm, setDesktopForm] = useState<InvestorsFormState>(initialFormState);
+  const [modalForm, setModalForm] = useState<InvestorsFormState>(initialFormState);
+  
+  const [desktopErrors, setDesktopErrors] = useState<{ [key: string]: string }>({});
+  const [modalErrors, setModalErrors] = useState<{ [key: string]: string }>({});
+  
+  const [desktopDialCode, setDesktopDialCode] = useState("91");
+  const [modalDialCode, setModalDialCode] = useState("91");
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [dialCode, setDialCode] = useState("91");
+  const [submitError, setSubmitError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
@@ -79,11 +91,20 @@ export default function InvestorsHeroSection({
     };
   };
 
-  const updateField = <K extends keyof InvestorsFormState>(key: K, value: InvestorsFormState[K]) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
+  const updateField = <K extends keyof InvestorsFormState>(
+    formType: "desktop" | "modal",
+    key: K,
+    value: InvestorsFormState[K]
+  ) => {
+    if (formType === "desktop") {
+      setDesktopForm((prev) => ({ ...prev, [key]: value }));
+    } else {
+      setModalForm((prev) => ({ ...prev, [key]: value }));
+    }
   };
 
-  const validate = (): boolean => {
+  const validate = (formType: "desktop" | "modal"): boolean => {
+    const form = formType === "desktop" ? desktopForm : modalForm;
     const newErrors: { [key: string]: string } = {};
 
     if (!form.fullName.trim()) newErrors.fullName = "Name is required.";
@@ -95,28 +116,35 @@ export default function InvestorsHeroSection({
     if (!form.interestedIn) newErrors.interestedIn = "Please select what you are interested in.";
     if (!form.preferredPlotOrientation) newErrors.preferredPlotOrientation = "Please select plot orientation.";
 
-    setErrors(newErrors);
+    if (formType === "desktop") {
+      setDesktopErrors(newErrors);
+    } else {
+      setModalErrors(newErrors);
+    }
+    
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>, formType: "desktop" | "modal") => {
     event.preventDefault();
-    setError("");
+    setSubmitError("");
 
-    const isValid = validate();
+    const isValid = validate(formType);
     if (!isValid) return;
 
+    const form = formType === "desktop" ? desktopForm : modalForm;
     const normalizedPhone = form.phone.replace(/\D/g, "");
     const interstedIn = `${form.interestedIn}`;
+    
     const link = document.createElement("a");
     link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
     link.download = "VITU Realty - Vilasam.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
     try {
       setIsSubmitting(true);
-
       router.push(thankYouRoute);
 
       await submitLead({
@@ -133,20 +161,22 @@ export default function InvestorsHeroSection({
         },
         utm: getUtmPayload(),
         meta: {
-          formName,
+          formName: `${formName} (${formType})`,
         },
       });
 
-      setForm(initialFormState);
+      if (formType === "desktop") {
+        setDesktopForm(initialFormState);
+      } else {
+        setModalForm(initialFormState);
+      }
 
-      // Trigger automatic file download
-      
-    } catch (submitError) {
-      if (submitError instanceof Error) {
-        setError(submitError.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        setSubmitError(error.message);
         return;
       }
-      setError("Unable to submit your details. Please try again.");
+      setSubmitError("Unable to submit your details. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -170,38 +200,153 @@ export default function InvestorsHeroSection({
   }, [isModalOpen]);
 
   return (
-    <section className="relative min-h-[500px] md:min-h-[100vh]">
-      <div className="relative flex min-h-[500px]  sm:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
-        <Image
-          src="/vilasamImages/heroSectionImages/vilasam.webp"
-          alt="Vilasam entrance"
-          fill
-          priority
-          className="object-cover object-center hidden md:block"
-        />
-        <Image
-          src="/vilasamImages/heroSectionImages/vilasamMobile.png"
-          alt="Vilasam entrance"
-          fill
-          priority
-          className="object-cover object-center md:hidden"
-        />
-        <div className="absolute inset-0 bg-black/5" />
-
-        <div className="absolute left-5 top-8 z-20 md:left-10 md:top-10">
-          <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[150px] md:w-[220px]" />
+    <section className="relative h-[100vh] min-h-[500px] md:h-auto md:min-h-[100vh]">
+      <div className="relative flex h-full min-h-[500px] sm:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
+        
+        {/* Mobile Static Background */}
+        <div className="absolute inset-0 z-0 md:hidden">
+          <Image
+            src="/vilasamImages/heroSectionImages/mobile.webp"
+            alt="Vilasam mobile"
+            fill
+            priority
+            className="object-cover object-center"
+          />
         </div>
 
-        <div className="absolute right-5 top-8 z-20 md:right-10 md:top-10">
-          <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] md:w-[170px]" />
+        {/* Desktop Swiper Background */}
+     {/* Desktop Swiper Background */}
+        <div className="absolute inset-0 z-0 hidden md:block">
+          <Swiper
+            modules={[Autoplay, Pagination, EffectFade]}
+            effect="fade"
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            loop={true}
+            className="w-full h-full hero-swiper"
+          >
+            <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
+              <Image
+                src="/vilasamImages/heroSectionImages/1.webp"
+                alt="Vilasam entrance"
+                fill
+                priority
+                className="object-cover object-center"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
+              <Image
+                src="/vilasamImages/heroSectionImages/2.webp"
+                alt="Vilasam entrance"
+                fill
+                className="object-cover object-center"
+              />
+            </SwiperSlide>
+            
+            {/* Move the Black Gradient INSIDE the Swiper component */}
+            <div className="absolute inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-black/80 to-transparent z-[5] pointer-events-none" />
+          </Swiper>
+        </div>
+        <div className="absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:left-[5vw] z-20 pointer-events-none hidden md:block">
+          <h1 className="font-ttCommons text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.25] font-medium tracking-wide drop-shadow-md">
+            Limited Edition Luxury Villa Plots
+            <br />
+            starting ₹ 33.5 Lakhs
+          </h1>
         </div>
 
-        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-end md:justify-end pb-8 pt-28 md:pb-12 md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
+        <style jsx global>{`
+          .hero-swiper .swiper-wrapper {
+            height: 100% !important;
+          }
+
+          .hero-swiper .swiper-pagination {
+            position: absolute;
+            text-align: left !important;
+            bottom: 24px !important;
+            left: 20px !important;
+            width: auto !important;
+            z-index: 30;
+          }
+          @media (min-width: 768px) {
+            .hero-swiper .swiper-pagination {
+              bottom: 40px !important;
+              left: 40px !important;
+            }
+          }
+          @media (min-width: 1024px) {
+            .hero-swiper .swiper-pagination {
+              left: 5vw !important;
+            }
+          }
+          .hero-swiper .swiper-pagination-bullet {
+            width: 66px !important; 
+            height: 2.3px !important;
+            border-radius: 0 !important;
+            background: rgba(255, 255, 255, 0.4) !important;
+            opacity: 1 !important;
+            margin: 0 4px !important;
+            transition: all 0.3s ease !important;
+            position: relative;
+            top: -2px;
+            cursor: pointer !important;
+          }
+          .hero-swiper .swiper-pagination-bullet-active {
+            background: #ffffff !important;
+            width: 66px !important; /* Width is now the exact same as inactive */
+          }
+          /* Added invisible padding box to make clicking the thin line easier */
+          .hero-swiper .swiper-pagination-bullet::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+          }
+          .country-selector-button {
+            gap: 6px;
+          }
+          .country-selector-button::before {
+            content: "+" var(--dial-code);
+            color: #555;
+            font-size: 13px;
+            font-weight: 400;
+          }
+          .country-dropdown-list {
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
+          }
+          .country-dropdown-list::-webkit-scrollbar {
+            width: 4px;
+          }
+          .country-dropdown-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+          .country-dropdown-list::-webkit-scrollbar-thumb {
+            background: #848484;
+            border-radius: 4px;
+          }
+        `}</style>
+
+        <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 shadow-sm rounded-b-sm">
+          <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[130px] hidden md:block md:w-[200px]" />
+          <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] hidden md:block md:w-[150px]" />
+           <Image src="/images/logos/vilasamMobileLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[180px] md:hidden md:w-[200px]" />
+          <Image src="/images/logos/vituWhite.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[110px] md:hidden  md:w-[150px]" />
+        </div>
+
+        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-end md:justify-end pb-8 pt-28 xl:pb-32  md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
           {/* Mobile Text Overlay */}
-          <div className="md:hidden absolute inset-0 flex flex-col items-center justify-center pointer-events-none -mt-40 sm:-mt-20">
-            <h1 className="font-ttCommons font-semibold text-[40px] text-[#064747] leading-none tracking-tight">Vilasam</h1>
-            <div className="mt-4 border border-[#064747]  px-4 py-2 sm:px-5 sm:py-2.5 ">
-              <p className="font-semibold text-[14px] sm:text-[15px] text-[#064747]">Starting Price: ₹33.5L Onwards*</p>
+          <div className="md:hidden absolute inset-0 flex flex-col items-center justify-start mt-36 pointer-events-none ">
+            <h1 className="font-ttCommons font-semibold text-center text-[30px]  text-white leading-[1.2]  tracking-tight">Limited Edition Luxury Villa <br /> Plots starting ₹ 33.5 Lakhs</h1>
+            <div className="mt-4">
+<a href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z" stroke="white" stroke-width="2"/>
+<path d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z" stroke="white" stroke-width="2"/>
+</svg>
+
+            Munchoor, Surathkal, Mangalore</a>
             </div>
           </div>
 
@@ -214,45 +359,48 @@ export default function InvestorsHeroSection({
           </button>
 
           {/* Form Content - Desktop */}
-          <form onSubmit={handleSubmit} className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20">
+          <form onSubmit={(e) => handleSubmit(e, "desktop")} className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20">
             <div className="mb-4 md:mb-5 border-b border-[#E2E2E2] pb-4 text-center">
-              <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">Vilasam</h1>
-              <p className="mt-2 font-medium text-[14px] sm:text-[15px] text-[#2A2A2A]">Starting Price: ₹33.5L Onwards*</p>
+              <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">Book your <br /> Site Visit at Vilasam</h1>
             </div>
 
-            <h2 className="mb-4 text-center font-semibold text-[14px] md:text-[15px] text-[#2A2A2A]">Book your Site Visit</h2>
+            <a href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#999999]"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z" stroke="#064747" strokeWidth="2"/>
+            <path d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z" stroke="#064747" strokeWidth="2"/>
+            </svg>
+            Munchoor, Surathkal, Mangalore</a>
 
             <div className="space-y-2.5">
               <div>
                 <input
                   type="text"
-                  value={form.fullName}
+                  value={desktopForm.fullName}
                   onChange={(event) => {
-                    updateField("fullName", event.target.value);
-                    if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+                    updateField("desktop", "fullName", event.target.value);
+                    if (desktopErrors.fullName) setDesktopErrors((prev) => ({ ...prev, fullName: "" }));
                   }}
                   placeholder="Name"
                   className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    desktopErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
                   }`}
                 />
-                {errors.fullName && <p className="mt-1 text-[11px] text-red-500">{errors.fullName}</p>}
+                {desktopErrors.fullName && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.fullName}</p>}
               </div>
 
               <div className="flex flex-col" data-lenis-prevent>
                 <PhoneInput
                   defaultCountry="in"
-                  value={form.phone}
+                  value={desktopForm.phone}
                   onChange={(phone, data: any) => {
-                    updateField("phone", phone);
-                    if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
+                    updateField("desktop", "phone", phone);
+                    if (desktopErrors.phone) setDesktopErrors((prev) => ({ ...prev, phone: "" }));
                     if (data?.country?.dialCode) {
-                      setDialCode(data.country.dialCode);
+                      setDesktopDialCode(data.country.dialCode);
                     }
                   }}
                   disableDialCodeAndPrefix={true}
                   className={`flex h-10 w-full items-center rounded-md border bg-white transition-colors ${
-                    errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#E2E2E2]"
+                    desktopErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#E2E2E2]"
                   }`}
                   inputClassName="w-full bg-transparent px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{
@@ -273,7 +421,7 @@ export default function InvestorsHeroSection({
                       alignItems: "center",
                       justifyContent: "center",
                       // @ts-ignore
-                      "--dial-code": `"${dialCode}"`,
+                      "--dial-code": `"${desktopDialCode}"`,
                     } as React.CSSProperties,
                     buttonClassName: "country-selector-button [&_img]:hidden",
                     dropdownStyleProps: {
@@ -294,60 +442,36 @@ export default function InvestorsHeroSection({
                     },
                   }}
                 />
-                <style jsx global>{`
-                  .country-selector-button {
-                    gap: 6px;
-                  }
-                  .country-selector-button::before {
-                    content: "+" var(--dial-code);
-                    color: #555;
-                    font-size: 13px;
-                    font-weight: 400;
-                  }
-                  .country-dropdown-list {
-                    overflow-y: scroll !important;
-                    overflow-x: hidden !important;
-                  }
-                  .country-dropdown-list::-webkit-scrollbar {
-                    width: 4px;
-                  }
-                  .country-dropdown-list::-webkit-scrollbar-track {
-                    background: #f1f1f1;
-                  }
-                  .country-dropdown-list::-webkit-scrollbar-thumb {
-                    background: #848484;
-                    border-radius: 4px;
-                  }
-                `}</style>
-                {errors.phone && <p className="mt-1 text-[11px] text-red-500">{errors.phone}</p>}
+
+                {desktopErrors.phone && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.phone}</p>}
               </div>
 
               <div>
                 <input
                   type="email"
-                  value={form.email}
+                  value={desktopForm.email}
                   onChange={(event) => {
-                    updateField("email", event.target.value);
-                    if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                    updateField("desktop", "email", event.target.value);
+                    if (desktopErrors.email) setDesktopErrors((prev) => ({ ...prev, email: "" }));
                   }}
                   placeholder="Email"
                   className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    desktopErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
                   }`}
                 />
-                {errors.email && <p className="mt-1 text-[11px] text-red-500">{errors.email}</p>}
+                {desktopErrors.email && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.email}</p>}
               </div>
 
               <div className="w-full">
                 <div className="relative">
                   <select
-                    value={form.interestedIn}
+                    value={desktopForm.interestedIn}
                     onChange={(event) => {
-                      updateField("interestedIn", event.target.value);
-                      if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
+                      updateField("desktop", "interestedIn", event.target.value);
+                      if (desktopErrors.interestedIn) setDesktopErrors((prev) => ({ ...prev, interestedIn: "" }));
                     }}
                     className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
-                      errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                      desktopErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
                     }`}
                   >
                     <option value="">Interested In</option>
@@ -363,19 +487,19 @@ export default function InvestorsHeroSection({
                     </svg>
                   </div>
                 </div>
-                {errors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{errors.interestedIn}</p>}
+                {desktopErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.interestedIn}</p>}
               </div>
 
               <div className="w-full">
                 <div className="relative">
                   <select
-                    value={form.preferredPlotOrientation}
+                    value={desktopForm.preferredPlotOrientation}
                     onChange={(event) => {
-                      updateField("preferredPlotOrientation", event.target.value);
-                      if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
+                      updateField("desktop", "preferredPlotOrientation", event.target.value);
+                      if (desktopErrors.preferredPlotOrientation) setDesktopErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                     }}
                     className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
-                      errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                      desktopErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
                     }`}
                   >
                     <option value="">Preferred Plot Orientation</option>
@@ -391,7 +515,7 @@ export default function InvestorsHeroSection({
                     </svg>
                   </div>
                 </div>
-                {errors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{errors.preferredPlotOrientation}</p>}
+                {desktopErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.preferredPlotOrientation}</p>}
               </div>
             </div>
 
@@ -399,8 +523,8 @@ export default function InvestorsHeroSection({
               <div className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
                 <input
                   type="checkbox"
-                  checked={form.consent}
-                  onChange={(event) => updateField("consent", event.target.checked)}
+                  checked={desktopForm.consent}
+                  onChange={(event) => updateField("desktop", "consent", event.target.checked)}
                   className="peer h-full w-full appearance-none rounded-full border border-[#d1d1d1] bg-white transition-all checked:border-[#064747] checked:bg-[#064747] outline-none"
                 />
                 <svg
@@ -416,7 +540,7 @@ export default function InvestorsHeroSection({
               <span className="leading-none mt-[2px]">Consent to contact me via Call, SMS, Email, or WhatsApp</span>
             </label>
 
-            {error ? <p className="mt-3 text-center text-xs text-[#b32727]">{error}</p> : null}
+            {submitError ? <p className="mt-3 text-center text-xs text-[#b32727]">{submitError}</p> : null}
 
             <div className="mt-6 flex justify-center">
               <button
@@ -431,10 +555,10 @@ export default function InvestorsHeroSection({
         </div>
       </div>
 
-      {/* Modal for both Mobile and Desktop */}
+      {/* Modal for Mobile */}
       {isModalOpen && (
         <div data-lenis-prevent className="fixed inset-0 z-[60] flex items-center justify-center backdrop-blur-sm bg-black/20 p-4">
-          <form onSubmit={handleSubmit} className="relative w-full max-w-[420px] rounded-[12px] bg-white p-6 shadow-2xl">
+          <form onSubmit={(e) => handleSubmit(e, "modal")} className="relative w-full max-w-[420px] rounded-[12px] bg-white p-6 shadow-2xl">
             {/* Close Button */}
             <button type="button" onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-500 transition hover:text-black">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -443,40 +567,40 @@ export default function InvestorsHeroSection({
             </button>
 
             <div className="mb-6 pt-4 text-center">
-              <h2 className="font-ttCommons font-bold text-[24px] text-[#2A2A2A]">Book a Site Visit</h2>
+              <h2 className="font-ttCommons font-bold text-[24px] text-[#2A2A2A]">Book your Site Visit at Vilasam</h2>
             </div>
 
             <div className="space-y-3.5">
               <div>
                 <input
                   type="text"
-                  value={form.fullName}
+                  value={modalForm.fullName}
                   onChange={(event) => {
-                    updateField("fullName", event.target.value);
-                    if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
+                    updateField("modal", "fullName", event.target.value);
+                    if (modalErrors.fullName) setModalErrors((prev) => ({ ...prev, fullName: "" }));
                   }}
                   placeholder="Name"
                   className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    modalErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
                   }`}
                 />
-                {errors.fullName && <p className="mt-1 text-[11px] text-red-500">{errors.fullName}</p>}
+                {modalErrors.fullName && <p className="mt-1 text-[11px] text-red-500">{modalErrors.fullName}</p>}
               </div>
 
               <div className="flex flex-col" data-lenis-prevent>
                 <PhoneInput
                   defaultCountry="in"
-                  value={form.phone}
+                  value={modalForm.phone}
                   onChange={(phone, data: any) => {
-                    updateField("phone", phone);
-                    if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
+                    updateField("modal", "phone", phone);
+                    if (modalErrors.phone) setModalErrors((prev) => ({ ...prev, phone: "" }));
                     if (data?.country?.dialCode) {
-                      setDialCode(data.country.dialCode);
+                      setModalDialCode(data.country.dialCode);
                     }
                   }}
                   disableDialCodeAndPrefix={true}
                   className={`flex h-[42px] w-full items-center rounded-md border bg-white transition-colors ${
-                    errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#064747]"
+                    modalErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#064747]"
                   }`}
                   inputClassName="w-full bg-transparent px-3 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{ width: "100%", background: "transparent", border: "none", outline: "none", height: "100%" }}
@@ -490,7 +614,8 @@ export default function InvestorsHeroSection({
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      "--dial-code": `"${dialCode}"`,
+                      // @ts-ignore
+                      "--dial-code": `"${modalDialCode}"`,
                     } as React.CSSProperties,
                     buttonClassName: "country-selector-button [&_img]:hidden",
                     dropdownStyleProps: {
@@ -513,35 +638,35 @@ export default function InvestorsHeroSection({
                     },
                   }}
                 />
-                {errors.phone && <p className="mt-1 text-[11px] text-red-500">{errors.phone}</p>}
+                {modalErrors.phone && <p className="mt-1 text-[11px] text-red-500">{modalErrors.phone}</p>}
               </div>
 
               <div>
                 <input
                   type="email"
-                  value={form.email}
+                  value={modalForm.email}
                   onChange={(event) => {
-                    updateField("email", event.target.value);
-                    if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                    updateField("modal", "email", event.target.value);
+                    if (modalErrors.email) setModalErrors((prev) => ({ ...prev, email: "" }));
                   }}
                   placeholder="Email"
                   className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    modalErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
                   }`}
                 />
-                {errors.email && <p className="mt-1 text-[11px] text-red-500">{errors.email}</p>}
+                {modalErrors.email && <p className="mt-1 text-[11px] text-red-500">{modalErrors.email}</p>}
               </div>
 
               <div className="w-full">
                 <div className="relative">
                   <select
-                    value={form.interestedIn}
+                    value={modalForm.interestedIn}
                     onChange={(event) => {
-                      updateField("interestedIn", event.target.value);
-                      if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
+                      updateField("modal", "interestedIn", event.target.value);
+                      if (modalErrors.interestedIn) setModalErrors((prev) => ({ ...prev, interestedIn: "" }));
                     }}
                     className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
-                      errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                      modalErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
                     }`}
                   >
                     <option value="">Interested In</option>
@@ -557,19 +682,19 @@ export default function InvestorsHeroSection({
                     </svg>
                   </div>
                 </div>
-                {errors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{errors.interestedIn}</p>}
+                {modalErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{modalErrors.interestedIn}</p>}
               </div>
 
               <div className="w-full">
                 <div className="relative">
                   <select
-                    value={form.preferredPlotOrientation}
+                    value={modalForm.preferredPlotOrientation}
                     onChange={(event) => {
-                      updateField("preferredPlotOrientation", event.target.value);
-                      if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
+                      updateField("modal", "preferredPlotOrientation", event.target.value);
+                      if (modalErrors.preferredPlotOrientation) setModalErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                     }}
                     className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
-                      errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                      modalErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
                     }`}
                   >
                     <option value="">Preferred Plot Orientation</option>
@@ -585,7 +710,7 @@ export default function InvestorsHeroSection({
                     </svg>
                   </div>
                 </div>
-                {errors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{errors.preferredPlotOrientation}</p>}
+                {modalErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{modalErrors.preferredPlotOrientation}</p>}
               </div>
             </div>
 
@@ -593,8 +718,8 @@ export default function InvestorsHeroSection({
               <div className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
                 <input
                   type="checkbox"
-                  checked={form.consent}
-                  onChange={(event) => updateField("consent", event.target.checked)}
+                  checked={modalForm.consent}
+                  onChange={(event) => updateField("modal", "consent", event.target.checked)}
                   className="peer h-full w-full appearance-none rounded-full border border-[#d1d1d1] bg-white transition-all checked:border-[#064747] checked:bg-[#064747] outline-none"
                 />
                 <svg
@@ -610,7 +735,7 @@ export default function InvestorsHeroSection({
               <span className="leading-none mt-[1px]">Consent to contact me via Call, SMS, Email, or WhatsApp</span>
             </label>
 
-            {error ? <p className="mt-3 text-center text-xs text-[#b32727]">{error}</p> : null}
+            {submitError ? <p className="mt-3 text-center text-xs text-[#b32727]">{submitError}</p> : null}
 
             <div className="mt-10 flex justify-center">
               <button
