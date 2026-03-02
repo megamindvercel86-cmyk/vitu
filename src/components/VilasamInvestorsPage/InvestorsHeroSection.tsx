@@ -220,7 +220,7 @@ export default function InvestorsHeroSection({
           <Swiper
             modules={[Autoplay, Pagination, EffectFade]}
             effect="fade"
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             loop={true}
             className="w-full h-full hero-swiper"
@@ -329,11 +329,14 @@ export default function InvestorsHeroSection({
           }
         `}</style>
 
-        <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 shadow-sm rounded-b-sm">
+     <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 shadow-sm rounded-b-sm">
+          {/* Desktop Logos */}
           <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[130px] hidden md:block md:w-[200px]" />
           <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] hidden md:block md:w-[150px]" />
-           <Image src="/images/logos/vilasamMobileLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[180px] md:hidden md:w-[200px]" />
-          <Image src="/images/logos/vituWhite.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[110px] md:hidden  md:w-[150px]" />
+           
+          {/* Mobile Logos (Using standard <img> to rely entirely on native SVG dimensions) */}
+          <img src="/images/logos/vilasamMobileLogo.svg" alt="Vilasam" className="md:hidden" />
+          <img src="/images/logos/vituWhite.svg" alt="Vitu Realty" className="md:hidden" />
         </div>
 
         <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-end md:justify-end pb-8 pt-28 xl:pb-32  md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
