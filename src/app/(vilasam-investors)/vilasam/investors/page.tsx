@@ -62,38 +62,38 @@ export default function VilasamInvestorsPage() {
     ],
   };
 
-  const atAGlanceSectionData: InvestorsAtAGlanceSectionProps = {
+    const atAGlanceSectionData: InvestorsAtAGlanceSectionProps = {
     title: "Vilasam at a Glance",
     items: [
       {
         id: "1",
         label: "Chromotherapy Garden",
         icon: <ChromotherapyGardenIcon />,
-        imageSrc: "/vilasamImages/basicImages/2.webp",
+        imageSrc: "/vilasamImages/1.png",
       },
       {
         id: "2",
         label: "20,000 sq.ft. Clubhouse",
         icon: <ClubhouseIcon />,
-        imageSrc: "/vilasamImages/basicImages/3.webp",
+        imageSrc: "/vilasamImages/2.png",
       },
       {
         id: "3",
         label: "24×7 Security",
         icon: <SecurityIcon />,
-        imageSrc: "/vilasamImages/basicImages/4.webp",
+        imageSrc: "/vilasamImages/3.png",
       },
       {
         id: "4",
         label: "30 ft. Wide Cobblestone Paved Roads",
         icon: <PavedRoadsIcon />,
-        imageSrc: "/vilasamImages/basicImages/5.webp",
+        imageSrc: "/vilasamImages/4.png",
       },
       {
         id: "5",
         label: "50+ Blooming Trees",
         icon: <BloomingTreesIcon />,
-        imageSrc: "/vilasamImages/basicImages/6.webp",
+        imageSrc: "/vilasamImages/5.png",
       },
     ],
   };
