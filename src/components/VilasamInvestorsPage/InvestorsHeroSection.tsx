@@ -32,7 +32,7 @@ const initialFormState: InvestorsFormState = {
 
 const interestedInOptions = ["Investment", "Building Your Dream Home", "Just Exploring"];
 
-const plotOrientationOptions = ["East Facing", "West Facing", "North Facing", "South Facing"];
+const plotOrientationOptions = ["East", "West", "Corner"];
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -50,10 +50,10 @@ export default function InvestorsHeroSection({
   // Separate states for Desktop and Modal forms to prevent validation crossover
   const [desktopForm, setDesktopForm] = useState<InvestorsFormState>(initialFormState);
   const [modalForm, setModalForm] = useState<InvestorsFormState>(initialFormState);
-  
+
   const [desktopErrors, setDesktopErrors] = useState<{ [key: string]: string }>({});
   const [modalErrors, setModalErrors] = useState<{ [key: string]: string }>({});
-  
+
   const [desktopDialCode, setDesktopDialCode] = useState("91");
   const [modalDialCode, setModalDialCode] = useState("91");
 
@@ -91,11 +91,7 @@ export default function InvestorsHeroSection({
     };
   };
 
-  const updateField = <K extends keyof InvestorsFormState>(
-    formType: "desktop" | "modal",
-    key: K,
-    value: InvestorsFormState[K]
-  ) => {
+  const updateField = <K extends keyof InvestorsFormState>(formType: "desktop" | "modal", key: K, value: InvestorsFormState[K]) => {
     if (formType === "desktop") {
       setDesktopForm((prev) => ({ ...prev, [key]: value }));
     } else {
@@ -121,7 +117,7 @@ export default function InvestorsHeroSection({
     } else {
       setModalErrors(newErrors);
     }
-    
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -135,17 +131,17 @@ export default function InvestorsHeroSection({
     const form = formType === "desktop" ? desktopForm : modalForm;
     const normalizedPhone = form.phone.replace(/\D/g, "");
     const interstedIn = `${form.interestedIn}`;
-    
+
     const link = document.createElement("a");
     link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
     link.download = "VITU Realty - Vilasam.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     try {
       setIsSubmitting(true);
-      router.push(thankYouRoute);
+      router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
 
       await submitLead({
         intent: intent as LeadIntent,
@@ -170,7 +166,6 @@ export default function InvestorsHeroSection({
       } else {
         setModalForm(initialFormState);
       }
-
     } catch (error) {
       if (error instanceof Error) {
         setSubmitError(error.message);
@@ -200,22 +195,15 @@ export default function InvestorsHeroSection({
   }, [isModalOpen]);
 
   return (
-    <section className="relative h-[100vh]  md:h-auto md:min-h-[100vh]">
-      <div className="relative flex h-full min-h-[500px] sm:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
-        
+    <section className="relative h-[100dvh]  md:h-auto md:min-h-[100vh]">
+      <div className="relative flex h-full min-h-[500px] md:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
         {/* Mobile Static Background */}
         <div className="absolute inset-0 z-0 md:hidden">
-          <Image
-            src="/vilasamImages/heroSectionImages/mobile.webp"
-            alt="Vilasam mobile"
-            fill
-            priority
-            className="object-cover object-center"
-          />
+          <Image src="/vilasamImages/heroSectionImages/mobile.webp" alt="Vilasam mobile" fill priority className="object-cover object-center" />
         </div>
 
         {/* Desktop Swiper Background */}
-     {/* Desktop Swiper Background */}
+        {/* Desktop Swiper Background */}
         <div className="absolute inset-0 z-0 hidden md:block">
           <Swiper
             modules={[Autoplay, Pagination, EffectFade]}
@@ -226,23 +214,12 @@ export default function InvestorsHeroSection({
             className="w-full h-full hero-swiper"
           >
             <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
-              <Image
-                src="/vilasamImages/heroSectionImages/1.webp"
-                alt="Vilasam entrance"
-                fill
-                priority
-                className="object-cover object-center"
-              />
+              <Image src="/vilasamImages/heroSectionImages/1.webp" alt="Vilasam entrance" fill priority className="object-cover object-center" />
             </SwiperSlide>
             <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
-              <Image
-                src="/vilasamImages/heroSectionImages/2.webp"
-                alt="Vilasam entrance"
-                fill
-                className="object-cover object-center"
-              />
+              <Image src="/vilasamImages/heroSectionImages/2.webp" alt="Vilasam entrance" fill className="object-cover object-center" />
             </SwiperSlide>
-            
+
             {/* Move the Black Gradient INSIDE the Swiper component */}
             <div className="absolute inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-black/80 to-transparent z-[5] pointer-events-none" />
           </Swiper>
@@ -280,7 +257,7 @@ export default function InvestorsHeroSection({
             }
           }
           .hero-swiper .swiper-pagination-bullet {
-            width: 66px !important; 
+            width: 66px !important;
             height: 2.3px !important;
             border-radius: 0 !important;
             background: rgba(255, 255, 255, 0.4) !important;
@@ -297,7 +274,7 @@ export default function InvestorsHeroSection({
           }
           /* Added invisible padding box to make clicking the thin line easier */
           .hero-swiper .swiper-pagination-bullet::before {
-            content: '';
+            content: "";
             position: absolute;
             top: -10px;
             bottom: -10px;
@@ -329,11 +306,23 @@ export default function InvestorsHeroSection({
           }
         `}</style>
 
-     <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
+        <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
           {/* Desktop Logos */}
-          <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[130px] hidden md:block md:w-[200px]" />
-          <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] hidden md:block md:w-[150px]" />
-           
+          <Image
+            src="/images/logos/vilasamDarkLogo.svg"
+            alt="Vilasam"
+            width={220}
+            height={52}
+            className="h-auto w-[130px] hidden md:block md:w-[200px]"
+          />
+          <Image
+            src="/images/logos/vituTmLogo.svg"
+            alt="Vitu Realty"
+            width={170}
+            height={42}
+            className="h-auto w-[100px] hidden md:block md:w-[150px]"
+          />
+
           {/* Mobile Logos (Using standard <img> to rely entirely on native SVG dimensions) */}
           <img src="/images/logos/vilasamMobileLogo.svg" alt="Vilasam" className="md:hidden" />
           <img src="/images/logos/vituWhite.svg" alt="Vitu Realty" className="md:hidden" />
@@ -342,14 +331,29 @@ export default function InvestorsHeroSection({
         <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
           {/* Mobile Text Overlay */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-start mt-36 pointer-events-none ">
-            <h1 className="font-ttCommons font-semibold text-center text-[30px]  text-white leading-[1.2]  tracking-tight">Limited Edition Luxury Villa <br /> Plots starting ₹ 33.5 Lakhs</h1>
+            <h1 className="font-ttCommons font-semibold text-center text-[30px]  text-white leading-[1.2]  tracking-tight">
+              Limited Edition Luxury Villa <br /> Plots starting ₹ 33.5 Lakhs
+            </h1>
             <div className="mt-4">
-<a href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z" stroke="white" stroke-width="2"/>
-<path d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z" stroke="white" stroke-width="2"/>
-</svg>
-
-            Munchoor, Surathkal, Mangalore</a>
+              <a
+                href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white"
+              >
+                <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                </svg>
+                Munchoor, Surathkal, Mangalore
+              </a>
             </div>
           </div>
 
@@ -362,16 +366,35 @@ export default function InvestorsHeroSection({
           </button>
 
           {/* Form Content - Desktop */}
-          <form onSubmit={(e) => handleSubmit(e, "desktop")} className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20">
+          <form
+            onSubmit={(e) => handleSubmit(e, "desktop")}
+            className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20"
+          >
             <div className="mb-4 md:mb-5 border-b border-[#E2E2E2] pb-4 text-center">
-              <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">Book your <br /> Site Visit at Vilasam</h1>
+              <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">
+                Book your <br /> Site Visit at Vilasam
+              </h1>
             </div>
 
-            <a href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#999999]"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z" stroke="#064747" strokeWidth="2"/>
-            <path d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z" stroke="#064747" strokeWidth="2"/>
-            </svg>
-            Munchoor, Surathkal, Mangalore</a>
+            <a
+              href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#999999]"
+            >
+              <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z"
+                  stroke="#064747"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z"
+                  stroke="#064747"
+                  strokeWidth="2"
+                />
+              </svg>
+              Munchoor, Surathkal, Mangalore
+            </a>
 
             <div className="space-y-2.5">
               <div>
