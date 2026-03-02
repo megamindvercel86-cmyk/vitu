@@ -25,7 +25,7 @@ const initialFormState: InvestorsFormState = {
   consent: true,
 };
 
-const interestedInOptions = ["Investment Opportunity", "Book Site Visit", "Project Details"];
+const interestedInOptions = ["Investment", "Building Your Dream Home", "Just Exploring"];
 
 const plotOrientationOptions = ["East Facing", "West Facing", "North Facing", "South Facing"];
 
