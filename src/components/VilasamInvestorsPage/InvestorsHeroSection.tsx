@@ -308,24 +308,37 @@ export default function InvestorsHeroSection({
 
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
           {/* Desktop Logos */}
-          <Image
-            src="/images/logos/vilasamDarkLogo.svg"
-            alt="Vilasam"
-            width={220}
-            height={52}
-            className="h-auto w-[130px] hidden md:block md:w-[200px]"
-          />
-          <Image
-            src="/images/logos/vituTmLogo.svg"
-            alt="Vitu Realty"
-            width={170}
-            height={42}
-            className="h-auto w-[100px] hidden md:block md:w-[150px]"
-          />
+   <Image
+          src="/images/logos/vilasamDarkLogo.svg"
+          alt="Vilasam"
+          width={220}
+          height={52}
+          className="h-auto w-[130px] hidden md:block md:w-[200px]"
+        />
+        <Image
+          src="/images/logos/vituTmLogo.svg"
+          alt="Vitu Realty"
+          width={170}
+          height={42}
+          className="h-auto w-[100px] hidden md:block md:w-[150px]"
+        />
 
-          {/* Mobile Logos (Using standard <img> to rely entirely on native SVG dimensions) */}
-          <img src="/images/logos/vilasamMobileLogo.svg" alt="Vilasam" className="md:hidden" />
-          <img src="/images/logos/vituWhite.svg" alt="Vitu Realty" className="md:hidden" />
+        {/* Mobile Logos */}
+        <Image 
+          src="/images/logos/vilasamMobileLogo.svg" 
+          alt="Vilasam" 
+          width={150} /* Adjust to your exact mobile SVG width */
+          height={40} /* Adjust to your exact mobile SVG height */
+          className="md:hidden h-auto" 
+        />
+        <Image 
+          src="/images/logos/vituWhite.svg" 
+          alt="Vitu Realty" 
+          width={110} /* Adjust to your exact mobile SVG width */
+          height={30} /* Adjust to your exact mobile SVG height */
+          className="md:hidden h-auto" 
+        />
+ 
         </div>
 
         <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
