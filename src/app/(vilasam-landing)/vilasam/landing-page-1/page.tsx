@@ -39,7 +39,7 @@ export default function VaikuntamCityEliteLandingPage() {
   const cards: FtScrollCard[] = [
     {
       id: 1,
-      video: "/vilasamVideos/1-1.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F1-1.mp4?alt=media&token=bda7f60c-be01-4c56-ad0d-68c7ff39687f",
       title: "100% Appreciation",
       title2: "",
       subtitle: "in the past 3 years",
@@ -49,7 +49,7 @@ export default function VaikuntamCityEliteLandingPage() {
     },
     {
       id: 2,
-      video: "/vilasamVideos/2-3.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F2-3.mp4?alt=media&token=c9865725-4687-486a-8699-0f2c8996a490",
       title: "3 Years",
       title2: "Resale Flexibility",
       image: "/vilasamImages/basicImages/3yr.png",
@@ -58,7 +58,7 @@ export default function VaikuntamCityEliteLandingPage() {
     },
     {
       id: 3,
-      video: "/vilasamVideos/1-3.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F1-3.mp4?alt=media&token=05474bcf-7e13-4bf1-9166-e858e8f0271e",
       title: "10X Growth",
       title2: "",
       subtitle: "in the future from SEZs, Port & Expressway",

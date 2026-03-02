@@ -32,7 +32,7 @@ export default function VaikuntamCityEliteLandingPage2() {
   const cards: FtScrollCard[] = [
     {
       id: 1,
-      video: "/vilasamVideos/1-2.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F1-2.mp4?alt=media&token=eb388aa6-4e38-4c43-94b0-95739d08a532",
       title: "30ft Wide Roads",
       title2: "",
       subtitle: "in the European Cobblestone-paved Style",
@@ -42,7 +42,7 @@ export default function VaikuntamCityEliteLandingPage2() {
     },
     {
       id: 2,
-      video: "/vilasamVideos/2-2.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F2-2.mp4?alt=media&token=7c71deb5-2d7d-4654-937b-240598ee50cf",
       title: "Chromotherapy Garden ",
       title2: "",
       image: "/vilasamImages/basicImages/50.webp",
@@ -51,7 +51,7 @@ export default function VaikuntamCityEliteLandingPage2() {
     },
     {
       id: 3,
-      video: "/vilasamVideos/2-3.mp4",
+      video: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/vilasamvideos%2F2-3.mp4?alt=media&token=c9865725-4687-486a-8699-0f2c8996a490",
       title: "24x7 Security",
       title2: "",
       subtitle: "to protect what matters",
