@@ -200,7 +200,7 @@ export default function InvestorsHeroSection({
   }, [isModalOpen]);
 
   return (
-    <section className="relative h-[100vh] min-h-[500px] md:h-auto md:min-h-[100vh]">
+    <section className="relative h-[100vh]  md:h-auto md:min-h-[100vh]">
       <div className="relative flex h-full min-h-[500px] sm:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
         
         {/* Mobile Static Background */}
@@ -329,7 +329,7 @@ export default function InvestorsHeroSection({
           }
         `}</style>
 
-     <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 shadow-sm rounded-b-sm">
+     <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
           {/* Desktop Logos */}
           <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[130px] hidden md:block md:w-[200px]" />
           <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] hidden md:block md:w-[150px]" />
@@ -339,7 +339,7 @@ export default function InvestorsHeroSection({
           <img src="/images/logos/vituWhite.svg" alt="Vitu Realty" className="md:hidden" />
         </div>
 
-        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-end md:justify-end pb-8 pt-28 xl:pb-32  md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
+        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
           {/* Mobile Text Overlay */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-start mt-36 pointer-events-none ">
             <h1 className="font-ttCommons font-semibold text-center text-[30px]  text-white leading-[1.2]  tracking-tight">Limited Edition Luxury Villa <br /> Plots starting ₹ 33.5 Lakhs</h1>
