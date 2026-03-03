@@ -59,7 +59,7 @@ const initialFormState: InvestorsFormState = {
 
 const interestedInOptions = ["Investment", "Building Your Dream Home", "Just Exploring"];
 
-const plotOrientationOptions = ["East", "West", "Corner"];
+const plotOrientationOptions = ["East Facing Plots", "West Facing Plots", "Corner Plots"];
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

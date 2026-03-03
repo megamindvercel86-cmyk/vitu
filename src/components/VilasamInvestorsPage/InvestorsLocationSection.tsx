@@ -43,7 +43,20 @@ export default function InvestorsLocationSection({
             <h2 className="hidden font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[38px] lg:text-[42px]">
               {title}
             </h2>
+            <div className="mt-4 flex flex-row items-center gap-2">
+              <a
+                href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                className="mb-4 flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#999999]"
+              >
+                <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z" stroke="#064747" stroke-width="2" />
+                  <path d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z" stroke="#064747" stroke-width="2" />
+                </svg>
 
+                Munchoor, Surathkal, Mangalore
+              </a>
+            </div>
             <div className="flex flex-col space-y-4 lg:space-y-6">
               {locations.map((loc) => (
                 <div key={loc.id} className="flex flex-row items-center justify-between">
