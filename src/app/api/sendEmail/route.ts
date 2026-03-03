@@ -1,93 +1,62 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-import { promises as fs } from "fs";
-import path from "path";
+import {
+  sendFormEmail,
+  type SupportedEmailPage,
+} from "@/lib/server/emailService";
+
+const VALID_PAGES: ReadonlySet<SupportedEmailPage> = new Set([
+  "General Enquire",
+  "Project Enquire",
+  "Career Application",
+]);
+
+const asString = (value: unknown): string =>
+  typeof value === "string" ? value.trim() : "";
 
 export async function POST(req: Request) {
   try {
-    const { fullName, email, phone, comments, whatsapp, interstedIn, postionAppliedFor, page, resumeUrl,interestedIn } = await req.json();
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    const body = (await req.json()) as Record<string, unknown>;
+    const page = asString(body.page) as SupportedEmailPage;
 
-    if (!smtpUser || !smtpPass) {
-      return NextResponse.json({ message: "Email service is not configured" }, { status: 500 });
+    if (!VALID_PAGES.has(page)) {
+      return NextResponse.json(
+        { message: "Invalid form type" },
+        { status: 400 },
+      );
     }
 
-    // Define the path to the HTML template
-    let templateFile = "";
-    switch (page) {
-      case "General Enquire":
-        templateFile = "Form for General Enquiries - Template (1).html";
-        break;
-      case "Project Enquire":
-        templateFile = "Form for Project Enquiries-Template.html";
-        break;
-      case "Career Application":
-        templateFile = "Form for Career Application.html";
-        break;
-      default:
-        throw new Error("Invalid form type");
+    const fullName = asString(body.fullName);
+    const email = asString(body.email);
+    const phone = asString(body.phone);
+
+    if (!fullName || !email || !phone) {
+      return NextResponse.json(
+        { message: "fullName, email and phone are required" },
+        { status: 400 },
+      );
     }
 
-    // Define the path to the HTML template
-    const templatePath = path.join(process.cwd(), "emailTemplates", templateFile);
-
-    // Read the selected HTML template file
-    let emailTemplate = await fs.readFile(templatePath, "utf-8");
-
-    // Replace placeholders with actual form data
-    emailTemplate = emailTemplate
-      .replace("[Name from General EnquiriesForm]", fullName)
-      .replace("[Email from General Enquiries Form]", email)
-      .replace("[Phone from General Enquiries Form]", phone)
-      .replace("[Comments if any from General Enquiries Form]", comments || "")
-      .replace("[Name from Project Enquiry Form]", fullName)
-      .replace("[Email from Project Enquiry Form]", email)
-      .replace("[Phone from Project Enquiry Form]", phone)
-      .replace("[Field selected from Project Enquiry Form]", interstedIn || "" || interestedIn)
-      .replace("[Name from Career Application Form]", fullName)
-      .replace("[Email from Career ApplicationForm]", email)
-      .replace("[Phone from Career Application Form]", phone)
-      .replace("[Role selected from Career Application Form]", postionAppliedFor)
-      .replace("[resumeLink]", resumeUrl);
-
-    // Add resume link for Career Application emails
-    // if (page === "Career Application" && resumeUrl) {
-    //   emailTemplate += `<p><strong>Resume:</strong> <a href="${resumeUrl}" target="_blank" style="color: #007bff;">View Resume</a></p>`;
-    // }
-
-    // Create a Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
+    await sendFormEmail({
+      page,
+      fullName,
+      email,
+      phone,
+      comments: asString(body.comments),
+      interstedIn: asString(body.interstedIn),
+      interestedIn: asString(body.interestedIn),
+      postionAppliedFor: asString(body.postionAppliedFor),
+      resumeUrl: asString(body.resumeUrl),
     });
 
-    // Define the email subject based on the form type
-    const subject = `You got a ${page}`;
-
-    // Send email
-    if (page === "Career Application") {
-      await transporter.sendMail({
-        from: `${email}`,
-        to: "hr@viturealty.com", // Replace with the recipient's email
-        subject,
-        html: emailTemplate,
-      });
-    }else{
-      await transporter.sendMail({
-        from: `${email}`,
-        to: "info@viturealty.com", // Replace with the recipient's email
-        subject,
-        html: emailTemplate,
-      });
-    }
-
-    return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Email sent successfully" },
+      { status: 200 },
+    );
   } catch (error) {
     console.error("Email send error:", error);
-    return NextResponse.json({ message: "Failed to send email", error }, { status: 500 });
+    return NextResponse.json(
+      { message: "Failed to send email" },
+      { status: 500 },
+    );
   }
 }

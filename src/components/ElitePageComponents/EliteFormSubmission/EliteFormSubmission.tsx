@@ -59,8 +59,8 @@ export default function EliteForm() {
 
 
     try {
-      router.push("/elite/thank-you");
       await handleFormSubmitVCE(payload);
+      router.push("/elite/thank-you");
 
       // Optionally, reset the form after successful submission
 

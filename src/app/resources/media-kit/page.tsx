@@ -35,11 +35,11 @@ export async function generateMetadata() {
       title: "Media Kit - Vitu Realty | Download Logos, Branding & Assets",
       description:
         "Access Vitu Realty's official media kit, including high-quality logos, branding guidelines, and press materials for media use.",
-      url: "https://viturealty.vercel.app/media-kit",
+      url: "https://www.viturealty.com/media-kit",
       type: "website",
       images: [
         {
-          url: "https://viturealty.vercel.app/images/media-kit-banner.jpg",
+          url: "https://www.viturealty.com/images/media-kit-banner.jpg",
           width: 1200,
           height: 630,
           alt: "Vitu Realty Media Kit",
@@ -51,7 +51,7 @@ export async function generateMetadata() {
       title: "Media Kit - Vitu Realty | Download Logos, Branding & Assets",
       description:
         "Access Vitu Realty's official media kit, including high-quality logos, branding guidelines, and press materials for media use.",
-      images: ["https://viturealty.vercel.app/images/media-kit-banner.jpg"],
+      images: ["https://www.viturealty.com/images/media-kit-banner.jpg"],
     },
   };
 }

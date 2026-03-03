@@ -17,6 +17,7 @@ import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import AppleStyleCardInsight from "@/components/ui/apple-style-card-insight";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 // Define a type for the card object
 interface Card {
   id: number;
@@ -107,7 +108,11 @@ const CardContent = ({ cardId, data }: { cardId: number; data: Card[] }) => {
             </Typography>
             <div
               className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
-              dangerouslySetInnerHTML={{ __html: (project.contentHtml || "").replace("min-height: 100vh;", "") }}
+              dangerouslySetInnerHTML={{
+                __html: sanitizeHtml(
+                  (project.contentHtml || "").replace("min-height: 100vh;", ""),
+                ),
+              }}
             />
             <Footer
               onFooterClick={handleFooterClick}

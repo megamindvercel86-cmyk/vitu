@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero from "@/components/ElitePageComponents/HeroBanner/Hero";
 import React, { useEffect } from "react";
-import Head from "next/head";
 import herobg from "../../../../public/images/vaikuntamCityEliteLandingPage/Hero (5).webp";
 import herobgMobile from "../../../../public/images/vaikuntamCityEliteLandingPage/hero-bg1.webp";
 import EliteNavbar2 from "@/components/VaikuntamCityElite/Navbar/EliteNavbar-2";
@@ -192,45 +191,6 @@ const Page = () => {
 
   return (
     <div className="bg-[#F3EAE1] overflow-hidden">
-      {/* ============= SEO Metadata ============= */}
-      <Head>
-        <title>Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty</title>
-        <meta
-          name="description"
-          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
-        />
-        <link rel="canonical" href="https://www.viturealty.com/elite" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty" />
-        <meta
-          property="og:description"
-          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
-        />
-        <meta property="og:url" content="https://www.viturealty.com/elite" />
-        <meta property="og:site_name" content="Vitu-Realty" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Vaikuntam City Elite - Luxury Villa Plots in Mangaluru" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vaikuntam City Elite – Luxury Villa Plots in Mangaluru | Vitu Realty" />
-        <meta
-          name="twitter:description"
-          content="Discover Vaikuntam City Elite, an exclusive enclave of 11 luxury villa plots in Mangaluru. Experience premium living with 38.3% parks & open spaces, vastu-aligned plots, and world-class amenities. Developed by Vitu Realty."
-        />
-        <meta
-          name="twitter:image"
-          content="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/AnimatedVideos%2Fimage.png?alt=media&token=50905517-237f-40e6-bc40-0d55a6cddfc8"
-        />
-      </Head>
-
       {/* Breadcrumb Structured Data */}
       <script
         type="application/ld+json"

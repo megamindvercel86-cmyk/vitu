@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 // ============= Constants =============
 const CONTENT = {
   badge: "BLOG",
@@ -240,7 +241,9 @@ export default function HeroBanner(): React.ReactElement {
                           {point.contentHtml && (
                             <div
                               className="prose max-w-none text-[#04070799] font-FreightNeoProNormal !text-xl [&>p]:pb-6 [&_ul]:list-disc [&_ul]:pl-6"
-                              dangerouslySetInnerHTML={{ __html: point.contentHtml }}
+                              dangerouslySetInnerHTML={{
+                                __html: sanitizeHtml(point.contentHtml),
+                              }}
                             />
                           )}
                           {/* @ts-ignore */}

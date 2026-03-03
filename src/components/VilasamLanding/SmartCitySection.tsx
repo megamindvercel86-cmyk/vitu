@@ -58,10 +58,10 @@ export default function SmartCitySection() {
         try {
             const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
-            router.push(thankYouRoute);
             const utmParams = getLandingUtmParams(searchParams);
             await handleFormSubmitVilasam(formData, utmParams, { formName: "Project Enquiry Modal" });
 
+            router.push(thankYouRoute);
             resetForm();
             setConsentChecked(true);
         } catch (error) {

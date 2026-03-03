@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { PrimaryViewMoreButton, SecondaryViewMoreButton } from "@/components/Icons/Icons";
 import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 // Define a type for the card object
 interface Card {
@@ -171,7 +172,11 @@ const CardContent = ({ cardId, data, isDescription, textStyle, rextFill, pathFil
             {project.contentHtml ? (
               <div
                 className="prose max-w-none text-[#0C3E4999] font-FreightNeoProNormal text-lg md:text-xl [&>p]:pb-4 [&_ul]:list-disc [&_ul]:pl-6"
-                dangerouslySetInnerHTML={{ __html: project.contentHtml.replace("min-height: 100vh;", "") }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeHtml(
+                    project.contentHtml.replace("min-height: 100vh;", ""),
+                  ),
+                }}
               />
             ) : (
               <div className="flex flex-col gap-4 text-[#0C3E4999] font-ttCommons text-lg md:text-xl">

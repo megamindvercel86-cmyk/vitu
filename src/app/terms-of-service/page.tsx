@@ -34,7 +34,7 @@ export async function generateMetadata() {
         "Terms of Service - Vitu Realty | Legal Information & User Guidelines",
       description:
         "Read Vitu Realty's Terms of Service to understand our policies, legal agreements, and user guidelines for using our platform and services.",
-      url: "https://viturealty.vercel.app/terms-of-service",
+      url: "https://www.viturealty.com/terms-of-service",
       type: "website",
       images: [
         {

@@ -1,11 +1,4 @@
-import {
-  Geist,
-  Geist_Mono,
-  Hanken_Grotesk,
-  Noto_Serif,
-  Source_Sans_3,
-  Tenor_Sans,
-} from "next/font/google";
+import { Geist, Geist_Mono, Hanken_Grotesk, Noto_Serif, Source_Sans_3, Tenor_Sans } from "next/font/google";
 import localFont from "next/font/local";
 
 const FS_Siena_Regular = localFont({
@@ -92,6 +85,21 @@ const ttCommons = localFont({
     {
       path: "./fonts/TTCommons-ExtraBold.ttf",
       weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ttcommons/TTCommons-DemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ttcommons/TTCommons-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ttcommons/TTCommons-ExtraLight.ttf",
+      weight: "200",
       style: "normal",
     },
   ],

@@ -1,6 +1,4 @@
 import { useFormik } from "formik";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/firebase/firebaseConfig";
 import { EliteFormValidationSchema, GeneralFormValidationSchema } from "./validations";
 import { ProjectFormValidationSchema } from "./validations";
 import { CareerFormValidationSchema } from "./validations";
@@ -11,6 +9,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "@/firebase/firebaseConfig";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import { submitLead } from "@/lib/leadApi";
 
 const uploadToFirebaseStorage = async (file: File): Promise<string> => {
   const fileRef = ref(storage, `resumes/${Date.now()}-${file.name}`);
@@ -48,90 +47,77 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
   };
 
   const handleFormSubmission = async (values: FormValues): Promise<void> => {
-    console.log("butom clicked", values);
     let resumeUrl: string | null = null;
     setIsLoading(true);
-    console.log("ded");
     try {
       if (page === "Career Application" && values.resume) {
         resumeUrl = await uploadToFirebaseStorage(values.resume);
       }
 
-      const collectionName =
-        page === "General Enquire"
-          ? "generalEnquiries"
-          : page === "Project Enquire"
-            ? "projectEnquiries"
-            : page === "Vaikuntam City Elite"
-              ? "elite"
-              : "careerApplications";
-
-      const filteredValues =
-        page === "General Enquire"
-          ? {
-              fullName: values.fullName,
-              email: values.email,
-              phone: values.phone,
-              comments: values.comments,
-              whatsapp: values.whatsapp,
-              createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-              ...utmParams,
-            }
-          : page === "Project Enquire" || page === "Vaikuntam City Elite"
-            ? {
-                fullName: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                project: "Vaikuntam City Elite",
-                whatsapp: values.whatsapp,
-                interstedIn: values.option,
-                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-                ...utmParams,
-              }
-            : {
-                fullName: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                postionAppliedFor: values.option,
-                resumeUrl,
-                createdAt: serverTimestamp(), // Use Firebase serverTimestamp with createdAt field
-                ...utmParams,
-              };
-
-               try {
-        await fetch("/api/accelr-webhook", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...filteredValues,
-            formName: page,
-            source: "website",
-            resumeUrl: resumeUrl || undefined,
-            ...utmParams,
-          }),
-        });
-      } catch (webhookError) {
-        console.error("Accelr Webhook Error:", webhookError);
-      }
-      const collectionRef = collection(db, collectionName);
-      console.log(collectionRef, filteredValues);
-      await addDoc(collectionRef, filteredValues);
-
-      if (page === "General Enquire" || page === "Project Enquire") {
-        await fetch("/api/send-whatsapp-vitu", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: values.fullName,
+      if (page === "General Enquire") {
+        await submitLead({
+          intent: "generalEnquire",
+          payload: {
+            fullName: values.fullName,
+            email: values.email,
             phone: values.phone,
-          }),
+            comments: values.comments,
+            whatsapp: values.whatsapp,
+          },
+          utm: utmParams,
+          meta: {
+            formName: "General Enquire",
+          },
+        });
+      } else if (page === "Project Enquire") {
+        await submitLead({
+          intent: "projectEnquire",
+          payload: {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            whatsapp: values.whatsapp,
+            option: values.option,
+            project: "Vaikuntam City Elite",
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Project Enquire",
+          },
+        });
+      } else if (page === "Vaikuntam City Elite") {
+        await submitLead({
+          intent: "vaikuntamCityElite",
+          payload: {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            whatsapp: values.whatsapp,
+            option: values.option,
+            userType: "",
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Vaikuntam City Elite Form",
+          },
+        });
+      } else {
+        await submitLead({
+          intent: "careerApplication",
+          payload: {
+            fullName: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            option: values.option,
+            resumeUrl: resumeUrl || "",
+          },
+          utm: utmParams,
+          meta: {
+            formName: "Career Application",
+          },
         });
       }
-  await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...filteredValues, page, resumeUrl }),
-      });
+
       if (page === "Vaikuntam City Elite") {
         router.push("/vaikuntam-city-elite/pre-launch/thank-you");
         return;
@@ -223,4 +209,3 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
 
   return { formik, isLoading };
 };
-

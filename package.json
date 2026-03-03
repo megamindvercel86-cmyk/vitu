@@ -19,6 +19,7 @@
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.28.1",
     "@vercel/analytics": "^1.6.1",
+    "@vis.gl/react-google-maps": "^1.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "file-saver": "^2.0.5",

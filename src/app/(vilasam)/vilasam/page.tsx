@@ -17,7 +17,7 @@ export async function generateMetadata() {
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: "https://viturealty.vercel.app/vilasam",
+      url: "https://www.viturealty.com/vilasam",
       siteName: "Vitu-Realty",
       images: [
         {

@@ -125,13 +125,12 @@ export default function ScrollRevealSection({
         try {
             const thankYouRoute = "/vilasam/landing-page-1/thank-you";
 
-            router.push(thankYouRoute);
-
             // Webhook and Data Submission
             const utmParams = getLandingUtmParams(searchParams);
 
             await handleFormSubmitVilasam(formData, utmParams);
 
+            router.push(thankYouRoute);
             resetForm();
             setConsentChecked(true);
             setIsBrochureModalOpen(false);

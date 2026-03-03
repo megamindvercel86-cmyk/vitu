@@ -51,7 +51,7 @@ export default function vaikuntamCityEliteLandingPage() {
         image2={availablePlot2}
         image3={availablePlot3}
       /> */}
-      <Enquiry userType="Home Buyer" />
+      <Enquiry premise="Vaikuntam City Elite - Landing Page 2" userType="Home Buyer" />
       <MapSection />
     </>
   );

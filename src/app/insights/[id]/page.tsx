@@ -8,6 +8,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "@/components/Icons/Icons";
 import { motion } from "framer-motion";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 interface Article {
     id: string;
@@ -135,7 +136,9 @@ export default function InsightDetailPage() {
                                 [&_ul]:list-disc [&_ul]:pl-12 [&_ul]:mb-12 [&_li]:mb-4 
                                 [&_strong]:text-customBrown/90 [&_img]:rounded-[32px] [&_img]:my-16 [&_img]:shadow-2xl
                                 [&_blockquote]:italic [&_blockquote]:text-3xl md:[_blockquote]:text-4xl [&_blockquote]:text-customBrown/70 [&_blockquote]:border-l-8 [&_blockquote]:border-customBrown/10 [&_blockquote]:pl-10 [&_blockquote]:my-16"
-                            dangerouslySetInnerHTML={{ __html: (blog.contentHtml || "").replace("min-height: 100vh;", "") }}
+                            dangerouslySetInnerHTML={{
+                                __html: sanitizeHtml((blog.contentHtml || "").replace("min-height: 100vh;", "")),
+                            }}
                         />
 
                         {/* Footer / Next Post Link */}
