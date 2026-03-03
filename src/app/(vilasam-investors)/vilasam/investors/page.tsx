@@ -50,7 +50,7 @@ export default function VilasamInvestorsPage() {
     ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
-      "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
+      "24 Limited Edition Luxury Villa Plots in Surathkal, Mangalore. A rare asset in a rapidly growing coastal corridor.",
     ctaLabel: "Download E-Brochure",
     images: ["/vilasamImages/brochureSection/1.png","/vilasamImages/brochureSection/2.png","/vilasamImages/brochureSection/3.png","/vilasamImages/brochureSection/4.png","/vilasamImages/brochureSection/5.png"],
     imageAlt: "Vilasam gated entrance",
@@ -122,7 +122,7 @@ export default function VilasamInvestorsPage() {
   };
 
   const locationSectionData: InvestorsLocationSectionProps = {
-    title: "Closer to What Matters",
+    title: "Location Proximities",
     locations: [
       { id: "1", name: "Surathkal Railway Station", distance: "5 mins" },
       { id: "2", name: "Mangalore International Airport", distance: "15 mins" },

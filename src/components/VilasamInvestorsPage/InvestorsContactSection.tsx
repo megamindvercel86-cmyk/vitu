@@ -188,8 +188,8 @@ export default function InvestorsContactSection({
     <section id="contact-section" className="bg-[#FBFBFB] px-5 py-12 md:px-8 md:py-16 lg:px-12 lg:py-24">
       <div className="mx-auto max-w-7xl xl:max-w-[90vw]">
         {/* Mobile Title */}
-        <h2 className="mb-8 text-center font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:hidden">Book a Site Visit</h2>
-
+        <h2 className=" text-center font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:hidden">Book a Site Visit</h2>
+     <p className="mb-8 block text-center md:hidden font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
         {/* UPDATED: Added lg:items-stretch so both columns share the same height on desktop */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-16 xl:gap-20">
           {/* Left Side: Map Implementation */}
@@ -214,10 +214,10 @@ export default function InvestorsContactSection({
           {/* UPDATED: Added py-4 md:py-12 lg:py-10 to add bulk to the content side */}
           <div className="flex flex-col justify-center py-4 md:py-12 lg:py-10 lg:col-span-7">
             {/* Desktop Title */}
-            <h2 className="hidden mb-8 font-ttCommons text-[36px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[42px]">
+            <h2 className="hidden font-ttCommons text-[36px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[42px]">
               Book a Site Visit
             </h2>
-
+            <p className="mb-8 hidden md:block font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
             <form onSubmit={handleSubmit} className="w-full">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-y-6 lg:gap-x-5">
                 {/* Full Width Name Row */}

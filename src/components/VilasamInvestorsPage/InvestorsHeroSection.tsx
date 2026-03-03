@@ -32,7 +32,7 @@ const initialFormState: InvestorsFormState = {
 
 const interestedInOptions = ["Investment", "Building Your Dream Home", "Just Exploring"];
 
-const plotOrientationOptions = ["East", "West", "Corner"];
+const plotOrientationOptions = ["East Facing Plots", "West Facing Plots", "Corner Plots"];
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -309,7 +309,7 @@ export default function InvestorsHeroSection({
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
           {/* Desktop Logos */}
    <Image
-          src="/images/logos/vilasamDarkLogo.svg"
+          src="/vilasamLogos/darkLogo.svg"
           alt="Vilasam"
           width={220}
           height={52}
@@ -325,7 +325,7 @@ export default function InvestorsHeroSection({
 
         {/* Mobile Logos */}
         <Image 
-          src="/images/logos/vilasamMobileLogo.svg" 
+          src="/vilasamLogos/lightLogo.svg" 
           alt="Vilasam" 
           width={150} /* Adjust to your exact mobile SVG width */
           height={40} /* Adjust to your exact mobile SVG height */

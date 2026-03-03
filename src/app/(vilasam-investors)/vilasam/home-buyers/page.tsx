@@ -52,12 +52,12 @@ export default function VilasamInvestorsPage() {
     description:
       "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
     ctaLabel: "Download E-Brochure",
-  images: ["/vilasamImages/brochureSection/1.png","/vilasamImages/brochureSection/2.png","/vilasamImages/brochureSection/3.png","/vilasamImages/brochureSection/4.png","/vilasamImages/brochureSection/5.png"],
+    images: ["/vilasamImages/brochureSection/1.png", "/vilasamImages/brochureSection/2.png", "/vilasamImages/brochureSection/3.png", "/vilasamImages/brochureSection/4.png", "/vilasamImages/brochureSection/5.png"],
     imageAlt: "Vilasam gated entrance",
     cards: [
       { title: "10-15 mins to Everyday\nEssentials" },
       { title: "2X growth in the\nlast 3 years" },
-      { title: "24x7 Gated Security" },
+      { title: "24x7\nGated Security" },
       { title: "3‑Year Resale\nFlexibility" },
     ],
   };
@@ -122,7 +122,7 @@ export default function VilasamInvestorsPage() {
   };
 
   const locationSectionData: InvestorsLocationSectionProps = {
-    title: "Closer to What Matters",
+    title: "Location Proximities",
     locations: [
       { id: "1", name: "Surathkal Lighthouse Beach", distance: "5 mins" },
       { id: "2", name: "Srinivas Hospital", distance: "5 mins" },
