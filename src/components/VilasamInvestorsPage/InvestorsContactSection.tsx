@@ -189,7 +189,7 @@ export default function InvestorsContactSection({
       <div className="mx-auto max-w-7xl xl:max-w-[90vw]">
         {/* Mobile Title */}
         <h2 className=" text-center font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:hidden">Book a Site Visit</h2>
-     <p className="mb-8 block text-center md:hidden font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
+        <p className="mb-8 block text-center md:hidden font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
         {/* UPDATED: Added lg:items-stretch so both columns share the same height on desktop */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-16 xl:gap-20">
           {/* Left Side: Map Implementation */}
@@ -222,7 +222,9 @@ export default function InvestorsContactSection({
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-y-6 lg:gap-x-5">
                 {/* Full Width Name Row */}
                 <div className="col-span-1 md:col-span-2">
+                  <label htmlFor="contact-fullName" className="sr-only">Full Name</label>
                   <input
+                    id="contact-fullName"
                     type="text"
                     value={form.fullName}
                     onChange={(event) => {
@@ -230,11 +232,11 @@ export default function InvestorsContactSection({
                       if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
                     }}
                     placeholder="Name"
-                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                      errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                    }`}
+                    autoComplete="name"
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
                   />
-                  {errors.fullName && <p className="mt-1 text-[12px] text-red-500">{errors.fullName}</p>}
+                  {errors.fullName && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.fullName}</p>}
                 </div>
 
                 {/* Phone & Email Row */}
@@ -250,9 +252,8 @@ export default function InvestorsContactSection({
                       }
                     }}
                     disableDialCodeAndPrefix={true}
-                    className={`flex h-12 w-full items-center rounded-md border bg-[#FBFBFB] transition-colors ${
-                      errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#8ea7a5]"
-                    }`}
+                    className={`flex h-12 w-full items-center rounded-md border bg-[#FBFBFB] transition-colors ${errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#8ea7a5]"
+                      }`}
                     inputClassName="w-full bg-transparent px-3 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d]"
                     inputStyle={{
                       width: "100%",
@@ -318,11 +319,13 @@ export default function InvestorsContactSection({
                       border-radius: 4px;
                     }
                   `}</style>
-                  {errors.phone && <p className="mt-1 text-[12px] text-red-500">{errors.phone}</p>}
+                  {errors.phone && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.phone}</p>}
                 </div>
 
                 <div>
+                  <label htmlFor="contact-email" className="sr-only">Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     value={form.email}
                     onChange={(event) => {
@@ -330,25 +333,26 @@ export default function InvestorsContactSection({
                       if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
                     }}
                     placeholder="Email"
-                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                      errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                    }`}
+                    autoComplete="email"
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
                   />
-                  {errors.email && <p className="mt-1 text-[12px] text-red-500">{errors.email}</p>}
+                  {errors.email && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.email}</p>}
                 </div>
 
                 {/* Dropdowns Row */}
                 <div className="w-full">
+                  <label htmlFor="contact-interestedIn" className="sr-only">Interested In</label>
                   <div className="relative w-full">
                     <select
+                      id="contact-interestedIn"
                       value={form.interestedIn}
                       onChange={(event) => {
                         updateField("interestedIn", event.target.value);
                         if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
                       }}
-                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors ${
-                        errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                      }`}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                        }`}
                     >
                       <option value="">Interested In</option>
                       {interestedInOptions.map((option) => (
@@ -357,26 +361,27 @@ export default function InvestorsContactSection({
                         </option>
                       ))}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
-                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#666666]">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                   </div>
-                  {errors.interestedIn && <p className="mt-1 text-[12px] text-red-500">{errors.interestedIn}</p>}
+                  {errors.interestedIn && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.interestedIn}</p>}
                 </div>
 
                 <div className="w-full">
+                  <label htmlFor="contact-plotOrientation" className="sr-only">Preferred Plot Orientation</label>
                   <div className="relative w-full">
                     <select
+                      id="contact-plotOrientation"
                       value={form.preferredPlotOrientation}
                       onChange={(event) => {
                         updateField("preferredPlotOrientation", event.target.value);
                         if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                       }}
-                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#7b7b7b] outline-none transition-colors ${
-                        errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                      }`}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                        }`}
                     >
                       <option value="">Preferred Plot Orientation</option>
                       {plotOrientationOptions.map((option) => (
@@ -385,19 +390,19 @@ export default function InvestorsContactSection({
                         </option>
                       ))}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#7b7b7b]">
-                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#666666]">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                   </div>
-                  {errors.preferredPlotOrientation && <p className="mt-1 text-[12px] text-red-500">{errors.preferredPlotOrientation}</p>}
+                  {errors.preferredPlotOrientation && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.preferredPlotOrientation}</p>}
                 </div>
               </div>
 
               <div className="mt-5 flex flex-col items-start justify-between gap-6 md:mt-8 md:flex-row md:items-center">
                 {/* Consent Row */}
-                <label className="flex cursor-pointer items-center gap-2.5 text-[11px] text-[#7f7f7f] md:text-[12px]">
+                <label className="flex cursor-pointer items-center gap-2.5 text-[11px] text-[#5f5f5f] md:text-[12px]">
                   <div className="relative flex h-4 w-4 shrink-0 flex-col items-center justify-center">
                     <input
                       type="checkbox"

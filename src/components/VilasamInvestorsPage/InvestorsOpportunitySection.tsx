@@ -52,7 +52,7 @@ export default function InvestorsOpportunitySection({
             <h2 className="text-balance font-ttCommons leading-tight  font-semibold text-[28px] text-[#2A2A2A] sm:text-[32px] md:text-4xl lg:text-5xl  md:hidden">
               {headingMobile}
             </h2>
-            <p className="max-w-sm pb-2 md:pb-8 font-ttCommons font-medium text-[15px]  text-[#999999] md:text-lg md:leading-[1.4] lg:max-w-xl">
+            <p className="max-w-sm pb-2 md:pb-8 font-ttCommons font-medium text-[15px]  text-[#666666] md:text-lg md:leading-[1.4] lg:max-w-xl">
               {description}
             </p>
             <button
@@ -93,6 +93,7 @@ export default function InvestorsOpportunitySection({
                     src={src}
                     alt={`${imageAlt} ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 60vw"
                     className="object-cover object-[center_65%]"
                   />
                 </SwiperSlide>
@@ -102,30 +103,32 @@ export default function InvestorsOpportunitySection({
             {/* Custom Navigation & Pagination Overlay */}
             <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-10 flex items-center gap-4 sm:gap-5">
               {/* Left Arrow Button */}
-              <button 
+              <button
                 ref={(node) => setPrevEl(node)}
+                aria-label="Previous slide"
                 className="flex items-center justify-center text-white transition hover:opacity-75 disabled:opacity-30 cursor-pointer"
               >
-               <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.3587 0.99995L1.41418 10.9444L11.3587 20.8889" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-</svg>
+                <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.3587 0.99995L1.41418 10.9444L11.3587 20.8889" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" />
+                </svg>
 
               </button>
 
               {/* Pagination Lines Container */}
-              <div 
+              <div
                 ref={(node) => setPaginationEl(node)}
                 className="custom-swiper-pagination flex items-center"
               ></div>
 
               {/* Right Arrow Button */}
-              <button 
+              <button
                 ref={(node) => setNextEl(node)}
+                aria-label="Next slide"
                 className="flex items-center justify-center text-white transition hover:opacity-75 disabled:opacity-30 cursor-pointer"
               >
-             <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.999975 20.889L10.9445 10.9445L0.999975 1" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-</svg>
+                <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.999975 20.889L10.9445 10.9445L0.999975 1" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" />
+                </svg>
 
               </button>
             </div>
@@ -180,7 +183,7 @@ export default function InvestorsOpportunitySection({
                 {card.title}
               </p>
               {card.subtitle ? (
-                <p className="mt-2 font-ttCommons text-sm font-medium text-[#999999] md:text-base">
+                <p className="mt-2 font-ttCommons text-sm font-medium text-[#666666] md:text-base">
                   {card.subtitle}
                 </p>
               ) : null}

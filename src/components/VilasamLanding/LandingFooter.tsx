@@ -43,7 +43,7 @@ export default function LandingFooter() {
       </button>
 
       <div className="w-full  mx-auto flex flex-col items-center text-center h-full justify-between mt-6 md:mt-0">
-        
+
         {/* Top Section - Logo and Branding */}
         <div className="flex flex-col items-center">
           {/* Vilasam Logo */}
@@ -58,7 +58,7 @@ export default function LandingFooter() {
 
           {/* Brought to Life By */}
           <div className="mb-6 md:mb-12">
-            <p className="text-[#98D1D066] text-[12px] md:text-md tracking-wider mb-4">
+            <p className="text-[#98D1D0aa] text-[12px] md:text-md tracking-wider mb-4">
               Brought to Life by
             </p>
             <div className="relative w-[140px] h-[45px] md:w-[160px] md:h-[50px] mx-auto">
@@ -74,7 +74,7 @@ export default function LandingFooter() {
 
         {/* Bottom Section - Divider & Copyright */}
         <div className="w-full mt-auto md:mt-10 lg:mt-8">
-          
+
           {/* =========================================
               DESKTOP ONLY: Standard Straight Divider
               ========================================= */}
@@ -108,7 +108,7 @@ export default function LandingFooter() {
           </div>
 
           {/* Disclaimer & Copyright */}
-          <div className="max-w-[95%] md:max-w-[90%] mx-auto text-center text-[12px] md:text-[12px] leading-relaxed space-y-4 text-[#98D1D066] pb-6 md:pb-8">
+          <div className="max-w-[95%] md:max-w-[90%] mx-auto text-center text-[12px] md:text-[12px] leading-relaxed space-y-4 text-[#98D1D099] pb-6 md:pb-8">
             <p>
               Visual representations of the property, layout plans, and other
               materials are for illustration purposes only. All information on

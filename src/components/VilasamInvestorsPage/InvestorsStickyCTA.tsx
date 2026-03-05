@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function InvestorsStickyCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,9 +33,8 @@ export default function InvestorsStickyCTA() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 z-50 w-full transition-transform duration-300 ease-in-out ${
-        isVisible ? "translate-y-0" : "translate-y-full"
-      }`}
+      className={`fixed bottom-0 left-0 z-50 w-full transition-transform duration-300 ease-in-out ${isVisible ? "translate-y-0" : "translate-y-full"
+        }`}
     >
       <div className="bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
         <div className="mx-auto flex container items-center justify-between px-5 py-4 md:px-8 lg:px-12">

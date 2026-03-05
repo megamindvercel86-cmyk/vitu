@@ -199,7 +199,7 @@ export default function InvestorsHeroSection({
       <div className="relative flex h-full min-h-[500px] md:min-h-screen flex-col overflow-hidden rounded-[2px] bg-[#ecedf0]">
         {/* Mobile Static Background */}
         <div className="absolute inset-0 z-0 md:hidden">
-          <Image src="/vilasamImages/heroSectionImages/mobile.webp" alt="Vilasam mobile" fill priority className="object-cover object-center" />
+          <Image src="/vilasamImages/heroSectionImages/mobile.webp" alt="Vilasam luxury villa plots in Surathkal, Mangalore" fill priority sizes="100vw" className="object-cover object-center" />
         </div>
 
         {/* Desktop Swiper Background */}
@@ -214,10 +214,10 @@ export default function InvestorsHeroSection({
             className="w-full h-full hero-swiper"
           >
             <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
-              <Image src="/vilasamImages/heroSectionImages/1.webp" alt="Vilasam entrance" fill priority className="object-cover object-center" />
+              <Image src="/vilasamImages/heroSectionImages/1.webp" alt="Vilasam gated community entrance view" fill priority sizes="100vw" className="object-cover object-center" />
             </SwiperSlide>
             <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
-              <Image src="/vilasamImages/heroSectionImages/2.webp" alt="Vilasam entrance" fill className="object-cover object-center" />
+              <Image src="/vilasamImages/heroSectionImages/2.webp" alt="Vilasam luxury villa plots aerial view" fill sizes="100vw" className="object-cover object-center" />
             </SwiperSlide>
 
             {/* Move the Black Gradient INSIDE the Swiper component */}
@@ -308,37 +308,37 @@ export default function InvestorsHeroSection({
 
         <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center md:bg-white px-5 py-6 md:px-10 md:py-7 ">
           {/* Desktop Logos */}
-   <Image
-          src="/vilasamLogos/darkLogo.svg"
-          alt="Vilasam"
-          width={220}
-          height={52}
-          className="h-auto w-[130px] hidden md:block md:w-[200px]"
-        />
-        <Image
-          src="/images/logos/vituTmLogo.svg"
-          alt="Vitu Realty"
-          width={170}
-          height={42}
-          className="h-auto w-[100px] hidden md:block md:w-[150px]"
-        />
+          <Image
+            src="/vilasamLogos/darkLogo.svg"
+            alt="Vilasam"
+            width={220}
+            height={52}
+            className="h-auto w-[130px] hidden md:block md:w-[200px]"
+          />
+          <Image
+            src="/images/logos/vituTmLogo.svg"
+            alt="Vitu Realty"
+            width={170}
+            height={42}
+            className="h-auto w-[100px] hidden md:block md:w-[150px]"
+          />
 
-        {/* Mobile Logos */}
-        <Image 
-          src="/vilasamLogos/lightLogo.svg" 
-          alt="Vilasam" 
-          width={150} /* Adjust to your exact mobile SVG width */
-          height={40} /* Adjust to your exact mobile SVG height */
-          className="md:hidden h-auto" 
-        />
-        <Image 
-          src="/images/logos/vituWhite.svg" 
-          alt="Vitu Realty" 
-          width={110} /* Adjust to your exact mobile SVG width */
-          height={30} /* Adjust to your exact mobile SVG height */
-          className="md:hidden h-auto" 
-        />
- 
+          {/* Mobile Logos */}
+          <Image
+            src="/vilasamLogos/lightLogo.svg"
+            alt="Vilasam"
+            width={150} /* Adjust to your exact mobile SVG width */
+            height={40} /* Adjust to your exact mobile SVG height */
+            className="md:hidden h-auto"
+          />
+          <Image
+            src="/images/logos/vituWhite.svg"
+            alt="Vitu Realty"
+            width={110} /* Adjust to your exact mobile SVG width */
+            height={30} /* Adjust to your exact mobile SVG height */
+            className="md:hidden h-auto"
+          />
+
         </div>
 
         <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
@@ -351,18 +351,18 @@ export default function InvestorsHeroSection({
               <a
                 href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
-                className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white"
+                className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white/90"
               >
                 <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M8.51304 20.2C8.51304 20.2 16.0261 13.5217 16.0261 8.51304C16.0261 4.3637 12.6624 1 8.51304 1C4.3637 1 1 4.3637 1 8.51304C1 13.5217 8.51304 20.2 8.51304 20.2Z"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <path
                     d="M10.9134 8.20015C10.9134 9.52563 9.83883 10.6002 8.51335 10.6002C7.18787 10.6002 6.11335 9.52563 6.11335 8.20015C6.11335 6.87467 7.18787 5.80015 8.51335 5.80015C9.83883 5.80015 10.9134 6.87467 10.9134 8.20015Z"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
                 Munchoor, Surathkal, Mangalore
@@ -392,7 +392,7 @@ export default function InvestorsHeroSection({
             <a
               href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
-              className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#999999]"
+              className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-[#666666]"
             >
               <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -411,7 +411,9 @@ export default function InvestorsHeroSection({
 
             <div className="space-y-2.5">
               <div>
+                <label htmlFor="desktop-fullName" className="sr-only">Full Name</label>
                 <input
+                  id="desktop-fullName"
                   type="text"
                   value={desktopForm.fullName}
                   onChange={(event) => {
@@ -419,11 +421,11 @@ export default function InvestorsHeroSection({
                     if (desktopErrors.fullName) setDesktopErrors((prev) => ({ ...prev, fullName: "" }));
                   }}
                   placeholder="Name"
-                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    desktopErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
-                  }`}
+                  autoComplete="name"
+                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#767676] transition-colors ${desktopErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    }`}
                 />
-                {desktopErrors.fullName && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.fullName}</p>}
+                {desktopErrors.fullName && <p className="mt-1 text-[11px] text-red-500" role="alert">{desktopErrors.fullName}</p>}
               </div>
 
               <div className="flex flex-col" data-lenis-prevent>
@@ -438,9 +440,8 @@ export default function InvestorsHeroSection({
                     }
                   }}
                   disableDialCodeAndPrefix={true}
-                  className={`flex h-10 w-full items-center rounded-md border bg-white transition-colors ${
-                    desktopErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#E2E2E2]"
-                  }`}
+                  className={`flex h-10 w-full items-center rounded-md border bg-white transition-colors ${desktopErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#E2E2E2]"
+                    }`}
                   inputClassName="w-full bg-transparent px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{
                     width: "100%",
@@ -482,11 +483,13 @@ export default function InvestorsHeroSection({
                   }}
                 />
 
-                {desktopErrors.phone && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.phone}</p>}
+                {desktopErrors.phone && <p className="mt-1 text-[11px] text-red-500" role="alert">{desktopErrors.phone}</p>}
               </div>
 
               <div>
+                <label htmlFor="desktop-email" className="sr-only">Email Address</label>
                 <input
+                  id="desktop-email"
                   type="email"
                   value={desktopForm.email}
                   onChange={(event) => {
@@ -494,24 +497,25 @@ export default function InvestorsHeroSection({
                     if (desktopErrors.email) setDesktopErrors((prev) => ({ ...prev, email: "" }));
                   }}
                   placeholder="Email"
-                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    desktopErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
-                  }`}
+                  autoComplete="email"
+                  className={`h-10 w-full rounded-md border bg-white px-3 text-[13px] text-[#303030] outline-none placeholder:text-[#767676] transition-colors ${desktopErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                    }`}
                 />
-                {desktopErrors.email && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.email}</p>}
+                {desktopErrors.email && <p className="mt-1 text-[11px] text-red-500" role="alert">{desktopErrors.email}</p>}
               </div>
 
               <div className="w-full">
+                <label htmlFor="desktop-interestedIn" className="sr-only">Interested In</label>
                 <div className="relative">
                   <select
+                    id="desktop-interestedIn"
                     value={desktopForm.interestedIn}
                     onChange={(event) => {
                       updateField("desktop", "interestedIn", event.target.value);
                       if (desktopErrors.interestedIn) setDesktopErrors((prev) => ({ ...prev, interestedIn: "" }));
                     }}
-                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
-                      desktopErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
-                    }`}
+                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#666666] outline-none transition-colors ${desktopErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                      }`}
                   >
                     <option value="">Interested In</option>
                     {interestedInOptions.map((option) => (
@@ -521,25 +525,26 @@ export default function InvestorsHeroSection({
                     ))}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-                {desktopErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.interestedIn}</p>}
+                {desktopErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500" role="alert">{desktopErrors.interestedIn}</p>}
               </div>
 
               <div className="w-full">
+                <label htmlFor="desktop-plotOrientation" className="sr-only">Preferred Plot Orientation</label>
                 <div className="relative">
                   <select
+                    id="desktop-plotOrientation"
                     value={desktopForm.preferredPlotOrientation}
                     onChange={(event) => {
                       updateField("desktop", "preferredPlotOrientation", event.target.value);
                       if (desktopErrors.preferredPlotOrientation) setDesktopErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                     }}
-                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#848484] outline-none transition-colors ${
-                      desktopErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
-                    }`}
+                    className={`h-10 w-full appearance-none rounded-md border bg-white px-3 pr-8 text-[13px] text-[#666666] outline-none transition-colors ${desktopErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#E2E2E2]"
+                      }`}
                   >
                     <option value="">Preferred Plot Orientation</option>
                     {plotOrientationOptions.map((option) => (
@@ -549,16 +554,16 @@ export default function InvestorsHeroSection({
                     ))}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#555]">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-                {desktopErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{desktopErrors.preferredPlotOrientation}</p>}
+                {desktopErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500" role="alert">{desktopErrors.preferredPlotOrientation}</p>}
               </div>
             </div>
 
-            <label className="mt-4 flex items-center gap-2 text-[10px] text-[#8f8f8f] cursor-pointer">
+            <label className="mt-4 flex items-center gap-2 text-[10px] text-[#6b6b6b] cursor-pointer">
               <div className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
                 <input
                   type="checkbox"
@@ -596,22 +601,24 @@ export default function InvestorsHeroSection({
 
       {/* Modal for Mobile */}
       {isModalOpen && (
-        <div data-lenis-prevent className="fixed inset-0 z-[60] flex items-center justify-center backdrop-blur-sm bg-black/20 p-4">
+        <div data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="modal-heading" className="fixed inset-0 z-[60] flex items-center justify-center backdrop-blur-sm bg-black/20 p-4">
           <form onSubmit={(e) => handleSubmit(e, "modal")} className="relative w-full max-w-[420px] rounded-[12px] bg-white p-6 shadow-2xl">
             {/* Close Button */}
-            <button type="button" onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-500 transition hover:text-black">
+            <button type="button" onClick={() => setIsModalOpen(false)} aria-label="Close form dialog" className="absolute right-4 top-4 text-gray-500 transition hover:text-black">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
 
             <div className="mb-6 pt-4 text-center">
-              <h2 className="font-ttCommons font-bold text-[24px] text-[#2A2A2A]">Book your Site Visit at Vilasam</h2>
+              <h2 id="modal-heading" className="font-ttCommons font-bold text-[24px] text-[#2A2A2A]">Book your Site Visit at Vilasam</h2>
             </div>
 
             <div className="space-y-3.5">
               <div>
+                <label htmlFor="modal-fullName" className="sr-only">Full Name</label>
                 <input
+                  id="modal-fullName"
                   type="text"
                   value={modalForm.fullName}
                   onChange={(event) => {
@@ -619,11 +626,11 @@ export default function InvestorsHeroSection({
                     if (modalErrors.fullName) setModalErrors((prev) => ({ ...prev, fullName: "" }));
                   }}
                   placeholder="Name"
-                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    modalErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
-                  }`}
+                  autoComplete="name"
+                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#767676] transition-colors ${modalErrors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    }`}
                 />
-                {modalErrors.fullName && <p className="mt-1 text-[11px] text-red-500">{modalErrors.fullName}</p>}
+                {modalErrors.fullName && <p className="mt-1 text-[11px] text-red-500" role="alert">{modalErrors.fullName}</p>}
               </div>
 
               <div className="flex flex-col" data-lenis-prevent>
@@ -638,9 +645,8 @@ export default function InvestorsHeroSection({
                     }
                   }}
                   disableDialCodeAndPrefix={true}
-                  className={`flex h-[42px] w-full items-center rounded-md border bg-white transition-colors ${
-                    modalErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#064747]"
-                  }`}
+                  className={`flex h-[42px] w-full items-center rounded-md border bg-white transition-colors ${modalErrors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#064747]"
+                    }`}
                   inputClassName="w-full bg-transparent px-3 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d]"
                   inputStyle={{ width: "100%", background: "transparent", border: "none", outline: "none", height: "100%" }}
                   countrySelectorStyleProps={{
@@ -677,11 +683,13 @@ export default function InvestorsHeroSection({
                     },
                   }}
                 />
-                {modalErrors.phone && <p className="mt-1 text-[11px] text-red-500">{modalErrors.phone}</p>}
+                {modalErrors.phone && <p className="mt-1 text-[11px] text-red-500" role="alert">{modalErrors.phone}</p>}
               </div>
 
               <div>
+                <label htmlFor="modal-email" className="sr-only">Email Address</label>
                 <input
+                  id="modal-email"
                   type="email"
                   value={modalForm.email}
                   onChange={(event) => {
@@ -689,24 +697,25 @@ export default function InvestorsHeroSection({
                     if (modalErrors.email) setModalErrors((prev) => ({ ...prev, email: "" }));
                   }}
                   placeholder="Email"
-                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#9d9d9d] transition-colors ${
-                    modalErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
-                  }`}
+                  autoComplete="email"
+                  className={`h-[42px] w-full rounded-md border bg-white px-3.5 text-[14px] text-[#303030] outline-none placeholder:text-[#767676] transition-colors ${modalErrors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                    }`}
                 />
-                {modalErrors.email && <p className="mt-1 text-[11px] text-red-500">{modalErrors.email}</p>}
+                {modalErrors.email && <p className="mt-1 text-[11px] text-red-500" role="alert">{modalErrors.email}</p>}
               </div>
 
               <div className="w-full">
+                <label htmlFor="modal-interestedIn" className="sr-only">Interested In</label>
                 <div className="relative">
                   <select
+                    id="modal-interestedIn"
                     value={modalForm.interestedIn}
                     onChange={(event) => {
                       updateField("modal", "interestedIn", event.target.value);
                       if (modalErrors.interestedIn) setModalErrors((prev) => ({ ...prev, interestedIn: "" }));
                     }}
-                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
-                      modalErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
-                    }`}
+                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#666666] outline-none transition-colors ${modalErrors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                      }`}
                   >
                     <option value="">Interested In</option>
                     {interestedInOptions.map((option) => (
@@ -716,25 +725,26 @@ export default function InvestorsHeroSection({
                     ))}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-                {modalErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500">{modalErrors.interestedIn}</p>}
+                {modalErrors.interestedIn && <p className="mt-1 text-[11px] text-red-500" role="alert">{modalErrors.interestedIn}</p>}
               </div>
 
               <div className="w-full">
+                <label htmlFor="modal-plotOrientation" className="sr-only">Preferred Plot Orientation</label>
                 <div className="relative">
                   <select
+                    id="modal-plotOrientation"
                     value={modalForm.preferredPlotOrientation}
                     onChange={(event) => {
                       updateField("modal", "preferredPlotOrientation", event.target.value);
                       if (modalErrors.preferredPlotOrientation) setModalErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                     }}
-                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#848484] outline-none transition-colors ${
-                      modalErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
-                    }`}
+                    className={`h-[42px] w-full appearance-none rounded-md border bg-white px-3.5 pr-8 text-[14px] text-[#666666] outline-none transition-colors ${modalErrors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#064747]"
+                      }`}
                   >
                     <option value="">Preferred Plot Orientation</option>
                     {plotOrientationOptions.map((option) => (
@@ -744,16 +754,16 @@ export default function InvestorsHeroSection({
                     ))}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#555]">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
-                {modalErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500">{modalErrors.preferredPlotOrientation}</p>}
+                {modalErrors.preferredPlotOrientation && <p className="mt-1 text-[11px] text-red-500" role="alert">{modalErrors.preferredPlotOrientation}</p>}
               </div>
             </div>
 
-            <label className="mt-5 flex items-center gap-2.5 text-[10px] text-[#8f8f8f] cursor-pointer">
+            <label className="mt-5 flex items-center gap-2.5 text-[10px] text-[#6b6b6b] cursor-pointer">
               <div className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
                 <input
                   type="checkbox"

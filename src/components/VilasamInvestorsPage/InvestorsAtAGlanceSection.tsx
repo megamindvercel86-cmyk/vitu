@@ -53,21 +53,19 @@ export default function InvestorsAtAGlanceSection({ title, items }: InvestorsAtA
                   <button
                     key={item.id}
                     onClick={() => setActiveIndex(index)}
-                    className={`flex w-full items-center gap-4 border-b border-[#E2E2E2] py-4 transition-colors last:border-b-0 ${
-                      isActive ? "text-[#064747]" : "text-[#999999] hover:text-[#555]"
-                    }`}
+                    className={`flex w-full items-center gap-4 border-b border-[#E2E2E2] py-4 transition-colors last:border-b-0 ${isActive ? "text-[#064747]" : "text-[#666666] hover:text-[#444]"
+                      }`}
                   >
                     <div className="flex shrink-0 items-center justify-center">
                       <div
-                        className={`flex h-7 w-7 items-center justify-center transition-all ${isActive ? "opacity-100 text-[#064747]" : "opacity-60 text-[#999999]"}`}
+                        className={`flex h-7 w-7 items-center justify-center transition-all ${isActive ? "opacity-100 text-[#064747]" : "opacity-60 text-[#666666]"}`}
                       >
                         {item.icon}
                       </div>
                     </div>
                     <span
-                      className={`font-ttCommons text-[16px] font-bold text-left transition-all md:text-[24px] ${
-                        isActive ? "font-bold text-[#064747]" : "font-medium text-[#999999]"
-                      }`}
+                      className={`font-ttCommons text-[16px] font-bold text-left transition-all md:text-[24px] ${isActive ? "font-bold text-[#064747]" : "font-medium text-[#666666]"
+                        }`}
                     >
                       {item.label}
                     </span>
@@ -86,9 +84,9 @@ export default function InvestorsAtAGlanceSection({ title, items }: InvestorsAtA
                 alt={item.label}
                 fill
                 priority={index === 0}
-                className={`object-cover object-[center_65%] transition-opacity duration-1000 ease-in-out ${
-                  index === activeIndex ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 z-0"
-                }`}
+                sizes="(max-width: 768px) 100vw, 66vw"
+                className={`object-cover object-[center_65%] transition-opacity duration-1000 ease-in-out ${index === activeIndex ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 z-0"
+                  }`}
               />
             ))}
           </div>
