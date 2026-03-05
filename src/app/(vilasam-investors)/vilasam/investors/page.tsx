@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Vitu-Realty",
     images: [
       {
-        url: "/images/vilasamImages/herobanner.webp",
+        url: "/og-image/image.png",
         width: 1200,
         height: 630,
         alt: "Vilasam Investors",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vilasam Investors | Vitu Realty",
     description: "Book your Vilasam site visit and explore premium investment-ready villa plots in Mangaluru.",
-    images: ["/images/vilasamImages/herobanner.webp"],
+    images: ["/og-image/image.png"],
   },
 };
 
