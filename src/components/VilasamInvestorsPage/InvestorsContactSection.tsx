@@ -436,6 +436,12 @@ export default function InvestorsContactSection({
               </div>
 
               {error ? <p className="mt-3 text-sm text-[#b32727]">{error}</p> : null}
+
+              <div className="mt-6 border-t border-[#E2E2E2] pt-5 text-center md:text-left">
+                <p className="font-ttCommons text-[15px] text-[#666666]">
+                  Prefer to talk to an expert? Call us directly at <br className="md:hidden" /><a href="tel:+918904688886" className="font-bold text-[#064747] hover:underline">+91 89046 88886</a>
+                </p>
+              </div>
             </form>
           </div>
         </div>

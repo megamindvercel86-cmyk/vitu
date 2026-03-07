@@ -6,6 +6,7 @@ import InvestorsLocationSection, { type InvestorsLocationSectionProps } from "@/
 import InvestorsStatsSection, { type InvestorsStatsSectionProps } from "@/components/VilasamInvestorsPage/InvestorsStatsSection";
 import InvestorsContactSection from "@/components/VilasamInvestorsPage/InvestorsContactSection";
 import InvestorsStickyCTA from "@/components/VilasamInvestorsPage/InvestorsStickyCTA";
+import WhatsappSticky from "@/components/Common/WhatsappSticky";
 import {
   ChromotherapyGardenIcon,
   ClubhouseIcon,
@@ -52,7 +53,7 @@ export default function VilasamInvestorsPage() {
     description:
       "24 Limited Edition Luxury Villa Plots in Surathkal, Mangalore. A rare asset in a rapidly growing coastal corridor.",
     ctaLabel: "Download E-Brochure",
-    images: ["/vilasamImages/brochureSection/1.png","/vilasamImages/brochureSection/2.png","/vilasamImages/brochureSection/3.png","/vilasamImages/brochureSection/4.png","/vilasamImages/brochureSection/5.png"],
+    images: ["/vilasamImages/brochureSection/1.png", "/vilasamImages/brochureSection/2.png", "/vilasamImages/brochureSection/3.png", "/vilasamImages/brochureSection/4.png", "/vilasamImages/brochureSection/5.png"],
     imageAlt: "Vilasam gated entrance",
     cards: [
       { title: "2X growth in the\nlast 3 years" },
@@ -62,7 +63,7 @@ export default function VilasamInvestorsPage() {
     ],
   };
 
-    const atAGlanceSectionData: InvestorsAtAGlanceSectionProps = {
+  const atAGlanceSectionData: InvestorsAtAGlanceSectionProps = {
     title: "Vilasam at a Glance",
     items: [
       {
@@ -145,6 +146,7 @@ export default function VilasamInvestorsPage() {
       <InvestorsContactSection thankYouRoute="/vilasam/investors/thank-you" intent="vilasamLanding" formName="Vilasam Investors Contact Form" />
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
+      <WhatsappSticky />
       <LandingFooter />
     </main>
   );

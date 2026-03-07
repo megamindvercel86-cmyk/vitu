@@ -6,6 +6,7 @@ import InvestorsLocationSection, { type InvestorsLocationSectionProps } from "@/
 import InvestorsStatsSection, { type InvestorsStatsSectionProps } from "@/components/VilasamInvestorsPage/InvestorsStatsSection";
 import InvestorsContactSection from "@/components/VilasamInvestorsPage/InvestorsContactSection";
 import InvestorsStickyCTA from "@/components/VilasamInvestorsPage/InvestorsStickyCTA";
+import WhatsappSticky from "@/components/Common/WhatsappSticky";
 import {
   ChromotherapyGardenIcon,
   ClubhouseIcon,
@@ -158,6 +159,7 @@ export default function VilasamInvestorsPage() {
 
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
+      <WhatsappSticky />
       <LandingFooter />
     </main>
   );
