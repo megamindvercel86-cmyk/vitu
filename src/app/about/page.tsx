@@ -97,14 +97,14 @@ export async function generateMetadata() {
   const pageDescription =
     "Learn more about Vitu-Realty, a trusted real estate partner in Mangalore. Discover our story, vision, mission, leadership team, and commitment to creating premium plotted developments.";
   const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
-
+const pageUrl = "https://viturealty.com/about"
   return {
     title: pageTitle,
     description: pageDescription,
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: "https://yourwebsite.com/about",
+      url: pageUrl,
       siteName: "Vitu-Realty",
       images: [
         {
@@ -115,6 +115,9 @@ export async function generateMetadata() {
         },
       ],
       type: "website",
+    },
+     alternates: {
+      canonical: '/about', 
     },
     twitter: {
       card: "summary_large_image",

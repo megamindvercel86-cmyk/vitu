@@ -18,7 +18,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 
 // 1. DEFINE YOUR REAL DOMAIN
-const BASE_URL = "https://www.viturealty.com";
+const BASE_URL = "https://viturealty.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageTitle = "Vitu-Realty | Premium Plotted Developments in Mangalore";

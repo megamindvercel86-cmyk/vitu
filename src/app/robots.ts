@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/private/", "/admin/"], // Prevent search engines from indexing sensitive areas
       },
     ],
-    sitemap: ["https://www.viturealty.com/sitemap.xml"],
-    host: "https://www.viturealty.com",
+    sitemap: ["https://viturealty.com/sitemap.xml"],
+    host: "https://viturealty.com",
   };
 }

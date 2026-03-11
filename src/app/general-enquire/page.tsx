@@ -30,14 +30,14 @@ export async function generateMetadata() {
     "Take the first step towards your dream home with Vitu-Realty. Fill out our inquiry form and explore premium plotted developments in Mangalore.";
   const imageUrl =
     "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Dream-Home-Hero.jpg";
-
+const pageUrl = "https://viturealty.com/general-enquire"
   return {
     title: pageTitle,
     description: pageDescription,
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: "https://www.viturealty.com/general-enquire",
+      url: pageUrl,
       siteName: "Vitu-Realty",
       images: [
         {
@@ -48,6 +48,9 @@ export async function generateMetadata() {
         },
       ],
       type: "website",
+    },
+     alternates: {
+      canonical: '/general-enquire', 
     },
     twitter: {
       card: "summary_large_image",

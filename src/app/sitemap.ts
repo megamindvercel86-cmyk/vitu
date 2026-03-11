@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://www.viturealty.com";
+const BASE_URL = "https://viturealty.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
