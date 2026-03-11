@@ -18,14 +18,14 @@ export async function generateMetadata() {
   const pageDescription =
     "Discover Vaikuntam City, a premium residential development in Mangaluru, strategically located near major industries and top educational institutions. Developed by the KMK Group, a legacy of over six decades in excellence. Explore modern living today!";
   const imageUrl = "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Vitu_Home_Top_Slider_1.jpg";
-
+const pageUrl = "https://viturealty.com/vaikuntamcity"
   return {
     title: pageTitle,
     description: pageDescription,
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: "https://www.viturealty.com/",
+      url: pageUrl,
       siteName: "Vitu-Realty",
       images: [
         {
@@ -37,6 +37,10 @@ export async function generateMetadata() {
       ],
       type: "website",
     },
+     alternates: {
+      canonical: '/vaikuntamcity', 
+    },
+
     twitter: {
       card: "summary_large_image",
       title: pageTitle,

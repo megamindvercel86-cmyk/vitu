@@ -41,11 +41,11 @@ export default function FeaturedProjects() {
           <Typography className=" text-center font-FreightNeoProNormal text-base text-[#4F373799] lg:text-xl 2xl:text-[2.125rem]">
             Featured Projects
           </Typography>
-          <h1
+          <h2
             className="w-[224px]  text-center hidden lg:block md:w-full text-2xl lg:text-5xl lg2:text-6xl font-freightNeoMedium leading-[28px] md:leading-[72px] xl:leading-[67px] 2xl:leading-[100px] text-[#503637]"
           >
             A New Home, A New Way of Life
-          </h1>
+          </h2>
         </div>
 
         <main className="lg:pt-[94px]  pt-[59px]">

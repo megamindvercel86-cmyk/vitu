@@ -20,6 +20,7 @@ const NAVBAR_CONFIG = {
 export async function generateMetadata() {
   const imageUrl =
     "https://viturealty.com/vaikuntamcity/wp-content/uploads/2024/03/Project-Enquiry-Hero.jpg";
+  const pageUrl = "https://viturealty.com/resources"
   return {
     title: "Resources - Vitu Realty | Articles, Media & Downloads",
     description:
@@ -35,7 +36,7 @@ export async function generateMetadata() {
       title: "Resources - Vitu Realty | Articles, Media & Downloads",
       description:
         "Explore Vitu Realty's resources, including insightful articles, media content, and downloadable media kits. Stay informed with our latest updates.",
-      url: "https://www.viturealty.com/resources",
+      url: pageUrl,
       type: "website",
       images: [
         {
@@ -45,6 +46,9 @@ export async function generateMetadata() {
           alt: "Vitu Realty Resources",
         },
       ],
+    },
+    alternates: {
+      canonical: '/resources', 
     },
     twitter: {
       card: "summary_large_image",
