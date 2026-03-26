@@ -159,7 +159,7 @@ export default function VilasamInvestorsPage() {
 
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
-      <WhatsappSticky />
+    
       <LandingFooter />
     </main>
   );
