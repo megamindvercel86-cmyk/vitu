@@ -146,7 +146,7 @@ export default function VilasamInvestorsPage() {
       <InvestorsContactSection thankYouRoute="/vilasam/investors/thank-you" intent="vilasamLanding" formName="Vilasam Investors Contact Form" />
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
-      <WhatsappSticky />
+    
       <LandingFooter />
     </main>
   );
