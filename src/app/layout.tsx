@@ -132,6 +132,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <meta name="facebook-domain-verification" content="y3e6dbvhw9o7jam62imr8ybuzu7bbw" />
         <meta name="robots" content="index, follow" />
         {/* Meta Pixel Code */}
         <script

@@ -170,6 +170,10 @@ export default function InvestorsContactSection({
         },
       });
 
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", { value: 0.0, currency: "INR" });
+      }
+
       setForm(initialFormState);
 
       // Trigger automatic file download

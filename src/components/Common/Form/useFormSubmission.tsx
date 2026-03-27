@@ -118,6 +118,10 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
         });
       }
 
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", { value: 0.0, currency: "INR" });
+      }
+
       if (page === "Vaikuntam City Elite") {
         router.push("/vaikuntam-city-elite/pre-launch/thank-you");
         return;

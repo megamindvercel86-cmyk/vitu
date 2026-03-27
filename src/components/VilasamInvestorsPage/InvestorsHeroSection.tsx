@@ -161,6 +161,10 @@ export default function InvestorsHeroSection({
         },
       });
 
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", { value: 0.0, currency: "INR" });
+      }
+
       if (formType === "desktop") {
         setDesktopForm(initialFormState);
       } else {
