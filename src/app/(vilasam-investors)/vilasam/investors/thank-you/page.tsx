@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function VilasamInvestorsThankYouPage() {
+function ThankYouContent() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const searchParams = useSearchParams();
@@ -42,13 +42,28 @@ export default function VilasamInvestorsThankYouPage() {
   return (
     <main className="relative flex  min-h-screen w-full flex-col items-center justify-center bg-white px-5 pb-16 pt-[120px] md:px-8 md:pt-[160px]">
       {/* Logos acting as Navbar */}
-     <div className="absolute left-5 top-8 z-20 md:left-10 md:top-10">
-              <Link href="/vilasam/investors"> <Image src="/images/logos/vilasamDarkLogo.svg" alt="Vilasam" width={220} height={52} className="h-auto w-[150px] md:w-[220px]" />
-            </Link></div>
-    
-            <div className="absolute right-5 top-8 z-20 md:right-10 md:top-10">
-              <Image src="/images/logos/vituTmLogo.svg" alt="Vitu Realty" width={170} height={42} className="h-auto w-[100px] md:w-[170px]" />
-            </div>
+      <div className="absolute left-5 top-8 z-20 md:left-10 md:top-10">
+        <Link href="/vilasam/investors">
+          {" "}
+          <Image
+            src="/images/logos/vilasamDarkLogo.svg"
+            alt="Vilasam"
+            width={220}
+            height={52}
+            className="h-auto w-[150px] md:w-[220px]"
+          />
+        </Link>
+      </div>
+
+      <div className="absolute right-5 top-8 z-20 md:right-10 md:top-10">
+        <Image
+          src="/images/logos/vituTmLogo.svg"
+          alt="Vitu Realty"
+          width={170}
+          height={42}
+          className="h-auto w-[100px] md:w-[170px]"
+        />
+      </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center justify-center space-y-8 md:space-y-10">
         {/* Image / Video Wrapper */}
@@ -96,5 +111,13 @@ export default function VilasamInvestorsThankYouPage() {
         {/* Back to Home Button */}
       </div>
     </main>
+  );
+}
+
+export default function VilasamInvestorsThankYouPage() {
+  return (
+    <Suspense fallback={null}>
+      <ThankYouContent />
+    </Suspense>
   );
 }
