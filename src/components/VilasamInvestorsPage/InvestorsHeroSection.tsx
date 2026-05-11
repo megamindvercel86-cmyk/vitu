@@ -128,22 +128,14 @@ export default function InvestorsHeroSection({
     const isValid = validate(formType);
     if (!isValid) return;
 
-    const form = formType === "desktop" ? desktopForm : modalForm;
-    const normalizedPhone = form.phone.replace(/\D/g, "");
-    const interstedIn = `${form.interestedIn}`;
-
-    const link = document.createElement("a");
-    link.href =
-      "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
-    link.download = "VITU Realty - Vilasam.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setIsSubmitting(true);
 
     try {
-      setIsSubmitting(true);
-      router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
+      const form = formType === "desktop" ? desktopForm : modalForm;
+      const normalizedPhone = form.phone.replace(/\D/g, "");
+      const interstedIn = `${form.interestedIn}`;
 
+      // 1. Submit lead first
       await submitLead({
         intent: intent as LeadIntent,
         payload: {
@@ -162,8 +154,27 @@ export default function InvestorsHeroSection({
         },
       });
 
+      // 2. Track conversion
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead", { value: 0.0, currency: "INR" });
+      }
+
+      // 3. Trigger file download/open
+      const pdfUrl =
+        "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
+
+      // On iPhone/mobile, window.open is generally more reliable for PDFs than programmatic link clicks
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.open(pdfUrl, "_blank");
+      } else {
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "VITU Realty - Vilasam.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
 
       if (formType === "desktop") {
@@ -171,12 +182,15 @@ export default function InvestorsHeroSection({
       } else {
         setModalForm(initialFormState);
       }
+
+      // 4. Finally navigate to thank you page
+      router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
     } catch (error) {
       if (error instanceof Error) {
         setSubmitError(error.message);
-        return;
+      } else {
+        setSubmitError("Unable to submit your details. Please try again.");
       }
-      setSubmitError("Unable to submit your details. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

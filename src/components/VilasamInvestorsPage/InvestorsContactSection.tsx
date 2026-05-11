@@ -138,21 +138,14 @@ export default function InvestorsContactSection({
 
     const isValid = validate();
     if (!isValid) return;
-    const link = document.createElement("a");
-    link.href =
-      "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
-    link.download = "VITU Realty - Vilasam.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 
-    const normalizedPhone = form.phone.replace(/\D/g, "");
-    const interstedIn = `${form.interestedIn}`;
-    router.push(`${thankYouRoute}?type=${formName}&audience=${interstedIn}`);
+    setIsSubmitting(true);
 
     try {
-      setIsSubmitting(true);
+      const normalizedPhone = form.phone.replace(/\D/g, "");
+      const interstedIn = `${form.interestedIn}`;
 
+      // 1. Submit lead first
       await submitLead({
         intent,
         payload: {
@@ -171,19 +164,39 @@ export default function InvestorsContactSection({
         },
       });
 
+      // 2. Track conversion
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead", { value: 0.0, currency: "INR" });
       }
 
+      // 3. Trigger file download/open
+      const pdfUrl =
+        "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
+
+      // On iPhone/mobile, window.open is generally more reliable for PDFs than programmatic link clicks
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.open(pdfUrl, "_blank");
+      } else {
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "VITU Realty - Vilasam.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
       setForm(initialFormState);
 
-      // Trigger automatic file download
+      // 4. Finally navigate to thank you page
+      router.push(`${thankYouRoute}?type=${formName}&audience=${interstedIn}`);
     } catch (submitError) {
       if (submitError instanceof Error) {
         setError(submitError.message);
-        return;
+      } else {
+        setError("Unable to submit your details. Please try again.");
       }
-      setError("Unable to submit your details. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
