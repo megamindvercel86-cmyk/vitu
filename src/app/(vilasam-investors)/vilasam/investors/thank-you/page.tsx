@@ -2,11 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function VilasamInvestorsThankYouPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // If the download parameter is present, trigger the PDF download
+    if (searchParams.get("download") === "1") {
+      const pdfUrl =
+        "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
+
+      // Small delay to ensure the page has loaded and analytics can fire
+      const timer = setTimeout(() => {
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "VITU Realty - Vilasam.pdf";
+        link.target = "_blank"; // Helps avoid replacing the current page in some browsers
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
