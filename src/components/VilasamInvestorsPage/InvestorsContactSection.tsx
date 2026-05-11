@@ -171,8 +171,33 @@ export default function InvestorsContactSection({
 
       setForm(initialFormState);
 
-      // 4. Finally navigate to thank you page with download flag
-      router.push(`${thankYouRoute}?type=${formName}&audience=${interstedIn}&download=1`);
+      // 3. Trigger file download (Blob-based to force download without opening)
+      const pdfUrl = "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
+      
+      fetch(pdfUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "VITU Realty - Vilasam.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => {
+          // Fallback if CORS prevents fetch
+          const link = document.createElement("a");
+          link.href = pdfUrl;
+          link.download = "VITU Realty - Vilasam.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+
+      // 4. Finally navigate to thank you page
+      router.push(`${thankYouRoute}?type=${formName}&audience=${interstedIn}`);
     } catch (submitError) {
       if (submitError instanceof Error) {
         setError(submitError.message);
