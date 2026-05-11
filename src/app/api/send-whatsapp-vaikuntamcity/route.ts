@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     // 1. Your Firebase Storage URL
     const DOCUMENT_URL =
-      "https://www.viturealty.com/downloadingFiles/VC%20brochure.pdf";
+      "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVC%20brochure%20(6).pdf?alt=media&token=bb5d3148-1841-4328-add6-2f4421c7b674";
 
     // 2. The filename the user will see
     const DOCUMENT_FILENAME = "Digital Brochure - Vaikuntam City.pdf";

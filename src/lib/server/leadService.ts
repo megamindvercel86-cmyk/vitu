@@ -255,7 +255,7 @@ const sendWhatsAppVaikuntamCity = async (name: string, phone: string): Promise<v
     source: "Vaikuntam CITY",
     media: {
       type: "document",
-      url: "https://www.viturealty.com/downloadingFiles/VC%20brochure.pdf",
+      url: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVC%20brochure%20(6).pdf?alt=media&token=bb5d3148-1841-4328-add6-2f4421c7b674",
       filename: "Digital Brochure - Vaikuntam City.pdf",
     },
   });
