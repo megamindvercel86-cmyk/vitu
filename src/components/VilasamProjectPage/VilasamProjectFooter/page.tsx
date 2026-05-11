@@ -103,7 +103,9 @@ const VilasamProjectFooter: FC = () => {
             <FooterLink aria-label={`${mainPage} page`} href="/">
               <Image src={logo} alt="Logo" width={225} height={72} className="w-36 md:w-56 lg:w-[224px] h-auto" />
             </FooterLink>
-            <p className="text-[#cdcdcd] font-theSeasons font-medium text-lg md:text-2xl mt-4 text-center lg:text-left">Homes that Breathe with you</p>
+            <p className="text-[#cdcdcd] font-theSeasons font-medium text-lg md:text-2xl mt-4 text-center lg:text-left">
+              Homes that Breathe with you
+            </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
               <button
@@ -236,7 +238,13 @@ const VilasamProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal isOpen={showModal} onClose={setShowModal} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf" />
+      <ContactFormModal
+        isOpen={showModal}
+        onClose={setShowModal}
+        collectionName="vilasam"
+        thankYouRoute="/vilasam/thank-you"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
+      />
     </footer>
   );
 };
@@ -329,7 +337,8 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#808080] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-theSeasons">{new Date().getFullYear()}</span> <span className="font-theSeasons font-medium">{safeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
+        © <span className="font-theSeasons">{new Date().getFullYear()}</span>{" "}
+        <span className="font-theSeasons font-medium">{safeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
       </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="Read the legal disclaimer">

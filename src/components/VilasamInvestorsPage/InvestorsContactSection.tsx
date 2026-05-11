@@ -139,7 +139,8 @@ export default function InvestorsContactSection({
     const isValid = validate();
     if (!isValid) return;
     const link = document.createElement("a");
-    link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+    link.href =
+      "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073";
     link.download = "VITU Realty - Vilasam.pdf";
     document.body.appendChild(link);
     link.click();
@@ -193,7 +194,9 @@ export default function InvestorsContactSection({
       <div className="mx-auto max-w-7xl xl:max-w-[90vw]">
         {/* Mobile Title */}
         <h2 className=" text-center font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:hidden">Book a Site Visit</h2>
-        <p className="mb-8 block text-center md:hidden font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
+        <p className="mb-8 block text-center md:hidden font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">
+          Fill the form to download e-brochure
+        </p>
         {/* UPDATED: Added lg:items-stretch so both columns share the same height on desktop */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-16 xl:gap-20">
           {/* Left Side: Map Implementation */}
@@ -221,12 +224,16 @@ export default function InvestorsContactSection({
             <h2 className="hidden font-ttCommons text-[36px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[42px]">
               Book a Site Visit
             </h2>
-            <p className="mb-8 hidden md:block font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">Fill the form to download e-brochure</p>
+            <p className="mb-8 hidden md:block font-ttCommons text-[16px] font-semibold leading-tight text-[#2A2A2A] ">
+              Fill the form to download e-brochure
+            </p>
             <form onSubmit={handleSubmit} className="w-full">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-y-6 lg:gap-x-5">
                 {/* Full Width Name Row */}
                 <div className="col-span-1 md:col-span-2">
-                  <label htmlFor="contact-fullName" className="sr-only">Full Name</label>
+                  <label htmlFor="contact-fullName" className="sr-only">
+                    Full Name
+                  </label>
                   <input
                     id="contact-fullName"
                     type="text"
@@ -237,10 +244,15 @@ export default function InvestorsContactSection({
                     }}
                     placeholder="Name"
                     autoComplete="name"
-                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                      }`}
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${
+                      errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                    }`}
                   />
-                  {errors.fullName && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.fullName}</p>}
+                  {errors.fullName && (
+                    <p className="mt-1 text-[12px] text-red-500" role="alert">
+                      {errors.fullName}
+                    </p>
+                  )}
                 </div>
 
                 {/* Phone & Email Row */}
@@ -256,8 +268,9 @@ export default function InvestorsContactSection({
                       }
                     }}
                     disableDialCodeAndPrefix={true}
-                    className={`flex h-12 w-full items-center rounded-md border bg-[#FBFBFB] transition-colors ${errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#8ea7a5]"
-                      }`}
+                    className={`flex h-12 w-full items-center rounded-md border bg-[#FBFBFB] transition-colors ${
+                      errors.phone ? "border-red-500 focus-within:border-red-500" : "border-[#E2E2E2] focus-within:border-[#8ea7a5]"
+                    }`}
                     inputClassName="w-full bg-transparent px-3 text-[14px] text-[#333] outline-none placeholder:text-[#9d9d9d]"
                     inputStyle={{
                       width: "100%",
@@ -323,11 +336,17 @@ export default function InvestorsContactSection({
                       border-radius: 4px;
                     }
                   `}</style>
-                  {errors.phone && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.phone}</p>}
+                  {errors.phone && (
+                    <p className="mt-1 text-[12px] text-red-500" role="alert">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="contact-email" className="sr-only">Email Address</label>
+                  <label htmlFor="contact-email" className="sr-only">
+                    Email Address
+                  </label>
                   <input
                     id="contact-email"
                     type="email"
@@ -338,15 +357,22 @@ export default function InvestorsContactSection({
                     }}
                     placeholder="Email"
                     autoComplete="email"
-                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                      }`}
+                    className={`h-12 w-full rounded-md border bg-[#FBFBFB] px-4 text-[14px] text-[#333] outline-none placeholder:text-[#767676] transition-colors ${
+                      errors.email ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                    }`}
                   />
-                  {errors.email && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="mt-1 text-[12px] text-red-500" role="alert">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 {/* Dropdowns Row */}
                 <div className="w-full">
-                  <label htmlFor="contact-interestedIn" className="sr-only">Interested In</label>
+                  <label htmlFor="contact-interestedIn" className="sr-only">
+                    Interested In
+                  </label>
                   <div className="relative w-full">
                     <select
                       id="contact-interestedIn"
@@ -355,8 +381,9 @@ export default function InvestorsContactSection({
                         updateField("interestedIn", event.target.value);
                         if (errors.interestedIn) setErrors((prev) => ({ ...prev, interestedIn: "" }));
                       }}
-                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                        }`}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${
+                        errors.interestedIn ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
                     >
                       <option value="">Interested In</option>
                       {interestedInOptions.map((option) => (
@@ -371,11 +398,17 @@ export default function InvestorsContactSection({
                       </svg>
                     </div>
                   </div>
-                  {errors.interestedIn && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.interestedIn}</p>}
+                  {errors.interestedIn && (
+                    <p className="mt-1 text-[12px] text-red-500" role="alert">
+                      {errors.interestedIn}
+                    </p>
+                  )}
                 </div>
 
                 <div className="w-full">
-                  <label htmlFor="contact-plotOrientation" className="sr-only">Preferred Plot Orientation</label>
+                  <label htmlFor="contact-plotOrientation" className="sr-only">
+                    Preferred Plot Orientation
+                  </label>
                   <div className="relative w-full">
                     <select
                       id="contact-plotOrientation"
@@ -384,8 +417,9 @@ export default function InvestorsContactSection({
                         updateField("preferredPlotOrientation", event.target.value);
                         if (errors.preferredPlotOrientation) setErrors((prev) => ({ ...prev, preferredPlotOrientation: "" }));
                       }}
-                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
-                        }`}
+                      className={`h-12 w-full appearance-none rounded-md border bg-[#FBFBFB] px-4 pr-10 text-[14px] text-[#666666] outline-none transition-colors ${
+                        errors.preferredPlotOrientation ? "border-red-500 focus:border-red-500" : "border-[#E2E2E2] focus:border-[#8ea7a5]"
+                      }`}
                     >
                       <option value="">Preferred Plot Orientation</option>
                       {plotOrientationOptions.map((option) => (
@@ -400,7 +434,11 @@ export default function InvestorsContactSection({
                       </svg>
                     </div>
                   </div>
-                  {errors.preferredPlotOrientation && <p className="mt-1 text-[12px] text-red-500" role="alert">{errors.preferredPlotOrientation}</p>}
+                  {errors.preferredPlotOrientation && (
+                    <p className="mt-1 text-[12px] text-red-500" role="alert">
+                      {errors.preferredPlotOrientation}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -443,7 +481,10 @@ export default function InvestorsContactSection({
 
               <div className="mt-6 border-t border-[#E2E2E2] pt-5 text-center md:text-left">
                 <p className="font-ttCommons text-[15px] text-[#666666]">
-                  Prefer to talk to an expert? Call us directly at <br className="md:hidden" /><a href="tel:+918904688886" className="font-bold text-[#064747] hover:underline">+91 89046 88886</a>
+                  Prefer to talk to an expert? Call us directly at <br className="md:hidden" />
+                  <a href="tel:+918904688886" className="font-bold text-[#064747] hover:underline">
+                    +91 89046 88886
+                  </a>
                 </p>
               </div>
             </form>

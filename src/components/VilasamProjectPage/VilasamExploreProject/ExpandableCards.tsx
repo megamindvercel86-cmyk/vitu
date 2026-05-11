@@ -12,7 +12,6 @@ import ContactFormModal from "@/components/Common/FormModal/FormModal";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { safeSpecialCharacters } from "@/lib/safeSpecialCharacters";
 
-
 // Register ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -135,13 +134,13 @@ const expandedPositions = {
     { top: "64%", left: "60%", right: "auto" },
   ],
   xl: [
-    { top: "55%", left: "43.5%", right: "auto" },   //5
-    { top: "50%", right: "4%", left: "auto" },    //7
-    { top: "6%", right: "4%", left: "auto" },      //3
-    { top: "50%", left: "4%", right: "auto" },     //4
-    { top: "6%", left: "4%", right: "auto" },      //1
-    { top: "1%", left: "28%", right: "auto" },     //2
-    { top: "1%", left: "58%", right: "auto" },     ///6
+    { top: "55%", left: "43.5%", right: "auto" }, //5
+    { top: "50%", right: "4%", left: "auto" }, //7
+    { top: "6%", right: "4%", left: "auto" }, //3
+    { top: "50%", left: "4%", right: "auto" }, //4
+    { top: "6%", left: "4%", right: "auto" }, //1
+    { top: "1%", left: "28%", right: "auto" }, //2
+    { top: "1%", left: "58%", right: "auto" }, ///6
   ],
   lg2: [
     { top: "25%", left: "30%", right: "auto" },
@@ -153,13 +152,13 @@ const expandedPositions = {
     { top: "60%", left: "55%", right: "auto" },
   ],
   lg: [
-    { top: "63%", left: "43%", right: "auto" },   //5
-    { top: "54%", right: "4%", left: "auto" },    //7
-    { top: "6%", right: "4%", left: "auto" },      //3
-    { top: "54%", left: "4%", right: "auto" },     //4
-    { top: "6%", left: "4%", right: "auto" },      //1
-    { top: "1%", left: "28%", right: "auto" },     //2
-    { top: "1%", left: "58%", right: "auto" },     ///6
+    { top: "63%", left: "43%", right: "auto" }, //5
+    { top: "54%", right: "4%", left: "auto" }, //7
+    { top: "6%", right: "4%", left: "auto" }, //3
+    { top: "54%", left: "4%", right: "auto" }, //4
+    { top: "6%", left: "4%", right: "auto" }, //1
+    { top: "1%", left: "28%", right: "auto" }, //2
+    { top: "1%", left: "58%", right: "auto" }, ///6
   ],
   md: [
     { top: "70%", left: "30%", right: "auto" },
@@ -171,7 +170,6 @@ const expandedPositions = {
     { top: "43%", right: "3%", left: "auto" },
   ],
 };
-
 
 const notExpandedPositions = {
   "2xl": [
@@ -312,7 +310,9 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
 
   return (
     <div id="carousal" className="h-auto flex items-center justify-center">
-      {!isExpanded && isMounted && <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} fontClass="font-ttCommons" cursorBackground={`bg-${borderColor}`} />}
+      {!isExpanded && isMounted && (
+        <CustomCursor cursorVariant={cursorVariant} cursorText={cursorText} fontClass="font-ttCommons" cursorBackground={`bg-${borderColor}`} />
+      )}
       <div
         ref={containerRef}
         className={`mx-auto w-full relative font-ttCommons ${isExpanded ? "2xl:h-[130vh] xl:h-[120vh] lg:h-[100vh] lg2:h-[100vh] md:h-[100vh]" : "h-[90vh] xl:h-[70vh] cursor-pointer"}`}
@@ -408,7 +408,10 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
                   />
                   {isExpanded && (
                     <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-50 pointer-events-none">
-                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>{safeSpecialCharacters(card.title)}{ }</span>
+                      <span className={`text-white text-sm lg:text-xl text-center px-4 ${textStyle}`}>
+                        {safeSpecialCharacters(card.title)}
+                        {}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -422,7 +425,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, textColor = ""
         onClose={setIsGetInTouchOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
       />
     </div>
   );

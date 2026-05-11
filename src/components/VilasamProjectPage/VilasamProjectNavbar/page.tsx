@@ -244,7 +244,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
                   <LinkScroll aria-label={label} key={href} to={href} smooth={true} duration={1200}>
                     <div className="2xl:text-4xl text-white text-sm lg2:text-[18px] xl:text-2xl cursor-pointer font-theSeasons">{label}</div>
                   </LinkScroll>
-                )
+                ),
               )}
               {showGetInTouch && (
                 <NavLink href="">
@@ -278,7 +278,7 @@ export default function VilasamProjectNavbar({ showGetInTouch = true, VilasamPro
         onClose={setIsGetInTouchOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
       />
       <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>

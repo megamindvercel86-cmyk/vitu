@@ -25,9 +25,7 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
 
   const scale = useTransform(progress, range, [1, targetScale]); // Use the passed props
   const safeText = safeSpecialCharacters(title);
-  const safeDesc =safeSpecialCharacters(description)
-
-
+  const safeDesc = safeSpecialCharacters(description);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -48,9 +46,13 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
               <p className="text-[#0C3E49] md:leading-7 lg2:text-[24px]  md:text-lg text-sm text-[#0C3E49]/60  font-ttCommons pt-6   ">{safeDesc}</p>
             </div>
             <div>
-             
-                <button onClick={() => setIsModalOpen(true)} aria-label="Get the Best Quote" className="px-5 border py-2 rounded-3xl font-ttCommons bg-[#0C3E49] font-semibold text-white mt-4 text-[18px] ">Get the Best Quote</button>
-  
+              <button
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Get the Best Quote"
+                className="px-5 border py-2 rounded-3xl font-ttCommons bg-[#0C3E49] font-semibold text-white mt-4 text-[18px] "
+              >
+                Get the Best Quote
+              </button>
             </div>
           </div>
 
@@ -61,7 +63,13 @@ const Plot = ({ title, description, src, color = "#f5f5f5", i = 0, progress, ran
           </div>
         </div>
       </motion.div>
-      <ContactFormModal isOpen={isModalOpen} onClose={setIsModalOpen} collectionName="vilasam" thankYouRoute="/vilasam/thank-you" downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf" />
+      <ContactFormModal
+        isOpen={isModalOpen}
+        onClose={setIsModalOpen}
+        collectionName="vilasam"
+        thankYouRoute="/vilasam/thank-you"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
+      />
     </div>
   );
 };

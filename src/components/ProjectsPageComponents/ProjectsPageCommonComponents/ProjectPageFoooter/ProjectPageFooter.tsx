@@ -199,7 +199,7 @@ const ProjectFooter: FC = () => {
       {/* Footer Bottom Section */}
       <FooterBottom />
       <ContactFormModal
-        downloadFileLink="/downloadingFiles/VC brochure.pdf"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVC%20brochure%20(6).pdf?alt=media&token=bb5d3148-1841-4328-add6-2f4421c7b674"
         buttonBg="bg-[#4f3737]"
         peerBg="peer-checked:bg-[#4f3737]"
         textColor="text-customBrown"
@@ -286,15 +286,20 @@ const FooterBottom: FC = () => (
   <div className="mt-8 border-t border-gray-800 px-6 lg:px-20 xl:px-40 py-4">
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left">
-        © <span className="font-CandideCondensedNormal">{new Date().getFullYear()}</span> <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
+        © <span className="font-CandideCondensedNormal">{new Date().getFullYear()}</span>{" "}
+        <span className="font-freightNeoMedium">VITU Realty | All rights reserved.</span>
       </p>
-       <p className="text-[#FFFFFF66] mt-4  md:mt-0 text-xs text-center 2xl:text-xl md:text-left">
-            Designed and Maintained by{" "}
-            <a href="https://megamind.studio" target="_blank" rel="noopener noreferrer" className="text-[#FFFFFF66] hover:underline text-xs text-center 2xl:text-xl md:text-left">
-             Megamind Studios
-
-            </a>
-          </p>
+      <p className="text-[#FFFFFF66] mt-4  md:mt-0 text-xs text-center 2xl:text-xl md:text-left">
+        Designed and Maintained by{" "}
+        <a
+          href="https://megamind.studio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FFFFFF66] hover:underline text-xs text-center 2xl:text-xl md:text-left"
+        >
+          Megamind Studios
+        </a>
+      </p>
       <div className="flex gap-4 mt-4 md:mt-0">
         {/* <a
           href="/terms-of-service"
@@ -306,7 +311,7 @@ const FooterBottom: FC = () => (
         {/* <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
           |
         </span> */}
-        
+
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium" aria-label="Read the full terms of service">
           Terms of Service
         </a>

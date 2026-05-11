@@ -24,13 +24,13 @@ const UrbanAccessSection: React.FC = () => {
               At Vilasam, you get the best of both worlds expansive plots to shape your dream home{" "}
               <span className="font-CandideCondensedNormal">&</span> seamless access to Mangaluru’s coastal living opportunities.
             </p>
-         <button
-  aria-label="Get the Best Quote"
-  onClick={() => setIsModalOpen(true)}
-  className="flex items-center justify-center bg-white text-[#2B847D] font-ttCommons font-bold rounded-full text-[22px] px-4 py-2 hover:bg-[#E6F3F1] transition text-center"
->
-  Get the Best Quote
-</button>
+            <button
+              aria-label="Get the Best Quote"
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center justify-center bg-white text-[#2B847D] font-ttCommons font-bold rounded-full text-[22px] px-4 py-2 hover:bg-[#E6F3F1] transition text-center"
+            >
+              Get the Best Quote
+            </button>
           </div>
 
           {/* Image Block */}
@@ -61,7 +61,7 @@ const UrbanAccessSection: React.FC = () => {
         onClose={setIsModalOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
       />
     </section>
   );

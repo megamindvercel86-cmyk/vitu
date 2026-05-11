@@ -30,7 +30,7 @@ const CarouselDots = ({
           onClick={() => onDotClick?.(index)}
           className={cn(
             "transition-all duration-300",
-            active === index ? "w-8 bg-white rounded-xl h-[6px]" : "w-[6px] h-[6px] bg-gray-300 rounded-full"
+            active === index ? "w-8 bg-white rounded-xl h-[6px]" : "w-[6px] h-[6px] bg-gray-300 rounded-full",
           )}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -98,7 +98,7 @@ export default function PropertyCarousel() {
         onClose={setIsModalOpen}
         collectionName="vilasam"
         thankYouRoute="/vilasam/thank-you"
-        downloadFileLink="/downloadingFiles/VITU Realty - Vilasam.pdf"
+        downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073"
       />
     </div>
   );

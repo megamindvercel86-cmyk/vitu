@@ -9,7 +9,7 @@ import { saveAs } from "file-saver";
 
 function MediaSectionIntro() {
   const downloadData = [
-    "/downloadingFiles/VITU Realty - About Us.pdf",
+    "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20About%20Us%20(2).pdf?alt=media&token=7ed3634d-27bc-406e-9a23-7a50dd85206f",
     "/downloadingFiles/Vitu Realty - Light BG Logos.zip",
     "/downloadingFiles/Vitu Realty - Dark BG Logos.zip",
   ];
