@@ -2,6 +2,7 @@
 
 import Layout from "@/components/Layout/Layout";
 import FormSection from "@/components/Common/FormSection/FormSection";
+import ZohoJobsEmbed from "@/components/Careers/ZohoJobsEmbed";
 
 // Define the props type (if needed)
 interface CareerApplicationPageProps {}
@@ -55,13 +56,20 @@ export async function generateMetadata() {
 export default function CareerApplicationPage({}: CareerApplicationPageProps) {
   return (
     <>
+
       <Layout navbarProps={NAVBAR_CONFIG.props}>
+        <div className="">
+
+        <ZohoJobsEmbed />
+        </div>
+
         {/* Career Application Form Section */}
-        <FormSection
+        {/* <FormSection
           heading={FORM_CONFIG.heading}
           subheading={FORM_CONFIG.subheading}
           page={FORM_CONFIG.page}
-        />
+        /> */}
+
       </Layout>
     </>
   );
