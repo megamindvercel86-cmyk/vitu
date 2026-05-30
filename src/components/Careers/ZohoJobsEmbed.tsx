@@ -29,135 +29,229 @@ export default function ZohoJobsEmbed() {
         href="https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css"
         type="text/css"
       />
-      <style>{`
-        /* Override Zoho's default backgrounds to be completely transparent for outer containers only */
-        .embed_jobs_head, 
-        .embed_jobs_with_style_3, 
-        .embed_jobs_head2, 
-        #rec_job_listing_div {
-          background-color: transparent !important;
-          background: transparent !important;
-          border: none !important;
-          box-shadow: none !important;
-        }
+  <style>{`
+  /* Override Zoho's default backgrounds to be completely transparent for outer containers only */
+  .embed_jobs_head, 
+  .embed_jobs_with_style_3, 
+  .embed_jobs_head2, 
+  #rec_job_listing_div {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 
-        .embed_jobs_head3 {
-          background-color: transparent !important;
-          background: transparent !important;
-        }
+  .embed_jobs_head3 {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
 
-        /* Restore white background for Job Cards and Search Boxes so they are visible */
-        #rec_job_listing_div .rec-job-info {
-          background-color: #ffffff !important;
-          border-radius: 8px !important;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-        }
+  /* Restore white background for Job Cards */
+  #rec_job_listing_div .rec-job-info {
+    background-color: #ffffff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+  }
 
-        /* Give the Search Input boxes a PERMANENT distinct border */
-        #rec_job_listing_div .rec-what-where .searchWhat,
-        #rec_job_listing_div .rec-what-where .searchWhere {
-          border: 2px solid #A17F5F !important;
-          border-radius: 8px !important;
-        }
+  /* Apply the PERMANENT distinct border directly to the input fields */
+  #rec_job_listing_div .rec-what-where .searchWhat input,
+  #rec_job_listing_div .rec-what-where .searchWhere input,
+  #rec_job_listing_div .rec-what-where input[type="text"] {
+    border: 2px solid #A17F5F !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Ensure the wrappers don't have unnecessary styling */
+  #rec_job_listing_div .rec-what-where .searchWhat,
+  #rec_job_listing_div .rec-what-where .searchWhere {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 
-        /* Match Typography with the rest of the site */
-        #rec_job_listing_div {
-          font-family: "Freight Neo Pro Medium", sans-serif !important;
-          color: #04070799 !important;
-        }
-        
-        #rec_job_listing_div a {
-          color: #4F3737 !important;
-          text-decoration: none !important;
-        }
+  /* Match Typography */
+  #rec_job_listing_div {
+    font-family: "Freight Neo Pro Medium", sans-serif !important;
+    color: #04070799 !important;
+  }
+  
+  #rec_job_listing_div a {
+    color: #4F3737 !important;
+    text-decoration: none !important;
+  }
 
-        #rec_job_listing_div .rec-job-title,
-        #rec_job_listing_div .cw-job-title,
-        #rec_job_listing_div h2,
-        #rec_job_listing_div h3 {
-           font-family: "Freight Neo Pro Bold", sans-serif !important;
-           color: #4F3737 !important;
-        }
+  #rec_job_listing_div .rec-job-title,
+  #rec_job_listing_div .cw-job-title,
+  #rec_job_listing_div h2,
+  #rec_job_listing_div h3 {
+     font-family: "Freight Neo Pro Bold", sans-serif !important;
+     color: #4F3737 !important;
+  }
 
-        /* Nuclear override for search button */
-        #rec_job_listing_div .searchButton,
-        #rec_job_listing_div .searchButton > button,
-        #rec_job_listing_div button.rec-search-btn,
-        body #rec_job_listing_div button {
-          background-color: #4F3737 !important;
-          color: #ffffff !important;
-          border-radius: 999px !important;
-          border: none !important;
-        }
+  /* Search button */
+  #rec_job_listing_div .searchButton,
+  #rec_job_listing_div .searchButton > button,
+  #rec_job_listing_div button.rec-search-btn,
+  body #rec_job_listing_div button {
+    background-color: #4F3737 !important;
+    color: #ffffff !important;
+    border-radius: 999px !important;
+    border: none !important;
+  }
 
-        /* Style Active Filters and Checkboxes */
-        #rec_job_listing_div input[type="checkbox"] {
-           accent-color: #4F3737 !important;
-        }
-        
-        #rec_job_listing_div .active,
-        #rec_job_listing_div .rec-active {
-           color: #4F3737 !important;
-           border-color: #4F3737 !important;
-        }
-        
-        #rec_job_listing_div button:hover {
-           opacity: 0.9 !important;
-        }
+  /* Checkboxes */
+  #rec_job_listing_div input[type="checkbox"] {
+     accent-color: #4F3737 !important;
+  }
+  
+  #rec_job_listing_div .active,
+  #rec_job_listing_div .rec-active {
+     color: #4F3737 !important;
+     border-color: #4F3737 !important;
+  }
+  
+  #rec_job_listing_div button:hover {
+     opacity: 0.9 !important;
+  }
 
-        /* Style Search Bar and Dropdowns to have a clear Box UI */
-        #rec_job_listing_div input[type="text"],
-        #rec_job_listing_div input[type="search"],
-        #rec_job_listing_div select,
-        #rec_job_listing_div .rec-search-input,
-        #rec_job_listing_div .cw-search-input {
-          background-color: #F8F6F5 !important;
-          border: 1px solid rgba(0, 0, 0, 0.1) !important;
-          border-radius: 8px !important;
-          padding: 12px 16px !important;
-          font-family: "Freight Neo Pro Medium", sans-serif !important;
-          color: rgba(4, 7, 7, 0.8) !important;
-          font-size: 1.125rem !important;
-          width: 100% !important;
-          box-sizing: border-box !important;
-          box-shadow: inset 0 1px 2px rgba(0,0,0,0.02) !important;
-          margin-bottom: 1rem !important;
-          transition: all 0.2s ease !important;
-        }
+  /* Search Bar and Dropdowns — NO margin-bottom here */
+  #rec_job_listing_div input[type="text"],
+  #rec_job_listing_div input[type="search"],
+  #rec_job_listing_div select,
+  #rec_job_listing_div .rec-search-input,
+  #rec_job_listing_div .cw-search-input {
+    background-color: #F8F6F5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-family: "Freight Neo Pro Medium", sans-serif !important;
+    color: rgba(4, 7, 7, 0.8) !important;
+    font-size: 1.125rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02) !important;
+    transition: all 0.2s ease !important;
+  }
 
-        /* Remove active/focus border — keep same look as unfocused */
-        #rec_job_listing_div input[type="text"]:focus,
-        #rec_job_listing_div input[type="search"]:focus,
-        #rec_job_listing_div select:focus,
-        #rec_job_listing_div .rec-what-where .searchWhat:focus-within,
-        #rec_job_listing_div .rec-what-where .searchWhere:focus-within {
-          outline: none !important;
-          border-color: inherit !important;
-          box-shadow: none !important;
-        }
+  /* Remove focus border */
+  #rec_job_listing_div input[type="text"]:focus,
+  #rec_job_listing_div input[type="search"]:focus,
+  #rec_job_listing_div select:focus,
+  #rec_job_listing_div .rec-what-where .searchWhat:focus-within,
+  #rec_job_listing_div .rec-what-where .searchWhere:focus-within {
+    outline: none !important;
+    border-color: inherit !important;
+    box-shadow: none !important;
+  }
 
-        /* Search wrap alignment if Zoho uses flex */
-        #rec_job_listing_div .rec-search-wrap,
-        #rec_job_listing_div .cw-search-wrap,
-        #rec_job_listing_div .cw-filter-section {
-          display: flex !important;
-          flex-wrap: wrap !important;
-          gap: 16px !important;
-          align-items: center !important;
-          margin-bottom: 32px !important;
-          padding-bottom: 16px !important;
-          border-bottom: 1px dashed rgba(0,0,0,0.1) !important;
-        }
+  /* Search wrap alignment */
+  #rec_job_listing_div .rec-search-wrap,
+  #rec_job_listing_div .cw-search-wrap,
+  #rec_job_listing_div .cw-filter-section {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    align-items: center !important;
+    margin-bottom: 32px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px dashed rgba(0,0,0,0.1) !important;
+  }
 
-        #rec_job_listing_div ::placeholder {
-          color: rgba(4, 7, 7, 0.5) !important;
-          font-family: "Freight Neo Pro Medium", sans-serif !important;
-        }
-      `}</style>
+  #rec_job_listing_div ::placeholder {
+    color: rgba(4, 7, 7, 0.5) !important;
+    font-family: "Freight Neo Pro Medium", sans-serif !important;
+  }
+
+  /* ============ DESKTOP: add margin-bottom on inputs ============ */
+  @media (min-width: 769px) {
+    #rec_job_listing_div input[type="text"],
+    #rec_job_listing_div input[type="search"],
+    #rec_job_listing_div select,
+    #rec_job_listing_div .rec-search-input,
+    #rec_job_listing_div .cw-search-input {
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+    /* Zero out ALL spacing between inputs */
+    #rec_job_listing_div input[type="text"],
+    #rec_job_listing_div input[type="search"],
+    #rec_job_listing_div select,
+    #rec_job_listing_div .rec-search-input,
+    #rec_job_listing_div .cw-search-input {
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    #rec_job_listing_div .rec-what-where,
+    #rec_job_listing_div .cw-search-wrap,
+    #rec_job_listing_div .rec-search-wrap {
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    #rec_job_listing_div .rec-what-where > div,
+    #rec_job_listing_div .rec-what-where .searchWhat,
+    #rec_job_listing_div .rec-what-where .searchWhere {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    #rec_job_listing_div .searchButton,
+    #rec_job_listing_div .searchButton > button {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+
+    #rec_job_listing_div .rec-left-panel,
+    #rec_job_listing_div .rec-right-panel,
+    #rec_job_listing_div .cw-filter-section {
+      width: 100% !important;
+      float: none !important;
+      max-width: 100% !important;
+    }
+
+    #rec_job_listing_div .rec-job-info {
+      padding: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    
+    /* Force elements inside the job card to stop floating side-by-side */
+    #rec_job_listing_div .rec-job-info * {
+      float: none !important;
+      text-align: left !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    #rec_job_listing_div .rec-job-title,
+    #rec_job_listing_div .cw-job-title {
+      font-size: 1.125rem !important;
+      line-height: 1.2 !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Reduce font sizes for location, type, date, and description */
+    #rec_job_listing_div .rec-job-info span,
+    #rec_job_listing_div .rec-job-info p,
+    #rec_job_listing_div .rec-job-info div:not(.rec-job-title) {
+      font-size: 0.85rem !important;
+      line-height: 1.4 !important;
+      white-space: normal !important;
+    }
+  }
+`}</style>
 
       <div className="embed_jobs_head embed_jobs_with_style_3 bg-transparent w-full">
         <div className="embed_jobs_head2 bg-transparent w-full">
-          <div className="embed_jobs_head3 bg-transparent w-full" style={{ border: "2px solid #A17F5F", padding: "40px", borderRadius: "12px" }}>
+          <div className="embed_jobs_head3 bg-transparent w-full p-3 sm:p-5 md:p-[40px]" style={{ border: "2px solid #A17F5F", borderRadius: "12px" }}>
             <div id="rec_job_listing_div" className="bg-transparent w-full"></div>
             
             <Script
