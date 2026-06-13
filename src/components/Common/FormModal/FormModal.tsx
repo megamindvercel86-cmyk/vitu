@@ -170,6 +170,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
             ...formData,
             interestedIn: formData.interstedIn,
             project: isVilasam ? "Vilasam" : "Vaikuntam City",
+            isBrochure: !!downloadFileLink,
           },
           utm: utmParams,
           meta: {

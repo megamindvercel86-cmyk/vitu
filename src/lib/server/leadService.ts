@@ -277,18 +277,9 @@ const sendWhatsAppVaikuntamCity = async (name: string, phone: string): Promise<v
   });
 };
 
-const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> => {
-  // 1. Send greeting message (text only)
-  await sendAiSensyMessage({
-    campaignName: "eliteutil",
-    destination: `91${phone}`,
-    userName: name || "User",
-    source: "eliteutil",
-    templateParams: [name || "User"],
-    media: { type: "text" },
-  });
-
-  // 2. Send brochure PDF using a sequential fallback strategy
+const sendWhatsAppVilasam = async (name: string, phone: string, isBrochure: boolean): Promise<void> => {
+  if (isBrochure) {
+    // Send brochure PDF using a sequential fallback strategy
   const campaignsToTry = [
     { name: "Vilasam", useParams: false },
     { name: "Vilasam", useParams: true },
@@ -331,8 +322,19 @@ const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> =
     }
   }
 
-  if (!succeeded) {
-    throw new Error(`All Vilasam campaign fallback variations failed. Last error: ${lastError instanceof Error ? lastError.message : String(lastError)}`);
+    if (!succeeded) {
+      throw new Error(`All Vilasam campaign fallback variations failed. Last error: ${lastError instanceof Error ? lastError.message : String(lastError)}`);
+    }
+  } else {
+    // Send greeting message (text only)
+    await sendAiSensyMessage({
+      campaignName: "eliteutil",
+      destination: `91${phone}`,
+      userName: name || "User",
+      source: "eliteutil",
+      templateParams: [name || "User"],
+      media: { type: "text" },
+    });
   }
 };
 
@@ -630,6 +632,7 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
   const interstedIn = asString(request.payload.interstedIn) || requireString(request.payload.interestedIn, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
   const preferredPlotOrientation = asString(request.payload.preferredPlotOrientation);
+  const isBrochure = asBoolean(request.payload.isBrochure, false);
   const formName = request.meta.formName || "Vilasam Landing Page Form";
 
   const leadPayload = {
@@ -659,7 +662,7 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
     });
   });
   await safeIntegration("send vilasam whatsapp", async () => {
-    await sendWhatsAppVilasam(fullName, phone);
+    await sendWhatsAppVilasam(fullName, phone, isBrochure);
   });
   await safeIntegration("send vilasam pabbly", async () => {
     await postPabbly({
@@ -697,6 +700,7 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
   const phone = requirePhone(request.payload.phone);
   const interstedIn = asString(request.payload.interstedIn) || requireString(request.payload.interestedIn, "Interested in");
   const whatsapp = asBoolean(request.payload.whatsapp, true);
+  const isBrochure = asBoolean(request.payload.isBrochure, false);
 
   const collectionName = request.meta.collectionName || "projectEnquiries";
   const leadPayload = {
@@ -725,7 +729,7 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
     });
     await safeIntegration("send project modal whatsapp", async () => {
       if (collectionName === "vilasam") {
-        await sendWhatsAppVilasam(fullName, phone);
+        await sendWhatsAppVilasam(fullName, phone, isBrochure);
       } else {
         await sendWhatsAppVaikuntamCity(fullName, phone);
       }
