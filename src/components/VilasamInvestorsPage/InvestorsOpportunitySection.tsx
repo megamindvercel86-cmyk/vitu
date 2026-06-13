@@ -59,7 +59,7 @@ export default function InvestorsOpportunitySection({
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                window.dispatchEvent(new CustomEvent("open-investors-modal"));
+                window.dispatchEvent(new CustomEvent("open-investors-modal", { detail: { isBrochure: true } }));
               }}
               className="hidden h-12 w-fit items-center justify-center rounded-md bg-[#064747] px-8 font-ttCommons  font-bold text-white transition hover:bg-[#084943] md:inline-flex md:h-12 md:px-10 text-base"
             >
@@ -164,7 +164,7 @@ export default function InvestorsOpportunitySection({
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                window.dispatchEvent(new CustomEvent("open-investors-modal"));
+                window.dispatchEvent(new CustomEvent("open-investors-modal", { detail: { isBrochure: false } }));
               }}
               className="inline-flex py-3 md:h-12 w-full items-center justify-center rounded-[4px] bg-[#064747] px-8 font-ttCommons text-[16px] font-bold tracking-wide text-white transition hover:bg-[#084943]"
             >
