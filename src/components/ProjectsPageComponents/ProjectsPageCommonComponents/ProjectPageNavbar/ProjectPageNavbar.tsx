@@ -168,7 +168,7 @@ export default function ProjectNavbar({
                   )}
                 </React.Fragment>
               ))}
-              {showGetInTouch && (
+              {/* {showGetInTouch && (
                 <div className="w-full px-7">
                   <button
                     aria-label="Download E-Brochure"
@@ -181,7 +181,7 @@ export default function ProjectNavbar({
                     Download E-Brochure
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Social Links - Updated for center alignment */}
@@ -281,7 +281,7 @@ export default function ProjectNavbar({
     </React.Fragment>
   ))}
 
-  {showGetInTouch && (
+  {/* {showGetInTouch && (
     <div className="lg:gap-[86px] lg:text-[16px] lg2:text-[24px] gap-[56px] xl:text-[26px] text-black font-freightNeoMedium cursor:pointer">
       <Button
         onClick={() => setContactModalOpen(true)}
@@ -293,17 +293,17 @@ export default function ProjectNavbar({
         Download E-Brochure
       </Button>
     </div>
-  )}
+  )} */}
 </div>
 
           </div>
         </nav>
       </header>
       <SidebarMenu />
-      <ContactFormModal
+      {/* <ContactFormModal
         isOpen={contactModalOpen}
         onClose={setContactModalOpen}
-      />
+      /> */}
     </div>
   );
 }

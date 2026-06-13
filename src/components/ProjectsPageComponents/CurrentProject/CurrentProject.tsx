@@ -375,17 +375,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
                 Explore Projects Now
               </motion.button>
             </Link>
-          ) : (
-            <motion.button
-              onClick={() => setModalIsOpen(true)}
-              className="lg:px-8 hidden lg:block lg:py-2.5 mt-5 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lġ2:text-[22px] font-FreightNeoProBold transition-colors"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              Download E-Brochure
-            </motion.button>
-          )}{" "}
+          ) : null}{" "}
         </div>
         {renderStats()}
       </article>
@@ -411,7 +401,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
           </div>
         </div>
       </figure>
-      {homePage ? (
+      {/* {homePage ? (
         <motion.a
           className="px-8 py-3 mx-10 text-center  lg:hidden mb-8 border-customBrown  border-[2px] text-customBrown  rounded-full lg2:text-2xl font-FreightNeoProBold transition-colors"
           initial={{ y: 20, opacity: 0 }}
@@ -431,7 +421,7 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
         >
           Download E-Brochure
         </motion.button>
-      )}
+      )} */}
 
       <motion.div
         className={`  lg:hidden ${selectedLocation.description === STATS_DATA&&"flex gap-5 justify-center items-center"}`}
@@ -473,13 +463,13 @@ const CurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }) => 
             ))}
       </motion.div>
       <CurrentProjectCard modalIsOpen={isModalOpen} onClose={setIsModalOpen} />
-      <ContactFormModal
+      {/* <ContactFormModal
         buttonBg="bg-[#4f3737]"
         peerBg="peer-checked:bg-[#4f3737]"
         textColor="text-customBrown"
         isOpen={modalIsOpen}
         onClose={setModalIsOpen}
-      />
+      /> */}
     </section>
   );
 };

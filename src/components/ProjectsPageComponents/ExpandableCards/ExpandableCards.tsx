@@ -322,17 +322,7 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
                     Explore Projects
                   </motion.button>
                 </Link>
-              ) : (
-                <motion.button
-                  onClick={() => setModalIsOpen(true)}
-                  className="lg2:px-8 lg2:py-3 md:px-5 md:py-2 pb-1 border-customBrown border-[2px] text-customBrown rounded-full lg:text-[14px] lg2:text-[22px] font-FreightNeoProBold transition-colors"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  Download E-Brochure
-                </motion.button>
-              )}
+              ) : null}
             </div>
           </motion.div>
           {/* Images */}
@@ -377,13 +367,13 @@ const ExpandableCards: React.FC<ExpandableCardsProps> = ({ cards, home = false }
           </AnimatePresence>
         </div>
       </div>
-      <ContactFormModal
+      {/* <ContactFormModal
         buttonBg="bg-[#4f3737]"
         peerBg="peer-checked:bg-[#4f3737]"
         textColor="text-customBrown"
         isOpen={modalIsopen}
         onClose={setModalIsOpen}
-      />
+      /> */}
     </>
   );
 };

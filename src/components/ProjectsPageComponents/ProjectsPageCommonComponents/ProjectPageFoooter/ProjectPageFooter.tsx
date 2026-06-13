@@ -113,13 +113,13 @@ const ProjectFooter: FC = () => {
             </p>
             {/* Recognition - Desktop only */}
             <div className="mt-8 hidden text-3xl lg:block">
-              <button
+              {/* <button
                 onClick={() => setShowModal(true)}
                 aria-label="Download"
                 className="font-FreightNeoProBold text-white text-[22px] bg-[#4f3737] py-2 px-4 rounded-[56px] "
               >
                 Download E-Brochure
-              </button>
+              </button> */}
               {/* <button className="font-FreightNeoProBold text-black text-[22px] bg-[#EADFD1] py-2 px-4 rounded-[56px] "> Get the Best Quote</button> */}
               <ul className="flex gap-2 pt-[170px] justify-center md:justify-start" aria-label="Social Media Links">
                 <li>
@@ -198,14 +198,14 @@ const ProjectFooter: FC = () => {
 
       {/* Footer Bottom Section */}
       <FooterBottom />
-      <ContactFormModal
+      {/* <ContactFormModal
         downloadFileLink="https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVC%20brochure%20(6).pdf?alt=media&token=bb5d3148-1841-4328-add6-2f4421c7b674"
         buttonBg="bg-[#4f3737]"
         peerBg="peer-checked:bg-[#4f3737]"
         textColor="text-customBrown"
         isOpen={showModal}
         onClose={setShowModal}
-      />
+      /> */}
     </footer>
   );
 };
