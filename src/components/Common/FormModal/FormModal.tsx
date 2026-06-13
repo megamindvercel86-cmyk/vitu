@@ -78,8 +78,15 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
     interstedIn: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsSuccess(false);
+    }
+  }, [isOpen]);
   // Validation logic
   const validateField = (name: string, value: string): string => {
     switch (name) {
@@ -183,9 +190,13 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
-        setOpen(false);
-        onClose(false);
-        router.push(thankYouRoute);
+        if (isVilasam) {
+          setIsSuccess(true);
+        } else {
+          setOpen(false);
+          onClose(false);
+          router.push(thankYouRoute);
+        }
       } catch (error) {
         console.error("Error adding document: ", error);
       } finally {
@@ -268,10 +279,30 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
             {/* Form Content */}
             <motion.div
               variants={contentVariants}
-              className="flex flex-col lg:flex-row px-6 md:px-8 lg:px-32 xl:px-16 pt-16 lg:pt-24 xl:pt-24 gap-8 lg:gap-12"
+              className={`flex px-6 md:px-8 lg:px-32 xl:px-16 pt-16 lg:pt-24 xl:pt-24 w-full ${isSuccess ? "flex-col" : "flex-col lg:flex-row gap-8 lg:gap-12"}`}
             >
-              {/* Left Side Content */}
-              <div className="flex-1">
+              {isSuccess ? (
+                <div className="flex flex-1 flex-col items-center justify-center py-10 sm:py-14 lg:py-20 text-[#254C54]">
+                  <h1 className="max-w-4xl text-center font-theSeasons text-[30px] leading-[1.55] sm:text-[38px] lg:text-[52px]">
+                    Thank You for Showing Interest in
+                    <br />
+                    Vilasam by Vitu Realty
+                  </h1>
+
+                  <p className="mt-8 max-w-3xl text-center font-sans text-[15px] leading-[1.6] sm:text-[16px] lg:mt-10 lg:text-[22px]">
+                    Your details have been successfully received.
+                  </p>
+
+                  <p className="mt-6 max-w-3xl text-center font-sans text-[15px] leading-[1.6] sm:text-[16px] lg:text-[22px]">
+                    Our team will get in touch with you shortly to share more information
+                    <br className="hidden sm:block" />
+                    and assist you further.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Left Side Content */}
+                  <div className="flex-1">
                 <h1
                   className={`text-center ${isVilasam ? "font-theSeasons" : "font-freightNeoMedium"} hidden lg:block !leading-[1.3] w-[80%] xl:w-[100%] lg:text-left  ${textColor ? textColor : "text-[#0C3E49]"} font-bold text-4xl md:text-5xl`}
                 >
@@ -508,7 +539,9 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                   <span className="text-[#04070799] font-bold text-lg">+91 89046 88886</span>
                 </div>  */}
               </div>
-            </motion.div>
+            </>
+            )}
+          </motion.div>
           </motion.div>
         </motion.div>
       )}
