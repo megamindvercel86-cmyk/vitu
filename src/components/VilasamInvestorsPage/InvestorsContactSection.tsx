@@ -156,6 +156,7 @@ export default function InvestorsContactSection({
           interestedIn: interstedIn,
           preferredPlotOrientation: form.preferredPlotOrientation,
           whatsapp: form.consent,
+          isBrochure: true,
           premise: intent,
         },
         utm: getUtmPayload(),
