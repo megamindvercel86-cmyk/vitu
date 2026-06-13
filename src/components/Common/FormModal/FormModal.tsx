@@ -51,6 +51,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
   maxWidth = "max-w-8xl",
   collectionName = "projectEnquiries",
   thankYouRoute = "/vaikuntamcity/thank-you",
+  downloadFileLink,
 }) => {
   const isVilasam = thankYouRoute === "/vilasam/thank-you";
   const containerRef = useRef<HTMLDivElement>(null);
@@ -170,12 +171,14 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           },
         });
 
+        const redirectUrl = downloadFileLink ? `${thankYouRoute}?download=true` : thankYouRoute;
+
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
         setOpen(false);
         onClose(false);
-        router.push(thankYouRoute);
+        router.push(redirectUrl);
       } catch (error) {
         console.error("Error adding document: ", error);
       } finally {

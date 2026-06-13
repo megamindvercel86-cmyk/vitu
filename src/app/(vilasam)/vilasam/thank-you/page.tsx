@@ -1,12 +1,25 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function ThankYouPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("download") === "true") {
+        const link = document.createElement("a");
+        link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+        link.download = "VITU Realty - Vilasam.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+  }, []);
 
   const handlePlayVideo = () => {
     if (!videoRef.current) return;
@@ -20,7 +33,7 @@ export default function ThankYouPage() {
       <main className="bg-[#FBF6F0]">
         <div className="mx-auto flex min-h-[calc(100vh-1px)] w-full max-w-[1440px] flex-col items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-12 lg:py-14">
           <div className="flex w-full justify-center">
-            <Link href="https://vilasam.viturealty.com" className="inline-block">
+            <Link href="/vilasam" className="inline-block">
               <Image
                 src="/svgs/vilasamLogo.svg"
                 alt="Vilasam"

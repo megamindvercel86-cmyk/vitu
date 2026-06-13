@@ -197,8 +197,6 @@ export default function InvestorsContactSection({
           document.body.removeChild(link);
         });
       */
-
-      // 4. Finally navigate to thank you page
   
     } catch (submitError) {
       if (submitError instanceof Error) {
