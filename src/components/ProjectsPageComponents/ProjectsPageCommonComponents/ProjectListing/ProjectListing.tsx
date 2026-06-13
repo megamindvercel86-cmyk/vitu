@@ -14,6 +14,7 @@ type Card = {
   type?: string;
   id?: number;
   href: string;
+  soldOut?: boolean;
 };
 
 
@@ -68,12 +69,32 @@ const ProjectListing = ({ card,
           fill
           className="object-cover absolute z-10 inset-0 group-hover:scale-105 transition-transform duration-500 ease-in-out"
         />
-        {/* Learn More button with blur background */}
-        {card.href && <div className="absolute bottom-6 right-6 z-50">
-          <div className="backdrop-blur-md bg-white/20 border border-white/30 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium">
-            Learn More
-          </div>
-        </div>}
+        {/* Bottom buttons container */}
+        <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-2 z-50">
+          {card.soldOut ? (
+            <button
+              type="button"
+              className="
+                relative
+                flex items-center justify-center
+                rounded-full
+                px-4 py-2 md:px-5 md:py-2.5
+                text-xs md:text-sm font-theSeasons text-white bg-[#AE8566]
+              "
+            >
+              <span className="relative z-20 text-white mt-[2px] font-ttCommons whitespace-nowrap font-semibold uppercase tracking-wider">
+                Sold Out
+              </span>
+            </button>
+          ) : (
+            <div />
+          )}
+          {card.href && (
+            <div className="backdrop-blur-md bg-white/20 border border-white/30 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium whitespace-nowrap">
+              Learn More
+            </div>
+          )}
+        </div>
       </motion.button>
     </Link>
   )

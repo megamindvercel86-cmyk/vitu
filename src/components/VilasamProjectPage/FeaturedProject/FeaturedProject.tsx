@@ -20,7 +20,8 @@ const cards = [
     title: "Vaikuntam City Elite",
     subtitle: "Building Sustainably for a Better Tomorrow",
     url: "/images/projects/elite.webp",
-    href: "/elite"
+    href: "/elite",
+    soldOut: true
   },
   {
     id: 3,
@@ -28,7 +29,8 @@ const cards = [
     title: "Vaikuntam City",
     subtitle: "Build a Healthier Planet with Sustainable Choices",
     url: "/images/projects/city.webp",
-    href: "/vaikuntamcity"
+    href: "/vaikuntamcity",
+    soldOut: true
   },
 ];
 
