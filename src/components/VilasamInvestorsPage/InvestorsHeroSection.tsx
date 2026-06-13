@@ -60,6 +60,7 @@ export default function InvestorsHeroSection({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBrochureModal, setIsBrochureModal] = useState(false);
   const router = useRouter();
 
   const getUtmPayload = () => {
@@ -146,6 +147,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           interestedIn: interstedIn,
           preferredPlotOrientation: form.preferredPlotOrientation,
           whatsapp: form.consent,
+          isBrochure: formType === "modal" ? isBrochureModal : false,
           premise: intent,
         },
         utm: getUtmPayload(),
@@ -206,7 +208,11 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
   };
 
   useEffect(() => {
-    const handleOpenModal = () => setIsModalOpen(true);
+    const handleOpenModal = (e: Event) => {
+      const detail = (e as CustomEvent<{ isBrochure?: boolean }>).detail;
+      setIsBrochureModal(detail?.isBrochure ?? false);
+      setIsModalOpen(true);
+    };
     window.addEventListener("open-investors-modal", handleOpenModal);
     return () => window.removeEventListener("open-investors-modal", handleOpenModal);
   }, []);
