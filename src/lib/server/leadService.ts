@@ -181,11 +181,27 @@ const persistLead = async (collectionName: string, data: Record<string, unknown>
   return { collectionName, documentId: reference.id };
 };
 
+const logIntegrationError = async (integrationName: string, error: unknown): Promise<void> => {
+  try {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const stack = error instanceof Error ? error.stack : undefined;
+    await addDoc(collection(db, "integrationErrors"), {
+      integrationName,
+      error: errorMessage,
+      stack: stack || null,
+      timestamp: serverTimestamp(),
+    });
+  } catch (err) {
+    console.error("[leadService] Failed to log integration error to Firestore:", err);
+  }
+};
+
 const safeIntegration = async (integrationName: string, task: () => Promise<void>): Promise<void> => {
   try {
     await task();
   } catch (error) {
     console.error(`[leadService] ${integrationName} failed:`, error);
+    await logIntegrationError(integrationName, error);
   }
 };
 
@@ -262,6 +278,7 @@ const sendWhatsAppVaikuntamCity = async (name: string, phone: string): Promise<v
 };
 
 const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> => {
+  // 1. Send greeting message (text only)
   await sendAiSensyMessage({
     campaignName: "eliteutil",
     destination: `91${phone}`,
@@ -271,17 +288,52 @@ const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> =
     media: { type: "text" },
   });
 
-  await sendAiSensyMessage({
-    campaignName: "vilasam",
-    destination: `91${phone}`,
-    userName: name || "User",
-    source: "vilasam",
-    media: {
-      type: "document",
-      url: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073",
-      filename: "Digital Brochure - Vilasam.pdf",
-    },
-  });
+  // 2. Send brochure PDF using a sequential fallback strategy
+  const campaignsToTry = [
+    { name: "Vilasam", useParams: false },
+    { name: "Vilasam", useParams: true },
+    { name: "vilasam", useParams: false },
+    { name: "vilasam", useParams: true },
+    { name: "Vilsam", useParams: false },
+    { name: "Vilsam", useParams: true },
+    { name: "Vilasam Brochure", useParams: false },
+    { name: "Vilasam Brochure", useParams: true },
+  ];
+
+  let succeeded = false;
+  let lastError: unknown = null;
+
+  for (const config of campaignsToTry) {
+    try {
+      const payload: Record<string, unknown> = {
+        campaignName: config.name,
+        destination: `91${phone}`,
+        userName: name || "User",
+        source: config.name,
+        media: {
+          type: "document",
+          url: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073",
+          filename: "Digital Brochure - Vilasam.pdf",
+        },
+      };
+
+      if (config.useParams) {
+        payload.templateParams = [name || "User"];
+      }
+
+      await sendAiSensyMessage(payload);
+      succeeded = true;
+      console.log(`[leadService] Successfully sent Vilasam brochure using campaign: ${config.name} (params: ${config.useParams})`);
+      break;
+    } catch (err) {
+      lastError = err;
+      console.warn(`[leadService] Failed to send campaign ${config.name} (params: ${config.useParams}):`, err);
+    }
+  }
+
+  if (!succeeded) {
+    throw new Error(`All Vilasam campaign fallback variations failed. Last error: ${lastError instanceof Error ? lastError.message : String(lastError)}`);
+  }
 };
 
 
