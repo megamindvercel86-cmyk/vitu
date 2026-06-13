@@ -275,7 +275,7 @@ const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> =
     campaignName: "vilasam",
     destination: `91${phone}`,
     userName: name || "User",
-    source: "Vilasam",
+    source: "vilasam",
     media: {
       type: "document",
       url: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073",
