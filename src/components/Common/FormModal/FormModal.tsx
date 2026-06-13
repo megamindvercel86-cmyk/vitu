@@ -171,14 +171,21 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           },
         });
 
-        const redirectUrl = downloadFileLink ? `${thankYouRoute}?download=true` : thankYouRoute;
+        if (isVilasam && downloadFileLink) {
+          const link = document.createElement("a");
+          link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+          link.download = "VITU Realty - Vilasam.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
 
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
         setErrors({ fullName: "", email: "", phone: "", interstedIn: "" });
         setOpen(false);
         onClose(false);
-        router.push(redirectUrl);
+        router.push(thankYouRoute);
       } catch (error) {
         console.error("Error adding document: ", error);
       } finally {

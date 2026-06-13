@@ -1,25 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 export default function ThankYouPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("download") === "true") {
-        const link = document.createElement("a");
-        link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
-        link.download = "VITU Realty - Vilasam.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    }
-  }, []);
 
   const handlePlayVideo = () => {
     if (!videoRef.current) return;
