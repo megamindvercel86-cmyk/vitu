@@ -272,7 +272,7 @@ const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> =
   });
 
   await sendAiSensyMessage({
-    campaignName: "Vilasam",
+    campaignName: "vilasam",
     destination: `91${phone}`,
     userName: name || "User",
     source: "Vilasam",
