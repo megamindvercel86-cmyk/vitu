@@ -173,7 +173,7 @@ export default function ProjectFilterAppleStyleCard({
               {title}
             </motion.p>
             {soldOut && (
-              <div className="mt-2.5 inline-flex items-center justify-center rounded bg-[#AE8566] px-2.5 py-1 text-[10px] md:text-xs font-semibold tracking-wider text-white uppercase font-ttCommons">
+              <div className="mt-2.5 inline-flex items-center justify-center rounded bg-[#AE8566] px-2.5 pt-1 text-[10px] md:text-xs font-semibold tracking-wider text-white uppercase font-ttCommons">
                 Sold Out
               </div>
             )}

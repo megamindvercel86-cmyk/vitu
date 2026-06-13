@@ -100,14 +100,16 @@ const NavbarResponsiveComponent = ({
                         <NavLink
                           key={index}
                           href={item.href}
-                          className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors flex items-center gap-3"
+                          className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
                         >
-                          <span>{item.label}</span>
-                          {item.soldOut && (
-                            <span className="text-red-500 font-bold text-xs uppercase tracking-wider font-ttCommons">
-                              Sold Out
-                            </span>
-                          )}
+                          <span className="flex items-center gap-2">
+                            <span>{item.label}</span>
+                            {item.soldOut && (
+                              <span className="text-red-500 font-bold text-xs uppercase tracking-wider font-ttCommons">
+                                Sold Out
+                              </span>
+                            )}
+                          </span>
                         </NavLink>
                       ))}
                     </div>
