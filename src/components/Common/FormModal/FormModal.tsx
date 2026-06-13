@@ -171,14 +171,14 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
           },
         });
 
-        if (isVilasam && downloadFileLink) {
-          const link = document.createElement("a");
-          link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
-          link.download = "VITU Realty - Vilasam.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
+        // if (isVilasam && downloadFileLink) {
+        //   const link = document.createElement("a");
+        //   link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+        //   link.download = "VITU Realty - Vilasam.pdf";
+        //   document.body.appendChild(link);
+        //   link.click();
+        //   document.body.removeChild(link);
+        // }
 
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });
@@ -485,7 +485,9 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
                       <span className={`text-base ${textColor ? textColor : "text-[#0C3E49]"} font-medium`}>Receive Updates on WhatsApp</span>
                     </label>
                     {isLoading ? (
-                      <Loader />
+                      <div className="lg:block hidden">
+                        <Loader />
+                      </div>
                     ) : (
                       <button
                         type="button"
