@@ -35,7 +35,7 @@ const ProjectListing = ({ card,
           flex flex-col items-start justify-start relative z-10 w-full h-full group"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-30 pointer-events-none" />
-        <div className="relative z-40 p-8">
+        <div className="relative z-40 p-8 flex flex-col items-start">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-white md:text-base font-medium text-left font-freightNeoMedium lg:text-base text-xs 2xl:text-3xl"

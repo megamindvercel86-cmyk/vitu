@@ -153,7 +153,7 @@ export default function ProjectFilterAppleStyleCard({
             cardClassName,
           )}
         >
-          <div className="relative z-40 p-8">
+          <div className="relative z-40 p-8 flex flex-col items-start">
             <motion.p
               layoutId={`card-category-${id}`}
               className={cn(
