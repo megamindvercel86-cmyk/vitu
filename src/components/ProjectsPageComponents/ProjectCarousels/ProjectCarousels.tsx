@@ -339,7 +339,7 @@ export default function ProjectCarousel(): React.ReactElement {
             loop={true}
             modules={[Autoplay]}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="w-[10%] h-[57vh] !pt-0 !pb-0"
+            className="w-[80%] h-[57vh] !pt-0 !pb-0"
             onSwiper={setSwiperInstanceDesktop}
             onSlideChange={(swiper) => setActiveIndexDesktop(swiper.realIndex)}
             breakpoints={{
@@ -355,7 +355,7 @@ export default function ProjectCarousel(): React.ReactElement {
             }}
           >
             {desktopDataRight.map(({ src, alt }, idx) => (
-              <SwiperSlide style={{ width: "80%" }} key={idx}>
+              <SwiperSlide style={{ width: "100%" }} key={idx}>
                 <div className="w-full h-full relative rounded-xl overflow-hidden">
                   <Image src={src} alt={alt} fill className="object-cover transition-transform duration-1000 hover:scale-110" />
                 </div>
