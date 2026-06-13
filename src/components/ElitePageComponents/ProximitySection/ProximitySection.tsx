@@ -68,7 +68,7 @@ const ProximitySection: React.FC = () => {
             Perfectly placed between the city and the coast, this address brings you near to everything that matters. From sunlit beaches and reputed
             institutions, being close to everything is simply a part of everyday life.
           </p>
-          <Link
+          {/* <Link
             to="elitForm"
             className="hidden lg:inline-flex cursor-pointer items-center justify-center gap-2  mt-10 text-[#1C1213]  border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
           >
@@ -81,7 +81,7 @@ const ProximitySection: React.FC = () => {
                 </svg>
               </span>
             </AnimatedConicButton>
-          </Link>
+          </Link> */}
           <div className="relative flex flex-col sm:flex-row items-center justify-center lg:absolute lg:bottom-[-100px] lg:left-[180px] z-50 gap-4 mt-10 lg:mt-0">
             <div ref={img1Ref} className="w-60 h-36 z-50 lg:left-20 top-20 lg:top-16 sm:w-72 sm:h-44 lg:w-80 lg:h-48 relative overflow-hidden">
               <Image src="/images/eliteProjectPageImages/ProximitySectionImages/travel.png" alt="Travel" fill className="object-cover" priority />
@@ -100,7 +100,7 @@ const ProximitySection: React.FC = () => {
             Perfectly placed between the city and the coast, this address brings you near to everything that matters. From sunlit beaches and reputed
             institutions, being close to everything is simply a part of everyday life.
           </p>
-          <Link
+          {/* <Link
             to="elitForm"
             className="inline-flex lg:hidden cursor-pointer items-center justify-center gap-2  mt-10 px-6 py-4 border text-[#1C1213]  border-black rounded-full text-sm font-medium lg:text-lg xl:text-xl  "
           >
@@ -109,7 +109,7 @@ const ProximitySection: React.FC = () => {
               <path d="M0.999472 7.00488L8.69482 14.6239L16.3911 7.00488" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10" />
               <path d="M8.6958 14.6222L8.6958 0.375977" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10" />
             </svg>
-          </Link>
+          </Link> */}
         </div>
         <div className="w-full lg:w-1/2  lg:mt-0 relative  lg:px-0">
           <div className="absolute top-0 left-0 w-full h-40 lg:h-72 bg-gradient-to-b from-[#F3EAE1] to-transparent pointer-events-none z-10"></div>
