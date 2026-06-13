@@ -49,6 +49,11 @@ const ProjectListing = ({ card,
 
             {card.title}
           </motion.p>
+          {card.soldOut && (
+            <div className="mt-2.5 inline-flex items-center justify-center rounded bg-[#AE8566] px-2.5 py-1 text-[10px] md:text-xs font-semibold tracking-wider text-white uppercase font-ttCommons">
+              Sold Out
+            </div>
+          )}
           {!card.href && <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-freightNeoSemibold mt-2 2xl:text-5xl"
@@ -71,24 +76,7 @@ const ProjectListing = ({ card,
         />
         {/* Bottom buttons container */}
         <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-2 z-50">
-          {card.soldOut ? (
-            <button
-              type="button"
-              className="
-                relative
-                flex items-center justify-center
-                rounded-full
-                px-4 py-2 md:px-5 md:py-2.5
-                text-xs md:text-sm font-theSeasons text-white bg-[#AE8566]
-              "
-            >
-              <span className="relative z-20 text-white mt-[2px] font-ttCommons whitespace-nowrap font-semibold uppercase tracking-wider">
-                Sold Out
-              </span>
-            </button>
-          ) : (
-            <div />
-          )}
+          <div />
           {card.href && (
             <div className="backdrop-blur-md bg-white/20 border border-white/30 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium whitespace-nowrap">
               Learn More
