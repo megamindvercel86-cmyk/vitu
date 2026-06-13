@@ -335,7 +335,7 @@ function Panel({
               </h2>
               <p className={`text-lg font-[400] ${button ? "w-[100%]" : "w-[100%]"} text-justify font-FreightNeoProNormal text-gray-700`}>{desc}</p>
             </div>
-            {button && (
+            {/* {button && (
                 <div className="mt-6 flex ">
                         <Link  to="elitForm"  className="inline-flex cursor-pointer items-center justify-center gap-2  mt-10   text-[#1C1213] border-[0.25px]  border-[#1C1213]/20 rounded-full text-sm font-medium lg:text-xl  ">
                           <AnimatedConicButton theme="light" className="hidden !text-[#1C1213] lg:font-medium lg:font-freightNeoMedium md:flex !bg-none">
@@ -349,7 +349,7 @@ function Panel({
                           </AnimatedConicButton>
                           </Link>
                         </div>
-            )}
+            )} */}
           </div>
           {centerImage && (
             <div className="absolute inset-y-0 left-[18%] items-end mb-10   lg2:mb-20 flex z-20">

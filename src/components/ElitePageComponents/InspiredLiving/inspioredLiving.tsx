@@ -86,7 +86,7 @@ export default function DesignedForLiving() {
       </div>
 
       {/* Download Button */}
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <Link
           onClick={handleClick}
           to="elitForm"
@@ -103,7 +103,7 @@ export default function DesignedForLiving() {
             </span>
           </AnimatedConicButton>
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 }

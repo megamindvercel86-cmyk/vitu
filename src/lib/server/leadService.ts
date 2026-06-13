@@ -261,6 +261,30 @@ const sendWhatsAppVaikuntamCity = async (name: string, phone: string): Promise<v
   });
 };
 
+const sendWhatsAppVilasam = async (name: string, phone: string): Promise<void> => {
+  await sendAiSensyMessage({
+    campaignName: "eliteutil",
+    destination: `91${phone}`,
+    userName: name || "User",
+    source: "eliteutil",
+    templateParams: [name || "User"],
+    media: { type: "text" },
+  });
+
+  await sendAiSensyMessage({
+    campaignName: "Vilasam",
+    destination: `91${phone}`,
+    userName: name || "User",
+    source: "Vilasam",
+    media: {
+      type: "document",
+      url: "https://firebasestorage.googleapis.com/v0/b/vitu-realty--website.firebasestorage.app/o/pdfs%2FVITU%20Realty%20-%20Vilasam.pdf?alt=media&token=968d0932-d7af-443f-9781-3f5f7cb7e073",
+      filename: "Digital Brochure - Vilasam.pdf",
+    },
+  });
+};
+
+
 const postAccelr = async (payload: Record<string, unknown>): Promise<void> => {
   const enrichedPayload = {
     ...payload,
@@ -583,7 +607,7 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
     });
   });
   await safeIntegration("send vilasam whatsapp", async () => {
-    await sendWhatsAppVaikuntamCity(fullName, phone);
+    await sendWhatsAppVilasam(fullName, phone);
   });
   await safeIntegration("send vilasam pabbly", async () => {
     await postPabbly({
@@ -636,7 +660,7 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
 
   const result = await persistLead(collectionName, leadPayload);
 
-  if (collectionName === "projectEnquiries") {
+  if (collectionName === "projectEnquiries" || collectionName === "vilasam") {
     await safeIntegration("send project modal email", async () => {
       await sendFormEmail({
         page: "Project Enquire",
@@ -648,7 +672,11 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
       });
     });
     await safeIntegration("send project modal whatsapp", async () => {
-      await sendWhatsAppVaikuntamCity(fullName, phone);
+      if (collectionName === "vilasam") {
+        await sendWhatsAppVilasam(fullName, phone);
+      } else {
+        await sendWhatsAppVaikuntamCity(fullName, phone);
+      }
     });
   }
 

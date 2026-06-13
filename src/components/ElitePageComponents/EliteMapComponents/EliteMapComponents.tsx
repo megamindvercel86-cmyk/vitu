@@ -246,7 +246,7 @@ const EliteCurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }
               expanses of open landscape, the planning ensures a lifestyle that feels both elevated and effortless.
             </motion.p>
 
-            <motion.div
+            {/* <motion.div
               className=" inline-flex cursor-pointer items-center gap-3 lg:font-freightNeoMedium text-center mb-8 border-[#1C1213] border text-customBrown rounded-full lg2:text-2xl text-sm font-medium lg:text-xl transition-colors w-fit"
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -265,7 +265,7 @@ const EliteCurrentProject: React.FC<CurrentProjectProps> = ({ homePage = false }
                   </span></span>
                 </AnimatedConicButton>{" "}
               </Link>
-            </motion.div>
+            </motion.div> */}
           </div>
         ))}
       </article>

@@ -226,7 +226,7 @@ const Page = () => {
       <div>
         <GracefullyConnected />
       </div>
-      <div className="flex items-center z-50 justify-center mt-3 mb-20">
+      {/* <div className="flex items-center z-50 justify-center mt-3 mb-20">
         <Link
           to="elitForm"
           onClick={handleClick}
@@ -242,7 +242,7 @@ const Page = () => {
             </span>
           </AnimatedConicButton>
         </Link>
-      </div>
+      </div> */}
       <div className="mt-20 xl:mt-0">
         <SvgButton button="Investment Potential" />
       </div>
@@ -274,7 +274,7 @@ const Page = () => {
       <div className=" h-full  bg-gradient-to-b from-transparent via-[#b96f48] to-black">
         <LegacyYouCanLiveIN />
         <SvgButton button="CONTACT" isWhite={true} />
-        <EliteForm />
+        {/* <EliteForm /> */}
         <EliteFooter3 />
       </div>
     </div>

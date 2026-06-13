@@ -29,6 +29,7 @@ interface CardProps {
   isExpanded?: boolean;
   subtitle?: string;
   href: string;
+  soldOut?: boolean;
 }
 
 export default function ProjectFilterAppleStyleCard({
@@ -51,6 +52,7 @@ export default function ProjectFilterAppleStyleCard({
   bottomTitle = "",
   isExpanded = true,
   href = "",
+  soldOut = false,
 }: CardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -151,7 +153,7 @@ export default function ProjectFilterAppleStyleCard({
             cardClassName,
           )}
         >
-          <div className="relative z-40 p-8">
+          <div className="relative z-40 p-8 flex flex-col items-start">
             <motion.p
               layoutId={`card-category-${id}`}
               className={cn(
@@ -170,6 +172,11 @@ export default function ProjectFilterAppleStyleCard({
             >
               {title}
             </motion.p>
+            {soldOut && (
+              <div className="mt-2.5 inline-flex items-center justify-center rounded bg-[#AE8566] px-2.5 py-1 text-[10px] md:text-xs font-semibold tracking-wider text-white uppercase font-ttCommons">
+                Sold Out
+              </div>
+            )}
             {!href && <motion.p
               layoutId={`card-title-${id}`}
               className={cn(
@@ -203,13 +210,16 @@ export default function ProjectFilterAppleStyleCard({
               {bottomTitle}
             </Typography>
           </div>
-          {href && <div
-            className={`absolute bottom-6 md:right-8 right-6 ${position === "right" ? "md:right-8" : "left-3"} position z-50`}
-          >
-            <div className=" bg-none border border-white/30 text-white px-5 py-2 rounded-full text-xs font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium">
-              Learn More
-            </div>
-          </div>}
+          {/* Bottom buttons container */}
+          <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-8 flex items-center justify-between gap-2 z-50">
+            <div />
+
+            {href && (
+              <div className="bg-none border border-white/30 text-white px-4 py-2 md:px-5 md:py-2 rounded-full text-xs font-medium hover:bg-white/30 transition-all duration-300 font-freightNeoMedium whitespace-nowrap">
+                Learn More
+              </div>
+            )}
+          </div>
 
           {/* <Image
           src={imageSrc || "/placeholder.svg"}

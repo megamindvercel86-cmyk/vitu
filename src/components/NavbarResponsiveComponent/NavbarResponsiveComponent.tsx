@@ -23,10 +23,8 @@ const NavbarResponsiveComponent = ({
 }) => {
   const PROJECT_LINKS = [
     { href: "/vilasam", label: "Vilasam" },
-          { href: "/elite", label: "Vaikuntam City ELITE" },
-    { href: "/vaikuntamcity", label: "Vaikuntam City" },
-
-    // { href: "/vilasam", label: "Vilasam" },
+    { href: "/elite", label: "Vaikuntam City ELITE", soldOut: true },
+    { href: "/vaikuntamcity", label: "Vaikuntam City", soldOut: true },
   ];
   const NAV_LINKS = [
     { href: "/about", label: "About" },
@@ -97,14 +95,19 @@ const NavbarResponsiveComponent = ({
 
                   {/* Always show sub-menu items below the parent */}
                   {isDropDownOpen && dropdownItems && (
-                    <div className="mt-2  flex flex-col items-center space-y-2">
+                    <div className="mt-2 flex flex-col items-center space-y-2">
                       {dropdownItems.map((item, index) => (
                         <NavLink
                           key={index}
                           href={item.href}
-                          className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors"
+                          className="text-2xl font-FreightNeoProBold py-1.5 hover:text-gray-600 transition-colors flex items-center gap-3"
                         >
-                          {item.label}
+                          <span>{item.label}</span>
+                          {item.soldOut && (
+                            <span className="text-red-500 font-bold text-xs uppercase tracking-wider font-ttCommons">
+                              Sold Out
+                            </span>
+                          )}
                         </NavLink>
                       ))}
                     </div>

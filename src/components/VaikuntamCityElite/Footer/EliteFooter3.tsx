@@ -64,7 +64,7 @@ export default function EliteFooter3() {
               />
               <p className="text-[20px] font-tenorSans mt-5 mb-7 opacity-80">Designed for Inspired Living</p>
             </div>
-            <div className="mt-6 flex justify-center border-[#F3EAE1]/30">
+            {/* <div className="mt-6 flex justify-center border-[#F3EAE1]/30">
               <ScrollLink
                 to="elitForm"
                 onClick={handleClick}
@@ -83,7 +83,7 @@ export default function EliteFooter3() {
                   </span>
                 </AnimatedConicButton>
               </ScrollLink>
-            </div>
+            </div> */}
             {/* Brochure Button */}
           </div>
 

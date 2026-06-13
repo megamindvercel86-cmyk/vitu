@@ -35,6 +35,7 @@ interface Card {
   name?: string;
   description?: string;
   href:string;
+  soldOut?: boolean;
 }
 
 interface InfiniteCarouselProps {
@@ -178,6 +179,7 @@ const PojectInfiniteCarousel: React.FC<InfiniteCarouselProps> = ({ cards, data }
               category={card.category}
               isViewMore={card.isViewMore}
               href={card.href}
+              soldOut={card.soldOut}
               content={data && <CardContent cardId={card.id} data={data} />}
             />
             <Typography variant="custom"> {card.name}</Typography>

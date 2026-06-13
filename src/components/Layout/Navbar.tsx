@@ -51,9 +51,8 @@ const DEFAULT_BUTTON_CONFIG = {
 // ============= Navigation Links =============
 const PROJECT_LINKS = [
   { href: "/vilasam", label: "Vilasam" },
-  { href: "/elite", label: "Vaikuntam City ELITE" },
-  { href: "/vaikuntamcity", label: "Vaikuntam City" },
-
+  { href: "/elite", label: "Vaikuntam City ELITE", soldOut: true },
+  { href: "/vaikuntamcity", label: "Vaikuntam City", soldOut: true },
 ];
 
 const NAV_LINKS = [
@@ -161,7 +160,7 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                     </NavLink>
                     {hasDropdown && activeDropdown === href && (
                       <div
-                        className="absolute left-0 w-40 mt-0 origin-top-left bg-black/20 backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
+                        className="absolute left-0 min-w-[280px] w-max mt-0 origin-top-left bg-black/25 backdrop-blur-3xl divide-y divide-gray-100 rounded-md shadow-lg transition duration-300 z-50"
                         onMouseEnter={() => handleMouseEnter(href)} // Keep dropdown open when hovering
                       // onMouseLeave={handleMouseLeave} // Close dropdown after delay
                       >
@@ -170,10 +169,15 @@ export default function Navbar({ showGetInTouch = true, navbar = "secondary" }: 
                             <Link
                               aria-label="Dropdown Item"
                               href={item.href}
-                              className={`block px-4 py-2 font-freightNeoMedium  lg:text-[16px] lg2:text-xl   ${pathname === "/" || pathname === "/about" ? "text-white" : "text-black"
+                              className={`flex items-center justify-between gap-4 px-4 py-2 font-freightNeoMedium lg:text-[16px] lg2:text-xl ${pathname === "/" || pathname === "/about" ? "text-white hover:bg-white/10" : "text-black hover:bg-black/5"
                                 } `}
                             >
-                              {item.label}
+                              <span>{item.label}</span>
+                              {item.soldOut && (
+                                <span className="text-red-500 font-bold text-[10px] lg2:text-xs uppercase tracking-wider font-ttCommons">
+                                  Sold Out
+                                </span>
+                              )}
                             </Link>
                           </div>
                         ))}

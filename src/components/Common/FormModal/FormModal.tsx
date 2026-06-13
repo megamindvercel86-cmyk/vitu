@@ -51,6 +51,7 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
   maxWidth = "max-w-8xl",
   collectionName = "projectEnquiries",
   thankYouRoute = "/vaikuntamcity/thank-you",
+  downloadFileLink,
 }) => {
   const isVilasam = thankYouRoute === "/vilasam/thank-you";
   const containerRef = useRef<HTMLDivElement>(null);
@@ -169,6 +170,15 @@ const ContactFormContent: React.FC<ContactFormModalProps> = ({
             collectionName,
           },
         });
+
+        if (isVilasam && downloadFileLink) {
+          const link = document.createElement("a");
+          link.href = "/downloadingFiles/VITU Realty - Vilasam.pdf";
+          link.download = "VITU Realty - Vilasam.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
 
         setFormData({ fullName: "", email: "", phone: "", interstedIn: "", whatsapp: false });
         setTouched({ fullName: false, email: false, phone: false, interstedIn: false });

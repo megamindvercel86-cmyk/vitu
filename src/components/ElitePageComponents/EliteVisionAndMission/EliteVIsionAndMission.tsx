@@ -102,7 +102,7 @@ export default function VisionAndMissionElite({ images, content }: Props) {
           >
             {section.description}
           </p>
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <Link  to="elitForm"
               
               className="inline-flex uppercase cursor-pointer gap-2 items-center px-6 py-2 border text-[#1C1213] font-FreightNeoProNormal border-black rounded-full text-xl tracking-wider   transition"
@@ -113,7 +113,7 @@ export default function VisionAndMissionElite({ images, content }: Props) {
                 <path d="M8.49853 14.6222L8.49854 0.375977" stroke="#1C1213" strokeWidth="1.5" strokeMiterlimit="10" />
               </svg>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
