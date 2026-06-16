@@ -420,6 +420,60 @@ const postGoogleScript = async (url: string, payload: Record<string, string>): P
   });
 };
 
+const postZohoFlow = async (payload: Record<string, unknown>): Promise<void> => {
+  const zapikey = process.env.ZOHO_FLOW_ZAPIKEY || "1001.d5ee9cb679b7a75ea52ad6c0f506a83f.7b48d4b230034cbee18018656495fe1f";
+  const url = `https://flow.zoho.in/60071384169/flow/webhook/incoming?zapikey=${zapikey}&isdebug=false`;
+  
+  // Extract and split full name
+  const fullName = asString(payload.fullName || payload.name || "");
+  const nameParts = fullName.trim().split(/\s+/);
+  const firstName = nameParts[0] || "";
+  let lastName = nameParts.slice(1).join(" ") || "";
+
+  // Last name is mandatory in Zoho CRM. If only a single name was provided, fall back to "."
+  if (!lastName && firstName) {
+    lastName = ".";
+  }
+
+  // Normalize interested_in string or array
+  let interestedInStr = "";
+  const rawInterestedIn = payload.interestedIn || payload.interstedIn || payload.option || payload.plots || "";
+  if (Array.isArray(rawInterestedIn)) {
+    interestedInStr = rawInterestedIn.join(", ");
+  } else {
+    interestedInStr = asString(rawInterestedIn);
+  }
+
+  const flowPayload = {
+    first_name: firstName,
+    last_name: lastName,
+    phone: asString(payload.phone),
+    email: asString(payload.email),
+    interested_in: interestedInStr,
+    preferred_facing: asString(payload.preferredPlotOrientation || payload.preferred_plot_orientation || ""),
+    project: asString(payload.project || ""),
+    lead_source: asString(payload.leadSource || ""),
+    utm_source: asString(payload.utm_source),
+    utm_medium: asString(payload.utm_medium),
+    utm_campaign: asString(payload.utm_campaign),
+    utm_term: asString(payload.utm_term),
+    utm_content: asString(payload.utm_content),
+    gclid: asString(payload.gclid),
+    fbclid: asString(payload.fbclid),
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(flowPayload),
+  });
+
+  if (!response.ok) {
+    const raw = await response.text();
+    throw new Error(`Zoho Flow request failed: ${response.status} ${raw}`);
+  }
+};
+
 const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
@@ -464,6 +518,12 @@ const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       ...leadPayload,
       formName: request.meta.formName || "General Enquire",
       source: "website",
+    });
+  });
+  await safeIntegration("send general enquire zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "General Enquire",
     });
   });
 
@@ -520,6 +580,12 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       source: "website",
     });
   });
+  await safeIntegration("send project enquire zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Project Enquire",
+    });
+  });
 
   return result;
 };
@@ -564,6 +630,12 @@ const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<
       ...leadPayload,
       formName: request.meta.formName || "Career Application",
       source: "website",
+    });
+  });
+  await safeIntegration("send career application zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Career Application",
     });
   });
 
@@ -651,6 +723,12 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       source: "website",
     });
   });
+  await safeIntegration("send elite zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Vaikuntam City Elite Form",
+    });
+  });
 
   return result;
 };
@@ -722,6 +800,12 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
       source: "website",
     });
   });
+  await safeIntegration("send vilasam zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName,
+    });
+  });
 
   return result;
 };
@@ -784,6 +868,12 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
       source: "website",
     });
   });
+  await safeIntegration("send project modal zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Project Enquiry Modal",
+    });
+  });
 
   return result;
 };
@@ -824,6 +914,12 @@ const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promi
       source: "website",
     });
   });
+  await safeIntegration("send vaikuntam city explore zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Vaikuntam City Let's Explore",
+    });
+  });
 
   return result;
 };
@@ -850,6 +946,12 @@ const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<L
       ...leadPayload,
       formName: request.meta.formName || "Newsletter Signup",
       source: "website",
+    });
+  });
+  await safeIntegration("send newsletter zoho flow", async () => {
+    await postZohoFlow({
+      ...leadPayload,
+      formName: request.meta.formName || "Newsletter Signup",
     });
   });
 
