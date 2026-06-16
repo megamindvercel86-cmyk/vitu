@@ -21,6 +21,8 @@ export interface LandingUtmParams {
   campaign_id: string;
   ad_id: string;
   ad_group_id: string;
+  gclid?: string;
+  fbclid?: string;
 }
 
 interface SearchParamsLike {
@@ -127,4 +129,6 @@ export const getLandingUtmParams = (searchParams: SearchParamsLike): LandingUtmP
   campaign_id: searchParams.get("campaign_id") || "",
   ad_id: searchParams.get("ad_id") || "",
   ad_group_id: searchParams.get("ad_group_id") || "",
+  gclid: searchParams.get("gclid") || "",
+  fbclid: searchParams.get("fbclid") || "",
 });

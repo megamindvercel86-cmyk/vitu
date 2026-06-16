@@ -95,6 +95,8 @@ export default function InvestorsContactSection({
         ad_id: "",
         ad_group_id: "",
         device: "",
+        gclid: "",
+        fbclid: "",
       };
     }
 
@@ -109,6 +111,8 @@ export default function InvestorsContactSection({
       ad_id: params.get("ad_id") || "",
       ad_group_id: params.get("ad_group_id") || "",
       device: params.get("device") || "",
+      gclid: params.get("gclid") || "",
+      fbclid: params.get("fbclid") || "",
     };
   };
 

@@ -21,6 +21,8 @@ export interface LeadUtmPayload {
   ad_id?: string;
   ad_group_id?: string;
   device?: string;
+  gclid?: string;
+  fbclid?: string;
 }
 
 export interface LeadMetaPayload {

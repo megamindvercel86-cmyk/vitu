@@ -145,7 +145,34 @@ const normalizeUtm = (value: unknown): LeadUtmPayload => {
     ad_id: asString(source.ad_id),
     ad_group_id: asString(source.ad_group_id),
     device: asString(source.device),
+    gclid: asString(source.gclid),
+    fbclid: asString(source.fbclid),
   };
+};
+
+const normalizeInterestedIn = (value: unknown): string => {
+  const str = asString(value);
+  if (!str) return "Just Exploring";
+  const lower = str.toLowerCase();
+  if (lower.includes("build") || lower.includes("home")) {
+    return "Building a Home";
+  }
+  if (lower.includes("invest")) {
+    return "Investment";
+  }
+  return "Just Exploring";
+};
+
+const normalizePreferredFacing = (value: unknown): string => {
+  const str = asString(value);
+  if (!str) return "Any";
+  const lower = str.toLowerCase();
+  if (lower.includes("east")) return "East Facing";
+  if (lower.includes("west")) return "West Facing";
+  if (lower.includes("north")) return "North Facing";
+  if (lower.includes("south")) return "South Facing";
+  if (lower.includes("corner")) return "Corner Plot";
+  return "Any";
 };
 
 const normalizeMeta = (value: unknown): LeadMetaPayload => {
@@ -406,6 +433,7 @@ const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<Lea
     phone,
     comments,
     whatsapp,
+    leadSource: "Website",
     premise: request.payload.premise,
     ...request.utm,
   };
@@ -450,14 +478,15 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
   const whatsapp = asBoolean(request.payload.whatsapp, true);
   const premise = asString(request.payload.premise);
 
+  const normalizedOption = normalizeInterestedIn(option);
   const leadPayload = {
     fullName,
     email,
     phone,
     project: asString(request.payload.project) || "Vaikuntam City Elite",
     whatsapp,
-    interstedIn: option,
-    interestedIn: option,
+    interstedIn: normalizedOption,
+    interestedIn: normalizedOption,
     premise,
     ...request.utm,
   };
@@ -470,8 +499,8 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       fullName,
       email,
       phone,
-      interstedIn: option,
-      interestedIn: option,
+      interstedIn: normalizedOption,
+      interestedIn: normalizedOption,
     });
   });
   await safeIntegration("send project enquire whatsapp", async () => {
@@ -549,13 +578,14 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
   const userType = asString(request.payload.userType);
   const whatsapp = asBoolean(request.payload.whatsapp, true);
 
+  const normalizedOption = normalizeInterestedIn(option);
   const leadPayload = {
     fullName,
     email,
     phone,
     project: "Vaikuntam City Elite",
     whatsapp,
-    interestedIn: option,
+    interestedIn: normalizedOption,
     userType,
     premise: request.payload.premise,
     ...request.utm,
@@ -575,7 +605,7 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       phone,
       project: "Vaikuntam City Elite",
       whatsapp: whatsapp ? "Yes" : "No",
-      interestedIn: option,
+      interestedIn: normalizedOption,
       userType,
       createdAt: new Date().toLocaleString("en-US", {
         timeZone: "Asia/Kolkata",
@@ -588,8 +618,8 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       fullName,
       email,
       phone,
-      interstedIn: option,
-      interestedIn: option,
+      interstedIn: normalizedOption,
+      interestedIn: normalizedOption,
     });
   });
   await safeIntegration("send elite whatsapp", async () => {
@@ -600,7 +630,7 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       ...request.utm,
       form_name: "Vaikuntam City Elite Form",
       form_id: userType,
-      plots: option,
+      plots: normalizedOption,
       phone,
       name: fullName,
       email,
@@ -635,14 +665,16 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
   const isBrochure = asBoolean(request.payload.isBrochure, false);
   const formName = request.meta.formName || "Vilasam Landing Page Form";
 
+  const normalizedOption = normalizeInterestedIn(interstedIn);
+  const normalizedFacing = normalizePreferredFacing(preferredPlotOrientation);
   const leadPayload = {
     fullName,
     email,
     phone,
-    interstedIn,
-    interestedIn: interstedIn,
+    interstedIn: normalizedOption,
+    interestedIn: normalizedOption,
     whatsapp,
-    preferredPlotOrientation,
+    preferredPlotOrientation: normalizedFacing,
     project: "Vilasam",
     premise: request.payload.premise,
     ...request.utm,
@@ -657,8 +689,8 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
       fullName,
       email,
       phone,
-      interstedIn,
-      interestedIn: interstedIn,
+      interstedIn: normalizedOption,
+      interestedIn: normalizedOption,
     });
   });
   await safeIntegration("send vilasam whatsapp", async () => {
@@ -668,9 +700,9 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
     await postPabbly({
       ...request.utm,
       form_name: formName,
-      form_id: interstedIn,
-      plots: interstedIn,
-      preferred_plot_orientation: preferredPlotOrientation,
+      form_id: normalizedOption,
+      plots: normalizedOption,
+      preferred_plot_orientation: normalizedFacing,
       phone,
       name: fullName,
       email,
@@ -703,12 +735,14 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
   const isBrochure = asBoolean(request.payload.isBrochure, false);
 
   const collectionName = request.meta.collectionName || "projectEnquiries";
+  const normalizedOption = normalizeInterestedIn(interstedIn);
   const leadPayload = {
     fullName,
     email,
     phone,
-    interstedIn,
-    interestedIn: interstedIn,
+    interstedIn: normalizedOption,
+    interestedIn: normalizedOption,
+    project: asString(request.payload.project) || (collectionName === "vilasam" ? "Vilasam" : "Vaikuntam City"),
     whatsapp,
     premise: request.payload.premise,
     ...request.utm,
@@ -723,8 +757,8 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
         fullName,
         email,
         phone,
-        interstedIn,
-        interestedIn: interstedIn,
+        interstedIn: normalizedOption,
+        interestedIn: normalizedOption,
       });
     });
     await safeIntegration("send project modal whatsapp", async () => {
