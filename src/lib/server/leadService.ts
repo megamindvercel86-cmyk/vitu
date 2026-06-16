@@ -462,6 +462,8 @@ const postZohoFlow = async (payload: Record<string, unknown>): Promise<void> => 
     fbclid: asString(payload.fbclid),
   };
 
+  console.log("[Zoho Flow] Sending payload:", JSON.stringify(flowPayload, null, 2));
+
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -470,8 +472,11 @@ const postZohoFlow = async (payload: Record<string, unknown>): Promise<void> => 
 
   if (!response.ok) {
     const raw = await response.text();
+    console.error(`[Zoho Flow] Error response from webhook: ${response.status} -`, raw);
     throw new Error(`Zoho Flow request failed: ${response.status} ${raw}`);
   }
+
+  console.log("[Zoho Flow] Lead successfully posted to webhook.");
 };
 
 const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
