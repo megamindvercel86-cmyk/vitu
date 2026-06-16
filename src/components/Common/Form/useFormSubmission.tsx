@@ -44,6 +44,8 @@ export const useFormSubmission = (page: string, callback?: () => void) => {
     utm_campaign: searchParams.get("utm_campaign") || "",
     utm_term: searchParams.get("utm_term") || "",
     utm_content: searchParams.get("utm_content") || "",
+    gclid: searchParams.get("gclid") || "",
+    fbclid: searchParams.get("fbclid") || "",
   };
 
   const handleFormSubmission = async (values: FormValues): Promise<void> => {

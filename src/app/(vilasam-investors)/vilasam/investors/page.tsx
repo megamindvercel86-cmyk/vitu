@@ -46,7 +46,7 @@ export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
     heading: (
       <>
-        Invest in Mangalore's <br className="hidden md:block" /> Fast-Growing Corridor
+        Invest in Mangalore&apos;s <br className="hidden md:block" /> Fast-Growing Corridor
       </>
     ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
