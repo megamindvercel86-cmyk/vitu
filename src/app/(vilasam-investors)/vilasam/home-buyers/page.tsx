@@ -17,6 +17,9 @@ import {
 import LandingFooter from "@/components/VilasamLanding/LandingFooter";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/vilasam/home-buyers",
+  },
   title: "Vilasam Home Buyers | Vitu Realty",
   description: "Book your Vilasam site visit and explore premium residential villa plots in Mangaluru.",
   openGraph: {
@@ -46,14 +49,20 @@ export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
     heading: (
       <>
-        Your Space to <br className="hidden md:block" /> Breathe & Belong
+Build a Home Where<br className="hidden md:block" />You Can Breathe & Belong
       </>
     ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
-      "Vilasam offers 24 Boutique Luxury Villa Plots, a limited-edition sanctuary. A strategic asset in one of Karnataka's fastest-growing coastal corridors. Located behind NITK, Surathkal, this project is at the intersection of connectivity and opportunity.",
+      "Vilasam brings you 24 boutique luxury villa plots in Surathkal, Mangalore - a limited-edition gated community for families who want space, privacy, greenery, and the freedom to build a home around their lifestyle. Located behind NITK, Vilasam offers calm community living with easy access to Mangalore’s key conveniences. Just Starting at ₹ 33.5 Lakhs",
     ctaLabel: "Download E-Brochure",
-    images: ["/vilasamImages/brochureSection/1.png", "/vilasamImages/brochureSection/2.png", "/vilasamImages/brochureSection/3.png", "/vilasamImages/brochureSection/4.png", "/vilasamImages/brochureSection/5.png"],
+    images: [
+      "/vilasamImages/brochureSection/1.png",
+      "/vilasamImages/brochureSection/2.png",
+      "/vilasamImages/brochureSection/3.png",
+      "/vilasamImages/brochureSection/4.png",
+      "/vilasamImages/brochureSection/5.png",
+    ],
     imageAlt: "Vilasam gated entrance",
     cards: [
       { title: "10-15 mins to Everyday\nEssentials" },
@@ -123,7 +132,7 @@ export default function VilasamInvestorsPage() {
   };
 
   const locationSectionData: InvestorsLocationSectionProps = {
-    title: "Location Proximities",
+    title: "Connected to Mangalore’s Key Growth Hubs",
     locations: [
       { id: "1", name: "Surathkal Lighthouse Beach", distance: "5 mins" },
       { id: "2", name: "Srinivas Hospital", distance: "5 mins" },
@@ -159,7 +168,7 @@ export default function VilasamInvestorsPage() {
 
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
-    
+
       <LandingFooter />
     </main>
   );

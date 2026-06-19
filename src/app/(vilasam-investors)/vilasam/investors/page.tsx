@@ -17,6 +17,9 @@ import {
 import LandingFooter from "@/components/VilasamLanding/LandingFooter";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/vilasam/investors",
+  },
   title: "Vilasam Investors | Vitu Realty",
   description: "Book your Vilasam site visit and explore premium investment-ready villa plots in Mangaluru.",
   openGraph: {
@@ -46,14 +49,21 @@ export default function VilasamInvestorsPage() {
   const opportunitySectionData: InvestorsOpportunitySectionProps = {
     heading: (
       <>
-        Invest in Mangalore&apos;s <br className="hidden md:block" /> Fast-Growing Corridor
+        Invest in Mangalore’s
+        <br className="hidden md:block" /> Emerging Coastal Growth Corridor
       </>
     ),
     headingMobile: "Secure your legacy in Mangalore’s growth story",
     description:
-      "24 Limited Edition Luxury Villa Plots in Surathkal, Mangalore. A rare asset in a rapidly growing coastal corridor.",
+      "24 limited-edition luxury villa plots in Surathkal, Mangalore, designed for buyers seeking long-term land ownership in a premium gated community. Just Starting at ₹ 33.5 Lakhs",
     ctaLabel: "Download E-Brochure",
-    images: ["/vilasamImages/brochureSection/1.png", "/vilasamImages/brochureSection/2.png", "/vilasamImages/brochureSection/3.png", "/vilasamImages/brochureSection/4.png", "/vilasamImages/brochureSection/5.png"],
+    images: [
+      "/vilasamImages/brochureSection/1.png",
+      "/vilasamImages/brochureSection/2.png",
+      "/vilasamImages/brochureSection/3.png",
+      "/vilasamImages/brochureSection/4.png",
+      "/vilasamImages/brochureSection/5.png",
+    ],
     imageAlt: "Vilasam gated entrance",
     cards: [
       { title: "2X growth in the\nlast 3 years" },
@@ -123,7 +133,7 @@ export default function VilasamInvestorsPage() {
   };
 
   const locationSectionData: InvestorsLocationSectionProps = {
-    title: "Location Proximities",
+    title: "Connected to Mangalore’s Key Growth Hubs",
     locations: [
       { id: "1", name: "Surathkal Railway Station", distance: "5 mins" },
       { id: "2", name: "Mangalore International Airport", distance: "15 mins" },
@@ -146,7 +156,7 @@ export default function VilasamInvestorsPage() {
       <InvestorsContactSection thankYouRoute="/vilasam/investors/thank-you" intent="vilasamLanding" formName="Vilasam Investors Contact Form" />
       {/* Sticky Bottom SnackBar */}
       <InvestorsStickyCTA />
-    
+
       <LandingFooter />
     </main>
   );

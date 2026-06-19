@@ -284,9 +284,9 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
         </div>
         <div className="absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:left-[5vw] z-20 pointer-events-none hidden md:block">
           <h1 className="font-ttCommons text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.25] font-medium tracking-wide drop-shadow-md">
-            Limited Edition Luxury Villa Plots
+            {intent === "vilasamInvestors" ? "Invest in Luxury Villa Plots" : "Build Your Dream Home"}
             <br />
-            starting ₹ 33.5 Lakhs
+            in Surathkal, Mangalore
           </h1>
         </div>
 

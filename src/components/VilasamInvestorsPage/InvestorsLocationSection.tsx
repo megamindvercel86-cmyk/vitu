@@ -40,7 +40,7 @@ export default function InvestorsLocationSection({
           {/* UPDATED: Added py-8 md:py-12 lg:py-24 to add bulk to the content side */}
           <div className="order-2 flex flex-col justify-center py-4 md:order-1 md:py-12 lg:py-10 md:space-y-10">
             {/* Desktop Title */}
-            <h2 className="hidden font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[38px] lg:text-[42px]">
+            <h2 className="hidden font-ttCommons text-[32px] font-semibold leading-tight text-[#2A2A2A] md:block md:text-[38px]">
               {title}
             </h2>
             <div className="mt-4 flex flex-row items-center gap-2">
