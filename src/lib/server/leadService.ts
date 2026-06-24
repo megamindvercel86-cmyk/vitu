@@ -4,7 +4,7 @@ import type { LeadIntent, LeadMetaPayload, LeadUtmPayload } from "@/lib/leadApi"
 import { sendFormEmail } from "@/lib/server/emailService";
 
 const ACCELR_WEBHOOK_URL =
-  process.env.ACCELR_WEBHOOK_URL || "https://www.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website";
+  process.env.ACCELR_WEBHOOK_URL || "https://v1.accelr.app/api/webhook/unified?accountId=eMRdjeicbuLuXMFp3l5a&source=website";
 const PABBLY_WEBHOOK_URL =
   process.env.PABBLY_WEBHOOK_URL || "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzMDA0MzQ1MjZmNTUzNzUxMzMi_pc";
 const AISENSY_URL = "https://backend.aisensy.com/campaign/t1/api/v2";
