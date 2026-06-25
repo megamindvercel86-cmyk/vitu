@@ -366,22 +366,60 @@ const sendWhatsAppVilasam = async (name: string, phone: string, isBrochure: bool
 };
 
 
-const postAccelr = async (payload: Record<string, unknown>): Promise<void> => {
+const postAccelr = async (payload: Record<string, unknown>, pageUrl?: string): Promise<void> => {
+  // 1. Post to the old unified webhook (using flat payload)
   const enrichedPayload = {
     ...payload,
     premise: payload.premise || payload.project || payload.formName || "Website",
   };
 
-  const response = await fetch(ACCELR_WEBHOOK_URL, {
+  const oldWebhookPromise = fetch(ACCELR_WEBHOOK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(enrichedPayload),
+  }).then(async (response) => {
+    if (!response.ok) {
+      const raw = await response.text();
+      console.error(`[leadService] Old Accelr webhook failed: ${response.status} ${raw}`);
+    }
+  }).catch((err) => {
+    console.error("[leadService] Old Accelr webhook error:", err);
   });
 
-  if (!response.ok) {
-    const raw = await response.text();
-    throw new Error(`Accelr request failed: ${response.status} ${raw}`);
-  }
+  // 2. Post to the new capture API
+  const name = asString(payload.fullName || payload.name || payload.email || "Lead");
+  const email = asString(payload.email || "");
+  const phone = asString(payload.phone || "");
+
+  const data: Record<string, unknown> = {
+    name,
+    email,
+    phone,
+    ...payload,
+    premise: payload.premise || payload.project || payload.formName || "Website",
+  };
+
+  const trackingKey = process.env.ACCELR_TRACKING_KEY || "cmqtdy55d000l2rou4mduua2i";
+
+  const requestBody = {
+    trackingKey,
+    data,
+    pageUrl: pageUrl || "https://viturealty.com",
+  };
+
+  const newCapturePromise = fetch("https://app.accelr.app/api/leads/capture", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestBody),
+  }).then(async (response) => {
+    if (!response.ok) {
+      const raw = await response.text();
+      throw new Error(`New Accelr capture failed: ${response.status} ${raw}`);
+    }
+  });
+
+  // Wait for both to complete
+  await Promise.all([oldWebhookPromise, newCapturePromise]);
 };
 
 const postPabbly = async (payload: Record<string, unknown>): Promise<void> => {
@@ -479,7 +517,7 @@ const postZohoFlow = async (payload: Record<string, unknown>): Promise<void> => 
   console.log("[Zoho Flow] Lead successfully posted to webhook.");
 };
 
-const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitGeneralEnquire = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -516,7 +554,7 @@ const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       ...leadPayload,
       formName: request.meta.formName || "General Enquire",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send general enquire sokt", async () => {
     await postSokt({
@@ -535,7 +573,7 @@ const submitGeneralEnquire = async (request: NormalizedLeadRequest): Promise<Lea
   return result;
 };
 
-const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitProjectEnquire = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -576,7 +614,7 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
       ...leadPayload,
       formName: request.meta.formName || "Project Enquire",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send project enquire sokt", async () => {
     await postSokt({
@@ -595,7 +633,7 @@ const submitProjectEnquire = async (request: NormalizedLeadRequest): Promise<Lea
   return result;
 };
 
-const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitCareerApplication = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -628,7 +666,7 @@ const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<
       ...leadPayload,
       formName: request.meta.formName || "Career Application",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send career application sokt", async () => {
     await postSokt({
@@ -647,7 +685,7 @@ const submitCareerApplication = async (request: NormalizedLeadRequest): Promise<
   return result;
 };
 
-const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitVaikuntamCityElite = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -719,7 +757,7 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
       ...leadPayload,
       formName: request.meta.formName || "Vaikuntam City Elite Form",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send elite sokt", async () => {
     await postSokt({
@@ -738,7 +776,7 @@ const submitVaikuntamCityElite = async (request: NormalizedLeadRequest): Promise
   return result;
 };
 
-const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitVilasamLanding = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -796,7 +834,7 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
       ...leadPayload,
       formName,
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send vilasam sokt", async () => {
     await postSokt({
@@ -815,7 +853,7 @@ const submitVilasamLanding = async (request: NormalizedLeadRequest): Promise<Lea
   return result;
 };
 
-const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitProjectModal = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -864,7 +902,7 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
       ...leadPayload,
       formName: request.meta.formName || "Project Enquiry Modal",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send project modal sokt", async () => {
     await postSokt({
@@ -883,7 +921,7 @@ const submitProjectModal = async (request: NormalizedLeadRequest): Promise<LeadS
   return result;
 };
 
-const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const fullName = requireString(request.payload.fullName, "Full name");
   const email = requireEmail(request.payload.email);
   const phone = requirePhone(request.payload.phone);
@@ -910,7 +948,7 @@ const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promi
       ...leadPayload,
       formName: request.meta.formName || "Vaikuntam City Let's Explore",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send vaikuntam city explore sokt", async () => {
     await postSokt({
@@ -929,7 +967,7 @@ const submitVaikuntamCityExplore = async (request: NormalizedLeadRequest): Promi
   return result;
 };
 
-const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<LeadSubmitResult> => {
+const submitNewsletterSignup = async (request: NormalizedLeadRequest, pageUrl?: string): Promise<LeadSubmitResult> => {
   const email = requireEmail(request.payload.email);
 
   const leadPayload = {
@@ -944,7 +982,7 @@ const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<L
       ...leadPayload,
       formName: request.meta.formName || "Newsletter Signup",
       source: "website",
-    });
+    }, pageUrl);
   });
   await safeIntegration("send newsletter sokt", async () => {
     await postSokt({
@@ -966,26 +1004,27 @@ const submitNewsletterSignup = async (request: NormalizedLeadRequest): Promise<L
 export const submitLead = async (body: unknown, headers: Headers): Promise<LeadSubmitResult> => {
   enforceRateLimit(headers);
   const request = normalizeLeadRequest(body);
+  const pageUrl = headers.get("referer") || undefined;
 
   switch (request.intent) {
     case "generalEnquire":
-      return submitGeneralEnquire(request);
+      return submitGeneralEnquire(request, pageUrl);
     case "projectEnquire":
-      return submitProjectEnquire(request);
+      return submitProjectEnquire(request, pageUrl);
     case "careerApplication":
-      return submitCareerApplication(request);
+      return submitCareerApplication(request, pageUrl);
     case "vaikuntamCityElite":
-      return submitVaikuntamCityElite(request);
+      return submitVaikuntamCityElite(request, pageUrl);
     case "vilasamLanding":
     case "vilasamHomeBuyersLanding":
     case "vilasamInvestors":
-      return submitVilasamLanding(request);
+      return submitVilasamLanding(request, pageUrl);
     case "projectModal":
-      return submitProjectModal(request);
+      return submitProjectModal(request, pageUrl);
     case "vaikuntamCityExplore":
-      return submitVaikuntamCityExplore(request);
+      return submitVaikuntamCityExplore(request, pageUrl);
     case "newsletterSignup":
-      return submitNewsletterSignup(request);
+      return submitNewsletterSignup(request, pageUrl);
     default:
       throw new LeadValidationError("Unsupported lead intent.");
   }
