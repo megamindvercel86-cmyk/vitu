@@ -179,6 +179,13 @@ fbq('track', 'PageView');
         <GoogleTagManager gtmId="GTM-TVLJSG6D" />
         <Analytics />
         <Script src="https://crm.zoho.in/crm/javascript/zcga.js" strategy="afterInteractive" />
+        {/* Accelr Embed Script */}
+        <Script
+          src="https://app.accelr.app/api/scripts/embed.js"
+          data-key="cmqtdy55d000l2rou4mduua2i"
+          data-auto-capture="false"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
