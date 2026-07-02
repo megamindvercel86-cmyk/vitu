@@ -340,7 +340,7 @@ const FooterBottom: FC = () => (
         © <span className="font-theSeasons">{new Date().getFullYear()}</span>{" "}
         <span className="font-theSeasons font-medium">{safeSpecialCharacters("VITU Realty | All rights reserved.")}</span>
       </p>
-      <div className="flex gap-4 mt-4 md:mt-0">
+      <div className="flex gap-4 mt-4 md:mt-0 items-center">
         <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="Read the legal disclaimer">
           Legal Disclaimer
         </a>
@@ -349,6 +349,12 @@ const FooterBottom: FC = () => (
         </span>
         <a href="/terms-of-service" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="View the terms of service">
           Terms of Service
+        </a>
+        <span className="text-[#808080] text-xs" aria-hidden="true">
+          |
+        </span>
+        <a href="/privacy-policy" className="text-[#808080] text-xs font-theSeasons font-medium" aria-label="View the privacy policy">
+          Privacy Policy
         </a>
       </div>
     </div>

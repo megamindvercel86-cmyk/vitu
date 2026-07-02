@@ -300,20 +300,15 @@ const FooterBottom: FC = () => (
           Megamind Studios
         </a>
       </p>
-      <div className="flex gap-4 mt-4 md:mt-0">
-        {/* <a
-          href="/terms-of-service"
-          className="text-[#FFFFFF66] text-xs font-freightNeoMedium"
-          aria-label="Read the legal disclaimer section of our terms of service"
-        >
-          Legal Disclaimer
-        </a> */}
-        {/* <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
-          |
-        </span> */}
-
+      <div className="flex gap-4 mt-4 md:mt-0 items-center">
         <a href="/terms-of-service" className="text-[#FFFFFF66] text-xs font-freightNeoMedium" aria-label="Read the full terms of service">
           Terms of Service
+        </a>
+        <span className="text-[#FFFFFF66] text-xs" aria-hidden="true">
+          |
+        </span>
+        <a href="/privacy-policy" className="text-[#FFFFFF66] text-xs font-freightNeoMedium" aria-label="Read the privacy policy">
+          Privacy Policy
         </a>
       </div>
     </div>

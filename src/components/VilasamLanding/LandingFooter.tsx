@@ -122,7 +122,10 @@ export default function LandingFooter() {
               holder.
             </p>
             <p className="pt-2 md:pt-3">
-              © {new Date().getFullYear()} VITU Realty. All rights reserved
+              © {new Date().getFullYear()} VITU Realty. All rights reserved |{" "}
+              <a href="/privacy-policy" className="hover:underline">
+                Privacy Policy
+              </a>
             </p>
           </div>
         </div>

@@ -36,11 +36,14 @@ const EliteFooter2 = () => {
         <p className="text-[#E0D9C766] font-FreightNeoProNormal text-xs">
           © <span className="font-CandideCondensedNormal">{new Date().getFullYear()}</span> Vitu Realty | All rights reserved
         </p>
-        <div className="flex mt-4 lg:mt-0 flex-col lg:flex-row gap-2 text-[#E0D9C766] font-FreightNeoProNormal text-xs relative z-20">
-        <Link href="/terms-of-service">
-        
-          <p className="cursor-pointer">Terms of Service</p>
-        </Link>
+        <div className="flex mt-4 lg:mt-0 flex-row gap-2 text-[#E0D9C766] font-FreightNeoProNormal text-xs relative z-20 items-center">
+          <Link href="/terms-of-service">
+            <p className="cursor-pointer hover:underline">Terms of Service</p>
+          </Link>
+          <span>|</span>
+          <Link href="/privacy-policy">
+            <p className="cursor-pointer hover:underline">Privacy Policy</p>
+          </Link>
         </div>
       </div>
     </footer>

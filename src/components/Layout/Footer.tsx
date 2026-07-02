@@ -403,6 +403,16 @@ const FooterBottom: FC = () => (
         >
           Terms of Service
         </a>
+        <span className="text-[#FFFFFF66]" aria-hidden="true">
+          |
+        </span>
+        <a
+          href="/privacy-policy"
+          aria-label="Go to Privacy Policy"
+          className="text-[#FFFFFF66] text-xs text-center 2xl:text-xl md:text-left font-freightNeoMedium"
+        >
+          Privacy Policy
+        </a>
       </div>
     </div>
   </div>

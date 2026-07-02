@@ -287,14 +287,18 @@ export default function EliteFooter3() {
               Megamind Studios
             </a>
           </p>
-          <div className="flex gap-3 justify-center lg:justify-normal">
-            <a href="#" className="hover:text-[#f3eae1]">
+          <div className="flex gap-3 justify-center lg:justify-normal items-center">
+            <Link href="/terms-of-service" className="hover:text-[#f3eae1] hover:underline">
               Legal Disclaimers
-            </a>
+            </Link>
             <span>|</span>
-            <a href="#" className="hover:text-[#f3eae1]">
+            <Link href="/terms-of-service" className="hover:text-[#f3eae1] hover:underline">
               Terms of Service
-            </a>
+            </Link>
+            <span>|</span>
+            <Link href="/privacy-policy" className="hover:text-[#f3eae1] hover:underline">
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
