@@ -249,7 +249,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
 
         {/* Desktop Swiper Background */}
         {/* Desktop Swiper Background */}
-        <div className="absolute inset-0 z-0 hidden md:block">
+        <div className="absolute inset-0 z-10 hidden md:block">
           <Swiper
             modules={[Autoplay, Pagination, EffectFade]}
             effect="fade"
@@ -258,6 +258,15 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
             loop={true}
             className="w-full h-full hero-swiper"
           >
+          <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
+              <Image
+                src="/vilasamImages/heroSectionImages/2.webp"
+                alt="Vilasam luxury villa plots aerial view"
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </SwiperSlide>
             <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
               <Image
                 src="/vilasamImages/heroSectionImages/1.webp"
@@ -268,15 +277,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
                 className="object-cover object-center"
               />
             </SwiperSlide>
-            <SwiperSlide className="relative w-full h-full min-h-[500px] sm:min-h-screen">
-              <Image
-                src="/vilasamImages/heroSectionImages/2.webp"
-                alt="Vilasam luxury villa plots aerial view"
-                fill
-                sizes="100vw"
-                className="object-cover object-center"
-              />
-            </SwiperSlide>
+            
 
             {/* Move the Black Gradient INSIDE the Swiper component */}
             <div className="absolute inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-black/80 to-transparent z-[5] pointer-events-none" />
@@ -301,7 +302,8 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
             bottom: 24px !important;
             left: 20px !important;
             width: auto !important;
-            z-index: 30;
+            z-index: 30 !important;
+            pointer-events: auto !important;
           }
           @media (min-width: 768px) {
             .hero-swiper .swiper-pagination {
@@ -316,7 +318,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           }
           .hero-swiper .swiper-pagination-bullet {
             width: 66px !important;
-            height: 2.3px !important;
+            height: 3px !important;
             border-radius: 0 !important;
             background: rgba(255, 255, 255, 0.4) !important;
             opacity: 1 !important;
@@ -325,6 +327,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
             position: relative;
             top: -2px;
             cursor: pointer !important;
+            pointer-events: auto !important;
           }
           .hero-swiper .swiper-pagination-bullet-active {
             background: #ffffff !important;
@@ -334,10 +337,11 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           .hero-swiper .swiper-pagination-bullet::before {
             content: "";
             position: absolute;
-            top: -10px;
-            bottom: -10px;
-            left: 0;
-            right: 0;
+            top: -14px;
+            bottom: -14px;
+            left: -4px;
+            right: -4px;
+            cursor: pointer !important;
           }
           .country-selector-button {
             gap: 6px;
@@ -392,7 +396,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           />
         </div>
 
-        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0">
+        <div className="relative z-20 flex w-full flex-grow flex-col items-center justify-end md:flex-row md:items-center  md:justify-end pb-8 pt-28   md:pt-32 mx-auto max-w-7xl xl:max-w-[90vw] px-4 md:px-0 pointer-events-none">
           {/* Mobile Text Overlay */}
           <div className="md:hidden absolute inset-0 flex flex-col items-center justify-start mt-36 pointer-events-none ">
             <h1 className="font-ttCommons font-semibold text-center text-[30px]  text-white leading-[1.2]  tracking-tight">
@@ -402,7 +406,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
               <a
                 href="https://www.google.com/maps/place/Vilasam+by+VITU+Realty/@13.0084459,74.7985919,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba353f36865457b:0x5b7c3104c03bd7f0!8m2!3d13.0084407!4d74.8011668!16s%2Fg%2F11xg5lg3zj?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
-                className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white/90"
+                className="mb-4 text-center flex items-center gap-2 justify-center font-medium text-[14px] md:text-[15px] text-white/90 pointer-events-auto"
               >
                 <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -424,7 +428,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="md:hidden w-full bg-white text-[#064747] font-bold py-3 rounded-[4px] text-[15px]  transition hover:bg-gray-50 active:scale-95 z-20"
+            className="md:hidden w-full bg-white text-[#064747] font-bold py-3 rounded-[4px] text-[15px]  transition hover:bg-gray-50 active:scale-95 z-20 pointer-events-auto"
           >
             Book a Site Visit Today
           </button>
@@ -432,7 +436,7 @@ router.push(`${thankYouRoute}?type=${formName}&audience=${intent}`);
           {/* Form Content - Desktop */}
           <form
             onSubmit={(e) => handleSubmit(e, "desktop")}
-            className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20"
+            className="hidden md:block w-full max-w-[420px] rounded-xl bg-white p-7 shadow-2xl relative z-20 pointer-events-auto"
           >
             <div className="mb-4 md:mb-5 border-b border-[#E2E2E2] pb-4 text-center">
               <h1 className="font-ttCommons font-medium text-[30px] md:text-[34px] leading-none text-[#2A2A2A]">
