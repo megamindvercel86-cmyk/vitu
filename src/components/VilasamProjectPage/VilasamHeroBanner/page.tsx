@@ -171,13 +171,13 @@ const VilasamHeroSection = () => {
       <div
         className={`absolute flex bottom-20   lg2:bottom-60  items-center justify-center sm:justify-between gap-3 pl-8 pr-3 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-md animate-fadeIn`}
       >
-        <div className="font-medium text-[#0C3E49] text-sm lg2:text-[26px] xl:text-[32px] md:text-lg font-theSeasons">Bookings Open Soon</div>
+        <div className="font-medium text-[#0C3E49] text-sm lg2:text-[26px] xl:text-[32px] md:text-lg font-theSeasons">Limited Plots Left</div>
         <button
-          aria-label="Show your Interest"
+          aria-label="Book Now"
           onClick={() => setIsModalOpen(true)}
           className="px-6 lg2:px-10 py-2 text-sm lg2:text-[26px] xl:text-[32px] lg2:py-5 bg-[#0C3E49] md:text-lg font-theSeasons text-white rounded-full transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
         >
-          Show your Interest
+          Book Now
         </button>
       </div>
       {/* Main Content */}
